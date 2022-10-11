@@ -1,4 +1,5 @@
 //To add table row in college education table
+
 $(document).ready(function(){
     var countCollegeRow = 1;
     college_field(countCollegeRow);

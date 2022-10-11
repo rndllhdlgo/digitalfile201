@@ -399,5 +399,14 @@ margin: 0;
     transition: 0.2s;
 }
 
-
-
+/* Educational and Trainings Background CSS */
+.table-title{
+    font-size:16px;
+    margin-left:1px;
+    background-color:#0d1a80;
+    color:white !important;
+    padding:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+    border-bottom: 1px solid white !important;
+}

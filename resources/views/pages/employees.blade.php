@@ -22,11 +22,11 @@
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                             <tr>
-                                <th><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>
-                                <th><i class="fas fa-id-card"></i> FIRST NAME</th>
-                                <th><i class="fas fa-id-card"></i> LAST NAME</th>
-                                <th><i class="fas fa-id-card"></i> MIDDLE NAME</th>
-                                <th><i class="fas fa-briefcase"></i> POSITION</th>
+                                <th style="width:14%"><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>
+                                <th style="width:14%"><i class="fas fa-id-card"></i> FIRST NAME</th>
+                                <th style="width:14%"><i class="fas fa-id-card"></i> LAST NAME</th>
+                                <th style="width:14%"><i class="fas fa-id-card"></i> MIDDLE NAME</th>
+                                <th style="width:14%"><i class="fas fa-briefcase"></i> POSITION</th>
                                 <th><i class="fas fa-building"></i> BRANCH</th>
                                 <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th>
                             </tr>
