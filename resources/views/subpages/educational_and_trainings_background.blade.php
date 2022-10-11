@@ -1,7 +1,7 @@
 <div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
     {{-- College Table --}}
     <br>
-    <strong class="table-title">COLLEGE EDUCATION</strong>
+    <strong class="table-title">COLLEGE EDUCATIONsss</strong>
         <table class="table table-striped table-bordered mt-1">
             <thead class="text-white">
                 <tr>
