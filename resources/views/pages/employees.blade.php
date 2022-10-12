@@ -2,16 +2,6 @@
 
 @section('content')
 <br>
-{{-- <select name="toggle_column" id="toggle_column">
-    <option value="0">Employee No.</option>
-    <option value="1">First Name</option>
-    <option value="2">Last Name</option>
-    <option value="3">Middle Name</option>
-    <option value="4">Position</option>
-    <option value="5">Branch</option>
-    <option value="6">Status</option>
-</select> --}}
-
     <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list">
             <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>

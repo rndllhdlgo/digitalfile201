@@ -1,8 +1,6 @@
 <div id="personal_information" class="tab-pane active" style="border-radius:0px;"><br>
-    {{-- First Row --}}
-    <div class="row mb-3">{{-- Row for split column --}}
-        {{-- Column 1 --}}
-        <div class="column-1">
+    <div class="row mb-3"> <!-- Split 2 column -->
+        <div class="column-1"> <!-- Image Container -->
             <div class="row mb-3">
                 <div class="col">
                     <i class="fas fa-times float-end grow" style="zoom:150%;cursor:pointer;display:none;margin-top:3px;margin-bottom:3px;" title="REPLACE" id="image_close"></i>
@@ -18,8 +16,8 @@
                 </div>
             </div>
         </div>
-        {{-- Column 2 --}}
-        <div class="column-2">
+        
+        <div class="column-2"> <!-- Name Container -->
             <div class="row mb-4 mt-3">
                 <div class="col">
                     <div class="f-outline">
@@ -50,13 +48,13 @@
                         <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX <span class="span_suffix">(Optional)</span></label>
                     </div>
                 </div> 
-            </div> {{-- End of first row div --}}
+            </div>
 
             <div class="row mb-4">
                 <div class="col-4">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="date" id="birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="date_of_birth" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> DATE OF BIRTH <span class="span_birthday">(Required)</span> </label>
+                        <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY <span class="span_birthday">(Required)</span> </label>
                     </div>
                 </div>
                 <div class="col-2">
@@ -154,101 +152,144 @@
                     </div>
                 </div>
             </div> 
-        </div>{{-- End of Column 2 Div--}}
-
-            <div id="single_parent" class="mt-3">
-                Here
-            </div>
-
-                <div class="row mb-2 mt-3" id="spouse">
-                    <div class="col">
-                            <div class="f-outline">
-                                <input class="forminput form-control" type="text" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                                <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> Spouse Name <span class="span_spouse_name">(Required)</span> </label>
-                            </div>
-                    </div>
-                    <div class="col">
+        </div>
+    </div>
+            <div class="row mb-3 mt-3">
+                <div class="col-4">
                         <div class="f-outline">
-                            <input class="forminput form-control" type="text" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
-                            <p id="spouse_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                            <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Spouse Contact Number <span class="span_spouse_number">(Required)</span> </label>
+                            <input class="forminput form-control required_field" type="text" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> Father's Name <span class="span_father_name">(Required)</span> </label>
                         </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control" type="text" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                            <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_spouse_profession">(Required)</span> </label>
-                        </div>
-                    </div>
-                </div> {{-- End of 5th row div --}}
-          
-    
-                <div class="row mb-3 mt-3">
-                    <div class="col-4">
-                            <div class="f-outline">
-                                <input class="forminput form-control required_field" type="text" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                                <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> Father's Name <span class="span_father_name">(Required)</span> </label>
-                            </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control" type="text" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="numbersOnly(this)">
-                            <p id="father_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                            <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Father's Contact No. <span class="span_father_contact_number"> (Optional)</span> </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control required_field" type="text" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                            <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_father_profession">(Required)</span> </label>
-                        </div>
-                    </div>
-                </div> {{-- End of 6th row div --}}
-    
-                <div class="row mb-3">
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control required_field" type="text" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                            <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> Mother's Name <span class="span_mother_name">(Required)</span> </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control" type="text" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
-                            <p id="mother_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                            <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Mother's Contact No. <span class="span_mother_contact_number">(Optional)</span></label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control required_field" type="text" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                            <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_mother_profession">(Required)</span></label>
-                        </div>
-                    </div>
-                </div> {{-- End of 7th row div --}}
-    
-                <div class="row mb-3">
-                    <div class="col">
-                            <div class="f-outline">
-                                <input class="forminput form-control required_field" type="text" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                                <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> Incase of Emergency <span class="span_emergency_contact_name">(Required)</span> </label>
-                            </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control required_field" type="text" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                            <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> Relationship <span class="span_emergency_contact_relationship">(Required)</span> </label>
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="f-outline">
-                            <input class="forminput form-control required_field" type="text" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
-                            <p id="emergency_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                            <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Contact No. <span class="span_emergency_contact_number">(Required)</span> </label>
-                        </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="numbersOnly(this)">
+                        <p id="father_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
+                        <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Father's Contact No. <span class="span_father_contact_number"> (Optional)</span> </label>
                     </div>
                 </div>
-    </div>{{-- End div of row split --}}
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field" type="text" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_father_profession">(Required)</span> </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field" type="text" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> Mother's Name <span class="span_mother_name">(Required)</span> </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
+                        <p id="mother_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
+                        <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Mother's Contact No. <span class="span_mother_contact_number">(Optional)</span></label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field" type="text" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_mother_profession">(Required)</span></label>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="row mb-3">
+                <div class="col">
+                        <div class="f-outline">
+                            <input class="forminput form-control required_field" type="text" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> Incase of Emergency <span class="span_emergency_contact_name">(Required)</span> </label>
+                        </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field" type="text" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> Relationship <span class="span_emergency_contact_relationship">(Required)</span> </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field" type="text" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
+                        <p id="emergency_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
+                        <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Contact No. <span class="span_emergency_contact_number">(Required)</span> </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-2 mt-3" id="spouse">
+                <div class="col">
+                        <div class="f-outline">
+                            <input class="forminput form-control" type="text" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> Spouse Name <span class="span_spouse_name">(Required)</span> </label>
+                        </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
+                        <p id="spouse_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
+                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> Spouse Contact Number <span class="span_spouse_number">(Required)</span> </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> Profession <span class="span_spouse_profession">(Required)</span> </label>
+                    </div>
+                </div>
+            </div>
+
+            <div  class="row mt-3" id="single_parent">
+                <div class="col-4">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off">
+                        <label for="child_name" class="formlabel form-label"><i class="fas fa-id-card"></i> Name </label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
+                        <label for="child_birthday" class="formlabel form-label"><i class="fas fa-calendar"></i> BIRTHDAY</label>
+                    </div>
+                </div>
+                <div class="col-1">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="text" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                        <label for="child_age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="f-outline">
+                        <select class="form-select forminput form-control"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <option value="" disabled selected>SELECT GENDER </option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <label for="child_gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER</label>
+                    </div>
+                </div>
+                <div class="col">
+                    <button type="button" id="btnSingleParentAdd" class="btn btn-success center"><i class="fas fa-plus"></i></button>
+                </div>
+            </div>
+            {{-- Single Parent Data Table --}}
+            <table id="single_parent_data_table" class="table table-bordered table-hover table-striped" style="display: none; width:96%;margin-left:14px;margin-top:15px;">
+                <thead class="thead-educational">
+                    <tr>
+                        <th><i class="fas fa-id-card"></i> Name</th>
+                        <th><i class="fas fa-calendar"></i> Birthday</th>
+                        <th><i class="fas fa-calendar"></i> Age</th>
+                        <th><i class="fas fa-venus-mars"></i> Gender</th>
+                        <th style="width:10%;"><i class="fas fa-id-card"></i> Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+    
             <!--
             <div class="row mb-3">
                 <div class="col-4">

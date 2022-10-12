@@ -1,17 +1,18 @@
+
 <div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
     {{-- College Table --}}
     <br>
-    <strong class="table-title">COLLEGE EDUCATIONsss</strong>
-        <table class="table table-striped table-bordered mt-1">
-            <thead class="text-white">
+    <strong class="table-title">COLLEGE EDUCATION</strong>
+        <table class="table table-striped table-bordered table-hover mt-1">
+            <thead class="thead-educational">
                 <tr>
-                    <th style="width: 30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width: 30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
-                    <th style="width: 30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width: 10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
+                    <th style="width:30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
+                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="college_tbody">
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
@@ -32,38 +33,27 @@
                         </div>
                     </td>
                     <td>
-                        <button type="button" id="btnCollegeAdd" class="btn btn-success center"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnCollegeAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <hr>
-        {{-- College Data Table --}}
-        <table id="college_data_table" class="table table-bordered table-hover table-striped" style="display: none;">
-            <thead>
+        <hr class="hr-design">
+        <br>
+        <br>
+        
+    {{-- Training Table --}}
+    <strong class="table-title">TRAININGS</strong><br>
+        <table class="table table-striped table-bordered table-hover mt-1">
+            <thead class="thead-educational">
                 <tr>
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width:30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
+                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
+                    <th style="width:30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
                     <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
-            <tbody>
-            </tbody>
-        </table>
-
-    {{-- Training Table --}}
-    <strong class="table-title">TRAININGS</strong><br>
-        <table class="table table-striped table-bordered mt-1">
-            <thead class="text-white">
-                <tr>
-                    <th style="width: 30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width: 30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width: 30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width: 10%"><i class="fas fa-user-cog"></i> ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
+            <tbody id="training_tbody">
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
@@ -87,30 +77,19 @@
                     </td>
 
                     <td>
-                        <button type="button" id="btnTrainingAdd" class="btn btn-success center"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnTrainingAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <hr>
-        {{-- Training Data Table --}}
-        <table id="training_data_table" class="table table-bordered table-hover table-striped" style="display: none;">
-            <thead>
-                <tr>
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width:30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    
+        <hr class="hr-design">
+        <br>
+        <br>
+
     {{-- Vocational Table --}}
     <strong class="table-title">VOCATIONAL</strong><br>
     <table class="table table-striped table-bordered mt-1">
-        <thead class="text-white">
+        <thead class="thead-educational">
             <tr>
                 <th style="width:30%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
                 <th style="width:30%"><i class="fas fa-certificate"></i> COURSE</th>
@@ -118,7 +97,7 @@
                 <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="vocational_tbody">
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
@@ -142,29 +121,19 @@
                 </td>
 
                 <td>
-                    <button type="button" id="btnVocationalAdd" class="btn btn-success center"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnVocationalAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
-        {{-- Vocational Data Table --}}
-        <table id="vocational_data_table" class="table table-bordered table-hover table-striped" style="display: none;">
-            <thead>
-                <tr>
-                    <th><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                    <th><i class="fas fa-certificate"></i> COURSE</th>
-                    <th><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th><i class="fas fa-user-cog"></i> ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-            </tbody>
-        </table>
-    <hr>
-    <!-- Secondary Table -->
+        <hr class="hr-design">
+        <br>
+        <br>
+
+    {{-- Secondary Table --> --}}
     <strong class="table-title">SECONDARY</strong><br>
         <table class="table table-striped table-bordered mt-1" id="">
-            <thead class="text-white">
+            <thead class="thead-educational">
                 <tr>
                     <th style="width:30%"><i class="fas fa-school"></i> NAME OF SCHOOL</th>
                     <th style="width:30%"><i class="fas fa-map-marker-alt"></i> SCHOOL ADDRESS</th>
@@ -194,12 +163,14 @@
                 </tr>
             </tbody>
         </table> {{-- End of Secondary Table --}}
-        <hr>
-    <!-- Primary Table -->
+        <hr class="hr-design">
+        <br>
+        <br>
+    {{-- Primary Table --> --}}
     <strong class="table-title">PRIMARY</strong>
     <br>
         <table class="table table-striped table-bordered mt-1" id="">
-            <thead class="text-white">
+            <thead class="thead-educational">
                 <tr>
                     <th><i class="fas fa-school"></i> NAME OF SCHOOL</th>
                     <th><i class="fas fa-map-marker-alt"></i> SCHOOL ADDRESS</th>
@@ -229,4 +200,5 @@
                 </tr>
             </tbody>
         </table>
-</div>
+    <hr class="hr-design">
+</div> 

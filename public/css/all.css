@@ -142,14 +142,17 @@ body{
     color:white !important;
 }
 /* Table */
-th{
+/* .th-educational{
     color:white;
-}
-thead{
+} */
+.thead-educational{
+    /* background-color:#e1e8f2; */
     background-color:#0d1a80;
+    color:white !important;
 }
 tr{
     cursor: pointer;
+    border-color:black;
 }
 
 /* Back on top */
@@ -226,10 +229,10 @@ a{
     display: table;
     clear: both;/* Clear floats after the columns */
 }
-#personal_information, #work_information ,#educational_background, #job_history, #documents{
+/* #personal_information, #work_information ,#educational_background, #job_history, #documents{
     padding: 10px;
     box-shadow: 0 0 5px #333;
-}
+} */
 #output{
     height: 248px;
     width: 348px;
@@ -402,11 +405,15 @@ margin: 0;
 /* Educational and Trainings Background CSS */
 .table-title{
     font-size:16px;
-    margin-left:1px;
+    /* margin-left:1px; */
     background-color:#0d1a80;
     color:white !important;
     padding:5px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
-    border-bottom: 1px solid white !important;
+    /* border-bottom: 1px solid white !important; */
 }
+/* Hr Design */
+.hr-design {
+    border:2px solid black;
+  }

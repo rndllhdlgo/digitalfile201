@@ -222,19 +222,21 @@ function sendFile() {//This function will trigger if the btnSave click
     });
 }
 
+    $('#btnSave').prop("disabled",true);
+
 //Fill all required fields/ Check required fields
-setInterval(checkforblank,0);
-function checkforblank(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length != (41 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
-    // if($('.required_field').filter(function(){ return !!this.value; }).length != (20 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
-        $('#title_details').show();
-        $('#btnSave').prop("disabled",true);
-    }
-    else{
-        $('#title_details').hide();
-        $('#btnSave').prop("disabled",false);
-    }
-}
+// setInterval(checkforblank,0);
+// function checkforblank(){
+//     if($('.required_field').filter(function(){ return !!this.value; }).length != (41 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
+//     // if($('.required_field').filter(function(){ return !!this.value; }).length != (20 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
+//         $('#title_details').show();
+//         $('#btnSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#title_details').hide();
+//         $('#btnSave').prop("disabled",false);
+//     }
+// }
 
 // //Clear Form
 // setInterval(checkclearform,0);
@@ -259,6 +261,11 @@ $('#spouse').hide();
       if(status.value == "Married"){
           $('#spouse').show();
           $('#single_parent').hide();
+          $('#single_parent_data_table').hide();
+          $('#child_name').val("");
+          $('#child_birthday').val("");
+          $('#child_age').val("");
+          $('#child_gender').val("");
           $('#spouse_name').addClass('required_field');
           $('#spouse_contact_number').addClass('required_field');
           $('#spouse_profession').addClass('required_field');
@@ -267,6 +274,7 @@ $('#spouse').hide();
       else if(status.value == "Single Parent"){
           $('#spouse').hide();
           $('#single_parent').show();
+        //   $('#single_parent_data_table').show();
       }
       else{
           $('#single_parent').hide();
@@ -348,6 +356,17 @@ $('#birthday').on('change',function(){
             age--;
         }
     return $('#age').val(age);
+});
+
+$('#child_birthday').on('change',function(){
+    var today = new Date();
+    var birthDate = new Date($('#child_birthday').val());
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+    return $('#child_age').val(age);
 });
 
 //Duplicate Validation
@@ -480,6 +499,12 @@ $(function(){
     }
     var maxDate = year + '-' + month + '-' + day;
     $('#date_hired').attr('max', maxDate);
+    $('#child_birthday').attr('max', maxDate);
+    $('#memo_date').attr('max', maxDate);
+    $('#evaluation_date').attr('max', maxDate);
+    $('#contracts_date').attr('max', maxDate);
+    $('#resignation_date').attr('max', maxDate);
+    $('#termination_date').attr('max', maxDate);
 });
 
 //Disable Birthday UnderAge (18)

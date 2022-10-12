@@ -3,8 +3,6 @@
 $('#first_name').on('keyup',function(){
     if($('#first_name').val().length < 2){
         $('#first_name_validation').show();
-        // $('#personal_information').css('height','510px');
-        // $('#6th-row').css('margin-top','70px');
     }
     else{
         $('#first_name_validation').hide();
@@ -132,7 +130,7 @@ $('#spouse_contact_number').on('focusout',function(){
 //Remove (Required) Label on Keyup
 $(document).on('keyup',function(){
     if($('#first_name').val()){
-        $('#first_name').css('border','2px solid #0d1a80');
+        // $('#first_name').css('border','2px solid #0d1a80');
         $('.span_first_name').hide();
     }
     else{
@@ -140,7 +138,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#last_name').val()){
-        $('#last_name').css('border','2px solid #0d1a80');
+        // $('#last_name').css('border','2px solid #0d1a80');
         $('.span_last_name').hide();
     }
     else{
@@ -148,7 +146,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#middle_name').val()){
-        $('#middle_name').css('border','2px solid #0d1a80');
+        // $('#middle_name').css('border','2px solid #0d1a80');
         $('.span_middle_name').hide();
     }
     else{
@@ -156,7 +154,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#suffix').val()){
-        $('#suffix').css('border','2px solid #0d1a80');
+        // $('#suffix').css('border','2px solid #0d1a80');
         $('.span_suffix').hide();
     }
     else{
@@ -164,7 +162,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#street').val()){
-        $('#street').css('border','2px solid #0d1a80');
+        // $('#street').css('border','2px solid #0d1a80');
         $('.span_street_address').hide();
     }
     else{
@@ -172,7 +170,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#email_address').val()){
-        $('#email_address').css('border','2px solid #0d1a80');
+        // $('#email_address').css('border','2px solid #0d1a80');
         $('.span_email_address').hide();
     }
     else{
@@ -180,7 +178,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#telephone_number').val()){
-        $('#telephone_number').css('border','2px solid #0d1a80');
+        // $('#telephone_number').css('border','2px solid #0d1a80');
         $('.span_telephone_number').hide();
     }
     else{
@@ -188,7 +186,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#cellphone_number').val()){
-        $('#cellphone_number').css('border','2px solid #0d1a80');
+        // $('#cellphone_number').css('border','2px solid #0d1a80');
         $('.span_cellphone_number').hide();
     }
     else{
@@ -196,7 +194,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#spouse_name').val()){
-        $('#spouse_name').css('border','2px solid #0d1a80');
+        // $('#spouse_name').css('border','2px solid #0d1a80');
         $('.span_spouse_name').hide();
     }
     else{
@@ -204,7 +202,7 @@ $(document).on('keyup',function(){
     }
     
     if($('#spouse_contact_number').val()){
-        $('#spouse_contact_number').css('border','2px solid #0d1a80');
+        // $('#spouse_contact_number').css('border','2px solid #0d1a80');
         $('.span_spouse_number').hide();
     }
     else{
@@ -212,7 +210,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#spouse_profession').val()){
-        $('#spouse_profession').css('border','2px solid #0d1a80');
+        // $('#spouse_profession').css('border','2px solid #0d1a80');
         $('.span_spouse_profession').hide();
     }
     else{
@@ -220,7 +218,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_name').val()){
-        $('#father_name').css('border','2px solid #0d1a80');
+        // $('#father_name').css('border','2px solid #0d1a80');
         $('.span_father_name').hide();
     }
     else{
@@ -228,7 +226,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_contact_number').val()){
-        $('#father_contact_number').css('border','2px solid #0d1a80');
+        // $('#father_contact_number').css('border','2px solid #0d1a80');
         $('.span_father_contact_number').hide();
     }
     else{
@@ -236,7 +234,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_profession').val()){
-        $('#father_profession').css('border','2px solid #0d1a80');
+        // $('#father_profession').css('border','2px solid #0d1a80');
         $('.span_father_profession').hide();
     }
     else{
@@ -244,7 +242,7 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_name').val()){
-        $('#mother_name').css('border','2px solid #0d1a80');
+        // $('#mother_name').css('border','2px solid #0d1a80');
         $('.span_mother_name').hide();
     }
     else{
@@ -252,7 +250,7 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_contact_number').val()){
-        $('#mother_contact_number').css('border','2px solid #0d1a80');
+        // $('#mother_contact_number').css('border','2px solid #0d1a80');
         $('.span_mother_contact_number').hide();
     }
     else{
@@ -260,7 +258,7 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_profession').val()){
-        $('#mother_profession').css('border','2px solid #0d1a80');
+        // $('#mother_profession').css('border','2px solid #0d1a80');
         $('.span_mother_profession').hide();
     }
     else{
@@ -268,7 +266,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_name').val()){
-        $('#emergency_contact_name').css('border','2px solid #0d1a80');
+        // $('#emergency_contact_name').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_name').hide();
     }
     else{
@@ -276,7 +274,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_relationship').val()){
-        $('#emergency_contact_relationship').css('border','2px solid #0d1a80');
+        // $('#emergency_contact_relationship').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_relationship').hide();
     }
     else{
@@ -284,7 +282,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_number').val()){
-        $('#emergency_contact_number').css('border','2px solid #0d1a80');
+        // $('#emergency_contact_number').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_number').hide();
     }
     else{
@@ -293,7 +291,7 @@ $(document).on('keyup',function(){
     
 //Work Information
     if($('#employee_number').val()){
-        $('#employee_number').css('border','2px solid #0d1a80');
+        // $('#employee_number').css('border','2px solid #0d1a80');
         $('.span_employee_number').hide();
     }
     else{
@@ -309,7 +307,7 @@ $(document).on('keyup',function(){
     // }
 
     if($('#branch_of_employee').val()){
-        $('#branch_of_employee').css('border','2px solid #0d1a80');
+        // $('#branch_of_employee').css('border','2px solid #0d1a80');
         $('.span_branch_of_employee').hide();
     }
     else{
@@ -325,7 +323,7 @@ $(document).on('keyup',function(){
     // }
     
     if($('#employee_email_address').val()){
-        $('#employee_email_address').css('border','2px solid #0d1a80');
+        // $('#employee_email_address').css('border','2px solid #0d1a80');
         $('.span_employee_email_address').hide();
     }
     else{
@@ -333,7 +331,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#employee_contact_number').val()){
-        $('#employee_contact_number').css('border','2px solid #0d1a80');
+        // $('#employee_contact_number').css('border','2px solid #0d1a80');
         $('.span_employee_contact_number').hide();
     }
     else{
@@ -341,7 +339,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#sss_number').val()){
-        $('#sss_number').css('border','2px solid #0d1a80');
+        // $('#sss_number').css('border','2px solid #0d1a80');
         $('.span_sss_number').hide();
     }
     else{
@@ -349,7 +347,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#pag_ibig_number').val()){
-        $('#pag_ibig_number').css('border','2px solid #0d1a80');
+        // $('#pag_ibig_number').css('border','2px solid #0d1a80');
         $('.span_pag-ibig_number').hide();
     }
     else{
@@ -357,7 +355,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#philhealth_number').val()){
-        $('#philhealth_number').css('border','2px solid #0d1a80');
+        // $('#philhealth_number').css('border','2px solid #0d1a80');
         $('.span_philhealth_number').hide();
     }
     else{
@@ -365,7 +363,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#tin_number').val()){
-        $('#tin_number').css('border','2px solid #0d1a80');
+        // $('#tin_number').css('border','2px solid #0d1a80');
         $('.span_tin_number').hide();
     }
     else{
@@ -373,7 +371,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#account_number').val()){
-        $('#account_number').css('border','2px solid #0d1a80');
+        // $('#account_number').css('border','2px solid #0d1a80');
         $('.span_account_number').hide();
     }
     else{
@@ -381,7 +379,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#college_name').val()){
-        $('#college_name').css('border','2px solid #0d1a80');
+        // $('#college_name').css('border','2px solid #0d1a80');
         $('.span_college_name').hide();
     }
     else{
@@ -389,7 +387,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#college_degree').val()){
-        $('#college_degree').css('border','2px solid #0d1a80');
+        // $('#college_degree').css('border','2px solid #0d1a80');
         $('.span_college_degree').hide();
     }
     else{
@@ -397,7 +395,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#college_inclusive_years').val()){
-        $('#college_inclusive_years').css('border','2px solid #0d1a80');
+        // $('#college_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_college_inclusive_years').hide();
     }
     else{
@@ -405,7 +403,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#secondary_school_name').val()){
-        $('#secondary_school_name').css('border','2px solid #0d1a80');
+        // $('#secondary_school_name').css('border','2px solid #0d1a80');
         $('.span_secondary_school_name').hide();
     }
     else{
@@ -413,7 +411,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#secondary_school_address').val()){
-        $('#secondary_school_address').css('border','2px solid #0d1a80');
+        // $('#secondary_school_address').css('border','2px solid #0d1a80');
         $('.span_secondary_school_address').hide();
     }
     else{
@@ -421,7 +419,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#secondary_school_inclusive_years').val()){
-        $('#secondary_school_inclusive_years').css('border','2px solid #0d1a80');
+        // $('#secondary_school_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_secondary_school_inclusive_years').hide();
     }
     else{
@@ -429,7 +427,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_name').val()){
-        $('#primary_school_name').css('border','2px solid #0d1a80');
+        // $('#primary_school_name').css('border','2px solid #0d1a80');
         $('.span_primary_school_name').hide();
     }
     else{
@@ -437,7 +435,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_address').val()){
-        $('#primary_school_address').css('border','2px solid #0d1a80');
+        // $('#primary_school_address').css('border','2px solid #0d1a80');
         $('.span_primary_school_address').hide();
     }
     else{
@@ -445,7 +443,7 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_inclusive_years').val()){
-        $('#primary_school_inclusive_years').css('border','2px solid #0d1a80');
+        // $('#primary_school_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_primary_school_inclusive_years').hide();
     }
     else{
@@ -455,67 +453,67 @@ $(document).on('keyup',function(){
 
 //Remove (Required) Text
 $('#birthday').on('change',function(){
-    $('#birthday').css('border','2px solid #0d1a80');
+    // $('#birthday').css('border','2px solid #0d1a80');
     $('.span_birthday').hide();
 });
 
 $('#gender').on('change',function(){
-    $('#gender').css('border','2px solid #0d1a80');
+    // $('#gender').css('border','2px solid #0d1a80');
     $('.span_gender').hide();
 });
 
 $('#region').on('change',function(){
-    $('#region').css('border','2px solid #0d1a80');
+    // $('#region').css('border','2px solid #0d1a80');
     $('.span_region').hide();
 });
 
 $('#city').on('change',function(){
-    $('#city').css('border','2px solid #0d1a80');
+    // $('#city').css('border','2px solid #0d1a80');
     $('.span_city').hide();
 });
 
 $('#province').on('change',function(){
-    $('#province').css('border','2px solid #0d1a80');
+    // $('#province').css('border','2px solid #0d1a80');
     $('.span_province').hide();
 });
 
 $('#company_of_employee').on('change',function(){
-    $('#company_of_employee').css('border','2px solid #0d1a80');
+    // $('#company_of_employee').css('border','2px solid #0d1a80');
     $('.span_company_of_employee').hide();
 });
 
 $('#branch_of_employee').on('change',function(){
-    $('#branch_of_employee').css('border','2px solid #0d1a80');
+    // $('#branch_of_employee').css('border','2px solid #0d1a80');
     $('.span_branch_of_employee').hide();
 });
 
 $('#status_of_employee').on('change',function(){
-    $('#status_of_employee').css('border','2px solid #0d1a80');
+    // $('#status_of_employee').css('border','2px solid #0d1a80');
     $('.span_status_of_employee').hide();
 });
 
 $('#civil_status').on('change',function(){
-    $('#civil_status').css('border','2px solid #0d1a80');
+    // $('#civil_status').css('border','2px solid #0d1a80');
     $('.span_civil_status').hide();
 });
 
 $('#shift_of_employee').on('change',function(){
-    $('#shift_of_employee').css('border','2px solid #0d1a80');
+    // $('#shift_of_employee').css('border','2px solid #0d1a80');
     $('.span_shift_of_employee').hide();
 });
 
 $('#position_of_employee').on('change',function(){
-    $('#position_of_employee').css('border','2px solid #0d1a80');
+    // $('#position_of_employee').css('border','2px solid #0d1a80');
     $('.span_position_of_employee').hide();
 });
 
 $('#supervisor_of_employee').on('change',function(){
-    $('#supervisor_of_employee').css('border','2px solid #0d1a80');
+    // $('#supervisor_of_employee').css('border','2px solid #0d1a80');
     $('.span_supervisor_of_employee').hide();
 });
 
 $('#date_hired').on('change',function(){
-    $('#date_hired').css('border','2px solid #0d1a80');
+    // $('#date_hired').css('border','2px solid #0d1a80');
     $('.span_date_hired').hide();
 });
 

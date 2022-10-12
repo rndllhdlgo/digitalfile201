@@ -1,4 +1,5 @@
 <div id="job_history" class="tab-pane fade" style="border-radius:0px;"><br>
+    <!--
     <div id="job_container">
         <div class="row">
             <div class="col-2">
@@ -142,6 +143,7 @@
             </table>
         </div>
         <hr>
+    
 
         <div id="contracts_container">
             <div class="row mb-1">
@@ -275,4 +277,5 @@
         </div>
         <hr>
         <br>
+        -->
 </div>{{-- End of Job History Div --}}
