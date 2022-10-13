@@ -136,6 +136,8 @@ body{
     font-weight: bolder;
     border:solid !important;
     border-width: thin !important;
+    font-size: 14px;
+    padding-right: 22px;
 }
 .tabactive{
     background-color:#0d1a80 !important;
@@ -417,3 +419,26 @@ margin: 0;
 .hr-design {
     border:2px solid black;
   }
+
+
+/* File upload button design (Documents blade)*/
+#birthcertificate_button,
+#nbi_button,
+#barangay_clearance_button{
+    background-color: #0d1a80;
+    border:1px solid #000;
+    border-radius: 5px;
+    cursor: pointer;
+    color:white !important;
+}
+#birthcertificate_button:hover,
+#nbi_button:hover,
+#barangay_clearance_button:hover{
+    background-color: #1b2fc2;
+}
+#birthcertificate_text,
+#nbi_text,
+#barangay_clearance_text{
+    margin-left: 10px;
+    color: #aaa;
+}

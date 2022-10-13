@@ -1,6 +1,6 @@
-//Validation
-
-$('#first_name').on('keyup',function(){
+//Personal Information
+//Validation of minimum input
+$('#first_name').on('keyup',function(){ 
     if($('#first_name').val().length < 2){
         $('#first_name_validation').show();
     }
@@ -24,6 +24,42 @@ $('#middle_name').on('keyup',function(){
     }
     else{
         $('#middle_name_validation').hide();
+    }
+});
+
+$('#father_name').on('keyup',function(){
+    if($('#father_name').val().length < 2){
+        $('#father_name_validation').show();
+    }
+    else{
+        $('#father_name_validation').hide();
+    }
+});
+
+$('#mother_name').on('keyup',function(){
+    if($('#mother_name').val().length < 2){
+        $('#mother_name_validation').show();
+    }
+    else{
+        $('#mother_name_validation').hide();
+    }
+});
+
+$('#emergency_contact_name').on('keyup',function(){
+    if($('#emergency_contact_name').val().length < 2){
+        $('#emergency_contact_name_validation').show();
+    }
+    else{
+        $('#emergency_contact_name_validation').hide();
+    }
+});
+
+$('#child_name').on('keyup',function(){
+    if($('#child_name').val().length < 2){
+        $('#child_name_validation').show();
+    }
+    else{
+        $('#child_name_validation').hide();
     }
 });
 
@@ -57,6 +93,7 @@ $('#father_contact_number').on('focusin',function(){
       $('#father_contact_number').attr('placeholder','09xx-xxx-xxxx');
 });
 $('#father_contact_number').on('focusout',function(){
+      $('#father_contact_number_validation').hide();
       $('#father_contact_number').attr('placeholder',' ');
 });
 
@@ -73,6 +110,7 @@ $('#mother_contact_number').on('focusin',function(){
       $('#mother_contact_number').attr('placeholder','09xx-xxx-xxxx');
 });
 $('#mother_contact_number').on('focusout',function(){
+      $('#mother_contact_number_validation').hide();
       $('#mother_contact_number').attr('placeholder',' ');
 });
 
@@ -130,7 +168,6 @@ $('#spouse_contact_number').on('focusout',function(){
 //Remove (Required) Label on Keyup
 $(document).on('keyup',function(){
     if($('#first_name').val()){
-        // $('#first_name').css('border','2px solid #0d1a80');
         $('.span_first_name').hide();
     }
     else{
@@ -138,7 +175,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#last_name').val()){
-        // $('#last_name').css('border','2px solid #0d1a80');
         $('.span_last_name').hide();
     }
     else{
@@ -146,7 +182,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#middle_name').val()){
-        // $('#middle_name').css('border','2px solid #0d1a80');
         $('.span_middle_name').hide();
     }
     else{
@@ -154,7 +189,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#suffix').val()){
-        // $('#suffix').css('border','2px solid #0d1a80');
         $('.span_suffix').hide();
     }
     else{
@@ -162,7 +196,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#street').val()){
-        // $('#street').css('border','2px solid #0d1a80');
         $('.span_street_address').hide();
     }
     else{
@@ -170,7 +203,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#email_address').val()){
-        // $('#email_address').css('border','2px solid #0d1a80');
         $('.span_email_address').hide();
     }
     else{
@@ -178,7 +210,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#telephone_number').val()){
-        // $('#telephone_number').css('border','2px solid #0d1a80');
         $('.span_telephone_number').hide();
     }
     else{
@@ -186,7 +217,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#cellphone_number').val()){
-        // $('#cellphone_number').css('border','2px solid #0d1a80');
         $('.span_cellphone_number').hide();
     }
     else{
@@ -194,7 +224,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#spouse_name').val()){
-        // $('#spouse_name').css('border','2px solid #0d1a80');
         $('.span_spouse_name').hide();
     }
     else{
@@ -202,7 +231,6 @@ $(document).on('keyup',function(){
     }
     
     if($('#spouse_contact_number').val()){
-        // $('#spouse_contact_number').css('border','2px solid #0d1a80');
         $('.span_spouse_number').hide();
     }
     else{
@@ -210,7 +238,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#spouse_profession').val()){
-        // $('#spouse_profession').css('border','2px solid #0d1a80');
         $('.span_spouse_profession').hide();
     }
     else{
@@ -218,7 +245,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_name').val()){
-        // $('#father_name').css('border','2px solid #0d1a80');
         $('.span_father_name').hide();
     }
     else{
@@ -226,7 +252,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_contact_number').val()){
-        // $('#father_contact_number').css('border','2px solid #0d1a80');
         $('.span_father_contact_number').hide();
     }
     else{
@@ -234,7 +259,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#father_profession').val()){
-        // $('#father_profession').css('border','2px solid #0d1a80');
         $('.span_father_profession').hide();
     }
     else{
@@ -242,7 +266,6 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_name').val()){
-        // $('#mother_name').css('border','2px solid #0d1a80');
         $('.span_mother_name').hide();
     }
     else{
@@ -250,7 +273,6 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_contact_number').val()){
-        // $('#mother_contact_number').css('border','2px solid #0d1a80');
         $('.span_mother_contact_number').hide();
     }
     else{
@@ -258,7 +280,6 @@ $(document).on('keyup',function(){
     }
     
     if($('#mother_profession').val()){
-        // $('#mother_profession').css('border','2px solid #0d1a80');
         $('.span_mother_profession').hide();
     }
     else{
@@ -266,7 +287,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_name').val()){
-        // $('#emergency_contact_name').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_name').hide();
     }
     else{
@@ -274,7 +294,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_relationship').val()){
-        // $('#emergency_contact_relationship').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_relationship').hide();
     }
     else{
@@ -282,48 +301,35 @@ $(document).on('keyup',function(){
     }
 
     if($('#emergency_contact_number').val()){
-        // $('#emergency_contact_number').css('border','2px solid #0d1a80');
         $('.span_emergency_contact_number').hide();
     }
     else{
         $('.span_emergency_contact_number').show();
     }
+
+    if($('#child_name').val()){
+        $('.span_child_name').hide();
+    }
+    else{
+        $('.span_child_name').show();
+    }
     
 //Work Information
     if($('#employee_number').val()){
-        // $('#employee_number').css('border','2px solid #0d1a80');
         $('.span_employee_number').hide();
     }
     else{
         $('.span_employee_number').show();
     }
 
-    // if($('#company_of_employee').val()){
-    //     $('#company_of_employee').css('border','2px solid #0d1a80');
-    //     $('.span_company_of_employee').hide();
-    // }
-    // else{
-    //     $('.span_company_of_employee').show();
-    // }
-
     if($('#branch_of_employee').val()){
-        // $('#branch_of_employee').css('border','2px solid #0d1a80');
         $('.span_branch_of_employee').hide();
     }
     else{
         $('.span_branch_of_employee').show();
     }
-
-    // if($('#position_of_employee').val()){
-    //     $('#position_of_employee').css('border','2px solid #0d1a80');
-    //     $('.span_position_of_employee').hide();
-    // }
-    // else{
-    //     $('.span_position_of_employee').show();
-    // }
     
     if($('#employee_email_address').val()){
-        // $('#employee_email_address').css('border','2px solid #0d1a80');
         $('.span_employee_email_address').hide();
     }
     else{
@@ -331,7 +337,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#employee_contact_number').val()){
-        // $('#employee_contact_number').css('border','2px solid #0d1a80');
         $('.span_employee_contact_number').hide();
     }
     else{
@@ -339,7 +344,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#sss_number').val()){
-        // $('#sss_number').css('border','2px solid #0d1a80');
         $('.span_sss_number').hide();
     }
     else{
@@ -347,7 +351,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#pag_ibig_number').val()){
-        // $('#pag_ibig_number').css('border','2px solid #0d1a80');
         $('.span_pag-ibig_number').hide();
     }
     else{
@@ -355,7 +358,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#philhealth_number').val()){
-        // $('#philhealth_number').css('border','2px solid #0d1a80');
         $('.span_philhealth_number').hide();
     }
     else{
@@ -363,7 +365,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#tin_number').val()){
-        // $('#tin_number').css('border','2px solid #0d1a80');
         $('.span_tin_number').hide();
     }
     else{
@@ -371,15 +372,14 @@ $(document).on('keyup',function(){
     }
 
     if($('#account_number').val()){
-        // $('#account_number').css('border','2px solid #0d1a80');
         $('.span_account_number').hide();
     }
     else{
         $('.span_account_number').show();
     }
 
+//Educational and Trainings Background
     if($('#college_name').val()){
-        // $('#college_name').css('border','2px solid #0d1a80');
         $('.span_college_name').hide();
     }
     else{
@@ -387,7 +387,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#college_degree').val()){
-        // $('#college_degree').css('border','2px solid #0d1a80');
         $('.span_college_degree').hide();
     }
     else{
@@ -395,15 +394,55 @@ $(document).on('keyup',function(){
     }
 
     if($('#college_inclusive_years').val()){
-        // $('#college_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_college_inclusive_years').hide();
     }
     else{
         $('.span_college_inclusive_years').show();
     }
+    
+    if($('#training_name').val()){
+        $('.span_training_name').hide();
+    }
+    else{
+        $('.span_training_name').show();
+    }
+
+    if($('#training_title').val()){
+        $('.span_training_title').hide();
+    }
+    else{
+        $('.span_training_title').show();
+    }
+
+    if($('#training_inclusive_years').val()){
+        $('.span_training_inclusive_years').hide();
+    }
+    else{
+        $('.span_training_inclusive_years').show();
+    }
+
+    if($('#vocational_name').val()){
+        $('.span_vocational_name').hide();
+    }
+    else{
+        $('.span_vocational_name').show();
+    }
+
+    if($('#vocational_course').val()){
+        $('.span_vocational_course').hide();
+    }
+    else{
+        $('.span_vocational_course').show();
+    }
+
+    if($('#vocational_inclusive_years').val()){
+        $('.span_vocational_inclusive_years').hide();
+    }
+    else{
+        $('.span_vocational_inclusive_years').show();
+    }
 
     if($('#secondary_school_name').val()){
-        // $('#secondary_school_name').css('border','2px solid #0d1a80');
         $('.span_secondary_school_name').hide();
     }
     else{
@@ -411,7 +450,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#secondary_school_address').val()){
-        // $('#secondary_school_address').css('border','2px solid #0d1a80');
         $('.span_secondary_school_address').hide();
     }
     else{
@@ -419,7 +457,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#secondary_school_inclusive_years').val()){
-        // $('#secondary_school_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_secondary_school_inclusive_years').hide();
     }
     else{
@@ -427,7 +464,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_name').val()){
-        // $('#primary_school_name').css('border','2px solid #0d1a80');
         $('.span_primary_school_name').hide();
     }
     else{
@@ -435,7 +471,6 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_address').val()){
-        // $('#primary_school_address').css('border','2px solid #0d1a80');
         $('.span_primary_school_address').hide();
     }
     else{
@@ -443,80 +478,176 @@ $(document).on('keyup',function(){
     }
 
     if($('#primary_school_inclusive_years').val()){
-        // $('#primary_school_inclusive_years').css('border','2px solid #0d1a80');
         $('.span_primary_school_inclusive_years').hide();
     }
     else{
         $('.span_primary_school_inclusive_years').show();
     }
+
+//Job History
+    if($('#job_name').val()){
+        $('.span_job_name').hide();
+    }
+    else{
+        $('.span_job_name').show();
+    }
+
+    if($('#job_position').val()){
+        $('.span_job_position').hide();
+    }
+    else{
+        $('.span_job_position').show();
+    }
+
+    if($('#job_address').val()){
+        $('.span_job_address').hide();
+    }
+    else{
+        $('.span_job_address').show();
+    }
+
+    if($('#job_contact_details').val()){
+        $('.span_job_contact_details').hide();
+    }
+    else{
+        $('.span_job_contact_details').show();
+    }
+
+    if($('#job_inclusive_years').val()){
+        $('.span_job_inclusive_years').hide();
+    }
+    else{
+        $('.span_job_inclusive_years').show();
+    }
+
+//Documents
+    if($('#memo_subject').val()){
+        $('.span_memo_subject').hide();
+    }
+    else{
+        $('.span_memo_subject').show();
+    }
+
+    if($('#evaluation_reason').val()){
+        $('.span_evaluation_reason').hide();
+    }
+    else{
+        $('.span_evaluation_reason').show();
+    }
+
+    if($('#evaluation_evaluated_by').val()){
+        $('.span_evaluation_evaluated_by').hide();
+    }
+    else{
+        $('.span_evaluation_evaluated_by').show();
+    }
+
+    if($('#contracts_type').val()){
+        $('.span_contracts_type').hide();
+    }
+    else{
+        $('.span_contracts_type').show();
+    }
+
+    if($('#resignation_letter').val()){
+        $('.span_resignation_letter').hide();
+    }
+    else{
+        $('.span_resignation_letter').show();
+    }
+
+    if($('#termination_letter').val()){
+        $('.span_termination_letter').hide();
+    }
+    else{
+        $('.span_termination_letter').show();
+    }
 });
 
-//Remove (Required) Text
+//Remove (Required) Text on change
 $('#birthday').on('change',function(){
-    // $('#birthday').css('border','2px solid #0d1a80');
     $('.span_birthday').hide();
 });
 
 $('#gender').on('change',function(){
-    // $('#gender').css('border','2px solid #0d1a80');
     $('.span_gender').hide();
 });
 
 $('#region').on('change',function(){
-    // $('#region').css('border','2px solid #0d1a80');
     $('.span_region').hide();
 });
 
 $('#city').on('change',function(){
-    // $('#city').css('border','2px solid #0d1a80');
     $('.span_city').hide();
 });
 
 $('#province').on('change',function(){
-    // $('#province').css('border','2px solid #0d1a80');
     $('.span_province').hide();
 });
 
 $('#company_of_employee').on('change',function(){
-    // $('#company_of_employee').css('border','2px solid #0d1a80');
     $('.span_company_of_employee').hide();
 });
 
 $('#branch_of_employee').on('change',function(){
-    // $('#branch_of_employee').css('border','2px solid #0d1a80');
     $('.span_branch_of_employee').hide();
 });
 
 $('#status_of_employee').on('change',function(){
-    // $('#status_of_employee').css('border','2px solid #0d1a80');
     $('.span_status_of_employee').hide();
 });
 
 $('#civil_status').on('change',function(){
-    // $('#civil_status').css('border','2px solid #0d1a80');
     $('.span_civil_status').hide();
 });
 
 $('#shift_of_employee').on('change',function(){
-    // $('#shift_of_employee').css('border','2px solid #0d1a80');
     $('.span_shift_of_employee').hide();
 });
 
 $('#position_of_employee').on('change',function(){
-    // $('#position_of_employee').css('border','2px solid #0d1a80');
     $('.span_position_of_employee').hide();
 });
 
 $('#supervisor_of_employee').on('change',function(){
-    // $('#supervisor_of_employee').css('border','2px solid #0d1a80');
     $('.span_supervisor_of_employee').hide();
 });
 
 $('#date_hired').on('change',function(){
-    // $('#date_hired').css('border','2px solid #0d1a80');
     $('.span_date_hired').hide();
 });
 
+$('#memo_date').on('change',function(){
+    $('.span_memo_date').hide();
+});
+
+$('#memo_option').on('change',function(){
+    $('.span_memo_option').hide();
+});
+
+$('#evaluation_date').on('change',function(){
+    $('.span_evaluation_date').hide();
+});
+
+$('#contracts_date').on('change',function(){
+    $('.span_contracts_date').hide();
+});
+
+$('#resignation_date').on('change',function(){
+    $('.span_resignation_date').hide();
+});
+
+$('#termination_date').on('change',function(){
+    $('.span_termination_date').hide();
+});
+
+$('#child_birthday').on('change',function(){
+    $('.span_child_birthday').hide();
+});
+
+$('#child_gender').on('change',function(){
+    $('.span_child_gender').hide();
+});
 
 
 //User Form Input Fields

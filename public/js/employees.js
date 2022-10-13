@@ -191,13 +191,14 @@ $('#addEmployeeBtn').on('click',function(){
     $('#btnEnableEdit').hide();
     $('#navigation').show();
     $('#tab1').click();
+    $('#resigned').hide();
 
     $('#title_details').removeClass('alert-info');
     $('#title_details').addClass('alert-warning');
     $('#title_details').html('<i class="fas fa-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
 });
 
-//Image Upload
+//Function for Image Upload
 var fileName;
 function sendFile() {//This function will trigger if the btnSave click
     var formData = new FormData();
@@ -222,13 +223,35 @@ function sendFile() {//This function will trigger if the btnSave click
     });
 }
 
-    $('#btnSave').prop("disabled",true);
+$('#btnSave').prop("disabled",true);
 
 //Fill all required fields/ Check required fields
 // setInterval(checkforblank,0);
 // function checkforblank(){
 //     if($('.required_field').filter(function(){ return !!this.value; }).length != (41 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
 //     // if($('.required_field').filter(function(){ return !!this.value; }).length != (20 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
+//         $('#title_details').show();
+//         $('#btnSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#title_details').hide();
+//         $('#btnSave').prop("disabled",false);
+//     }
+// }
+// setInterval(checkforblank,0);
+// function checkforblank(){
+//     if($('.required_field').filter(function(){ return !!this.value; }).length != (23 + addRequiredField)){
+//         $('#title_details').show();
+//         $('#btnSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#title_details').hide();
+//         $('#btnSave').prop("disabled",false);
+//     }
+// }
+// setInterval(checkforblank,0);
+// function checkforblank(){
+//     if($('.required_field').filter(function(){ return !!this.value; }).length != $(".required_field:visible").length){
 //         $('#title_details').show();
 //         $('#btnSave').prop("disabled",true);
 //     }
@@ -253,38 +276,42 @@ $('#btnUpdate').hide();
 $('#btnCancelEdit').hide();
 
 // Civil Status
-$('#single_parent').hide();
+$('#solo_parent').hide();
 $('#spouse').hide();
     function changeStatus(){
       var status = document.getElementById("civil_status");
 
       if(status.value == "Married"){
           $('#spouse').show();
-          $('#single_parent').hide();
-          $('#single_parent_data_table').hide();
+          $('#solo_parent').hide();
+          $('#solo_parent_data_table').hide();
           $('#child_name').val("");
           $('#child_birthday').val("");
           $('#child_age').val("");
           $('#child_gender').val("");
-          $('#spouse_name').addClass('required_field');
-          $('#spouse_contact_number').addClass('required_field');
-          $('#spouse_profession').addClass('required_field');
-          addRequiredField+=3;
       }
-      else if(status.value == "Single Parent"){
+      else if(status.value == "Solo Parent"){
           $('#spouse').hide();
-          $('#single_parent').show();
-        //   $('#single_parent_data_table').show();
+          $('#solo_parent').show();
+        //   $('#solo_parent_data_table').show();
       }
       else{
-          $('#single_parent').hide();
+          $('#solo_parent').hide();
           $('#spouse').hide();
-          $('#spouse_name').removeClass('required_field');
-          $('#spouse_contact_number').removeClass('required_field');
-          $('#spouse_profession').removeClass('required_field');
-          addRequiredField-=3;
       }
     }
+
+    function changeEmploymentStatus(){
+        var employment_status = document.getElementById("status_of_employee");
+  
+        if(employment_status.value == "Agency"){
+            $('#benefits').hide();
+        }
+        else{
+            $('#benefits').show();
+        }
+    }
+
 
 //Navigation Active Pills
 $('#tab1').on('click',function(){
@@ -293,11 +320,13 @@ $('#tab1').on('click',function(){
     $('#tab3').removeClass('tabactive');
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
     $('#personal_information').fadeIn();
     $('#work_information').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
     $('#documents').hide();
+    $('#performance_evaluation').hide();
 });
 $('#tab2').on('click',function(){
     $('#tab1').removeClass('tabactive');
@@ -305,10 +334,12 @@ $('#tab2').on('click',function(){
     $('#tab3').removeClass('tabactive');
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
     $('#personal_information').hide();
     $('#work_information').show();
     $('#educational_background').hide();
     $('#documents').hide();
+    $('#performance_evaluation').hide();
 });
 $('#tab3').on('click',function(){
     $('#tab1').removeClass('tabactive');
@@ -316,10 +347,12 @@ $('#tab3').on('click',function(){
     $('#tab3').addClass('tabactive');
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
     $('#personal_information').hide();
     $('#work_information').hide();
     $('#educational_background').show();
     $('#documents').hide();
+    $('#performance_evaluation').hide();
 });
 $('#tab4').on('click',function(){
     $('#tab1').removeClass('tabactive');
@@ -327,11 +360,13 @@ $('#tab4').on('click',function(){
     $('#tab3').removeClass('tabactive');
     $('#tab4').addClass('tabactive');
     $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
     $('#personal_information').hide();
     $('#work_information').hide();
     $('#educational_background').hide();
     $('#job_history').show();
     $('#documents').hide();
+    $('#performance_evaluation').hide();
 });
 $('#tab5').on('click',function(){
     $('#tab1').removeClass('tabactive');
@@ -339,11 +374,27 @@ $('#tab5').on('click',function(){
     $('#tab3').removeClass('tabactive');
     $('#tab4').removeClass('tabactive');
     $('#tab5').addClass('tabactive');
+    $('#tab6').removeClass('tabactive');
     $('#personal_information').hide();
     $('#work_information').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
     $('#documents').show();
+    $('#performance_evaluation').hide();
+});
+$('#tab6').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').addClass('tabactive');
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#documents').hide();
+    $('#performance_evaluation').show();
 });
 
 //This function is to calculate age
@@ -521,3 +572,39 @@ $(function(){
     var maxDates = years + '-' + months + '-' + days;
     $('#birthday').attr('max', maxDates);
 });
+
+//File button design
+const birthcertificate_file = document.getElementById("birthcertificate_file");
+const birthcertificate_button = document.getElementById("birthcertificate_button");
+const birthcertificate_text = document.getElementById("birthcertificate_text");
+
+$('#birthcertificate_button').on('click',function(){
+    $('#birthcertificate_file').click();
+});
+
+$('#birthcertificate_file').on('change',function(){
+    if (birthcertificate_file.value) {
+        birthcertificate_text.innerHTML = birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        birthcertificate_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
+const nbi_file = document.getElementById("nbi_file");
+const nbi_button = document.getElementById("nbi_button");
+const nbi_text = document.getElementById("nbi_text");
+
+$('#nbi_button').on('click',function(){
+    $('#nbi_file').click();
+});
+
+$('#nbi_file').on('change',function(){
+    if (nbi_file.value) {
+        nbi_text.innerHTML = nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        nbi_text.innerHTML = "No file chosen, yet.";
+    }
+});
+

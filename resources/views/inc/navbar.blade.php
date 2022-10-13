@@ -35,6 +35,9 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
+                    </li>
                 @endif
           </ul>
 

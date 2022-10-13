@@ -48,19 +48,22 @@
             <form method="post" id="multiple_data_insert_form">
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"><i class="fas fa-info"></i> PERSONAL INFORMATION</a>
+                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"> PERSONAL INFORMATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"><i class="fas fa-info"></i> WORK INFORMATION</a>
+                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"> WORK INFORMATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#educational_background"><i class="fas fa-book-open"></i> EDUCATIONAL AND TRAININGS BACKGROUND</a>
+                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#educational_background"> EDUCATIONAL AND TRAININGS BACKGROUND</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"><i class="fas fa-history"></i> JOB HISTORY</a>
+                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"><i class="fas fa-file"></i> DOCUMENTS</a>
+                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#performance_evaluation"> PERFORMANCE EVALUATION</a>
                     </li>
                 </ul>
             
@@ -70,6 +73,7 @@
                         @include('subpages.educational_and_trainings_background')
                         @include('subpages.job_history')
                         @include('subpages.documents')
+                        @include('subpages.performance_evaluation')
                     <br>
                 </div>{{--  End of Tab Content  --}}
             </form> {{-- End Form of Multiple Data Insert --}}

@@ -19,6 +19,7 @@ Route::any('/memos', 'PagesController@memos');
 Route::any('/evaluation', 'PagesController@evaluation');
 Route::any('/contracts', 'PagesController@contracts');
 Route::any('/users', 'PagesController@users');
+Route::any('/maintenance', 'PagesController@maintenance');
 
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');//To display data table of list of employees
 Route::any('/employees/save','EmployeesController@save');//To save single data into data base

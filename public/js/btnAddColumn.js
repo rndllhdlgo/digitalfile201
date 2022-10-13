@@ -65,37 +65,44 @@ function checkforblankMultiple(){
         $('#btnTerminationAdd').prop('disabled',false);
     }
 
+    if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
+        $('#btnJobHistoryAdd').prop('disabled',true);
+    }
+    else{
+        $('#btnJobHistoryAdd').prop('disabled',false);
+    }
+
 }
-//Single Parent Table Add
-// var emptyRowSingleParent = "<tr><td colspan ='5' class='text-center'>No Records Available</td></tr>";
+//Solo Parent Table Add
 
 $(document).ready(function(){
-    // $("#single_parent_data_table tbody").append(emptyRowSingleParent);
 
     $('#btnSingleParentAdd').click(function(){
         // alert('asd');
-        $('#single_parent_data_table').show();
+        $('#solo_parent_data_table').show();
         var child_name = $('#child_name').val().trim();
         var child_birthday = $('#child_birthday').val();
         var child_age = $('#child_age').val();
         var child_gender = $('#child_gender').val();
 
         if(child_name != "" && child_birthday != "" && child_age != "" && child_gender != ""){
-            if($('#single_parent_data_table tbody').children().children().length == 1){
-                $('#single_parent_data_table tbody').html("");
+            if($('#solo_parent_data_table tbody').children().children().length == 1){
+                $('#solo_parent_data_table tbody').html("");
             }
 
             var dynamicSingleParent = "<tr><td>"+ child_name +"</td><td>" + child_birthday + "</td><td>" + child_age + "</td><td>" + child_gender + "</td><td> <button class='btn btn-danger btn-single-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
-            $('#single_parent_data_table tbody').append(dynamicSingleParent);
+            $('#solo_parent_data_table tbody').append(dynamicSingleParent);
             $('#child_name').val("");
             $('#child_birthday').val("");
             $('#child_age').val("");
             $('#child_gender').val("");
+            $('.span_child_name').show();
+            $('.span_child_birthday').show();
+            $('.span_child_gender').show();
             $('.btn-single-parent').click(function(){
                 $(this).parent().parent().remove();
-                if($('#single_parent_data_table tbody').children().children().length == 0){
-                    $('#single_parent_data_table').hide();
-                    // $("#single_parent_data_table tbody").append(emptyRowSingleParent);
+                if($('#solo_parent_data_table tbody').children().children().length == 0){
+                    $('#solo_parent_data_table').hide();
                 }
             });
         }else{
@@ -115,6 +122,9 @@ $(document).ready(function(){
         $("#college_name").val("");
         $("#college_degree").val("");
         $("#college_inclusive_years").val("");
+        $('.span_college_name').show();
+        $('.span_college_degree').show();
+        $('.span_college_inclusive_years').show();
         $(".btn-college").click(function (){
             $(this).parent().parent().remove();
         });
@@ -126,12 +136,14 @@ $(document).ready(function(){
         var training_title = $('#training_title').val().trim();
         var training_inclusive_years = $('#training_inclusive_years').val().trim();
 
-        // var collegeNo = $("#college_data_table tbody").children().length + 1;
         var dynamicTraining = "<tr><td>"+ training_name + "</td><td>" + training_title + "</td><td>" + training_inclusive_years + "</td><td> <button class='btn btn-danger btn-training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
         $("#training_tbody").append(dynamicTraining);
         $("#training_name").val("");
         $("#training_title").val("");
         $("#training_inclusive_years").val("");
+        $('.span_training_name').show();
+        $('.span_training_title').show();
+        $('.span_training_inclusive_years').show();
         $(".btn-training").click(function (){
             $(this).parent().parent().remove();
         });
@@ -148,6 +160,9 @@ $(document).ready(function(){
         $("#vocational_name").val(""); 
         $("#vocational_course").val(""); 
         $("#vocational_inclusive_years").val("");
+        $('.span_vocational_name').show();
+        $('.span_vocational_course').show();
+        $('.span_vocational_inclusive_years').show();
         $(".btn-vocational").click(function(){
             $(this).parent().parent().remove();
         });
@@ -165,6 +180,9 @@ $(document).ready(function(){
         $("#memo_subject").val(""); 
         $("#memo_date").val(""); 
         $("#memo_option").val("");
+        $('.span_memo_subject').show();
+        $('.span_memo_date').show();
+        $('.span_memo_option').show();
         $(".btn-memo").click(function(){
             $(this).parent().parent().remove();
         });
@@ -181,6 +199,9 @@ $(document).ready(function(){
         $("#evaluation_reason").val(""); 
         $("#evaluation_date").val(""); 
         $("#evaluation_evaluated_by").val("");
+        $('.span_evaluation_reason').show();
+        $('.span_evaluation_date').show();
+        $('.span_evaluation_evaluated_by').show();
         $(".btn-evaluation").click(function(){
             $(this).parent().parent().remove();
         });
@@ -194,7 +215,9 @@ $(document).ready(function(){
         var dynamicContract = "<tr><td>"+ contracts_type +"</td><td>"+ contracts_date + "</td><td> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $("#contracts_tbody").append(dynamicContract);
         $("#contracts_type").val(""); 
-        $("#contracts_date").val(""); 
+        $("#contracts_date").val("");
+        $('.span_contracts_type').show();
+        $('.span_contracts_date').show();
         $(".btn-contract").click(function(){
             $(this).parent().parent().remove();
         });
@@ -208,7 +231,9 @@ $(document).ready(function(){
         var dynamicResignation = "<tr><td>"+ resignation_letter +"</td><td>"+ resignation_date + "</td><td> <button class='btn btn-danger btn-resignation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $("#resignation_tbody").append(dynamicResignation);
         $("#resignation_letter").val(""); 
-        $("#resignation_date").val(""); 
+        $("#resignation_date").val("");
+        $('.span_resignation_letter').show();
+        $('.span_resignation_date').show(); 
         $(".btn-resignation").click(function(){
             $(this).parent().parent().remove();
         });
@@ -222,8 +247,35 @@ $(document).ready(function(){
         var dynamicTermination = "<tr><td>"+ termination_letter +"</td><td>"+ termination_date + "</td><td> <button class='btn btn-danger btn-termination center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $("#termination_tbody").append(dynamicTermination);
         $("#termination_letter").val(""); 
-        $("#termination_date").val(""); 
+        $("#termination_date").val("");
+        $('.span_termination_letter').show();
+        $('.span_termination_date').show();  
         $(".btn-termination").click(function(){
+            $(this).parent().parent().remove();
+        });
+    });
+
+//Job History Table Add
+    $('#btnJobHistoryAdd').click(function(){
+        var job_name = $('#job_name').val().trim();
+        var job_position = $('#job_position').val().trim();
+        var job_address = $('#job_address').val().trim();
+        var job_contact_details = $('#job_contact_details').val().trim();
+        var job_inclusive_years = $('#job_inclusive_years').val().trim();
+
+        var dynamicJobHistory = "<tr><td>" + job_name + "</td><td>" + job_position + "</td><td>" + job_address + "</td><td>" + job_contact_details + "</td><td>" + job_inclusive_years + "</td><td> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        $('#job_tbody').append(dynamicJobHistory);
+        $('#job_name').val("");
+        $('#job_position').val("");
+        $('#job_address').val("");
+        $('#job_contact_details').val("");
+        $('#job_inclusive_years').val("");
+        $('.span_job_name').show();
+        $('.span_job_position').show();
+        $('.span_job_address').show();
+        $('.span_job_contact_details').show();
+        $('.span_job_inclusive_years').show();
+        $('.btn-job').click(function(){
             $(this).parent().parent().remove();
         });
     });
