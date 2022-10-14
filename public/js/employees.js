@@ -494,8 +494,8 @@ function employeeEmailValidation(){
 //Close Preview Image
 $('#image_close').on('click',function(){
     $('#cover_image').val(''); //Remove the image inserted
-    $('#output').attr('src',''); //Remove current preview
-    $('#output').hide();
+    $('#preview_image').attr('src',''); //Remove current preview
+    $('#preview_image').hide();
     $('#image_close').hide();
     $('#image_user').show();
     $('#image_button').show();
@@ -515,14 +515,202 @@ function ValidateFileUpload() {
         if (fuData.files && fuData.files[0]) {
           var reader = new FileReader();
             reader.onload = function(e) {
-                $('#output').attr('src', e.target.result);
+                $('#preview_image').attr('src', e.target.result);
             }
             reader.readAsDataURL(fuData.files[0]);
             $('#image_user').hide();
             $('#image_button').hide();
             $('#image_close').show();
             $('.column-1').css("height","300px");
-            $('#output').show();
+            $('#preview_image').show();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function ValidateUpload() {
+    var fuData = document.getElementById('sample');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview').attr('src', e.target.result);
+                
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview').show();
+            $('.sample').hide();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function BirthCertificateValidation() {
+    var fuData = document.getElementById('birthcertificate_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_birthcertificate').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_birthcertificate').show();
+            $('#birthcertificate_text').show();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function nbiValidation() {
+    var fuData = document.getElementById('nbi_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_nbi').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_nbi').show();
+            $('#nbi_text').show();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function barangayclearanceValidation() {
+    var fuData = document.getElementById('barangay_clearance_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_barangay_clearance').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_barangay_clearance').show();
+            $('#barangay_clearance_text').show();
+
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function sssValidation() {
+    var fuData = document.getElementById('sss_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_sss').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_sss').show();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function philhealthValidation() {
+    var fuData = document.getElementById('philhealth_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_philhealth').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_philhealth').show();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function pagibigValidation() {
+    var fuData = document.getElementById('pag_ibig_file');
+    var FileUploadPath = fuData.value;
+    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+        if (fuData.files && fuData.files[0]) {
+          var reader = new FileReader();
+            reader.onload = function(e) {
+                $('#preview_pag_ibig').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(fuData.files[0]);
+            $('#preview_pag_ibig').show();
         }
     } 
     else {
@@ -574,37 +762,191 @@ $(function(){
 });
 
 //File button design
-const birthcertificate_file = document.getElementById("birthcertificate_file");
-const birthcertificate_button = document.getElementById("birthcertificate_button");
-const birthcertificate_text = document.getElementById("birthcertificate_text");
-
-$('#birthcertificate_button').on('click',function(){
-    $('#birthcertificate_file').click();
-});
+const birthcertificate_file = $('#birthcertificate_file')[0];
+const birthcertificate_button = $('#birthcertificate_button')[0];
+const birthcertificate_text = $('#birthcertificate_text')[0];
 
 $('#birthcertificate_file').on('change',function(){
     if (birthcertificate_file.value) {
-        birthcertificate_text.innerHTML = birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        $('#birthcertificate_button').css('margin-top','35px');
+        birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         birthcertificate_text.innerHTML = "No file chosen, yet.";
     }
 });
 
-const nbi_file = document.getElementById("nbi_file");
-const nbi_button = document.getElementById("nbi_button");
-const nbi_text = document.getElementById("nbi_text");
-
-$('#nbi_button').on('click',function(){
-    $('#nbi_file').click();
-});
+const nbi_file = $('#nbi_file')[0];
+const nbi_button = $('#nbi_button')[0];
+const nbi_text = $('#nbi_text')[0];
 
 $('#nbi_file').on('change',function(){
     if (nbi_file.value) {
-        nbi_text.innerHTML = nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        $('#nbi_button').css('margin-top','35px');
+        nbi_text.innerHTML = "<b> File Name: </b>" + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         nbi_text.innerHTML = "No file chosen, yet.";
     }
 });
 
+const barangay_clearance_file = $('#barangay_clearance_file')[0];
+const barangay_clearance_button = $('#barangay_clearance_button')[0];
+const barangay_clearance_text = $('#barangay_clearance_text')[0];
+
+$('#barangay_clearance_file').on('change',function(){
+    if (barangay_clearance_file.value) {
+        $('#barangay_clearance_button').css('margin-top','35px');
+        barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        barangay_clearance_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
+const sss_file = $('#sss_file')[0];
+const sssContainer = $('#sssPreview')[0];
+const sssImage = sssContainer.querySelector('.sss-preview__image');
+const sss_button = $('#sss_button')[0];
+const sss_text = $('#sss_text')[0];
+
+$('#sss_button').on('click',function(){
+    $('#sss_file').click();
+});
+
+$('#sss_file').on('change',function(){
+    if (sss_file.value) {
+        sss_text.innerHTML = sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        sss_text.innerHTML = "No file chosen, yet.";
+    }
+
+    const file = this.files[0];
+
+    if(file){
+        const reader = new FileReader();
+        
+        $('#sssPreview').show();
+        sssImage.style.display = "block";
+
+        reader.addEventListener('load',function(){
+            console.log(this);
+            sssImage.setAttribute('src',this.result);
+        });
+
+        reader.readAsDataURL(file);
+    }
+    else{
+        sssImage.style.display = null;
+    }
+    
+});
+
+const philhealth_file = $('#philhealth_file')[0];
+const philhealthContainer = $('#philhealthPreview')[0];
+const philhealthImage = philhealthContainer.querySelector('.philhealth-preview__image');
+const philhealth_button = $('#philhealth_button')[0];
+const philhealth_text = $('#philhealth_text')[0];
+
+$('#philhealth_button').on('click',function(){
+    $('#philhealth_file').click();
+});
+
+$('#philhealth_file').on('change',function(){
+    if (philhealth_file.value) {
+        philhealth_text.innerHTML = philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        philhealth_text.innerHTML = "No file chosen, yet.";
+    }
+
+    const file = this.files[0];
+
+    if(file){
+        const reader = new FileReader();
+        
+        $('#philhealthPreview').show();
+        philhealthImage.style.display = "block";
+
+        reader.addEventListener('load',function(){
+            console.log(this);
+            philhealthImage.setAttribute('src',this.result);
+        });
+
+        reader.readAsDataURL(file);
+    }
+    else{
+        philhealthImage.style.display = null;
+    }
+});
+
+const pag_ibig_file = $('#pag_ibig_file')[0];
+const pag_ibigContainer = $('#pag_ibigPreview')[0];
+const pag_ibigImage = pag_ibigContainer.querySelector('.pag_ibig-preview__image');
+// const pag_ibigDefaultText = pag_ibigContainer.querySelector('.pag_ibig-preview__default-text');
+const pag_ibig_button = $('#pag_ibig_button')[0];
+const pag_ibig_text = $('#pag_ibig_text')[0];
+
+$('#pag_ibig_button').on('click',function(){
+    $('#pag_ibig_file').click();
+});
+
+$('#pag_ibig_file').on('change',function(){
+    if (pag_ibig_file.value) {
+        pag_ibig_text.innerHTML = pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        pag_ibig_text.innerHTML = "No file chosen, yet.";
+    }
+
+    const file = this.files[0];
+
+    if(file){
+        const reader = new FileReader();
+        
+        $('#pag_ibigPreview').show();
+        pag_ibigImage.style.display = "block";
+
+        reader.addEventListener('load',function(){
+            console.log(this);
+            pag_ibigImage.setAttribute('src',this.result);
+        });
+
+        reader.readAsDataURL(file);
+    }
+    else{
+        pag_ibigImage.style.display = null;
+    }
+});
+
+
+
+//File Preview
+
+// const inpFile = $('#inpFile')[0];
+// const previewContainer = $('#imagePreview')[0];
+// const previewImage = previewContainer.querySelector('.image-preview__image');
+// const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+
+// $('#inpFile').on('change',function(){
+//     const file = this.files[0];
+
+//     if(file){
+//         const reader = new FileReader();
+        
+//         previewDefaultText.style.display = "none";
+//         previewImage.style.display = "block";
+
+//         reader.addEventListener('load',function(){
+//             console.log(this);
+//             previewImage.setAttribute('src',this.result);
+//         });
+
+//         reader.readAsDataURL(file);
+//     }
+//     else{
+//         previewDefaultText.style.display = null;
+//         previewImage.style.display = null;
+//     }
+// });

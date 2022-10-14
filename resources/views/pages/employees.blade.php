@@ -60,11 +60,12 @@
                         <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#performance_evaluation"> PERFORMANCE EVALUATION</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                    </li>
+                    
                 </ul>
             
                 <div class="tab-content">
@@ -78,4 +79,6 @@
                 </div>{{--  End of Tab Content  --}}
             </form> {{-- End Form of Multiple Data Insert --}}
         </div> {{-- End of Employee Form --}}
+
+        {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}
 @endsection

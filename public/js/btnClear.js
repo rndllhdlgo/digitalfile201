@@ -17,8 +17,8 @@ $('#btnClear').on('click',function(){
         // $('.required_field').val('');
         $('.optional').val('');
         $('#cover_image').val(''); //Remove the image inserted
-        $('#output').attr('src',''); //Remove current preview
-        $('#output').hide(); 
+        $('#preview_image').attr('src',''); //Remove current preview
+        $('#preview_image').hide(); 
         $('#image_close').hide(); 
         $('#image_user').show();
         $('#image_button').show();

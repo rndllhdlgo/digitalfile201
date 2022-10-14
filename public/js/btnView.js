@@ -38,7 +38,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
         success:function(data){
           //Personal Information
             //Show Data
-            $('#output').prop('src',window.location.origin+'/storage/cover_images/'+data.cover_image);//To Display Image on Fetch
+            $('#output').prop('src',window.location.origin+'/storage/cover_images/'+data.cover_image);//Returns base URL/to get the current url (window.location.origin)
             $('#first_name').val(data.first_name);
             $('#last_name').val(data.last_name);
             $('#middle_name').val(data.middle_name);
@@ -250,7 +250,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#addEmployeeBtn').hide();
             $('.custom_file').hide();
             $('.image_icon').hide();
-            $('#output').show();
+            $('#preview_image').show();
 
             //Fetch Data Table of College Education
             $(document).ready( function () { 

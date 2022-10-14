@@ -6,7 +6,7 @@
                 <div class="col">
                     <i class="fas fa-times float-end grow" style="zoom:150%;cursor:pointer;display:none;margin-top:3px;margin-bottom:3px;" title="REPLACE" id="image_close"></i>
                     <i class="fa fa-user-circle fa-4x p-2 mt-4 image_icon" aria-hidden="true" id="image_user"></i>
-                        <img id="output">
+                        <img id="preview_image">
 
                     <form method="POST" id="image_form" enctype="multipart/form-data"> {{-- form for inserting image --}}
                         <label class="custom_file center" id="image_button"><i class="fas fa-upload"></i> Upload Image

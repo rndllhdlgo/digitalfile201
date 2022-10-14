@@ -33,6 +33,7 @@ class PagesController extends Controller
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
         }
+        // return view('pages.maintenance');
         return view('pages.maintenance');
     }
 }
