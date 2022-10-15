@@ -223,7 +223,7 @@ $('#addEmployeeBtn').on('click',function(){
 //     });
 // }
 
-$('#btnSave').prop("disabled",true);
+// $('#btnSave').prop("disabled",true);
 
 //Fill all required fields/ Check required fields
 // setInterval(checkforblank,0);
@@ -249,17 +249,17 @@ $('#btnSave').prop("disabled",true);
 //         $('#btnSave').prop("disabled",false);
 //     }
 // }
-// setInterval(checkforblank,0);
-// function checkforblank(){
-//     if($('.required_field').filter(function(){ return !!this.value; }).length != $(".required_field:visible").length){
-//         $('#title_details').show();
-//         $('#btnSave').prop("disabled",true);
-//     }
-//     else{
-//         $('#title_details').hide();
-//         $('#btnSave').prop("disabled",false);
-//     }
-// }
+setInterval(checkforblank,0);
+function checkforblank(){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
+        $('#title_details').show();
+        $('#btnSave').prop("disabled",true);
+    }
+    else{
+        $('#title_details').hide();
+        $('#btnSave').prop("disabled",false);
+    }
+}
 
 // //Clear Form
 // setInterval(checkclearform,0);
@@ -284,32 +284,55 @@ $('#spouse').hide();
 
       if(status.value == "Married"){
           $('#spouse').show();
+          $('#spouse_name').addClass('required_field');
+          $('#spouse_contact_number').addClass('required_field');
+          $('#spouse_profession').addClass('required_field');
           $('#solo_parent').hide();
           $('#solo_parent_data_table').hide();
-          $('#child_name').val("");
-          $('#child_birthday').val("");
-          $('#child_age').val("");
-          $('#child_gender').val("");
       }
       else if(status.value == "Solo Parent"){
           $('#spouse').hide();
           $('#solo_parent').show();
+          $('#child_name').addClass('required_field');
+          $('#child_birthday').addClass('required_field');
+          $('#child_gender').addClass('required_field');
         //   $('#solo_parent_data_table').show();
       }
       else{
           $('#solo_parent').hide();
           $('#spouse').hide();
+          $('#spouse_name').removeClass('required_field');
+          $('#spouse_contact_number').removeClass('required_field');
+          $('#spouse_profession').removeClass('required_field');
+          $('#child_name').removeClass('required_field');
+          $('#child_birthday').removeClass('required_field');
+          $('#child_gender').removeClass('required_field');
+          $('#spouse_name').val("");
+          $('#spouse_contact_number').val("");
+          $('#spouse_profession').val("");
       }
     }
 
+$('#benefits').hide();
+//Employment Status
     function changeEmploymentStatus(){
         var employment_status = document.getElementById("status_of_employee");
   
-        if(employment_status.value == "Agency"){
-            $('#benefits').hide();
+        if(employment_status.value == "Regular" || employment_status.value == "Intern" || employment_status.value == "Probationary"){
+            $('#benefits').show();
+            $('#sss_number').addClass('required_field');
+            $('#pag_ibig_number').addClass('required_field');
+            $('#philhealth_number').addClass('required_field');
+            $('#tin_number').addClass('required_field');
+            $('#bank_account_number').addClass('required_field');
         }
         else{
-            $('#benefits').show();
+            $('#benefits').hide();
+            $('#sss_number').removeClass('required_field');
+            $('#pag_ibig_number').removeClass('required_field');
+            $('#philhealth_number').removeClass('required_field');
+            $('#tin_number').removeClass('required_field');
+            $('#bank_account_number').removeClass('required_field');
         }
     }
 
@@ -670,4 +693,55 @@ $('#preview_philhealth').on('click',function(){
 
 $('#preview_pag_ibig').on('click',function(){
     $('.modal-title').html('PAGIBIG FORM');
+});
+
+$('#region').on('change', function(){
+    $('#province').val('');
+    $('#city').val('');
+    $('#city').find('option').remove().end()
+    $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+    $.ajax({
+        type: 'GET',
+        url: '/setprovince',
+        data:{
+            'regCode': $('#region').val()
+        },
+        success: function(data){
+            $('#province').find('option').remove().end()
+            $('#province').append($('<option value="" selected disabled>SELECT PROVINCE</option>'));
+            var list = $.map(data, function(value, index){
+                return [value];
+            });
+            list.forEach(value => {
+                $('#province').append($('<option>', {
+                    value: value.provCode,
+                    text: value.provDesc.toUpperCase()
+                }));
+            });
+        }
+    });
+});
+
+$('#province').on('change', function(){
+    $('#city').val('');
+    $.ajax({
+        type: 'GET',
+        url: '/setcity',
+        data:{
+            'provCode': $('#province').val()
+        },
+        success: function(data){
+            $('#city').find('option').remove().end()
+            $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+            var list = $.map(data, function(value, index){
+                return [value];
+            });
+            list.forEach(value => {
+                $('#city').append($('<option>', {
+                    value: value.citymunCode,
+                    text: value.citymunDesc.toUpperCase()
+                }));
+            });
+        }
+    });
 });

@@ -36,6 +36,11 @@ $('#btnSave').on('click', function(){
         var birthday = $('#birthday').val();
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
+
+        var region = $("#region option:selected").text();
+        var province = $("#province option:selected").text();
+        var city = $("#city option:selected").text();
+
         var home_address = $('#home_address').val();
         var email_address = $('#email_address').val();
         var telephone_number = $('#telephone_number').val();
