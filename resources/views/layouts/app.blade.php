@@ -13,6 +13,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
+        {{-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> --}}
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         {{-- <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://unpkg.com/multiple-select@1.5.2/dist/multiple-select.min.css">
@@ -96,6 +97,9 @@
         @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/btnAddColumn.js"></script>
+        @endif
+        @if(Request::is('employees'))
+            <script src="{{ env('APP_URL')}}js/uploadValidation.js"></script>
         @endif
         
         <script>

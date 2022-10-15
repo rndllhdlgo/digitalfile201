@@ -106,14 +106,6 @@ html::-webkit-scrollbar-track:hover {
     font-weight: bolder;
     color:#0d1a80;
 }
-/* .create-new, .view-table{
-    color:white;
-    border-radius: 5px;
-} */
-/* .create-new:hover, .view-table:hover{
-    border:inset;
-    transition: 0.2s;
-} */
 body{
     overflow-x: hidden;
 }
@@ -147,12 +139,8 @@ body{
     background-color:#0d1a80 !important;
     color:white !important;
 }
-/* Table */
-/* .th-educational{
-    color:white;
-} */
+
 .thead-educational{
-    /* background-color:#e1e8f2; */
     background-color:#0d1a80;
     color:white !important;
 }
@@ -395,27 +383,6 @@ margin: 0;
     border-bottom-right-radius: 20px;
 }
 
-/* #memo_file,
-#evaluation_file,
-#contracts_file,
-#resignation_file,
-#termination_file{
-    display: none;
-    visibility: none;
-} */
-/* .file{
-    text-align: center;
-    padding: 5px;
-    color:white;
-    cursor: pointer;
-    border-radius: 5px;
-    background-color: #0d1a80;
-}
-.file:hover{
-    background-color: #1b2fc2;
-    transition: 0.2s;
-} */
-
 /* Educational and Trainings Background CSS */
 .table-title{
     font-size:16px;
@@ -427,117 +394,21 @@ margin: 0;
     border-top-right-radius:5px;
     /* border-bottom: 1px solid white !important; */
 }
-/* Hr Design */
+
 .hr-design {
     border:2px solid black;
   }
 
-
-/* File upload button design (Documents blade)*/
-/* #birthcertificate_button,
-#nbi_button,
-#barangay_clearance_button,
-#sss_button,
-#philhealth_button,
-#pag_ibig_button{
-    background-color: #0d1a80;
-    border:1px solid #000;
-    border-radius: 5px;
-    cursor: pointer;
-    color:white !important;
-}
-
-#birthcertificate_button:hover,
-#nbi_button:hover,
-#barangay_clearance_button:hover,
-#sss_button:hover,
-#philhealth_button:hover,
-#pag_ibig_button:hover{
-    background-color: #1b2fc2;
-}
-
-#birthcertificate_text,
-#nbi_text,
-#barangay_clearance_text,
-#sss_text,
-#philhealth_text,
-#pag_ibig_text{
-    margin-left: 10px;
-    color: #aaa;
-}
-
-/* file preview 
-.pag_ibig_preview,
-.philhealth_preview,
-.sss_preview{
-    width: 300px;
-    max-height: 100px;
-    border: 2px solid #dddddd;
-    display: flex;
-    align-items:center;
-    justify-content: center;
-    font-weight:bold;
-    color:#cccccc;
-}
-
-.pag_ibig-preview__image,
-.philhealth-preview__image,
-.sss-preview__image{
-    display:none;
-    width:100%;
-} */
-
-/* File Label Design */
-/* .label_birthcertificate,
-.label_nbi,
-.label_barangay_clearance,
-.label_sss,
-.label_philhealth{
-    padding: 3px;
-    cursor: pointer;
-    border-radius: 5px;
-    color:#fff;
-    background-color: #0d1a80;
-}
-
-.label_birthcertificate:hover,
-.label_nbi:hover,
-.label_barangay_clearance:hover,
-.label_sss:hover,
-.label_philhealth:hover{
-    background-color: #1b2fc2;
-} */
-
 #preview_birthcertificate,
 #preview_nbi,
 #preview_barangay_clearance,
+#preview_police_clearance,
 #preview_sss,
 #preview_philhealth,
 #preview_pag_ibig{
-    height: 150px;
-    width: 200px;
+    height: 40px;
+    width: 40px;
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
-
-#preview{
-    height: 150px;
-    width: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.sample{
-    padding: 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    color:#fff;
-    background-color: #0d1a80;
-}
-
-.sample:hover{
-    background-color: #1b2fc2;
-    transition: 0.2s;
 }

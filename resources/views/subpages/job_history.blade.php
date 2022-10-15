@@ -40,7 +40,7 @@
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="text" id="job_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control" type="text" id="job_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                         <label for="job_inclusive_years" class="formlabel form-label"><span class="span_job_inclusive_years">(Required)</span></label>
                     </div>
                 </td>

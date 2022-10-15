@@ -199,29 +199,29 @@ $('#addEmployeeBtn').on('click',function(){
 });
 
 //Function for Image Upload
-var fileName;
-function sendFile() {//This function will trigger if the btnSave click
-    var formData = new FormData();
-    var file = $('#cover_image').prop('files')[0];
+// var fileName;
+// function sendFile() {//This function will trigger if the btnSave click
+//     var formData = new FormData();
+//     var file = $('#cover_image').prop('files')[0];
 
-    formData.append('file', file);
-    // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
-    $.ajax({
-        url: '/employees/insertImage',
-        method: 'post',
-        data: formData,
-        contentType : false,
-        processData : false,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(response){
-          console.log(response);
-          fileName = response;
-            // Do what ever you want to do on success
-        }
-    });
-}
+//     formData.append('file', file);
+//     // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
+//     $.ajax({
+//         url: '/employees/insertImage',
+//         method: 'post',
+//         data: formData,
+//         contentType : false,
+//         processData : false,
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response){
+//           console.log(response);
+//           fileName = response;
+//             // Do what ever you want to do on success
+//         }
+//     });
+// }
 
 $('#btnSave').prop("disabled",true);
 
@@ -278,6 +278,7 @@ $('#btnCancelEdit').hide();
 // Civil Status
 $('#solo_parent').hide();
 $('#spouse').hide();
+
     function changeStatus(){
       var status = document.getElementById("civil_status");
 
@@ -311,7 +312,6 @@ $('#spouse').hide();
             $('#benefits').show();
         }
     }
-
 
 //Navigation Active Pills
 $('#tab1').on('click',function(){
@@ -397,7 +397,7 @@ $('#tab6').on('click',function(){
     $('#performance_evaluation').show();
 });
 
-//This function is to calculate age
+//Calculate Age
 $('#birthday').on('change',function(){
     var today = new Date();
     var birthDate = new Date($('#birthday').val());
@@ -504,226 +504,6 @@ $('#image_close').on('click',function(){
     $('#cover_image').click();
 });
 
-
-//Display Image and Validation
-function ValidateFileUpload() {
-    var fuData = document.getElementById('cover_image');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_image').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#image_user').hide();
-            $('#image_button').hide();
-            $('#image_close').show();
-            $('.column-1').css("height","300px");
-            $('#preview_image').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function ValidateUpload() {
-    var fuData = document.getElementById('sample');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview').attr('src', e.target.result);
-                
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview').show();
-            $('.sample').hide();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function BirthCertificateValidation() {
-    var fuData = document.getElementById('birthcertificate_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_birthcertificate').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_birthcertificate').show();
-            $('#birthcertificate_text').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function nbiValidation() {
-    var fuData = document.getElementById('nbi_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_nbi').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_nbi').show();
-            $('#nbi_text').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function barangayclearanceValidation() {
-    var fuData = document.getElementById('barangay_clearance_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_barangay_clearance').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_barangay_clearance').show();
-            $('#barangay_clearance_text').show();
-
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function sssValidation() {
-    var fuData = document.getElementById('sss_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_sss').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_sss').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function philhealthValidation() {
-    var fuData = document.getElementById('philhealth_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_philhealth').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_philhealth').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-function pagibigValidation() {
-    var fuData = document.getElementById('pag_ibig_file');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
-        if (fuData.files && fuData.files[0]) {
-          var reader = new FileReader();
-            reader.onload = function(e) {
-                $('#preview_pag_ibig').attr('src', e.target.result);
-            }
-            reader.readAsDataURL(fuData.files[0]);
-            $('#preview_pag_ibig').show();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
 //Disable future dates/ Date Hired
 $(function(){
     var dtToday = new Date();
@@ -768,7 +548,6 @@ const birthcertificate_text = $('#birthcertificate_text')[0];
 
 $('#birthcertificate_file').on('change',function(){
     if (birthcertificate_file.value) {
-        $('#birthcertificate_button').css('margin-top','35px');
         birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
@@ -782,7 +561,6 @@ const nbi_text = $('#nbi_text')[0];
 
 $('#nbi_file').on('change',function(){
     if (nbi_file.value) {
-        $('#nbi_button').css('margin-top','35px');
         nbi_text.innerHTML = "<b> File Name: </b>" + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
@@ -796,7 +574,6 @@ const barangay_clearance_text = $('#barangay_clearance_text')[0];
 
 $('#barangay_clearance_file').on('change',function(){
     if (barangay_clearance_file.value) {
-        $('#barangay_clearance_button').css('margin-top','35px');
         barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
@@ -804,149 +581,93 @@ $('#barangay_clearance_file').on('change',function(){
     }
 });
 
+const police_clearance_file = $('#police_clearance_file')[0];
+const police_clearance_button = $('#police_clearance_button')[0];
+const police_clearance_text = $('#police_clearance_text')[0];
+
+$('#police_clearance_file').on('change',function(){
+    if (police_clearance_file.value) {
+        police_clearance_text.innerHTML = "<b> File Name: </b>" + police_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        police_clearance_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
 const sss_file = $('#sss_file')[0];
-const sssContainer = $('#sssPreview')[0];
-const sssImage = sssContainer.querySelector('.sss-preview__image');
 const sss_button = $('#sss_button')[0];
 const sss_text = $('#sss_text')[0];
 
-$('#sss_button').on('click',function(){
-    $('#sss_file').click();
-});
-
 $('#sss_file').on('change',function(){
     if (sss_file.value) {
-        sss_text.innerHTML = sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        sss_text.innerHTML = "<b> File Name: </b>" + sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         sss_text.innerHTML = "No file chosen, yet.";
     }
-
-    const file = this.files[0];
-
-    if(file){
-        const reader = new FileReader();
-        
-        $('#sssPreview').show();
-        sssImage.style.display = "block";
-
-        reader.addEventListener('load',function(){
-            console.log(this);
-            sssImage.setAttribute('src',this.result);
-        });
-
-        reader.readAsDataURL(file);
-    }
-    else{
-        sssImage.style.display = null;
-    }
-    
 });
 
 const philhealth_file = $('#philhealth_file')[0];
-const philhealthContainer = $('#philhealthPreview')[0];
-const philhealthImage = philhealthContainer.querySelector('.philhealth-preview__image');
 const philhealth_button = $('#philhealth_button')[0];
 const philhealth_text = $('#philhealth_text')[0];
 
-$('#philhealth_button').on('click',function(){
-    $('#philhealth_file').click();
-});
-
 $('#philhealth_file').on('change',function(){
     if (philhealth_file.value) {
-        philhealth_text.innerHTML = philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        philhealth_text.innerHTML = "<b> File Name: </b>" + philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         philhealth_text.innerHTML = "No file chosen, yet.";
     }
-
-    const file = this.files[0];
-
-    if(file){
-        const reader = new FileReader();
-        
-        $('#philhealthPreview').show();
-        philhealthImage.style.display = "block";
-
-        reader.addEventListener('load',function(){
-            console.log(this);
-            philhealthImage.setAttribute('src',this.result);
-        });
-
-        reader.readAsDataURL(file);
-    }
-    else{
-        philhealthImage.style.display = null;
-    }
 });
 
 const pag_ibig_file = $('#pag_ibig_file')[0];
-const pag_ibigContainer = $('#pag_ibigPreview')[0];
-const pag_ibigImage = pag_ibigContainer.querySelector('.pag_ibig-preview__image');
-// const pag_ibigDefaultText = pag_ibigContainer.querySelector('.pag_ibig-preview__default-text');
 const pag_ibig_button = $('#pag_ibig_button')[0];
 const pag_ibig_text = $('#pag_ibig_text')[0];
 
-$('#pag_ibig_button').on('click',function(){
-    $('#pag_ibig_file').click();
-});
-
 $('#pag_ibig_file').on('change',function(){
     if (pag_ibig_file.value) {
-        pag_ibig_text.innerHTML = pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        pag_ibig_text.innerHTML = "<b> File Name: </b>" + pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         pag_ibig_text.innerHTML = "No file chosen, yet.";
     }
-
-    const file = this.files[0];
-
-    if(file){
-        const reader = new FileReader();
-        
-        $('#pag_ibigPreview').show();
-        pag_ibigImage.style.display = "block";
-
-        reader.addEventListener('load',function(){
-            console.log(this);
-            pag_ibigImage.setAttribute('src',this.result);
-        });
-
-        reader.readAsDataURL(file);
-    }
-    else{
-        pag_ibigImage.style.display = null;
-    }
 });
 
+//Preview of file upload in Modal
+function changeImg(newSrc){
+    var newSrcNow = newSrc.src;
+    var largImg = document.getElementById('file_display');
+    largImg.src = newSrcNow;
+}
 
+$('#preview_birthcertificate').on('click',function(){
+    $('.modal-title').html('BIRTH CERTIFICATE');
+});
 
-//File Preview
+$('#preview_nbi').on('click',function(){
+    $('.modal-title').html('NBI');
+});
 
-// const inpFile = $('#inpFile')[0];
-// const previewContainer = $('#imagePreview')[0];
-// const previewImage = previewContainer.querySelector('.image-preview__image');
-// const previewDefaultText = previewContainer.querySelector('.image-preview__default-text');
+$('#preview_barangay_clearance').on('click',function(){
+    $('.modal-title').html('BARANGAY CLEARANCE');
+});
 
-// $('#inpFile').on('change',function(){
-//     const file = this.files[0];
+$('#preview_police_clearance').on('click',function(){
+    $('.modal-title').html('POLICE CLEARANCE');
+});
 
-//     if(file){
-//         const reader = new FileReader();
-        
-//         previewDefaultText.style.display = "none";
-//         previewImage.style.display = "block";
+$('#preview_police_clearance').on('click',function(){
+    $('.modal-title').html('POLICE CLEARANCE');
+});
 
-//         reader.addEventListener('load',function(){
-//             console.log(this);
-//             previewImage.setAttribute('src',this.result);
-//         });
+$('#preview_sss').on('click',function(){
+    $('.modal-title').html('SSS E1 FORM');
+});
 
-//         reader.readAsDataURL(file);
-//     }
-//     else{
-//         previewDefaultText.style.display = null;
-//         previewImage.style.display = null;
-//     }
-// });
+$('#preview_philhealth').on('click',function(){
+    $('.modal-title').html('PHILHEALTH FORM');
+});
+
+$('#preview_pag_ibig').on('click',function(){
+    $('.modal-title').html('PAGIBIG FORM');
+});

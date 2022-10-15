@@ -9,9 +9,9 @@
                         <img id="preview_image">
 
                     <form method="POST" id="image_form" enctype="multipart/form-data"> {{-- form for inserting image --}}
-                        <label class="custom_file center" id="image_button"><i class="fas fa-upload"></i> Upload Image
+                        <label class="custom_file center" id="image_button"><i class="fas fa-upload"></i> UPLOAD IMAGE
                             {{-- <input type="file" name="cover_image" id="cover_image" class="center" accept="image/*" onchange="loadFile(event)"> --}}
-                            <input type="file" name="cover_image" id="cover_image" class="center " accept="image/*" onchange="return ValidateFileUpload()" style="display: none;">
+                            <input type="file" name="cover_image" id="cover_image" class="center " accept="image/*" onchange="return ImageValidation()" style="display: none;">
                         </label>
                     </form> 
                 </div>

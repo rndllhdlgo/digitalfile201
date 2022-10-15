@@ -1,3 +1,29 @@
+
+//Function for Image Upload
+var fileName;
+function sendFile() {//This function will trigger if the btnSave click
+    var formData = new FormData();
+    var file = $('#cover_image').prop('files')[0];
+
+    formData.append('file', file);
+    // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
+    $.ajax({
+        url: '/employees/insertImage',
+        method: 'post',
+        data: formData,
+        contentType : false,
+        processData : false,
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+          console.log(response);
+          fileName = response;
+            // Do what ever you want to do on success
+        }
+    });
+}
+
 //Save Employee Form
 $('#btnSave').on('click', function(){
         //Personal Information
