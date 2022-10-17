@@ -28,7 +28,7 @@ function sendFile() {//This function will trigger if the btnSave click
 $('#btnSave').on('click', function(){
         //Personal Information
         sendFile();
-        var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
+        // var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
         var middle_name = $('#middle_name').val();
@@ -36,12 +36,11 @@ $('#btnSave').on('click', function(){
         var birthday = $('#birthday').val();
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
-
+        var street = $('#street').val();
         var region = $("#region option:selected").text();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
-
-        var home_address = $('#home_address').val();
+        // var home_address = $('#home_address').val();
         var email_address = $('#email_address').val();
         var telephone_number = $('#telephone_number').val();
         var cellphone_number = $('#cellphone_number').val();
@@ -58,27 +57,27 @@ $('#btnSave').on('click', function(){
         var emergency_contact_relationship = $('#emergency_contact_relationship').val();
         var emergency_contact_number = $('#emergency_contact_number').val();
         //Work Information
-        var company_of_employee = $('#company_of_employee').val();
-        var branch_of_employee = $('#branch_of_employee').val();
-        var status_of_employee = $('#status_of_employee').val();
-        var shift_of_employee = $('#shift_of_employee').val();
-        var position_of_employee = $('#position_of_employee').val();
-        var supervisor_of_employee = $('#supervisor_of_employee').val();
-        var date_hired = $('#date_hired').val();
-        var employee_email_address = $('#employee_email_address').val();
-        var employee_contact_number = $('#employee_contact_number').val();
-        var sss_number = $('#sss_number').val();
-        var pag_ibig_number = $('#pag_ibig_number').val();
-        var philhealth_number = $('#philhealth_number').val();
-        var tin_number = $('#tin_number').val();
-        var account_number = $('#account_number').val();
-        //School Information
-        var secondary_school_name = $('#secondary_school_name').val();
-        var secondary_school_address = $('#secondary_school_address').val();
-        var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
-        var primary_school_name = $('#primary_school_name').val();
-        var primary_school_address = $('#primary_school_address').val();
-        var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
+        // var company_of_employee = $('#company_of_employee').val();
+        // var branch_of_employee = $('#branch_of_employee').val();
+        // var status_of_employee = $('#status_of_employee').val();
+        // var shift_of_employee = $('#shift_of_employee').val();
+        // var position_of_employee = $('#position_of_employee').val();
+        // var supervisor_of_employee = $('#supervisor_of_employee').val();
+        // var date_hired = $('#date_hired').val();
+        // var employee_email_address = $('#employee_email_address').val();
+        // var employee_contact_number = $('#employee_contact_number').val();
+        // var sss_number = $('#sss_number').val();
+        // var pag_ibig_number = $('#pag_ibig_number').val();
+        // var philhealth_number = $('#philhealth_number').val();
+        // var tin_number = $('#tin_number').val();
+        // var account_number = $('#account_number').val();
+        // //School Information
+        // var secondary_school_name = $('#secondary_school_name').val();
+        // var secondary_school_address = $('#secondary_school_address').val();
+        // var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
+        // var primary_school_name = $('#primary_school_name').val();
+        // var primary_school_address = $('#primary_school_address').val();
+        // var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
         var cover_image = $('#cover_image').prop('files')[0];
         console.log(cover_image);
 
@@ -106,7 +105,7 @@ $('#btnSave').on('click', function(){
                 },
                 data:{
                     //Personal Information
-                    employee_number:employee_number,
+                    fileName:fileName,
                     first_name:first_name,
                     last_name:last_name,
                     middle_name:middle_name,
@@ -114,7 +113,10 @@ $('#btnSave').on('click', function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
-                    home_address:home_address,
+                    street:street,
+                    region:region,
+                    province:province,
+                    city:city,
                     email_address:email_address,
                     telephone_number:telephone_number,
                     cellphone_number:cellphone_number,
@@ -129,46 +131,39 @@ $('#btnSave').on('click', function(){
                     mother_profession:mother_profession,
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
-                    emergency_contact_number:emergency_contact_number,
+                    emergency_contact_number:emergency_contact_number
                     //Work Information
-                    company_of_employee:company_of_employee,
-                    branch_of_employee:branch_of_employee,
-                    status_of_employee:status_of_employee,
-                    shift_of_employee:shift_of_employee,
-                    position_of_employee:position_of_employee,
-                    supervisor_of_employee:supervisor_of_employee,
-                    date_hired:date_hired,
-                    employee_email_address:employee_email_address,
-                    employee_contact_number:employee_contact_number,
-                    sss_number:sss_number,
-                    pag_ibig_number:pag_ibig_number,
-                    philhealth_number:philhealth_number,
-                    tin_number:tin_number,
-                    account_number:account_number,
-                    secondary_school_name:secondary_school_name,
-                    secondary_school_address:secondary_school_address,
-                    secondary_school_inclusive_years:secondary_school_inclusive_years,
-                    primary_school_name:primary_school_name,
-                    primary_school_address:primary_school_address,
-                    primary_school_inclusive_years:primary_school_inclusive_years,
-                    fileName:fileName
+                    // company_of_employee:company_of_employee,
+                    // branch_of_employee:branch_of_employee,
+                    // status_of_employee:status_of_employee,
+                    // shift_of_employee:shift_of_employee,
+                    // position_of_employee:position_of_employee,
+                    // supervisor_of_employee:supervisor_of_employee,
+                    // date_hired:date_hired,
+                    // employee_email_address:employee_email_address,
+                    // employee_contact_number:employee_contact_number,
+                    // sss_number:sss_number,
+                    // pag_ibig_number:pag_ibig_number,
+                    // philhealth_number:philhealth_number,
+                    // tin_number:tin_number,
+                    // account_number:account_number,
+                    // secondary_school_name:secondary_school_name,
+                    // secondary_school_address:secondary_school_address,
+                    // secondary_school_inclusive_years:secondary_school_inclusive_years,
+                    // primary_school_name:primary_school_name,
+                    // primary_school_address:primary_school_address,
+                    // primary_school_inclusive_years:primary_school_inclusive_years
                 },
                 success: function(data){
                         if(data != ''){
-                            if($('#college_education_table').is(":visible") || $('#vocational_table').is(":visible") || $('#trainings_table').is(":visible") || $('#job_table').is(":visible") || $('#memos_table').is(":visible") || $('#evaluation_table').is(":visible") || $('#contracts_table').is(":visible") || $('#resignation_table').is(":visible") || $('#termination_table').is(":visible")){//Check if the element is visible base on its id
-                                $('#employee_id').val(data);
-                                $('#multiple_data_insert_form').submit();//Submit function of multiple_data_insert_form will trigger
-                            }
-                            else{
-                                Swal.fire("SAVE SUCCESS", "", "success");
-                                setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 2000);//used to reload the table based on its id
-                                setTimeout(function(){location.reload();}, 2000);                        
-                            }
-                    }
-                    else{
-                        Swal.fire("SAVE FAILED", "", "error");
-                        setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 2000);
-                    }
+                            Swal.fire("SAVE SUCCESS", "", "success");
+                            setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 2000);//used to reload the table based on its id
+                            setTimeout(function(){location.reload();}, 2000);                         
+                        }
+                        else{
+                            Swal.fire("SAVE FAILED", "", "error");
+                            setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 2000);
+                        }
                 },
                 error: function(data){
                     if(data.status == 401){

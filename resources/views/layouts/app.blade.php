@@ -97,6 +97,9 @@
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/uploadValidation.js"></script>
         @endif
+        @if(Request::is('maintenance'))
+            <script src="{{ env('APP_URL')}}js/maintenance.js"></script>
+        @endif
         
         <script>
             const d = new Date().toDateString();

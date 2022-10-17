@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-9" style="text-align: right;">
                 <span id="date"></span><br>
-                {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}]
+                {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}] {{-- Display user name and level --}}
                 <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <b><u>LOGOUT</u></b> <i class="fa fa-sign-out ml-2" aria-hidden="true"></i>
                 </a>

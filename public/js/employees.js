@@ -223,8 +223,6 @@ $('#addEmployeeBtn').on('click',function(){
 //     });
 // }
 
-// $('#btnSave').prop("disabled",true);
-
 //Fill all required fields/ Check required fields
 // setInterval(checkforblank,0);
 // function checkforblank(){
@@ -251,7 +249,25 @@ $('#addEmployeeBtn').on('click',function(){
 // }
 setInterval(checkforblank,0);
 function checkforblank(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
+    || $('#first_name_validation').is(':visible') 
+    || $('#last_name_validation').is(':visible') 
+    || $('#middle_name_validation').is(':visible') 
+    || $('#email_validation').is(':visible') 
+    || $('#cellphone_number_validation').is(':visible')
+    || $('#father_name_validation').is(':visible')
+    || $('#father_contact_number_validation').is(':visible')
+    || $('#mother_name_validation').is(':visible')
+    || $('#mother_contact_number_validation').is(':visible')
+    || $('#emergency_contact_name_validation').is(':visible')
+    || $('#emergency_contact_number_validation').is(':visible')
+    || $('#spouse_name_validation').is(':visible')
+    || $('#spouse_contact_number_validation').is(':visible')
+    || $('#child_name_validation').is(':visible')
+    || $('#check_duplicate').is(':visible')
+    || $('#employee_email_validation').is(':visible')
+    || $('#employee_contact_number_validation').is(':visible')
+    ){
         $('#title_details').show();
         $('#btnSave').prop("disabled",true);
     }
@@ -293,9 +309,9 @@ $('#spouse').hide();
       else if(status.value == "Solo Parent"){
           $('#spouse').hide();
           $('#solo_parent').show();
-          $('#child_name').addClass('required_field');
-          $('#child_birthday').addClass('required_field');
-          $('#child_gender').addClass('required_field');
+        //   $('#child_name').addClass('required_field');
+        //   $('#child_birthday').addClass('required_field');
+        //   $('#child_gender').addClass('required_field');
         //   $('#solo_parent_data_table').show();
       }
       else{
@@ -304,9 +320,9 @@ $('#spouse').hide();
           $('#spouse_name').removeClass('required_field');
           $('#spouse_contact_number').removeClass('required_field');
           $('#spouse_profession').removeClass('required_field');
-          $('#child_name').removeClass('required_field');
-          $('#child_birthday').removeClass('required_field');
-          $('#child_gender').removeClass('required_field');
+        //   $('#child_name').removeClass('required_field');
+        //   $('#child_birthday').removeClass('required_field');
+        //   $('#child_gender').removeClass('required_field');
           $('#spouse_name').val("");
           $('#spouse_contact_number').val("");
           $('#spouse_profession').val("");
@@ -657,7 +673,7 @@ $('#pag_ibig_file').on('change',function(){
 });
 
 //Preview of file upload in Modal
-function changeImg(newSrc){
+function changePreview(newSrc){
     var newSrcNow = newSrc.src;
     var largImg = document.getElementById('file_display');
     largImg.src = newSrcNow;
@@ -668,7 +684,7 @@ $('#preview_birthcertificate').on('click',function(){
 });
 
 $('#preview_nbi').on('click',function(){
-    $('.modal-title').html('NBI');
+    $('.modal-title').html('NBI CLEARANCE');
 });
 
 $('#preview_barangay_clearance').on('click',function(){
@@ -694,6 +710,19 @@ $('#preview_philhealth').on('click',function(){
 $('#preview_pag_ibig').on('click',function(){
     $('.modal-title').html('PAGIBIG FORM');
 });
+
+$('#replace_birthcertificate').on('click',function(){
+    $('#birthcertificate_file').click();
+});
+
+$('#replace_nbi').on('click',function(){
+    $('#nbi_file').click();
+});
+
+$('#replace_barangay_clearance').on('click',function(){
+    $('#barangay_clearance_file').click();
+});
+
 
 $('#region').on('change', function(){
     $('#province').val('');
@@ -745,3 +774,5 @@ $('#province').on('change', function(){
         }
     });
 });
+
+$('.documents').hide();

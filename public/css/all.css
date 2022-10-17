@@ -205,7 +205,7 @@ a{
 /* Divide into two columns */
 .column-1 {
     float: left;
-    width: 350px;
+    width: 280px;
     height: 250px; 
     border:1px solid gray;
     margin-left: 1%;
@@ -214,7 +214,7 @@ a{
 }
 .column-2{
     float: left;
-    width: 71%;
+    width: 77%;
     /* padding: 10px; */
     /* height: 200px; */
 }
@@ -229,7 +229,7 @@ a{
 } */
 #preview_image{
     height: 248px;
-    width: 348px;
+    width: 278px;
     margin-left: -12px;
     cursor:pointer;
 }
@@ -245,7 +245,7 @@ a{
 .image_icon{
     position: absolute;
     zoom: 150%;
-    margin-left: 29%;
+    margin-left: 26%;
 }
 /* Custom File Input */
 .custom_file{

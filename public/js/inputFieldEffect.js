@@ -63,6 +63,15 @@ $('#child_name').on('keyup',function(){
     }
 });
 
+$('#spouse_name').on('keyup',function(){
+    if($('#spouse_name').val().length < 2){
+        $('#spouse_name_validation').show();
+    }
+    else{
+        $('#spouse_name_validation').hide();
+    }
+});
+
 //Cellphone Number
 $('#cellphone_number').on('keyup',function(){
     if($('#cellphone_number').val().length < 11){

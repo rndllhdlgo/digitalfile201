@@ -5,14 +5,16 @@
             <div class="row mb-3">
                 <div class="col">
                     <i class="fas fa-times float-end grow" style="zoom:150%;cursor:pointer;display:none;margin-top:3px;margin-bottom:3px;" title="REPLACE" id="image_close"></i>
-                    <i class="fa fa-user-circle fa-4x p-2 mt-4 image_icon" aria-hidden="true" id="image_user"></i>
+                    <i class="fa fa-user-circle fa-4x p-2 mt-4 image_icon center" aria-hidden="true" id="image_user"></i>
                         <img id="preview_image">
 
                     <form method="POST" id="image_form" enctype="multipart/form-data"> {{-- form for inserting image --}}
-                        <label class="custom_file center" id="image_button"><i class="fas fa-upload"></i> UPLOAD IMAGE
-                            {{-- <input type="file" name="cover_image" id="cover_image" class="center" accept="image/*" onchange="loadFile(event)"> --}}
-                            <input type="file" name="cover_image" id="cover_image" class="center required_field" accept="image/*" onchange="return ImageValidation()" style="display: none;">
-                        </label>
+                        {{-- <label class="custom_file center" id="image_button"><i class="fas fa-upload"></i> UPLOAD IMAGE
+                            {{-- <input type="file" name="cover_image" id="cover_image" class="center" accept="image/*" onchange="loadFile(event)">
+                            <input type="file" name="cover_image" id="cover_image" class="center " accept="image/*" onchange="return ImageValidation()" style="display: none;">
+                        </label> --}}
+                        <button type="button" class="btn btn-primary bp center" style="margin-top: -50px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="return ImageValidation()" style="display: none;">
                     </form> 
                 </div>
             </div>
@@ -60,7 +62,7 @@
                 </div>
                 <div class="col-2">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
                         <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
                     </div>
                 </div>
@@ -93,7 +95,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="street" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> STREET <span class="span_street_address">(Required)</span> </label>
+                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> STREET & BARANGAY <span class="span_street_address">(Required)</span> </label>
                     </div>
                 </div>
 
@@ -225,6 +227,7 @@
                 <div class="col">
                         <div class="f-outline">
                             <input class="forminput form-control" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <p id="spouse_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>   
                             <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> SPOUSE NAME <span class="span_spouse_name">(Required)</span> </label>
                         </div>
                 </div>
