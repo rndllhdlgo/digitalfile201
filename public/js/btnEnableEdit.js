@@ -24,6 +24,13 @@ $('#btnEnableEdit').on('click',function(){
         //Personal Information
           $('.required_label').show();
           $('.optional_label').show();
+          $('.required_field').css('cursor','auto');
+          $('.optional').css('cursor','auto');
+          $('#sss_number').css('cursor','auto');
+          $('#pag_ibig_number').css('cursor','auto');
+          $('#philhealth_number').css('cursor','auto');
+          $('#tin_number').css('cursor','auto');
+          $('#account_number').css('cursor','auto');
           $('#first_name').prop("disabled",false);
           $('#last_name').prop("disabled",false);
           $('#middle_name').prop("disabled",false);
@@ -31,7 +38,10 @@ $('#btnEnableEdit').on('click',function(){
           $('#birthday').prop("disabled",false);
           $('#gender').prop("disabled",false);
           $('#civil_status').prop("disabled",false);
-          $('#home_address').prop("disabled",false);
+          $('#street').prop("disabled",false);
+          $('#region').prop("disabled",false);
+          $('#province').prop("disabled",false);
+          $('#city').prop("disabled",false);
           $('#email_address').prop("disabled",false);
           $('#telephone_number').prop("disabled",false);
           $('#cellphone_number').prop("disabled",false);

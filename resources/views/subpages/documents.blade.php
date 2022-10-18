@@ -1,6 +1,8 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <div class="container" style="width:70%;">
+<form method="POST" enctype="multipart/form-data" action="{{route('document.store')}}" id="document_form">
+    @csrf
         <strong class="table-title">REQUIREMENTS</strong>
         <table class="table table-striped table-bordered table-hover mt-1">
             <thead class="thead-educational">
@@ -11,11 +13,12 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
+                
+                 <tr>
                     <td><p><b>BIRTH CERTIFICATE</b></p></td>
                     <td>
                         <button type="button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();" id="birthcertificate_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input type="file" class="" accept="image/*,.pdf" name="birthcertificate_file" id="birthcertificate_file" style="display: none;" onchange="return BirthCertificateValidation()">
+                        <input type="file" class="form-control-file" accept="image/*,.pdf" name="birthcertificate_file" id="birthcertificate_file" style="display: none;" onchange="return BirthCertificateValidation()">
                         <span id="birthcertificate_text">No file chosen, yet.</span>
                     </td>
                     <td>
@@ -24,6 +27,7 @@
                         <img src="" alt="" id="preview_birthcertificate" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
                     </td>
                 </tr>
+            
                 <tr>
                     <td><p><b>NBI CLEARANCE</b></p></td>
                     <td>
@@ -36,7 +40,8 @@
                         <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_nbi" disabled><i class="fa-solid fa-file-pen"></i></button>
                         <img src="" alt="" id="preview_nbi" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
                     </td>
-                </tr>
+                </tr> 
+                    
                 <tr>
                     <td><p><b>BARANGAY CLEARANCE</b></p></td>
                     <td>
@@ -50,7 +55,8 @@
                         <img src="" alt="" id="preview_barangay_clearance" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
                     </td>
                 </tr>
-                <tr>
+         
+                 <tr>
                     <td><p><b>POLICE CLEARANCE</b></p></td>
                     <td>
                         <button type="button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" id="police_clearance_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
@@ -63,6 +69,7 @@
                         <img src="" alt="" id="preview_police_clearance" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
                     </td>
                 </tr>
+        
                 <tr>
                     <td><p><b>SSS E1 FORM</b></p></td>
                     <td>
@@ -76,6 +83,7 @@
                         <img src="" alt="" id="preview_sss" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
                     </td>
                 </tr>
+        
                 <tr>
                     <td><p><b>PHILHEALTH FORM</b></p></td>
                     <td>
@@ -105,8 +113,9 @@
             </tbody>
         </table>
     </div>
+    <div class="form-group"><button class="btn btn-success" id="save_document_form" style="display: none;">Upload the File</button></div>
     <hr class="hr-design">
-
+</form>
     
     {{-- Display File Chosen --}}
     <div class="modal fade" id="myModal">
@@ -122,6 +131,4 @@
             </div>
         </div>
     </div>
-
-    
 </div>

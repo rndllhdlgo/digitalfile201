@@ -4,9 +4,9 @@ var addRequiredField = 0;
 //     if(go) return "You have unsaved changes";
 // });
 
+//Display current date and time
 setInterval(dateTime,0)
 function dateTime(){
-  //Display current date and time
   const d = new Date().toDateString();
   const t = new Date().toLocaleTimeString();
   document.getElementById("date").innerHTML = d + ' ' + t;
@@ -25,79 +25,6 @@ btn.on('click', function(e) {
   e.preventDefault();
   $('html, body').animate({scrollTop:0}, '300');
 });
-
-
-// $(document).ready(function () {
-//     // Setup - add a text input to each footer cell
-//     $('#employeesTable thead th').each(function () {
-//         var title = $(this).text();
-//         $(this).html('<input type="text" placeholder="Search ' + title + '" />');
-//     });
- 
-//     // DataTable
-//     var employeesTable = $('#employeesTable').DataTable({
-//             dom:'lrtip',//layout of the table
-//             language: {
-//             "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
-//             "lengthMenu":"Show _MENU_ Employees",
-//             "emptyTable":"No Employees data found!"
-//             },
-//             processing:true,//loading processing
-//             serverSide:false,//Source of data
-//             scrollX: true,//Horizontal Scroll
-//             ajax: {
-//                 url: '/employees/listOfEmployees',//route-name/To Display data in JSON format
-//             },
-//         columns: [
-//             {data: 'employee_number'},//data column name
-//             {data: 'first_name'},
-//             {data: 'last_name'},
-//             {data: 'middle_name'},
-//             {data: 'position_of_employee'},
-//             {data: 'branch_of_employee'},
-//             {data: 'status_of_employee'},
-//         ],
-        
-//         initComplete: function () {
-//             // Apply the search
-//             this.api()
-//                 .columns()
-//                 .every(function () {
-//                     var that = this;
- 
-//                     $('input', this.header()).on('keyup change clear', function () {
-//                         if (that.search() !== this.value) {
-//                             that.search(this.value).draw();
-//                         }
-//                     });
-//                 });
-//         },
-//     });
-// });
-
-// $(document).ready( function () { //The ready() method specifies what happens when a ready event occurs.
-//     $('#employeesTable').DataTable(
-//       {
-//         dom:'lfrtip',
-//         processing:true,
-//         serverSide:false,
-//         ajax: {
-//         //route-name
-//         url: '/employees/listOfEmployees',
-//       },
-//       //data column name
-//       columns: [
-//           {data: 'employee_number'},
-//           {data: 'first_name'},
-//           {data: 'last_name'},
-//           {data: 'middle_name'},
-//           {data: 'position_of_employee'},
-//           {data: 'branch_of_employee'},
-//           {data: 'status_of_employee'},
-//       ]
-//       }
-//   );    
-// });
 
 // To Display Data Tables with filter
 var employeesTable;
@@ -198,47 +125,11 @@ $('#addEmployeeBtn').on('click',function(){
     $('#title_details').html('<i class="fas fa-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
 });
 
-//Function for Image Upload
-// var fileName;
-// function sendFile() {//This function will trigger if the btnSave click
-//     var formData = new FormData();
-//     var file = $('#cover_image').prop('files')[0];
-
-//     formData.append('file', file);
-//     // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
-//     $.ajax({
-//         url: '/employees/insertImage',
-//         method: 'post',
-//         data: formData,
-//         contentType : false,
-//         processData : false,
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(response){
-//           console.log(response);
-//           fileName = response;
-//             // Do what ever you want to do on success
-//         }
-//     });
-// }
-
 //Fill all required fields/ Check required fields
 // setInterval(checkforblank,0);
 // function checkforblank(){
 //     if($('.required_field').filter(function(){ return !!this.value; }).length != (41 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
 //     // if($('.required_field').filter(function(){ return !!this.value; }).length != (20 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
-//         $('#title_details').show();
-//         $('#btnSave').prop("disabled",true);
-//     }
-//     else{
-//         $('#title_details').hide();
-//         $('#btnSave').prop("disabled",false);
-//     }
-// }
-// setInterval(checkforblank,0);
-// function checkforblank(){
-//     if($('.required_field').filter(function(){ return !!this.value; }).length != (23 + addRequiredField)){
 //         $('#title_details').show();
 //         $('#btnSave').prop("disabled",true);
 //     }
@@ -290,8 +181,6 @@ function checkforblank(){
 
 $('#btnUpdate').hide();
 $('#btnCancelEdit').hide();
-
-// Civil Status
 $('#solo_parent').hide();
 $('#spouse').hide();
 
@@ -309,10 +198,6 @@ $('#spouse').hide();
       else if(status.value == "Solo Parent"){
           $('#spouse').hide();
           $('#solo_parent').show();
-        //   $('#child_name').addClass('required_field');
-        //   $('#child_birthday').addClass('required_field');
-        //   $('#child_gender').addClass('required_field');
-        //   $('#solo_parent_data_table').show();
       }
       else{
           $('#solo_parent').hide();
@@ -320,9 +205,6 @@ $('#spouse').hide();
           $('#spouse_name').removeClass('required_field');
           $('#spouse_contact_number').removeClass('required_field');
           $('#spouse_profession').removeClass('required_field');
-        //   $('#child_name').removeClass('required_field');
-        //   $('#child_birthday').removeClass('required_field');
-        //   $('#child_gender').removeClass('required_field');
           $('#spouse_name').val("");
           $('#spouse_contact_number').val("");
           $('#spouse_profession').val("");
@@ -340,7 +222,7 @@ $('#benefits').hide();
             $('#pag_ibig_number').addClass('required_field');
             $('#philhealth_number').addClass('required_field');
             $('#tin_number').addClass('required_field');
-            $('#bank_account_number').addClass('required_field');
+            $('#account_number').addClass('required_field');
         }
         else{
             $('#benefits').hide();
@@ -348,7 +230,7 @@ $('#benefits').hide();
             $('#pag_ibig_number').removeClass('required_field');
             $('#philhealth_number').removeClass('required_field');
             $('#tin_number').removeClass('required_field');
-            $('#bank_account_number').removeClass('required_field');
+            $('#account_number').removeClass('required_field');
         }
     }
 
@@ -565,7 +447,7 @@ $(function(){
     $('#termination_date').attr('max', maxDate);
 });
 
-//Disable Birthday UnderAge (18)
+//Disable Birthday Under 18
 $(function(){
     var dtTodays = new Date();
     var months = dtTodays.getMonth() + 1;// jan=0; feb=1
@@ -723,7 +605,7 @@ $('#replace_barangay_clearance').on('click',function(){
     $('#barangay_clearance_file').click();
 });
 
-
+//Region,Province,City DropDown
 $('#region').on('change', function(){
     $('#province').val('');
     $('#city').val('');
@@ -774,5 +656,3 @@ $('#province').on('change', function(){
         }
     });
 });
-
-$('.documents').hide();

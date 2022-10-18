@@ -57,6 +57,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
 Route::get('/setcity','PagesController@setcity');
 Route::get('/setprovince','PagesController@setprovince');
+
+Route::get('/upload', function () {
+    return view('uploadfile');
+});
+Route::resource('fileupload', 'FileuploadController');
+
+Route::resource('document','DocumentuploadController');
