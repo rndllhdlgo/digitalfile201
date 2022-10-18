@@ -101,7 +101,6 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
                 },
                 data:{
-                    //Personal Information
                     employee_number:employee_number,
                     fileName:fileName,
                     first_name:first_name,
@@ -130,7 +129,6 @@ $('#btnSave').on('click', function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
-                    //Work Information
                     company_of_employee:company_of_employee,
                     branch_of_employee:branch_of_employee,
                     status_of_employee:status_of_employee,

@@ -73,8 +73,8 @@ function checkforblankMultiple(){
     }
 
 }
-//Solo Parent Table Add
 
+//Solo Parent Table Add
 $(document).ready(function(){
 
     $('#btnSingleParentAdd').click(function(){

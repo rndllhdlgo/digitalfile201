@@ -24,25 +24,25 @@ class DocumentuploadController extends Controller
         $philhealth_file = $request->file('philhealth_file');
         $pag_ibig_file = $request->file('pag_ibig_file');
 
-        $birthcertificate = time(). '.' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();
+        $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();
         $path = $birthcertificate_file->storeAs('public', $birthcertificate);
 
-        $nbi = time(). '.' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
+        $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
         $path = $nbi_file->storeAs('public', $nbi);
 
-        $barangay_clearance = time(). '.' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
+        $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
         $path = $barangay_clearance_file->storeAs('public', $barangay_clearance);
 
-        $police_clearance = time(). '.' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
+        $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
         $path = $police_clearance_file->storeAs('public', $police_clearance);
 
-        $sss = time(). '.' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
+        $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
         $path = $sss_file->storeAs('public', $sss);
 
-        $philhealth = time(). '.' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
+        $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
         $path = $philhealth_file->storeAs('public', $philhealth);
 
-        $pag_ibig = time(). '.' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
+        $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
         $path = $pag_ibig_file->storeAs('public', $pag_ibig);
         
         Document::create([

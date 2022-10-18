@@ -305,6 +305,7 @@ margin: 0;
     padding: 5px;
     position:relative;
     cursor:not-allowed;
+    font-size: 15px;
 }
 .validation:before{
     position: absolute;
