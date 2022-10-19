@@ -17,13 +17,13 @@
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject">(Required)</span></label>
+                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date">(Required)</span></label>
+                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -36,7 +36,7 @@
                             <option value="3rd Offense">3rd Offense</option>
                             <option value="Final">Final</option>
                         </select>
-                        <label for="memo_option" class="formlabel form-label"><span class="span_memo_option">(Required)</span> </label>
+                        <label for="memo_option" class="formlabel form-label"><span class="span_memo_option">(Optional)</span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -68,19 +68,19 @@
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason">(Required)</span></label>
+                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date">(Required)</span></label>
+                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by">(Required)</span></label>
+                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -109,13 +109,13 @@
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type">(Required)</span></label>
+                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracs_date" class="formlabel form-label"><span class="span_contracts_date">(Required)</span></label>
+                        <label for="contracs_date" class="formlabel form-label"><span class="span_contracts_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -142,13 +142,13 @@
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter">(Required)</span></label>
+                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date">(Required)</span></label>
+                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -176,13 +176,13 @@
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter">(Required)</span></label>
+                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date">(Required)</span></label>
+                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">

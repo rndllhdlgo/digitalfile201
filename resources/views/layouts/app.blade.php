@@ -37,7 +37,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         
         <!-- Insert JS FILES -->
-        @if(Request::is('employees'))
+        @if(Request::is('employees')) <!--Route-->
             <script src="{{ env('APP_URL')}}js/btnCancelEdit.js"></script>
         @endif
         @if(Request::is('employees'))
@@ -99,6 +99,9 @@
         @endif
         @if(Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/maintenance.js"></script>
+        @endif
+        @if(Request::is('try'))
+            <script src="{{ env('APP_URL')}}js/try.js"></script>
         @endif
         
         <script>

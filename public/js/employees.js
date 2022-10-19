@@ -1,4 +1,3 @@
-var addRequiredField = 0;
 // var go = true, $lvl = $('.lvl');
 // $(window).bind("beforeunload",function(event) {
 //     if(go) return "You have unsaved changes";
@@ -7,110 +6,96 @@ var addRequiredField = 0;
 //Display current date and time
 setInterval(dateTime,0)
 function dateTime(){
-  const d = new Date().toDateString();
-  const t = new Date().toLocaleTimeString();
-  document.getElementById("date").innerHTML = d + ' ' + t;
+    const d = new Date().toDateString();
+    const t = new Date().toLocaleTimeString();
+    document.getElementById("date").innerHTML = d + ' ' + t;
 }
 
-//Go to top button
-var btn = $('#button');
-$(window).scroll(function() {
-  if ($(window).scrollTop() > 300) {
-    btn.addClass('show');
-  } else {
-    btn.removeClass('show');
-  }
-});
-btn.on('click', function(e) {
-  e.preventDefault();
-  $('html, body').animate({scrollTop:0}, '300');
-});
-
-// To Display Data Tables with filter
+//Display Data Table Function
 var employeesTable;
-
 $(document).ready(function () {    
-  $('#employeesTable thead tr')// Setup - add a text input to each footer cell
-      .clone(true)
-      .addClass('filters')
-      .appendTo('#employeesTable thead');
+    $('#employeesTable thead tr')// Setup - add a text input to each footer cell
+        .clone(true)
+        .addClass('filters')
+        .appendTo('#employeesTable thead');
   
   $('#employeesTable').dataTable().fnDestroy();//To destroy datatable
-  employeesTable = $('#employeesTable').DataTable({
-      dom:'lrtip',//layout of the table
-      language: {
-        "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
-        "lengthMenu":"Show _MENU_ Employees",
-        "emptyTable":"No Employees data found!"
-      },
-      processing:true,//loading processing
-      serverSide:false,//Source of data
-      scrollX: true,//Horizontal Scroll
-      ajax: {
-          url: '/employees/listOfEmployees',//route-name/To Display data in JSON format
-      },
-    columns: [
-        {data: 'employee_number'},//data column name
-        {data: 'first_name'},
-        {data: 'last_name'},
-        {data: 'middle_name'},
-        {data: 'position_of_employee'},
-        {data: 'branch_of_employee'},
-        {data: 'status_of_employee'},
-    ],
+        employeesTable = $('#employeesTable').DataTable({
+        dom:'lrtip',//layout of the table
+        language: {
+            "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
+            "lengthMenu":"Show _MENU_ Employees",
+            "emptyTable":"No Employees data found!"
+        },
+        processing:true,//loading processing
+        serverSide:false,//Source of data
+        scrollX: true,//Horizontal Scroll
+        ajax: {
+            url: '/employees/listOfEmployees',//route-name/To Display data in JSON format
+        },
+        columns: [
+            {data: 'employee_number'},//data column name
+            {data: 'first_name'},
+            {data: 'last_name'},
+            {data: 'middle_name'},
+            {data: 'position_of_employee'},
+            {data: 'branch_of_employee'},
+            {data: 'status_of_employee'},
+        ],
       initComplete: function () {
-          var api = this.api();
-          // For each column
-          api
-          .columns()
-          .eq(0)
-          .each(function (colIdx) {
-              // Set the header cell to contain the input element
-              var cell = $('.filters th').eq(
-                  $(api.column(colIdx).header()).index()
-              );
-              $(cell).html('<input type="text" style="border:none;border-radius:5px;width:100%;"/>');// On every keypress in this input
+            var api = this.api();
+            // For each column
+            api
+            .columns()
+            .eq(0)
+            .each(function (colIdx) {
+                // Set the header cell to contain the input element
+                var cell = $('.filters th').eq(
+                    $(api.column(colIdx).header()).index()
+                );
+                $(cell).html('<input type="text" style="border:none;border-radius:5px;width:100%;"/>');// On every keypress in this input
 
-              $(
-                  'input',
-                  $('.filters th').eq($(api.column(colIdx).header()).index())
-              )
-                  .off('keyup change')
-                  .on('change', function (e) {
-                      // Get the search value
-                      $(this).attr('title', $(this).val());
-                      var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                $(
+                    'input',
+                    $('.filters th').eq($(api.column(colIdx).header()).index())
+                )
+                    .off('keyup change')
+                    .on('change', function (e) {
+                        // Get the search value
+                        $(this).attr('title', $(this).val());
+                        var regexr = '({search})'; //$(this).parents('th').find('select').val();
 
-                      var cursorPosition = this.selectionStart;
-                      // Search the column for that value
-                      api
-                          .column(colIdx)
-                          .search(
-                              this.value != ''
-                                  ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                  : '',
-                              this.value != '',
-                              this.value == ''
-                          )
-                          .draw();
-                  })
-                  .on('keyup', function (e) {
-                      e.stopPropagation();
-                      $(this).trigger('change');
-                      $(this)
-                          .focus()[0]
-                          .setSelectionRange(cursorPosition, cursorPosition);
-                  });
-          });
+                        var cursorPosition = this.selectionStart;
+                        // Search the column for that value
+                        api
+                            .column(colIdx)
+                            .search(
+                                this.value != ''
+                                    ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                    : '',
+                                this.value != '',
+                                this.value == ''
+                            )
+                            .draw();
+                    })
+                    .on('keyup', function (e) {
+                        e.stopPropagation();
+                        $(this).trigger('change');
+                        $(this)
+                            .focus()[0]
+                            .setSelectionRange(cursorPosition, cursorPosition);
+                    });
+            });
           setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 0);//To reload the table/page
-      },
-  });
+        },
+    });
+
 });
 
-//Hide first form
+//Hide Employee fill up form
 $('#employee_personal_information').hide();
 
-//Create New Employee Button
+//Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
     $('#employee_personal_information').fadeIn();
     $('#employees_list').hide();
@@ -125,19 +110,7 @@ $('#addEmployeeBtn').on('click',function(){
     $('#title_details').html('<i class="fas fa-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
 });
 
-//Fill all required fields/ Check required fields
-// setInterval(checkforblank,0);
-// function checkforblank(){
-//     if($('.required_field').filter(function(){ return !!this.value; }).length != (41 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
-//     // if($('.required_field').filter(function(){ return !!this.value; }).length != (20 + addRequiredField) || $('#email_validation').is(":visible") || $('#cellphone_number_validation').is(":visible") || $('#emergency_contact_number_validation').is(":visible") || $("#spouse_contact_number_validation").is(":visible") || $("#employee_email_validation").is(":visible") || $("#employee_contact_number_validation").is(":visible") || $('#check_duplicate').is(":visible")){
-//         $('#title_details').show();
-//         $('#btnSave').prop("disabled",true);
-//     }
-//     else{
-//         $('#title_details').hide();
-//         $('#btnSave').prop("disabled",false);
-//     }
-// }
+//Check all required field function
 setInterval(checkforblank,0);
 function checkforblank(){
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
@@ -171,7 +144,7 @@ function checkforblank(){
 //Clear Form
 setInterval(checkclearform,0);
 function checkclearform(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < 1){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1) {
         $('#btnClear').prop("disabled",true);
     }
     else{
@@ -179,40 +152,41 @@ function checkclearform(){
     }
 }
 
-$('#btnUpdate').hide();
-$('#btnCancelEdit').hide();
-$('#solo_parent').hide();
-$('#spouse').hide();
+$('#btnUpdate').hide();//Hide Update Button
+$('#btnCancelEdit').hide();//Hide Cancel Edit Button
+$('#solo_parent').hide();//Hide solo parent section
+$('#spouse').hide();//Hide spouse section
 
+//Hide/Show (Civil Status, Solo Parent) Section Function
     function changeStatus(){
-      var status = document.getElementById("civil_status");
+        var status = document.getElementById("civil_status");
 
-      if(status.value == "Married"){
-          $('#spouse').show();
-          $('#spouse_name').addClass('required_field');
-          $('#spouse_contact_number').addClass('required_field');
-          $('#spouse_profession').addClass('required_field');
-          $('#solo_parent').hide();
-          $('#solo_parent_data_table').hide();
-      }
-      else if(status.value == "Solo Parent"){
-          $('#spouse').hide();
-          $('#solo_parent').show();
-      }
-      else{
-          $('#solo_parent').hide();
-          $('#spouse').hide();
-          $('#spouse_name').removeClass('required_field');
-          $('#spouse_contact_number').removeClass('required_field');
-          $('#spouse_profession').removeClass('required_field');
-          $('#spouse_name').val("");
-          $('#spouse_contact_number').val("");
-          $('#spouse_profession').val("");
-      }
+        if(status.value == "Married"){
+            $('#spouse').show();
+            $('#spouse_name').addClass('required_field');
+            $('#spouse_contact_number').addClass('required_field');
+            $('#spouse_profession').addClass('required_field');
+            $('#solo_parent').hide();
+            $('#solo_parent_data_table').hide();
+        }
+        else if(status.value == "Solo Parent"){
+            $('#spouse').hide();
+            $('#solo_parent').show();
+        }
+        else{
+            $('#solo_parent').hide();
+            $('#spouse').hide();
+            $('#spouse_name').removeClass('required_field');
+            $('#spouse_contact_number').removeClass('required_field');
+            $('#spouse_profession').removeClass('required_field');
+            $('#spouse_name').val("");
+            $('#spouse_contact_number').val("");
+            $('#spouse_profession').val("");
+        }
     }
 
 $('#benefits').hide();
-//Employment Status
+//Hide/Show (employment status) Section Function
     function changeEmploymentStatus(){
         var employment_status = document.getElementById("status_of_employee");
   
@@ -234,7 +208,7 @@ $('#benefits').hide();
         }
     }
 
-//Navigation Active Pills
+//Nav pill Function
 $('#tab1').on('click',function(){
     $('#tab1').addClass('tabactive');
     $('#tab2').removeClass('tabactive');
@@ -262,6 +236,7 @@ $('#tab2').on('click',function(){
     $('#documents').hide();
     $('#performance_evaluation').hide();
 });
+
 $('#tab3').on('click',function(){
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
@@ -275,6 +250,7 @@ $('#tab3').on('click',function(){
     $('#documents').hide();
     $('#performance_evaluation').hide();
 });
+
 $('#tab4').on('click',function(){
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
@@ -289,6 +265,7 @@ $('#tab4').on('click',function(){
     $('#documents').hide();
     $('#performance_evaluation').hide();
 });
+
 $('#tab5').on('click',function(){
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
@@ -303,6 +280,7 @@ $('#tab5').on('click',function(){
     $('#documents').show();
     $('#performance_evaluation').hide();
 });
+
 $('#tab6').on('click',function(){
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
@@ -318,7 +296,7 @@ $('#tab6').on('click',function(){
     $('#performance_evaluation').show();
 });
 
-//Calculate Age
+//Calculate Age Function
 $('#birthday').on('change',function(){
     var today = new Date();
     var birthDate = new Date($('#birthday').val());
@@ -341,7 +319,7 @@ $('#child_birthday').on('change',function(){
     return $('#child_age').val(age);
 });
 
-//Duplicate Validation
+//Check Duplicate Function
 setInterval(checkEmployeeNumber,200)
 function checkEmployeeNumber(){
       if($('#employee_number').val()){
@@ -353,35 +331,32 @@ function checkEmployeeNumber(){
             success: function(data){
                 if(data == 'true'){
                     $('#check_duplicate').show();
-                    // $('#employee_number').css('border','2px solid #dc3545');
                 }
                 else{
                     $('#check_duplicate').hide();
-                    // $('#employee_number').css('border','1px solid gray');
                 }
             }
         });
       }
 };
 
-//Email Validation
+//Email Format Validation Function
 const email_address = document.querySelector("#email_address");
 const email_validation = document.querySelector("#email_validation");
-let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //
 
 function emailValidation(){
     if(email_address.value.match(regExp)){
-      $('#email_validation').hide();
-      $('#btnSave').prop("disabled",false);
+        $('#email_validation').hide();
+        $('#btnSave').prop("disabled",false);
     }
     else{
-      $('#email_validation').show();
-      $('#btnSave').prop("disabled",true);
-      // $('#title_details').show();
+        $('#email_validation').show();
+        $('#btnSave').prop("disabled",true);
     }
 }
 
-//Employee Email Validation
+//Employee Email Format Validation Function
 const employee_email_address = document.querySelector("#employee_email_address");
 const employee_email_validation = document.querySelector("#employee_email_validation");
 let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -397,22 +372,23 @@ function employeeEmailValidation(){
     }
 }
 
-//Input(Letters Only)
+//Input(Letters Only) Function
     function lettersOnly(input){
       var letters_only = /[^- ñ a-z]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
         input.value = input.value.replace(letters_only,"");
     }
-//Input(Numbers Only)
+//Input(Numbers Only) Function
     function numbersOnly(input){
       var numbers_only = /[^- 0-9]/g;
         input.value = input.value.replace(numbers_only,"");
     }
+//Input(Contact Number) Function
     function contactNumberOnly(input){
       var contact_number = /[^+()0-9]/g;
         input.value = input.value.replace(contact_number,"");
     }
 
-//Close Preview Image
+//Close Preview Image Function
 $('#image_close').on('click',function(){
     $('#cover_image').val(''); //Remove the image inserted
     $('#preview_image').attr('src',''); //Remove current preview
@@ -425,7 +401,7 @@ $('#image_close').on('click',function(){
     $('#cover_image').click();
 });
 
-//Disable future dates/ Date Hired
+//Disable future dates/ Date Hired Function
 $(function(){
     var dtToday = new Date();
     var month = dtToday.getMonth() + 1;
@@ -462,7 +438,7 @@ $(function(){
     $('#birthday').attr('max', maxDates);
 });
 
-//File button design
+//File Button Design
 const birthcertificate_file = $('#birthcertificate_file')[0];
 const birthcertificate_button = $('#birthcertificate_button')[0];
 const birthcertificate_text = $('#birthcertificate_text')[0];
@@ -554,13 +530,13 @@ $('#pag_ibig_file').on('change',function(){
     }
 });
 
-//Preview of file upload in Modal
+//Preview of file upload in Modal Form
 function changePreview(newSrc){
-    var newSrcNow = newSrc.src;
+    var newSrcNow = newSrc.src; //To get the source of the file uploaded
     var largImg = document.getElementById('file_display');
     largImg.src = newSrcNow;
 }
-
+//Change .modal-title function
 $('#preview_birthcertificate').on('click',function(){
     $('.modal-title').html('BIRTH CERTIFICATE');
 });
@@ -593,11 +569,22 @@ $('#preview_pag_ibig').on('click',function(){
     $('.modal-title').html('PAGIBIG FORM');
 });
 
+//Replace Documents Function
 $('#replace_birthcertificate').on('click',function(){
+    $('#birthcertificate_file').val('');
+    $('#preview_birthcertificate').attr('src','');
+    $('#preview_birthcertificate').hide();
+    $('#birthcertificate_text').html('No file chosen, yet.');
+    $('#birthcertificate_button').show();
     $('#birthcertificate_file').click();
 });
 
 $('#replace_nbi').on('click',function(){
+    $('#nbi_file').val('');
+    $('#preview_nbi').attr('src','');
+    $('#preview_nbi').hide();
+    $('#nbi_text').html('No file chosen, yet.');
+    $('#nbi_button').show();
     $('#nbi_file').click();
 });
 
@@ -605,7 +592,23 @@ $('#replace_barangay_clearance').on('click',function(){
     $('#barangay_clearance_file').click();
 });
 
-//Region,Province,City DropDown
+$('#replace_police_clearance').on('click',function(){
+    $('#police_clearance_file').click();
+});
+
+$('#replace_sss').on('click',function(){
+    $('#sss_file').click();
+});
+
+$('#replace_philhealth').on('click',function(){
+    $('#philhealth_file').click();
+});
+
+$('#replace_pag_ibig').on('click',function(){
+    $('#pag_ibig_file').click();
+});
+
+//Region,Province,City DropDown Function
 $('#region').on('change', function(){
     $('#province').val('');
     $('#city').val('');
@@ -655,4 +658,36 @@ $('#province').on('change', function(){
             });
         }
     });
+});
+
+
+//Fill All
+$('#title_details').on('click',function(){
+    $('#first_name').val('Rendell');
+    $('#last_name').val('Hidalgo');
+    $('#middle_name').val('Mendez');
+    $('#street').val('West Antipolo Street Gagalangin Tondo Manila');
+    $('#email_address').val('rendellhidalgo11@gmail.com');
+    $('#cellphone_number').val('09322003718');
+    $('#father_name').val('Reynaldo Hidalgo');
+    $('#father_profession').val('Utility Worker');
+    $('#mother_name').val('Marlyn Hidalgo');
+    $('#mother_profession').val('House Wife');
+    $('#emergency_contact_name').val('Marlyn Hidalgo');
+    $('#emergency_contact_relationship').val('Mother');
+    $('#emergency_contact_number').val('09324207239');
+    $('#employee_number').val('1');
+    $('#employee_email_address').val('rendellhidalgo11@gmail.com');
+    $('#employee_contact_number').val('09322003718');
+    $('#sss_number').val('1');
+    $('#pag_ibig_number').val('2');
+    $('#philhealth_number').val('3');
+    $('#tin_number').val('4');
+    $('#account_number').val('5');
+    $('#secondary_school_name').val('Florentino Torres High School');
+    $('#secondary_school_address').val('Torres');
+    $('#secondary_school_inclusive_years').val('2012-2016');
+    $('#primary_school_name').val('Lakandula Elementary School');
+    $('#primary_school_address').val('Lakandula');
+    $('#primary_school_inclusive_years').val('2006-2012');
 });

@@ -206,7 +206,7 @@ a{
 .column-1 {
     float: left;
     width: 280px;
-    height: 250px; 
+    height: 245px; 
     border:1px solid gray;
     margin-left: 1%;
     background-color: #f2f4f5;
@@ -228,10 +228,11 @@ a{
     box-shadow: 0 0 5px #333;
 } */
 #preview_image{
-    height: 248px;
+    height: 205px;
     width: 278px;
     margin-left: -12px;
     cursor:pointer;
+    display: none;
 }
 
 #preview_file{

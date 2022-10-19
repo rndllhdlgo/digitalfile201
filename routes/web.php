@@ -66,3 +66,11 @@ Route::get('/upload', function () {
 Route::resource('fileupload', 'FileuploadController');
 
 Route::resource('document','DocumentuploadController');
+
+Route::get('/try',function(){
+    return view('try.tableupload');
+});
+
+// Route::any('/collegeSave','EmployeesController@collegeSave');
+
+Route::any('/jobSave','EmployeesController@jobSave');

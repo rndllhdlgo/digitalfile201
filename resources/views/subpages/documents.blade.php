@@ -16,103 +16,103 @@
                             <tr>
                                 <td><p><b>BIRTH CERTIFICATE</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();" id="birthcertificate_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="birthcertificate_file" id="birthcertificate_file" style="display: none;" onchange="return BirthCertificateValidation()">
+                                    <button type="button" id="birthcertificate_button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input  type="file"   id="birthcertificate_file"   class="required_field"     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" style="display: none;" name="birthcertificate_file">
                                     <span id="birthcertificate_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_birthcertificate').click();" id="eye_birthcertificate" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_birthcertificate" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_birthcertificate" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_birthcertificate"     class="btn btn-success"    title="VIEW" onclick="$('#preview_birthcertificate').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_birthcertificate" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_birthcertificate" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                             <tr>
                                 <td><p><b>NBI CLEARANCE</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#nbi_file').click();" id="nbi_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="nbi_file" id="nbi_file" style="display: none;" onchange="return nbiValidation()">
+                                    <button type="button" id="nbi_button" class="btn btn-primary bp" onclick="$('#nbi_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input  type="file"   id="nbi_file"   class="required_field"     onchange="return nbiValidation()" accept="image/*,.pdf" style="display: none;" name="nbi_file">
                                     <span id="nbi_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_nbi').click();" id="eye_nbi" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_nbi" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_nbi" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_nbi"     class="btn btn-success"    title="VIEW" onclick="$('#preview_nbi').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_nbi" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_nbi" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr> 
                             <tr>
                                 <td><p><b>BARANGAY CLEARANCE</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" id="barangay_clearance_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="barangay_clearance_file" id="barangay_clearance_file" style="display: none;" onchange="return barangayclearanceValidation()">
+                                    <button type="button" id="barangay_clearance_button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input  type="file"   id="barangay_clearance_file"   class="required_field"     onchange="return barangayclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="barangay_clearance_file">
                                     <span id="barangay_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_barangay_clearance').click();" id="eye_barangay_clearance" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_barangay_clearance" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_barangay_clearance" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_barangay_clearance"     class="btn btn-success"    title="VIEW" onclick="$('#preview_barangay_clearance').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_barangay_clearance" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_barangay_clearance" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                             <tr>
                                 <td><p><b>POLICE CLEARANCE</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" id="police_clearance_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="police_clearance_file" id="police_clearance_file" style="display: none;" onchange="return policeclearanceValidation()">
+                                    <button type="button" id="police_clearance_button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input  type="file"   id="police_clearance_file"   class="required_field"     onchange="return policeclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="police_clearance_file">
                                     <span id="police_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_police_clearance').click();" id="eye_police_clearance" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_police_clearance" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_police_clearance" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_police_clearance"     class="btn btn-success"    title="VIEW" onclick="$('#preview_police_clearance').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_police_clearance" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt="" id="preview_police_clearance" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                             <tr>
                                 <td><p><b>SSS E1 FORM</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#sss_file').click();" id="sss_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="sss_file" id="sss_file" style="display: none;" onchange="return sssValidation()">
+                                    <button type="button" id="sss_button" class="btn btn-primary bp" onclick="$('#sss_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input type="file"    id="sss_file"   class="required_field"     onchange="return sssValidation()" accept="image/*,.pdf" style="display: none;"  name="sss_file">
                                     <span id="sss_text">No file chosen, yet.</span>
                                 </td>
                                 <td> 
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_sss').click();" id="eye_sss" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_sss" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_sss" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_sss"     class="btn btn-success"    title="VIEW" onclick="$('#preview_sss').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_sss" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_sss" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                             <tr>
                                 <td><p><b>PHILHEALTH FORM</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" id="philhealth_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="philhealth_file" id="philhealth_file" style="display: none;" onchange="return philhealthValidation()">
+                                    <button type="button" id="philhealth_button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input  type="file"   id="philhealth_file"   class="required_field"     onchange="return philhealthValidation()" accept="image/*,.pdf" style="display: none;" name="philhealth_file">
                                     <span id="philhealth_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_philhealth').click();" id="eye_philhealth" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_philhealth" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_philhealth" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_philhealth"     class="btn btn-success"    title="VIEW" onclick="$('#preview_philhealth').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_philhealth" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_philhealth" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                             <tr>
                                 <td><p><b>PAG-IBIG FORM</b></p></td>
                                 <td>
-                                    <button type="button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();" id="pag_ibig_button"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file" class="required_field" accept="image/*,.pdf" name="pag_ibig_file" id="pag_ibig_file" style="display: none;" onchange="return pagibigValidation()">
+                                    <button type="button"  id="pag_ibig_button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                                    <input type="file"     id="pag_ibig_file"   class="required_field"     onchange="return pagibigValidation()"accept="image/*,.pdf" style="display: none;" name="pag_ibig_file">
                                     <span id="pag_ibig_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" class="btn btn-success" title="VIEW" onclick="$('#preview_pag_ibig').click();" id="eye_pag_ibig" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
-                                    <button type="button" class="btn btn-primary bp" title="REPLACE FILE" id="replace_pag_ibig" disabled><i class="fa-solid fa-file-pen"></i></button>
-                                    <img src="" alt="" id="preview_pag_ibig" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#myModal" onclick="changePreview(this)">
+                                    <button type="button" id="eye_pag_ibig"     class="btn btn-success"    title="VIEW" onclick="$('#preview_pag_ibig').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="replace_pag_ibig" class="btn btn-primary bp" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                                    <img src="" alt=""    id="preview_pag_ibig" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
                             </tr>
                         </tbody>
                     </table>
     </div> {{-- Container div end tag --}}
-            <div class="form-group"><button class="btn btn-success" id="save_document_form">Upload the File</button></div> {{-- Button for submit documents --}}
+            <div class="form-group"><button class="btn btn-success" id="save_document_form" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
             <hr class="hr-design">
         </form>
             
             {{-- Display File Chosen --}}
-            <div class="modal fade" id="myModal">
+            <div class="modal fade" id="preview_modal">
                 <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
                     <div class="modal-content" >
                         <div class="modal-header">

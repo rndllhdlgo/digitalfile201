@@ -21,6 +21,7 @@ class EmployeesController extends Controller
     {
         $this->middleware('auth');//For Authentication
     }
+    
     public function listOfEmployees(){
         $employees = Employee::all();
         return DataTables::of($employees)->make(true);
@@ -71,11 +72,11 @@ class EmployeesController extends Controller
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = $request->secondary_school_name;
-        $employees->secondary_school_address = $request->secondary_school_address;
+        $employees->secondary_school_name = ucwords($request->secondary_school_name);
+        $employees->secondary_school_address = ucwords($request->secondary_school_address);
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = $request->primary_school_name;
-        $employees->primary_school_address = $request->primary_school_address;
+        $employees->primary_school_name = ucwords($request->primary_school_name);
+        $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
 
         $sql = $employees->save();//To save data 
@@ -91,7 +92,8 @@ class EmployeesController extends Controller
             $filenameWithExt = $request->file('file')->getClientOriginalName();//Get filename with the extension
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);//Get Just filename
             $extension = $request->file('file')->getClientOriginalExtension();//Get just extension
-            $fileNameToStore = $filename.'_'.time().'.'.$extension;// Filename to store
+            // $fileNameToStore = $filename.'_'.time().'.'.$extension;// Filename to store
+            $fileNameToStore = time().'_'.$filename.'.'.$extension;// Filename to store
             $path = $request->file('file')->storeAs('public/cover_images',$fileNameToStore);//To create folder for images under public folder
         }
         else{
@@ -162,6 +164,18 @@ class EmployeesController extends Controller
 
     public function checkDuplicate(Request $request){
         return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+    }
+
+    public function jobSave(Request $request){
+        $employees = new Job;
+        $employees->job_name = $request->job_name;
+        $employees->job_position = $request->job_position;
+        $employees->job_address = $request->job_address;
+        $employees->job_contact_details = $request->job_contact_details;
+        $employees->job_inclusive_years = $request->job_inclusive_years;
+        $sql = $employees->save();
+
+        return $sql ? 'true' : 'false';
     }
 }
 

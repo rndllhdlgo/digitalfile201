@@ -1,4 +1,38 @@
 
+// $(document).ready(function () {
+//     var table = $('#usersTable').DataTable({
+//         paging: false,
+//         dom:'lrtip',//layout of the table
+//         language: {
+//             "info": "\"_START_ to _END_ of _TOTAL_ Users\"",
+//             "lengthMenu":"Show _MENU_ Users",
+//             "emptyTable":"No Users data found!"
+//         },
+//         processing:true,//loading processing
+//         serverSide:false,//Source of data
+//         scrollX: true,//Horizontal Scroll
+//         ajax: {
+//             url: '/users/listOfUsers',//route-name/To Display data in JSON format
+//         },
+//         columns: [
+//             {data: 'user_level'},//data column name
+//             {data: 'name'},
+//             {data: 'email'},
+//             {data: 'status'}
+//         ],
+//     });
+ 
+//     $('a.toggle-vis').on('click', function (e) {
+//         e.preventDefault();
+ 
+//         // Get the column API object
+//         var column = table.column($(this).attr('data-column'));
+ 
+//         // Toggle the visibility
+//         column.visible(!column.visible());
+//     });
+//     setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 0);
+// });
 // To Display Data Tables with filter
 var usersTable;
 
@@ -10,7 +44,7 @@ $(document).ready(function () {
       .appendTo('#usersTable thead');
   
   $('#usersTable').dataTable().fnDestroy();//To destroy datatable
-  employeesTable = $('#usersTable').DataTable({
+  usersTable = $('#usersTable').DataTable({
       dom:'lrtip',//layout of the table
       language: {
         "info": "\"_START_ to _END_ of _TOTAL_ Users\"",
@@ -76,6 +110,14 @@ $(document).ready(function () {
           setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 0);//To reload the table/page
       },
   });
+        $('a.toggle-vis').on('click', function (e) {
+            e.preventDefault();
+            // Get the column API object
+            var column = usersTable.column($(this).attr('data-column'));
+
+            // Toggle the visibility
+            column.visible(!column.visible());
+        });
 });
 
 //Add User
@@ -156,3 +198,4 @@ function checkclearform(){
         $('#btnUserClear').prop("disabled",false);
     }
 }
+

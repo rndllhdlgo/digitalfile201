@@ -20,7 +20,7 @@
                                 <th><i class="fas fa-building"></i> BRANCH</th>
                                 <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th>
                             </tr>
-                        </thead>
+                    </thead>
                         <tbody>
                         </tbody>
                     </table>
