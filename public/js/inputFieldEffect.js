@@ -205,10 +205,10 @@ $(document).on('keyup',function(){
     }
 
     if($('#street').val()){
-        $('.span_street_address').hide();
+        $('.span_street').hide();
     }
     else{
-        $('.span_street_address').show();
+        $('.span_street').show();
     }
 
     if($('#email_address').val()){

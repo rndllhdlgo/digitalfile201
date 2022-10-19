@@ -1,7 +1,6 @@
 //Update Employee Data
 $('#btnUpdate').on('click',function(){
     var id = $('#hidden_id').val();
-    // Personal Information
     sendFile();
     var first_name = $('#first_name').val();
     var last_name = $('#last_name').val();
@@ -10,7 +9,10 @@ $('#btnUpdate').on('click',function(){
     var birthday = $('#birthday').val();
     var gender = $('#gender').val();
     var civil_status = $('#civil_status').val();
-    var home_address = $('#home_address').val();
+    var street = $('#street').val();
+    var region = $("#region option:selected").text();
+    var province = $("#province option:selected").text();
+    var city = $("#city option:selected").text();
     var email_address = $('#email_address').val();
     var telephone_number = $('#telephone_number').val();
     var cellphone_number = $('#cellphone_number').val();
@@ -28,7 +30,6 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_number = $('#emergency_contact_number').val();
     var cover_image = $('#cover_image').prop('files')[0];
     console.log(cover_image);
-    //Work Information
     var employee_number = $('#employee_number').val();
     var company_of_employee = $('#company_of_employee').val();
     var branch_of_employee = $('#branch_of_employee').val();
@@ -44,7 +45,6 @@ $('#btnUpdate').on('click',function(){
     var philhealth_number = $('#philhealth_number').val();
     var tin_number = $('#tin_number').val();
     var account_number = $('#account_number').val();
-    //School Information
     var secondary_school_name = $('#secondary_school_name').val();
     var secondary_school_address = $('#secondary_school_address').val();
     var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
@@ -75,6 +75,7 @@ $('#btnUpdate').on('click',function(){
                 data:{
                 //Personal Information
                     id:id,
+                    fileName:fileName,
                     first_name:first_name,
                     last_name:last_name,
                     middle_name:middle_name,
@@ -82,7 +83,11 @@ $('#btnUpdate').on('click',function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
-                    home_address:home_address,
+                    // home_address:home_address,
+                    street:street,
+                    region:region,
+                    province:province,
+                    city:city,
                     email_address:email_address,
                     telephone_number:telephone_number,
                     cellphone_number:cellphone_number,
@@ -98,7 +103,6 @@ $('#btnUpdate').on('click',function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
-                    fileName:fileName,
                 //Work Information
                     employee_number: employee_number,
                     company_of_employee:company_of_employee,

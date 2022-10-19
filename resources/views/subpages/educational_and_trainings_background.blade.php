@@ -143,19 +143,19 @@
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control required_field" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="secondary" class="formlabel form-label"><span class="span_secondary_school_name">(Required)</span></label>
                         </div>
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control required_field" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="secondary_address" class="formlabel form-label"><span class="span_secondary_school_address">(Required)</span></label>
                         </div>
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="secondary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                            <input class="forminput form-control required_field" type="search" id="secondary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                             <label for="secondary_inclusive_years" class="formlabel form-label"><span class="span_secondary_school_inclusive_years">(Required)</span></label>
                         </div>
                     </td>
@@ -180,19 +180,19 @@
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="primary" class="formlabel form-label"><span class="span_primary_school_name">(Required)</span></label>
                         </div>
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="primary_address" class="formlabel form-label"><span class="span_primary_school_address">(Required)</span></label>
                         </div>
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control " type="search" id="primary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                            <input class="forminput form-control required_fiel" type="search" id="primary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                             <label for="primary_inclusive_years" class="formlabel form-label"><span class="span_primary_school_inclusive_years">(Required)</span></label>
                         </div>
                     </td>

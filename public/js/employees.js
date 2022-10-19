@@ -168,16 +168,16 @@ function checkforblank(){
     }
 }
 
-// //Clear Form
-// setInterval(checkclearform,0);
-// function checkclearform(){
-//     if($('.required_field').filter(function(){ return !!this.value; }).length < 1){
-//         $('#btnClear').prop("disabled",true);
-//     }
-//     else{
-//         $('#btnClear').prop("disabled",false);
-//     }
-// }
+//Clear Form
+setInterval(checkclearform,0);
+function checkclearform(){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1){
+        $('#btnClear').prop("disabled",true);
+    }
+    else{
+        $('#btnClear').prop("disabled",false);
+    }
+}
 
 $('#btnUpdate').hide();
 $('#btnCancelEdit').hide();

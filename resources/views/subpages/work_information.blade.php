@@ -24,9 +24,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="branch_of_employee" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT BRANCH</option>
-                    <option value="branch1">Branch 1</option>
-                    <option value="branch2">Branch 2</option>
-                    <option value="branch3">Branch 3</option>
+                    <option value="Branch 1">Branch 1</option>
+                    <option value="Branch 2">Branch 2</option>
+                    <option value="Branch 3">Branch 3</option>
                 </select>
                 <label for="branch_of_employee" class="formlabel form-label"><i class="fas fa-info"></i> BRANCH <span class="span_branch_of_employee">(Required)</span></label>
             </div>

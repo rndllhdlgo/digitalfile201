@@ -23,57 +23,7 @@ class EmployeesController extends Controller
     }
     public function listOfEmployees(){
         $employees = Employee::all();
-        return DataTables::of($employees)
-        // ->addColumn('action',function($employees){
-        //     return //<a href="#" class="btn btn-success edit mx-2 grow" title="EDIT" id="'.$employees->id.'"><i class="fas fa-edit"></i></a>
-        //             '<a href="#" class="btn btn-success view grow" title="VIEW" id="'.$employees->id.'"><i class="fas fa-eye"></i></a>';
-        // })
-        ->make(true);
-    }
-
-    public function collegeDataTable(Request $request){
-        $college = College::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($college)->make(true);
-    }
-
-    public function vocationalDataTable(Request $request){
-        $vocational = Vocational::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($vocational)->make(true);
-    }
-
-    public function trainingsDataTable(Request $request){
-        $training = Training::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($training)->make(true);
-    }
-
-    public function jobDataTable(Request $request){
-        $job = Job::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($job)->make(true);
-    }
-
-    public function memosDataTable(Request $request){
-        $memo = Memo::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($memo)->make(true);
-    }
-
-    public function evaluationDataTable(Request $request){
-        $evaluation = Evaluation::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($evaluation)->make(true);
-    }
-
-    public function contractsDataTable(Request $request){
-        $contract = Contracts::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($contract)->make(true);
-    }
-
-    public function resignationDataTable(Request $request){
-        $resignation = Resignation::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($resignation)->make(true);
-    }
-
-    public function terminationDataTable(Request $request){
-        $termination = Termination::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($termination)->make(true);
+        return DataTables::of($employees)->make(true);
     }
 
     public function save(Request $request){//To save only Work,Personal,School Information Form
@@ -213,7 +163,6 @@ class EmployeesController extends Controller
     public function checkDuplicate(Request $request){
         return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
     }
-    
 }
 
     
