@@ -65,12 +65,11 @@ Route::get('/upload', function () {
 });
 Route::resource('fileupload', 'FileuploadController');
 
-Route::resource('document','DocumentuploadController');
-
-Route::get('/try',function(){
-    return view('try.tableupload');
-});
+// Route::resource('document','DocumentuploadController');
+Route::any('/employees/storeDocuments','EmployeesController@storeDocuments');
 
 // Route::any('/collegeSave','EmployeesController@collegeSave');
 
+//Routes for saving tables
 Route::any('/jobSave','EmployeesController@jobSave');
+Route::any('/singleParentSave','EmployeesController@singleParentSave');

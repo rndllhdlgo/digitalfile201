@@ -34,8 +34,8 @@
                 <div class="col-8">
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="EXIT"><i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;"><i class="fas fa-times"></i></button>
-                    <button type="button" class="btn btn-warning mx-1 float-end grow" id="btnClear" title="CLEAR"><i class="fas fa-eraser"></i> </button>
-                    <button type="button" class="btn btn-success mx-1 float-end grow" id="btnSave" title="SAVE"><i class="fas fa-save"> </i></button>
+                    <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisable" id="btnClear" title="CLEAR"><i class="fas fa-eraser"></i> </button>
+                    <button type="button" class="btn btn-success mx-1 float-end center grow btnDisable" id="btnSave" title="SAVE"><i class="fas fa-save"> </i></button>
                     <button type="button" class="btn btn-success mx-1 float-end grow" id="btnEnableEdit" title="ENABLE EDIT"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-success mx-1 float-end grow" id="btnUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
                 </div>
@@ -45,7 +45,6 @@
             </div>
 
             {{-- Nav Pills --}}
-            <form method="post" id="multiple_data_insert_form">
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"> PERSONAL INFORMATION</a>
@@ -77,7 +76,7 @@
                         @include('subpages.performance_evaluation')
                     <br>
                 </div>{{--  End of Tab Content  --}}
-            </form> {{-- End Form of Multiple Data Insert --}}
+             {{-- End Form of Multiple Data Insert --}}
         </div> {{-- End of Employee Form --}}
 
         {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}

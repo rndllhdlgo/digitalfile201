@@ -14,15 +14,16 @@ $('#btnClear').on('click',function(){
         }
     }).then((clear) => {
       if (clear.isConfirmed) {
+      //Clear All Fields
         $('.required_field').val('');
         $('.optional').val('');
-      //Personal Information
         $('.span_all').show();
-
+        $('#solo_parent').hide();
         $('#cover_image').val(''); //Remove the image uploaded
         $('#preview_image').attr('src',''); //Remove current preview
         $('#preview_image').hide();
-        //Clear Documents
+
+      //Documents
         $('#birthcertificate_file').val('');
         $('#preview_birthcertificate').attr('src','');
         $('#preview_birthcertificate').hide();
@@ -86,24 +87,16 @@ $('#btnClear').on('click',function(){
         $('#image_button').css("margin-top","198px");
         // $('#image_close').click();
 
-        $('#college_education_table').hide();
-        $('.removeCollegeRow').click();
-        $('#vocational_table').hide();
-        $('.removeVocationalRow').click();
-        $('#trainings_table').hide();
-        $('.removeTrainingRow').click();
-        $('#job_table').hide();
-        $('.removeJobRow').click();
-        $('#memos_table').hide();
-        $('.removeMemoRow').click();
-        $('#evaluation_table').hide();
-        $('.removeEvaluationRow').click();
-        $('#contracts_table').hide();
-        $('.removeContractsRow').click();
-        $('#resignation_table').hide();
-        $('.removeResignationRow').click();
-        $('#termination_table').hide();
-        $('.removeTerminationRow').click();
+        //Clear Multiple Table Data
+        $('.btn-college').click();
+        $('.btn-training').click();
+        $('.btn-vocational').click();
+        $('.btn-job').click();
+        $('.btn-memo').click();
+        $('.btn-evaluation').click();
+        $('.btn-contract').click();
+        $('.btn-resignation').click();
+        $('.btn-termination').click();
 
       } else if (clear.isDenied) {
       }

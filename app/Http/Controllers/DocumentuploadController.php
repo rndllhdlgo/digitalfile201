@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+
 
 class DocumentuploadController extends Controller
 {
@@ -47,7 +49,7 @@ class DocumentuploadController extends Controller
         $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
         
         Document::create([
-            'birthcertificate' => $birthcertificate, //column name and file name to store
+            'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
             'nbi_clearance' => $nbi,
             'barangay_clearance' => $barangay_clearance,
             'police_clearance' => $police_clearance,
@@ -55,6 +57,9 @@ class DocumentuploadController extends Controller
             'philhealth_form' => $philhealth,
             'pag_ibig_form' => $pag_ibig,
         ]);
-        return back();//Return previous page
+        // return back();
+        // return Redirect::to(url()->previous());//Return previous page
+        echo "<script>setTimeout(function(){ window.location.reload(); }, 3000);</script>";
+        return Redirect::to(url()->previous());//Return previous page
     }
 }

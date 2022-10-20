@@ -63,6 +63,7 @@ input, select{
     background-color: #0d1a80;
     border-color: #0d1a80;
     color: white !important;
+    padding-top: 8px;
 }
 .bp:hover{
     transition: 0.1s;
@@ -414,3 +415,42 @@ margin: 0;
     margin-left: auto;
     margin-right: auto;
 }
+
+#eye_birthcertificate[disabled],
+#replace_birthcertificate[disabled],
+#eye_nbi[disabled],
+#replace_nbi[disabled],
+#eye_barangay_clearance[disabled],
+#replace_barangay_clearance[disabled],
+#eye_police_clearance[disabled],
+#replace_police_clearance[disabled],
+#eye_sss[disbaled],
+#replace_sss[disabled],
+#eye_philhealth[disabled],
+#replace_philhealth[disabled],
+#eye_pag_ibig[disabled],
+#replace_pag_ibig[disabled]{
+    cursor: not-allowed;
+    pointer-events:auto;
+}
+
+.btnDisable[disabled]{
+    cursor: not-allowed;
+    pointer-events:auto;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+select,
+#birthday,
+#child_birthday,
+#date_hired{
+    cursor: pointer;
+}
+
+.title_file{
+    padding-top: 8px;
+}
+
+

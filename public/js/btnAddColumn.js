@@ -14,6 +14,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnCollegeAdd').prop('disabled',false);
+        $('#btnCollegeAdd').css('display','block');
     }
 
     if(!$('#training_name').val() || !$('#training_title').val() || !$('#training_inclusive_years').val()){
@@ -21,6 +22,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnTrainingAdd').prop('disabled',false);
+        $('#btnTrainingAdd').css('display','block');
     }
 
     if(!$('#vocational_name').val() || !$('#vocational_course').val() || !$('#vocational_inclusive_years').val()){
@@ -28,6 +30,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnVocationalAdd').prop('disabled',false);
+        $('#btnVocationalAdd').css('display','block');
     }
 
     if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_option').val()){
@@ -35,6 +38,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnMemoAdd').prop('disabled',false);
+        $('#btnMemoAdd').css('display','block');
     }
 
     if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val()){
@@ -42,6 +46,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnEvaluationAdd').prop('disabled',false);
+        $('#btnEvaluationAdd').css('display','block');
     }
 
     if(!$('#contracts_type').val() || !$('#contracts_date').val()){
@@ -49,6 +54,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnContractAdd').prop('disabled',false);
+        $('#btnContractAdd').css('display','block');
     }
 
     if(!$('#resignation_letter').val() || !$('#resignation_date').val()){
@@ -56,6 +62,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnResignationAdd').prop('disabled',false);
+        $('#btnResignationAdd').css('display','block');
     }
 
     if(!$('#termination_letter').val() || !$('#termination_date').val()){
@@ -63,6 +70,7 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnTerminationAdd').prop('disabled',false);
+        $('#btnTerminationAdd').css('display','block');
     }
 
     if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
@@ -70,8 +78,8 @@ function checkforblankMultiple(){
     }
     else{
         $('#btnJobHistoryAdd').prop('disabled',false);
+        $('#btnJobHistoryAdd').css('display','block');
     }
-
 }
 
 //Solo Parent Table Add
@@ -170,16 +178,20 @@ $(document).ready(function(){
 
 //Documents
 //Memo Table Add
+
     $('#btnMemoAdd').click(function(){
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
-
-        var dynamicMemo = "<tr><td>"+ memo_subject +"</td><td>"+ memo_date + "</td><td>" + memo_option + "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var memo_file = $('#memo_file').val();
+  
+        var dynamicMemo = "<tr><td>"+ memo_subject +"</td><td>"+ memo_date + "</td><td>" + memo_option +  "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        console.log(memo_file);
         $("#memo_tbody").append(dynamicMemo);
         $("#memo_subject").val(""); 
         $("#memo_date").val(""); 
         $("#memo_option").val("");
+        $("#memo_file").val("");
         $('.span_memo_subject').show();
         $('.span_memo_date').show();
         $('.span_memo_option').show();

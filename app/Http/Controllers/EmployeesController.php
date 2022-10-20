@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
 use App\Employee;
 use App\College;
 use App\Vocational;
@@ -13,6 +14,9 @@ use App\Evaluation;
 use App\Contracts;
 use App\Resignation;
 use App\Termination;
+use App\Document;
+use App\Children;
+
 use DataTables;
 
 class EmployeesController extends Controller
@@ -78,12 +82,9 @@ class EmployeesController extends Controller
         $employees->primary_school_name = ucwords($request->primary_school_name);
         $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
-
         $sql = $employees->save();//To save data 
 
-        $id = $employees->id;
-        
-        return $sql ? $id : '' ;//Ternary Operator ?
+        return $sql ? 'true' : 'false';
     }
 
     public function insertImage(Request $request){//This function is to save the image
@@ -164,6 +165,60 @@ class EmployeesController extends Controller
 
     public function checkDuplicate(Request $request){
         return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+    }
+
+    public function singleParentSave(Request $request){
+        $employees = new Children;
+        $employees->child_name = $request->child_name;
+        $employees->child_birthday = $request->child_birthday;
+        $employees->child_gender = $request->child_gender;
+        $sql = $employees->save();
+
+        return $sql ? 'true' : 'false';
+    }
+    public function storeDocuments(Request $request)
+    {
+        //Save Document Files Function
+        $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
+        $nbi_file = $request->file('nbi_file');
+        $barangay_clearance_file = $request->file('barangay_clearance_file');
+        $police_clearance_file = $request->file('police_clearance_file');
+        $sss_file = $request->file('sss_file');
+        $philhealth_file = $request->file('philhealth_file');
+        $pag_ibig_file = $request->file('pag_ibig_file');
+
+        $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
+        $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
+
+        $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
+        $path = $nbi_file->storeAs('public/documents', $nbi);
+
+        $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
+        $path = $barangay_clearance_file->storeAs('public/documents', $barangay_clearance);
+
+        $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
+        $path = $police_clearance_file->storeAs('public/documents', $police_clearance);
+
+        $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
+        $path = $sss_file->storeAs('public/documents', $sss);
+
+        $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
+        $path = $philhealth_file->storeAs('public/documents', $philhealth);
+
+        $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
+        $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
+        
+        Document::create([
+            'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
+            'nbi_clearance' => $nbi,
+            'barangay_clearance' => $barangay_clearance,
+            'police_clearance' => $police_clearance,
+            'sss_form' => $sss,
+            'philhealth_form' => $philhealth,
+            'pag_ibig_form' => $pag_ibig,
+        ]);
+        // return Redirect::to(url()->previous());//Return previous page
+        return back();
     }
 
     public function jobSave(Request $request){

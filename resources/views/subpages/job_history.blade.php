@@ -45,7 +45,7 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody> 

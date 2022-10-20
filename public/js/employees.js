@@ -6,8 +6,8 @@
 //Display current date and time
 setInterval(dateTime,0)
 function dateTime(){
-    const d = new Date().toDateString();
-    const t = new Date().toLocaleTimeString();
+    var d = new Date().toDateString();
+    var t = new Date().toLocaleTimeString();
     document.getElementById("date").innerHTML = d + ' ' + t;
 }
 
@@ -107,7 +107,7 @@ $('#addEmployeeBtn').on('click',function(){
 
     $('#title_details').removeClass('alert-info');
     $('#title_details').addClass('alert-warning');
-    $('#title_details').html('<i class="fas fa-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
+    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
 });
 
 //Check all required field function
@@ -235,6 +235,7 @@ $('#tab2').on('click',function(){
     $('#educational_background').hide();
     $('#documents').hide();
     $('#performance_evaluation').hide();
+    $('#solo_parent').hide();
 });
 
 $('#tab3').on('click',function(){
@@ -249,6 +250,7 @@ $('#tab3').on('click',function(){
     $('#educational_background').show();
     $('#documents').hide();
     $('#performance_evaluation').hide();
+    $('#solo_parent').hide();
 });
 
 $('#tab4').on('click',function(){
@@ -264,6 +266,7 @@ $('#tab4').on('click',function(){
     $('#job_history').show();
     $('#documents').hide();
     $('#performance_evaluation').hide();
+    $('#solo_parent').hide();
 });
 
 $('#tab5').on('click',function(){
@@ -279,6 +282,7 @@ $('#tab5').on('click',function(){
     $('#job_history').hide();
     $('#documents').show();
     $('#performance_evaluation').hide();
+    $('#solo_parent').hide();
 });
 
 $('#tab6').on('click',function(){
@@ -294,6 +298,7 @@ $('#tab6').on('click',function(){
     $('#job_history').hide();
     $('#documents').hide();
     $('#performance_evaluation').show();
+    $('#solo_parent').hide();
 });
 
 //Calculate Age Function
@@ -341,8 +346,8 @@ function checkEmployeeNumber(){
 };
 
 //Email Format Validation Function
-const email_address = document.querySelector("#email_address");
-const email_validation = document.querySelector("#email_validation");
+var email_address = document.querySelector("#email_address");
+var email_validation = document.querySelector("#email_validation");
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //
 
 function emailValidation(){
@@ -357,8 +362,8 @@ function emailValidation(){
 }
 
 //Employee Email Format Validation Function
-const employee_email_address = document.querySelector("#employee_email_address");
-const employee_email_validation = document.querySelector("#employee_email_validation");
+var employee_email_address = document.querySelector("#employee_email_address");
+var employee_email_validation = document.querySelector("#employee_email_validation");
 let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
 function employeeEmailValidation(){
@@ -439,22 +444,22 @@ $(function(){
 });
 
 //File Button Design
-const birthcertificate_file = $('#birthcertificate_file')[0];
-const birthcertificate_button = $('#birthcertificate_button')[0];
-const birthcertificate_text = $('#birthcertificate_text')[0];
+var birthcertificate_file = $('#birthcertificate_file')[0];
+var birthcertificate_button = $('#birthcertificate_button')[0];
+var birthcertificate_text = $('#birthcertificate_text')[0];
 
 $('#birthcertificate_file').on('change',function(){
     if (birthcertificate_file.value) {
-        birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
+        birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
     else {
         birthcertificate_text.innerHTML = "No file chosen, yet.";
     }
 });
 
-const nbi_file = $('#nbi_file')[0];
-const nbi_button = $('#nbi_button')[0];
-const nbi_text = $('#nbi_text')[0];
+var nbi_file = $('#nbi_file')[0];
+var nbi_button = $('#nbi_button')[0];
+var nbi_text = $('#nbi_text')[0];
 
 $('#nbi_file').on('change',function(){
     if (nbi_file.value) {
@@ -465,9 +470,9 @@ $('#nbi_file').on('change',function(){
     }
 });
 
-const barangay_clearance_file = $('#barangay_clearance_file')[0];
-const barangay_clearance_button = $('#barangay_clearance_button')[0];
-const barangay_clearance_text = $('#barangay_clearance_text')[0];
+var barangay_clearance_file = $('#barangay_clearance_file')[0];
+var barangay_clearance_button = $('#barangay_clearance_button')[0];
+var barangay_clearance_text = $('#barangay_clearance_text')[0];
 
 $('#barangay_clearance_file').on('change',function(){
     if (barangay_clearance_file.value) {
@@ -478,9 +483,9 @@ $('#barangay_clearance_file').on('change',function(){
     }
 });
 
-const police_clearance_file = $('#police_clearance_file')[0];
-const police_clearance_button = $('#police_clearance_button')[0];
-const police_clearance_text = $('#police_clearance_text')[0];
+var police_clearance_file = $('#police_clearance_file')[0];
+var police_clearance_button = $('#police_clearance_button')[0];
+var police_clearance_text = $('#police_clearance_text')[0];
 
 $('#police_clearance_file').on('change',function(){
     if (police_clearance_file.value) {
@@ -491,9 +496,9 @@ $('#police_clearance_file').on('change',function(){
     }
 });
 
-const sss_file = $('#sss_file')[0];
-const sss_button = $('#sss_button')[0];
-const sss_text = $('#sss_text')[0];
+var sss_file = $('#sss_file')[0];
+var sss_button = $('#sss_button')[0];
+var sss_text = $('#sss_text')[0];
 
 $('#sss_file').on('change',function(){
     if (sss_file.value) {
@@ -504,9 +509,9 @@ $('#sss_file').on('change',function(){
     }
 });
 
-const philhealth_file = $('#philhealth_file')[0];
-const philhealth_button = $('#philhealth_button')[0];
-const philhealth_text = $('#philhealth_text')[0];
+var philhealth_file = $('#philhealth_file')[0];
+var philhealth_button = $('#philhealth_button')[0];
+var philhealth_text = $('#philhealth_text')[0];
 
 $('#philhealth_file').on('change',function(){
     if (philhealth_file.value) {
@@ -517,9 +522,9 @@ $('#philhealth_file').on('change',function(){
     }
 });
 
-const pag_ibig_file = $('#pag_ibig_file')[0];
-const pag_ibig_button = $('#pag_ibig_button')[0];
-const pag_ibig_text = $('#pag_ibig_text')[0];
+var pag_ibig_file = $('#pag_ibig_file')[0];
+var pag_ibig_button = $('#pag_ibig_button')[0];
+var pag_ibig_text = $('#pag_ibig_text')[0];
 
 $('#pag_ibig_file').on('change',function(){
     if (pag_ibig_file.value) {
@@ -572,10 +577,12 @@ $('#preview_pag_ibig').on('click',function(){
 //Replace Documents Function
 $('#replace_birthcertificate').on('click',function(){
     $('#birthcertificate_file').val('');
-    $('#preview_birthcertificate').attr('src','');
+    $('#preview_birthcertificate').attr('src','');//change the image source
     $('#preview_birthcertificate').hide();
     $('#birthcertificate_text').html('No file chosen, yet.');
     $('#birthcertificate_button').show();
+    $('#eye_birthcertificate').prop('disabled',true);
+    $('#replace_birthcertificate').prop('disabled',true);
     $('#birthcertificate_file').click();
 });
 
@@ -585,26 +592,63 @@ $('#replace_nbi').on('click',function(){
     $('#preview_nbi').hide();
     $('#nbi_text').html('No file chosen, yet.');
     $('#nbi_button').show();
+    $('#eye_nbi').prop('disabled',true);
+    $('#replace_nbi').prop('disabled',true);
     $('#nbi_file').click();
 });
 
 $('#replace_barangay_clearance').on('click',function(){
+    $('#barangay_clearance_file').val('');
+    $('#preview_barangay_clearance').attr('src','');
+    $('#preview_barangay_clearance').hide();
+    $('#barangay_clearance_text').html('No file chosen, yet.');
+    $('#barangay_clearance_button').show();
+    $('#eye_barangay_clearance').prop('disabled',true);
+    $('#replace_barangay_clearance').prop('disabled',true);
     $('#barangay_clearance_file').click();
 });
 
 $('#replace_police_clearance').on('click',function(){
+    $('#police_clearance_file').val('');
+    $('#preview_police_clearance').attr('src','');
+    $('#preview_police_clearance').hide();
+    $('#police_clearance_text').html('No file chosen, yet.');
+    $('#police_clearance_button').show();
+    $('#eye_police_clearance').prop('disabled',true);
+    $('#replace_police-clearance').prop('disabled',true);
     $('#police_clearance_file').click();
 });
 
 $('#replace_sss').on('click',function(){
+    $('#sss_file').val('');
+    $('#preview_sss').attr('src','');
+    $('#preview_sss').hide();
+    $('#sss_text').html('No file chosen, yet.');
+    $('#sss_button').show();
+    $('#eye_sss').prop('disabled',true);
+    $('#replace_sss').prop('disabled',true);
     $('#sss_file').click();
 });
 
 $('#replace_philhealth').on('click',function(){
+    $('#philhealth_file').val('');
+    $('#preview_philhealth').attr('src','');
+    $('#preview_philhealth').hide();
+    $('#philhealth_text').html('No file chosen, yet.');
+    $('#philhealth_button').show();
+    $('#eye_philhealth').prop('disabled',true);
+    $('#replace_philhealth').prop('disabled',true);
     $('#philhealth_file').click();
 });
 
 $('#replace_pag_ibig').on('click',function(){
+    $('#pag_ibig_file').val('');
+    $('#preview_pag_ibig').attr('src','');
+    $('#preview_pag_ibig').hide();
+    $('#pag_ibig_text').html('No file chosen, yet.');
+    $('#pag_ibig_button').show();
+    $('#eye_pag_ibig').prop('disabled',true);
+    $('#replace_pag_ibig').prop('disabled',true);
     $('#pag_ibig_file').click();
 });
 
@@ -691,3 +735,4 @@ $('#title_details').on('click',function(){
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years').val('2006-2012');
 });
+

@@ -5,9 +5,9 @@
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:30%"><i class="fas fa-cogs"></i> OPTION</th>
+                <th><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
+                <th><i class="fas fa-calendar-week"></i> DATE</th>
+                <th><i class="fas fa-cogs"></i> OPTION</th>
                 {{-- <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th> --}}
                 <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
@@ -39,9 +39,15 @@
                         <label for="memo_option" class="formlabel form-label"><span class="span_memo_option">(Optional)</span> </label>
                     </div>
                 </td>
+                {{-- <td class="pb-2 pt-3">
+                    <div class="f-outline">
+                        <input class="forminput form-control" type="file" id="memo_file" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="memo_file" class="formlabel form-label"><span class="span_memo_date">(Optional)</span></label>
+                    </div>
+                </td> --}}
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <button type="button" id="btnMemoAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnMemoAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                     </div>
                 </td>
             </tr>
@@ -84,7 +90,7 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnEvaluationAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnEvaluationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -119,7 +125,7 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnContractAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnContractAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -152,7 +158,7 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnResignationAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnResignationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -186,12 +192,10 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnTerminationAdd" class="btn btn-success center" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnTerminationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
         <hr class="hr-design">
-        <br>
-        <br>
 </div>

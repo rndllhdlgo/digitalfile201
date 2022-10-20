@@ -32,7 +32,7 @@
                         </div>
                     </td>
                     <td>
-                        <button type="button" id="btnCollegeAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnCollegeAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -76,7 +76,7 @@
                     </td>
 
                     <td>
-                        <button type="button" id="btnTrainingAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnTrainingAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -120,7 +120,7 @@
                 </td>
 
                 <td>
-                    <button type="button" id="btnVocationalAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnVocationalAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
@@ -192,7 +192,7 @@
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control required_fiel" type="search" id="primary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                            <input class="forminput form-control required_field" type="search" id="primary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                             <label for="primary_inclusive_years" class="formlabel form-label"><span class="span_primary_school_inclusive_years span_all">(Required)</span></label>
                         </div>
                     </td>

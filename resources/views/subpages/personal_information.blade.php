@@ -13,7 +13,7 @@
                             {{-- <input type="file" name="cover_image" id="cover_image" class="center" accept="image/*" onchange="loadFile(event)">
                             <input type="file" name="cover_image" id="cover_image" class="center " accept="image/*" onchange="return ImageValidation()" style="display: none;">
                         </label> --}}
-                        <button type="button" class="btn btn-primary bp center" style="margin-top: 200px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                        <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                         <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="return ImageValidation()" style="display: none;">
                     </form> 
                 </div>
@@ -62,7 +62,7 @@
                 </div>
                 <div class="col-2">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
                         <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
                     </div>
                 </div>
@@ -249,31 +249,31 @@
             <div  class="row mt-4" id="solo_parent">
                 <div class="col-4">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control optional" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="child_name" class="formlabel form-label"><i class="fas fa-id-card"></i> NAME <span class="span_child_name span_all"></span></label>
+                        <label for="child_name" class="formlabel form-label"><i class="fas fa-id-card"></i> NAME <span class="span_child_name span_all">(Optional)</span></label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="child_birthday" class="formlabel form-label"><i class="fas fa-calendar"></i> BIRTHDAY <span class="span_child_birthday span_all"></span></label>
+                        <input class="forminput form-control optional" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
+                        <label for="child_birthday" class="formlabel form-label"><i class="fas fa-calendar"></i> BIRTHDAY <span class="span_child_birthday span_all">(Optional)</span></label>
                     </div>
                 </div>
                 <div class="col-1">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control optional" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
                         <label for="child_age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <select class="form-select forminput form-control"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <select class="form-select forminput form-control optional"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
                             <option value="" disabled selected>SELECT GENDER </option>
                             <option value="Male">Male</option>
                             <option value="Female">Female</option>
                         </select>
-                        <label for="child_gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_child_gender span_all"></span></label>
+                        <label for="child_gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_child_gender span_all">(Optional)</span></label>
                     </div>
                 </div>
                 <div class="col">
@@ -294,4 +294,5 @@
                 <tbody>
                 </tbody>
             </table>
+            <br>            
 </div>{{-- End of Personal Information Nav --}}
