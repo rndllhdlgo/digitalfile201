@@ -111,10 +111,10 @@ class EmployeesController extends Controller
         
         $employees = Employee::find($request->id);
         $employees->cover_image = $request->fileName;
-        $employees->first_name = $request->first_name;
-        $employees->last_name = $request->last_name;
-        $employees->middle_name = $request->middle_name;
-        $employees->suffix = $request->suffix;
+        $employees->first_name = ucwords($request->first_name);
+        $employees->last_name = ucwords($request->last_name);
+        $employees->middle_name = ucwords($request->middle_name);
+        $employees->suffix = ucwords($request->suffix);
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
@@ -152,11 +152,11 @@ class EmployeesController extends Controller
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = $request->secondary_school_name;
-        $employees->secondary_school_address = $request->secondary_school_address;
+        $employees->secondary_school_name = ucwords($request->secondary_school_name);
+        $employees->secondary_school_address = ucwords($request->secondary_school_address);
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = $request->primary_school_name;
-        $employees->primary_school_address = $request->primary_school_address;
+        $employees->primary_school_name = ucwords($request->primary_school_name);
+        $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();
 
@@ -169,7 +169,7 @@ class EmployeesController extends Controller
 
     public function singleParentSave(Request $request){
         $employees = new Children;
-        $employees->child_name = $request->child_name;
+        $employees->child_name = ucwords($request->child_name);
         $employees->child_birthday = $request->child_birthday;
         $employees->child_gender = $request->child_gender;
         $sql = $employees->save();
