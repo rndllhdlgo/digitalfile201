@@ -6,6 +6,7 @@ use Auth;
 use App\Region;
 use App\City;
 use App\Province;
+use App\Company;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -50,6 +51,8 @@ class PagesController extends Controller
             return redirect('/');
         }
         // return view('pages.maintenance');
+        
         return view('pages.maintenance');
     }
+    
 }
