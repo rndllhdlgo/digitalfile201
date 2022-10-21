@@ -116,12 +116,12 @@ function checkforblank(){
     || $('#first_name').val().length < 2
     || $('#last_name').val().length < 2
     || $('#middle_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
     || $('#father_name').val().length < 2
-    || $('#father_contact_number').val().length < 11
     || $('#mother_name').val().length < 2
-    || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_name').val().length < 2
+    || $('#cellphone_number').val().length < 11
+    || $('#father_contact_number').val().length < 11
+    || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
     || $('#employee_contact_number').val().length < 11
     || !email_address.value.match(regExp)
@@ -168,6 +168,9 @@ $('#spouse').hide();//Hide spouse section
         else if(status.value == "Solo Parent"){
             $('#spouse').hide();
             $('#solo_parent').show();
+            $('#spouse_name').val("");
+            $('#spouse_contact_number').val("");
+            $('#spouse_profession').val("");
         }
         else{
             $('#solo_parent').hide();
@@ -175,9 +178,7 @@ $('#spouse').hide();//Hide spouse section
             $('#spouse_name').removeClass('required_field');
             $('#spouse_contact_number').removeClass('required_field');
             $('#spouse_profession').removeClass('required_field');
-            $('#spouse_name').val("");
-            $('#spouse_contact_number').val("");
-            $('#spouse_profession').val("");
+            
         }
     }
 
@@ -502,3 +503,10 @@ $('#title_details').on('click',function(){
     $('#mother_contact_number').val('09324207231');
 });
 
+function alertFunction() {
+    var x = document.getElementById("first_name");
+    if (x == null){
+        alert('asd');
+    }
+    // x.value = x.value.toUpperCase();
+  }
