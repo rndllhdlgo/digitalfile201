@@ -286,7 +286,7 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     });
-}); //End of document function
+}); 
 
 
 

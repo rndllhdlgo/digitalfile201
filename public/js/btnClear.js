@@ -19,6 +19,7 @@ $('#btnClear').on('click',function(){
         $('.optional').val('');
         $('.span_all').show();
         $('#solo_parent').hide();
+        $('#spouse').hide();
         $('#cover_image').val(''); //Remove the image uploaded
         $('#preview_image').attr('src',''); //Remove current preview
         $('#preview_image').hide();
