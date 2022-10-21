@@ -163,8 +163,34 @@ class EmployeesController extends Controller
         return $sql ? 'true' : 'false';
     }
 
+    //Check Duplication of Data
     public function checkDuplicate(Request $request){
-        return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+        // return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+        return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'employee_number_duplicate_true': 'employee_number_duplicate_false';
+    }
+    public function checkEmailDuplicate(Request $request){
+        return Employee::where('email_address',$request->email_address)->count() > 0 ? 'email_address_duplicate_true': 'email_address_duplicate_false';
+    }
+    public function checkTelephoneNumberDuplicate(Request $request){
+        return Employee::where('telephone_number',$request->telephone_number)->count() > 0 ? 'telephone_number_duplicate_true': 'telephone_number_duplicate_false';
+    }
+    public function checkCellphoneNumberDuplicate(Request $request){
+        return Employee::where('cellphone_number',$request->cellphone_number)->count() > 0 ? 'cellphone_number_duplicate_true': 'cellphone_number_duplicate_false';
+    }
+    public function checkFatherCellphoneNumberDuplicate(Request $request){
+        return Employee::where('father_contact_number',$request->father_contact_number)->count() > 0 ? 'father_contact_number_duplicate_true': 'father_contact_number_duplicate_false';
+    }
+    public function checkMotherCellphoneNumberDuplicate(Request $request){
+        return Employee::where('mother_contact_number',$request->mother_contact_number)->count() > 0 ? 'mother_contact_number_duplicate_true': 'mother_contact_number_duplicate_false';
+    }
+    public function checkEmergencyContactNumberDuplicate(Request $request){
+        return Employee::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'emergency_contact_number_duplicate_true': 'emergency_contact_number_duplicate_false';
+    }
+    public function checkEmployeeEmailAddressDuplicate(Request $request){
+        return Employee::where('employee_email_address',$request->employee_email_address)->count() > 0 ? 'employee_email_address_duplicate_true': 'employee_email_address_duplicate_false';
+    }
+    public function checkEmployeeContactNumberDuplicate(Request $request){
+        return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'employee_contact_number_duplicate_true': 'employee_contact_number_duplicate_false';
     }
 
     public function singleParentSave(Request $request){

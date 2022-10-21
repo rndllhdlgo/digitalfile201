@@ -235,7 +235,6 @@ $('#tab2').on('click',function(){
     $('#educational_background').hide();
     $('#documents').hide();
     $('#performance_evaluation').hide();
-    $('#solo_parent').hide();
 });
 
 $('#tab3').on('click',function(){
@@ -250,7 +249,6 @@ $('#tab3').on('click',function(){
     $('#educational_background').show();
     $('#documents').hide();
     $('#performance_evaluation').hide();
-    $('#solo_parent').hide();
 });
 
 $('#tab4').on('click',function(){
@@ -266,7 +264,6 @@ $('#tab4').on('click',function(){
     $('#job_history').show();
     $('#documents').hide();
     $('#performance_evaluation').hide();
-    $('#solo_parent').hide();
 });
 
 $('#tab5').on('click',function(){
@@ -282,7 +279,6 @@ $('#tab5').on('click',function(){
     $('#job_history').hide();
     $('#documents').show();
     $('#performance_evaluation').hide();
-    $('#solo_parent').hide();
 });
 
 $('#tab6').on('click',function(){
@@ -298,7 +294,6 @@ $('#tab6').on('click',function(){
     $('#job_history').hide();
     $('#documents').hide();
     $('#performance_evaluation').show();
-    $('#solo_parent').hide();
 });
 
 //Calculate Age Function
@@ -323,27 +318,6 @@ $('#child_birthday').on('change',function(){
         }
     return $('#child_age').val(age);
 });
-
-//Check Duplicate Function
-setInterval(checkEmployeeNumber,200)
-function checkEmployeeNumber(){
-      if($('#employee_number').val()){
-        $.ajax({
-            url: "/employees/checkDuplicate",
-            data:{
-            employee_number : $('#employee_number').val(),
-            },
-            success: function(data){
-                if(data == 'true'){
-                    $('#check_duplicate').show();
-                }
-                else{
-                    $('#check_duplicate').hide();
-                }
-            }
-        });
-      }
-};
 
 //Email Format Validation Function
 var email_address = document.querySelector("#email_address");
@@ -707,6 +681,7 @@ $('#province').on('change', function(){
 
 //Fill All
 $('#title_details').on('click',function(){
+//Required
     $('#first_name').val('Rendell');
     $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
@@ -734,5 +709,9 @@ $('#title_details').on('click',function(){
     $('#primary_school_name').val('Lakandula Elementary School');
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years').val('2006-2012');
+//Optional
+    $('#telephone_number').val('123123');
+    $('#father_contact_number').val('09123456789');
+    $('#mother_contact_number').val('09324207239');
 });
 
