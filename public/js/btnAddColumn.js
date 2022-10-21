@@ -84,9 +84,7 @@ function checkforblankMultiple(){
 
 //Solo Parent Table Add
 $(document).ready(function(){
-
     $('#btnSingleParentAdd').click(function(){
-        // alert('asd');
         $('#solo_parent_data_table').show();
         var child_name = $('#child_name').val().trim();
         var child_birthday = $('#child_birthday').val();
@@ -97,7 +95,6 @@ $(document).ready(function(){
             if($('#solo_parent_data_table tbody').children().children().length == 1){
                 $('#solo_parent_data_table tbody').html("");
             }
-
             var dynamicSingleParent = "<tr><td>"+ child_name +"</td><td>" + child_birthday + "</td><td>" + child_age + "</td><td>" + child_gender + "</td><td> <button class='btn btn-danger btn-single-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
             $('#solo_parent_data_table tbody').append(dynamicSingleParent);
             $('#child_name').val("");
@@ -114,7 +111,7 @@ $(document).ready(function(){
                 }
             });
         }else{
-            alert('Hellos');
+            alert('error');
         }
     });
 
@@ -178,15 +175,13 @@ $(document).ready(function(){
 
 //Documents
 //Memo Table Add
-
     $('#btnMemoAdd').click(function(){
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
-        var memo_file = $('#memo_file').val();
+        // var memo_file = $('#memo_file').val();
   
         var dynamicMemo = "<tr><td>"+ memo_subject +"</td><td>"+ memo_date + "</td><td>" + memo_option +  "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        console.log(memo_file);
         $("#memo_tbody").append(dynamicMemo);
         $("#memo_subject").val(""); 
         $("#memo_date").val(""); 
@@ -251,7 +246,7 @@ $(document).ready(function(){
         });
     });
 
-//Resignation Table Add
+//Termination Table Add
     $('#btnTerminationAdd').click(function(){
         var termination_letter = $('#termination_letter').val().trim();
         var termination_date = $('#termination_date').val();

@@ -1,11 +1,8 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <br>
-    
     <div class="container" style="width:75%;">
-        <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span>
-        <br>
-        <br>
+        {{-- <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span> --}}
         <form method="POST" enctype="multipart/form-data" action="/employees/storeDocuments" id="document_form">
             @csrf
             <input type="hidden" name="employee_id" id="employee_id">
@@ -23,11 +20,11 @@
                                 <td><p class="title_file"><b>BIRTH CERTIFICATE</b></p></td>
                                 <td>
                                     <button type="button" id="birthcertificate_button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="birthcertificate_file"   class="required_field"     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" style="display: none;" name="birthcertificate_file">
+                                    <input  type="file"   id="birthcertificate_file"   class=""     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" style="display: none;" name="birthcertificate_file">
                                     <span id="birthcertificate_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_birthcertificate"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_birthcertificate').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_birthcertificate"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_birthcertificate').click();" style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_birthcertificate" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_birthcertificate" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -36,11 +33,11 @@
                                 <td><p class="title_file"><b>NBI CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="nbi_button" class="btn btn-primary bp" onclick="$('#nbi_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="nbi_file"   class="required_field"     onchange="return nbiValidation()" accept="image/*,.pdf" style="display: none;" name="nbi_file">
+                                    <input  type="file"   id="nbi_file"   class=""     onchange="return nbiValidation()" accept="image/*,.pdf" style="display: none;" name="nbi_file">
                                     <span id="nbi_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_nbi"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_nbi').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_nbi"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_nbi').click();"  style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_nbi" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_nbi" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -53,7 +50,7 @@
                                     <span id="barangay_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_barangay_clearance"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_barangay_clearance').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_barangay_clearance"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_barangay_clearance').click();"  style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_barangay_clearance" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_barangay_clearance" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -66,7 +63,7 @@
                                     <span id="police_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_police_clearance"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_police_clearance').click();"  style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_police_clearance"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_police_clearance').click();"  style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_police_clearance" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt="" id="preview_police_clearance" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -79,7 +76,7 @@
                                     <span id="sss_text">No file chosen, yet.</span>
                                 </td>
                                 <td> 
-                                    <button type="button" id="eye_sss"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_sss').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_sss"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_sss').click();" style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_sss" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_sss" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -92,7 +89,7 @@
                                     <span id="philhealth_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_philhealth"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_philhealth').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_philhealth"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_philhealth').click();" style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_philhealth" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_philhealth" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>
@@ -105,7 +102,7 @@
                                     <span id="pag_ibig_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
-                                    <button type="button" id="eye_pag_ibig"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_pag_ibig').click();" style="margin-left: 13%;" disabled><i class="fas fa-eye"></i></button>
+                                    <button type="button" id="eye_pag_ibig"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_pag_ibig').click();" style="margin-left: 20%;" disabled><i class="fas fa-eye"></i></button>
                                     <button type="button" id="replace_pag_ibig" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                                     <img src="" alt=""    id="preview_pag_ibig" style="display: none; cursor:zoom-in;" data-bs-toggle="modal" data-bs-target="#preview_modal" onclick="changePreview(this)">
                                 </td>

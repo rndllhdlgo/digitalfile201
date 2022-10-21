@@ -15,9 +15,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
-
     </head>
 <body>
         @if(!Auth::guest())
@@ -37,13 +35,13 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         
         <!-- Insert JS FILES -->
-        @if(Request::is('employees')) <!--Route-->
+        @if(Request::is('home'))<!--Route-->
+            <script src="{{ env('APP_URL')}}js/home.js"></script>
+        @endif
+        @if(Request::is('employees')) 
             <script src="{{ env('APP_URL')}}js/btnCancelEdit.js"></script>
         @endif
         @if(Request::is('employees'))
-            <script src="{{ env('APP_URL')}}js/btnClear.js"></script>
-        @endif
-        @if(Request::is('users'))
             <script src="{{ env('APP_URL')}}js/btnClear.js"></script>
         @endif
         @if(Request::is('employees'))
@@ -55,41 +53,20 @@
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/btnSave.js"></script>
         @endif
-        @if(Request::is('users'))
-            <script src="{{ env('APP_URL')}}js/btnSave.js"></script>
-        @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/btnUpdate.js"></script>
         @endif
-        @if(Request::is('users'))
-            <script src="{{ env('APP_URL')}}js/btnUpdate.js"></script>
-        @endif
         @if(Request::is('employees'))
-            <script src="{{ env('APP_URL')}}js/btnView.js"></script>
-        @endif
-        @if(Request::is('users'))
             <script src="{{ env('APP_URL')}}js/btnView.js"></script>
         @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/employees.js"></script>
         @endif
-        @if(Request::is('home'))
-            <script src="{{ env('APP_URL')}}js/home.js"></script>
-        @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/inputFieldEffect.js"></script>
-        @endif
-        @if(Request::is('users'))
-            <script src="{{ env('APP_URL')}}js/inputFieldEffect.js"></script>
-        @endif
-        @if(Request::is('login'))
-        <script src="{{ env('APP_URL')}}js/login.js"></script>
         @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/multipleRow.js"></script>
-        @endif
-        @if(Request::is('users'))
-            <script src="{{ env('APP_URL')}}js/users.js"></script>
         @endif
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/btnAddColumn.js"></script>
@@ -97,11 +74,32 @@
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/uploadValidation.js"></script>
         @endif
+        @if(Request::is('employees'))
+            <script src="{{ env('APP_URL')}}js/checkDuplicate.js"></script>
+        @endif
+        @if(Request::is('users'))
+        <script src="{{ env('APP_URL')}}js/btnClear.js"></script>
+        @endif
+        @if(Request::is('users'))
+            <script src="{{ env('APP_URL')}}js/btnSave.js"></script>
+        @endif
+        @if(Request::is('users'))
+            <script src="{{ env('APP_URL')}}js/btnUpdate.js"></script>
+        @endif
+        @if(Request::is('users'))
+            <script src="{{ env('APP_URL')}}js/btnView.js"></script>
+        @endif
+        @if(Request::is('users'))
+            <script src="{{ env('APP_URL')}}js/inputFieldEffect.js"></script>
+        @endif
+        @if(Request::is('login'))
+            <script src="{{ env('APP_URL')}}js/login.js"></script>
+        @endif
+        @if(Request::is('users'))
+            <script src="{{ env('APP_URL')}}js/users.js"></script>
+        @endif
         @if(Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/maintenance.js"></script>
-        @endif
-        @if(Request::is('try'))
-            <script src="{{ env('APP_URL')}}js/try.js"></script>
         @endif
         
         <script>

@@ -89,7 +89,6 @@ $(document).ready(function () {
           setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 0);//To reload the table/page
         },
     });
-
 });
 
 //Hide Employee fill up form
@@ -114,23 +113,19 @@ $('#addEmployeeBtn').on('click',function(){
 setInterval(checkforblank,0);
 function checkforblank(){
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
-    || $('#first_name_validation').is(':visible') 
-    || $('#last_name_validation').is(':visible') 
-    || $('#middle_name_validation').is(':visible') 
-    || $('#email_validation').is(':visible') 
-    || $('#cellphone_number_validation').is(':visible')
-    || $('#father_name_validation').is(':visible')
-    || $('#father_contact_number_validation').is(':visible')
-    || $('#mother_name_validation').is(':visible')
-    || $('#mother_contact_number_validation').is(':visible')
-    || $('#emergency_contact_name_validation').is(':visible')
-    || $('#emergency_contact_number_validation').is(':visible')
-    || $('#spouse_name_validation').is(':visible')
-    || $('#spouse_contact_number_validation').is(':visible')
-    || $('#child_name_validation').is(':visible')
-    || $('#check_duplicate').is(':visible')
-    || $('#employee_email_validation').is(':visible')
-    || $('#employee_contact_number_validation').is(':visible')
+    || $('#first_name').val().length < 2
+    || $('#last_name').val().length < 2
+    || $('#middle_name').val().length < 2
+    || $('#cellphone_number').val().length < 11
+    || $('#father_name').val().length < 2
+    || $('#father_contact_number').val().length < 11
+    || $('#mother_name').val().length < 2
+    || $('#mother_contact_number').val().length < 11
+    || $('#emergency_contact_name').val().length < 2
+    || $('#emergency_contact_number').val().length < 11
+    || $('#employee_contact_number').val().length < 11
+    || !email_address.value.match(regExp)
+    || !employee_email_address.value.match(regExp)
     ){
         $('#title_details').show();
         $('#btnSave').prop("disabled",true);
@@ -140,6 +135,7 @@ function checkforblank(){
         $('#btnSave').prop("disabled",false);
     }
 }
+
 
 //Clear Form
 setInterval(checkclearform,0);
@@ -417,215 +413,6 @@ $(function(){
     $('#birthday').attr('max', maxDates);
 });
 
-//File Button Design
-var birthcertificate_file = $('#birthcertificate_file')[0];
-var birthcertificate_button = $('#birthcertificate_button')[0];
-var birthcertificate_text = $('#birthcertificate_text')[0];
-
-$('#birthcertificate_file').on('change',function(){
-    if (birthcertificate_file.value) {
-        birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        birthcertificate_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var nbi_file = $('#nbi_file')[0];
-var nbi_button = $('#nbi_button')[0];
-var nbi_text = $('#nbi_text')[0];
-
-$('#nbi_file').on('change',function(){
-    if (nbi_file.value) {
-        nbi_text.innerHTML = "<b> File Name: </b>" + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        nbi_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var barangay_clearance_file = $('#barangay_clearance_file')[0];
-var barangay_clearance_button = $('#barangay_clearance_button')[0];
-var barangay_clearance_text = $('#barangay_clearance_text')[0];
-
-$('#barangay_clearance_file').on('change',function(){
-    if (barangay_clearance_file.value) {
-        barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        barangay_clearance_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var police_clearance_file = $('#police_clearance_file')[0];
-var police_clearance_button = $('#police_clearance_button')[0];
-var police_clearance_text = $('#police_clearance_text')[0];
-
-$('#police_clearance_file').on('change',function(){
-    if (police_clearance_file.value) {
-        police_clearance_text.innerHTML = "<b> File Name: </b>" + police_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        police_clearance_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var sss_file = $('#sss_file')[0];
-var sss_button = $('#sss_button')[0];
-var sss_text = $('#sss_text')[0];
-
-$('#sss_file').on('change',function(){
-    if (sss_file.value) {
-        sss_text.innerHTML = "<b> File Name: </b>" + sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        sss_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var philhealth_file = $('#philhealth_file')[0];
-var philhealth_button = $('#philhealth_button')[0];
-var philhealth_text = $('#philhealth_text')[0];
-
-$('#philhealth_file').on('change',function(){
-    if (philhealth_file.value) {
-        philhealth_text.innerHTML = "<b> File Name: </b>" + philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        philhealth_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-var pag_ibig_file = $('#pag_ibig_file')[0];
-var pag_ibig_button = $('#pag_ibig_button')[0];
-var pag_ibig_text = $('#pag_ibig_text')[0];
-
-$('#pag_ibig_file').on('change',function(){
-    if (pag_ibig_file.value) {
-        pag_ibig_text.innerHTML = "<b> File Name: </b>" + pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        pag_ibig_text.innerHTML = "No file chosen, yet.";
-    }
-});
-
-//Preview of file upload in Modal Form
-function changePreview(newSrc){
-    var newSrcNow = newSrc.src; //To get the source of the file uploaded
-    var largImg = document.getElementById('file_display');
-    largImg.src = newSrcNow;
-}
-//Change .modal-title function
-$('#preview_birthcertificate').on('click',function(){
-    $('.modal-title').html('BIRTH CERTIFICATE');
-});
-
-$('#preview_nbi').on('click',function(){
-    $('.modal-title').html('NBI CLEARANCE');
-});
-
-$('#preview_barangay_clearance').on('click',function(){
-    $('.modal-title').html('BARANGAY CLEARANCE');
-});
-
-$('#preview_police_clearance').on('click',function(){
-    $('.modal-title').html('POLICE CLEARANCE');
-});
-
-$('#preview_police_clearance').on('click',function(){
-    $('.modal-title').html('POLICE CLEARANCE');
-});
-
-$('#preview_sss').on('click',function(){
-    $('.modal-title').html('SSS E1 FORM');
-});
-
-$('#preview_philhealth').on('click',function(){
-    $('.modal-title').html('PHILHEALTH FORM');
-});
-
-$('#preview_pag_ibig').on('click',function(){
-    $('.modal-title').html('PAGIBIG FORM');
-});
-
-//Replace Documents Function
-$('#replace_birthcertificate').on('click',function(){
-    $('#birthcertificate_file').val('');
-    $('#preview_birthcertificate').attr('src','');//change the image source
-    $('#preview_birthcertificate').hide();
-    $('#birthcertificate_text').html('No file chosen, yet.');
-    $('#birthcertificate_button').show();
-    $('#eye_birthcertificate').prop('disabled',true);
-    $('#replace_birthcertificate').prop('disabled',true);
-    $('#birthcertificate_file').click();
-});
-
-$('#replace_nbi').on('click',function(){
-    $('#nbi_file').val('');
-    $('#preview_nbi').attr('src','');
-    $('#preview_nbi').hide();
-    $('#nbi_text').html('No file chosen, yet.');
-    $('#nbi_button').show();
-    $('#eye_nbi').prop('disabled',true);
-    $('#replace_nbi').prop('disabled',true);
-    $('#nbi_file').click();
-});
-
-$('#replace_barangay_clearance').on('click',function(){
-    $('#barangay_clearance_file').val('');
-    $('#preview_barangay_clearance').attr('src','');
-    $('#preview_barangay_clearance').hide();
-    $('#barangay_clearance_text').html('No file chosen, yet.');
-    $('#barangay_clearance_button').show();
-    $('#eye_barangay_clearance').prop('disabled',true);
-    $('#replace_barangay_clearance').prop('disabled',true);
-    $('#barangay_clearance_file').click();
-});
-
-$('#replace_police_clearance').on('click',function(){
-    $('#police_clearance_file').val('');
-    $('#preview_police_clearance').attr('src','');
-    $('#preview_police_clearance').hide();
-    $('#police_clearance_text').html('No file chosen, yet.');
-    $('#police_clearance_button').show();
-    $('#eye_police_clearance').prop('disabled',true);
-    $('#replace_police-clearance').prop('disabled',true);
-    $('#police_clearance_file').click();
-});
-
-$('#replace_sss').on('click',function(){
-    $('#sss_file').val('');
-    $('#preview_sss').attr('src','');
-    $('#preview_sss').hide();
-    $('#sss_text').html('No file chosen, yet.');
-    $('#sss_button').show();
-    $('#eye_sss').prop('disabled',true);
-    $('#replace_sss').prop('disabled',true);
-    $('#sss_file').click();
-});
-
-$('#replace_philhealth').on('click',function(){
-    $('#philhealth_file').val('');
-    $('#preview_philhealth').attr('src','');
-    $('#preview_philhealth').hide();
-    $('#philhealth_text').html('No file chosen, yet.');
-    $('#philhealth_button').show();
-    $('#eye_philhealth').prop('disabled',true);
-    $('#replace_philhealth').prop('disabled',true);
-    $('#philhealth_file').click();
-});
-
-$('#replace_pag_ibig').on('click',function(){
-    $('#pag_ibig_file').val('');
-    $('#preview_pag_ibig').attr('src','');
-    $('#preview_pag_ibig').hide();
-    $('#pag_ibig_text').html('No file chosen, yet.');
-    $('#pag_ibig_button').show();
-    $('#eye_pag_ibig').prop('disabled',true);
-    $('#replace_pag_ibig').prop('disabled',true);
-    $('#pag_ibig_file').click();
-});
-
 //Region,Province,City DropDown Function
 $('#region').on('change', function(){
     $('#province').val('');
@@ -687,17 +474,17 @@ $('#title_details').on('click',function(){
     $('#middle_name').val('Mendez');
     $('#street').val('West Antipolo Street Gagalangin Tondo Manila');
     $('#email_address').val('rendellhidalgo11@gmail.com');
-    $('#cellphone_number').val('09322003718');
+    $('#cellphone_number').val('09322003719');
     $('#father_name').val('Reynaldo Hidalgo');
     $('#father_profession').val('Utility Worker');
     $('#mother_name').val('Marlyn Hidalgo');
     $('#mother_profession').val('House Wife');
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
-    $('#emergency_contact_number').val('09324207239');
+    $('#emergency_contact_number').val('09324207238');
     $('#employee_number').val('1');
-    $('#employee_email_address').val('rendellhidalgo11@gmail.com');
-    $('#employee_contact_number').val('09322003718');
+    $('#employee_email_address').val('rendellhidalgo111@gmail.com');
+    $('#employee_contact_number').val('09322003719');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
     $('#philhealth_number').val('3');
@@ -710,8 +497,8 @@ $('#title_details').on('click',function(){
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years').val('2006-2012');
 //Optional
-    $('#telephone_number').val('123123');
-    $('#father_contact_number').val('09123456789');
-    $('#mother_contact_number').val('09324207239');
+    $('#telephone_number').val('1231243');
+    $('#father_contact_number').val('09123456781');
+    $('#mother_contact_number').val('09324207231');
 });
 

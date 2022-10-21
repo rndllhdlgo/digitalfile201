@@ -16,6 +16,7 @@ class UsersController extends Controller
 
     public function saveUser(Request $request){
         
+        //check email duplication
         if(User::where('email',$request->email)->count() > 0){
             return response('duplicate');
         }

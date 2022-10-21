@@ -1,6 +1,8 @@
 body{
     background-color: white;
+    overflow-x: hidden;
 }
+
 /* For Input */
 .f-outline{
     position: relative;
@@ -74,6 +76,7 @@ input, select{
     color: white;
     opacity: 100%;
 }
+/* Scroll Bar Design */
 html {
     scrollbar-width: normal;
     scrollbar-color: #777 #555;
@@ -94,11 +97,13 @@ html::-webkit-scrollbar-track {
 html::-webkit-scrollbar-track:hover {
     background-color: #555;
 }
+
 .center{
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
+
 .digital-file-201{
     display: inline;
     padding:0;
@@ -107,9 +112,7 @@ html::-webkit-scrollbar-track:hover {
     font-weight: bolder;
     color:#0d1a80;
 }
-body{
-    overflow-x: hidden;
-}
+
 /* Navbar */
 .nav-link{
     color:white;
@@ -128,6 +131,7 @@ body{
 .logout-text{
     color:black !important;
 }
+
 .pill{
     color:#0d1a80 !important;
     font-weight: bolder;
@@ -150,44 +154,6 @@ tr{
     border-color:black;
 }
 
-/* Back on top */
-/* #button {
-    display: inline-block;
-    background-color: #0d1a80;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    border-radius: 4px;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    transition: background-color .3s, 
-    opacity .5s, visibility .5s;
-    opacity: 0;
-    visibility: hidden;
-    z-index: 1000;
-    text-decoration: none;
-}
-#button::after {
-    content: "\f077";
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    font-size: 2em;
-    line-height: 30px;
-    color: #fff;
-}
-#button:hover {
-    cursor: pointer;
-    background-color: #333;
-}
-#button:active {
-    background-color: #555;
-}
-#button.show {
-    opacity: 1;
-    visibility: visible;
-} */
 .grow {
     display: inline-block;
     transition-duration: 0.3s;
@@ -224,10 +190,7 @@ a{
     display: table;
     clear: both;/* Clear floats after the columns */
 }
-/* #personal_information, #work_information ,#educational_background, #job_history, #documents{
-    padding: 10px;
-    box-shadow: 0 0 5px #333;
-} */
+
 #preview_image{
     height: 205px;
     width: 278px;
@@ -249,37 +212,12 @@ a{
     zoom: 150%;
     margin-left: 26%;
 }
+
 /* Custom File Input */
-.custom_file{
-    padding: 5px;
-    display: table;
-    cursor: pointer;
-    border-radius: 5px;
-    color:#fff;
-    margin-top: -50px;
-    font-size: 15px;
-    background-color: #0d1a80;
-}
-.custom_file:hover{
-    background-color: #1b2fc2;
-    transition: 0.2s;
-}
-/* .custom_attach_file{
-    padding-top: 5px !important;
-    display: table;
-    cursor: pointer;
-    color:#fff;
-    text-align: center;
-    border-radius: 5px;
-    height: 35px;
-    border: 0px;
-} */
-/* input[type="file"] {
-    display: none;
-} */
 strong{
     color:black !important;
 } 
+
 /* Sweet Alert */
 .my-actions { margin: 0 2em; }
 .order-1 { order: 1; }
@@ -289,13 +227,6 @@ strong{
 .right-gap {
     margin-right: auto;
 }
-
-/* Hide Input Number Arrows
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
-} */
 
 .validation{
     display:none;
@@ -319,89 +250,21 @@ margin: 0;
     transform: rotate(45deg);
     border-bottom-right-radius: 20px;
 }
-/* #email_validation{
-    display:none;
-    background-color: #dc3545;
-    color:white;
-    margin-top: 13px;
-    margin-bottom: -2px;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    transition: 0.2s;
-    cursor:not-allowed;
-}
-#email_validation:before{
-    position: absolute;
-    content:'';
-    height: 15px;
-    width: 15px;
-    background-color: #dc3545;
-    top:-7px;
-    transform: rotate(45deg);
-    border-bottom-right-radius: 20px;
-} */
-#employee_email_validation{
-    display:none;
-    background-color: #dc3545;
-    color:white;
-    margin-top: 13px;
-    margin-bottom: -2px;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    transition: 0.2s;
-    cursor:not-allowed;
-}
-#employee_email_validation:before{
-    position: absolute;
-    content:'';
-    height: 15px;
-    width: 15px;
-    background-color: #dc3545;
-    top:-7px;
-    transform: rotate(45deg);
-    border-bottom-right-radius: 20px;
-}
-#password_validation{
-    display:none;
-    background-color: #dc3545;
-    color:white;
-    margin-top: 13px;
-    margin-bottom: -2px;
-    border-radius: 5px;
-    padding: 5px;
-    position: relative;
-    transition: 0.2s;
-    cursor:not-allowed;
-}
-#password_validation:before{
-    position: absolute;
-    content:'';
-    height: 15px;
-    width: 15px;
-    background-color: #dc3545;
-    top:-7px;
-    transform: rotate(45deg);
-    border-bottom-right-radius: 20px;
-}
 
 /* Educational and Trainings Background CSS */
 .table-title{
     font-size:16px;
-    /* margin-left:1px; */
     background-color:#0d1a80;
     color:white !important;
     padding:5px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
-    /* border-bottom: 1px solid white !important; */
 }
-
 .hr-design {
     border:2px solid black;
-  }
+}
 
+/* Css for Dcouments Tab */
 #preview_birthcertificate,
 #preview_nbi,
 #preview_barangay_clearance,

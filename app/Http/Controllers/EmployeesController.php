@@ -244,7 +244,7 @@ class EmployeesController extends Controller
             'pag_ibig_form' => $pag_ibig,
         ]);
         // return Redirect::to(url()->previous());//Return previous page
-        return back();
+        return redirect()->back();
     }
 
     public function jobSave(Request $request){
