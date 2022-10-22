@@ -697,3 +697,302 @@ $('#user_level').on('change',function(){
 $('#status').on('change',function(){
     $('.span_status').hide();
 });
+
+//
+
+$('#first_name').on('keyup',function(){
+    if(!$('#first_name').val()){
+        $('#first_name').addClass('red');
+        $('#first_name').removeClass('blue');
+    }
+    else{
+        $('#first_name').removeClass('red');
+        $('#first_name').addClass('blue');
+    }
+});
+
+$('#last_name').on('keyup',function(){
+    if(!$('#last_name').val()){
+        $('#last_name').addClass('red');
+        $('#last_name').removeClass('blue');
+    }
+    else{
+        $('#last_name').removeClass('red');
+        $('#last_name').addClass('blue');
+    }
+});
+
+$('#middle_name').on('keyup',function(){
+    if(!$('#middle_name').val()){
+        $('#middle_name').addClass('red');
+        $('#middle_name').removeClass('blue');
+    }
+    else{
+        $('#middle_name').removeClass('red');
+        $('#middle_name').addClass('blue');
+    }
+});
+
+$('#suffix').on('keyup',function(){
+    if(!$('#suffix').val()){
+        $('#suffix').addClass('red');
+        $('#suffix').removeClass('blue');
+    }
+    else{
+        $('#suffix').removeClass('red');
+        $('#suffix').addClass('blue');
+    }
+});
+
+$('#birthday').on('change',function(){
+    if(!$('#birthday').val()){
+        $('#birthday').addClass('red');
+        $('#birthday').removeClass('blue');
+    }
+    else{
+        $('#birthday').removeClass('red');
+        $('#birthday').addClass('blue');
+    }
+});
+
+$('#gender').on('change',function(){
+    if(!$('#gender').val()){
+        $('#gender').addClass('red');
+        $('#gender').removeClass('blue');
+    }
+    else{
+        $('#gender').removeClass('red');
+        $('#gender').addClass('blue');
+    }
+});
+
+$('#civil_status').on('change',function(){
+    if(!$('#civil_status').val()){
+        $('#civil_status').addClass('red');
+        $('#civil_status').removeClass('blue');
+    }
+    else{
+        $('#civil_status').removeClass('red');
+        $('#civil_status').addClass('blue');
+    }
+});
+
+$('#street').on('keyup',function(){
+    if(!$('#street').val()){
+        $('#street').addClass('red');
+        $('#street').removeClass('blue');
+    }
+    else{
+        $('#street').removeClass('red');
+        $('#street').addClass('blue');
+    }
+});
+
+$('#region').on('change',function(){
+    if(!$('#region').val()){
+        $('#region').addClass('red');
+        $('#region').removeClass('blue');
+    }
+    else{
+        $('#region').removeClass('red');
+        $('#region').addClass('blue');
+    }
+});
+
+$('#province').on('change',function(){
+    if(!$('#province').val()){
+        $('#province').addClass('red');
+        $('#province').removeClass('blue');
+    }
+    else{
+        $('#province').removeClass('red');
+        $('#province').addClass('blue');
+    }
+});
+
+$('#city').on('change',function(){
+    if(!$('#city').val()){
+        $('#city').addClass('red');
+        $('#city').removeClass('blue');
+    }
+    else{
+        $('#city').removeClass('red');
+        $('#city').addClass('blue');
+    }
+});
+
+$('#email_address').on('keyup',function(){
+    if(!$('#email_address').val()){
+        $('#email_address').addClass('red');
+        $('#email_address').removeClass('blue');
+    }
+    else{
+        $('#email_address').removeClass('red');
+        $('#email_address').addClass('blue');
+    }
+});
+
+$('#telephone_number').on('keyup',function(){
+    if(!$('#telephone_number').val()){
+        $('#telephone_number').addClass('red');
+        $('#telephone_number').removeClass('blue');
+    }
+    else{
+        $('#telephone_number').removeClass('red');
+        $('#telephone_number').addClass('blue');
+    }
+});
+
+$('#cellphone_number').on('keyup',function(){
+    if(!$('#cellphone_number').val()){
+        $('#cellphone_number').addClass('red');
+        $('#cellphone_number').removeClass('blue');
+    }
+    else{
+        $('#cellphone_number').removeClass('red');
+        $('#cellphone_number').addClass('blue');
+    }
+});
+
+$('#father_name').on('keyup',function(){
+    if(!$('#father_name').val()){
+        $('#father_name').addClass('red');
+        $('#father_name').removeClass('blue');
+    }
+    else{
+        $('#father_name').removeClass('red');
+        $('#father_name').addClass('blue');
+    }
+});
+
+$('#father_contact_number').on('keyup',function(){
+    if(!$('#father_contact_number').val()){
+        $('#father_contact_number').addClass('red');
+        $('#father_contact_number').removeClass('blue');
+    }
+    else{
+        $('#father_contact_number').removeClass('red');
+        $('#father_contact_number').addClass('blue');
+    }
+});
+
+$('#father_contact_number').on('keyup',function(){
+    if(!$('#father_contact_number').val()){
+        $('#father_contact_number').addClass('red');
+        $('#father_contact_number').removeClass('blue');
+    }
+    else{
+        $('#father_contact_number').removeClass('red');
+        $('#father_contact_number').addClass('blue');
+    }
+});
+
+$('#father_profession').on('keyup',function(){
+    if(!$('#father_profession').val()){
+        $('#father_profession').addClass('red');
+        $('#father_profession').removeClass('blue');
+    }
+    else{
+        $('#father_profession').removeClass('red');
+        $('#father_profession').addClass('blue');
+    }
+});
+
+$('#mother_name').on('keyup',function(){
+    if(!$('#mother_name').val()){
+        $('#mother_name').addClass('red');
+        $('#mother_name').removeClass('blue');
+    }
+    else{
+        $('#mother_name').removeClass('red');
+        $('#mother_name').addClass('blue');
+    }
+});
+
+$('#mother_contact_number').on('keyup',function(){
+    if(!$('#mother_contact_number').val()){
+        $('#mother_contact_number').addClass('red');
+        $('#mother_contact_number').removeClass('blue');
+    }
+    else{
+        $('#mother_contact_number').removeClass('red');
+        $('#mother_contact_number').addClass('blue');
+    }
+});
+
+$('#mother_profession').on('keyup',function(){
+    if(!$('#mother_profession').val()){
+        $('#mother_profession').addClass('red');
+        $('#mother_profession').removeClass('blue');
+    }
+    else{
+        $('#mother_profession').removeClass('red');
+        $('#mother_profession').addClass('blue');
+    }
+});
+
+$('#emergency_contact_name').on('keyup',function(){
+    if(!$('#emergency_contact_name').val()){
+        $('#emergency_contact_name').addClass('red');
+        $('#emergency_contact_name').removeClass('blue');
+    }
+    else{
+        $('#emergency_contact_name').removeClass('red');
+        $('#emergency_contact_name').addClass('blue');
+    }
+});
+
+$('#emergency_contact_relationship').on('keyup',function(){
+    if(!$('#emergency_contact_relationship').val()){
+        $('#emergency_contact_relationship').addClass('red');
+        $('#emergency_contact_relationship').removeClass('blue');
+    }
+    else{
+        $('#emergency_contact_relationship').removeClass('red');
+        $('#emergency_contact_relationship').addClass('blue');
+    }
+});
+
+$('#emergency_contact_number').on('keyup',function(){
+    if(!$('#emergency_contact_number').val()){
+        $('#emergency_contact_number').addClass('red');
+        $('#emergency_contact_number').removeClass('blue');
+    }
+    else{
+        $('#emergency_contact_number').removeClass('red');
+        $('#emergency_contact_number').addClass('blue');
+    }
+});
+
+$('#spouse_name').on('keyup',function(){
+    if(!$('#spouse_name').val()){
+        $('#spouse_name').addClass('red');
+        $('#spouse_name').removeClass('blue');
+    }
+    else{
+        $('#spouse_name').removeClass('red');
+        $('#spouse_name').addClass('blue');
+    }
+});
+
+$('#spouse_contact_number').on('keyup',function(){
+    if(!$('#spouse_contact_number').val()){
+        $('#spouse_contact_number').addClass('red');
+        $('#spouse_contact_number').removeClass('blue');
+    }
+    else{
+        $('#spouse_contact_number').removeClass('red');
+        $('#spouse_contact_number').addClass('blue');
+    }
+});
+
+$('#spouse_profession').on('keyup',function(){
+    if(!$('#spouse_profession').val()){
+        $('#spouse_profession').addClass('red');
+        $('#spouse_profession').removeClass('blue');
+    }
+    else{
+        $('#spouse_profession').removeClass('red');
+        $('#spouse_profession').addClass('blue');
+    }
+});
