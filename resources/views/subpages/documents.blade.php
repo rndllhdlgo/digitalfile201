@@ -1,6 +1,5 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-    <br>
     <div class="container" style="width:75%;">
         {{-- <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span> --}}
         <form method="POST" enctype="multipart/form-data" action="/employees/storeDocuments" id="document_form">

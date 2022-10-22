@@ -16,8 +16,13 @@ $('#btnClear').on('click',function(){
       if (clear.isConfirmed) {
       //Clear All Fields
         $('.required_field').val('');
+        $('.required_field').removeClass('blue');
         $('.optional').val('');
+        $('.optional').removeClass('blue');
         $('.span_all').show();
+        $('.multiple_field').val('');
+        $('.multiple_field').removeClass('blue');
+        $('.column-1').removeClass('blue');
         $('#solo_parent').hide();
         $('#spouse').hide();
         $('#cover_image').val(''); //Remove the image uploaded
@@ -85,7 +90,7 @@ $('#btnClear').on('click',function(){
         $('#image_user').show();
         $('#image_button').show();
         $('.column-1').css("height","250px");
-        $('#image_button').css("margin-top","198px");
+        // $('#image_button').css("margin-top","198px");
         // $('#image_close').click();
 
         //Clear Multiple Table Data

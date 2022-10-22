@@ -193,7 +193,7 @@ a{
 
 #preview_image{
     height: 205px;
-    width: 278px;
+    width: 274px;
     margin-left: -12px;
     cursor:pointer;
     display: none;
@@ -318,5 +318,9 @@ select,
 
 input[type=search]:focus{
     border:2px solid #0d1a80;
+}
+
+.requiredInput{
+    border:1.5px solid red;
 }
 

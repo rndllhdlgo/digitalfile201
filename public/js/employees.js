@@ -140,7 +140,7 @@ function checkforblank(){
 //Clear Form
 setInterval(checkclearform,0);
 function checkclearform(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < 1) {
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1) {
         $('#btnClear').prop("disabled",true);
     }
     else{
@@ -374,6 +374,7 @@ $('#image_close').on('click',function(){
     $('#image_button').show();
     $('.column-1').css("height","250px");
     $('#image_button').css("margin-top","198px");
+    $('.column-1').removeClass('blue');
     $('#cover_image').click();
 });
 
@@ -502,11 +503,3 @@ $('#title_details').on('click',function(){
     $('#father_contact_number').val('09123456781');
     $('#mother_contact_number').val('09324207231');
 });
-
-function alertFunction() {
-    var x = document.getElementById("first_name");
-    if (x == null){
-        alert('asd');
-    }
-    // x.value = x.value.toUpperCase();
-  }

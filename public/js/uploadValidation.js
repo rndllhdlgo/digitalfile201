@@ -16,6 +16,7 @@ function ImageValidation() {
             $('#image_button').hide();
             $('#image_close').show();
             $('#preview_image').show();
+            $('.column-1').addClass('blue');
         }
     } 
     else {

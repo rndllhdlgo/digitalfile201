@@ -127,6 +127,9 @@ $(document).ready(function(){
         $("#college_name").val("");
         $("#college_degree").val("");
         $("#college_inclusive_years").val("");
+        $('#college_name').removeClass('blue');
+        $('#college_degree').removeClass('blue');
+        $('#college_inclusive_years').removeClass('blue');
         $('.span_college_name').show();
         $('.span_college_degree').show();
         $('.span_college_inclusive_years').show();
@@ -146,6 +149,9 @@ $(document).ready(function(){
         $("#training_name").val("");
         $("#training_title").val("");
         $("#training_inclusive_years").val("");
+        $('#training_name').removeClass('blue');
+        $('#training_title').removeClass('blue');
+        $('#training_inclusive_years').removeClass('blue');
         $('.span_training_name').show();
         $('.span_training_title').show();
         $('.span_training_inclusive_years').show();
@@ -165,6 +171,9 @@ $(document).ready(function(){
         $("#vocational_name").val(""); 
         $("#vocational_course").val(""); 
         $("#vocational_inclusive_years").val("");
+        $('#vocational_name').removeClass('blue');
+        $('#vocational_course').removeClass('blue');
+        $('#vocational_inclusive_years').removeClass('blue');
         $('.span_vocational_name').show();
         $('.span_vocational_course').show();
         $('.span_vocational_inclusive_years').show();
