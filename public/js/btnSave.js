@@ -153,36 +153,48 @@ $('#btnSave').on('click', function(){
                     primary_school_inclusive_years:primary_school_inclusive_years
                 },
                 success: function(data){
-                        if(data == 'true'){
-                            var singleParentTable = $('#solo_parent_data_table').DataTable();
-                            var singleParent_data = singleParentTable.rows().data();
-                            $.each(singleParent_data, function(key, value){
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/singleParentSave',
-                                    async: false,
-                                    headers:{
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    data:{
-                                        'child_name':value[0],
-                                        'child_age':value[1],
-                                        'child_gender':value[3]
-                                    },
-                                    success:function(data){
-                                        if(data == 'true'){
-                                            return true;
-                                        }
-                                        else{
-                                            return false;
-                                        }
-                                    },
+                        if(data.result == 'true'){
+                            $('#employee_id').val(data.id);
+                                var soloParentTable = $('#solo_parent_data_table').DataTable();
+                                var soloParent_data  = soloParentTable.rows().data();
+                                $.each(soloParent_data, function(key, value){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/childrenSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id' : data.id,
+                                            'child_name' : value[0],
+                                            'child_birthday': value[1],
+                                            'child_gender'  : value[3]
+                                        },
+                                    });
                                 });
-                            });       
-                            $('#document_form').submit();
+                                var collegeTable = $('#college_data_table').DataTable();
+                                var college_data  = collegeTable.rows().data();
+                                $.each(college_data, function(key, value){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/collegeSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id' : data.id,
+                                            'college_name' : value[0],
+                                            'college_degree' : value[1],
+                                            'college_inclusive_years': value[2]
+                                        },
+                                    });
+                                });
+                            // $('#document_form').submit();
                             // Swal.fire("SAVE SUCCESS", "", "success");
-                            // setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 3000);//use to reload the table based on its id
-                            // setTimeout(function(){location.reload();}, 3000); // Reload the whole page 
+                            // setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 4000);//use to reload the table based on its id
+                            // setTimeout(function(){location.reload();}, 4000); // Reload the whole page 
                         }
                         else{
                             Swal.fire("SAVE FAILED", "", "error");
@@ -198,7 +210,7 @@ $('#btnSave').on('click', function(){
             });
         } 
         else if (save.isDenied) {
-
+            Swal.fire("SAVE CANCELLED", "", "info");
         }
     });
 });

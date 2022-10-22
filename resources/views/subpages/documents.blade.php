@@ -45,7 +45,7 @@
                                 <td><p class="title_file"><b>BARANGAY CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="barangay_clearance_button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="barangay_clearance_file"   class="required_field"     onchange="return barangayclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="barangay_clearance_file">
+                                    <input  type="file"   id="barangay_clearance_file"   class=""     onchange="return barangayclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="barangay_clearance_file">
                                     <span id="barangay_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -58,7 +58,7 @@
                                 <td><p class="title_file"><b>POLICE CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="police_clearance_button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="police_clearance_file"   class="required_field"     onchange="return policeclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="police_clearance_file">
+                                    <input  type="file"   id="police_clearance_file"   class=""     onchange="return policeclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="police_clearance_file">
                                     <span id="police_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -71,7 +71,7 @@
                                 <td><p class="title_file"><b>SSS E1 FORM</b></p></td>
                                 <td>
                                     <button type="button" id="sss_button" class="btn btn-primary bp" onclick="$('#sss_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"    id="sss_file"   class="required_field"     onchange="return sssValidation()" accept="image/*,.pdf" style="display: none;"  name="sss_file">
+                                    <input type="file"    id="sss_file"   class=""     onchange="return sssValidation()" accept="image/*,.pdf" style="display: none;"  name="sss_file">
                                     <span id="sss_text">No file chosen, yet.</span>
                                 </td>
                                 <td> 
@@ -84,7 +84,7 @@
                                 <td><p class="title_file"><b>PHILHEALTH FORM</b></p></td>
                                 <td>
                                     <button type="button" id="philhealth_button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="philhealth_file"   class="required_field"     onchange="return philhealthValidation()" accept="image/*,.pdf" style="display: none;" name="philhealth_file">
+                                    <input  type="file"   id="philhealth_file"   class=""     onchange="return philhealthValidation()" accept="image/*,.pdf" style="display: none;" name="philhealth_file">
                                     <span id="philhealth_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -97,7 +97,7 @@
                                 <td><p class="title_file"><b>PAG-IBIG FORM</b></p></td>
                                 <td>
                                     <button type="button"  id="pag_ibig_button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"     id="pag_ibig_file"   class="required_field"     onchange="return pagibigValidation()"accept="image/*,.pdf" style="display: none;" name="pag_ibig_file">
+                                    <input type="file"     id="pag_ibig_file"   class=""     onchange="return pagibigValidation()"accept="image/*,.pdf" style="display: none;" name="pag_ibig_file">
                                     <span id="pag_ibig_text">No file chosen, yet.</span>
                                 </td>
                                 <td>

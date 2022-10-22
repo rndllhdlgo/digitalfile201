@@ -62,7 +62,9 @@ Route::get('/setprovince','PagesController@setprovince');
 Route::any('/employees/storeDocuments','EmployeesController@storeDocuments');
 
 // Routes for saving multiple tables
-Route::any('/soloParentSave','EmployeesController@soloParentSave');
+Route::any('/childrenSave','EmployeesController@childrenSave');
+Route::any('/collegeSave','EmployeesController@collegeSave');
+Route::any('/trainingSave','EmployeesController@trainingSave');
 
 // Random Routes
 // Route::get('/upload', function () {

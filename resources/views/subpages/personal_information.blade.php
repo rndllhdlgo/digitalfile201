@@ -248,7 +248,9 @@
                 </div>
             </div>
             <hr class="hr-design">
-            <div  class="row mt-4" id="solo_parent">
+            <div  class="row mt-2" id="solo_parent">
+                {{-- <strong class="">CHILDREN INFORMATION</strong> --}}
+                <br>
                 <div class="col-4">
                     <div class="f-outline">
                         <input class="forminput form-control optional" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)">

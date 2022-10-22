@@ -82,9 +82,22 @@ class EmployeesController extends Controller
         $employees->primary_school_name = ucwords($request->primary_school_name);
         $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
-        $sql = $employees->save();//To save data 
+        $sql = $employees->save();//To save data
+        
+        // $id = $employees->id;
 
-        return $sql ? 'true' : 'false';
+        // $result = $sql ? 'true' : 'false';
+        if($sql){
+            $result = 'true';
+            $id = $employees->id;
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
     }
 
     public function insertImage(Request $request){//This function is to save the image
@@ -193,17 +206,9 @@ class EmployeesController extends Controller
         return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'employee_contact_number_duplicate_true': 'employee_contact_number_duplicate_false';
     }
 
-    public function singleParentSave(Request $request){
-        $employees = new Children;
-        $employees->child_name = ucwords($request->child_name);
-        $employees->child_birthday = $request->child_birthday;
-        $employees->child_gender = $request->child_gender;
-        $sql = $employees->save();
-
-        return $sql ? 'true' : 'false';
-    }
     public function storeDocuments(Request $request)
     {
+
         //Save Document Files Function
         $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
         $nbi_file = $request->file('nbi_file');
@@ -235,6 +240,7 @@ class EmployeesController extends Controller
         $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
         
         Document::create([
+            'employee_id' => $request->employee_id,
             'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
             'nbi_clearance' => $nbi,
             'barangay_clearance' => $barangay_clearance,
@@ -244,19 +250,34 @@ class EmployeesController extends Controller
             'pag_ibig_form' => $pag_ibig,
         ]);
         // return Redirect::to(url()->previous());//Return previous page
-        return redirect()->back();
+        // return redirect()->back();
     }
 
-    public function jobSave(Request $request){
-        $employees = new Job;
-        $employees->job_name = $request->job_name;
-        $employees->job_position = $request->job_position;
-        $employees->job_address = $request->job_address;
-        $employees->job_contact_details = $request->job_contact_details;
-        $employees->job_inclusive_years = $request->job_inclusive_years;
-        $sql = $employees->save();
+    public function childrenSave(Request $request){
+        $children = new Children;
+        $children->employee_id = $request->employee_id;//use to associate employee id
+        $children->child_name = $request->child_name;
+        $children->child_birthday = $request->child_birthday;
+        $children->child_gender = $request->child_gender;
+        $children->save();
+    }
 
-        return $sql ? 'true' : 'false';
+    public function collegeSave(Request $request){
+        $college = new College;
+        $college->employee_id = $request->employee_id;//use to associate employee id
+        $college->college_name = $request->college_name;
+        $college->college_degree = $request->college_degree;
+        $college->college_inclusive_years = $request->college_inclusive_years;
+        $college->save();
+    }
+
+    public function trainingSave(Request $request){
+        $training = new Training;
+        $training->employee_id = $request->employee_id;//use to associate employee id
+        $training->training_name = $request->training_name;
+        $training->training_title = $request->training_title;
+        $training->training_inclusive_years = $request->training_inclusive_years;
+        $training->save();
     }
 }
 
