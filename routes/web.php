@@ -65,6 +65,8 @@ Route::any('/employees/storeDocuments','EmployeesController@storeDocuments');
 Route::any('/childrenSave','EmployeesController@childrenSave');
 Route::any('/collegeSave','EmployeesController@collegeSave');
 Route::any('/trainingSave','EmployeesController@trainingSave');
+Route::any('/vocationalSave','EmployeesController@vocationalSave');
+Route::any('/jobSave','EmployeesController@jobSave');
 
 // Random Routes
 // Route::get('/upload', function () {

@@ -28,7 +28,6 @@
         <div id="employee_personal_information">
             <div class="row">
                 <div class="col-4">
-                    {{-- <span class="alert alert-warning" id="requiredFields"><b id="fill">NOTE:</b> Please fill all the required fields</span> --}}
                     <span class="alert alert-info" id="title_details"></span>
                 </div>
                 <div class="col-8">

@@ -3,7 +3,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="checkEmployeeNumberDuplicate()">
+                <input class="forminput form-control required_field capitalize" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="checkEmployeeNumberDuplicate()">
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number">(Required)</span></label>
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
             </div>
