@@ -25,7 +25,7 @@ $(document).ready(function () {
         language: {
             "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
             "lengthMenu":"Show _MENU_ Employees",
-            "emptyTable":"No Employees data found!"
+            "emptyTable":"No Employees Data Found!"
         },
         processing:true,//loading processing
         serverSide:false,//Source of data

@@ -41,7 +41,7 @@
 
         <table id="college_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
             <thead class="thead-educational">
-                <tr class="college_tr_th">
+                <tr style="display: none;">
                     <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
                     <th style="width:30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
                     <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
@@ -171,7 +171,7 @@
 
         <table id="training_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
             <thead class="thead-educational">
-                <tr class="training_tr_th">
+                <tr style="display: none;">
                     <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
                     <th style="width:30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
                     <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
@@ -227,7 +227,7 @@
     </table>
     <table id="vocational_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
         <thead class="thead-educational">
-            <tr class="vocational_tr_th">
+            <tr style="display: none;">
                 <th style="width:30%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
                 <th style="width:30%"><i class="fas fa-certificate"></i> COURSE</th>
                 <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>

@@ -109,7 +109,7 @@ $(document).ready(function(){
 //College Table Add
     $('#btnCollegeAdd').click(function(){
         $('#college_data_table').show();
-        $('.college_tr_th').hide();
+        // $('.college_tr_th').hide();
         var college_name = $('#college_name').val().trim();
         var college_degree = $('#college_degree').val().trim();
         var college_inclusive_years = $('#college_inclusive_years').val().trim();
@@ -172,7 +172,7 @@ $(document).ready(function(){
 //Job History Table Add
     $('#btnJobHistoryAdd').click(function(){
         $('#job_data_table').show();
-        $('.job_tr_th').hide();
+        // $('.job_tr_th').hide();
         var job_name = $('#job_name').val().trim();
         var job_position = $('#job_position').val().trim();
         var job_address = $('#job_address').val().trim();
@@ -204,9 +204,8 @@ $(document).ready(function(){
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
-        // var memo_file = $('#memo_file').val();
   
-        var dynamicMemo = "<tr><td class='text-capitalize'>"+ memo_subject +"</td><td>"+ memo_date + "</td><td>" + memo_option +  "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicMemo = "<tr><td class='text-capitalize' style='width: 30%''>"+ memo_subject +"</td><td style='width: 30%'>"+ memo_date + "</td><td style='width: 30%'>" + memo_option +  "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $("#memo_data_table").append(dynamicMemo);
         $("#memo_subject").val(""); 
         $("#memo_date").val(""); 
@@ -222,12 +221,14 @@ $(document).ready(function(){
 
 //Evaluation Table Add
     $('#btnEvaluationAdd').click(function(){
+        $('#evaluation_data_table').show();
+        $('.evaluation_tr_th').hide();
         var evaluation_reason = $('#evaluation_reason').val().trim();
         var evaluation_date = $('#evaluation_date').val();
         var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
 
-        var dynamicEvaluation = "<tr><td class='text-capitalize'>"+ evaluation_reason +"</td><td>"+ evaluation_date + "</td><td>" + evaluation_evaluated_by + "</td><td> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#evaluation_tbody").append(dynamicEvaluation);
+        var dynamicEvaluation = "<tr><td class='text-capitalize' style='width:30%'>"+ evaluation_reason +"</td><td style='width:30%'>"+ evaluation_date + "</td><td style='width:30%'>" + evaluation_evaluated_by + "</td><td> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        $("#evaluation_data_table").append(dynamicEvaluation);
         $("#evaluation_reason").val(""); 
         $("#evaluation_date").val(""); 
         $("#evaluation_evaluated_by").val("");
@@ -241,11 +242,12 @@ $(document).ready(function(){
 
 //Contract Table Add
     $('#btnContractAdd').click(function(){
+        $('#contract_data_table').show();
         var contracts_type = $('#contracts_type').val().trim();
         var contracts_date = $('#contracts_date').val();
 
         var dynamicContract = "<tr><td class='text-capitalize'>"+ contracts_type +"</td><td>"+ contracts_date + "</td><td> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#contracts_tbody").append(dynamicContract);
+        $("#contract_data_table").append(dynamicContract);
         $("#contracts_type").val(""); 
         $("#contracts_date").val("");
         $('.span_contracts_type').show();

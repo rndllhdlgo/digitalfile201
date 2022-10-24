@@ -52,7 +52,7 @@
    </table>
     <table id="job_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
         <thead class="thead-educational">
-            <tr class="job_tr_th">
+            <tr style="display: none;">
                 <th><i class="far fa-address-card"></i> NAME OF COMPANY</th>
                 <th><i class="fas fa-briefcase"></i> JOB POSITION</th>
                 <th><i class="fas fa-map-marker-alt"></i> COMPANY ADDRESS</th>
