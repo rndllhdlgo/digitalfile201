@@ -21,11 +21,12 @@ $(document).ready(function () {
   
   $('#employeesTable').dataTable().fnDestroy();//To destroy datatable
         employeesTable = $('#employeesTable').DataTable({
-        dom:'lrtip',//layout of the table
+        dom:'ltrip',//layout of the table
         language: {
             "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
             "lengthMenu":"Show _MENU_ Employees",
-            "emptyTable":"No Employees Data Found!"
+            "emptyTable":"No Employees Data Found!",
+            "loadingRecords": "Loading Employee Records...",
         },
         processing:true,//loading processing
         serverSide:false,//Source of data
@@ -42,6 +43,7 @@ $(document).ready(function () {
             {data: 'branch_of_employee'},
             {data: 'status_of_employee'},
         ],
+        
       initComplete: function () {
             var api = this.api();
             // For each column
