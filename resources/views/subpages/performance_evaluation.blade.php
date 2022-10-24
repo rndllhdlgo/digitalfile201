@@ -79,7 +79,7 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason">(Optional)</span></label>
                     </div>
                 </td>
@@ -91,7 +91,7 @@
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by">(Optional)</span></label>
                     </div>
                 </td>
@@ -131,7 +131,7 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control text-capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type">(Optional)</span></label>
                     </div>
                 </td>
@@ -175,7 +175,7 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter">(Optional)</span></label>
                     </div>
                 </td>
@@ -189,6 +189,17 @@
                     <button type="button" id="btnResignationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
+        </tbody>
+    </table>
+    <table id="resignation_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+        <thead class="thead-educational">
+            <tr style="display: none;">
+                <th style="width:45%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
+                <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
         </tbody>
     </table>
         <hr class="hr-design">
@@ -209,7 +220,7 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter">(Optional)</span></label>
                     </div>
                 </td>
@@ -223,6 +234,17 @@
                     <button type="button" id="btnTerminationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
+        </tbody>
+    </table>
+    <table id="termination_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+        <thead class="thead-educational">
+            <tr style="display: none;">
+                <th style="width:45%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
+                <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+            </tr>
+        </thead>
+        <tbody>
         </tbody>
     </table>
         <hr class="hr-design">

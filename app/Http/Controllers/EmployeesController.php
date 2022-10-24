@@ -206,7 +206,7 @@ class EmployeesController extends Controller
         return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'employee_contact_number_duplicate_true': 'employee_contact_number_duplicate_false';
     }
 
-    public function storeDocuments(Request $request)
+    public function storeRequirements(Request $request)
     {
 
         //Save Document Files Function
@@ -278,6 +278,35 @@ class EmployeesController extends Controller
         $training->training_title = $request->training_title;
         $training->training_inclusive_years = $request->training_inclusive_years;
         $training->save();
+    }
+
+    public function vocationalSave(Request $request){
+        $vocational = new Vocational;
+        $vocational->employee_id = $request->employee_id;//use to associate employee id
+        $vocational->vocational_name = $request->vocational_name;
+        $vocational->vocational_course = $request->vocational_course;
+        $vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
+        $vocational->save();
+    }
+
+    public function jobSave(Request $request){
+        $job = new Job;
+        $job->employee_id = $request->employee_id;//use to associate employee id
+        $job->job_name = $request->job_name;
+        $job->job_position = $request->job_position;
+        $job->job_address = $request->job_address;
+        $job->job_contact_details = $request->job_contact_details;
+        $job->job_address = $request->vocational_inclusive_years;
+        $job->save();
+    }
+
+    public function memoSave(Request $request){
+        $job = new Memo;
+        $job->employee_id = $request->employee_id;//use to associate employee id
+        $job->memo_subject = $request->memo_subject;
+        $job->memo_date = $request->memo_date;
+        $job->memo_option = $request->memo_option;
+        $job->save();
     }
 }
 

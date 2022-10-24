@@ -55,7 +55,7 @@ $(document).ready(function () {
                 var cell = $('.filters th').eq(
                     $(api.column(colIdx).header()).index()
                 );
-                $(cell).html('<input type="text" style="border:none;border-radius:5px;width:100%;"/>');// On every keypress in this input
+                $(cell).html('<input type="text" style="border:none;border-radius:5px;width:100%;">');// On every keypress in this input
 
                 $(
                     'input',

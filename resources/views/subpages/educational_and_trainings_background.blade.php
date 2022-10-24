@@ -22,7 +22,7 @@
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field capitalize" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control multiple_field" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="college_degree" class="formlabel form-label"><span class="span_college_degree span_all">(Required)</span></label>
                         </div>
                     </td>

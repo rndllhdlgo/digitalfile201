@@ -257,13 +257,34 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+                                var memoTable = $('#memo_data_table').DataTable({
+                                    dom:'t',
+                                });
+                                var memo_data  = memoTable.rows().data();
+                                $.each(memo_data, function(key, value){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/memoSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id' : data.id,
+                                            'memo_subject' : value[0],
+                                            'memo_date' : value[1],
+                                            'memo_option': value[2] 
+                                        },
+                                    });
+                                });
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();
                                 $('#vocational_data_table').hide();
                                 $('#job_data_table').hide();
+                                $('#memo_data_table').hide();
                                 
-                            // $('#document_form').submit();
+                                // $('#document_form').submit();
                             // Swal.fire("SAVE SUCCESS", "", "success");
                             // setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 4000);//use to reload the table based on its id
                             // setTimeout(function(){location.reload();}, 4000); // Reload the whole page 

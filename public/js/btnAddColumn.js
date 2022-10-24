@@ -130,7 +130,7 @@ $(document).ready(function(){
 //Training Table Add
     $('#btnTrainingAdd').click(function(){
         $('#training_data_table').show();
-        $('.training_tr_th').hide();
+        // $('.training_tr_th').hide();
         var training_name = $('#training_name').val().trim();
         var training_title = $('#training_title').val().trim();
         var training_inclusive_years = $('#training_inclusive_years').val().trim();
@@ -151,7 +151,7 @@ $(document).ready(function(){
 //Vocational Table Add
     $('#btnVocationalAdd').click(function(){
         $('#vocational_data_table').show();
-        $('.vocational_tr_th').hide();
+        // $('.vocational_tr_th').hide();
         var vocational_name = $('#vocational_name').val().trim();
         var vocational_course = $('#vocational_course').val().trim();
         var vocational_inclusive_years = $('#vocational_inclusive_years').val().trim();
@@ -200,7 +200,7 @@ $(document).ready(function(){
 //Memo Table Add
     $('#btnMemoAdd').click(function(){
         $('#memo_data_table').show();
-        $('.memo_tr_th').hide();
+        // $('.memo_tr_th').hide();
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
@@ -222,7 +222,7 @@ $(document).ready(function(){
 //Evaluation Table Add
     $('#btnEvaluationAdd').click(function(){
         $('#evaluation_data_table').show();
-        $('.evaluation_tr_th').hide();
+        // $('.evaluation_tr_th').hide();
         var evaluation_reason = $('#evaluation_reason').val().trim();
         var evaluation_date = $('#evaluation_date').val();
         var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
@@ -246,7 +246,7 @@ $(document).ready(function(){
         var contracts_type = $('#contracts_type').val().trim();
         var contracts_date = $('#contracts_date').val();
 
-        var dynamicContract = "<tr><td class='text-capitalize'>"+ contracts_type +"</td><td>"+ contracts_date + "</td><td> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicContract = "<tr><td class='text-capitalize' style='width:45%'>"+ contracts_type +"</td><td style='width:45%'>"+ contracts_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $("#contract_data_table").append(dynamicContract);
         $("#contracts_type").val(""); 
         $("#contracts_date").val("");
@@ -259,11 +259,12 @@ $(document).ready(function(){
 
 //Resignation Table Add
     $('#btnResignationAdd').click(function(){
+        $('#resignation_data_table').show();
         var resignation_letter = $('#resignation_letter').val().trim();
         var resignation_date = $('#resignation_date').val();
 
-        var dynamicResignation = "<tr><td class='text-capitalize'>"+ resignation_letter +"</td><td>"+ resignation_date + "</td><td> <button class='btn btn-danger btn-resignation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#resignation_tbody").append(dynamicResignation);
+        var dynamicResignation = "<tr><td class='text-capitalize' style='width:45%'>"+ resignation_letter +"</td><td style='width:45%'>"+ resignation_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-resignation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        $("#resignation_data_table").append(dynamicResignation);
         $("#resignation_letter").val(""); 
         $("#resignation_date").val("");
         $('.span_resignation_letter').show();
@@ -275,11 +276,12 @@ $(document).ready(function(){
 
 //Termination Table Add
     $('#btnTerminationAdd').click(function(){
+        $('#termination_data_table').show();
         var termination_letter = $('#termination_letter').val().trim();
         var termination_date = $('#termination_date').val();
 
-        var dynamicTermination = "<tr><td class='text-capitalize'>"+ termination_letter +"</td><td>"+ termination_date + "</td><td> <button class='btn btn-danger btn-termination center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#termination_tbody").append(dynamicTermination);
+        var dynamicTermination = "<tr><td class='text-capitalize' style='width:45%'>"+ termination_letter +"</td><td style='width:45%'>"+ termination_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-termination center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        $("#termination_data_table").append(dynamicTermination);
         $("#termination_letter").val(""); 
         $("#termination_date").val("");
         $('.span_termination_letter').show();

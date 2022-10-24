@@ -1,6 +1,4 @@
 $('#company_tab').addClass('tabactive');
-$('#company').fadeIn();
-$('#company_tab')[0].click();
 
 $('#company_tab').on('click',function(){
     $('#company_tab').addClass('tabactive');
@@ -8,7 +6,7 @@ $('#company_tab').on('click',function(){
     $('#shift_tab').removeClass('tabactive');
     $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
-    $('#company').show();
+    $('#company').fadeIn();
     $('#branch').hide();
     $('#shift').hide();
     $('#position').hide();

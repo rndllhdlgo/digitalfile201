@@ -59,7 +59,7 @@ Route::get('/setcity','PagesController@setcity');
 Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
-Route::any('/employees/storeDocuments','EmployeesController@storeDocuments');
+Route::any('/employees/storeRequirements','EmployeesController@storeRequirements');
 
 // Routes for saving multiple tables
 Route::any('/childrenSave','EmployeesController@childrenSave');
@@ -67,6 +67,7 @@ Route::any('/collegeSave','EmployeesController@collegeSave');
 Route::any('/trainingSave','EmployeesController@trainingSave');
 Route::any('/vocationalSave','EmployeesController@vocationalSave');
 Route::any('/jobSave','EmployeesController@jobSave');
+Route::any('/memoSave','EmployeesController@memoSave');
 
 // Random Routes
 // Route::get('/upload', function () {
