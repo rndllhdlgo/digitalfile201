@@ -320,34 +320,40 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/resignationSave',
-                                    async: false,
-                                    headers:{
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    data:{
-                                        'employee_id': data.id,
-                                        resignation_letter: resignation_letter,
-                                        resignation_date: resignation_date
-                                    },
-                                });
-                                $.ajax({
-                                    type: 'POST',
-                                    url: '/terminationSave',
-                                    async: false,
-                                    headers:{
-                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                    },
-                                    data:{
-                                        'employee_id': data.id,
-                                        termination_letter: termination_letter,
-                                        termination_date: termination_date
-                                    },
-                                });
-                                $('#document_form').submit();
+                                if($('#resignation_letter').val() || $('#resignation_date').val()){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/resignationSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id': data.id,
+                                            resignation_letter: resignation_letter,
+                                            resignation_date: resignation_date
+                                        },
+                                    });
+                                }
+                                if($('#termination_letter').val() || $('#termination_date').val()){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/terminationSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id': data.id,
+                                            termination_letter: termination_letter,
+                                            termination_date: termination_date
+                                        },
+                                    });
+                                }
 
+                                $('#document_form').submit();
+                                Swal.fire("SAVE SUCCESS", "", "success");
+                                
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();

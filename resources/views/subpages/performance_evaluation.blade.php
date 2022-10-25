@@ -168,7 +168,7 @@
         <thead class="thead-educational">
             <th><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
             <th><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-            <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+            {{-- <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th> --}}
         </thead>
         <tbody>
             <tr>
