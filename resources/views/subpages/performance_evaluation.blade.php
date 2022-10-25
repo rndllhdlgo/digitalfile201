@@ -16,19 +16,19 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="memo_date" class="formlabel form-label"><span class="span_memo_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <select class="form-select forminput form-control"  id="memo_option" placeholder=" " style="background-color:white;">
+                        <select class="form-select forminput multiple_field form-control"  id="memo_option" placeholder=" " style="background-color:white;">
                             <option value="" disabled selected>SELECT OPTION</option>
                             <option value="Verbal">Verbal</option>
                             <option value="Written">Written</option>
@@ -79,19 +79,19 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by">(Optional)</span></label>
                     </div>
                 </td>
@@ -131,13 +131,13 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="contracs_date" class="formlabel form-label"><span class="span_contracts_date">(Optional)</span></label>
                     </div>
                 </td>
@@ -173,13 +173,13 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date">(Optional)</span></label>
                     </div>
                 </td>
@@ -202,13 +202,13 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="termination_date" class="formlabel form-label"><span class="span_termination_date">(Optional)</span></label>
                     </div>
                 </td>

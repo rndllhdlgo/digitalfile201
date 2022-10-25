@@ -24,7 +24,7 @@
             @include('inc.guest')
         @endif
 
-        <div class="container-fluid p-2">
+        <div class="container-fluid">
             @yield('content')
         </div>
 

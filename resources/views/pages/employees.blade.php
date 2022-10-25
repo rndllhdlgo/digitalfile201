@@ -3,6 +3,7 @@
 @section('content')
 <br>
     <input type="hidden" name="hidden_id" id="hidden_id">
+    
         <div id="employees_list">
             <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>
             @if(Auth::user()->user_level == 'ADMIN') {{--To hide the section based on user level --}}

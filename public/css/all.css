@@ -78,12 +78,12 @@ input, select{
 }
 /* Scroll Bar Design */
 html {
-    scrollbar-width: normal;
+    scrollbar-width: thin ;
     scrollbar-color: #777 #555;
     scroll-behavior: smooth;
 }
 html::-webkit-scrollbar {
-    width: 1vw;
+    width: 5px;
 }
 html::-webkit-scrollbar-thumb {
     background-color: #0d1a80;

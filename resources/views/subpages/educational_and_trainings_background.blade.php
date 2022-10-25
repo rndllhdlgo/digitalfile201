@@ -16,7 +16,7 @@
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field capitalize" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="college_name" class="formlabel form-label"><span class="span_college_name span_all">(Required)</span></label>
                         </div>
                     </td>
@@ -69,13 +69,13 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="secondary" class="formlabel form-label"><span class="span_secondary_school_name span_all">(Required)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="secondary_address" class="formlabel form-label"><span class="span_secondary_school_address span_all">(Required)</span></label>
                     </div>
                 </td>
@@ -106,13 +106,13 @@
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control required_field capitalize" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control required_field text-capitalize" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="primary" class="formlabel form-label"><span class="span_primary_school_name span_all">(Required)</span></label>
                         </div>
                     </td>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control required_field capitalize" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control required_field text-capitalize" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="primary_address" class="formlabel form-label"><span class="span_primary_school_address span_all">(Required)</span></label>
                         </div>
                     </td>
@@ -143,14 +143,14 @@
                 <tr>
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field capitalize" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="training_name" class="formlabel form-label"><span class="span_training_name span_all">(Optional)</span></label>
                         </div>
                     </td>
 
                     <td class="pb-2 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field capitalize" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                             <label for="training_title" class="formlabel form-label"><span class="span_training_title span_all">(Optional)</span></label>
                         </div>
                     </td>
@@ -200,14 +200,14 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field capitalize" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="vocational_name" class="formlabel form-label"><span class="span_vocational_name span_all">(Optional)</span></label>
                     </div>
                 </td>
 
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field capitalize" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="vocational_course" class="formlabel form-label"><span class="span_vocational_course span_all">(Optional)</span></label>
                     </div>
                 </td>

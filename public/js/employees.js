@@ -55,7 +55,7 @@ $(document).ready(function () {
                 var cell = $('.filters th').eq(
                     $(api.column(colIdx).header()).index()
                 );
-                $(cell).html('<input type="text" style="border:none;border-radius:5px;width:100%;">');// On every keypress in this input
+                $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;">');// On every keypress in this input
 
                 $(
                     'input',
@@ -473,6 +473,7 @@ $('#province').on('change', function(){
 //Fill All
 $('#title_details').on('click',function(){
 //Required
+   
     $('#first_name').val('Rendell');
     $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
@@ -513,3 +514,4 @@ $('#title_details').on('click',function(){
     $('#father_contact_number').val('09123456781');
     $('#mother_contact_number').val('09324207231');
 });
+

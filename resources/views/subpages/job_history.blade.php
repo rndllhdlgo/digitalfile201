@@ -16,31 +16,31 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="job_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="job_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="job_name" class="formlabel form-label"><span class="span_job_name">(Optional)</span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
                         <label for="job_position" class="formlabel form-label"><span class="span_job_position">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control capitalize" type="search" id="job_address" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="job_address" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="job_address" class="formlabel form-label"><span class="span_job_address">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="job_contact_details" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                        <input class="forminput form-control multiple_field" type="search" id="job_contact_details" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                         <label for="job_contact_details" class="formlabel form-label"><span class="span_job_contact_details">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="job_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                        <input class="forminput form-control multiple_field" type="search" id="job_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                         <label for="job_inclusive_years" class="formlabel form-label"><span class="span_job_inclusive_years">(Optional)</span></label>
                     </div>
                 </td>

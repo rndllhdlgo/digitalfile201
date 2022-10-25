@@ -37,7 +37,7 @@
                         <div class="col">
                             <div class="f-outline">
                                 <input class="forminput form-control required_field" type="email" id="email" name="email" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="emailValidation()">
-                                <p id="email_validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address</p>
+                                <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address</p>
                                 <label for="email" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email">(Required)</span></label>
                             </div>
                         </div>
@@ -60,7 +60,7 @@
                         <div class="col">
                             <div class="f-outline">
                                 <input class="forminput form-control required_field" type="password" id="password" name="password" placeholder=" " autocomplete="off" onkeyup="passwordValidation()">
-                                <p id="password_validation"><i class="fas fa-exclamation-triangle"></i> asd</p>
+                                <p id="password_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> asd</p>
                                 <label for="password" class="formlabel form-label password-text"><i class="fas fa-lock"></i> PASSWORD <span class="span_password">(Required)</span></label>
                             </div>
                         </div>

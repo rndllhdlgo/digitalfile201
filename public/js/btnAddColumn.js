@@ -3,10 +3,11 @@
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
-        $('#btnSingleParentAdd').prop('disabled',true);
+        $('#btnSoloParentAdd').prop('disabled',true);
     }
     else{
-        $('#btnSingleParentAdd').prop('disabled',false);
+        $('#btnSoloParentAdd').prop('disabled',false);
+        $('#btnSoloParentAdd').css('display','block');
     }
 
     if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years').val()){
@@ -84,14 +85,14 @@ function checkforblankMultiple(){
 
 //Solo Parent Table Add
 $(document).ready(function(){
-    $('#btnSingleParentAdd').click(function(){
+    $('#btnSoloParentAdd').click(function(){
         $('#solo_parent_data_table').show();
         var child_name = $('#child_name').val().trim();
         var child_birthday = $('#child_birthday').val();
         var child_age = $('#child_age').val();
         var child_gender = $('#child_gender').val();
 
-        var dynamicSingleParent = "<tr><td class='text-capitalize'>"+ child_name +"</td><td>" + child_birthday + "</td><td>" + child_age + "</td><td class='text-capitalize'>" + child_gender + "</td><td> <button class='btn btn-danger btn-single-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
+        var dynamicSingleParent = "<tr><td class='text-capitalize' style='width:22.5%'>"+ child_name +"</td><td style='width:22.5%'>" + child_birthday + "</td><td style='width:22.5%'>" + child_age + "</td><td class='text-capitalize' style='width:22.5%'>" + child_gender + "</td><td style='width:10%'> <button class='btn btn-danger btn-solo-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
         $('#solo_parent_data_table tbody').append(dynamicSingleParent);
         $('#child_name').val("");
         $('#child_birthday').val("");
@@ -100,16 +101,18 @@ $(document).ready(function(){
         $('.span_child_name').show();
         $('.span_child_birthday').show();
         $('.span_child_gender').show();
-        $('.btn-single-parent').click(function(){
+        $('.btn-solo-parent').click(function(){
             $(this).parent().parent().remove();
+            if($("#solo_parent_data_table tbody").children().children().length == 0){
+                $("#solo_parent_data_table").hide();
+            }
         });
     });
 
-//Educational and Training Background Tab
-//College Table Add
+    //Educational and Training Background Tab
+    //College Table Add
     $('#btnCollegeAdd').click(function(){
         $('#college_data_table').show();
-        // $('.college_tr_th').hide();
         var college_name = $('#college_name').val().trim();
         var college_degree = $('#college_degree').val().trim();
         var college_inclusive_years = $('#college_inclusive_years').val().trim();
@@ -127,10 +130,9 @@ $(document).ready(function(){
         });
     });
 
-//Training Table Add
+    //Training Table Add
     $('#btnTrainingAdd').click(function(){
         $('#training_data_table').show();
-        // $('.training_tr_th').hide();
         var training_name = $('#training_name').val().trim();
         var training_title = $('#training_title').val().trim();
         var training_inclusive_years = $('#training_inclusive_years').val().trim();
@@ -148,10 +150,9 @@ $(document).ready(function(){
         });
     });
 
-//Vocational Table Add
+    //Vocational Table Add
     $('#btnVocationalAdd').click(function(){
         $('#vocational_data_table').show();
-        // $('.vocational_tr_th').hide();
         var vocational_name = $('#vocational_name').val().trim();
         var vocational_course = $('#vocational_course').val().trim();
         var vocational_inclusive_years = $('#vocational_inclusive_years').val().trim();
@@ -169,17 +170,16 @@ $(document).ready(function(){
         });
     });
 
-//Job History Table Add
+    //Job History Table Add
     $('#btnJobHistoryAdd').click(function(){
         $('#job_data_table').show();
-        // $('.job_tr_th').hide();
         var job_name = $('#job_name').val().trim();
         var job_position = $('#job_position').val().trim();
         var job_address = $('#job_address').val().trim();
         var job_contact_details = $('#job_contact_details').val().trim();
         var job_inclusive_years = $('#job_inclusive_years').val().trim();
 
-        var dynamicJobHistory = "<tr><td style='width:18%' class='text-capitalize'>" + job_name + "</td><td style='width:18%' class='text-capitalize'>" + job_position + "</td><td style='width:18%' class='text-capitalize'>" + job_address + "</td><td style='width:18%'>" + job_contact_details + "</td><td style='width:18%'>" + job_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicJobHistory = "<tr><td style='width:18%' class='text-capitalize'> " + job_name + "</td><td style='width:18%' class='text-capitalize'>" + job_position + "</td><td style='width:18%' class='text-capitalize'>" + job_address + "</td><td style='width:18%'>" + job_contact_details + "</td><td style='width:18%'>" + job_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
         $('#job_data_table').append(dynamicJobHistory);
         $('#job_name').val("");
         $('#job_position').val("");
@@ -196,11 +196,10 @@ $(document).ready(function(){
         });
     });
 
-//Documents
-//Memo Table Add
+    //Documents
+    //Memo Table Add
     $('#btnMemoAdd').click(function(){
         $('#memo_data_table').show();
-        // $('.memo_tr_th').hide();
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
@@ -219,10 +218,9 @@ $(document).ready(function(){
         });
     });
 
-//Evaluation Table Add
+    //Evaluation Table Add
     $('#btnEvaluationAdd').click(function(){
         $('#evaluation_data_table').show();
-        // $('.evaluation_tr_th').hide();
         var evaluation_reason = $('#evaluation_reason').val().trim();
         var evaluation_date = $('#evaluation_date').val();
         var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
@@ -240,7 +238,7 @@ $(document).ready(function(){
         });
     });
 
-//Contract Table Add
+    //Contract Table Add
     $('#btnContractAdd').click(function(){
         $('#contracts_data_table').show();
         var contracts_type = $('#contracts_type').val().trim();
@@ -253,40 +251,6 @@ $(document).ready(function(){
         $('.span_contracts_type').show();
         $('.span_contracts_date').show();
         $(".btn-contract").click(function(){
-            $(this).parent().parent().remove();
-        });
-    });
-
-//Resignation Table Add
-    $('#btnResignationAdd').click(function(){
-        $('#resignation_data_table').show();
-        var resignation_letter = $('#resignation_letter').val().trim();
-        var resignation_date = $('#resignation_date').val();
-
-        var dynamicResignation = "<tr><td class='text-capitalize' style='width:45%'>"+ resignation_letter +"</td><td style='width:45%'>"+ resignation_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-resignation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#resignation_data_table").append(dynamicResignation);
-        $("#resignation_letter").val(""); 
-        $("#resignation_date").val("");
-        $('.span_resignation_letter').show();
-        $('.span_resignation_date').show(); 
-        $(".btn-resignation").click(function(){
-            $(this).parent().parent().remove();
-        });
-    });
-
-//Termination Table Add
-    $('#btnTerminationAdd').click(function(){
-        $('#termination_data_table').show();
-        var termination_letter = $('#termination_letter').val().trim();
-        var termination_date = $('#termination_date').val();
-
-        var dynamicTermination = "<tr><td class='text-capitalize' style='width:45%'>"+ termination_letter +"</td><td style='width:45%'>"+ termination_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-termination center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#termination_data_table").append(dynamicTermination);
-        $("#termination_letter").val(""); 
-        $("#termination_date").val("");
-        $('.span_termination_letter').show();
-        $('.span_termination_date').show();  
-        $(".btn-termination").click(function(){
             $(this).parent().parent().remove();
         });
     });
