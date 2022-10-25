@@ -2,7 +2,6 @@
 <div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <strong class="table-title">COLLEGE EDUCATION</strong>
-    <input type="hidden" name="employee_id" id="employee_id">
         <table class="table table-striped table-bordered table-hover mt-1" id="">
             <thead class="thead-educational">
                 <tr>

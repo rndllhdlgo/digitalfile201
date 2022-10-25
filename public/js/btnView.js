@@ -127,6 +127,13 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('.span_primary_school_name').hide();
             $('.span_primary_school_address').hide();
             $('.span_primary_school_inclusive_years').hide();
+
+            $('#duplicate_email_address').remove();
+            $('#duplicate_telephone_number').remove();
+            $('#duplicate_cellphone_number').remove();
+            $('#duplicate_father_contact_number').remove();
+            $('#duplicate_mother_contact_number').remove();
+            $('#duplicate_emergency_contact_number').remove();
             $('#check_duplicate').remove();
 
             //Disable Edit

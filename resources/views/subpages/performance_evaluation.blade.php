@@ -166,8 +166,9 @@
     <strong class="table-title">RESIGNATION</strong>
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
-            <th style="width:50%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
-            <th style="width:50%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+            <th><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
+            <th><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+            <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
         </thead>
         <tbody>
             <tr>

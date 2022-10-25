@@ -346,6 +346,8 @@ $('#btnSave').on('click', function(){
                                         termination_date: termination_date
                                     },
                                 });
+                                $('#document_form').submit();
+
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();
@@ -354,8 +356,7 @@ $('#btnSave').on('click', function(){
                                 $('#memo_data_table').hide();
                                 $('#evaluation_data_table').hide();
                                 $('#contracts_data_table').hide();
-                                
-                                // $('#document_form').submit();
+                        
                             // Swal.fire("SAVE SUCCESS", "", "success");
                             // setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 4000);//use to reload the table based on its id
                             // setTimeout(function(){location.reload();}, 4000); // Reload the whole page 

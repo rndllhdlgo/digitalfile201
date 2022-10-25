@@ -2,9 +2,6 @@
     <hr class="hr-design">
     <div class="container" style="width:75%;">
         {{-- <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span> --}}
-        <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="document_form">
-            @csrf
-            <input type="hidden" name="employee_id" id="employee_id">
                 <strong class="table-title">REQUIREMENTS</strong>
                     <table class="table table-striped table-bordered table-hover mt-1">
                         <thead class="thead-educational">
@@ -111,7 +108,6 @@
     </div> {{-- Container div end tag --}}
             <div class="form-group"><button class="btn btn-success" id="save_document_form" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
             <hr class="hr-design">
-        </form>
             
             {{-- Display File Chosen --}}
             <div class="modal fade" id="preview_modal">

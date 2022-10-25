@@ -3,7 +3,6 @@
 @section('content')
 <br>
     <input type="hidden" name="hidden_id" id="hidden_id">
-    
         <div id="employees_list">
             <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>
             @if(Auth::user()->user_level == 'ADMIN') {{--To hide the section based on user level --}}
@@ -64,9 +63,11 @@
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
                     </li>
-                    
                 </ul>
-            
+
+    <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="document_form">
+        @csrf
+        <input type="hidden" name="employee_id" id="employee_id">
                 <div class="tab-content">
                         @include('subpages.personal_information')
                         @include('subpages.work_information')
@@ -78,6 +79,6 @@
                 </div>{{--  End of Tab Content  --}}
              {{-- End Form of Multiple Data Insert --}}
         </div> {{-- End of Employee Form --}}
-
+    </form>
         {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}
 @endsection
