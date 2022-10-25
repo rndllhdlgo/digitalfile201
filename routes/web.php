@@ -68,6 +68,10 @@ Route::any('/trainingSave','EmployeesController@trainingSave');
 Route::any('/vocationalSave','EmployeesController@vocationalSave');
 Route::any('/jobSave','EmployeesController@jobSave');
 Route::any('/memoSave','EmployeesController@memoSave');
+Route::any('/evaluationSave','EmployeesController@evaluationSave');
+Route::any('/contractsSave','EmployeesController@contractsSave');
+Route::any('/resignationSave','EmployeesController@resignationSave');
+Route::any('/terminationSave','EmployeesController@terminationSave');
 
 // Random Routes
 // Route::get('/upload', function () {

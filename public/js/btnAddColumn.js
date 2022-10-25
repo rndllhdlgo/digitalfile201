@@ -242,12 +242,12 @@ $(document).ready(function(){
 
 //Contract Table Add
     $('#btnContractAdd').click(function(){
-        $('#contract_data_table').show();
+        $('#contracts_data_table').show();
         var contracts_type = $('#contracts_type').val().trim();
         var contracts_date = $('#contracts_date').val();
 
         var dynamicContract = "<tr><td class='text-capitalize' style='width:45%'>"+ contracts_type +"</td><td style='width:45%'>"+ contracts_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
-        $("#contract_data_table").append(dynamicContract);
+        $("#contracts_data_table").append(dynamicContract);
         $("#contracts_type").val(""); 
         $("#contracts_date").val("");
         $('.span_contracts_type').show();

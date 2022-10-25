@@ -75,7 +75,7 @@
                 <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
-        <tbody id="evaluation_tbody">
+        <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
@@ -127,7 +127,7 @@
                 <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
-        <tbody id="contracts_tbody">
+        <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
@@ -147,7 +147,7 @@
             </tr>
         </tbody>
     </table>
-    <table id="contract_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+    <table id="contracts_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
         <thead class="thead-educational">
             <tr style="display: none;">
                 <th style="width:45%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
@@ -161,17 +161,15 @@
         <hr class="hr-design">
         <br>
         <br>
-    
+        
     {{-- Resignation Table --}}
     <strong class="table-title">RESIGNATION</strong>
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
-            <th style="width:45%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
-            <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-            {{-- <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th> --}}
-            <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+            <th style="width:50%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
+            <th style="width:50%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
         </thead>
-        <tbody id="resignation_tbody">
+        <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
@@ -185,21 +183,7 @@
                         <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date">(Optional)</span></label>
                     </div>
                 </td>
-                <td class="pb-2 pt-3">
-                    <button type="button" id="btnResignationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
-                </td>
             </tr>
-        </tbody>
-    </table>
-    <table id="resignation_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:45%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
-                <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
         </tbody>
     </table>
         <hr class="hr-design">
@@ -210,13 +194,11 @@
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
             <tr>
-                <th style="width:45%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
-                <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                {{-- <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th> --}}
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:50%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
+                <th style="width:50%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
             </tr>
         </thead>
-        <tbody id="termination_tbody">
+        <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
@@ -230,21 +212,7 @@
                         <label for="termination_date" class="formlabel form-label"><span class="span_termination_date">(Optional)</span></label>
                     </div>
                 </td>
-                <td class="pb-2 pt-3">
-                    <button type="button" id="btnTerminationAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
-                </td>
             </tr>
-        </tbody>
-    </table>
-    <table id="termination_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:45%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
-                <th style="width:45%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
         </tbody>
     </table>
         <hr class="hr-design">

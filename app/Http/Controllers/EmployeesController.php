@@ -296,17 +296,50 @@ class EmployeesController extends Controller
         $job->job_position = $request->job_position;
         $job->job_address = $request->job_address;
         $job->job_contact_details = $request->job_contact_details;
-        $job->job_address = $request->vocational_inclusive_years;
+        $job->job_inclusive_years = $request->job_inclusive_years;
         $job->save();
     }
 
     public function memoSave(Request $request){
-        $job = new Memo;
-        $job->employee_id = $request->employee_id;//use to associate employee id
-        $job->memo_subject = $request->memo_subject;
-        $job->memo_date = $request->memo_date;
-        $job->memo_option = $request->memo_option;
-        $job->save();
+        $memo = new Memo;
+        $memo->employee_id = $request->employee_id;//use to associate employee id
+        $memo->memo_subject = $request->memo_subject;
+        $memo->memo_date = $request->memo_date;
+        $memo->memo_option = $request->memo_option;
+        $memo->save();
+    }
+
+    public function evaluationSave(Request $request){
+        $evaluation = new Evaluation;
+        $evaluation->employee_id = $request->employee_id;//use to associate employee id
+        $evaluation->evaluation_reason = $request->evaluation_reason;
+        $evaluation->evaluation_date = $request->evaluation_date;
+        $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by;
+        $evaluation->save();
+    }
+
+    public function contractsSave(Request $request){
+        $contract = new Contracts;
+        $contract->employee_id = $request->employee_id;//use to associate employee id
+        $contract->contracts_type = $request->contracts_type;
+        $contract->contracts_date = $request->contracts_date;
+        $contract->save();
+    }
+
+    public function resignationSave(Request $request){
+        $resignation = new Resignation;
+        $resignation->employee_id = $request->employee_id;//use to associate employee id
+        $resignation->resignation_letter = $request->resignation_letter;
+        $resignation->resignation_date = $request->resignation_date;
+        $resignation->save();
+    }
+
+    public function terminationSave(Request $request){
+        $termination = new Termination;
+        $termination->employee_id = $request->employee_id;//use to associate employee id
+        $termination->termination_letter = $request->termination_letter;
+        $termination->termination_date = $request->termination_date;
+        $termination->save();
     }
 }
 

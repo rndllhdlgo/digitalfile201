@@ -12,7 +12,7 @@ function dateTime(){
 }
 
 //Display Data Table Function
-var employeesTable;
+// var employeesTable;
 $(document).ready(function () {    
     $('#employeesTable thead tr')// Setup - add a text input to each footer cell
         .clone(true)
@@ -20,8 +20,8 @@ $(document).ready(function () {
         .appendTo('#employeesTable thead');
   
   $('#employeesTable').dataTable().fnDestroy();//To destroy datatable
-        employeesTable = $('#employeesTable').DataTable({
-        dom:'ltrip',//layout of the table
+        var employeesTable = $('#employeesTable').DataTable({
+        dom:'lrtip',//layout of the table
         language: {
             "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
             "lengthMenu":"Show _MENU_ Employees",

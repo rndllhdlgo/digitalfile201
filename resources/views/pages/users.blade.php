@@ -2,9 +2,7 @@
 
 @section('content')
 <br>
-
-Toggle column: <a class="toggle-vis" data-column="0">User Level</a> - <a class="toggle-vis" data-column="1">Name</a> - <a class="toggle-vis" data-column="2">Email</a> - <a class="toggle-vis" data-column="3">Status</a>
-<br>
+{{-- Toggle column: <a class="toggle-vis" data-column="0">User Level</a> - <a class="toggle-vis" data-column="1">Name</a> - <a class="toggle-vis" data-column="2">Email</a> - <a class="toggle-vis" data-column="3">Status</a> --}}
 <button type="button" class="btn btn-success grow float-end" id="addUserBtn" title="CREATE NEW USER"><i class="fas fa-user-plus"></i></button>
         <strong style="color: #0d1a80;font-size:20px;">USERS TABLE</strong>
         <hr>

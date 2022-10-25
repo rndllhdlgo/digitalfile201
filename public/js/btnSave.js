@@ -76,6 +76,10 @@ $('#btnSave').on('click', function(){
         var primary_school_name = $.trim($('#primary_school_name').val());
         var primary_school_address = $.trim($('#primary_school_address').val());
         var primary_school_inclusive_years = $.trim($('#primary_school_inclusive_years').val());
+        var resignation_letter = $.trim($('#resignation_letter').val());
+        var resignation_date = $('#resignation_date').val();
+        var termination_letter = $('#termination_letter').val();
+        var termination_date = $('#termination_date').val();
 
         // go = false,
         
@@ -277,12 +281,79 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+                                var evaluationTable = $('#evaluation_data_table').DataTable({
+                                    dom:'t',
+                                });
+                                var evaluation_data  = evaluationTable.rows().data();
+                                $.each(evaluation_data, function(key, value){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/evaluationSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id' : data.id,
+                                            'evaluation_reason' : value[0],
+                                            'evaluation_date' : value[1],
+                                            'evaluation_evaluated_by': value[2] 
+                                        },
+                                    });
+                                });
+                                var contractsTable = $('#contracts_data_table').DataTable({
+                                    dom:'t',
+                                });
+                                var contracts_data  = contractsTable.rows().data();
+                                $.each(contracts_data, function(key, value){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/contractsSave',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            'employee_id' : data.id,
+                                            'contracts_type' : value[0],
+                                            'contracts_date' : value[1]
+                                        },
+                                    });
+                                });
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/resignationSave',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        'employee_id': data.id,
+                                        resignation_letter: resignation_letter,
+                                        resignation_date: resignation_date
+                                    },
+                                });
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/terminationSave',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        'employee_id': data.id,
+                                        termination_letter: termination_letter,
+                                        termination_date: termination_date
+                                    },
+                                });
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();
                                 $('#vocational_data_table').hide();
                                 $('#job_data_table').hide();
                                 $('#memo_data_table').hide();
+                                $('#evaluation_data_table').hide();
+                                $('#contracts_data_table').hide();
                                 
                                 // $('#document_form').submit();
                             // Swal.fire("SAVE SUCCESS", "", "success");
