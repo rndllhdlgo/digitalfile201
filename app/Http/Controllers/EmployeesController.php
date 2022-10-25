@@ -249,7 +249,7 @@ class EmployeesController extends Controller
             'philhealth_form' => $philhealth,
             'pag_ibig_form' => $pag_ibig,
         ]);
-        // return Redirect::to(url()->previous());//Return previous page
+        return Redirect::to(url()->previous());//Return previous page
         // return redirect()->back();
     }
 

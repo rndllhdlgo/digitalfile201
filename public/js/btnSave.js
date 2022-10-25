@@ -353,7 +353,7 @@ $('#btnSave').on('click', function(){
 
                                 $('#document_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
-                                
+                                setTimeout(function(){location.reload();}, 2000); // Reload the whole page 
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();
