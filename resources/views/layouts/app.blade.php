@@ -19,6 +19,7 @@
         <link href="{{ asset('/css/personal_information.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/educational.css') }}" rel="stylesheet">
         <link href="{{ asset('/css/documents.css') }}" rel="stylesheet">
+        
     </head>
 <body>
         @if(!Auth::guest())
