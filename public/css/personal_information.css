@@ -1,0 +1,43 @@
+/* Divide into two columns */
+.column-1 {
+    float: left;
+    width: 280px;
+    height: 245px; 
+    border:1px solid gray;
+    margin-left: 1%;
+    background-color: #f2f4f5;
+    position: relative;   
+}
+.column-2{
+    float: left;
+    width: 77%;
+    /* padding: 10px; */
+    /* height: 200px; */
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;/* Clear floats after the columns */
+}
+
+#preview_image{
+    height: 205px;
+    width: 274px;
+    margin-left: -12px;
+    cursor:pointer;
+    display: none;
+}
+
+#preview_file{
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image_icon{
+    position: absolute;
+    zoom: 150%;
+    margin-left: 26%;
+}

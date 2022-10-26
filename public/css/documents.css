@@ -1,0 +1,31 @@
+#preview_birthcertificate,
+#preview_nbi,
+#preview_barangay_clearance,
+#preview_police_clearance,
+#preview_sss,
+#preview_philhealth,
+#preview_pag_ibig{
+    height: 40px;
+    width: 40px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#eye_birthcertificate[disabled],
+#replace_birthcertificate[disabled],
+#eye_nbi[disabled],
+#replace_nbi[disabled],
+#eye_barangay_clearance[disabled],
+#replace_barangay_clearance[disabled],
+#eye_police_clearance[disabled],
+#replace_police_clearance[disabled],
+#eye_sss[disbaled],
+#replace_sss[disabled],
+#eye_philhealth[disabled],
+#replace_philhealth[disabled],
+#eye_pag_ibig[disabled],
+#replace_pag_ibig[disabled]{
+    cursor: not-allowed;
+    pointer-events:auto;
+}
