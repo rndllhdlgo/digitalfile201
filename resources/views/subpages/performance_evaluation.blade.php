@@ -1,4 +1,5 @@
 <div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
+
     {{-- Memo Table --}}
     <hr class="hr-design">
     <strong class="table-title">MEMOS RECEIVED</strong>
@@ -16,14 +17,14 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date">(Optional)</span></label>
+                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -36,7 +37,7 @@
                             <option value="3rd Offense">3rd Offense</option>
                             <option value="Final">Final</option>
                         </select>
-                        <label for="memo_option" class="formlabel form-label"><span class="span_memo_option">(Optional)</span> </label>
+                        <label for="memo_option" class="formlabel form-label"><span class="span_memo_option span_all">(Optional)</span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -79,20 +80,20 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date">(Optional)</span></label>
+                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -131,14 +132,14 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracs_date" class="formlabel form-label"><span class="span_contracts_date">(Optional)</span></label>
+                        <label for="contracs_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
@@ -166,23 +167,34 @@
     <strong class="table-title">RESIGNATION</strong>
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
-            <th><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
-            <th><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-            {{-- <th><i class="fas fa-folder-plus"></i> ATTACH FILE</th> --}}
+            <th style="width:30%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
+            <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+            <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+            <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
         </thead>
         <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date">(Optional)</span></label>
+                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
                     </div>
+                </td>
+                <td>
+                    <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                    <input  type="file"   id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf" style="display: none;" name="resignation_file">
+                    <span id="resignation_text">No file chosen, yet.</span>
+                </td>
+                <td>
+                    <button type="button" id="eye_resignation"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_resignation').click();" style="margin-left:7%;" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="replace_resignation" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                    <img src="" alt=""    id="preview_resignation" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
             </tr>
         </tbody>
@@ -195,26 +207,52 @@
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
             <tr>
-                <th style="width:50%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
-                <th style="width:50%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+                <th style="width:30%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
+                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
+                <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter">(Optional)</span></label>
+                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date">(Optional)</span></label>
+                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
                     </div>
+                </td>
+                <td>
+                    <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                    <input  type="file"   id="termination_file"   class=""     onchange="return terminationValidation()" accept="image/*,.pdf" style="display: none;" name="termination_file">
+                    <span id="termination_text">No file chosen, yet.</span>
+                </td>
+                <td>
+                    <button type="button" id="eye_termination"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_termination').click();" style="margin-left:7%;" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="replace_termination" class="btn btn-primary grow"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                    <img src="" alt=""    id="preview_termination" style="display: none;cursor: zoom-in" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
             </tr>
         </tbody>
     </table>
         <hr class="hr-design">
+
+        <div class="modal fade" id="preview_performance">
+            <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <h4 class="modal-title"></h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE"></button>
+                    </div>
+                    <div class="modal-body">
+                        <iframe src="" alt="" id="performance_display" style="width:100%;height:100%;"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
 </div>

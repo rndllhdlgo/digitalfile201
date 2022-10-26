@@ -65,9 +65,6 @@
                     </li>
                 </ul>
 
-    <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="document_form">
-        @csrf
-        <input type="hidden" name="employee_id" id="employee_id">
                 <div class="tab-content">
                         @include('subpages.personal_information')
                         @include('subpages.work_information')
@@ -79,6 +76,5 @@
                 </div>{{--  End of Tab Content  --}}
              {{-- End Form of Multiple Data Insert --}}
         </div> {{-- End of Employee Form --}}
-    </form>
         {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}
 @endsection

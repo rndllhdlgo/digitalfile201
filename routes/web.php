@@ -37,6 +37,7 @@ Route::get('/employees/checkTelephoneNumberDuplicate', 'EmployeesController@chec
 Route::get('/employees/checkCellphoneNumberDuplicate', 'EmployeesController@checkCellphoneNumberDuplicate');
 Route::get('/employees/checkFatherCellphoneNumberDuplicate', 'EmployeesController@checkFatherCellphoneNumberDuplicate');
 Route::get('/employees/checkMotherCellphoneNumberDuplicate', 'EmployeesController@checkMotherCellphoneNumberDuplicate');
+Route::get('/employees/checkSpouseCellphoneNumberDuplicate', 'EmployeesController@checkSpouseCellphoneNumberDuplicate');
 Route::get('/employees/checkEmergencyContactNumberDuplicate', 'EmployeesController@checkEmergencyContactNumberDuplicate');
 Route::get('/employees/checkEmployeeEmailAddressDuplicate', 'EmployeesController@checkEmployeeEmailAddressDuplicate');
 Route::get('/employees/checkEmployeeContactNumberDuplicate', 'EmployeesController@checkEmployeeContactNumberDuplicate');
@@ -60,6 +61,7 @@ Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
 Route::any('/employees/storeRequirements','EmployeesController@storeRequirements');
+Route::any('/employees/storePerformanceDocuments','EmployeesController@storePerformanceDocuments');
 
 // Routes for saving multiple tables
 Route::any('/childrenSave','EmployeesController@childrenSave');

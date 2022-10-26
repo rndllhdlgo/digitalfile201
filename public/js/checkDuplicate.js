@@ -8,7 +8,7 @@ setInterval(checkEmployeeNumberDuplicate,200);
                     employee_number : $('#employee_number').val(),
                 },
                 success: function(data){
-                    if(data == 'employee_number_duplicate_true'){
+                    if(data == 'true'){
                         $('#check_duplicate').show();
                     }
                     else{
@@ -29,7 +29,7 @@ function checkEmailAddress(){
                 email_address : $('#email_address').val(),
             },
             success: function(data){
-                if(data == 'email_address_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_email_address').show();
                 }
                 else{
@@ -50,7 +50,7 @@ function checkTelephoneNumber(){
                 telephone_number : $('#telephone_number').val(),
             },
             success: function(data){
-                if(data == 'telephone_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_telephone_number').show();
                 }
                 else{
@@ -70,7 +70,7 @@ function checkCellphoneNumber(){
                 cellphone_number : $('#cellphone_number').val(),
             },
             success: function(data){
-                if(data == 'cellphone_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_cellphone_number').show();
                 }
                 else{
@@ -91,7 +91,7 @@ function checkFatherContactNumber(){
                 father_contact_number : $('#father_contact_number').val(),
             },
             success: function(data){
-                if(data == 'father_contact_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_father_contact_number').show();
                 }
                 else{
@@ -112,11 +112,31 @@ function checkMotherContactNumber(){
                 mother_contact_number : $('#mother_contact_number').val(),
             },
             success: function(data){
-                if(data == 'mother_contact_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_mother_contact_number').show();
                 }
                 else{
                     $('#duplicate_mother_contact_number').hide();
+                }
+            }
+        });
+    }
+};
+
+setInterval(checkSpouseContactNumber,200)
+function checkSpouseContactNumber(){
+    if($('#spouse_contact_number').val()){
+        $.ajax({
+            url: "/employees/checkSpouseCellphoneNumberDuplicate",
+            data:{
+                spouse_contact_number : $('#spouse_contact_number').val(),
+            },
+            success: function(data){
+                if(data == 'true'){
+                    $('#duplicate_spouse_contact_number').show();
+                }
+                else{
+                    $('#duplicate_spouse_contact_number').hide();
                 }
             }
         });
@@ -133,7 +153,7 @@ function checkEmergencyContactNumber(){
                 emergency_contact_number : $('#emergency_contact_number').val(),
             },
             success: function(data){
-                if(data == 'emergency_contact_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_emergency_contact_number').show();
                 }
                 else{
@@ -154,7 +174,7 @@ function checkCompanyEmailAddress(){
                 employee_email_address : $('#employee_email_address').val(),
             },
             success: function(data){
-                if(data == 'employee_email_address_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_employee_email').show();
                 }
                 else{
@@ -174,7 +194,7 @@ function checkCompanyEmployeeNumber(){
                 employee_contact_number : $('#employee_contact_number').val(),
             },
             success: function(data){
-                if(data == 'employee_contact_number_duplicate_true'){
+                if(data == 'true'){
                     $('#duplicate_employee_contact_number').show();
                 }
                 else{

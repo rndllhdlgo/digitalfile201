@@ -30,6 +30,7 @@ function ImageValidation() {
   }
 }
 
+//Document Tab Upload Validation
 function BirthCertificateValidation() {
     var birthcertData = document.getElementById('birthcertificate_file');
     var birthcertUploadPath = birthcertData.value;
@@ -48,14 +49,14 @@ function BirthCertificateValidation() {
         }
     }
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function nbiValidation() {
@@ -224,10 +225,11 @@ function pagibigValidation() {
           allowOutsideClick: false,
           allowEscapeKey: false
       });
+      
   }
 }
 
-//Attach File Documents Function
+//Document Tab File Rename Function
 var birthcertificate_file = $('#birthcertificate_file')[0];
 var birthcertificate_button = $('#birthcertificate_button')[0];
 var birthcertificate_text = $('#birthcertificate_text')[0];
@@ -319,7 +321,7 @@ $('#pag_ibig_file').on('change',function(){
     }
 });
 
-//Replace Documents Function
+//Document Tab Replace Function
 $('#replace_birthcertificate').on('click',function(){
     $('#birthcertificate_file').val('');
     $('#preview_birthcertificate').attr('src','');//change the image source
@@ -397,15 +399,14 @@ $('#replace_pag_ibig').on('click',function(){
     $('#pag_ibig_file').click();
 });
 
-
-
-//Preview of file upload in Modal Form
-function changePreview(newSrc){
-    var newSrcNow = newSrc.src; //To get the source of the file uploaded
-    var largImg = document.getElementById('file_display');
-    largImg.src = newSrcNow;
+//Document Tab Preview Function
+function documentPreview(newDocumentSrc){
+    var newDocumentSrcNow = newDocumentSrc.src; //To get the source of the file uploaded
+    var largeDocument = document.getElementById('document_display');
+    largeDocument.src = newDocumentSrcNow;
 }
-//Change .modal-title function
+
+//Document Tab Change Modal-Title Function
 $('#preview_birthcertificate').on('click',function(){
     $('.modal-title').html('BIRTH CERTIFICATE');
 });
@@ -436,4 +437,129 @@ $('#preview_philhealth').on('click',function(){
 
 $('#preview_pag_ibig').on('click',function(){
     $('.modal-title').html('PAGIBIG FORM');
+});
+
+//////////////////////////////////////////////
+
+//Performance Evaluation Tab Upload Validation
+function resignationValidation() {
+    var resignationData = document.getElementById('resignation_file');
+    var resignationUploadPath = resignationData.value;
+    var resignationExtension = resignationUploadPath.substring(resignationUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (resignationExtension == "jpg" || resignationExtension == "jpeg" || resignationExtension == "png" || resignationExtension == "gif" || resignationExtension == "pdf") {
+        if (resignationData.files && resignationData.files[0]) {
+          var resignationReader = new FileReader();
+            resignationReader.onload = function(e) {
+                $('#preview_resignation').attr('src', e.target.result);
+            }
+            resignationReader.readAsDataURL(resignationData.files[0]);
+            $('#eye_resignation').prop('disabled',false);
+            $('#replace_resignation').prop('disabled',false);
+            $('#resignation_button').hide();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+function terminationValidation() {
+    var terminationData = document.getElementById('termination_file');
+    var terminationUploadPath = terminationData.value;
+    var terminationExtension = terminationUploadPath.substring(terminationUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (terminationExtension == "jpg" || terminationExtension == "jpeg" || terminationExtension == "png" || terminationExtension == "gif" || terminationExtension == "pdf") {
+        if (terminationData.files && terminationData.files[0]) {
+          var terminationReader = new FileReader();
+            terminationReader.onload = function(e) {
+                $('#preview_termination').attr('src', e.target.result);
+            }
+            terminationReader.readAsDataURL(terminationData.files[0]);
+            $('#eye_termination').prop('disabled',false);
+            $('#replace_termination').prop('disabled',false);
+            $('#termination_button').hide();
+        }
+    } 
+    else {
+      Swal.fire({
+          title: 'UNSUPPORTED FILE SELECTED',
+          icon: 'error',
+          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
+          allowOutsideClick: false,
+          allowEscapeKey: false
+      });
+  }
+}
+
+//Performance Evaluation Tab File Rename Function
+var resignation_file = $('#resignation_file')[0];
+var resignation_button = $('#resignation_button')[0];
+var resignation_text = $('#resignation_text')[0];
+
+$('#resignation_file').on('change',function(){
+    if (resignation_file.value) {
+        resignation_text.innerHTML = "<b> File Name: </b>" + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        resignation_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
+var termination_file = $('#termination_file')[0];
+var termination_button = $('#termination_button')[0];
+var termination_text = $('#termination_text')[0];
+
+$('#termination_file').on('change',function(){
+    if (termination_file.value) {
+        termination_text.innerHTML = "<b> File Name: </b>" + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        termination_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
+//Performance Evaluation Tab Replace Function
+$('#replace_resignation').on('click',function(){
+    $('#resignation_file').val('');
+    $('#preview_resignation').attr('src','');//change the image source
+    $('#preview_resignation').hide();
+    $('#resignation_text').html('No file chosen, yet.');
+    $('#resignation_button').show();
+    $('#eye_resignation').prop('disabled',true);
+    $('#replace_resignation').prop('disabled',true);
+    $('#resignation_file').click();
+});
+
+$('#replace_termination').on('click',function(){
+    $('#termination_file').val('');
+    $('#preview_termination').attr('src','');//change the image source
+    $('#preview_termination').hide();
+    $('#termination_text').html('No file chosen, yet.');
+    $('#termination_button').show();
+    $('#eye_termination').prop('disabled',true);
+    $('#replace_termination').prop('disabled',true);
+    $('#termination_file').click();
+});
+
+//Document Tab Preview Function
+function performancePreview(newPerformanceFilesrc){
+    var newPerformanceFileNow = newPerformanceFilesrc.src; //To get the source of the file uploaded
+    var performanceFile = document.getElementById('performance_display');
+    performanceFile.src = newPerformanceFileNow;
+}
+
+//Performance Tab Change Modal Title Function
+$('#preview_resignation').on('click',function(){
+    $('.modal-title').html('RESIGNATION LETTER');
+});
+
+$('#preview_termination').on('click',function(){
+    $('.modal-title').html('TERMINATION LETTER');
 });

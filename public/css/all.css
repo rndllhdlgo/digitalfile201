@@ -239,5 +239,10 @@ input[type=search]:focus{
     border:1.5px solid #0d1a80;
 }
 
-
-
+#eye_resignation[disabled],
+#replace_resignation[disabled],
+#eye_termination[disabled],
+#replace_termination[disabled]{
+    cursor: not-allowed;
+    pointer-events:auto;
+}
