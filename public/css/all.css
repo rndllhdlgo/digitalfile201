@@ -2,7 +2,6 @@ body{
     background-color: white;
     overflow-x: hidden;
 }
-
 /* For Input */
 .f-outline{
     position: relative;
@@ -169,51 +168,6 @@ a{
     text-decoration: none;
 }
 
-/* Divide into two columns */
-.column-1 {
-    float: left;
-    width: 280px;
-    height: 245px; 
-    border:1px solid gray;
-    margin-left: 1%;
-    background-color: #f2f4f5;
-    position: relative;   
-}
-.column-2{
-    float: left;
-    width: 77%;
-    /* padding: 10px; */
-    /* height: 200px; */
-}
-.row:after {
-    content: "";
-    display: table;
-    clear: both;/* Clear floats after the columns */
-}
-
-#preview_image{
-    height: 205px;
-    width: 274px;
-    margin-left: -12px;
-    cursor:pointer;
-    display: none;
-}
-
-#preview_file{
-    height: 150px;
-    width: 150px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.image_icon{
-    position: absolute;
-    zoom: 150%;
-    margin-left: 26%;
-}
-
-/* Custom File Input */
 strong{
     color:black !important;
 } 
@@ -251,50 +205,8 @@ strong{
     border-bottom-right-radius: 20px;
 }
 
-/* Educational and Trainings Background CSS */
-.table-title{
-    font-size:16px;
-    background-color:#0d1a80;
-    color:white !important;
-    padding:5px;
-    border-top-left-radius:5px;
-    border-top-right-radius:5px;
-}
 .hr-design {
     border:2px solid black;
-}
-
-/* Css for Dcouments Tab */
-#preview_birthcertificate,
-#preview_nbi,
-#preview_barangay_clearance,
-#preview_police_clearance,
-#preview_sss,
-#preview_philhealth,
-#preview_pag_ibig{
-    height: 40px;
-    width: 40px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#eye_birthcertificate[disabled],
-#replace_birthcertificate[disabled],
-#eye_nbi[disabled],
-#replace_nbi[disabled],
-#eye_barangay_clearance[disabled],
-#replace_barangay_clearance[disabled],
-#eye_police_clearance[disabled],
-#replace_police_clearance[disabled],
-#eye_sss[disbaled],
-#replace_sss[disabled],
-#eye_philhealth[disabled],
-#replace_philhealth[disabled],
-#eye_pag_ibig[disabled],
-#replace_pag_ibig[disabled]{
-    cursor: not-allowed;
-    pointer-events:auto;
 }
 
 .btnDisable[disabled]{
@@ -327,8 +239,5 @@ input[type=search]:focus{
     border:1.5px solid #0d1a80;
 }
 
-/* .capitalize{
-    text-transform:capitalize;
-} */
 
 
