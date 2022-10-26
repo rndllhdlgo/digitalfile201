@@ -16,6 +16,9 @@
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/personal_information.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/educational.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/documents.css') }}" rel="stylesheet">
     </head>
 <body>
         @if(!Auth::guest())
