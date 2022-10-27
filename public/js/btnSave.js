@@ -339,7 +339,6 @@ $('#btnSave').on('click', function(){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/terminationSave',
-                                        async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
@@ -351,7 +350,8 @@ $('#btnSave').on('click', function(){
                                     });
                                 }
 
-                                $('#document_form').submit();
+                                $('#requirements_form').submit();
+                                // $('#performance_form').submit();
                                 // Swal.fire("SAVE SUCCESS", "", "success");
                                 // setTimeout(function(){location.reload();}, 3000); // Reload the whole page 
                                 $('#solo_parent_data_table').hide();

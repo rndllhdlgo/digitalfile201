@@ -17,7 +17,7 @@ $('#btnClear').on('click',function(){
             cancelButton: 'order-3',
             }
         })
-      .then((clear) => {
+        .then((clear) => {
             if (clear.isDenied) { //Clear All Fields
                 $('#personal_information').css('zoom','100%');
                 $('.nav-tabs').css('zoom','100%');
@@ -242,7 +242,9 @@ $('#btnClear').on('click',function(){
                     $('#replace_pag_ibig').prop('disabled',true);
                 }
             }
-    });
+            $('#personal_information').css('zoom','100%');
+            $('.nav-tabs').css('zoom','100%');
+        });
 });
 
 //Clear User Form

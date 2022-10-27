@@ -133,11 +133,11 @@ html::-webkit-scrollbar-track:hover {
 
 .pill{
     color:#0d1a80 !important;
-    font-weight: bolder;
+    font-weight: bold !important;
     border:solid !important;
     border-width: thin !important;
-    font-size: 14px;
-    padding-right: 22px;
+    font-size: 14px !important;
+    padding: 15px !important;
 }
 .tabactive{
     background-color:#0d1a80 !important;
@@ -147,10 +147,18 @@ html::-webkit-scrollbar-track:hover {
 .thead-educational{
     background-color:#0d1a80;
     color:white !important;
+    font-weight: bold !important;
 }
 tr{
     cursor: pointer;
     border-color:black;
+}
+thead{
+    font-size: 16px;
+    font-weight: bold !important;
+}
+td{
+    font-size: 16px; 
 }
 
 .grow {
@@ -218,14 +226,12 @@ strong{
 }
 
 select,
-#birthday,
-#child_birthday,
-#date_hired{
+input[type="date"]{
     cursor: pointer;
 }
 
 .title_file{
-    padding-top: 8px;
+    padding-top: 15px;
 }
 
 input[type=search]:focus{

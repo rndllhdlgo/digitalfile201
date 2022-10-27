@@ -61,7 +61,7 @@ Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
 Route::any('/employees/storeRequirements','EmployeesController@storeRequirements');
-Route::any('/employees/storePerformanceDocuments','EmployeesController@storePerformanceDocuments');
+Route::any('/employees/storePerformanceForm','EmployeesController@storePerformanceForm');
 
 // Routes for saving multiple tables
 Route::any('/childrenSave','EmployeesController@childrenSave');

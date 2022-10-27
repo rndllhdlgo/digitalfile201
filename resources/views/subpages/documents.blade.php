@@ -1,12 +1,12 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
-    <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="document_form">
+    <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="requirements_form">
         @csrf
     <input type="hidden" name="employee_id" id="employee_id">
     <hr class="hr-design">
     <div class="container" style="width:75%;">
         {{-- <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span> --}}
                 <strong class="table-title">REQUIREMENTS</strong>
-                    <table class="table table-striped table-bordered table-hover mt-1">
+                    <table class="table table-striped table-bordered table-hover mt-1 align-middle">
                         <thead class="thead-educational">
                             <tr>
                                 <th style="width:25%"><i class="fas fa-file"></i> FILE TITLE</th>
@@ -19,7 +19,7 @@
                                 <td><p class="title_file"><b>BIRTH CERTIFICATE</b></p></td>
                                 <td>
                                     <button type="button" id="birthcertificate_button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="birthcertificate_file"   class="required_field"     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" style="display: none;" name="birthcertificate_file">
+                                    <input  type="file"   id="birthcertificate_file"   class=""     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" style="display: none;" name="birthcertificate_file">
                                     <span id="birthcertificate_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -32,7 +32,7 @@
                                 <td><p class="title_file"><b>NBI CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="nbi_button" class="btn btn-primary bp" onclick="$('#nbi_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="nbi_file"   class="required_field"     onchange="return nbiValidation()" accept="image/*,.pdf" style="display: none;" name="nbi_file">
+                                    <input  type="file"   id="nbi_file"   class=""     onchange="return nbiValidation()" accept="image/*,.pdf" style="display: none;" name="nbi_file">
                                     <span id="nbi_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -45,7 +45,7 @@
                                 <td><p class="title_file"><b>BARANGAY CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="barangay_clearance_button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="barangay_clearance_file"   class="required_field"     onchange="return barangayclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="barangay_clearance_file">
+                                    <input  type="file"   id="barangay_clearance_file"   class=""     onchange="return barangayclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="barangay_clearance_file">
                                     <span id="barangay_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -58,7 +58,7 @@
                                 <td><p class="title_file"><b>POLICE CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="police_clearance_button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="police_clearance_file"   class="required_field"     onchange="return policeclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="police_clearance_file">
+                                    <input  type="file"   id="police_clearance_file"   class=""     onchange="return policeclearanceValidation()" accept="image/*,.pdf" style="display: none;" name="police_clearance_file">
                                     <span id="police_clearance_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -71,7 +71,7 @@
                                 <td><p class="title_file"><b>SSS E1 FORM</b></p></td>
                                 <td>
                                     <button type="button" id="sss_button" class="btn btn-primary bp" onclick="$('#sss_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"    id="sss_file"   class="required_field"     onchange="return sssValidation()" accept="image/*,.pdf" style="display: none;"  name="sss_file">
+                                    <input type="file"    id="sss_file"   class=""     onchange="return sssValidation()" accept="image/*,.pdf" style="display: none;"  name="sss_file">
                                     <span id="sss_text">No file chosen, yet.</span>
                                 </td>
                                 <td> 
@@ -84,7 +84,7 @@
                                 <td><p class="title_file"><b>PHILHEALTH FORM</b></p></td>
                                 <td>
                                     <button type="button" id="philhealth_button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="philhealth_file"   class="required_field"     onchange="return philhealthValidation()" accept="image/*,.pdf" style="display: none;" name="philhealth_file">
+                                    <input  type="file"   id="philhealth_file"   class=""     onchange="return philhealthValidation()" accept="image/*,.pdf" style="display: none;" name="philhealth_file">
                                     <span id="philhealth_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -97,7 +97,7 @@
                                 <td><p class="title_file"><b>PAG-IBIG FORM</b></p></td>
                                 <td>
                                     <button type="button"  id="pag_ibig_button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"     id="pag_ibig_file"   class="required_field"     onchange="return pagibigValidation()"accept="image/*,.pdf" style="display: none;" name="pag_ibig_file">
+                                    <input type="file"     id="pag_ibig_file"   class=""     onchange="return pagibigValidation()"accept="image/*,.pdf" style="display: none;" name="pag_ibig_file">
                                     <span id="pag_ibig_text">No file chosen, yet.</span>
                                 </td>
                                 <td>
@@ -108,7 +108,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <div class="form-group"><button class="btn btn-success" id="save_document_form" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
+                    <div class="form-group"><button class="btn btn-success" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
     </div> {{-- Container div end tag --}}
             <hr class="hr-design">
     </form>

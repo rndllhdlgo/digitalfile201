@@ -1,5 +1,7 @@
 <div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
 
+    <form method="POST" enctype="multipart/form-data" action="/employees/resignationSave" id="performance_form">
+        @csrf
     {{-- Memo Table --}}
     <hr class="hr-design">
     <strong class="table-title">MEMOS RECEIVED</strong>
@@ -45,6 +47,7 @@
                         <button type="button" id="btnMemoAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
                     </div>
                 </td>
+                
             </tr>
         </tbody>
     </table>
@@ -240,8 +243,9 @@
             </tr>
         </tbody>
     </table>
+    <div class="form-group"><button class="btn btn-success" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
         <hr class="hr-design">
-
+    </form>
         <div class="modal fade" id="preview_performance">
             <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
                 <div class="modal-content" >
