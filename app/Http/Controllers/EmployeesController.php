@@ -315,19 +315,20 @@ class EmployeesController extends Controller
 
     public function storeRequirements(Request $request)
     {
-        if($request->filled('resignation_letter')){
+        // if($request->filled('resignation_letter')){
+        if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
             $resignation = new Resignation;
             $resignation->employee_id = $request->employee_id;
             $resignation->resignation_letter = $request->input('resignation_letter');
             $resignation->resignation_date = $request->input('resignation_date');
 
-            if($request->hasFile('resignation_file')){
+            // if($request->hasFile('resignation_file')){
                 $file = $request->file('resignation_file');
                 $extension = $file->getClientOriginalExtension();
                 $filename = time(). '_' . 'Resignation_Letter'. '.' . $extension;
                 $file->storeAs('public/resignationFiles',$filename);
                 $resignation->resignation_file = $filename;
-                }
+                // }
                 $resignation->save();
         }
         // if($request->filled('resignation_letter') || $request->filled('resignation_date')){
