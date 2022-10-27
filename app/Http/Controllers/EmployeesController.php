@@ -115,6 +115,7 @@ class EmployeesController extends Controller
         }
             return $fileNameToStore;
     }
+
     public function fetch(Request $request){
         $employees = Employee::where('id',$request->id)->first();
         return $employees;
@@ -209,52 +210,19 @@ class EmployeesController extends Controller
         return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
     }
 
-    public function storeRequirements(Request $request)
-    {
-       
-        //Save Document Files Function
-        $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
-        $nbi_file = $request->file('nbi_file');
-        $barangay_clearance_file = $request->file('barangay_clearance_file');
-        $police_clearance_file = $request->file('police_clearance_file');
-        $sss_file = $request->file('sss_file');
-        $philhealth_file = $request->file('philhealth_file');
-        $pag_ibig_file = $request->file('pag_ibig_file');
+    // public function storePerformanceForm(Request $request){
 
-        $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
-        $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
+    //     if($request->hasFile('resignation_file')){
+    //         $resignation_file = $request->file('resignation_file'); //File that will request
+    //         $resignation = time(). '_' . 'Resignation_Letter'. '.' .$resignation_file->getClientOriginalExtension();//File name to store
+    //         $path = $resignation_file->storeAs('public/resignationFiles', $resignation);//Storage of the file uploaded
 
-        $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
-        $path = $nbi_file->storeAs('public/documents', $nbi);
-
-        $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
-        $path = $barangay_clearance_file->storeAs('public/documents', $barangay_clearance);
-
-        $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
-        $path = $police_clearance_file->storeAs('public/documents', $police_clearance);
-
-        $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
-        $path = $sss_file->storeAs('public/documents', $sss);
-
-        $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
-        $path = $philhealth_file->storeAs('public/documents', $philhealth);
-
-        $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
-        $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
-        
-        Document::create([
-            'employee_id' => $request->employee_id,
-            'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
-            'nbi_clearance' => $nbi,
-            'barangay_clearance' => $barangay_clearance,
-            'police_clearance' => $police_clearance,
-            'sss_form' => $sss,
-            'philhealth_form' => $philhealth,
-            'pag_ibig_form' => $pag_ibig,
-        ]);
-        // return Redirect::to(url()->previous());//Return previous page
-        // return redirect()->back();
-    }
+    //         Resignation::create([
+    //             'resignation_file' => $resignation,
+    //         ]);
+    //     }
+    //     // return Redirect::to(url()->previous());//Return previous page
+    // }
 
     public function childrenSave(Request $request){
         $children = new Children;
@@ -329,14 +297,14 @@ class EmployeesController extends Controller
         $contract->save();
     }
 
-    public function resignationSave(Request $request){
-        $resignation = new Resignation;
-        $resignation->employee_id = $request->employee_id;//use to associate employee id
-        $resignation->resignation_letter = $request->resignation_letter;
-        $resignation->resignation_date = $request->resignation_date;
-        $resignation->save();
-    }
-
+    // public function resignationSave(Request $request){
+    //     $resignation = new Resignation;
+    //     $resignation->employee_id = $request->employee_id;//use to associate employee id
+    //     $resignation->resignation_letter = $request->resignation_letter;
+    //     $resignation->resignation_date = $request->resignation_date;
+    //     $resignation->save();
+    // }
+   
     public function terminationSave(Request $request){
         $termination = new Termination;
         $termination->employee_id = $request->employee_id;//use to associate employee id
@@ -344,6 +312,85 @@ class EmployeesController extends Controller
         $termination->termination_date = $request->termination_date;
         $termination->save();
     }
-}
+
+    public function storeRequirements(Request $request)
+    {
+        if($request->filled('resignation_letter')){
+            $resignation = new Resignation;
+            $resignation->employee_id = $request->employee_id;
+            $resignation->resignation_letter = $request->input('resignation_letter');
+            $resignation->resignation_date = $request->input('resignation_date');
+
+            if($request->hasFile('resignation_file')){
+                $file = $request->file('resignation_file');
+                $extension = $file->getClientOriginalExtension();
+                $filename = time(). '_' . 'Resignation_Letter'. '.' . $extension;
+                $file->storeAs('public/resignationFiles',$filename);
+                $resignation->resignation_file = $filename;
+                }
+                $resignation->save();
+        }
+        // if($request->filled('resignation_letter') || $request->filled('resignation_date')){
+        //     $resignation->resignation_letter = $request->input('resignation_letter');
+        //     $resignation->resignation_date = $request->input('resignation_date');
+
+        //     if($request->hasFile('resignation_file')){
+        //         $resignation_file = $request->file('resignation_file'); //File that will request
+        //         $resignation = time(). '_' . 'Resignation_Letter'. '.' .$resignation_file->getClientOriginalExtension();//File name to store
+        //         $path = $resignation_file->storeAs('public/resignationFiles', $resignation);//Storage of the file uploaded
+
+        //         Resignation::create([
+        //             'resignation_letter' => $resignation_letter,
+        //             'resignation_date' => $resignation_date,
+        //             'resignation_file' => $resignation,
+        //         ]);                
+        //     }
+        // }
+            //Save Document Files Function
+            $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
+            $nbi_file = $request->file('nbi_file');
+            $barangay_clearance_file = $request->file('barangay_clearance_file');
+            $police_clearance_file = $request->file('police_clearance_file');
+            $sss_file = $request->file('sss_file');
+            $philhealth_file = $request->file('philhealth_file');
+            $pag_ibig_file = $request->file('pag_ibig_file');
+
+            $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
+            $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
+
+            $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
+            $path = $nbi_file->storeAs('public/documents', $nbi);
+
+            $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
+            $path = $barangay_clearance_file->storeAs('public/documents', $barangay_clearance);
+
+            $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
+            $path = $police_clearance_file->storeAs('public/documents', $police_clearance);
+
+            $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
+            $path = $sss_file->storeAs('public/documents', $sss);
+
+            $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
+            $path = $philhealth_file->storeAs('public/documents', $philhealth);
+
+            $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
+            $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
+            
+            Document::create([
+                'employee_id' => $request->employee_id,
+                'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
+                'nbi_clearance' => $nbi,
+                'barangay_clearance' => $barangay_clearance,
+                'police_clearance' => $police_clearance,
+                'sss_form' => $sss,
+                'philhealth_form' => $philhealth,
+                'pag_ibig_form' => $pag_ibig,
+            ]);
+
+        // return Redirect::to(url()->previous());//Return previous page
+        // return redirect()->back();
+        }
+    }
+
 
     

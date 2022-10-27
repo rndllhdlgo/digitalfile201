@@ -123,8 +123,6 @@ $('#btnClear').on('click',function(){
                 $('.btn-memo').click();
                 $('.btn-evaluation').click();
                 $('.btn-contract').click();
-                $('.btn-resignation').click();
-                $('.btn-termination').click();
             } 
             else if (clear.isConfirmed) {//Clear Current Page
                 $('#personal_information').css('zoom','100%');

@@ -28,7 +28,7 @@
         <div id="employee_personal_information">
             <div class="row">
                 <div class="col-4">
-                    <span class="alert alert-info" id="title_details"></span>
+                    <span class="alert class alert-warning" id="title_details"></span>
                 </div>
                 <div class="col-8">
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="EXIT"><i class="fas fa-times"></i></button>
@@ -58,23 +58,27 @@
                         <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#performance_evaluation"> PERFORMANCE EVALUATION</a>
+                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#performance_evaluation"> PERFORMANCE EVALUATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
                     </li>
                 </ul>
-
-                <div class="tab-content">
-                        @include('subpages.personal_information')
-                        @include('subpages.work_information')
-                        @include('subpages.educational_and_trainings_background')
-                        @include('subpages.job_history')
-                        @include('subpages.documents')
-                        @include('subpages.performance_evaluation')
-                    <br>
-                </div>{{--  End of Tab Content  --}}
-             {{-- End Form of Multiple Data Insert --}}
+                <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="requirements_form">
+                    @csrf
+                    <div class="tab-content">
+                        <input type="hidden" name="employee_id" id="employee_id">
+                            @include('subpages.personal_information')
+                            @include('subpages.work_information')
+                            @include('subpages.educational_and_trainings_background')
+                            @include('subpages.job_history')
+                            @include('subpages.documents')
+                            @include('subpages.performance_evaluation')
+                        <div class="form-group"><button class="btn btn-success" id="submit_requirements_form" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
+                        <br>
+                    </div>{{--  End of Tab Content  --}}
         </div> {{-- End of Employee Form --}}
+                </form>
+
         {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}
 @endsection

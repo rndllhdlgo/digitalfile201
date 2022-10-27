@@ -61,19 +61,18 @@ Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
 Route::any('/employees/storeRequirements','EmployeesController@storeRequirements');
-Route::any('/employees/storePerformanceForm','EmployeesController@storePerformanceForm');
 
 // Routes for saving multiple tables
-Route::any('/childrenSave','EmployeesController@childrenSave');
-Route::any('/collegeSave','EmployeesController@collegeSave');
-Route::any('/trainingSave','EmployeesController@trainingSave');
-Route::any('/vocationalSave','EmployeesController@vocationalSave');
-Route::any('/jobSave','EmployeesController@jobSave');
-Route::any('/memoSave','EmployeesController@memoSave');
-Route::any('/evaluationSave','EmployeesController@evaluationSave');
-Route::any('/contractsSave','EmployeesController@contractsSave');
-Route::any('/resignationSave','EmployeesController@resignationSave');
-Route::any('/terminationSave','EmployeesController@terminationSave');
+Route::any('/employees/childrenSave','EmployeesController@childrenSave');
+Route::any('/employees/collegeSave','EmployeesController@collegeSave');
+Route::any('/employees/trainingSave','EmployeesController@trainingSave');
+Route::any('/employees/vocationalSave','EmployeesController@vocationalSave');
+Route::any('/employees/jobSave','EmployeesController@jobSave');
+Route::any('/employees/memoSave','EmployeesController@memoSave');
+Route::any('/employees/evaluationSave','EmployeesController@evaluationSave');
+Route::any('/employees/contractsSave','EmployeesController@contractsSave');
+Route::any('/employees/resignationSave','EmployeesController@resignationSave');
+Route::any('/employees/terminationSave','EmployeesController@terminationSave');
 
 // Random Routes
 // Route::get('/upload', function () {

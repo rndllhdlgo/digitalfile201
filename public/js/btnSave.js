@@ -76,8 +76,8 @@ $('#btnSave').on('click', function(){
         var primary_school_name = $.trim($('#primary_school_name').val());
         var primary_school_address = $.trim($('#primary_school_address').val());
         var primary_school_inclusive_years = $.trim($('#primary_school_inclusive_years').val());
-        var resignation_letter = $.trim($('#resignation_letter').val());
-        var resignation_date = $('#resignation_date').val();
+        // var resignation_letter = $.trim($('#resignation_letter').val());
+        // var resignation_date = $('#resignation_date').val();
         var termination_letter = $('#termination_letter').val();
         var termination_date = $('#termination_date').val();
 
@@ -166,7 +166,7 @@ $('#btnSave').on('click', function(){
                                 $.each(soloParent_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/childrenSave',
+                                        url: '/employees/childrenSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -186,7 +186,7 @@ $('#btnSave').on('click', function(){
                                 $.each(college_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/collegeSave',
+                                        url: '/employees/collegeSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -206,7 +206,7 @@ $('#btnSave').on('click', function(){
                                 $.each(training_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/trainingSave',
+                                        url: '/employees/trainingSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -226,7 +226,7 @@ $('#btnSave').on('click', function(){
                                 $.each(vocational_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/vocationalSave',
+                                        url: '/employees/vocationalSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -246,7 +246,7 @@ $('#btnSave').on('click', function(){
                                 $.each(job_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/jobSave',
+                                        url: '/employees/jobSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -268,7 +268,7 @@ $('#btnSave').on('click', function(){
                                 $.each(memo_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/memoSave',
+                                        url: '/employees/memoSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -288,7 +288,7 @@ $('#btnSave').on('click', function(){
                                 $.each(evaluation_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/evaluationSave',
+                                        url: '/employees/evaluationSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -308,7 +308,7 @@ $('#btnSave').on('click', function(){
                                 $.each(contracts_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/contractsSave',
+                                        url: '/employees/contractsSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -320,25 +320,25 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
-                                if($('#resignation_letter').val() || $('#resignation_date').val()){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/resignationSave',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            'employee_id': data.id,
-                                            resignation_letter: resignation_letter,
-                                            resignation_date: resignation_date
-                                        },
-                                    });
-                                }
+                                // if($('#resignation_letter').val() || $('#resignation_date').val()){
+                                //     $.ajax({
+                                //         type: 'POST',
+                                //         url: '/employees/storeRequirements',
+                                //         async: false,
+                                //         headers:{
+                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                //         },
+                                //         data:{
+                                //             'employee_id': data.id,
+                                //             resignation_letter: resignation_letter,
+                                //             resignation_date: resignation_date
+                                //         },
+                                //     });
+                                // }
                                 if($('#termination_letter').val() || $('#termination_date').val()){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/terminationSave',
+                                        url: '/employees/terminationSave',
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
@@ -351,7 +351,7 @@ $('#btnSave').on('click', function(){
                                 }
 
                                 $('#requirements_form').submit();
-                                // $('#performance_form').submit();
+                                // $('#submit_performance_form').click();
                                 // Swal.fire("SAVE SUCCESS", "", "success");
                                 // setTimeout(function(){location.reload();}, 3000); // Reload the whole page 
                                 $('#solo_parent_data_table').hide();

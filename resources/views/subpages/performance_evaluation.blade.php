@@ -1,7 +1,6 @@
 <div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
 
-    <form method="POST" enctype="multipart/form-data" action="/employees/resignationSave" id="performance_form">
-        @csrf
+    
     {{-- Memo Table --}}
     <hr class="hr-design">
     <strong class="table-title">MEMOS RECEIVED</strong>
@@ -179,20 +178,20 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control multiple_field text-capitalize" name="resignation_letter" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" name="resignation_date" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td>
                     <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf" style="display: none;" name="resignation_file">
-                    <span id="resignation_text">No file chosen, yet.</span>
+                    <input  type="file"   name="resignation_file" id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf" style="display: none;" name="resignation_file">
+                    <span id="resignation_text">No file chosen, yet.</span>                        
                 </td>
                 <td>
                     <button type="button" id="eye_resignation"     class="btn btn-success grow"    title="VIEW" onclick="$('#preview_resignation').click();" style="margin-left:7%;" disabled><i class="fas fa-eye"></i></button>
@@ -220,19 +219,19 @@
             <tr>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control multiple_field text-capitalize" name="termination_letter" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" name="termination_date" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td>
                     <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="termination_file"   class=""     onchange="return terminationValidation()" accept="image/*,.pdf" style="display: none;" name="termination_file">
+                    <input  type="file"   name="termination_file" id="termination_file"   class=""     onchange="return terminationValidation()" accept="image/*,.pdf" style="display: none;" name="termination_file">
                     <span id="termination_text">No file chosen, yet.</span>
                 </td>
                 <td>
@@ -243,9 +242,8 @@
             </tr>
         </tbody>
     </table>
-    <div class="form-group"><button class="btn btn-success" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
         <hr class="hr-design">
-    </form>
+
         <div class="modal fade" id="preview_performance">
             <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
                 <div class="modal-content" >

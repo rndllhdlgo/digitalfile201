@@ -28,7 +28,6 @@ $(document).ready(function () {
             "emptyTable":"No Employees Data Found!",
             "loadingRecords": "Loading Employee Records...",
         },
-        colReorder: true,
         processing:true,
         serverSide:false,
         orderCellsTop: true,
@@ -279,8 +278,8 @@ $('#tab5').on('click',function(){
     $('#work_information').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
-    $('#documents').show();
-    $('#performance_evaluation').hide();
+    $('#performance_evaluation').show();
+    $('#documents').hide();
 });
 
 $('#tab6').on('click',function(){
@@ -294,8 +293,8 @@ $('#tab6').on('click',function(){
     $('#work_information').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
-    $('#documents').hide();
-    $('#performance_evaluation').show();
+    $('#performance_evaluation').hide();
+    $('#documents').show();
 });
 
 //Calculate Age Function

@@ -10,3 +10,20 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+app/Http/Controllers/EmployeesController copy.php
+app/Fileupload.php
+app/Http/Controllers/FileuploadController.php
+app/Http/Controllers/PagesController copy.php
+public/js/btnClear copy.js
+public/js/btnSave copy.js
+public/js/btnUpdate copy.js
+public/js/btnView copy.js
+public/js/employees copy.js
+public/js/inputFieldEffect copy.js
+resources/views/showupload.blade.php
+resources/views/uploadfile.blade.php
+resources/views/pages/employees.blade copy.php
+resources/views/subpages/documents.blade copy.php
+resources/views/subpages/personal_information.blade copy.php
+resources/views/subpages/work_information.blade copy.php
+routes/web copy.php
