@@ -83,6 +83,9 @@
         @if(Request::is('employees'))
             <script src="{{ env('APP_URL')}}js/checkDuplicate.js"></script>
         @endif
+        @if(Request::is('employees'))
+            <script src="{{ env('APP_URL')}}js/restrictions.js"></script>
+        @endif
         @if(Request::is('users'))
         <script src="{{ env('APP_URL')}}js/btnClear.js"></script>
         @endif

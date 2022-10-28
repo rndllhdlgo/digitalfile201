@@ -225,6 +225,11 @@ strong{
     margin-right: auto;
 }
 
+.btnActionDisabled[disabled]{
+    cursor: not-allowed;
+    pointer-events:auto;
+}
+
 select,
 input[type="date"]{
     cursor: pointer;

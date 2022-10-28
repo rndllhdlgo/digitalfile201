@@ -34,7 +34,7 @@ function checkforblankMultiple(){
         $('#btnVocationalAdd').css('display','block');
     }
 
-    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_option').val()){
+    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_option').val() || !$('#memo_file').val()){
         $('#btnMemoAdd').prop('disabled',true);
     }
     else{
@@ -42,7 +42,7 @@ function checkforblankMultiple(){
         $('#btnMemoAdd').css('display','block');
     }
 
-    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val()){
+    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
         $('#btnEvaluationAdd').prop('disabled',true);
     }
     else{
@@ -50,7 +50,7 @@ function checkforblankMultiple(){
         $('#btnEvaluationAdd').css('display','block');
     }
 
-    if(!$('#contracts_type').val() || !$('#contracts_date').val()){
+    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
         $('#btnContractAdd').prop('disabled',true);
     }
     else{
@@ -92,7 +92,13 @@ $(document).ready(function(){
         var child_age = $('#child_age').val();
         var child_gender = $('#child_gender').val();
 
-        var dynamicSingleParent = "<tr><td class='text-capitalize' style='width:22.5%'>"+ child_name +"</td><td style='width:22.5%'>" + child_birthday + "</td><td style='width:22.5%'>" + child_age + "</td><td class='text-capitalize' style='width:22.5%'>" + child_gender + "</td><td style='width:10%'> <button class='btn btn-danger btn-solo-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
+        var dynamicSingleParent =   "<tr>"+
+                                        "<td class='text-capitalize' style='width:22.5%'>"+ child_name +"</td>" +
+                                        "<td style='width:22.5%'>" + child_birthday + "</td>" + 
+                                        "<td style='width:22.5%'>" + child_age + "</td>" + 
+                                        "<td class='text-capitalize' style='width:22.5%'>" + child_gender + "</td>" + 
+                                        "<td style='width:10%'> <button class='btn btn-danger btn-solo-parent center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                    "</tr>";
         $('#solo_parent_data_table tbody').append(dynamicSingleParent);
         $('#child_name').val("");
         $('#child_birthday').val("");
@@ -117,7 +123,12 @@ $(document).ready(function(){
         var college_degree = $('#college_degree').val().trim();
         var college_inclusive_years = $('#college_inclusive_years').val().trim();
 
-        var dynamicCollege = "<tr><td style='width:30%' class='text-capitalize'>"+ college_name +"</td><td style='width:30%' class='text-capitalize'>" + college_degree + "</td><td style='width:30%'>" + college_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
+        var dynamicCollege =    "<tr>"+
+                                    "<td style='width:30%' class='text-capitalize'>" + college_name + "</td>" + 
+                                    "<td style='width:30%' class='text-capitalize'>" + college_degree + "</td>" + 
+                                    "<td style='width:30%'>" + college_inclusive_years + "</td>" +
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $('#college_data_table tbody').append(dynamicCollege);
         $('#college_name').val("");
         $('#college_degree').val("");
@@ -137,7 +148,12 @@ $(document).ready(function(){
         var training_title = $('#training_title').val().trim();
         var training_inclusive_years = $('#training_inclusive_years').val().trim();
 
-        var dynamicTraining = "<tr><td style='width:30%' class='text-capitalize'>"+ training_name +"</td><td style='width:30%' class='text-capitalize'>" + training_title + "</td><td style='width:30%'>" + training_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
+        var dynamicTraining =   "<tr>" +
+                                    "<td style='width:30%' class='text-capitalize'>" + training_name + "</td>" + 
+                                    "<td style='width:30%' class='text-capitalize'>" + training_title + "</td>" + 
+                                    "<td style='width:30%'>" + training_inclusive_years + "</td>"+ 
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $('#training_data_table tbody').append(dynamicTraining);
         $('#training_name').val("");
         $('#training_title').val("");
@@ -157,7 +173,12 @@ $(document).ready(function(){
         var vocational_course = $('#vocational_course').val().trim();
         var vocational_inclusive_years = $('#vocational_inclusive_years').val().trim();
 
-        var dynamicVocational = "<tr><td style='width:30%' class='text-capitalize'>"+ vocational_name +"</td><td style='width:30%' class='text-capitalize'>" + vocational_course + "</td><td style='width:30%'>" + vocational_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td></tr>";
+        var dynamicVocational = "<tr>"+
+                                    "<td style='width:30%' class='text-capitalize'>" + vocational_name +"</td>" + 
+                                    "<td style='width:30%' class='text-capitalize'>" + vocational_course + "</td>" + 
+                                    "<td style='width:30%'>" + vocational_inclusive_years + "</td>" + 
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $('#vocational_data_table tbody').append(dynamicVocational);
         $('#vocational_name').val("");
         $('#vocational_course').val("");
@@ -179,7 +200,14 @@ $(document).ready(function(){
         var job_contact_details = $('#job_contact_details').val().trim();
         var job_inclusive_years = $('#job_inclusive_years').val().trim();
 
-        var dynamicJobHistory = "<tr><td style='width:18%' class='text-capitalize'> " + job_name + "</td><td style='width:18%' class='text-capitalize'>" + job_position + "</td><td style='width:18%' class='text-capitalize'>" + job_address + "</td><td style='width:18%'>" + job_contact_details + "</td><td style='width:18%'>" + job_inclusive_years + "</td><td style='width:10%'> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicJobHistory = "<tr>"+
+                                    "<td style='width:18%' class='text-capitalize'> " + job_name + "</td>" + 
+                                    "<td style='width:18%' class='text-capitalize'>" + job_position + "</td>" +
+                                    "<td style='width:18%' class='text-capitalize'>" + job_address + "</td>" + 
+                                    "<td style='width:18%'>" + job_contact_details + "</td>" + 
+                                    "<td style='width:18%'>" + job_inclusive_years + "</td>" +
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $('#job_data_table').append(dynamicJobHistory);
         $('#job_name').val("");
         $('#job_position').val("");
@@ -203,13 +231,25 @@ $(document).ready(function(){
         var memo_subject = $('#memo_subject').val().trim();
         var memo_date = $('#memo_date').val();
         var memo_option = $('#memo_option').val();
-  
-        var dynamicMemo = "<tr><td class='text-capitalize' style='width: 30%''>"+ memo_subject +"</td><td style='width: 30%'>"+ memo_date + "</td><td style='width: 30%'>" + memo_option +  "</td><td> <button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var memo_file = $('#memo_file').val();
+        var dynamicMemo =   "<tr>" + 
+                                "<td class='text-capitalize' style='width:18%'>"+ memo_subject +"</td>"+
+                                "<td style='width:15%'>" + memo_date + "</td>"+
+                                "<td style='width:17%'>" + memo_option + "</td>"+
+                                "<td style='width:30%'> <b>File Name: </b>" + memo_file + "</td>"+
+                                "<td style='width:10%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                            "</tr>";
         $("#memo_data_table").append(dynamicMemo);
         $("#memo_subject").val(""); 
         $("#memo_date").val(""); 
         $("#memo_option").val("");
-        $("#memo_file").val("");
+        $('#memo_file').val('');
+        $('#preview_memo').attr('src','');//change the image source
+        $('#preview_memo').hide();
+        $('#memo_text').html('No file chosen, yet.');
+        $('#memo_button').show();
+        $('#eye_memo').prop('disabled',true);
+        $('#replace_memo').prop('disabled',true);
         $('.span_memo_subject').show();
         $('.span_memo_date').show();
         $('.span_memo_option').show();
@@ -224,12 +264,26 @@ $(document).ready(function(){
         var evaluation_reason = $('#evaluation_reason').val().trim();
         var evaluation_date = $('#evaluation_date').val();
         var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
+        var evaluation_file = $('#evaluation_file').val();
 
-        var dynamicEvaluation = "<tr><td class='text-capitalize' style='width:30%'>"+ evaluation_reason +"</td><td style='width:30%'>"+ evaluation_date + "</td><td style='width:30%'>" + evaluation_evaluated_by + "</td><td> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicEvaluation = "<tr>" + 
+                                    "<td style='width:21.6%'>"+ evaluation_reason +"</td>"+
+                                    "<td style='width:21.6%'>" + evaluation_date + "</td>"+
+                                    "<td style='width:21.6%' class='text-capitalize'>" + evaluation_evaluated_by + "</td>" +
+                                    "<td style='width:25%'>" + evaluation_file + "</td>" +
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $("#evaluation_data_table").append(dynamicEvaluation);
         $("#evaluation_reason").val(""); 
         $("#evaluation_date").val(""); 
         $("#evaluation_evaluated_by").val("");
+        $('#evaluation_file').val('');
+        $('#preview_evaluation').attr('src','');//change the image source
+        $('#preview_evaluation').hide();
+        $('#evaluation_text').html('No file chosen, yet.');
+        $('#evaluation_button').show();
+        $('#eye_evaluation').prop('disabled',true);
+        $('#replace_evaluation').prop('disabled',true);
         $('.span_evaluation_reason').show();
         $('.span_evaluation_date').show();
         $('.span_evaluation_evaluated_by').show();
@@ -243,11 +297,24 @@ $(document).ready(function(){
         $('#contracts_data_table').show();
         var contracts_type = $('#contracts_type').val().trim();
         var contracts_date = $('#contracts_date').val();
+        var contracts_file = $('#contracts_file').val();
 
-        var dynamicContract = "<tr><td class='text-capitalize' style='width:45%'>"+ contracts_type +"</td><td style='width:45%'>"+ contracts_date + "</td><td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td> </tr>";
+        var dynamicContract =   "<tr>" + 
+                                    "<td class='text-capitalize' style='width:30%'>"+ contracts_type +"</td>" + 
+                                    "<td style='width:30%'>" + contracts_date + "</td>" + 
+                                    "<td style='width:30%'>" + contracts_file + "</td>" + 
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "</tr>";
         $("#contracts_data_table").append(dynamicContract);
         $("#contracts_type").val(""); 
         $("#contracts_date").val("");
+        $('#contracts_file').val('');
+        $('#preview_contracts').attr('src','');//change the image source
+        $('#preview_contracts').hide();
+        $('#contracts_text').html('No file chosen, yet.');
+        $('#contracts_button').show();
+        $('#eye_contracts').prop('disabled',true);
+        $('#replace_contracts').prop('disabled',true);
         $('.span_contracts_type').show();
         $('.span_contracts_date').show();
         $(".btn-contract").click(function(){

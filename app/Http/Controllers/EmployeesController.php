@@ -36,10 +36,10 @@ class EmployeesController extends Controller
         $employees = new Employee;
         $employees->employee_number = $request->employee_number;//Eloquent Syntax/Form
         $employees->cover_image = $request->fileName;
-        $employees->first_name = ucwords($request->first_name);
-        $employees->last_name = ucwords($request->last_name);
-        $employees->middle_name = ucwords($request->middle_name);
-        $employees->suffix = ucwords($request->suffix);
+        $employees->first_name = $request->first_name;
+        $employees->last_name = $request->last_name;
+        $employees->middle_name = $request->middle_name;
+        $employees->suffix = $request->suffix;
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
@@ -50,16 +50,16 @@ class EmployeesController extends Controller
         $employees->email_address = $request->email_address;
         $employees->telephone_number = $request->telephone_number;
         $employees->cellphone_number = $request->cellphone_number;
-        $employees->spouse_name = ucwords($request->spouse_name);
+        $employees->spouse_name = $request->spouse_name;
         $employees->spouse_contact_number = $request->spouse_contact_number;
-        $employees->spouse_profession = ucwords($request->spouse_profession);
-        $employees->father_name = ucwords($request->father_name);
+        $employees->spouse_profession = $request->spouse_profession;
+        $employees->father_name = $request->father_name;
         $employees->father_contact_number = $request->father_contact_number;
         $employees->father_profession = $request->father_profession;
-        $employees->mother_name = ucwords($request->mother_name);
+        $employees->mother_name = $request->mother_name;
         $employees->mother_contact_number = $request->mother_contact_number;
-        $employees->mother_profession = ucwords($request->mother_profession);
-        $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
+        $employees->mother_profession = $request->mother_profession;
+        $employees->emergency_contact_name = $request->emergency_contact_name;
         $employees->emergency_contact_relationship = $request->emergency_contact_relationship;
         $employees->emergency_contact_number = $request->emergency_contact_number;
         $employees->company_of_employee = $request->company_of_employee;
@@ -76,11 +76,11 @@ class EmployeesController extends Controller
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = ucwords($request->secondary_school_name);
-        $employees->secondary_school_address = ucwords($request->secondary_school_address);
+        $employees->secondary_school_name = $request->secondary_school_name;
+        $employees->secondary_school_address = $request->secondary_school_address;
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = ucwords($request->primary_school_name);
-        $employees->primary_school_address = ucwords($request->primary_school_address);
+        $employees->primary_school_name = $request->primary_school_name;
+        $employees->primary_school_address = $request->primary_school_address;
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();//To save data
         
@@ -125,10 +125,10 @@ class EmployeesController extends Controller
         
         $employees = Employee::find($request->id);
         $employees->cover_image = $request->fileName;
-        $employees->first_name = ucwords($request->first_name);
-        $employees->last_name = ucwords($request->last_name);
-        $employees->middle_name = ucwords($request->middle_name);
-        $employees->suffix = ucwords($request->suffix);
+        $employees->first_name = $request->first_name;
+        $employees->last_name = $request->last_name;
+        $employees->middle_name = $request->middle_name;
+        $employees->suffix = $request->suffix;
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
@@ -166,11 +166,11 @@ class EmployeesController extends Controller
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = ucwords($request->secondary_school_name);
-        $employees->secondary_school_address = ucwords($request->secondary_school_address);
+        $employees->secondary_school_name = $request->secondary_school_name;
+        $employees->secondary_school_address = $request->secondary_school_address;
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = ucwords($request->primary_school_name);
-        $employees->primary_school_address = ucwords($request->primary_school_address);
+        $employees->primary_school_name = $request->primary_school_name;
+        $employees->primary_school_address = $request->primary_school_address;
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();
 
@@ -209,20 +209,6 @@ class EmployeesController extends Controller
     public function checkEmployeeContactNumberDuplicate(Request $request){
         return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
     }
-
-    // public function storePerformanceForm(Request $request){
-
-    //     if($request->hasFile('resignation_file')){
-    //         $resignation_file = $request->file('resignation_file'); //File that will request
-    //         $resignation = time(). '_' . 'Resignation_Letter'. '.' .$resignation_file->getClientOriginalExtension();//File name to store
-    //         $path = $resignation_file->storeAs('public/resignationFiles', $resignation);//Storage of the file uploaded
-
-    //         Resignation::create([
-    //             'resignation_file' => $resignation,
-    //         ]);
-    //     }
-    //     // return Redirect::to(url()->previous());//Return previous page
-    // }
 
     public function childrenSave(Request $request){
         $children = new Children;
@@ -297,56 +283,36 @@ class EmployeesController extends Controller
         $contract->save();
     }
 
-    // public function resignationSave(Request $request){
-    //     $resignation = new Resignation;
-    //     $resignation->employee_id = $request->employee_id;//use to associate employee id
-    //     $resignation->resignation_letter = $request->resignation_letter;
-    //     $resignation->resignation_date = $request->resignation_date;
-    //     $resignation->save();
-    // }
-   
-    public function terminationSave(Request $request){
-        $termination = new Termination;
-        $termination->employee_id = $request->employee_id;//use to associate employee id
-        $termination->termination_letter = $request->termination_letter;
-        $termination->termination_date = $request->termination_date;
-        $termination->save();
-    }
-
     public function storeRequirements(Request $request)
     {
-        // if($request->filled('resignation_letter')){
+        //Save Resignation and Termination File
         if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
             $resignation = new Resignation;
             $resignation->employee_id = $request->employee_id;
             $resignation->resignation_letter = $request->input('resignation_letter');
             $resignation->resignation_date = $request->input('resignation_date');
 
-            // if($request->hasFile('resignation_file')){
-                $file = $request->file('resignation_file');
-                $extension = $file->getClientOriginalExtension();
-                $filename = time(). '_' . 'Resignation_Letter'. '.' . $extension;
-                $file->storeAs('public/resignationFiles',$filename);
-                $resignation->resignation_file = $filename;
-                // }
-                $resignation->save();
+            $resignationFile = $request->file('resignation_file');
+            $resignationExtension = $resignationFile->getClientOriginalExtension();
+            $resignationFileName = time(). '_' . 'Resignation_Letter'. '.' . $resignationExtension;
+            $resignationFile->storeAs('public/resignationFiles',$resignationFileName);
+            $resignation->resignation_file = $resignationFileName;
+            $resignation->save();
         }
-        // if($request->filled('resignation_letter') || $request->filled('resignation_date')){
-        //     $resignation->resignation_letter = $request->input('resignation_letter');
-        //     $resignation->resignation_date = $request->input('resignation_date');
 
-        //     if($request->hasFile('resignation_file')){
-        //         $resignation_file = $request->file('resignation_file'); //File that will request
-        //         $resignation = time(). '_' . 'Resignation_Letter'. '.' .$resignation_file->getClientOriginalExtension();//File name to store
-        //         $path = $resignation_file->storeAs('public/resignationFiles', $resignation);//Storage of the file uploaded
+        if($request->termination_letter && $request->termination_date && $request->hasFile('termination_file')){
+            $termination = new Termination;
+            $termination->employee_id = $request->employee_id;
+            $termination->termination_letter = $request->input('termination_letter');
+            $termination->termination_date = $request->input('termination_date');
 
-        //         Resignation::create([
-        //             'resignation_letter' => $resignation_letter,
-        //             'resignation_date' => $resignation_date,
-        //             'resignation_file' => $resignation,
-        //         ]);                
-        //     }
-        // }
+            $terminationFile = $request->file('termination_file');
+            $terminationExtension = $terminationFile->getClientOriginalExtension();
+            $terminationFileName = time(). '_' . 'Termination_Letter'. '.' . $terminationExtension;
+            $terminationFile->storeAs('public/terminationFiles',$terminationFileName);
+            $termination->termination_file = $terminationFileName;
+            $termination->save();
+        }
             //Save Document Files Function
             $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
             $nbi_file = $request->file('nbi_file');

@@ -50,6 +50,7 @@
             </tr>
         </tbody> 
    </table>
+   {{-- Job Data Table --}}
     <table id="job_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
         <thead class="thead-educational">
             <tr style="display: none;">

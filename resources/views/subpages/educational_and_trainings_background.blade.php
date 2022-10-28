@@ -37,7 +37,7 @@
                 </tr>
             </tbody>
         </table>
-
+        {{-- College Data Table --}}
         <table id="college_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
             <thead class="thead-educational">
                 <tr style="display: none;">
@@ -167,7 +167,7 @@
                 </tr>
             </tbody>
         </table>
-
+        {{-- Training Data Table --}}
         <table id="training_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
             <thead class="thead-educational">
                 <tr style="display: none;">
@@ -224,6 +224,7 @@
             </tr>
         </tbody>
     </table>
+    {{-- Vocational Data Table --}}
     <table id="vocational_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
         <thead class="thead-educational">
             <tr style="display: none;">

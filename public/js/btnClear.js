@@ -37,6 +37,30 @@ $('#btnClear').on('click',function(){
                 $('#preview_image').hide();
 
                 //Performance Evaluation Tab
+                $('#memo_file').val('');
+                $('#preview_memo').attr('src','');//change the image source
+                $('#preview_memo').hide();
+                $('#memo_text').html('No file chosen, yet.');
+                $('#memo_button').show();
+                $('#eye_memo').prop('disabled',true);
+                $('#replace_memo').prop('disabled',true);
+
+                $('#evaluation_file').val('');
+                $('#preview_evaluation').attr('src','');//change the image source
+                $('#preview_evaluation').hide();
+                $('#evaluation_text').html('No file chosen, yet.');
+                $('#evaluation_button').show();
+                $('#eye_evaluation').prop('disabled',true);
+                $('#replace_evaluation').prop('disabled',true);
+
+                $('#contracts_file').val('');
+                $('#preview_contracts').attr('src','');//change the image source
+                $('#preview_contracts').hide();
+                $('#contracts_text').html('No file chosen, yet.');
+                $('#contracts_button').show();
+                $('#eye_contracts').prop('disabled',true);
+                $('#replace_contracts').prop('disabled',true);
+
                 $('#resignation_file').val('');
                 $('#preview_resignation').attr('src','');//change the image source
                 $('#preview_resignation').hide();
@@ -164,6 +188,30 @@ $('#btnClear').on('click',function(){
                     $('.btn-memo').click();
                     $('.btn-evaluation').click();
                     $('.btn-contract').click();
+
+                    $('#memo_file').val('');
+                    $('#preview_memo').attr('src','');//change the image source
+                    $('#preview_memo').hide();
+                    $('#memo_text').html('No file chosen, yet.');
+                    $('#memo_button').show();
+                    $('#eye_memo').prop('disabled',true);
+                    $('#replace_memo').prop('disabled',true);
+
+                    $('#evaluation_file').val('');
+                    $('#preview_evaluation').attr('src','');//change the image source
+                    $('#preview_evaluation').hide();
+                    $('#evaluation_text').html('No file chosen, yet.');
+                    $('#evaluation_button').show();
+                    $('#eye_evaluation').prop('disabled',true);
+                    $('#replace_evaluation').prop('disabled',true);
+
+                    $('#contracts_file').val('');
+                    $('#preview_contracts').attr('src','');//change the image source
+                    $('#preview_contracts').hide();
+                    $('#contracts_text').html('No file chosen, yet.');
+                    $('#contracts_button').show();
+                    $('#eye_contracts').prop('disabled',true);
+                    $('#replace_contracts').prop('disabled',true);
 
                     $('#resignation_file').val('');
                     $('#preview_resignation').attr('src','');//change the image source

@@ -28,6 +28,7 @@ $(document).ready(function () {
             "emptyTable":"No Employees Data Found!",
             "loadingRecords": "Loading Employee Records...",
         },
+        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
         processing:true,
         serverSide:false,
         orderCellsTop: true,
@@ -320,54 +321,6 @@ $('#child_birthday').on('change',function(){
     return $('#child_age').val(age);
 });
 
-//Email Format Validation Function
-var email_address = document.querySelector("#email_address");
-var email_validation = document.querySelector("#email_validation");
-let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //
-
-function emailValidation(){
-    if(email_address.value.match(regExp)){
-        $('#email_validation').hide();
-        $('#btnSave').prop("disabled",false);
-    }
-    else{
-        $('#email_validation').show();
-        $('#btnSave').prop("disabled",true);
-    }
-}
-
-//Employee Email Format Validation Function
-var employee_email_address = document.querySelector("#employee_email_address");
-var employee_email_validation = document.querySelector("#employee_email_validation");
-let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
-
-function employeeEmailValidation(){
-    if(employee_email_address.value.match(regExpr)){
-      $('#employee_email_validation').hide();
-      $('#btnSave').prop("disabled",false);
-    }
-    else{
-      $('#employee_email_validation').show();
-      $('#btnSave').prop("disabled",true);
-    }
-}
-
-//Input(Letters Only) Function
-    function lettersOnly(input){
-      var letters_only = /[^- ñ a-z]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
-        input.value = input.value.replace(letters_only,"");
-    }
-//Input(Numbers Only) Function
-    function numbersOnly(input){
-      var numbers_only = /[^- 0-9]/g;
-        input.value = input.value.replace(numbers_only,"");
-    }
-//Input(Contact Number) Function
-    function contactNumberOnly(input){
-      var contact_number = /[^+()0-9]/g;
-        input.value = input.value.replace(contact_number,"");
-    }
-
 //Close Preview Image Function
 $('#image_close').on('click',function(){
     $('#cover_image').val(''); //Remove the image inserted
@@ -478,7 +431,7 @@ $('#title_details').on('click',function(){
     $('#first_name').val('Rendell');
     $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
-    $('#street').val('West Antipolo Street Gagalangin Tondo Manila');
+    $('#street').val('West Antipolo Street');
     $('#gender').val('Male');
     $('#civil_status').val('Single');
     $('#email_address').val('rendellhidalgo11@gmail.com');

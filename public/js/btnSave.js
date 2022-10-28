@@ -76,11 +76,7 @@ $('#btnSave').on('click', function(){
         var primary_school_name = $.trim($('#primary_school_name').val());
         var primary_school_address = $.trim($('#primary_school_address').val());
         var primary_school_inclusive_years = $.trim($('#primary_school_inclusive_years').val());
-        // var resignation_letter = $.trim($('#resignation_letter').val());
-        // var resignation_date = $('#resignation_date').val();
-        var termination_letter = $('#termination_letter').val();
-        var termination_date = $('#termination_date').val();
-
+       
         // go = false,
         
         Swal.fire({
@@ -320,35 +316,6 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
-                                // if($('#resignation_letter').val() || $('#resignation_date').val()){
-                                //     $.ajax({
-                                //         type: 'POST',
-                                //         url: '/employees/storeRequirements',
-                                //         async: false,
-                                //         headers:{
-                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                //         },
-                                //         data:{
-                                //             'employee_id': data.id,
-                                //             resignation_letter: resignation_letter,
-                                //             resignation_date: resignation_date
-                                //         },
-                                //     });
-                                // }
-                                if($('#termination_letter').val() || $('#termination_date').val()){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/terminationSave',
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            'employee_id': data.id,
-                                            termination_letter: termination_letter,
-                                            termination_date: termination_date
-                                        },
-                                    });
-                                }
 
                                 $('#requirements_form').submit();
                                 // $('#submit_performance_form').click();
