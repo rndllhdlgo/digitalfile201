@@ -270,7 +270,7 @@ $(document).ready(function(){
                                     "<td style='width:21.6%'>"+ evaluation_reason +"</td>"+
                                     "<td style='width:21.6%'>" + evaluation_date + "</td>"+
                                     "<td style='width:21.6%' class='text-capitalize'>" + evaluation_evaluated_by + "</td>" +
-                                    "<td style='width:25%'>" + evaluation_file + "</td>" +
+                                    "<td style='width:25%'> <b>File Name: </b>" + evaluation_file + "</td>" +
                                     "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $("#evaluation_data_table").append(dynamicEvaluation);
@@ -302,7 +302,7 @@ $(document).ready(function(){
         var dynamicContract =   "<tr>" + 
                                     "<td class='text-capitalize' style='width:30%'>"+ contracts_type +"</td>" + 
                                     "<td style='width:30%'>" + contracts_date + "</td>" + 
-                                    "<td style='width:30%'>" + contracts_file + "</td>" + 
+                                    "<td style='width:30%'> <b>File Name: </b>" + contracts_file + "</td>" + 
                                     "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $("#contracts_data_table").append(dynamicContract);

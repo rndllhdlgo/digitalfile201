@@ -330,8 +330,6 @@ $('#btnSave').on('click', function(){
                                 $('#evaluation_data_table').hide();
                                 $('#contracts_data_table').hide();
                         
-                            // Swal.fire("SAVE SUCCESS", "", "success");
-                            // setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 4000);//use to reload the table based on its id
                             // setTimeout(function(){location.reload();}, 4000); // Reload the whole page 
                         }
                         else{
