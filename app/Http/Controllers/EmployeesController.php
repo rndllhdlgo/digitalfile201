@@ -60,7 +60,7 @@ class EmployeesController extends Controller
         $employees->mother_contact_number = $request->mother_contact_number;
         $employees->mother_profession = ucwords($request->mother_profession);
         $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
-        $employees->emergency_contact_relationship = $request->emergency_contact_relationship;
+        $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
         $employees->emergency_contact_number = $request->emergency_contact_number;
         $employees->company_of_employee = $request->company_of_employee;
         $employees->branch_of_employee = $request->branch_of_employee;
@@ -76,10 +76,10 @@ class EmployeesController extends Controller
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = $request->secondary_school_name;
-        $employees->secondary_school_address = $request->secondary_school_address;
+        $employees->secondary_school_name = ucwords($request->secondary_school_name);
+        $employees->secondary_school_address = ucwords($request->secondary_school_address);
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = $request->primary_school_name;
+        $employees->primary_school_name = ucwords($request->primary_school_name);
         $employees->primary_school_address = $request->primary_school_address;
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();//To save data
