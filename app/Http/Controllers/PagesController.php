@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Auth;
-use App\Region;
-use App\City;
-use App\Province;
+use App\Models\Region;
+use App\Models\City;
+use App\Models\Province;
 use App\Company;
 use Illuminate\Http\Request;
 

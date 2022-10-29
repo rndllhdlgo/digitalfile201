@@ -4,19 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
-use App\Employee;
-use App\College;
-use App\Vocational;
-use App\Training;
-use App\Job;
-use App\Memo;
-use App\Evaluation;
-use App\Contracts;
-use App\Resignation;
-use App\Termination;
-use App\Document;
-use App\Children;
-
+use App\Models\Children;
+use App\Models\College;
+use App\Models\Contracts;
+use App\Models\Document;
+use App\Models\Employee;
+use App\Models\Evaluation;
+use App\Models\Job;
+use App\Models\Memo;
+use App\Models\Resignation;
+use App\Models\Termination;
+use App\Models\Training;
+use App\Models\Vocational;
 use DataTables;
 
 class EmployeesController extends Controller
@@ -43,11 +42,11 @@ class EmployeesController extends Controller
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
-        $employees->street = $request->street;
+        $employees->street = ucwords($request->street);
         $employees->region = $request->region;
         $employees->province = $request->province;
         $employees->city = $request->city;
-        $employees->email_address = $request->email_address;
+        $employees->email_address = strtolower($request->email_address);
         $employees->telephone_number = $request->telephone_number;
         $employees->cellphone_number = $request->cellphone_number;
         $employees->spouse_name = ucwords($request->spouse_name);
@@ -80,7 +79,7 @@ class EmployeesController extends Controller
         $employees->secondary_school_address = ucwords($request->secondary_school_address);
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
         $employees->primary_school_name = ucwords($request->primary_school_name);
-        $employees->primary_school_address = $request->primary_school_address;
+        $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();//To save data
         
@@ -107,8 +106,9 @@ class EmployeesController extends Controller
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);//Get Just filename
             $extension = $request->file('file')->getClientOriginalExtension();//Get just extension
             // $fileNameToStore = $filename.'_'.time().'.'.$extension;// Filename to store
-            $fileNameToStore = time().'_'.$filename.'.'.$extension;// Filename to store
-            $path = $request->file('file')->storeAs('public/cover_images',$fileNameToStore);//To create folder for images under public folder
+            $fileNameToStore = time().'_'."Picture".'.'.$extension;// Filename to store
+            // $path = $request->file('file')->storeAs('public/cover_images',$fileNameToStore);//To create folder for images under public folder
+            $path = $request->file('file')->storeAs('public/display_picture',$fileNameToStore);//To create folder for images under public folder
         }
         else{
             $fileNameToStore = 'noimage.png';
@@ -125,31 +125,31 @@ class EmployeesController extends Controller
         
         $employees = Employee::find($request->id);
         $employees->cover_image = $request->fileName;
-        $employees->first_name = $request->first_name;
-        $employees->last_name = $request->last_name;
-        $employees->middle_name = $request->middle_name;
-        $employees->suffix = $request->suffix;
+        $employees->first_name = ucwords($request->first_name);
+        $employees->last_name = ucwords($request->last_name);
+        $employees->middle_name = ucwords($request->middle_name);
+        $employees->suffix = ucwords($request->suffix);
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
-        $employees->street = $request->street;
+        $employees->street = ucwords($request->street);
         $employees->region = $request->region;
         $employees->province = $request->province;
         $employees->city = $request->city;
-        $employees->email_address = $request->email_address;
+        $employees->email_address = strtolower($request->email_address);
         $employees->telephone_number = $request->telephone_number;
         $employees->cellphone_number = $request->cellphone_number;
-        $employees->spouse_name = $request->spouse_name;
+        $employees->spouse_name = ucwords($request->spouse_name);
         $employees->spouse_contact_number = $request->spouse_contact_number;
-        $employees->spouse_profession = $request->spouse_profession;
-        $employees->father_name = $request->father_name;
+        $employees->spouse_profession = ucwords($request->spouse_profession);
+        $employees->father_name = ucwords($request->father_name);
         $employees->father_contact_number = $request->father_contact_number;
-        $employees->father_profession = $request->father_profession;
-        $employees->mother_name = $request->mother_name;
+        $employees->father_profession = ucwords($request->father_profession);
+        $employees->mother_name = ucwords($request->mother_name);
         $employees->mother_contact_number = $request->mother_contact_number;
-        $employees->mother_profession = $request->mother_profession;
-        $employees->emergency_contact_name = $request->emergency_contact_name;
-        $employees->emergency_contact_relationship = $request->emergency_contact_relationship;
+        $employees->mother_profession = ucwords($request->mother_profession);
+        $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
+        $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
         $employees->emergency_contact_number = $request->emergency_contact_number;
         $employees->employee_number = $request->employee_number;
         $employees->company_of_employee = $request->company_of_employee;
@@ -159,18 +159,18 @@ class EmployeesController extends Controller
         $employees->position_of_employee = $request->position_of_employee;
         $employees->supervisor_of_employee = $request->supervisor_of_employee;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = $request->employee_email_address;
+        $employees->employee_email_address = strtolower($request->employee_email_address);
         $employees->employee_contact_number = $request->employee_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;
         $employees->tin_number = $request->tin_number;
         $employees->account_number = $request->account_number;
-        $employees->secondary_school_name = $request->secondary_school_name;
-        $employees->secondary_school_address = $request->secondary_school_address;
+        $employees->secondary_school_name = ucwords($request->secondary_school_name);
+        $employees->secondary_school_address = ucwords($request->secondary_school_address);
         $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = $request->primary_school_name;
-        $employees->primary_school_address = $request->primary_school_address;
+        $employees->primary_school_name = ucwords($request->primary_school_name);
+        $employees->primary_school_address = ucwords($request->primary_school_address);
         $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
         $sql = $employees->save();
 
@@ -213,7 +213,7 @@ class EmployeesController extends Controller
     public function childrenSave(Request $request){
         $children = new Children;
         $children->employee_id = $request->employee_id;//use to associate employee id
-        $children->child_name = $request->child_name;
+        $children->child_name = ucwords($request->child_name);
         $children->child_birthday = $request->child_birthday;
         $children->child_gender = $request->child_gender;
         $children->save();
@@ -222,8 +222,8 @@ class EmployeesController extends Controller
     public function collegeSave(Request $request){
         $college = new College;
         $college->employee_id = $request->employee_id;//use to associate employee id
-        $college->college_name = $request->college_name;
-        $college->college_degree = $request->college_degree;
+        $college->college_name = ucfirst($request->college_name);
+        $college->college_degree = ucfirst($request->college_degree);
         $college->college_inclusive_years = $request->college_inclusive_years;
         $college->save();
     }
@@ -231,8 +231,8 @@ class EmployeesController extends Controller
     public function trainingSave(Request $request){
         $training = new Training;
         $training->employee_id = $request->employee_id;//use to associate employee id
-        $training->training_name = $request->training_name;
-        $training->training_title = $request->training_title;
+        $training->training_name = ucfirst($request->training_name);
+        $training->training_title = ucfirst($request->training_title);
         $training->training_inclusive_years = $request->training_inclusive_years;
         $training->save();
     }
@@ -240,8 +240,8 @@ class EmployeesController extends Controller
     public function vocationalSave(Request $request){
         $vocational = new Vocational;
         $vocational->employee_id = $request->employee_id;//use to associate employee id
-        $vocational->vocational_name = $request->vocational_name;
-        $vocational->vocational_course = $request->vocational_course;
+        $vocational->vocational_name = ucfirst($request->vocational_name);
+        $vocational->vocational_course = ucfirst($request->vocational_course);
         $vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
         $vocational->save();
     }
@@ -249,9 +249,9 @@ class EmployeesController extends Controller
     public function jobSave(Request $request){
         $job = new Job;
         $job->employee_id = $request->employee_id;//use to associate employee id
-        $job->job_name = $request->job_name;
-        $job->job_position = $request->job_position;
-        $job->job_address = $request->job_address;
+        $job->job_name = ucfirst($request->job_name);
+        $job->job_position = ucfirst($request->job_position);
+        $job->job_address = ucwords($request->job_address);
         $job->job_contact_details = $request->job_contact_details;
         $job->job_inclusive_years = $request->job_inclusive_years;
         $job->save();
@@ -260,7 +260,7 @@ class EmployeesController extends Controller
     public function memoSave(Request $request){
         $memo = new Memo;
         $memo->employee_id = $request->employee_id;//use to associate employee id
-        $memo->memo_subject = $request->memo_subject;
+        $memo->memo_subject = ucfirst($request->memo_subject);
         $memo->memo_date = $request->memo_date;
         $memo->memo_option = $request->memo_option;
         $memo->save();
@@ -269,16 +269,16 @@ class EmployeesController extends Controller
     public function evaluationSave(Request $request){
         $evaluation = new Evaluation;
         $evaluation->employee_id = $request->employee_id;//use to associate employee id
-        $evaluation->evaluation_reason = $request->evaluation_reason;
+        $evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
         $evaluation->evaluation_date = $request->evaluation_date;
-        $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by;
+        $evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
         $evaluation->save();
     }
 
     public function contractsSave(Request $request){
         $contract = new Contracts;
         $contract->employee_id = $request->employee_id;//use to associate employee id
-        $contract->contracts_type = $request->contracts_type;
+        $contract->contracts_type = ucfirst($request->contracts_type);
         $contract->contracts_date = $request->contracts_date;
         $contract->save();
     }
@@ -289,8 +289,8 @@ class EmployeesController extends Controller
         if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
             $resignation = new Resignation;
             $resignation->employee_id = $request->employee_id;
-            $resignation->resignation_letter = $request->input('resignation_letter');
-            $resignation->resignation_date = $request->input('resignation_date');
+            $resignation->resignation_letter = ucfirst($request->resignation_letter);
+            $resignation->resignation_date = $request->resignation_date;
 
             $resignationFile = $request->file('resignation_file');
             $resignationExtension = $resignationFile->getClientOriginalExtension();
@@ -303,8 +303,8 @@ class EmployeesController extends Controller
         if($request->termination_letter && $request->termination_date && $request->hasFile('termination_file')){
             $termination = new Termination;
             $termination->employee_id = $request->employee_id;
-            $termination->termination_letter = $request->input('termination_letter');
-            $termination->termination_date = $request->input('termination_date');
+            $termination->termination_letter = ucfirst($request->termination_letter);
+            $termination->termination_date = $request->termination_date;
 
             $terminationFile = $request->file('termination_file');
             $terminationExtension = $terminationFile->getClientOriginalExtension();
