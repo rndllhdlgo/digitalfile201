@@ -11,8 +11,6 @@
 .column-2{
     float: left;
     width: 77%;
-    /* padding: 10px; */
-    /* height: 200px; */
 }
 .row:after {
     content: "";
@@ -22,7 +20,7 @@
 
 #preview_image{
     height: 205px;
-    width: 274px;
+    width: 276px;
     margin-left: -12px;
     cursor:pointer;
     display: none;

@@ -1,3 +1,4 @@
+
 // var go = true, $lvl = $('.lvl');
 // $(window).bind("beforeunload",function(event) {
 //     if(go) return "You have unsaved changes";
@@ -435,14 +436,14 @@ $('#title_details').on('click',function(){
     $('#gender').val('Male');
     $('#civil_status').val('Single');
     $('#email_address').val('rendellhidalgo11@gmail.com');
-    $('#cellphone_number').val('09322003719');
+    $('#cellphone_number').val('(+63)9 322003718');
     $('#father_name').val('Reynaldo Hidalgo');
     $('#father_profession').val('Utility Worker');
     $('#mother_name').val('Marlyn Hidalgo');
     $('#mother_profession').val('House Wife');
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
-    $('#emergency_contact_number').val('09324207238');
+    $('#emergency_contact_number').val('(+63)9 322003718');
     $('#employee_number').val('1');
     $('#company_of_employee').val('PHILLOGIX');
     $('#branch_of_employee').val('Branch 1');
@@ -451,7 +452,7 @@ $('#title_details').on('click',function(){
     $('#supervisor_of_employee').val('Gerard Mallari');
     $('#shift_of_employee').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
     $('#employee_email_address').val('rendellhidalgo111@gmail.com');
-    $('#employee_contact_number').val('09322003719');
+    $('#employee_contact_number').val('(+63)9 322003718');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
     $('#philhealth_number').val('3');
@@ -465,6 +466,6 @@ $('#title_details').on('click',function(){
     $('#primary_school_inclusive_years').val('2006-2012');
 //Optional
     $('#telephone_number').val('1231243');
-    $('#father_contact_number').val('09123456781');
-    $('#mother_contact_number').val('09324207231');
+    $('#father_contact_number').val('(+63)9 322003718');
+    $('#mother_contact_number').val('(+63)9 322003718');
 });

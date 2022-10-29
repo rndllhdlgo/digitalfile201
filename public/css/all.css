@@ -217,17 +217,17 @@ strong{
     border:2px solid black;
 }
 
-.btnDisable[disabled]{
+.btnDisabled[disabled]{
     cursor: not-allowed;
     pointer-events:auto;
-    display:block;
-    margin-left: auto;
-    margin-right: auto;
 }
 
 .btnActionDisabled[disabled]{
     cursor: not-allowed;
     pointer-events:auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 select,
@@ -250,10 +250,64 @@ input[type=search]:focus{
     border:1.5px solid #0d1a80;
 }
 
-#eye_resignation[disabled],
-#replace_resignation[disabled],
-#eye_termination[disabled],
-#replace_termination[disabled]{
-    cursor: not-allowed;
-    pointer-events:auto;
+#cover_image,
+#memo_file,
+#evaluation_file,
+#contracts_file,
+#resignation_file,
+#termination_file,
+#birthcertificate_file,
+#nbi_file,
+#barangay_clearance_file,
+#police_clearance_file,
+#sss_file,
+#philhealth_file,
+#pag_ibig_file,
+
+#birthcertificate_preview,
+#nbi_preview,
+#barangay_clearance_preview,
+#police_clearance_preview,
+#sss_preview,
+#philhealth_preview,
+#pag_ibig_preview,
+#memo_preview,
+#evaluation_preview,
+#contracts_preview,
+#resignation_preview,
+#termination_preview{
+    display:none;
 }
+
+#solo_parent_data_table,
+#college_data_table,
+#training_data_table,
+#vocational_data_table
+#job_data_table,
+#memo_data_table,
+#evaluation_data_table,
+#contracts_data_table{
+    display: none;
+    margin-top: -17px;
+}
+
+#birthcertificate_view,
+#nbi_view,
+#barangay_clearance_view,
+#police_clearance_view,
+#sss_view,
+#philhealth_view,
+#pag_ibig_view{
+    margin-left: 20%;
+}
+
+#memo_view,
+#evaluation_view,
+#contracts_view,
+#resignation_view,
+#termination_view,
+#termination_view{
+    margin-left: 7%;
+}
+
+

@@ -12,7 +12,7 @@
 
                     <form method="POST" id="image_form" enctype="multipart/form-data"> {{-- form for inserting image --}}
                         <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
-                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="return ImageValidation()" style="display: none;">
+                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="return ImageValidation()">
                     </form> 
                 </div>
             </div>
@@ -133,23 +133,23 @@
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="emailValidation()" ondrop="return false;" onpaste="return false;">
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>
-                        {{-- <p id="duplicate_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p> --}}
+                        <p id="duplicate_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
                         <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email_address span_all">(Required)</span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control optional" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="12" onkeyup="contactNumberOnly(this)" ondrop="return false;" onpaste="return false;">
-                        {{-- <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Telephone Number Already Exist!</p> --}}
+                        <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Telephone Number Already Exist!</p>
                         <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NUMBER <span class="span_telephone_number span_all">(Optional)</span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         {{-- <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeypress="return event.charCode>=48 && event.charCode<=57" ondrop="return false;" onpaste="return false;"> --}}
-                        <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" value="(+63)9 " maxlength="16" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="cellphone_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Cellphone Number! </p>
-                        {{-- <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Cellphone Number Already Exist! </p> --}}
+                        <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Cellphone Number Already Exist! </p>
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NUMBER <span class="span_cellphone_number span_all">(Required)</span> </label>
                     </div>
                 </div>
@@ -166,9 +166,10 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control optional" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;">
+                        {{-- <input class="forminput form-control optional" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;"> --}}
+                        <input class="forminput form-control optional" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" value="(+63)9 " maxlength="16" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="father_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Cellphone Number!</p>
-                        {{-- <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist! </p> --}}
+                        <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist! </p>
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. <span class="span_father_contact_number span_all"> (Optional)</span> </label>
                     </div>
                 </div>
@@ -190,9 +191,10 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control optional" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;">
+                        {{-- <input class="forminput form-control optional" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;"> --}}
+                        <input class="forminput form-control optional" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" value="(+63)9 " maxlength="16" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="mother_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Cellphone Number!</p>
-                        {{-- <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Mother Contact Number</p> --}}
+                        <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Mother Contact Number</p>
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. <span class="span_mother_contact_number span_all">(Optional)</span></label>
                     </div>
                 </div>
@@ -220,9 +222,10 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;">
+                        {{-- <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;"> --}}
+                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" value="(+63)9 " maxlength="16" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="emergency_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p>
-                        {{-- <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p> --}}
+                        <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all">(Required)</span> </label>
                     </div>
                 </div>
@@ -238,9 +241,10 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;">
-                        <p id="spouse_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                        {{-- <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p> --}}
+                        {{-- <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;"> --}}
+                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" value="(+63)9 " maxlength="16" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
+                        <p id="spouse_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number </p>
+                        <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NUMBER <span class="span_spouse_number span_all">(Required)</span> </label>
                     </div>
                 </div>
@@ -296,49 +300,16 @@
                                     </div>
                                 </td>
                                 <td class="pb-2 pt-3">
-                                    <button type="button" id="btnSoloParentAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
+                                    <button type="button" id="btnSoloParentAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
-                {{-- <strong class="">CHILDREN INFORMATION</strong> --}}
                 <br>
-                {{-- <div class="col-4">
-                    <div class="f-outline">
-                        <input class="forminput form-control optional text-capitalize" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)">
-                        <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="child_name" class="formlabel form-label"><i class="fas fa-id-card"></i> NAME <span class="span_child_name span_all">(Optional)</span></label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control optional" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="child_birthday" class="formlabel form-label"><i class="fas fa-calendar"></i> BIRTHDAY <span class="span_child_birthday span_all">(Optional)</span></label>
-                    </div>
-                </div>
-                <div class="col-1">
-                    <div class="f-outline">
-                        <input class="forminput form-control optional" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
-                        <label for="child_age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
-                    </div>
-                </div>
-                <div class="col-3">
-                    <div class="f-outline">
-                        <select class="form-select forminput form-control optional"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
-                            <option value="" disabled selected>SELECT GENDER </option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                        <label for="child_gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_child_gender span_all">(Optional)</span></label>
-                    </div>
-                </div>
-                <div class="col">
-                    <button type="button" id="btnSoloParentAdd" class="btn btn-success center"><i class="fas fa-plus"></i></button>
-                </div> --}}
             </div>
             {{-- Solo Parent Data Table --}}
-            <table id="solo_parent_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+            <table id="solo_parent_data_table" class="table table-bordered table-hover table-striped">
                 <thead class="thead-educational">
                     <tr style="display: none;">
                         <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>

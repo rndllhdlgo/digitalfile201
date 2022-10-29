@@ -1,7 +1,6 @@
 //Clear Employee Form
 $('#btnClear').on('click',function(){
     $('#personal_information').css('zoom','95%');
-    $('.nav-tabs').css('zoom','98%');
         Swal.fire({
             title: 'Do you want to clear the form?',
             allowOutsideClick: false,
@@ -20,7 +19,6 @@ $('#btnClear').on('click',function(){
         .then((clear) => {
             if (clear.isDenied) { //Clear All Fields
                 $('#personal_information').css('zoom','100%');
-                $('.nav-tabs').css('zoom','100%');
                 $('.required_field').val('');
                 $('.required_field').removeClass('blue');
                 $('.optional').val('');
@@ -38,32 +36,32 @@ $('#btnClear').on('click',function(){
 
                 //Performance Evaluation Tab
                 $('#memo_file').val('');
-                $('#preview_memo').attr('src','');//change the image source
-                $('#preview_memo').hide();
+                $('#memo_preview').attr('src','');//change the image source
+                $('#memo_preview').hide();
                 $('#memo_text').html('No file chosen, yet.');
                 $('#memo_button').show();
-                $('#eye_memo').prop('disabled',true);
-                $('#replace_memo').prop('disabled',true);
+                $('#memo_view').prop('disabled',true);
+                $('#memo_replace').prop('disabled',true);
 
                 $('#evaluation_file').val('');
-                $('#preview_evaluation').attr('src','');//change the image source
-                $('#preview_evaluation').hide();
+                $('#evaluation_preview').attr('src','');//change the image source
+                $('#evaluation_preview').hide();
                 $('#evaluation_text').html('No file chosen, yet.');
                 $('#evaluation_button').show();
-                $('#eye_evaluation').prop('disabled',true);
-                $('#replace_evaluation').prop('disabled',true);
+                $('#evaluation_view').prop('disabled',true);
+                $('#evaluation_replace').prop('disabled',true);
 
                 $('#contracts_file').val('');
-                $('#preview_contracts').attr('src','');//change the image source
-                $('#preview_contracts').hide();
+                $('#contracts_preview').attr('src','');//change the image source
+                $('#contracts_preview').hide();
                 $('#contracts_text').html('No file chosen, yet.');
                 $('#contracts_button').show();
-                $('#eye_contracts').prop('disabled',true);
-                $('#replace_contracts').prop('disabled',true);
+                $('#contracts_view').prop('disabled',true);
+                $('#contracts_replace').prop('disabled',true);
 
                 $('#resignation_file').val('');
-                $('#preview_resignation').attr('src','');//change the image source
-                $('#preview_resignation').hide();
+                $('#resignation_preview').attr('src','');//change the image source
+                $('#resignation_preview').hide();
                 $('#resignation_text').html('No file chosen, yet.');
                 $('#resignation_button').show();
                 $('#eye_resignation').prop('disabled',true);
@@ -150,7 +148,6 @@ $('#btnClear').on('click',function(){
             } 
             else if (clear.isConfirmed) {//Clear Current Page
                 $('#personal_information').css('zoom','100%');
-                $('.nav-tabs').css('zoom','100%');
                 $('.required_field:visible').val('');
                 $('.optional:visible').val('');
                 $('.multiple_field:visible').val('');
@@ -190,32 +187,32 @@ $('#btnClear').on('click',function(){
                     $('.btn-contract').click();
 
                     $('#memo_file').val('');
-                    $('#preview_memo').attr('src','');//change the image source
-                    $('#preview_memo').hide();
+                    $('#memo_preview').attr('src','');//change the image source
+                    $('#memo_preview').hide();
                     $('#memo_text').html('No file chosen, yet.');
                     $('#memo_button').show();
-                    $('#eye_memo').prop('disabled',true);
-                    $('#replace_memo').prop('disabled',true);
+                    $('#memo_view').prop('disabled',true);
+                    $('#memo_replace').prop('disabled',true);
 
                     $('#evaluation_file').val('');
-                    $('#preview_evaluation').attr('src','');//change the image source
-                    $('#preview_evaluation').hide();
+                    $('#evaluation_preview').attr('src','');//change the image source
+                    $('#evaluation_preview').hide();
                     $('#evaluation_text').html('No file chosen, yet.');
                     $('#evaluation_button').show();
-                    $('#eye_evaluation').prop('disabled',true);
-                    $('#replace_evaluation').prop('disabled',true);
+                    $('#evaluation_view').prop('disabled',true);
+                    $('#evaluation_replace').prop('disabled',true);
 
                     $('#contracts_file').val('');
-                    $('#preview_contracts').attr('src','');//change the image source
-                    $('#preview_contracts').hide();
+                    $('#contracts_preview').attr('src','');//change the image source
+                    $('#contracts_preview').hide();
                     $('#contracts_text').html('No file chosen, yet.');
                     $('#contracts_button').show();
-                    $('#eye_contracts').prop('disabled',true);
-                    $('#replace_contracts').prop('disabled',true);
+                    $('#contracts_view').prop('disabled',true);
+                    $('#contracts_replace').prop('disabled',true);
 
                     $('#resignation_file').val('');
-                    $('#preview_resignation').attr('src','');//change the image source
-                    $('#preview_resignation').hide();
+                    $('#resignation_preview').attr('src','');//change the image source
+                    $('#resignation_preview').hide();
                     $('#resignation_text').html('No file chosen, yet.');
                     $('#resignation_button').show();
                     $('#eye_resignation').prop('disabled',true);

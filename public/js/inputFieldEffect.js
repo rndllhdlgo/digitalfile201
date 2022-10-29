@@ -74,7 +74,7 @@ $('#spouse_name').on('keyup',function(){
 
 //Cellphone Number
 $('#cellphone_number').on('keyup',function(){
-    if($('#cellphone_number').val().length < 11){
+    if($('#cellphone_number').val().length < 16){
         $('#cellphone_number_validation').show();
     }
     else{
@@ -91,7 +91,7 @@ $('#cellphone_number').on('focusout',function(){
 
 //Father Number
 $('#father_contact_number').on('keyup',function(){
-    if($('#father_contact_number').val().length < 11){
+    if($('#father_contact_number').val().length < 16){
         $('#father_contact_number_validation').show();
     }
     else{
@@ -108,7 +108,7 @@ $('#father_contact_number').on('focusout',function(){
 
 //Mother Number
 $('#mother_contact_number').on('keyup',function(){
-    if($('#mother_contact_number').val().length < 11){
+    if($('#mother_contact_number').val().length < 16){
         $('#mother_contact_number_validation').show();
     }
     else{
@@ -713,4 +713,6 @@ function checkRequiredFields(){
         });
     }
 }
+
+
 

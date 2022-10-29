@@ -1,3 +1,13 @@
+//Cellphone Number Format
+function phoneFormat(input) {//returns (##) ####-####
+    input = input.replace(/\D/g,'');
+    var size = input.length;
+    if (size>0) {input="("+input}
+    if (size>3) {input=input.slice(0,3)+") "+input.slice(3,12)}
+    if (size>6) {input=input.slice(0,9)+"-" +input.slice(9)}
+    return input;
+}
+
 //Email Format Validation Function
 var email_address = document.querySelector("#email_address");
 var email_validation = document.querySelector("#email_validation");
@@ -13,6 +23,7 @@ function emailValidation(){
         $('#btnSave').prop("disabled",true);
     }
 }
+
 
 //Employee Email Format Validation Function
 var employee_email_address = document.querySelector("#employee_email_address");
@@ -42,6 +53,25 @@ function employeeEmailValidation(){
     }
 //Input(Contact Number) Function
     function contactNumberOnly(input){
-      var contact_number = /[^+()0-9]/g;
+      var contact_number = /[^ +()0-9]/g;
         input.value = input.value.replace(contact_number,"");
     }
+
+//Prevent Enter key for submitting the form
+    $('.required_field').keypress(function(e){
+      if ( e.which == 13 ) return false;
+      //or...
+      if ( e.which == 13 ) e.preventDefault();
+    });
+
+    $('.optional').keypress(function(e){
+      if ( e.which == 13 ) return false;
+      //or...
+      if ( e.which == 13 ) e.preventDefault();
+    });
+
+    $('.multiple_field').keypress(function(e){
+      if ( e.which == 13 ) return false;
+      //or...
+      if ( e.which == 13 ) e.preventDefault();
+    });

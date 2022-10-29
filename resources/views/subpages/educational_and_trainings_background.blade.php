@@ -32,13 +32,13 @@
                         </div>
                     </td>
                     <td>
-                        <button type="button" id="btnCollegeAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnCollegeAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
         {{-- College Data Table --}}
-        <table id="college_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+        <table id="college_data_table" class="table table-bordered table-hover table-striped">
             <thead class="thead-educational">
                 <tr style="display: none;">
                     <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
@@ -162,13 +162,13 @@
                     </td>
 
                     <td>
-                        <button type="button" id="btnTrainingAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnTrainingAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
         {{-- Training Data Table --}}
-        <table id="training_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+        <table id="training_data_table" class="table table-bordered table-hover table-striped">
             <thead class="thead-educational">
                 <tr style="display: none;">
                     <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
@@ -219,13 +219,13 @@
                 </td>
 
                 <td>
-                    <button type="button" id="btnVocationalAdd" class="btn btn-success center grow btnDisable" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnVocationalAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
     {{-- Vocational Data Table --}}
-    <table id="vocational_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+    <table id="vocational_data_table" class="table table-bordered table-hover table-striped">
         <thead class="thead-educational">
             <tr style="display: none;">
                 <th style="width:30%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>

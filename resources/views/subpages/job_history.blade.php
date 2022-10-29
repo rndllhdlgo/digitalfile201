@@ -45,13 +45,13 @@
                     </div>
                 </td>
                 <td class="pb-2 pt-3">
-                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnDisable" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody> 
    </table>
    {{-- Job Data Table --}}
-    <table id="job_data_table" class="table table-bordered table-hover table-striped" style="display: none;margin-top:-17px;">
+    <table id="job_data_table" class="table table-bordered table-hover table-striped">
         <thead class="thead-educational">
             <tr style="display: none;">
                 <th><i class="far fa-address-card"></i> NAME OF COMPANY</th>
