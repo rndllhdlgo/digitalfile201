@@ -27,3 +27,4 @@ resources/views/subpages/documents.blade copy.php
 resources/views/subpages/personal_information.blade copy.php
 resources/views/subpages/work_information.blade copy.php
 routes/web copy.php
+app/Models/Fileupload.php
