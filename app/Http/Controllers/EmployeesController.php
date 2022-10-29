@@ -354,8 +354,8 @@ class EmployeesController extends Controller
                 'pag_ibig_form' => $pag_ibig,
             ]);
 
-        // return Redirect::to(url()->previous());//Return previous page
-        // return redirect()->back();
+            return Redirect::to(url()->previous());//Return previous page
+            // return redirect()->back();
         }
     }
 
