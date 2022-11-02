@@ -9,7 +9,7 @@
                 <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="CREATE NEW" style="font-weight: bold;"><i class="fas fa-user-plus"></i> </button>
             @endif
             <hr>          
-                <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
+                <table class="table table-striped table-hover table-bordered w-100 employeesTable shadow p-2 mb-2 bg-body rounded" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                             <tr>
                                 <th style="width:14%"><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>

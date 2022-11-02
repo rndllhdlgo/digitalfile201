@@ -30,6 +30,7 @@ function ImageValidation() {
           allowOutsideClick: false,
           allowEscapeKey: false
       });
+      
   }
 }
 
@@ -540,8 +541,8 @@ function resignationValidation() {
                 $('#resignation_preview').attr('src', e.target.result);
             }
             resignationReader.readAsDataURL(resignationData.files[0]);
-            $('#eye_resignation').prop('disabled',false);
-            $('#replace_resignation').prop('disabled',false);
+            $('#resignation_view').prop('disabled',false);
+            $('#resignation_replace').prop('disabled',false);
             $('#resignation_button').hide();
         }
     } 
@@ -568,8 +569,8 @@ function terminationValidation() {
                     $('#preview_termination').attr('src', e.target.result);
                 }
                 terminationReader.readAsDataURL(terminationData.files[0]);
-                $('#eye_termination').prop('disabled',false);
-                $('#replace_termination').prop('disabled',false);
+                $('#termination_view').prop('disabled',false);
+                $('#termination_replace').prop('disabled',false);
                 $('#termination_button').hide();
         }
     } 
@@ -684,25 +685,25 @@ $('#contracts_replace').on('click',function(){
     $('#contracts_file').click();
 });
 
-$('#replace_resignation').on('click',function(){
+$('#resignation_replace').on('click',function(){
     $('#resignation_file').val('');
     $('#resignation_preview').attr('src','');//change the image source
     $('#resignation_preview').hide();
     $('#resignation_text').html('No file chosen, yet.');
     $('#resignation_button').show();
-    $('#eye_resignation').prop('disabled',true);
-    $('#replace_resignation').prop('disabled',true);
+    $('#resignation_view').prop('disabled',true);
+    $('#resignation_replace').prop('disabled',true);
     $('#resignation_file').click();
 });
 
-$('#replace_termination').on('click',function(){
+$('#termination_replace').on('click',function(){
     $('#termination_file').val('');
     $('#preview_termination').attr('src','');//change the image source
     $('#preview_termination').hide();
     $('#termination_text').html('No file chosen, yet.');
     $('#termination_button').show();
-    $('#eye_termination').prop('disabled',true);
-    $('#replace_termination').prop('disabled',true);
+    $('#termination_view').prop('disabled',true);
+    $('#termination_replace').prop('disabled',true);
     $('#termination_file').click();
 });
 

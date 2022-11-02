@@ -208,7 +208,7 @@ strong{
     height: 15px;
     width: 15px;
     background-color: #dc3545;
-    top:-7px;
+    top:-6px;
     transform: rotate(45deg);
     border-bottom-right-radius: 20px;
 }
@@ -282,7 +282,7 @@ input[type=search]:focus{
 #solo_parent_data_table,
 #college_data_table,
 #training_data_table,
-#vocational_data_table
+#vocational_data_table,
 #job_data_table,
 #memo_data_table,
 #evaluation_data_table,
@@ -308,6 +308,12 @@ input[type=search]:focus{
 #termination_view,
 #termination_view{
     margin-left: 7%;
+}
+
+#btnMemoAdd,
+#btnEvaluationAdd,
+#btnContractAdd{
+    margin-left:10%;
 }
 
 

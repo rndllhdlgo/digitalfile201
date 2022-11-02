@@ -31,12 +31,18 @@ $('#btnUpdate').on('click',function(){
     var cover_image = $('#cover_image').prop('files')[0];
     console.log(cover_image);
     var employee_number = $('#employee_number').val();
-    var company_of_employee = $('#company_of_employee').val();
-    var branch_of_employee = $('#branch_of_employee').val();
-    var status_of_employee = $('#status_of_employee').val();
-    var shift_of_employee = $('#shift_of_employee').val();
-    var position_of_employee = $('#position_of_employee').val();
-    var supervisor_of_employee = $('#supervisor_of_employee').val();
+    // var company_of_employee = $('#company_of_employee').val();
+    var employee_company = $('#employee_company').val();
+    // var branch_of_employee = $('#branch_of_employee').val();
+    var employee_branch = $('#employee_branch').val();
+    // var status_of_employee = $('#status_of_employee').val();
+    var employee_status = $('#employee_status').val();
+    // var shift_of_employee = $('#shift_of_employee').val();
+    var employee_shift = $('#employee_shift').val();
+    // var position_of_employee = $('#position_of_employee').val();
+    var employee_position = $('#employee_position').val();
+    // var supervisor_of_employee = $('#supervisor_of_employee').val();
+    var employee_supervisor = $('#employee_supervisor').val();
     var date_hired = $('#date_hired').val();
     var employee_email_address = $('#employee_email_address').val();
     var employee_contact_number = $('#employee_contact_number').val();
@@ -105,12 +111,18 @@ $('#btnUpdate').on('click',function(){
                     emergency_contact_number:emergency_contact_number,
                 //Work Information
                     employee_number: employee_number,
-                    company_of_employee:company_of_employee,
-                    branch_of_employee:branch_of_employee,
-                    status_of_employee:status_of_employee,
-                    shift_of_employee:shift_of_employee,
-                    position_of_employee:position_of_employee,
-                    supervisor_of_employee:supervisor_of_employee,
+                    // company_of_employee:company_of_employee,
+                    employee_company:employee_company,
+                    // branch_of_employee:branch_of_employee,
+                    employee_branch:employee_branch,
+                    // status_of_employee:status_of_employee,
+                    employee_status:employee_status,
+                    // shift_of_employee:shift_of_employee,
+                    employee_shift:employee_shift,
+                    // position_of_employee:position_of_employee,
+                    employee_position:employee_position,
+                    // supervisor_of_employee:supervisor_of_employee,
+                    employee_supervisor:employee_supervisor,
                     date_hired:date_hired,
                     employee_email_address:employee_email_address,
                     employee_contact_number:employee_contact_number,

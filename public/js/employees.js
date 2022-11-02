@@ -22,7 +22,7 @@ $(document).ready(function () {
         .appendTo('#employeesTable thead');
 
         employeesTable = $('#employeesTable').DataTable({
-        dom:'ltrip',
+        dom:'l<"breakspace">trip',
         language:{
             "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
             "lengthMenu":"Show _MENU_ Employees",
@@ -42,9 +42,12 @@ $(document).ready(function () {
             {data: 'first_name'},
             {data: 'last_name'},
             {data: 'middle_name'},
-            {data: 'position_of_employee'},
-            {data: 'branch_of_employee'},
-            {data: 'status_of_employee'},
+            // {data: 'position_of_employee'},
+            {data: 'employee_position'},
+            // {data: 'branch_of_employee'},
+            {data: 'employee_branch'},
+            // {data: 'status_of_employee'},
+            {data: 'employee_status'},
         ],
         initComplete: function () {
             var api = this.api();
@@ -96,6 +99,7 @@ $(document).ready(function () {
                 });
         },
     });
+    $('div.breakspace').html('<br><br>');
 });
 
 //Hide Employee fill up form
@@ -110,10 +114,11 @@ $('#addEmployeeBtn').on('click',function(){
     $('#navigation').show();
     $('#tab1').click();
     $('#resigned').hide();
+    $('#spouse_contact_number').val('');
 
     $('#title_details').removeClass('alert-info');
     $('#title_details').addClass('alert-warning');
-    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> Please fill all the required fields');
+    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> Please fill all the required fields ');
 });
 
 //Check all required field function
@@ -126,11 +131,11 @@ function checkforblank(){
     || $('#father_name').val().length < 2
     || $('#mother_name').val().length < 2
     || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    || $('#father_contact_number').val().length < 11
-    || $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    || $('#employee_contact_number').val().length < 11
+    || $('#cellphone_number').val().length < 14
+    || $('#father_contact_number').val().length < 14
+    || $('#mother_contact_number').val().length < 14
+    || $('#emergency_contact_number').val().length < 14
+    || $('#employee_contact_number').val().length < 14
     || !email_address.value.match(regExp)
     || !employee_email_address.value.match(regExp)
     ){
@@ -168,6 +173,7 @@ $('#spouse').hide();//Hide spouse section
             $('#spouse_name').addClass('required_field');
             $('#spouse_contact_number').addClass('required_field');
             $('#spouse_profession').addClass('required_field');
+            $('#spouse_contact_number').val('+63 9');
             $('#solo_parent').hide();
             $('#solo_parent_data_table').hide();
         }
@@ -191,7 +197,8 @@ $('#spouse').hide();//Hide spouse section
 $('#benefits').hide();
 //Hide/Show (employment status) Section Function
     function changeEmploymentStatus(){
-        var employment_status = document.getElementById("status_of_employee");
+        // var employment_status = document.getElementById("status_of_employee");
+        var employment_status = document.getElementById("employee_status");
   
         if(employment_status.value == "Regular" || employment_status.value == "Intern" || employment_status.value == "Probationary"){
             $('#benefits').show();
@@ -331,8 +338,8 @@ $('#image_close').on('click',function(){
     $('#image_user').show();
     $('#image_button').show();
     $('.column-1').css("height","250px");
-    $('#image_button').css("margin-top","198px");
-    $('.column-1').removeClass('blue');
+    // $('#image_button').css("margin-top","198px");
+    // $('.column-1').removeClass('blue');
     $('#cover_image').click();
 });
 
@@ -425,7 +432,6 @@ $('#province').on('change', function(){
     });
 });
 
-
 //Fill All
 $('#title_details').on('click',function(){
 //Required
@@ -436,23 +442,29 @@ $('#title_details').on('click',function(){
     $('#gender').val('Male');
     $('#civil_status').val('Single');
     $('#email_address').val('rendellhidalgo11@gmail.com');
-    $('#cellphone_number').val('(+63)9 322003718');
+    $('#cellphone_number').val('+63 9322003718');
     $('#father_name').val('Reynaldo Hidalgo');
     $('#father_profession').val('Utility Worker');
     $('#mother_name').val('Marlyn Hidalgo');
     $('#mother_profession').val('House Wife');
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
-    $('#emergency_contact_number').val('(+63)9 322003718');
+    $('#emergency_contact_number').val('+63 9322003718');
     $('#employee_number').val('1');
-    $('#company_of_employee').val('PHILLOGIX');
-    $('#branch_of_employee').val('Branch 1');
-    $('#status_of_employee').val('Probationary');
-    $('#position_of_employee').val('Web Developer');
-    $('#supervisor_of_employee').val('Gerard Mallari');
-    $('#shift_of_employee').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
+    // $('#company_of_employee').val('PHILLOGIX SYSTEMS INC.');
+    $('#employee_company').val('PHILLOGIX SYSTEMS INC.');
+    // $('#branch_of_employee').val('SAN JUAN');
+    $('#employee_branch').val('SAN JUAN');
+    // $('#status_of_employee').val('Probationary');
+    $('#employee_status').val('Probationary');
+    // $('#position_of_employee').val('Jr. Programmer');
+    $('#employee_position').val('Jr. Programmer');
+    // $('#supervisor_of_employee').val('Gerard Mallari');
+    $('#employee_supervisor').val('Gerard Mallari');
+    // $('#shift_of_employee').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
+    $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
     $('#employee_email_address').val('rendellhidalgo111@gmail.com');
-    $('#employee_contact_number').val('(+63)9 322003718');
+    $('#employee_contact_number').val('+63 9322003718');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
     $('#philhealth_number').val('3');
@@ -466,6 +478,6 @@ $('#title_details').on('click',function(){
     $('#primary_school_inclusive_years').val('2006-2012');
 //Optional
     $('#telephone_number').val('1231243');
-    $('#father_contact_number').val('(+63)9 322003718');
-    $('#mother_contact_number').val('(+63)9 322003718');
+    $('#father_contact_number').val('+63 9322003718');
+    $('#mother_contact_number').val('+63 9322003718');
 });

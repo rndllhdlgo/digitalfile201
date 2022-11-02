@@ -59,12 +59,18 @@ $('#btnEnableEdit').on('click',function(){
           $('#emergency_contact_number').prop("disabled",false);
         //Work Information
           $('#span_employee_number').hide();
-          $('#company_of_employee').prop("disabled",false);
-          $('#branch_of_employee').prop("disabled",false);
-          $('#status_of_employee').prop("disabled",false);
-          $('#shift_of_employee').prop("disabled",false);
-          $('#position_of_employee').prop("disabled",false);
-          $('#supervisor_of_employee').prop("disabled",false);
+          // $('#company_of_employee').prop("disabled",false);
+          $('#employee_company').prop("disabled",false);
+          // $('#branch_of_employee').prop("disabled",false);
+          $('#employee_branch').prop("disabled",false);
+          // $('#status_of_employee').prop("disabled",false);
+          $('#employee_status').prop("disabled",false);
+          // $('#shift_of_employee').prop("disabled",false);
+          $('#employee_shift').prop("disabled",false);
+          // $('#position_of_employee').prop("disabled",false);
+          $('#employee_position').prop("disabled",false);
+          // $('#supervisor_of_employee').prop("disabled",false);
+          $('#employee_supervisor').prop("disabled",false);
           $('#date_hired').prop("disabled",false);
           $('#employee_email_address').prop("disabled",false);
           $('#employee_contact_number').prop("disabled",false);

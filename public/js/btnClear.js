@@ -64,16 +64,16 @@ $('#btnClear').on('click',function(){
                 $('#resignation_preview').hide();
                 $('#resignation_text').html('No file chosen, yet.');
                 $('#resignation_button').show();
-                $('#eye_resignation').prop('disabled',true);
-                $('#replace_resignation').prop('disabled',true);
+                $('#resignation_view').prop('disabled',true);
+                $('#resignation_replace').prop('disabled',true);
 
                 $('#termination_file').val('');
                 $('#preview_termination').attr('src','');//change the image source
                 $('#preview_termination').hide();
                 $('#termination_text').html('No file chosen, yet.');
                 $('#termination_button').show();
-                $('#eye_termination').prop('disabled',true);
-                $('#replace_termination').prop('disabled',true);
+                $('#termination_view').prop('disabled',true);
+                $('#termination_replace').prop('disabled',true);
 
                 //Document Tab
                 $('#birthcertificate_file').val('');
@@ -163,7 +163,7 @@ $('#btnClear').on('click',function(){
                     $('#image_user').show();
                     $('#image_button').show();
                     $('.column-1').css("height","250px");
-                    $('#image_button').css("margin-top","198px");
+                    // $('#image_button').css("margin-top","198px");
                     $('.column-1').removeClass('blue');
                 }
                 if($('#personal_information').is(":visible")){
@@ -215,16 +215,16 @@ $('#btnClear').on('click',function(){
                     $('#resignation_preview').hide();
                     $('#resignation_text').html('No file chosen, yet.');
                     $('#resignation_button').show();
-                    $('#eye_resignation').prop('disabled',true);
-                    $('#replace_resignation').prop('disabled',true);
+                    $('#resignation_view').prop('disabled',true);
+                    $('#resignation_replace').prop('disabled',true);
 
                     $('#termination_file').val('');
                     $('#preview_termination').attr('src','');//change the image source
                     $('#preview_termination').hide();
                     $('#termination_text').html('No file chosen, yet.');
                     $('#termination_button').show();
-                    $('#eye_termination').prop('disabled',true);
-                    $('#replace_termination').prop('disabled',true);
+                    $('#termination_view').prop('disabled',true);
+                    $('#termination_replace').prop('disabled',true);
                 }
 
                 if($('#documents').is(":visible")){ //Clear all file chosen on documents tab

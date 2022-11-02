@@ -1,4 +1,4 @@
-<div id="documents" class="tab-pane fade" style="border-radius:0px;">
+<div id="documents" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
     
     <hr class="hr-design">
     <div class="container" style="width:75%;">

@@ -1,16 +1,17 @@
-<div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
+<div id="performance_evaluation" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
 
     {{-- Memo Table --}}
     <hr class="hr-design">
-    <strong class="table-title">MEMOS RECEIVED</strong>
+    <strong class="table-title">MEMOS</strong>
     <table class="table table-striped table-bordered mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
                 <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
                 <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:17%"><i class="fas fa-cogs"></i> OPTION</th>
+                {{-- <th style="width:15%"><i class="fas fa-cogs"></i> OPTION</th> --}}
+                <th style="width:15%"><i class="fas fa-cogs"></i> PENALTY</th>
                 <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:12%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody id="memo_tbody">
@@ -30,7 +31,7 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <select class="form-select forminput multiple_field form-control"  id="memo_option" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT OPTION</option>
+                            <option value="" disabled selected>SELECT PENALTY</option>
                             <option value="Verbal">Verbal</option>
                             <option value="Written">Written</option>
                             <option value="2nd Offense">2nd Offense</option>
@@ -47,7 +48,7 @@
                 </td>
                 <td>
                     <button type="button" id="btnMemoAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="memo_view"    class="btn btn-success grow btnDisabled" title="VIEW" onclick="$('#memo_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="memo_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#memo_preview').click();" disabled><i class="fas fa-eye"></i></button>
                     <button type="button" id="memo_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="memo_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
@@ -60,9 +61,9 @@
             <tr style="display: none;">
                 <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
                 <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:17%"><i class="fas fa-cogs"></i> OPTION</th>
+                <th style="width:15%"><i class="fas fa-cogs"></i> OPTION</th>
                 <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:12%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -79,9 +80,9 @@
             <tr>
                 <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
                 <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:17%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
+                <th style="width:15%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
                 <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:12%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -111,7 +112,7 @@
                 </td>
                 <td>
                     <button type="button" id="btnEvaluationAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="evaluation_view"    class="btn btn-success grow btnDisabled" title="VIEW" onclick="$('#evaluation_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="evaluation_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#evaluation_preview').click();" disabled><i class="fas fa-eye"></i></button>
                     <button type="button" id="evaluation_replace" class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="evaluation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
@@ -124,9 +125,9 @@
             <tr style="display: none;">
                 <th style="width:18%"><i class="fas fa-envelope-open-text"></i> REASON FOR EVALUATION</th>
                 <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:17%"><i class="far fa-address-card"></i> EVALUATED BY</th>
+                <th style="width:15%"><i class="far fa-address-card"></i> EVALUATED BY</th>
                 <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:12%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -141,10 +142,10 @@
     <table class="table table-striped table-bordered mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
-                <th style="width:27%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
+                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
                 <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:13%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -168,7 +169,7 @@
                 </td>
                 <td>
                     <button type="button" id="btnContractAdd"    class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="contracts_view"    class="btn btn-success grow btnDisabled" title="VIEW" onclick="$('#contracts_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="contracts_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#contracts_preview').click();" disabled><i class="fas fa-eye"></i></button>
                     <button type="button" id="contracts_replace" class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="contracts_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
@@ -179,10 +180,10 @@
     <table id="contracts_data_table" class="table table-bordered table-hover table-striped align-middle">
         <thead class="thead-educational">
             <tr style="display: none;">
-                <th style="width:30%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
+                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
                 <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -197,10 +198,10 @@
     <table class="table table-striped table-bordered mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%"><i class="fas fa-envelope-open-text"></i> RESIGNATION LETTER</th>
+                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> RESIGNATION REASON</th>
                 <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -223,7 +224,7 @@
                     <span id="resignation_text">No file chosen, yet.</span>                        
                 </td>
                 <td>
-                    <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW" onclick="$('#resignation_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled><i class="fas fa-eye"></i></button>
                     <button type="button" id="resignation_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="resignation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
@@ -239,10 +240,10 @@
     <table class="table table-striped table-bordered mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%"><i class="fas fa-envelope-open-text"></i> TERMINATION LETTER</th>
+                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
                 <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:30%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -265,7 +266,7 @@
                     <span id="termination_text">No file chosen, yet.</span>
                 </td>
                 <td>
-                    <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW" onclick="$('#termination_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled><i class="fas fa-eye"></i></button>
                     <button type="button" id="termination_replace"  class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="termination_preview"  data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
