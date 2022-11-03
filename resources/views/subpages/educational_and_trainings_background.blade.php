@@ -1,17 +1,17 @@
 
-<div id="educational_background" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
+<div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <strong class="table-title">COLLEGE EDUCATION</strong>
         <table class="table table-striped table-bordered table-hover mt-1 align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width:30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
+                    <th style="width:33%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
-            <tbody id="college_tbody">
+            <tbody>
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
@@ -41,9 +41,9 @@
         <table id="college_data_table" class="table table-bordered table-hover table-striped">
             <thead class="thead-educational">
                 <tr style="display: none;">
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width:30%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF UNIVERSITY/COLLEGE</th>
+                    <th style="width:33%"><i class="fas fa-graduation-cap"></i> DEGREE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
@@ -55,7 +55,7 @@
         
         {{-- Secondary Table --> --}}
     <strong class="table-title">SECONDARY</strong><br>
-    <table class="table table-striped table-bordered mt-1" id="">
+    <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
             <tr>
                 <th style="width:30%"><i class="fas fa-school"></i> NAME OF SCHOOL</th>
@@ -91,7 +91,7 @@
     {{-- Primary Table --> --}}
     <strong class="table-title">PRIMARY</strong>
     <br>
-        <table class="table table-striped table-bordered mt-1" id="">
+        <table class="table table-striped table-bordered mt-1">
             <thead class="thead-educational">
                 <tr>
                     <th><i class="fas fa-school"></i> NAME OF SCHOOL</th>
@@ -129,13 +129,13 @@
         <table class="table table-striped table-bordered table-hover mt-1 align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width:30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
+                    <th style="width:33%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
-            <tbody id="training_tbody">
+            <tbody>
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
@@ -168,9 +168,9 @@
         <table id="training_data_table" class="table table-bordered table-hover table-striped">
             <thead class="thead-educational">
                 <tr style="display: none;">
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width:30%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
+                    <th style="width:33%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
@@ -184,13 +184,13 @@
     <table class="table table-striped table-bordered table-hover mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                <th style="width:30%"><i class="fas fa-certificate"></i> COURSE</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
+                <th style="width:33%"><i class="fas fa-certificate"></i> COURSE</th>
+                <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                 <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
-        <tbody id="vocational_tbody">
+        <tbody>
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
@@ -223,9 +223,9 @@
     <table id="vocational_data_table" class="table table-bordered table-hover table-striped ">
         <thead class="thead-educational">
             <tr style="display: none;">
-                <th style="width:30%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                <th style="width:30%"><i class="fas fa-certificate"></i> COURSE</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
+                <th style="width:33%"><i class="fas fa-certificate"></i> COURSE</th>
+                <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                 <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>

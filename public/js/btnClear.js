@@ -68,8 +68,8 @@ $('#btnClear').on('click',function(){
                 $('#resignation_replace').prop('disabled',true);
 
                 $('#termination_file').val('');
-                $('#preview_termination').attr('src','');//change the image source
-                $('#preview_termination').hide();
+                $('#termination_preview').attr('src','');//change the image source
+                $('#termination_preview').hide();
                 $('#termination_text').html('No file chosen, yet.');
                 $('#termination_button').show();
                 $('#termination_view').prop('disabled',true);
@@ -219,8 +219,8 @@ $('#btnClear').on('click',function(){
                     $('#resignation_replace').prop('disabled',true);
 
                     $('#termination_file').val('');
-                    $('#preview_termination').attr('src','');//change the image source
-                    $('#preview_termination').hide();
+                    $('#termination_preview').attr('src','');//change the image source
+                    $('#termination_preview').hide();
                     $('#termination_text').html('No file chosen, yet.');
                     $('#termination_button').show();
                     $('#termination_view').prop('disabled',true);

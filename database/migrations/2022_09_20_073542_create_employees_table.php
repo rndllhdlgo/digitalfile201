@@ -42,17 +42,11 @@ class CreateEmployeesTable extends Migration
             $table->string('emergency_contact_name');
             $table->string('emergency_contact_relationship');
             $table->string('emergency_contact_number');
-            // $table->string('company_of_employee');
             $table->string('employee_company');
-            // $table->string('branch_of_employee');
             $table->string('employee_branch');
-            // $table->string('status_of_employee');
             $table->string('employee_status');
-            // $table->string('shift_of_employee');
             $table->string('employee_shift');
-            // $table->string('position_of_employee');
             $table->string('employee_position');
-            // $table->string('supervisor_of_employee');
             $table->string('employee_supervisor');
             $table->string('date_hired');
             $table->string('employee_email_address');

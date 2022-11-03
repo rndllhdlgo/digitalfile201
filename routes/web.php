@@ -42,6 +42,10 @@ Route::get('/employees/checkEmergencyContactNumberDuplicate', 'EmployeesControll
 Route::get('/employees/checkEmployeeEmailAddressDuplicate', 'EmployeesController@checkEmployeeEmailAddressDuplicate');
 Route::get('/employees/checkEmployeeContactNumberDuplicate', 'EmployeesController@checkEmployeeContactNumberDuplicate');
 
+//Routes for Fetching DataTables
+Route::any('/employees/childrenDataTable','EmployeesController@childrenDataTable');
+Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');//For Fetch data route
+
 //Routes for users tab
 Route::any('/users/listOfUsers','UsersController@listOfUsers');
 Route::any('/users/saveUser','UsersController@saveUser');
@@ -79,3 +83,9 @@ Route::any('/employees/terminationSave','EmployeesController@terminationSave');
 //     return view('uploadfile');
 // });
 // Route::resource('fileupload', 'FileuploadController');
+
+Route::get('/multiupload',function(){
+    return view('multiUploadFile');
+});
+
+Route::post('/multiupload','MultiFileUploadController@filesUpload');

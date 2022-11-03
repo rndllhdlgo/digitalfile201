@@ -698,12 +698,20 @@ $('#spouse_contact_number').on('focusout',function(){
 //     $('.span_status').hide();
 // });
 
+$('#cellphone_number').on('click',function(){
+    $('#cellphone_number').val('+63 9');
+});
+
 $('#father_contact_number').on('click',function(){
     $('#father_contact_number').val('+63 9');
 });
 
 $('#mother_contact_number').on('click',function(){
     $('#mother_contact_number').val('+63 9');
+});
+
+$('#emergency_contact_number').on('click',function(){
+    $('#emergency_contact_number').val('+63 9');
 });
 
 $('#employee_contact_number').on('click',function(){
@@ -716,11 +724,9 @@ function checkRequiredFields(){
         $('.required_field').each(function(){
             if(!$(this).val()){
                 $(this).addClass('requiredInput');
-                $(this).removeClass('blue');
             }
             else{
                 $(this).removeClass('requiredInput');
-                $(this).addClass('blue');
             }
         });
     }

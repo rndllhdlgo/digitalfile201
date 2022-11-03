@@ -54,17 +54,11 @@ $('#btnSave').on('click', function(){
         var emergency_contact_name = $.trim($('#emergency_contact_name').val());
         var emergency_contact_relationship = $.trim($('#emergency_contact_relationship').val());
         var emergency_contact_number = $.trim($('#emergency_contact_number').val());
-        // var company_of_employee = $('#company_of_employee').val();
         var employee_company = $('#employee_company').val();
-        // var branch_of_employee = $('#branch_of_employee').val();
         var employee_branch = $('#employee_branch').val();
-        // var status_of_employee = $('#status_of_employee').val();
         var employee_status = $('#employee_status').val();
-        // var shift_of_employee = $('#shift_of_employee').val();
         var employee_shift = $('#employee_shift').val();
-        // var position_of_employee = $('#position_of_employee').val();
         var employee_position = $('#employee_position').val();
-        // var supervisor_of_employee = $('#supervisor_of_employee').val();
         var employee_supervisor = $('#employee_supervisor').val();
         var date_hired = $('#date_hired').val();
         var employee_email_address = $.trim($('#employee_email_address').val());
@@ -136,17 +130,11 @@ $('#btnSave').on('click', function(){
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
                 //Work Information
-                    // company_of_employee:company_of_employee,
                     employee_company:employee_company,
-                    // branch_of_employee:branch_of_employee,
                     employee_branch:employee_branch,
-                    // status_of_employee:status_of_employee,
                     employee_status:employee_status,
-                    // shift_of_employee:shift_of_employee,
                     employee_shift:employee_shift,
-                    // position_of_employee:position_of_employee,
                     employee_position:employee_position,
-                    // supervisor_of_employee:supervisor_of_employee,
                     employee_supervisor:employee_supervisor,
                     date_hired:date_hired,
                     employee_email_address:employee_email_address,
@@ -276,7 +264,7 @@ $('#btnSave').on('click', function(){
                                 $.each(memo_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/memoSave',
+                                        url: '/employees/storeRequirements',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -285,7 +273,8 @@ $('#btnSave').on('click', function(){
                                             'employee_id' : data.id,
                                             'memo_subject' : value[0],
                                             'memo_date' : value[1],
-                                            'memo_option': value[2] 
+                                            'memo_penalty': value[2],
+                                            'memo_file': value[3]
                                         },
                                     });
                                 });
@@ -331,7 +320,7 @@ $('#btnSave').on('click', function(){
 
                                 $('#requirements_form').submit();
                                 // $('#submit_performance_form').click();
-                                Swal.fire("SAVE SUCCESS", "", "success");
+                                // Swal.fire("SAVE SUCCESS", "", "success");
                                 // setTimeout(function(){location.reload();}, 3000); // Reload the whole page 
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
@@ -341,8 +330,6 @@ $('#btnSave').on('click', function(){
                                 $('#memo_data_table').hide();
                                 $('#evaluation_data_table').hide();
                                 $('#contracts_data_table').hide();
-                        
-                            // setTimeout(function(){location.reload();}, 4000); // Reload the whole page 
                         }
                         else{
                             Swal.fire("SAVE FAILED", "", "error");

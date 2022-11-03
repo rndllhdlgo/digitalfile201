@@ -17,7 +17,7 @@ class CreateMemosTable extends Migration
             $table->id();
             $table->string('memo_subject');
             $table->string('memo_date');
-            $table->string('memo_option');
+            $table->string('memo_penalty');
             $table->string('memo_file');
             $table->timestamps();
         });

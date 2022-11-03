@@ -1,4 +1,4 @@
-<div id="work_information" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
+<div id="work_information" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <div class="row mb-3">
         <div class="col">
@@ -94,7 +94,7 @@
         </div>
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional" type="search" id="employee_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()" ondrop="return false;" onpaste="return false;">
+                <input class="forminput form-control optional" type="search" id="employee_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()" ondrop="return false;" onpaste="return false;" onkeydown="keyDown(event)">
                 <p id="employee_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <p id="duplicate_employee_email" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
                 <label for="employee_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> COMPANY EMAIL ADDRESS <span class="span_employee_email_address span_all">(Optional)</span></label>

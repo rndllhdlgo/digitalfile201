@@ -1,4 +1,4 @@
-<div id="job_history" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
+<div id="job_history" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
    <strong class="table-title">JOB HISTORY</strong>
    <table class="table table-striped table-bordered mt-1 align-middle">
@@ -45,7 +45,7 @@
                     </div>
                 </td>
                 <td>
-                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody> 

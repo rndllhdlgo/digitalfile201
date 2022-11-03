@@ -45,17 +45,11 @@ $('#btnCancelEdit').on('click',function(){
         $('#emergency_contact_number').prop("disabled",true);
       //Work Information
         $('#employee_number').prop("disabled",true);
-        // $('#company_of_employee').prop("disabled",true);
         $('#employee_company').prop("disabled",true);
-        // $('#branch_of_employee').prop("disabled",true);
         $('#employee_branch').prop("disabled",true);
-        // $('#status_of_employee').prop("disabled",true);
         $('#employee_status').prop("disabled",true);
-        // $('#shift_of_employee').prop("disabled",true);
         $('#employee_shift').prop("disabled",true);
-        // $('#position_of_employee').prop("disabled",true);
         $('#employee_position').prop("disabled",true);
-        // $('#supervisor_of_employee').prop("disabled",true);
         $('#employee_supervisor').prop("disabled",true);
         $('#date_hired').prop("disabled",true);
         $('#employee_email_address').prop("disabled",true);

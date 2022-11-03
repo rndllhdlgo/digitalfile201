@@ -47,17 +47,11 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#emergency_contact_relationship').val(data.emergency_contact_relationship);
             $('#emergency_contact_number').val(data.emergency_contact_number);
             $('#employee_number').val(data.employee_number);
-            // $('#company_of_employee').val(data.company_of_employee);
             $('#employee_company').val(data.employee_company);
-            // $('#branch_of_employee').val(data.branch_of_employee);
             $('#employee_branch').val(data.employee_branch);
-            // $('#status_of_employee').val(data.status_of_employee);
             $('#employee_status').val(data.employee_status);
-            // $('#shift_of_employee').val(data.shift_of_employee);
             $('#employee_shift').val(data.employee_shift);
-            // $('#position_of_employee').val(data.position_of_employee);
             $('#employee_position').val(data.employee_position);
-            // $('#supervisor_of_employee').val(data.supervisor_of_employee);
             $('#employee_supervisor').val(data.employee_supervisor);
             $('#date_hired').val(data.date_hired);
             $('#employee_email_address').val(data.employee_email_address);
@@ -79,66 +73,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#primary_school_name').val(data.primary_school_name);
             $('#primary_school_address').val(data.primary_school_address);
             $('#primary_school_inclusive_years').val(data.primary_school_inclusive_years);
-            
-            //Hide (Required) text
-            $('.span_first_name').hide();
-            $('.span_last_name').hide();
-            $('.span_middle_name').hide();
-            if($('#suffix').val()){
-                $('.span_suffix').hide();
-            }
-            $('.span_birthday').hide();
-            $('.span_gender').hide();
-            $('.span_civil_status').hide();
-            $('.span_street').hide();
-            $('.span_region').hide();
-            $('.span_province').hide();
-            $('.span_city').hide();
-            $('.span_email_address').hide();
-            if($('#telephone_number').val()){
-                $('.span_telephone_number').hide();
-            }
-            $('.span_cellphone_number').hide();
-            $('.span_father_name').hide();
-            if($('#father_contact_number').val()){
-                $('.span_father_contact_number').hide();
-            }
-            $('.span_father_profession').hide();
-            $('.span_mother_name').hide();
-            if($('#mother_contact_number').val()){
-                $('.span_mother_contact_number').hide();
-            }
-            $('.span_mother_profession').hide();
-            $('.span_emergency_contact_name').hide();
-            $('.span_emergency_contact_relationship').hide();
-            $('.span_emergency_contact_number').hide();         
-            $('.span_employee_number').hide();
-            // $('.span_company_of_employee').hide();
-            $('.span_employee_company').hide();
-            // $('.span_branch_of_employee').hide();
-            $('.span_employee_branch').hide();
-            // $('.span_status_of_employee').hide();
-            $('.span_employee_status').hide();
-            // $('.span_shift_of_employee').hide();
-            $('.span_employee_shift').hide();
-            // $('.span_position_of_employee').hide();
-            $('.span_employee_position').hide();
-            // $('.span_supervisor_of_employee').hide();
-            $('.span_employee_supervisor').hide();
-            $('.span_date_hired').hide();
-            $('.span_employee_email_address').hide();
-            $('.span_employee_contact_number').hide();
-            $('.span_sss_number').hide();
-            $('.span_pag-ibig_number').hide();
-            $('.span_philhealth_number').hide();
-            $('.span_tin_number').hide();
-            $('.span_account_number').hide();
-            $('.span_secondary_school_name').hide();
-            $('.span_secondary_school_address').hide();
-            $('.span_secondary_school_inclusive_years').hide();
-            $('.span_primary_school_name').hide();
-            $('.span_primary_school_address').hide();
-            $('.span_primary_school_inclusive_years').hide();
+
+            //Hide (Required,Optional) text
+            $('.span_all').hide();
 
             $('#duplicate_email_address').remove();
             $('#duplicate_telephone_number').remove();
@@ -166,8 +103,11 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#civil_status').prop("disabled",true);
             $('#street').prop("disabled",true);
             $('#region').prop("disabled",true);
+            $('#region').css('border','1px solid #0d1a80');
             $('#province').prop("disabled",true);
+            $('#province').css('border','1px solid #0d1a80');
             $('#city').prop("disabled",true);
+            $('#city').css('border','1px solid #0d1a80');
             $('#email_address').prop("disabled",true);
             $('#telephone_number').prop("disabled",true);
             $('#cellphone_number').prop("disabled",true);
@@ -184,17 +124,11 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#emergency_contact_relationship').prop("disabled",true);
             $('#emergency_contact_number').prop("disabled",true);
             $('#employee_number').prop("disabled",true);
-            // $('#company_of_employee').prop("disabled",true);
             $('#employee_company').prop("disabled",true);
-            // $('#branch_of_employee').prop("disabled",true);
             $('#employee_branch').prop("disabled",true);
-            // $('#status_of_employee').prop("disabled",true);
             $('#employee_status').prop("disabled",true);
-            // $('#shift_of_employee').prop("disabled",true);
             $('#employee_shift').prop("disabled",true);
-            // $('#position_of_employee').prop("disabled",true);
             $('#employee_position').prop("disabled",true);
-            // $('#supervisor_of_employee').prop("disabled",true);
             $('#employee_supervisor').prop("disabled",true);
             $('#date_hired').prop("disabled",true);
             $('#employee_email_address').prop("disabled",true);
@@ -227,6 +161,31 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#image_button').hide();
             $('.image_icon').hide();
             $('#preview_image').show();
+
+            $('#solo_parent_table').hide();
+            $('#solo_parent_data_table').show();
+            $('#solo_parent_tr').show();
+            $('#child_age').change();
+
+            $(document).ready( function () { 
+                  $('#solo_parent_data_table').DataTable({
+                      dom:'rt',
+                      processing:true,
+                      serverSide:false,
+                      ajax: {
+                      url: '/employees/childrenDataTable', //route-name
+                      data:{
+                          employee_id: id
+                      }
+                      },
+                      //data column name
+                      columns: [
+                          {data: 'child_name'},
+                          {data: 'child_birthday'},
+                          {data: 'child_gender'}
+                      ],
+                  });    
+              });
         }
     });
 });

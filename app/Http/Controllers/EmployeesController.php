@@ -29,6 +29,11 @@ class EmployeesController extends Controller
         $employees = Employee::all();
         return DataTables::of($employees)->make(true);
     }
+    
+    public function childrenDataTable(Request $request){
+        $children = Children::where('employee_id',$request->employee_id)->get();
+        return DataTables::of($children)->make(true);
+    }
 
     public function save(Request $request){//To save only Work,Personal,School Information Form
         
@@ -61,17 +66,11 @@ class EmployeesController extends Controller
         $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
         $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
         $employees->emergency_contact_number = $request->emergency_contact_number;
-        // $employees->company_of_employee = $request->company_of_employee;
         $employees->employee_company = $request->employee_company;
-        // $employees->branch_of_employee = $request->branch_of_employee;
         $employees->employee_branch = $request->employee_branch;
-        // $employees->status_of_employee = $request->status_of_employee;
         $employees->employee_status = $request->employee_status;
-        // $employees->shift_of_employee = $request->shift_of_employee;
         $employees->employee_shift = $request->employee_shift;
-        // $employees->position_of_employee = $request->position_of_employee;
         $employees->employee_position = $request->employee_position;
-        // $employees->supervisor_of_employee = $request->supervisor_of_employee;
         $employees->employee_supervisor = $request->employee_supervisor;
         $employees->date_hired = $request->date_hired;
         $employees->employee_email_address = $request->employee_email_address;
@@ -158,17 +157,11 @@ class EmployeesController extends Controller
         $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
         $employees->emergency_contact_number = $request->emergency_contact_number;
         $employees->employee_number = $request->employee_number;
-        // $employees->company_of_employee = $request->company_of_employee;
         $employees->employee_company = $request->employee_company;
-        // $employees->branch_of_employee = $request->branch_of_employee;
         $employees->employee_branch = $request->employee_branch;
-        // $employees->status_of_employee = $request->status_of_employee;
         $employees->employee_status = $request->employee_status;
-        // $employees->shift_of_employee = $request->shift_of_employee;
         $employees->employee_shift = $request->employee_shift;
-        // $employees->position_of_employee = $request->position_of_employee;
         $employees->employee_position = $request->employee_position;
-        // $employees->supervisor_of_employee = $request->supervisor_of_employee;
         $employees->employee_supervisor = $request->employee_supervisor;
         $employees->date_hired = $request->date_hired;
         $employees->employee_email_address = strtolower($request->employee_email_address);
@@ -269,34 +262,63 @@ class EmployeesController extends Controller
         $job->save();
     }
 
-    public function memoSave(Request $request){
-        $memo = new Memo;
-        $memo->employee_id = $request->employee_id;//use to associate employee id
-        $memo->memo_subject = ucfirst($request->memo_subject);
-        $memo->memo_date = $request->memo_date;
-        $memo->memo_option = $request->memo_option;
-        $memo->save();
-    }
+    // public function memoSave(Request $request){
+
+    //     if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+    //         $memo = new Memo;
+    //         $memo->employee_id = $request->employee_id;//use to associate employee id
+    //         $memo->memo_subject = ucfirst($request->memo_subject);
+    //         $memo->memo_date = $request->memo_date;
+    //         $memo->memo_penalty = $request->memo_penalty;
+            
+    //         $memoFile = $request->file('memo_file');
+    //         $memoExtension = $memoFile->getClientOriginalExtension();
+    //         $memoFileName = time(). '_' . 'Memo_Subject'. '.' . $memoExtension;
+    //         $memoFile->storeAs('public/memoFiles',$memoFileName);
+    //         $memo->memo_file = $memoFileName;
+    //         $memo->save();
+    //     }
+    // }
 
     public function evaluationSave(Request $request){
-        $evaluation = new Evaluation;
-        $evaluation->employee_id = $request->employee_id;//use to associate employee id
-        $evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
-        $evaluation->evaluation_date = $request->evaluation_date;
-        $evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
-        $evaluation->save();
+
+        if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by){
+            $evaluation = new Evaluation;
+            $evaluation->employee_id = $request->employee_id;//use to associate employee id
+            $evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
+            $evaluation->evaluation_date = $request->evaluation_date;
+            $evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
+            $evaluation->save();
+        }
     }
 
     public function contractsSave(Request $request){
-        $contract = new Contracts;
-        $contract->employee_id = $request->employee_id;//use to associate employee id
-        $contract->contracts_type = ucfirst($request->contracts_type);
-        $contract->contracts_date = $request->contracts_date;
-        $contract->save();
+        if($request->contracts_type && $request->contracts_date){
+            $contract = new Contracts;
+            $contract->employee_id = $request->employee_id;//use to associate employee id
+            $contract->contracts_type = ucfirst($request->contracts_type);
+            $contract->contracts_date = $request->contracts_date;
+            $contract->save();
+        }
     }
 
     public function storeRequirements(Request $request)
     {
+        if($request->memo_subject && $request->memo_date && $request->memo_penalty){
+            $memo = new Memo;
+            $memo->employee_id = $request->employee_id;//use to associate employee id
+            $memo->memo_subject = ucfirst($request->memo_subject);
+            $memo->memo_date = $request->memo_date;
+            $memo->memo_penalty = $request->memo_penalty;
+            
+            // $memoFile = $request->file('memo_file');
+            // $memoExtension = $memoFile->getClientOriginalExtension();
+            // $memoFileName = time(). '_' . 'Memo_Subject'. '.' . $memoExtension;
+            // $memoFile->storeAs('public/memoFiles',$memoFileName);
+            // $memo->memo_file = $memoFileName;
+            $memo->save();
+        }
+        
         //Save Resignation and Termination File
         if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
             $resignation = new Resignation;
@@ -366,7 +388,7 @@ class EmployeesController extends Controller
                 'pag_ibig_form' => $pag_ibig,
             ]);
 
-            return Redirect::to(url()->previous());//Return previous page
+            // return Redirect::to(url()->previous());//Return previous page
             // return redirect()->back();
         }
     }

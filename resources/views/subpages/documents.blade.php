@@ -1,10 +1,10 @@
-<div id="documents" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
+<div id="documents" class="tab-pane fade" style="border-radius:0px;">
     
     <hr class="hr-design">
     <div class="container" style="width:75%;">
         {{-- <span class="alert alert-danger"><b><i class="fa-solid fa-circle-exclamation"></i> Instruction:</b> Before uploading, kindly choose a file name that precisely corresponds to the <b>FILE TITLE</b>.</span> --}}
                 <strong class="table-title">REQUIREMENTS</strong>
-                    <table class="table table-striped table-bordered table-hover mt-1 align-middle">
+                    <table class="table table-striped table-bordered table-hover mt-1 align-middle" style="margin-bottom: -12px;">
                         <thead class="thead-educational">
                             <tr>
                                 <th style="width:25%"><i class="fas fa-file"></i> FILE TITLE</th>
@@ -107,7 +107,6 @@
                         </tbody>
                     </table>
     </div> {{-- Container div end tag --}}
-            <hr class="hr-design">
             {{-- Display File Chosen --}}
             <div class="modal fade" id="preview_document">
                 <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">

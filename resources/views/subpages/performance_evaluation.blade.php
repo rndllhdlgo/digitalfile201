@@ -1,4 +1,4 @@
-<div id="performance_evaluation" class="tab-pane fade shadow p-1 mb-1 bg-body rounded" style="border-radius:0px;">
+<div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
 
     {{-- Memo Table --}}
     <hr class="hr-design">
@@ -30,7 +30,7 @@
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <select class="form-select forminput multiple_field form-control"  id="memo_option" placeholder=" " style="background-color:white;">
+                        <select class="form-select forminput multiple_field form-control"  id="memo_penalty" placeholder=" " style="background-color:white;">
                             <option value="" disabled selected>SELECT PENALTY</option>
                             <option value="Verbal">Verbal</option>
                             <option value="Written">Written</option>
@@ -38,7 +38,7 @@
                             <option value="3rd Offense">3rd Offense</option>
                             <option value="Final">Final</option>
                         </select>
-                        <label for="memo_option" class="formlabel form-label"><span class="span_memo_option span_all">(Optional)</span> </label>
+                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-2">
@@ -224,7 +224,7 @@
                     <span id="resignation_text">No file chosen, yet.</span>                        
                 </td>
                 <td>
-                    <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
                     <button type="button" id="resignation_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="resignation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
@@ -266,7 +266,7 @@
                     <span id="termination_text">No file chosen, yet.</span>
                 </td>
                 <td>
-                    <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                    <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
                     <button type="button" id="termination_replace"  class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                     <img src="" alt=""    id="termination_preview"  data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                 </td>
