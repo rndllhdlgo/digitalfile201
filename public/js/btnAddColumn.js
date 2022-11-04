@@ -281,8 +281,8 @@ $(document).ready(function(){
         var dynamicContract =   "<tr>" + 
                                     "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ contracts_type +"</td>" + 
                                     "<td style='width:30%' class='text-center pb-3 pt-3'>" + contracts_date + "</td>" + 
-                                    "<td style='width:28%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
-                                    "<td style='width:14%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                    "<td style='width:32%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $("#contracts_data_table").append(dynamicContract);
         $("#contracts_type").val(""); 

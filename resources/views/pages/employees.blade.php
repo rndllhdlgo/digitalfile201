@@ -51,7 +51,7 @@
                             <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
                         </div>
                         <div class="col bg-white">
-                            <span style="font-size: 20px;">Success</span><br>
+                            <span style="font-size: 17px;">Success</span><br>
                             <span style="font-size: 14px;">Successfully cleared all pages of the Form</span>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
                             <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
                         </div>
                         <div class="col bg-white">
-                            <span style="font-size: 20px;">Success</span><br>
+                            <span style="font-size: 17px;">Success</span><br>
                             <span style="font-size: 14px;">Successfully cleared current page of the Form.</span>
                         </div>
                     </div>
