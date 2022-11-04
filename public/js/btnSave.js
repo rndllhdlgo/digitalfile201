@@ -1,3 +1,4 @@
+//This JS page is to save all the data
 
 //Function for Image Upload
 var fileName;
@@ -100,7 +101,7 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
                 },
                 data:{
-                //Personal Information
+                //Personal Information Tab
                     employee_number:employee_number,
                     fileName:fileName,
                     first_name:first_name,
@@ -129,7 +130,7 @@ $('#btnSave').on('click', function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
-                //Work Information
+                //Work Information Tab
                     employee_company:employee_company,
                     employee_branch:employee_branch,
                     employee_status:employee_status,
@@ -144,7 +145,7 @@ $('#btnSave').on('click', function(){
                     philhealth_number:philhealth_number,
                     tin_number:tin_number,
                     account_number:account_number,
-                //School Information
+                //School Information 
                     secondary_school_name:secondary_school_name,
                     secondary_school_address:secondary_school_address,
                     secondary_school_inclusive_years:secondary_school_inclusive_years,
@@ -155,6 +156,7 @@ $('#btnSave').on('click', function(){
                 success: function(data){
                         if(data.result == 'true'){
                             $('#employee_id').val(data.id);
+                            //This code is to save the data in multiple rows
                                 var soloParentTable = $('#solo_parent_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -264,7 +266,7 @@ $('#btnSave').on('click', function(){
                                 $.each(memo_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/storeRequirements',
+                                        url: '/employees/memoSave',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -273,11 +275,31 @@ $('#btnSave').on('click', function(){
                                             'employee_id' : data.id,
                                             'memo_subject' : value[0],
                                             'memo_date' : value[1],
-                                            'memo_penalty': value[2],
-                                            'memo_file': value[3]
+                                            'memo_penalty': value[2]
                                         },
                                     });
                                 });
+                                // var memoTable = $('#memo_data_table').DataTable({
+                                //     dom:'t',
+                                // });
+                                // var memo_data  = memoTable.rows().data();
+                                // $.each(memo_data, function(key, value){
+                                //     $.ajax({
+                                //         type: 'POST',
+                                //         url: '/employees/storeRequirements',
+                                //         async: false,
+                                //         headers:{
+                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                //         },
+                                //         data:{
+                                //             'employee_id' : data.id,
+                                //             'memo_subject' : value[0],
+                                //             'memo_date' : value[1],
+                                //             'memo_penalty': value[2],
+                                //             'memo_file': value[3]
+                                //         },
+                                //     });
+                                // });
                                 var evaluationTable = $('#evaluation_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -319,9 +341,7 @@ $('#btnSave').on('click', function(){
                                 });
 
                                 $('#requirements_form').submit();
-                                // $('#submit_performance_form').click();
-                                // Swal.fire("SAVE SUCCESS", "", "success");
-                                // setTimeout(function(){location.reload();}, 3000); // Reload the whole page 
+                                Swal.fire("SAVE SUCCESS", "", "success");
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();

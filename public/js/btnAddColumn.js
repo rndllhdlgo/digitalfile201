@@ -1,5 +1,5 @@
-//Personal Information
-//Check for input field
+//This JS page is to add column on multiple field
+//Verify that the user has filled out all field on multiple field.
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
@@ -80,8 +80,11 @@ function checkforblankMultiple(){
     }
 }
 
-//Solo Parent Table Add
+
 $(document).ready(function(){
+
+    //Personal Information Tab
+    //Solo Parent Table Add
     $('#btnSoloParentAdd').click(function(){
         $('#solo_parent_data_table').show();
         var child_name = $('#child_name').val().trim();
@@ -176,6 +179,7 @@ $(document).ready(function(){
         });
     });
 
+    //Job History Tab
     //Job History Table Add
     $('#btnJobHistoryAdd').click(function(){
         $('#job_data_table').show();
@@ -214,11 +218,11 @@ $(document).ready(function(){
         var memo_file = document.getElementById('memo_file').files[0].name;//Remove Fake Path
 
         var dynamicMemo =   "<tr>" + 
-                                "<td class='text-capitalize text-center pb-3 pt-3' style='width:18%'>"+ memo_subject +"</td>"+
-                                "<td class='text-center pb-3 pt-3' style='width:15%'>" + memo_date + "</td>"+
-                                "<td class='text-center pb-3 pt-3' style='width:15%'>" + memo_penalty + "</td>"+
-                                "<td class='text-center pb-3 pt-3' style='width:28%'> <b>File Name: </b>" + memo_file + "</td>"+
-                                "<td style='width:14%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ memo_subject +"</td>"+
+                                "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_date + "</td>"+
+                                "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_penalty + "</td>"+
+                                "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + memo_file + "</td>"+
+                                "<td style='width:10%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                             "</tr>";
         $("#memo_data_table").append(dynamicMemo);
         $("#memo_subject").val(""); 
@@ -231,7 +235,6 @@ $(document).ready(function(){
         $('#memo_button').show();
         $('#memo_view').prop('disabled',true);
         $('#memo_replace').prop('disabled',true);
-        console.log(memo_file);
         $(".btn-memo").click(function(){
             $(this).parent().parent().remove();
         });
@@ -243,15 +246,14 @@ $(document).ready(function(){
         var evaluation_reason = $('#evaluation_reason').val().trim();
         var evaluation_date = $('#evaluation_date').val();
         var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
-        // var evaluation_file = $('#evaluation_file').val();
         var evaluation_file = document.getElementById('evaluation_file').files[0].name;
 
         var dynamicEvaluation = "<tr>" + 
                                     "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ evaluation_reason +"</td>"+
                                     "<td style='width:15%' class='text-center pb-3 pt-3'>" + evaluation_date + "</td>"+
-                                    "<td style='width:15%' class='text-capitalize pb-3 pt-3'>" + evaluation_evaluated_by + "</td>" +
-                                    "<td style='width:28%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + evaluation_file + "</td>" +
-                                    "<td style='width:14%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                    "<td style='width:15%' class='text-capitalize text-center pb-3 pt-3'>" + evaluation_evaluated_by + "</td>" +
+                                    "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + evaluation_file + "</td>" +
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $("#evaluation_data_table").append(dynamicEvaluation);
         $("#evaluation_reason").val(""); 
@@ -264,7 +266,6 @@ $(document).ready(function(){
         $('#evaluation_button').show();
         $('#evaluation_view').prop('disabled',true);
         $('#evaluation_replace').prop('disabled',true);
-        console.log(evaluation_file);
         $(".btn-evaluation").click(function(){
             $(this).parent().parent().remove();
         });
@@ -278,9 +279,9 @@ $(document).ready(function(){
         var contracts_file = document.getElementById('contracts_file').files[0].name;
 
         var dynamicContract =   "<tr>" + 
-                                    "<td class='text-capitalize text-center' style='width:18%'>"+ contracts_type +"</td>" + 
-                                    "<td class='text-center' style='width:30%'>" + contracts_date + "</td>" + 
-                                    "<td class='text-center' style='width:28%'> <b>File Name: </b>" + contracts_file + "</td>" + 
+                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ contracts_type +"</td>" + 
+                                    "<td style='width:30%' class='text-center pb-3 pt-3'>" + contracts_date + "</td>" + 
+                                    "<td style='width:28%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
                                     "<td style='width:14%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $("#contracts_data_table").append(dynamicContract);
@@ -293,12 +294,12 @@ $(document).ready(function(){
         $('#contracts_button').show();
         $('#contracts_view').prop('disabled',true);
         $('#contracts_replace').prop('disabled',true);
-        console.log(contracts_file);
         $(".btn-contract").click(function(){
             $(this).parent().parent().remove();
         });
     });
-}); 
+});
+
 
 
 

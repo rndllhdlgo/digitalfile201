@@ -66,4 +66,5 @@
         </tbody>
     </table>
    <hr class="hr-design">
+
 </div>{{-- End of Job History Div --}}

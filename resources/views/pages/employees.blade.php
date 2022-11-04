@@ -25,18 +25,6 @@
                         </tbody>
                     </table>
                 <hr class="hr-design">
-
-                {{-- <table class="table table-striped table-bordered w-100 childrenDataTable" id="childrenDataTable">
-                    <thead class="text-white" style="background-color:#0d1a80;">
-                        <tr>
-                            <th><i class="fas fa-id-card"></i> CHILD NAME</th>
-                            <th><i class="fas fa-id-card"></i> CHILD BIRTHDAY</th>
-                            <th><i class="fas fa-id-card"></i> CHILD GENDER</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table> --}}
         </div>
         <div id="employee_personal_information">
             <div class="row">
@@ -56,6 +44,34 @@
                 <hr>
             </div>
 
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div id="clearAll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="row border border-success">
+                        <div class="col-1 bg-success">
+                            <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
+                        </div>
+                        <div class="col bg-white">
+                            <span style="font-size: 20px;">Success</span><br>
+                            <span style="font-size: 14px;">Successfully cleared all pages of the Form</span>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+
+            <div class="toast-container position-fixed top-0 end-0 p-3">
+                <div id="clearCurrent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="row border border-success">
+                        <div class="col-1 bg-success">
+                            <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
+                        </div>
+                        <div class="col bg-white">
+                            <span style="font-size: 20px;">Success</span><br>
+                            <span style="font-size: 14px;">Successfully cleared current page of the Form.</span>
+                        </div>
+                    </div>
+                </div>  
+            </div>
+            
             {{-- Nav Pills --}}
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">

@@ -1,46 +1,45 @@
-// Upload Validation
-//Display Image and Validation
+//This JS is to Display Preview of Image and Validation Upload
+
+//Personal Information Tab
 function ImageValidation() {
-    var fuData = document.getElementById('cover_image');
-    var FileUploadPath = fuData.value;
-    var Extension = FileUploadPath.substring(FileUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var imageData = document.getElementById('cover_image');
+    var imageUploadPath = imageData.value;
+    var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
 
-//Check if the uploaded is an...
-
-    if (Extension == "jpg" || Extension == "jpeg" || Extension == "png" || Extension == "gif") {
+    //Check what type of file that the user upload
+    if (imageExtension == "jpg" || imageExtension == "jpeg" || imageExtension == "png" || imageExtension == "gif") {
         //To display the uploaded file
-        if (fuData.files && fuData.files[0]) {
-            var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#preview_image').attr('src', e.target.result);
+        if (imageData.files && imageData.files[0]) {
+            var imageReader = new FileReader();
+                imageReader.onload = function(e) {
+                    $('#image_preview').attr('src', e.target.result);
                 }
-                reader.readAsDataURL(fuData.files[0]);
+                imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
                 $('#image_button').hide();
                 $('#image_close').show();
-                $('#preview_image').show();
+                $('#image_preview').show();
                 $('.column-1').addClass('blue');
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-      
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
-//Document Tab Upload Validation
+//Documents Tab Upload Validation
 function BirthCertificateValidation() {
     var birthcertData = document.getElementById('birthcertificate_file');
     var birthcertUploadPath = birthcertData.value;
     var birthcertExtension = birthcertUploadPath.substring(birthcertUploadPath.lastIndexOf('.') + 1).toLowerCase();
 
-    //Check if the uploaded is an...
+    //Check what type of file that the user upload
 
     if (birthcertExtension == "jpg" || birthcertExtension == "jpeg" || birthcertExtension == "png" || birthcertExtension == "gif" || birthcertExtension == "pdf") {
     //To display the uploaded file
@@ -84,14 +83,14 @@ function nbiValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function barangayclearanceValidation() {
@@ -112,14 +111,14 @@ function barangayclearanceValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function policeclearanceValidation() {
@@ -140,14 +139,14 @@ function policeclearanceValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function sssValidation() {
@@ -168,15 +167,14 @@ function sssValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-      
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function philhealthValidation() {
@@ -197,14 +195,14 @@ function philhealthValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
 }
 
 function pagibigValidation() {
@@ -225,25 +223,24 @@ function pagibigValidation() {
         }
     } 
     else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-      
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
   }
 }
 
-//Document Tab File Rename Function
+//Rename Function
 var birthcertificate_file = $('#birthcertificate_file')[0];
 var birthcertificate_button = $('#birthcertificate_button')[0];
 var birthcertificate_text = $('#birthcertificate_text')[0];
 
 $('#birthcertificate_file').on('change',function(){
     if (birthcertificate_file.value) {
-        birthcertificate_text.innerHTML = "<b> File Name: </b>" + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+        birthcertificate_text.innerHTML = "<b>File Name</b>: " + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
     }
     else {
         birthcertificate_text.innerHTML = "No file chosen, yet.";
@@ -256,7 +253,7 @@ var nbi_text = $('#nbi_text')[0];
 
 $('#nbi_file').on('change',function(){
     if (nbi_file.value) {
-        nbi_text.innerHTML = "<b> File Name: </b>" + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+        nbi_text.innerHTML = "<b>File Name</b>: " + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
     } 
     else {
         nbi_text.innerHTML = "No file chosen, yet.";
@@ -413,7 +410,7 @@ function documentPreview(newDocumentSrc){
     largeDocument.src = newDocumentSrcNow;
 }
 
-//Document Tab Change Modal-Title Function
+//Document Tab Change Modal Title Function on Click
 $('#birthcertificate_preview').on('click',function(){
     $('.modal-title').html('BIRTH CERTIFICATE');
 });
@@ -566,7 +563,7 @@ function terminationValidation() {
         if (terminationData.files && terminationData.files[0]) {
             var terminationReader = new FileReader();
                 terminationReader.onload = function(e) {
-                    $('#preview_termination').attr('src', e.target.result);
+                    $('#termination_preview').attr('src', e.target.result);
                 }
                 terminationReader.readAsDataURL(terminationData.files[0]);
                 $('#termination_view').prop('disabled',false);
@@ -592,7 +589,7 @@ var memo_text = $('#memo_text')[0];
 
 $('#memo_file').on('change',function(){
     if (memo_file.value) {
-        memo_text.innerHTML = "<b> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+        memo_text.innerHTML = "<b class='text-center'> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
     }
     else {
         memo_text.innerHTML = "No file chosen, yet.";
@@ -618,7 +615,7 @@ var contracts_text = $('#contracts_text')[0];
 
 $('#contracts_file').on('change',function(){
     if (contracts_file.value) {
-        contracts_text.innerHTML = "<b> File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+        contracts_text.innerHTML = "<b>File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
     }
     else {
         contracts_text.innerHTML = "No file chosen, yet.";
@@ -631,7 +628,7 @@ var resignation_text = $('#resignation_text')[0];
 
 $('#resignation_file').on('change',function(){
     if (resignation_file.value) {
-        resignation_text.innerHTML = "<b> File Name: </b>" + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+        resignation_text.innerHTML = "<b>File Name:</b> " + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
     }
     else {
         resignation_text.innerHTML = "No file chosen, yet.";
@@ -644,7 +641,7 @@ var termination_text = $('#termination_text')[0];
 
 $('#termination_file').on('change',function(){
     if (termination_file.value) {
-        termination_text.innerHTML = "<b> File Name: </b>" + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+        termination_text.innerHTML = "<b>File Name:</b> " + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
     }
     else {
         termination_text.innerHTML = "No file chosen, yet.";
@@ -698,8 +695,8 @@ $('#resignation_replace').on('click',function(){
 
 $('#termination_replace').on('click',function(){
     $('#termination_file').val('');
-    $('#preview_termination').attr('src','');//change the image source
-    $('#preview_termination').hide();
+    $('#termination_preview').attr('src','');//change the image source
+    $('#termination_preview').hide();
     $('#termination_text').html('No file chosen, yet.');
     $('#termination_button').show();
     $('#termination_view').prop('disabled',true);

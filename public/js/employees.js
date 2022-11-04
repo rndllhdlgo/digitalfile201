@@ -1,4 +1,24 @@
 
+// $(document).ready( function () { //The ready() method specifies what happens when a ready event occurs.
+//     $('#childrenDataTable').DataTable(
+//       {
+//         dom:'lfrtip',
+//         processing:true,
+//         serverSide:false,
+//         ajax: {
+//         //route-name
+//         url: '/employees/childrenDataTable',
+//       },
+//       //data column name
+//       columns: [
+//           {data: 'child_name'},
+//           {data: 'child_birthday'},
+//           {data: 'child_gender'}
+//       ]
+//       }
+//   );    
+// });
+
 // var go = true, $lvl = $('.lvl');
 // $(window).bind("beforeunload",function(event) {
 //     if(go) return "You have unsaved changes";
@@ -42,11 +62,8 @@ $(document).ready(function () {
             {data: 'first_name'},
             {data: 'last_name'},
             {data: 'middle_name'},
-            // {data: 'position_of_employee'},
             {data: 'employee_position'},
-            // {data: 'branch_of_employee'},
             {data: 'employee_branch'},
-            // {data: 'status_of_employee'},
             {data: 'employee_status'},
         ],
         initComplete: function () {
@@ -148,7 +165,7 @@ function checkforblank(){
     }
 }
 
-//Clear Form
+//Clear Form (Current Page,All Pages)
 setInterval(checkclearform,0);
 function checkclearform(){
     if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1) {
@@ -159,8 +176,8 @@ function checkclearform(){
     }
 }
 
-$('#btnUpdate').hide();//Hide Update Button
-$('#btnCancelEdit').hide();//Hide Cancel Edit Button
+$('#btnUpdate').hide();
+$('#btnCancelEdit').hide();
 $('#solo_parent').hide();//Hide solo parent section
 $('#spouse').hide();//Hide spouse section
 
@@ -197,7 +214,6 @@ $('#spouse').hide();//Hide spouse section
 $('#benefits').hide();
 //Hide/Show (employment status) Section Function
     function changeEmploymentStatus(){
-        // var employment_status = document.getElementById("status_of_employee");
         var employment_status = document.getElementById("employee_status");
   
         if(employment_status.value == "Regular" || employment_status.value == "Intern" || employment_status.value == "Probationary"){
@@ -332,14 +348,12 @@ $('#child_birthday').on('change',function(){
 //Close Preview Image Function
 $('#image_close').on('click',function(){
     $('#cover_image').val(''); //Remove the image inserted
-    $('#preview_image').attr('src',''); //Remove current preview
-    $('#preview_image').hide();
+    $('#image_preview').attr('src',''); //Remove current preview
+    $('#image_preview').hide();
     $('#image_close').hide();
     $('#image_user').show();
     $('#image_button').show();
     $('.column-1').css("height","250px");
-    // $('#image_button').css("margin-top","198px");
-    // $('.column-1').removeClass('blue');
     $('#cover_image').click();
 });
 
@@ -432,9 +446,9 @@ $('#province').on('change', function(){
     });
 });
 
-//Fill All
+//Fill All Function
 $('#title_details').on('click',function(){
-//Required
+//Required Field
     $('#first_name').val('Rendell');
     $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
@@ -451,17 +465,11 @@ $('#title_details').on('click',function(){
     $('#emergency_contact_relationship').val('Mother');
     $('#emergency_contact_number').val('+63 9322003718');
     $('#employee_number').val('1');
-    // $('#company_of_employee').val('PHILLOGIX SYSTEMS INC.');
     $('#employee_company').val('PHILLOGIX SYSTEMS INC.');
-    // $('#branch_of_employee').val('SAN JUAN');
     $('#employee_branch').val('SAN JUAN');
-    // $('#status_of_employee').val('Probationary');
     $('#employee_status').val('Probationary');
-    // $('#position_of_employee').val('Jr. Programmer');
     $('#employee_position').val('Jr. Programmer');
-    // $('#supervisor_of_employee').val('Gerard Mallari');
     $('#employee_supervisor').val('Gerard Mallari');
-    // $('#shift_of_employee').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
     $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
     $('#employee_email_address').val('rendellhidalgo111@gmail.com');
     $('#employee_contact_number').val('+63 9322003718');
@@ -476,7 +484,7 @@ $('#title_details').on('click',function(){
     $('#primary_school_name').val('Lakandula Elementary School');
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years').val('2006-2012');
-//Optional
+//Optional Field
     $('#telephone_number').val('1231243');
     $('#father_contact_number').val('+63 9322003718');
     $('#mother_contact_number').val('+63 9322003718');

@@ -1,3 +1,4 @@
+//This JS page is to cancel edit
 $('#btnCancelEdit').on('click',function(){
     Swal.fire({
         title: 'Do you want to cancel edit details?',

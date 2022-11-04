@@ -2,7 +2,7 @@ body{
     background-color: white;
     overflow-x: hidden;
 }
-/* For Input */
+/* For input field effect */
 .f-outline{
     position: relative;
 }
@@ -58,7 +58,7 @@ input, select{
     border-color: black;
     outline: none;
 }
-
+/* For buttons */
 .bp{
     font-weight: bold;
     background-color: #0d1a80;
@@ -66,8 +66,26 @@ input, select{
     color: white !important;
     padding-top: 8px;
 }
+
 .bp:hover{
     transition: 0.1s;
+}
+
+.grow {
+    display: inline-block;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    -webkit-tap-highlight-color: transparent;
+    transform: translateZ(0);
+    box-shadow: 0 0 1px transparent;
+}
+
+.grow:hover {
+    transform: scale(1.1);
+}
+
+a{
+    text-decoration: none;
 }
 
 .close{
@@ -75,7 +93,8 @@ input, select{
     color: white;
     opacity: 100%;
 }
-/* Scroll Bar Design */
+
+/* For Scroll Bar Design */
 html {
     scrollbar-width: thin ;
     scrollbar-color: #777 #555;
@@ -102,7 +121,7 @@ html::-webkit-scrollbar-track:hover {
     margin-left: auto;
     margin-right: auto;
 }
-
+/* Digital 201 File text */
 .digital-file-201{
     display: inline;
     padding:0;
@@ -130,7 +149,7 @@ html::-webkit-scrollbar-track:hover {
 .logout-text{
     color:black !important;
 }
-
+/* Nav Pill Design */
 .pill{
     color:#0d1a80 !important;
     font-weight: bold !important;
@@ -144,6 +163,7 @@ html::-webkit-scrollbar-track:hover {
     color:white !important;
 }
 
+/* Table Design */
 .thead-educational{
     background-color:#0d1a80;
     color:white !important;
@@ -161,26 +181,11 @@ td{
     font-size: 16px; 
 }
 
-.grow {
-    display: inline-block;
-    transition-duration: 0.3s;
-    transition-property: transform;
-    -webkit-tap-highlight-color: transparent;
-    transform: translateZ(0);
-    box-shadow: 0 0 1px transparent;
-}
-.grow:hover {
-    transform: scale(1.1);
-}
-a{
-    text-decoration: none;
-}
-
 strong{
     color:black !important;
 } 
 
-/* Sweet Alert */
+/* Sweet Alert
 .my-actions { margin: 0 2em; }
 .order-1 { order: 1; }
 .order-2 { order: 2; }
@@ -188,8 +193,9 @@ strong{
 
 .right-gap {
     margin-right: auto;
-}
+} */
 
+/* Validation Design */
 .validation{
     display:none;
     background-color: #dc3545;
@@ -216,7 +222,7 @@ strong{
 .hr-design {
     border:2px solid black;
 }
-
+/* To have disable cursor if the button is in disabled form */
 .btnDisabled[disabled]{
     cursor: not-allowed;
     pointer-events:auto;
@@ -235,6 +241,7 @@ input[type="date"]{
     cursor: pointer;
 }
 
+/* Documents Tab */
 .title_file{
     padding-top: 15px;
 }
@@ -250,6 +257,7 @@ input[type=search]:focus{
     border:1.5px solid #0d1a80;
 }
 
+/* input type file */
 #cover_image,
 #memo_file,
 #evaluation_file,
@@ -279,6 +287,7 @@ input[type=search]:focus{
     display:none;
 }
 
+/* Data Tables */
 #solo_parent_data_table,
 #college_data_table,
 #training_data_table,
@@ -310,10 +319,55 @@ input[type=search]:focus{
     margin-left: 7%;
 }
 
-#btnMemoAdd,
-#btnEvaluationAdd,
-#btnContractAdd{
-    margin-left:10%;
+.table-title{
+    font-size:16px;
+    background-color:#0d1a80;
+    color:white !important;
+    padding:5px;
+    border-top-left-radius:5px;
+    border-top-right-radius:5px;
+}
+
+/* Divide into two columns */
+.column-1 {
+    float: left;
+    width: 280px;
+    height: 245px; 
+    border:1px solid gray;
+    margin-left: 1%;
+    background-color: #f2f4f5;
+    position: relative;   
+}
+.column-2{
+    float: left;
+    width: 77%;
+}
+.row:after {
+    content: "";
+    display: table;
+    clear: both;/* Clear floats after the columns */
+}
+
+#image_preview{
+    height: 205px;
+    width: 276px;
+    margin-left: -12px;
+    cursor:pointer;
+    display: none;
+}
+
+#preview_file{
+    height: 150px;
+    width: 150px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.image_icon{
+    position: absolute;
+    zoom: 150%;
+    margin-left: 26%;
 }
 
 

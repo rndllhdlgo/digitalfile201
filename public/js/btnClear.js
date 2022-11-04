@@ -1,4 +1,4 @@
-//Clear Employee Form
+//This JS page is to clear form (current page, all pages)
 $('#btnClear').on('click',function(){
     $('#personal_information').css('zoom','95%');
         Swal.fire({
@@ -17,7 +17,9 @@ $('#btnClear').on('click',function(){
             }
         })
         .then((clear) => {
-            if (clear.isDenied) { //Clear All Fields
+            if (clear.isDenied) { 
+                //Clear All Pages
+                new bootstrap.Toast(document.querySelector('#clearAll')).show();
                 $('#personal_information').css('zoom','100%');
                 $('.required_field').val('');
                 $('.required_field').removeClass('blue');
@@ -31,8 +33,8 @@ $('#btnClear').on('click',function(){
                 $('#spouse').hide();
                 $('#benefits').hide();
                 $('#cover_image').val(''); //Remove the image uploaded
-                $('#preview_image').attr('src',''); //Remove current preview
-                $('#preview_image').hide();
+                $('#image_preview').attr('src',''); //Remove current preview
+                $('#image_preview').hide();
 
                 //Performance Evaluation Tab
                 $('#memo_file').val('');
@@ -146,7 +148,9 @@ $('#btnClear').on('click',function(){
                 $('.btn-evaluation').click();
                 $('.btn-contract').click();
             } 
-            else if (clear.isConfirmed) {//Clear Current Page
+            else if (clear.isConfirmed) {
+                //Clear Current Page
+                new bootstrap.Toast(document.querySelector('#clearCurrent')).show();
                 $('#personal_information').css('zoom','100%');
                 $('.required_field:visible').val('');
                 $('.optional:visible').val('');
@@ -157,8 +161,8 @@ $('#btnClear').on('click',function(){
         
                 if($('.column-1').is(":visible")){
                     $('#cover_image').val(''); //Remove the image inserted
-                    $('#preview_image').attr('src',''); //Remove current preview
-                    $('#preview_image').hide();
+                    $('#image_preview').attr('src',''); //Remove current preview
+                    $('#image_preview').hide();
                     $('#image_close').hide();
                     $('#image_user').show();
                     $('#image_button').show();

@@ -18,7 +18,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
         dataType:'json',
         success:function(data){
             //Show Data
-            $('#preview_image').prop('src',window.location.origin+'/storage/cover_images/'+data.cover_image);//Returns base URL/to get the current url (window.location.origin)
+        //Personal Information Tab
+            $('#image_preview').prop('src',window.location.origin+'/storage/cover_images/'+data.cover_image);//Returns base URL/to get the current url (window.location.origin)
             $('#first_name').val(data.first_name);
             $('#last_name').val(data.last_name);
             $('#middle_name').val(data.middle_name);
@@ -46,6 +47,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#emergency_contact_name').val(data.emergency_contact_name);
             $('#emergency_contact_relationship').val(data.emergency_contact_relationship);
             $('#emergency_contact_number').val(data.emergency_contact_number);
+        //Work Information Tab
             $('#employee_number').val(data.employee_number);
             $('#employee_company').val(data.employee_company);
             $('#employee_branch').val(data.employee_branch);
@@ -160,7 +162,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#addEmployeeBtn').hide();
             $('#image_button').hide();
             $('.image_icon').hide();
-            $('#preview_image').show();
+            $('#image_preview').show();
 
             $('#solo_parent_table').hide();
             $('#solo_parent_data_table').show();

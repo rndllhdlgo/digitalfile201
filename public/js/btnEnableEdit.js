@@ -1,3 +1,4 @@
+//This JS page is to allow the user to edit the data
 $('#btnEnableEdit').on('click',function(){
     Swal.fire({
         title: 'Do you want to edit details?',
@@ -16,8 +17,6 @@ $('#btnEnableEdit').on('click',function(){
           $('#title_details').html('<b><i class="fas fa-user-edit"></i> EDIT EMPLOYEE DETAILS</b>');
           $('#btnUpdate').show();
           $('#image_button').show();
-          // $('#image_button').css('margin-top','1px');
-          // $('.column-1').css('height','290px');
           $('#btnCancelEdit').show();
           $('#btnEnableEdit').hide();
           $('#btnCancel').hide();
@@ -59,17 +58,11 @@ $('#btnEnableEdit').on('click',function(){
           $('#emergency_contact_number').prop("disabled",false);
         //Work Information
           $('#span_employee_number').hide();
-          // $('#company_of_employee').prop("disabled",false);
           $('#employee_company').prop("disabled",false);
-          // $('#branch_of_employee').prop("disabled",false);
           $('#employee_branch').prop("disabled",false);
-          // $('#status_of_employee').prop("disabled",false);
           $('#employee_status').prop("disabled",false);
-          // $('#shift_of_employee').prop("disabled",false);
           $('#employee_shift').prop("disabled",false);
-          // $('#position_of_employee').prop("disabled",false);
           $('#employee_position').prop("disabled",false);
-          // $('#supervisor_of_employee').prop("disabled",false);
           $('#employee_supervisor').prop("disabled",false);
           $('#date_hired').prop("disabled",false);
           $('#employee_email_address').prop("disabled",false);
