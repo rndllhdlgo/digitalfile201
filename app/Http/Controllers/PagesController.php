@@ -7,7 +7,7 @@ use App\Models\UserLogs;
 use App\Models\Region;
 use App\Models\City;
 use App\Models\Province;
-use App\Company;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -23,7 +23,8 @@ class PagesController extends Controller
             return redirect('/');
         }
         $regions = Region::select('regCode','regDesc')->get()->sortBy('regCode');
-        return view('pages.employees', compact('regions'));
+        $companies = Company::select('id','company')->get()->sortBy('company');
+        return view('pages.employees', compact('regions','companies'));
     }
 
     public function setprovince(Request $request){

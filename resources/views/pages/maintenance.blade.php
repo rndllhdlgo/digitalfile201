@@ -4,8 +4,13 @@
 
 <br>
 <strong style="font-size:20px;color:#0d1a80;">MAINTENANCE</strong>
-<br><br>
-
+    <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD COMPANY</button>
+    <button type="button" class="btn btn-success float-end grow" id="addBranchBtn" title="ADD BRANCH" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD BRANCH</button>
+    <button type="button" class="btn btn-success float-end grow" id="addShiftBtn" title="ADD SHIFT" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD SHIFT</button>
+    <button type="button" class="btn btn-success float-end grow" id="addPositionBtn" title="ADD POSITION" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD POSITION</button>
+    <button type="button" class="btn btn-success float-end grow" id="addSupervisorBtn" title="ADD SUPERVISOR" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD SUPERVISOR</button>
+<br>
+<hr class="hr-design">
     <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
         <li class="nav-item ">
             <a class="nav-link pill" id="company_tab" data-bs-toggle="tab" href="#company"> COMPANY</a>

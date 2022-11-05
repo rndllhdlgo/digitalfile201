@@ -15,8 +15,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT COMPANY</option>
-                    <option value="APSOFT">APSOFT</option>
-                    <option value="PHILLOGIX SYSTEMS INC.">PHILLOGIX SYSTEMS INC.</option>
+                        @foreach($companies as $company)
+                            <option value="{{$company->id}}">{{$company->company}}</option>
+                        @endforeach
                 </select>
                 <label for="employee_company" class="formlabel form-label"><i class="fas fa-info"></i> COMPANY <span class="span_company_of_employee span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
@@ -43,6 +44,9 @@
                     <option value="Resigned" id="resigned">Resigned</option>
                     <option value="Agency">Agency</option>
                     <option value="Probationary">Probationary</option>
+                    <option value="Resign">Resign</option>
+                    <option value="Terminate">Terminate</option>
+                    <option value="Retired">Retired</option>
                 </select>
                 <label for="employee_status" class="formlabel form-label"><i class="fas fa-info"></i> STATUS <span class="span_employee_status span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
@@ -97,7 +101,7 @@
                 <input class="forminput form-control optional" type="search" id="employee_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()" ondrop="return false;" onpaste="return false;" onkeydown="keyDown(event)">
                 <p id="employee_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <p id="duplicate_employee_email" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
-                <label for="employee_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> COMPANY EMAIL ADDRESS <span class="span_employee_email_address span_all"></span></label>
+                <label for="employee_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> COMPANY EMAIL ADDRESS <span class="span_employee_email_address span_all">(Optional)</span></label>
             </div>
         </div>
         <div class="col">
@@ -106,7 +110,7 @@
                 <input class="forminput form-control optional" type="search" id="employee_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="14" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)" onkeydown="return ValidateInput(this);">
                 <p id="employee_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p>
                 <p id="duplicate_employee_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
-                <label for="employee_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT NO. <span class="span_employee_contact_number span_all"></span></label>
+                <label for="employee_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT NO. <span class="span_employee_contact_number span_all">(Optional)</span></label>
             </div>
         </div>
     </div>

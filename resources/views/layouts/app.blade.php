@@ -37,7 +37,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script> --}}
         
         <!-- Insert JS FILES -->
         @if(Request::is('/'))<!--Route-->

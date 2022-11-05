@@ -42,85 +42,84 @@ $(document).ready(function () {
         .appendTo('#employeesTable thead');
 
         employeesTable = $('#employeesTable').DataTable({
-        dom:'l<"breakspace">trip',
-        language:{
-            "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
-            "lengthMenu":"Show _MENU_ Employees",
-            "emptyTable":"No Employees Data Found!",
-            "loadingRecords": "Loading Employee Records...",
-        },
-        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        processing:true,
-        serverSide:false,
-        orderCellsTop: true,
-        fixedHeader: true,
-        ajax:{
-            url: '/employees/listOfEmployees',
-        },
-        columns:[
-            {data: 'employee_number'},//data column name
-            {data: 'first_name'},
-            {data: 'last_name'},
-            {data: 'middle_name'},
-            {data: 'employee_position'},
-            {data: 'employee_branch'},
-            {data: 'employee_status'},
-        ],
-        initComplete: function () {
-            var api = this.api();
- 
-            // For each column
-            api
-                .columns()
-                .eq(0)
-                .each(function (colIdx) {
-                    // Set the header cell to contain the input element
-                    var cell = $('.filters th').eq(
-                        $(api.column(colIdx).header()).index()
-                    );
-                    var title = $(cell).text();
-                    $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
- 
-                    // On every keypress in this input
-                    $(
-                        'input',
-                        $('.filters th').eq($(api.column(colIdx).header()).index())
-                    )
-                        .off('keyup change')
-                        .on('change', function (e) {
-                            // Get the search value
-                            $(this).attr('title', $(this).val());
-                            var regexr = '({search})'; //$(this).parents('th').find('select').val();
- 
-                            var cursorPosition = this.selectionStart;
-                            // Search the column for that value
-                            api
-                                .column(colIdx)
-                                .search(
-                                    this.value != ''
-                                        ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                        : '',
-                                    this.value != '',
-                                    this.value == ''
-                                )
-                                .draw();
-                        })
-                        .on('keyup', function (e) {
-                            e.stopPropagation();
- 
-                            $(this).trigger('change');
-                            $(this)
-                                .focus()[0]
-                                .setSelectionRange(cursorPosition, cursorPosition);
-                        });
-                });
-        },
-    });
+            dom:'l<"breakspace">trip',
+            language:{
+                "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
+                "lengthMenu":"Show _MENU_ Employees",
+                "emptyTable":"No Employees Data Found!",
+                "loadingRecords": "Loading Employee Records...",
+            },
+            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+            processing:true,
+            serverSide:false,
+            orderCellsTop: true,
+            fixedHeader: true,
+            ajax:{
+                url: '/employees/listOfEmployees',
+            },
+            columns:[
+                {data: 'employee_number'},//data column name
+                {data: 'first_name'},
+                {data: 'last_name'},
+                {data: 'middle_name'},
+                {data: 'employee_position'},
+                {data: 'employee_branch'},
+                {data: 'employee_status'},
+            ],
+            initComplete: function () {
+                var api = this.api();
+    
+                // For each column
+                api
+                    .columns()
+                    .eq(0)
+                    .each(function (colIdx) {
+                        // Set the header cell to contain the input element
+                        var cell = $('.filters th').eq(
+                            $(api.column(colIdx).header()).index()
+                        );
+                        var title = $(cell).text();
+                        $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
+    
+                        // On every keypress in this input
+                        $(
+                            'input',
+                            $('.filters th').eq($(api.column(colIdx).header()).index())
+                        )
+                            .off('keyup change')
+                            .on('change', function (e) {
+                                // Get the search value
+                                $(this).attr('title', $(this).val());
+                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+    
+                                var cursorPosition = this.selectionStart;
+                                // Search the column for that value
+                                api
+                                    .column(colIdx)
+                                    .search(
+                                        this.value != ''
+                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
+                                            : '',
+                                        this.value != '',
+                                        this.value == ''
+                                    )
+                                    .draw();
+                            })
+                            .on('keyup', function (e) {
+                                e.stopPropagation();
+    
+                                $(this).trigger('change');
+                                $(this)
+                                    .focus()[0]
+                                    .setSelectionRange(cursorPosition, cursorPosition);
+                            });
+                    });
+            },
+        });
     $('div.breakspace').html('<br><br>');
 });
 
 //Hide Employee fill up form
-$('#employee_personal_information').hide();
 
 //Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
@@ -135,7 +134,7 @@ $('#addEmployeeBtn').on('click',function(){
 
     $('#title_details').removeClass('alert-info');
     $('#title_details').addClass('alert-warning');
-    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> Please fill all the required fields ');
+    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.');
 });
 
 //Check all required field function
@@ -183,9 +182,10 @@ $('#spouse').hide();//Hide spouse section
 
 //Hide/Show (Civil Status, Solo Parent) Section Function
     function changeStatus(){
-        var status = document.getElementById("civil_status");
+        // var status = document.getElementById("civil_status");
+        var status = $('#civil_status');
 
-        if(status.value == "Married"){
+        if($('#civil_status').val() == "Married"){
             $('#spouse').show();
             $('#spouse_name').addClass('required_field');
             $('#spouse_contact_number').addClass('required_field');
@@ -194,7 +194,7 @@ $('#spouse').hide();//Hide spouse section
             $('#solo_parent').hide();
             $('#solo_parent_data_table').hide();
         }
-        else if(status.value == "Solo Parent"){
+        else if($('#civil_status').val() == "Solo Parent"){
             $('#spouse').hide();
             $('#solo_parent').show();
             $('#spouse_name').val("");
@@ -214,15 +214,50 @@ $('#spouse').hide();//Hide spouse section
 $('#benefits').hide();
 //Hide/Show (employment status) Section Function
     function changeEmploymentStatus(){
-        var employment_status = document.getElementById("employee_status");
+        // var employment_status = document.getElementById("employee_status");
+        var employment_status = $('#employee_status');
   
-        if(employment_status.value == "Regular" || employment_status.value == "Intern" || employment_status.value == "Probationary"){
+        if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern"){
             $('#benefits').show();
             $('#sss_number').addClass('required_field');
             $('#pag_ibig_number').addClass('required_field');
             $('#philhealth_number').addClass('required_field');
             $('#tin_number').addClass('required_field');
             $('#account_number').addClass('required_field');
+        }
+        else if($('#employee_status').val() == 'Probationary'){
+                $('#benefits').show();
+                $('#sss_number').removeClass('required_field');
+                $('#pag_ibig_number').removeClass('required_field');
+                $('#philhealth_number').removeClass('required_field');
+                $('#tin_number').removeClass('required_field');
+                $('#account_number').removeClass('required_field');
+
+                $('#sss_number').removeClass('requiredInput');
+                $('#pag_ibig_number').removeClass('requiredInput');
+                $('#philhealth_number').removeClass('requiredInput');
+                $('#tin_number').removeClass('requiredInput');
+                $('#account_number').removeClass('requiredInput');
+        }
+        else if($('#employee_status').val() == 'Resign'){
+                $('.resignation-table').show();
+                $('.termination-table').hide();
+                $('#benefits').hide();
+                $('#sss_number').removeClass('required_field');
+                $('#pag_ibig_number').removeClass('required_field');
+                $('#philhealth_number').removeClass('required_field');
+                $('#tin_number').removeClass('required_field');
+                $('#account_number').removeClass('required_field');
+        }
+        else if($('#employee_status').val() == 'Terminate'){
+                $('.termination-table').show();
+                $('.resignation-table').hide();
+                $('#benefits').hide();
+                $('#sss_number').removeClass('required_field');
+                $('#pag_ibig_number').removeClass('required_field');
+                $('#philhealth_number').removeClass('required_field');
+                $('#tin_number').removeClass('required_field');
+                $('#account_number').removeClass('required_field');
         }
         else{
             $('#benefits').hide();
@@ -242,13 +277,21 @@ $('#tab1').on('click',function(){
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
     $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
     $('#personal_information').fadeIn();
     $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
-    $('#documents').hide();
+    $('#medical_history').hide();
     $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
 });
+
 $('#tab2').on('click',function(){
     $('#tab1').removeClass('tabactive');
     $('#tab2').addClass('tabactive');
@@ -256,11 +299,20 @@ $('#tab2').on('click',function(){
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
     $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+    
     $('#personal_information').hide();
     $('#work_information').show();
+    $('#compensation_and_benefits').hide();
     $('#educational_background').hide();
-    $('#documents').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
     $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+
 });
 
 $('#tab3').on('click',function(){
@@ -270,11 +322,19 @@ $('#tab3').on('click',function(){
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
     $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
     $('#personal_information').hide();
     $('#work_information').hide();
-    $('#educational_background').show();
-    $('#documents').hide();
+    $('#compensation_and_benefits').show();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
     $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
 });
 
 $('#tab4').on('click',function(){
@@ -284,12 +344,19 @@ $('#tab4').on('click',function(){
     $('#tab4').addClass('tabactive');
     $('#tab5').removeClass('tabactive');
     $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
     $('#personal_information').hide();
     $('#work_information').hide();
-    $('#educational_background').hide();
-    $('#job_history').show();
-    $('#documents').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').show();
+    $('#job_history').hide();
+    $('#medical_history').hide();
     $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
 });
 
 $('#tab5').on('click',function(){
@@ -299,12 +366,19 @@ $('#tab5').on('click',function(){
     $('#tab4').removeClass('tabactive');
     $('#tab5').addClass('tabactive');
     $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
     $('#personal_information').hide();
     $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
     $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#performance_evaluation').show();
+    $('#job_history').show();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
     $('#documents').hide();
+    $('#logs').hide();
 });
 
 $('#tab6').on('click',function(){
@@ -314,12 +388,85 @@ $('#tab6').on('click',function(){
     $('#tab4').removeClass('tabactive');
     $('#tab5').removeClass('tabactive');
     $('#tab6').addClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
     $('#personal_information').hide();
     $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
     $('#educational_background').hide();
     $('#job_history').hide();
+    $('#medical_history').show();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab7').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').addClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').show();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab8').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').addClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
     $('#performance_evaluation').hide();
     $('#documents').show();
+    $('#logs').hide();
+});
+
+$('#tab9').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').addClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').show();
 });
 
 //Calculate Age Function

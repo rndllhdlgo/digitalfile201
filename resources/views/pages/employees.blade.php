@@ -5,10 +5,10 @@
     <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list">
             <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>
-            @if(Auth::user()->user_level == 'ADMIN') {{--To hide the section based on user level --}}
+            @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
                 <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
             @endif
-            <hr>          
+            <hr class="hr-design">          
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                             <tr>
@@ -26,12 +26,12 @@
                     </table>
                 <hr class="hr-design">
         </div>
-        <div id="employee_personal_information">
+        <div id="employee_personal_information" style="display: none;">
             <div class="row">
-                <div class="col-4">
+                <div class="col">
                     <span class="alert class alert-warning" id="title_details"></span>
                 </div>
-                <div class="col-8">
+                <div class="col-7">
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;"><i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
@@ -81,7 +81,7 @@
                         <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"> WORK INFO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#documents"> COMPENSATION/BENEFITS</a>
+                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#compensation_and_benefits"> COMPENSATION/BENEFITS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#educational_background"> EDUCATION/TRAININGS</a>
@@ -102,16 +102,20 @@
                         <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
                     </li>
                 </ul>
+
                 <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="requirements_form">
                     @csrf
                     <div class="tab-content">
                         <input type="hidden" name="employee_id" id="employee_id">
                             @include('subpages.personal_information')
                             @include('subpages.work_information')
+                            @include('subpages.compensation_and_benefits')
                             @include('subpages.educational_and_trainings_background')
                             @include('subpages.job_history')
-                            @include('subpages.documents')
+                            @include('subpages.medical_history')
                             @include('subpages.performance_evaluation')
+                            @include('subpages.documents')
+                            @include('subpages.logs')
                         <div class="form-group"><button class="btn btn-success" id="submit_requirements_form" style="display: none;">Upload the File</button></div> {{-- Button for submit documents --}}
                         <br>
                     </div>{{--  End of Tab Content  --}}

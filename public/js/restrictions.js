@@ -42,7 +42,7 @@
 
   //Input(Letters Only) Function
       function lettersOnly(input){
-        var letters_only = /[^- ñ a-z]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
+        var letters_only = /[^- ñ a-z 0-9]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
           input.value = input.value.replace(letters_only,"");
       }
   //Input(Numbers Only) Function
