@@ -6,7 +6,7 @@
         <div id="employees_list">
             <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>
             @if(Auth::user()->user_level == 'ADMIN') {{--To hide the section based on user level --}}
-                <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="CREATE NEW" style="font-weight: bold;"><i class="fas fa-user-plus"></i> </button>
+                <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
             @endif
             <hr>          
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
@@ -32,10 +32,10 @@
                     <span class="alert class alert-warning" id="title_details"></span>
                 </div>
                 <div class="col-8">
-                    <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="EXIT"><i class="fas fa-times"></i></button>
+                    <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;"><i class="fas fa-times"></i></button>
-                    <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisable" id="btnClear" title="CLEAR"><i class="fas fa-eraser"></i> </button>
-                    <button type="button" class="btn btn-success mx-1 float-end center grow btnDisable" id="btnSave" title="SAVE"><i class="fas fa-save"> </i></button>
+                    <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
+                    <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
                     <button type="button" class="btn btn-success mx-1 float-end grow" id="btnEnableEdit" title="ENABLE EDIT"><i class="fas fa-edit"></i></button>
                     <button type="button" class="btn btn-success mx-1 float-end grow" id="btnUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
                 </div>
@@ -75,22 +75,31 @@
             {{-- Nav Pills --}}
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"> PERSONAL INFORMATION</a>
+                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"> PERSONAL INFO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"> WORK INFORMATION</a>
+                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"> WORK INFO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#educational_background"> EDUCATIONAL AND TRAININGS BACKGROUND</a>
+                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#documents"> COMPENSATION/BENEFITS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
+                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#educational_background"> EDUCATION/TRAININGS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#performance_evaluation"> PERFORMANCE EVALUATION</a>
+                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#performance_evaluation">EVALUATION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
                     </li>
                 </ul>
                 <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="requirements_form">

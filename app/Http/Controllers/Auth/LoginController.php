@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Auth;
+use App\Models\UserLogs;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -26,7 +28,8 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -36,5 +39,27 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+    
+    protected function authenticated(){
+        // if(auth()->user()->status == 'INACTIVE'){
+        //     Auth::logout();
+        //     return redirect('/login?user=inactive');
+        // }
+        $userlogs = new UserLogs;
+        $userlogs->user_id = auth()->user()->id;
+        $userlogs->activity = 'LOG-IN: User successfully logged in!';
+        $userlogs->save();
+    }
+
+    protected function logout(){
+        if(!Auth::guest()){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = 'LOG-OUT: User successfully logged out!';
+            $userlogs->save();
+            Auth::logout();
+        }
+        return redirect('/login');
     }
 }

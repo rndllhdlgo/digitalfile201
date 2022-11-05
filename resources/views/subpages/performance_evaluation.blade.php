@@ -20,13 +20,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
+                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
+                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
@@ -39,7 +39,7 @@
                             <option value="3rd Offense">3rd Offense</option>
                             <option value="Final">Final</option>
                         </select>
-                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
+                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all"></span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-2">
@@ -91,19 +91,19 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
+                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
+                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
+                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -154,13 +154,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
+                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
+                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -210,13 +210,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" name="resignation_letter" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
+                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" name="resignation_date" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
+                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -252,13 +252,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" name="termination_letter" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
+                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" name="termination_date" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
+                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -307,13 +307,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
+                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
+                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
@@ -326,7 +326,7 @@
                             <option value="3rd Offense">3rd Offense</option>
                             <option value="Final">Final</option>
                         </select>
-                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
+                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all"></span> </label>
                     </div>
                 </td>
                 <td class="pb-2 pt-2">
@@ -375,19 +375,19 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
+                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
+                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
+                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -436,13 +436,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
+                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
+                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all"></span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
@@ -490,13 +490,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" name="resignation_letter" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
+                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" name="resignation_date" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
+                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all"></span></label>
                     </div>
                 </td>
                 <td>
@@ -532,13 +532,13 @@
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field text-capitalize" name="termination_letter" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
+                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all"></span></label>
                     </div>
                 </td>
                 <td>
                     <div class="f-outline">
                         <input class="forminput form-control multiple_field" name="termination_date" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
+                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all"></span></label>
                     </div>
                 </td>
                 <td>

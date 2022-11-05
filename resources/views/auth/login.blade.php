@@ -3,10 +3,9 @@
 @section('content')
 
 <div class="container mt-5">
-    <center>
     
-    <div class="row justify-content-center" style="width:500px;">
-        <div class="col-md-8">
+    <div class="row justify-content-center center" style="width:500px;">
+        <div class="col-md-8 center">
             <div class="card">
                 <div class="card-header" style="background-color:#0d1a80;text-align:center;font-weight:bold;color:white;">{{ __('LOGIN') }}</div>
 
@@ -70,7 +69,7 @@
                                 @enderror
                             </div>
                         </div> --}}
-
+                    
                         {{-- <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -85,27 +84,27 @@
 
                         {{-- For Show Password --}}
                         <input type="checkbox" id="showPassword" onclick="togglePassword()"> Show Password <br><br>
-
-                        {{-- For Login Button --}}
-                        <div class="row mb-3">
-                            <div class="col">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Login') }}
-                                </button>
+                        <center>
+                            {{-- For Login Button --}}
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <button type="submit" class="btn btn-primary">
+                                            {{ __('Login') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            
+                            {{-- For Forgot Password --}}
+                            <div class="row mb-3">
+                                <div class="col">
+                                    @if (Route::has('password.request'))
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                            {{ __('Forgot Your Password?') }}
+                                        </a>
+                                    @endif
+                                </div>
                             </div>
-                        </div>
-
-                        {{-- For Forgot Password --}}
-                        <div class="row mb-3">
-                            <div class="col">
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('Forgot Your Password?') }}
-                                    </a>
-                                @endif
-                            </div>
-                        </div>
-
+                        </center>
                         
                         {{-- <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
@@ -126,6 +125,6 @@
         </div>
     </div>
 </div>
-</center>
+
 
 @endsection

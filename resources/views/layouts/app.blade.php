@@ -35,10 +35,13 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
+        <script src="{{asset('js/inc/moment.js')}}"></script>
+        <script src="{{asset('js/inc/datetime.js')}}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
         
         <!-- Insert JS FILES -->
-        @if(Request::is('home'))<!--Route-->
-            <script src="{{ env('APP_URL')}}js/home.js"></script>
+        @if(Request::is('/'))<!--Route-->
+            <script src="{{ env('APP_URL')}}js/index.js"></script>
         @endif
         @if(Request::is('employees')) 
             <script src="{{ env('APP_URL')}}js/btnCancelEdit.js"></script>

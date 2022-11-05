@@ -156,7 +156,7 @@ html::-webkit-scrollbar-track:hover {
     border:solid !important;
     border-width: thin !important;
     font-size: 14px !important;
-    padding: 15px !important;
+    padding: 12px !important;
 }
 .tabactive{
     background-color:#0d1a80 !important;

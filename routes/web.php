@@ -52,12 +52,13 @@ Route::any('/users/saveUser','UsersController@saveUser');
 Route::any('/users/updateUser','UsersController@updateUser');
 
 //Authentication Routes
-// Auth::routes();
+
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/', 'HomeController@index');
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Auth::routes();
+// Route::get('/home', 'HomeController@index')->name('home');
 
 // Routes Select Region
 Route::get('/setcity','PagesController@setcity');
@@ -89,3 +90,5 @@ Route::get('/multiupload',function(){
 });
 
 Route::post('/multiupload','MultiFileUploadController@filesUpload');
+
+Route::get('/index/data','PagesController@index_data');
