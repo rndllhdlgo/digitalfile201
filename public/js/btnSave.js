@@ -33,6 +33,7 @@ $('#btnSave').on('click', function(){
         var last_name = $.trim($('#last_name').val());
         var middle_name = $.trim($('#middle_name').val());
         var suffix = $.trim($('#suffix').val());
+        var nickname = $.trim($('#nickname').val());
         var birthday = $('#birthday').val();
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
@@ -40,6 +41,9 @@ $('#btnSave').on('click', function(){
         var region = $("#region option:selected").text();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
+        var height = $("#height").val();
+        var weight = $("#weight").val();
+        var religion = $("#religion").val();
         var email_address = $('#email_address').val();
         var telephone_number = $.trim($('#telephone_number').val());
         var cellphone_number = $.trim($('#cellphone_number').val());
@@ -55,9 +59,10 @@ $('#btnSave').on('click', function(){
         var emergency_contact_name = $.trim($('#emergency_contact_name').val());
         var emergency_contact_relationship = $.trim($('#emergency_contact_relationship').val());
         var emergency_contact_number = $.trim($('#emergency_contact_number').val());
-        var employee_company = $('#employee_company').val();
-        var employee_branch = $('#employee_branch').val();
+        var employee_company = $('#employee_company option:selected').text();
+        var employee_branch = $('#employee_branch option:selected').text();
         var employee_status = $('#employee_status').val();
+        var employee_salary = $('#employee_salary').val();
         var employee_shift = $('#employee_shift').val();
         var employee_position = $('#employee_position').val();
         var employee_supervisor = $('#employee_supervisor').val();
@@ -108,6 +113,7 @@ $('#btnSave').on('click', function(){
                     last_name:last_name,
                     middle_name:middle_name,
                     suffix:suffix,
+                    nickname:nickname,
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
@@ -115,6 +121,9 @@ $('#btnSave').on('click', function(){
                     region:region,
                     province:province,
                     city:city,
+                    height:height,
+                    weight:weight,
+                    religion:religion,
                     email_address:email_address,
                     telephone_number:telephone_number,
                     cellphone_number:cellphone_number,
@@ -134,6 +143,7 @@ $('#btnSave').on('click', function(){
                     employee_company:employee_company,
                     employee_branch:employee_branch,
                     employee_status:employee_status,
+                    employee_salary:employee_salary,
                     employee_shift:employee_shift,
                     employee_position:employee_position,
                     employee_supervisor:employee_supervisor,

@@ -599,8 +599,12 @@ $('#title_details').on('click',function(){
     $('#first_name').val('Rendell');
     $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
+    $('#nickname').val('Dell');
     $('#street').val('West Antipolo Street');
     $('#gender').val('Male');
+    $('#height').val('5"3');
+    $('#weight').val('55kgs');
+    $('#religion').val('Catholic');
     $('#civil_status').val('Single');
     $('#email_address').val('rendellhidalgo11@gmail.com');
     $('#cellphone_number').val('+63 9322003718');

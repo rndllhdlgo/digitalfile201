@@ -42,13 +42,24 @@
 
   //Input(Letters Only) Function
       function lettersOnly(input){
-        var letters_only = /[^- ñ a-z 0-9]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
-          input.value = input.value.replace(letters_only,"");
+        var letters_only = /[^- ñ a-z]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
+            input.value = input.value.replace(letters_only,"");
       }
+
+      function firstNameField(input){
+        var firstnameField = /[^- ñ a-z 0-9]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
+            input.value = input.value.replace(firstnameField,"");
+      }
+
   //Input(Numbers Only) Function
       function numbersOnly(input){
         var numbers_only = /[^- 0-9]/g;
           input.value = input.value.replace(numbers_only,"");
+      }
+
+      function salaryField(input){
+        var salary_only = /[^- ₱ , 0-9]/g;
+          input.value = input.value.replace(salary_only,"");
       }
   //Input(Contact Number Only) Function
       function contactNumberOnly(input){

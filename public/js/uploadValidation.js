@@ -230,10 +230,38 @@ function pagibigValidation() {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-  }
+    }
 }
 
-//Rename Function
+function medicalCertificateValidation() {
+    var medicalCertificateData = document.getElementById('medical_certificate_file');
+    var medicalCertificateUploadPath = medicalCertificateData.value;
+    var medicalCertificateExtension = medicalCertificateUploadPath.substring(medicalCertificateUploadPath.lastIndexOf('.') + 1).toLowerCase();
+
+    if (medicalCertificateExtension == "jpg" || medicalCertificateExtension == "jpeg" || medicalCertificateExtension == "png" || medicalCertificateExtension == "gif" || medicalCertificateExtension == "pdf") {
+        if (medicalCertificateData.files && medicalCertificateData.files[0]) {
+            var medicalCertificateReader = new FileReader();
+                medicalCertificateReader.onload = function(e) {
+                    $('#medical_certificate_preview').attr('src', e.target.result);
+                }
+                medicalCertificateReader.readAsDataURL(medicalCertificateData.files[0]);
+                $('#medical_certificate_view').prop('disabled',false);
+                $('#medical_certificate_replace').prop('disabled',false);
+                $('#medical_certificate_button').hide();
+        }
+    } 
+    else {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE SELECTED',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+}
+
+//Display the selected file text and to remove fake path
 var birthcertificate_file = $('#birthcertificate_file')[0];
 var birthcertificate_button = $('#birthcertificate_button')[0];
 var birthcertificate_text = $('#birthcertificate_text')[0];
@@ -325,6 +353,19 @@ $('#pag_ibig_file').on('change',function(){
     }
 });
 
+var medical_certificate_file = $('#medical_certificate_file')[0];
+var medical_certificate_button = $('#medical_certificate_button')[0];
+var medical_certificate_text = $('#medical_certificate_text')[0];
+
+$('#medical_certificate_file').on('change',function(){
+    if (medical_certificate_file.value) {
+        medical_certificate_text.innerHTML = "<b> File Name: </b>" + medical_certificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        medical_certificate_text.innerHTML = "No file chosen, yet.";
+    }
+});
+
 //Document Tab Replace Function
 $('#birthcertificate_replace').on('click',function(){
     $('#birthcertificate_file').val('');
@@ -401,6 +442,17 @@ $('#pag_ibig_replace').on('click',function(){
     $('#pag_ibig_view').prop('disabled',true);
     $('#pag_ibig_replace').prop('disabled',true);
     $('#pag_ibig_file').click();
+});
+
+$('#medical_certificate_replace').on('click',function(){
+    $('#medical_certificate_file').val('');
+    $('#medical_certificate_preview').attr('src','');
+    $('#medical_certificate_preview').hide();
+    $('#medical_certificate_text').html('No file chosen, yet.');
+    $('#medical_certificate_button').show();
+    $('#medical_certificate_view').prop('disabled',true);
+    $('#medical_certificate_replace').prop('disabled',true);
+    $('#medical_certificate_file').click();
 });
 
 //Document Tab Preview Function

@@ -27,9 +27,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT BRANCH</option>
-                    <option value="SAN JUAN">SAN JUAN</option>
-                    <option value="Branch 2">Branch 2</option>
-                    <option value="Branch 3">Branch 3</option>
+                        @foreach($branches as $branch)
+                            <option value="{{$branch->id}}">{{$branch->branch_name}}</option>
+                        @endforeach
                 </select>
                 <label for="employee_branch" class="formlabel form-label"><i class="fas fa-info"></i> BRANCH <span class="span_employee_branch span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
@@ -44,6 +44,7 @@
                     <option value="Resigned" id="resigned">Resigned</option>
                     <option value="Agency">Agency</option>
                     <option value="Probationary">Probationary</option>
+                    <option value="Part_Time">Part Time</option>
                     <option value="Resign">Resign</option>
                     <option value="Terminate">Terminate</option>
                     <option value="Retired">Retired</option>
@@ -56,10 +57,18 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
+                <input class="forminput form-control required_field capitalize" type="search" id="employee_salary" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                <label for="employee_salary" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> SALARY <span class="span_salary span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
-                    <option value="A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM">A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM</option>
-                    <option value="7:00am-4:00pm">7:00am-4:00pm</option>
+                        @foreach($shifts as $shift)
+                            <option value="{{$shift->id}}">{{$shift->shift_code}} {{$shift->shift_working_hours}}  With Break Time: {{$shift->shift_break_time}}</option>
+                        @endforeach
                 </select>
                 <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock"></i> SHIFT <span class="span_employee_shift span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
@@ -81,8 +90,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SUPERVISOR </option>
-                    <option value="Gerard Mallari">Gerard Mallari</option>
-                    <option value="Supervisor 2">Supervisor 2</option>
+                        @foreach($supervisors as $supervisor)
+                            <option value="{{$supervisor->id}}">{{$supervisor->supervisor_name}}</option>
+                        @endforeach
                 </select>
                 <label for="employee_supervisor" class="formlabel form-label"><i class="fas fa-user-tie"></i> SUPERVISOR <span class="span_employee_supervisor span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>

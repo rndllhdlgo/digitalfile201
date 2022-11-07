@@ -109,6 +109,15 @@
         @if(Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/maintenance.js"></script>
         @endif
+        @if(Request::is('maintenance'))
+            <script src="{{ env('APP_URL')}}js/btnSaveMaintenance.js"></script>
+        @endif
+        @if(Request::is('maintenance'))
+            <script src="{{ env('APP_URL')}}js/btnUpdateMaintenance.js"></script>
+        @endif
+        @if(Request::is('maintenance'))
+            <script src="{{ env('APP_URL')}}js/btnViewMaintenance.js"></script>
+        @endif
         
         <script>
             const d = new Date().toDateString();

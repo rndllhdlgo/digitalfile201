@@ -28,6 +28,7 @@
                 <li class="nav-item">
                      <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
                 </li>
+                
                 @if(Auth::user()->user_level == 'ADMIN') {{--ADMIN AUTHENTICATION --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
@@ -39,6 +40,7 @@
                         <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
                     </li>
                 @endif
+                
           </ul>
 
     {{-- <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#0d1a80;">

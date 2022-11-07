@@ -65,7 +65,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td><p class="title_file"><b>SSS E1 FORM</b></p></td>
+                        <td><p class="title_file"><b>SSS E1 FORM / SSS ID</b></p></td>
                         <td>
                             <button type="button" id="sss_button" class="btn btn-primary bp" onclick="$('#sss_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
                             <input type="file"    id="sss_file"   class="required_field"     onchange="return sssValidation()" accept="image/*,.pdf" name="sss_file">
@@ -101,6 +101,19 @@
                             <button type="button" id="pag_ibig_view"     class="btn btn-success grow btnDisabled" title="VIEW" onclick="$('#pag_ibig_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <button type="button" id="pag_ibig_replace"  class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
                             <img src="" alt=""    id="pag_ibig_preview"  data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><p class="title_file"><b>MEDICAL CERTIFICATE</b></p></td>
+                        <td>
+                            <button type="button"  id="medical_certificate_button" class="btn btn-primary bp" onclick="$('#medical_certificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                            <input type="file"     id="medical_certificate_file"   class="required_field"     onchange="return medicalCertificateValidation()"accept="image/*,.pdf" name="medical_certificate_file">
+                            <span id="medical_certificate_text">No file chosen, yet.</span>
+                        </td>
+                        <td>
+                            <button type="button" id="medical_certificate_view"     class="btn btn-success grow btnDisabled" title="VIEW" onclick="$('#medical_certificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                            <button type="button" id="medical_certificate_replace"  class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                            <img src="" alt=""    id="medical_certificate_preview"  data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
                     </tr>
                 </tbody>

@@ -22,6 +22,7 @@ class CreateDocumentsTable extends Migration
             $table->string('sss_form');
             $table->string('philhealth_form');
             $table->string('pag_ibig_form');
+            $table->string('medical_certificate');
             $table->timestamps();
         });
     }

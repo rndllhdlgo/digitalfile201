@@ -22,7 +22,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="firstNameField(this)" ondrop="return false;" onpaste="return false;">
                         <p id="first_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME <span class="span_first_name span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span> </label>
                     </div>
@@ -137,7 +137,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="Religion" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="religion" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="religion" class="formlabel form-label"><i class="fas fa-address-card"></i> RELIGION <span class="span_religion span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
                     </div>
                 </div>
@@ -305,13 +305,13 @@
                                     <div class="f-outline">
                                         <input class="forminput form-control optional text-capitalize" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                                         <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                                        <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                                        <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all">(Optional)</span></label>
                                     </div>
                                 </td>
                                 <td class="pb-2 pt-3">
                                     <div class="f-outline">
                                         <input class="forminput form-control optional" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                                        <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                                        <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all">(Optional)</span></label>
                                     </div>
                                 </td>
                                 <td class="pb-2 pt-3">
@@ -327,7 +327,7 @@
                                             <option value="Male">Male</option>
                                             <option value="Female">Female</option>
                                         </select>
-                                        <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                                        <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all">(Optional)</span></label>
                                     </div>
                                 </td>
                                 <td class="pb-2 pt-3">

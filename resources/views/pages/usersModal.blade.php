@@ -17,7 +17,7 @@
                                 <select class="form-select forminput form-control required_field"  id="user_level" placeholder=" " style="background-color:white;" autocomplete="off">
                                     <option value="" disabled selected>SELECT USER LEVEL </option>
                                     <option value="ADMIN">ADMIN</option>
-                                    <option value="EMPLOYEE">EMPLOYEE</option>
+                                    <option value="ENCODER">ENCODER</option>
                                 </select>
                                 <label for="user_level" class="formlabel form-label"><i class="fas fa-user-cog"></i> USER LEVEL <span class="span_user_level"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
                             </div>

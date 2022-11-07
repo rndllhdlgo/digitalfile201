@@ -20,6 +20,7 @@ class CreateEmployeesTable extends Migration
             $table->string('last_name');
             $table->string('middle_name');
             $table->string('suffix');
+            $table->string('nickname');
             $table->string('birthday');
             $table->string('gender');
             $table->string('civil_status');
@@ -27,6 +28,9 @@ class CreateEmployeesTable extends Migration
             $table->string('region');
             $table->string('province');
             $table->string('city');
+            $table->string('height');
+            $table->string('weight');
+            $table->string('religion');
             $table->string('email_address');
             $table->string('telephone_number');
             $table->string('cellphone_number');
@@ -45,6 +49,7 @@ class CreateEmployeesTable extends Migration
             $table->string('employee_company');
             $table->string('employee_branch');
             $table->string('employee_status');
+            $table->string('employee_salary');
             $table->string('employee_shift');
             $table->string('employee_position');
             $table->string('employee_supervisor');

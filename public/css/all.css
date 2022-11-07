@@ -271,6 +271,7 @@ input[type=search]:focus{
 #sss_file,
 #philhealth_file,
 #pag_ibig_file,
+#medical_certificate_file,
 
 #birthcertificate_preview,
 #nbi_preview,
@@ -279,6 +280,7 @@ input[type=search]:focus{
 #sss_preview,
 #philhealth_preview,
 #pag_ibig_preview,
+#medical_certificate_preview,
 #memo_preview,
 #evaluation_preview,
 #contracts_preview,
@@ -287,7 +289,7 @@ input[type=search]:focus{
     display:none;
 }
 
-/* Data Tables */
+/* Data Tables in multiple row*/
 #solo_parent_data_table,
 #college_data_table,
 #training_data_table,
@@ -306,7 +308,8 @@ input[type=search]:focus{
 #police_clearance_view,
 #sss_view,
 #philhealth_view,
-#pag_ibig_view{
+#pag_ibig_view,
+#medical_certificate_view{
     margin-left: 20%;
 }
 

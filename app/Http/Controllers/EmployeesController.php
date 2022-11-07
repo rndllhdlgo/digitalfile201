@@ -45,6 +45,7 @@ class EmployeesController extends Controller
         $employees->last_name = ucwords($request->last_name);
         $employees->middle_name = ucwords($request->middle_name);
         $employees->suffix = ucwords($request->suffix);
+        $employees->nickname = ucwords($request->nickname);
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
@@ -52,6 +53,9 @@ class EmployeesController extends Controller
         $employees->region = $request->region;
         $employees->province = $request->province;
         $employees->city = $request->city;
+        $employees->height = $request->height;
+        $employees->weight = $request->weight;
+        $employees->religion = ucwords($request->religion);
         $employees->email_address = strtolower($request->email_address);
         $employees->telephone_number = $request->telephone_number;
         $employees->cellphone_number = $request->cellphone_number;
@@ -71,6 +75,7 @@ class EmployeesController extends Controller
         $employees->employee_company = $request->employee_company;
         $employees->employee_branch = $request->employee_branch;
         $employees->employee_status = $request->employee_status;
+        $employees->employee_salary = $request->employee_salary;
         $employees->employee_shift = $request->employee_shift;
         $employees->employee_position = $request->employee_position;
         $employees->employee_supervisor = $request->employee_supervisor;
@@ -136,6 +141,7 @@ class EmployeesController extends Controller
         $employees->last_name = ucwords($request->last_name);
         $employees->middle_name = ucwords($request->middle_name);
         $employees->suffix = ucwords($request->suffix);
+        $employees->nickname = ucwords($request->nickname);
         $employees->birthday = $request->birthday;
         $employees->gender = $request->gender;
         $employees->civil_status = $request->civil_status;
@@ -344,6 +350,7 @@ class EmployeesController extends Controller
             $sss_file = $request->file('sss_file');
             $philhealth_file = $request->file('philhealth_file');
             $pag_ibig_file = $request->file('pag_ibig_file');
+            $medical_certificate_file = $request->file('medical_certificate_file');
 
             $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
             $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
@@ -365,6 +372,9 @@ class EmployeesController extends Controller
 
             $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
             $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
+
+            $medical_certificate = time(). '_' . 'Medical_Certificate'. '.' .$medical_certificate_file->getClientOriginalExtension();
+            $path = $medical_certificate_file->storeAs('public/documents', $medical_certificate);
             
             Document::create([
                 'employee_id' => $request->employee_id,
@@ -375,6 +385,7 @@ class EmployeesController extends Controller
                 'sss_form' => $sss,
                 'philhealth_form' => $philhealth,
                 'pag_ibig_form' => $pag_ibig,
+                'medical_certificate' => $medical_certificate,
             ]);
 
             return Redirect::to(url()->previous());//Return previous page
