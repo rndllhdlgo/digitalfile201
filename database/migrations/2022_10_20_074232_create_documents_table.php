@@ -23,6 +23,9 @@ class CreateDocumentsTable extends Migration
             $table->string('philhealth_form');
             $table->string('pag_ibig_form');
             $table->string('medical_certificate');
+            $table->string('transcript_of_records');
+            $table->string('diploma');
+            $table->string('resume');
             $table->timestamps();
         });
     }

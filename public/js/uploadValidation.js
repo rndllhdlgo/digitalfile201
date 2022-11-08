@@ -526,6 +526,53 @@ function diplomaValidation(diploma_file) {
     }
 }
 
+function resumeValidation(resume_file) {
+    var resumeData = document.getElementById('resume_file');
+    var resumeUploadPath = resumeData.value;
+    var resumeExtension = resumeUploadPath.substring(resumeUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var resumeFileSize = $("#resume_file").get(0).files[0].size;
+
+    if (resumeExtension != "pdf" && resumeFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(resumeExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(resumeFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (resumeData.files && resumeData.files[0]) {
+            var resumeReader = new FileReader();
+                resumeReader.onload = function(e) {
+                    $('#resume_preview').attr('src', e.target.result);
+                }
+                resumeReader.readAsDataURL(resumeData.files[0]);
+                $('#resume_view').prop('disabled',false);
+                $('#resume_replace').prop('disabled',false);
+                $('#resume_button').hide();
+        }
+    }
+}
+
 
 //Display the selected file text and to remove fake path
 var birthcertificate_file = $('#birthcertificate_file')[0];
@@ -658,6 +705,19 @@ $('#diploma_file').on('change',function(){
     }
 });
 
+var resume_file = $('#resume_file')[0];
+var resume_button = $('#resume_button')[0];
+var resume_text = $('#resume_text')[0];
+
+$('#resume_file').on('change',function(){
+    if (resume_file.value) {
+        resume_text.innerHTML = "<b> File Name: </b>" + resume_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        resume_text.innerHTML = "No file chosen.";
+    }
+});
+
 //Document Tab Replace Function
 $('#birthcertificate_replace').on('click',function(){
     $('#birthcertificate_file').val('');
@@ -745,6 +805,28 @@ $('#medical_certificate_replace').on('click',function(){
     $('#medical_certificate_view').prop('disabled',true);
     $('#medical_certificate_replace').prop('disabled',true);
     $('#medical_certificate_file').click();
+});
+
+$('#tor_replace').on('click',function(){
+    $('#tor_file').val('');
+    $('#tor_preview').attr('src','');
+    $('#tor_preview').hide();
+    $('#tor_text').html('No file chosen.');
+    $('#tor_button').show();
+    $('#tor_view').prop('disabled',true);
+    $('#tor_replace').prop('disabled',true);
+    $('#tor_file').click();
+});
+
+$('#diploma_replace').on('click',function(){
+    $('#diploma_file').val('');
+    $('#diploma_preview').attr('src','');
+    $('#diploma_preview').hide();
+    $('#diploma_text').html('No file chosen.');
+    $('#diploma_button').show();
+    $('#diploma_view').prop('disabled',true);
+    $('#diploma_replace').prop('disabled',true);
+    $('#diploma_file').click();
 });
 
 //Document Tab Preview Function

@@ -78,6 +78,19 @@
                             <img src="" alt=""    id="sss_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
                     </tr>
+                    <tr>
+                        <td><p class="file_title"><b>RESUME</b></p></td>
+                        <td>
+                            <button type="button" id="resume_button" class="btn btn-primary bp" onclick="$('#resume_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
+                            <input type="file"    id="resume_file"   class="required_field hiddenFile"     onchange="return resumeValidation(resume_file)" accept=".pdf" name="resume_file">
+                            <span id="resume_text">No file chosen.</span>
+                        </td>
+                        <td> 
+                            <button type="button" id="resume_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#resume_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                            <button type="button" id="resume_replace"  class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
+                            <img src="" alt=""    id="resume_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                        </td>
+                    </tr>
                 </tbody>
             </table>
     </div>
@@ -135,7 +148,7 @@
                         <td><p class="file_title"><b>TRANSCRIPT OF RECORD</b></p></td>
                         <td>
                             <button type="button"  id="tor_button" class="btn btn-primary bp" onclick="$('#tor_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="tor_file"   class="required_field hiddenFile"     onchange="return torValidation(tor_file)" accept=".pdf" name="tor_file">
+                            <input type="file"     id="tor_file"   class="hiddenFile"     onchange="return torValidation(tor_file)" accept=".pdf" name="tor_file">
                             <span id="tor_text">No file chosen.</span>
                         </td>
                         <td>
@@ -148,7 +161,7 @@
                         <td><p class="file_title"><b>COLLEGE DIPLOMA</b></p></td>
                         <td>
                             <button type="button"  id="diploma_button" class="btn btn-primary bp" onclick="$('#diploma_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="diploma_file"   class="required_field hiddenFile"     onchange="return diplomaValidation(diploma_file)"accept=".pdf" name="diploma_file">
+                            <input type="file"     id="diploma_file"   class="hiddenFile"     onchange="return diplomaValidation(diploma_file)"accept=".pdf" name="diploma_file">
                             <span id="diploma_text">No file chosen.</span>
                         </td>
                         <td>
