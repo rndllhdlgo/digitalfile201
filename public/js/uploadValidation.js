@@ -5,10 +5,10 @@ function ImageValidation(cover_image) {
     var imageData = document.getElementById('cover_image');
     var imageUploadPath = imageData.value;
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var file_size = $("#cover_image").get(0).files[0].size;
+    var imageFileSize = $("#cover_image").get(0).files[0].size;
 
     //Check what type of file that the user upload
-    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && file_size > 5242880) {
+    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880) {
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
             icon: 'error',
@@ -26,7 +26,7 @@ function ImageValidation(cover_image) {
             allowEscapeKey: false
         });
     }
-    else if(file_size > 5242880){
+    else if(imageFileSize > 5242880){
         Swal.fire({
             title: 'EXCEEDED MAXIMUM FILE SIZE (5MB)!',
             icon: 'error',
@@ -53,15 +53,42 @@ function ImageValidation(cover_image) {
 }
 
 //Documents Tab Upload Validation
-function BirthCertificateValidation() {
+function BirthCertificateValidation(birthcertificate_file) {
     var birthcertData = document.getElementById('birthcertificate_file');
     var birthcertUploadPath = birthcertData.value;
     var birthcertExtension = birthcertUploadPath.substring(birthcertUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var birthcertFileSize = $("#birthcertificate_file").get(0).files[0].size;
 
     //Check what type of file that the user upload
-
-    if (birthcertExtension == "jpg" || birthcertExtension == "jpeg" || birthcertExtension == "png" || birthcertExtension == "gif" || birthcertExtension == "pdf") {
-    //To display the uploaded file
+    if (birthcertExtension != "pdf" && birthcertFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(birthcertExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(birthcertFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else {
+        //To display the uploaded file
         if (birthcertData.files && birthcertData.files[0]) {
             var birthcertReader = new FileReader();
                 birthcertReader.onload = function(e) {
@@ -73,23 +100,43 @@ function BirthCertificateValidation() {
                 $('#birthcertificate_button').hide();
         }
     }
-    else {
+}
+
+function nbiValidation(nbi_file) {
+    var nbiData = document.getElementById('nbi_file');
+    var nbiUploadPath = nbiData.value;
+    var nbiExtension = nbiUploadPath.substring(nbiUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var nbiFileSize = $("#nbi_file").get(0).files[0].size;
+
+    if (nbiExtension != "pdf" && nbiFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf, .doc)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function nbiValidation() {
-    var nbiData = document.getElementById('nbi_file');
-    var nbiUploadPath = nbiData.value;
-    var nbiExtension = nbiUploadPath.substring(nbiUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (nbiExtension == "jpg" || nbiExtension == "jpeg" || nbiExtension == "png" || nbiExtension == "gif" || nbiExtension == "pdf") {
+    else if(nbiExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(nbiFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        //To display the uploaded file
         if (nbiData.files && nbiData.files[0]) {
             var nbiReader = new FileReader();
                 nbiReader.onload = function(e) {
@@ -100,24 +147,43 @@ function nbiValidation() {
                 $('#nbi_replace').prop('disabled',false);
                 $('#nbi_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function barangayclearanceValidation(barangay_clearance_file) {
+    var barangayClearanceData = document.getElementById('barangay_clearance_file');
+    var barangayClearanceUploadPath = barangayClearanceData.value;
+    var barangayClearanceExtension = barangayClearanceUploadPath.substring(barangayClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var barangayClearanceFileSize = $("#barangay_clearance_file").get(0).files[0].size;
+
+    if (barangayClearanceExtension != "pdf" && barangayClearanceFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function barangayclearanceValidation() {
-    var barangayClearanceData = document.getElementById('barangay_clearance_file');
-    var barangayClearanceUploadPath = barangayClearanceData.value;
-    var barangayClearanceExtension = barangayClearanceUploadPath.substring(barangayClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (barangayClearanceExtension == "jpg" || barangayClearanceExtension == "jpeg" || barangayClearanceExtension == "png" || barangayClearanceExtension == "gif" || barangayClearanceExtension == "pdf") {
+    else if(barangayClearanceExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(barangayClearanceFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (barangayClearanceData.files && barangayClearanceData.files[0]) {
             var barangayClearanceReader = new FileReader();
                 barangayClearanceReader.onload = function(e) {
@@ -128,24 +194,43 @@ function barangayclearanceValidation() {
                 $('#barangay_clearance_replace').prop('disabled',false);
                 $('#barangay_clearance_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function policeclearanceValidation(police_clearance_file) {
+    var policeClearanceData = document.getElementById('police_clearance_file');
+    var policeClearanceUploadPath = policeClearanceData.value;
+    var policeClearanceExtension = policeClearanceUploadPath.substring(policeClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var policeClearanceFileSize = $("#police_clearance_file").get(0).files[0].size;
+
+    if (policeClearanceExtension != "pdf" && policeClearanceFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(policeClearanceExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function policeclearanceValidation() {
-    var policeClearanceData = document.getElementById('police_clearance_file');
-    var policeClearanceUploadPath = policeClearanceData.value;
-    var policeClearanceExtension = policeClearanceUploadPath.substring(policeClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (policeClearanceExtension == "jpg" || policeClearanceExtension == "jpeg" || policeClearanceExtension == "png" || policeClearanceExtension == "gif" || policeClearanceExtension == "pdf") {
+    else if(policeClearanceFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (policeClearanceData.files && policeClearanceData.files[0]) {
             var policeClearanceReader = new FileReader();
                 policeClearanceReader.onload = function(e) {
@@ -156,24 +241,43 @@ function policeclearanceValidation() {
                 $('#police_clearance_replace').prop('disabled',false);
                 $('#police_clearance_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function sssValidation(sss_file) {
+    var sssData = document.getElementById('sss_file');
+    var sssUploadPath = sssData.value;
+    var sssExtension = sssUploadPath.substring(sssUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var sssFileSize = $("#sss_file").get(0).files[0].size;
+
+    if (sssExtension != "pdf" && sssFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(sssExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function sssValidation() {
-    var sssData = document.getElementById('sss_file');
-    var sssUploadPath = sssData.value;
-    var sssExtension = sssUploadPath.substring(sssUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (sssExtension == "jpg" || sssExtension == "jpeg" || sssExtension == "png" || sssExtension == "gif" || sssExtension == "pdf") {
+    else if(sssFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (sssData.files && sssData.files[0]) {
             var sssReader = new FileReader();
                 sssReader.onload = function(e) {
@@ -184,24 +288,43 @@ function sssValidation() {
                 $('#sss_replace').prop('disabled',false);
                 $('#sss_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function philhealthValidation(philhealth_file) {
+    var philhealthData = document.getElementById('philhealth_file');
+    var philhealthUploadPath = philhealthData.value;
+    var philhealthExtension = philhealthUploadPath.substring(philhealthUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var philhealthFileSize = $("#philhealth_file").get(0).files[0].size;
+
+    if (philhealthExtension != "pdf" && sssFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(philhealthExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function philhealthValidation() {
-    var philhealthData = document.getElementById('philhealth_file');
-    var philhealthUploadPath = philhealthData.value;
-    var philhealthExtension = philhealthUploadPath.substring(philhealthUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (philhealthExtension == "jpg" || philhealthExtension == "jpeg" || philhealthExtension == "png" || philhealthExtension == "gif" || philhealthExtension == "pdf") {
+    else if(philhealthFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (philhealthData.files && philhealthData.files[0]) {
             var philhealthReader = new FileReader();
                 philhealthReader.onload = function(e) {
@@ -212,24 +335,43 @@ function philhealthValidation() {
                 $('#philhealth_replace').prop('disabled',false);
                 $('#philhealth_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function pagibigValidation(pag_ibig_file) {
+    var pagibigData = document.getElementById('pag_ibig_file');
+    var pagibigUploadPath = pagibigData.value;
+    var pagibigExtension = pagibigUploadPath.substring(pagibigUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var pagibigFileSize = $("#philhealth_file").get(0).files[0].size;
+
+    if (pagibigExtension != "pdf" && pagibigFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif, .pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(pagibigExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function pagibigValidation() {
-    var pagibigData = document.getElementById('pag_ibig_file');
-    var pagibigUploadPath = pagibigData.value;
-    var pagibigExtension = pagibigUploadPath.substring(pagibigUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (pagibigExtension == "jpg" || pagibigExtension == "jpeg" || pagibigExtension == "png" || pagibigExtension == "gif" || pagibigExtension == "pdf") {
+    else if(pagibigFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (pagibigData.files && pagibigData.files[0]) {
             var pagibigReader = new FileReader();
                 pagibigReader.onload = function(e) {
@@ -240,24 +382,43 @@ function pagibigValidation() {
                 $('#pag_ibig_replace').prop('disabled',false);
                 $('#pag_ibig_button').hide();
         }
-    } 
-    else {
+    }
+}
+
+function medicalCertificateValidation(medical_certificate_file) {
+    var medicalCertificateData = document.getElementById('medical_certificate_file');
+    var medicalCertificateUploadPath = medicalCertificateData.value;
+    var medicalCertificateExtension = medicalCertificateUploadPath.substring(medicalCertificateUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var medicalCertificateFileSize = $("#medical_certificate_file").get(0).files[0].size;
+
+    if (medicalCertificateExtension != "pdf" > medicalCertificateFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(medicalCertificateExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
     }
-}
-
-function medicalCertificateValidation() {
-    var medicalCertificateData = document.getElementById('medical_certificate_file');
-    var medicalCertificateUploadPath = medicalCertificateData.value;
-    var medicalCertificateExtension = medicalCertificateUploadPath.substring(medicalCertificateUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (medicalCertificateExtension == "jpg" || medicalCertificateExtension == "jpeg" || medicalCertificateExtension == "png" || medicalCertificateExtension == "gif" || medicalCertificateExtension == "pdf") {
+    else if(medicalCertificateFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
         if (medicalCertificateData.files && medicalCertificateData.files[0]) {
             var medicalCertificateReader = new FileReader();
                 medicalCertificateReader.onload = function(e) {
@@ -268,15 +429,6 @@ function medicalCertificateValidation() {
                 $('#medical_certificate_replace').prop('disabled',false);
                 $('#medical_certificate_button').hide();
         }
-    } 
-    else {
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
     }
 }
 

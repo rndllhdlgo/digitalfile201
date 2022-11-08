@@ -88,3 +88,18 @@ var shiftTable = $('#shiftTable').DataTable({
     ] 
 });
 $('div.breakspace').html('<br><br>');
+
+//View Shift Data
+$('#shiftTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+    var data = shiftTable.row(this).data();
+
+    $('#shift_id').val(data.id);
+    $('#shift_code').val(data.shift_code);
+    $('#shift_working_hours').val(data.shift_working_hours);
+    $('#shift_break_time').val(data.shift_break_time);
+    $('#shift_details_code').val(data.shift_code);
+    $('#shift_details_working_hours').val(data.shift_working_hours);
+    $('#shift_details_break_time').val(data.shift_break_time);
+
+    $('#updateShiftModal').modal('show');
+});

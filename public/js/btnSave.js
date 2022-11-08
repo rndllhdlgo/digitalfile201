@@ -59,8 +59,8 @@ $('#btnSave').on('click', function(){
         var emergency_contact_name = $.trim($('#emergency_contact_name').val());
         var emergency_contact_relationship = $.trim($('#emergency_contact_relationship').val());
         var emergency_contact_number = $.trim($('#emergency_contact_number').val());
-        var employee_company = $('#employee_company option:selected').text();
-        var employee_branch = $('#employee_branch option:selected').text();
+        var employee_company = $('#employee_company').val();
+        var employee_branch = $('#employee_branch').val();
         var employee_status = $('#employee_status').val();
         var employee_salary = $('#employee_salary').val();
         var employee_shift = $('#employee_shift').val();

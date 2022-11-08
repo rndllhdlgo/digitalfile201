@@ -151,6 +151,24 @@ function checkField(){
             $('#supervisorUpdate').prop('disabled',false);
         }
     }
+
+    if($('#saveShiftModal').is(":visible")){
+        if(!$('#shift_code').val() || !$('#shift_working_hours').val() || !$('#shift_break_time').val()){
+            $('#shiftSave').prop('disabled',true);
+        }
+        else{
+            $('#shiftSave').prop('disabled',false);
+        }
+    }
+
+    if($('#updateShiftModal').is(":visible")){
+        if(($('#shift_code').val() == $('#shift_details_code').val() && $('#shift_working_hours').val() == $('#shift_details_working_hours').val() && $('#shift_break_time').val() == $('#shift_details_break_time').val()) || $(".requiredInput:visible").length > 0){
+            $('#shiftUpdate').prop('disabled',true);
+        }
+        else{
+            $('#shiftUpdate').prop('disabled',false);
+        }
+    }
 }
 
 //Open Modal on click
@@ -171,4 +189,7 @@ $('#addSupervisorBtn').on('click',function(){
 
 $('#addShiftBtn').on('click',function(){
     $('#saveShiftModal').modal('show');
+    $('#shift_code').val('');
+    $('#shift_working_hours').val('');
+    $('#shift_break_time').val('');
 });

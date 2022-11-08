@@ -97,7 +97,7 @@
         @if(Request::is('users'))
             <script src="{{ env('APP_URL')}}js/btnView.js"></script>
         @endif
-        @if(Request::is('users'))
+        @if(Request::is('users') || (Request::is('maintenance')))
             <script src="{{ env('APP_URL')}}js/inputFieldEffect.js"></script>
         @endif
         @if(Request::is('login'))

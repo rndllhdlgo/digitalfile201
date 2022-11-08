@@ -67,7 +67,7 @@
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
                         @foreach($shifts as $shift)
-                            <option value="{{$shift->id}}">{{$shift->shift_code}} {{$shift->shift_working_hours}}  With Break Time: {{$shift->shift_break_time}}</option>
+                            <option value="{{$shift->id}}">{{$shift->shift_code}} {{$shift->shift_working_hours}}  With Break: {{$shift->shift_break_time}}</option>
                         @endforeach
                 </select>
                 <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock"></i> SHIFT <span class="span_employee_shift span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
