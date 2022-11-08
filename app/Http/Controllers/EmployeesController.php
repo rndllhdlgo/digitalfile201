@@ -342,53 +342,130 @@ class EmployeesController extends Controller
             $termination->termination_file = $terminationFileName;
             $termination->save();
         }
+        
+            $document = new Document;
+            $document->employee_id = $request->employee_id;
+            $birthcertificateFile = $request->file('birthcertificate_file');
+            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+            $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' . $birthcertificateExtension;
+            $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
+            $document->birthcertificate = $birthcertificateFilename;
+
+            $nbiFile = $request->file('nbi_file');
+            $nbiExtension = $nbiFile->getClientOriginalExtension();
+            $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' . $nbiExtension;
+            $nbiFile->storeAs('public/documents',$nbiFilename);
+            $document->nbi_clearance = $nbiFilename;
+
+            $barangayClearanceFile = $request->file('barangay_clearance_file');
+            $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+            $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' . $barangayClearanceExtension;
+            $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+            $document->barangay_clearance = $barangayClearanceFilename;
+
+            $policeClearanceFile = $request->file('police_clearance_file');
+            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+            $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' . $policeClearanceExtension;
+            $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+            $document->police_clearance = $policeClearanceFilename;
+
+            $sssFile = $request->file('sss_file');
+            $sssExtension = $sssFile->getClientOriginalExtension();
+            $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
+            $sssFile->storeAs('public/documents',$sssFilename);
+            $document->sss_form = $sssFilename;
+
+            $philhealthFile = $request->file('philhealth_file');
+            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+            $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' . $philhealthExtension;
+            $philhealthFile->storeAs('public/documents',$philhealthFilename);
+            $document->philhealth_form = $philhealthFilename;
+
+            $pagibigFile = $request->file('pag_ibig_file');
+            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+            $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' . $pagibigExtension;
+            $pagibigFile->storeAs('public/documents',$pagibigFilename);
+            $document->pag_ibig_form = $pagibigFilename;
+
+            $medicalCertificateFile = $request->file('medical_certificate_file');
+            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+            $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' . $medicalCertificateExtension;
+            $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
+            $document->medical_certificate = $medicalCertificateFilename;
+
+            $torFile = $request->file('tor_file');
+            $torExtension = $torFile->getClientOriginalExtension();
+            $torFilename = time(). '_' . 'Transcript_of_Records'. '.' . $torExtension;
+            $torFile->storeAs('public/documents',$torFilename);
+            $document->transcript_of_records = $torFilename;
+
+            $diplomaFile = $request->file('diploma_file');
+            $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+            $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
+            $diplomaFile->storeAs('public/documents',$diplomaFilename);
+            $document->diploma = $diplomaFilename;
+
+            $resumeFile = $request->file('resume_file');
+            $resumeExtension = $resumeFile->getClientOriginalExtension();
+            $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
+            $resumeFile->storeAs('public/documents',$resumeFilename);
+            $document->resume = $resumeFilename;
+
+            $document->save();
+
             //Save Document Files Function
-            $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
-            $nbi_file = $request->file('nbi_file');
-            $barangay_clearance_file = $request->file('barangay_clearance_file');
-            $police_clearance_file = $request->file('police_clearance_file');
-            $sss_file = $request->file('sss_file');
-            $philhealth_file = $request->file('philhealth_file');
-            $pag_ibig_file = $request->file('pag_ibig_file');
-            $medical_certificate_file = $request->file('medical_certificate_file');
+            // $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
+            // $nbi_file = $request->file('nbi_file');
+            // $barangay_clearance_file = $request->file('barangay_clearance_file');
+            // $police_clearance_file = $request->file('police_clearance_file');
+            // $sss_file = $request->file('sss_file');
+            // $philhealth_file = $request->file('philhealth_file');
+            // $pag_ibig_file = $request->file('pag_ibig_file');
+            // $medical_certificate_file = $request->file('medical_certificate_file');
+            // $resume_file = $request->file('resume_file');
 
-            $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
-            $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
+            // $birthcertificate = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificate_file->getClientOriginalExtension();//File name to store
+            // $path = $birthcertificate_file->storeAs('public/documents', $birthcertificate);//Storage of the file uploaded
 
-            $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
-            $path = $nbi_file->storeAs('public/documents', $nbi);
+            // $nbi = time(). '_' . 'NBI_Clearance'. '.' .$nbi_file->getClientOriginalExtension();
+            // $path = $nbi_file->storeAs('public/documents', $nbi);
 
-            $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
-            $path = $barangay_clearance_file->storeAs('public/documents', $barangay_clearance);
+            // $barangay_clearance = time(). '_' . 'Barangay_Clearance'. '.' .$barangay_clearance_file->getClientOriginalExtension();
+            // $path = $barangay_clearance_file->storeAs('public/documents', $barangay_clearance);
 
-            $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
-            $path = $police_clearance_file->storeAs('public/documents', $police_clearance);
+            // $police_clearance = time(). '_' . 'Police_Clearance'. '.' .$police_clearance_file->getClientOriginalExtension();
+            // $path = $police_clearance_file->storeAs('public/documents', $police_clearance);
 
-            $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
-            $path = $sss_file->storeAs('public/documents', $sss);
+            // $sss = time(). '_' . 'SSS_Form'. '.' .$sss_file->getClientOriginalExtension();
+            // $path = $sss_file->storeAs('public/documents', $sss);
 
-            $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
-            $path = $philhealth_file->storeAs('public/documents', $philhealth);
+            // $philhealth = time(). '_' . 'Philhealth_Form'. '.' .$philhealth_file->getClientOriginalExtension();
+            // $path = $philhealth_file->storeAs('public/documents', $philhealth);
 
-            $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
-            $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
+            // $pag_ibig = time(). '_' . 'Pag_ibig_Form'. '.' .$pag_ibig_file->getClientOriginalExtension();
+            // $path = $pag_ibig_file->storeAs('public/documents', $pag_ibig);
 
-            $medical_certificate = time(). '_' . 'Medical_Certificate'. '.' .$medical_certificate_file->getClientOriginalExtension();
-            $path = $medical_certificate_file->storeAs('public/documents', $medical_certificate);
+            // $medical_certificate = time(). '_' . 'Medical_Certificate'. '.' .$medical_certificate_file->getClientOriginalExtension();
+            // $path = $medical_certificate_file->storeAs('public/documents', $medical_certificate);
+
+            // $resume = time(). '_' . 'Resume'. '.' .$resume_file->getClientOriginalExtension();
+            // $path = $resume_file->storeAs('public/documents', $resume);
             
-            Document::create([
-                'employee_id' => $request->employee_id,
-                'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
-                'nbi_clearance' => $nbi,
-                'barangay_clearance' => $barangay_clearance,
-                'police_clearance' => $police_clearance,
-                'sss_form' => $sss,
-                'philhealth_form' => $philhealth,
-                'pag_ibig_form' => $pag_ibig,
-                'medical_certificate' => $medical_certificate,
-            ]);
+            // Document::create([
+            //     'employee_id' => $request->employee_id,
+            //     'birthcertificate' => $birthcertificate, //Store in database (documents) //column name and file name to store
+            //     'nbi_clearance' => $nbi,
+            //     'barangay_clearance' => $barangay_clearance,
+            //     'police_clearance' => $police_clearance,
+            //     'sss_form' => $sss,
+            //     'philhealth_form' => $philhealth,
+            //     'pag_ibig_form' => $pag_ibig,
+            //     'medical_certificate' => $medical_certificate,
+            //     'transcript_of_records' => $tor,
+            //     'resume' => $resume,
+            // ]);
 
-            return Redirect::to(url()->previous());//Return previous page
+            // return Redirect::to(url()->previous());//Return previous page
             // return redirect()->back();
         }
     }
