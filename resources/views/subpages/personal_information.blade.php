@@ -12,7 +12,7 @@
 
                     {{-- <form method="POST" id="image_form" enctype="multipart/form-data"> form for inserting image --}}
                         <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
-                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="return ImageValidation()">
+                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept="image/*" onchange="ImageValidation(cover_image)">
                     {{-- </form>  --}}
                 </div>
             </div>

@@ -1,13 +1,41 @@
 //This JS is to Display Preview of Image and Validation Upload
 
 //Personal Information Tab
-function ImageValidation() {
+function ImageValidation(cover_image) {
     var imageData = document.getElementById('cover_image');
     var imageUploadPath = imageData.value;
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var file_size = $("#cover_image").get(0).files[0].size;
 
     //Check what type of file that the user upload
-    if (imageExtension == "jpg" || imageExtension == "jpeg" || imageExtension == "png" || imageExtension == "gif") {
+    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && file_size > 5242880) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 5MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(file_size > 5242880){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 5MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }   
+    else {
         //To display the uploaded file
         if (imageData.files && imageData.files[0]) {
             var imageReader = new FileReader();
@@ -21,15 +49,6 @@ function ImageValidation() {
                 $('#image_preview').show();
                 $('.column-1').addClass('blue');
         }
-    } 
-    else {
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
     }
 }
 
