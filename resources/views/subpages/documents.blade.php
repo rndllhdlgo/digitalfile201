@@ -96,7 +96,7 @@
                         <td><p class="file_title"><b>PHILHEALTH FORM</b></p></td>
                         <td>
                             <button type="button" id="philhealth_button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input  type="file"   id="philhealth_file"   class="required_field hiddenFile"     onchange="return philhealthValidation()" accept=".pdf" name="philhealth_file">
+                            <input  type="file"   id="philhealth_file"   class="required_field hiddenFile"     onchange="return philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
                             <span id="philhealth_text">No file chosen.</span>
                         </td>
                         <td>
@@ -109,7 +109,7 @@
                         <td><p class="file_title"><b>PAG-IBIG FORM</b></p></td>
                         <td>
                             <button type="button"  id="pag_ibig_button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="pag_ibig_file"   class="required_field hiddenFile"     onchange="return pagibigValidation()"accept=".pdf" name="pag_ibig_file">
+                            <input type="file"     id="pag_ibig_file"   class="required_field hiddenFile"     onchange="return pagibigValidation(pag_ibig_file)"accept=".pdf" name="pag_ibig_file">
                             <span id="pag_ibig_text">No file chosen.</span>
                         </td>
                         <td>
@@ -122,7 +122,7 @@
                         <td><p class="file_title"><b>MEDICAL CERTIFICATE</b></p></td>
                         <td>
                             <button type="button"  id="medical_certificate_button" class="btn btn-primary bp" onclick="$('#medical_certificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="medical_certificate_file"   class="required_field hiddenFile"     onchange="return medicalCertificateValidation()"accept=".pdf" name="medical_certificate_file">
+                            <input type="file"     id="medical_certificate_file"   class="required_field hiddenFile"     onchange="return medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
                             <span id="medical_certificate_text">No file chosen.</span>
                         </td>
                         <td>
@@ -135,7 +135,7 @@
                         <td><p class="file_title"><b>TRANSCRIPT OF RECORD</b></p></td>
                         <td>
                             <button type="button"  id="tor_button" class="btn btn-primary bp" onclick="$('#tor_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="tor_file"   class="required_field hiddenFile"     onchange="return torValidation()"accept=".pdf" name="tor_file">
+                            <input type="file"     id="tor_file"   class="required_field hiddenFile"     onchange="return torValidation(tor_file)" accept=".pdf" name="tor_file">
                             <span id="tor_text">No file chosen.</span>
                         </td>
                         <td>
@@ -148,7 +148,7 @@
                         <td><p class="file_title"><b>COLLEGE DIPLOMA</b></p></td>
                         <td>
                             <button type="button"  id="diploma_button" class="btn btn-primary bp" onclick="$('#diploma_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="diploma_file"   class="required_field hiddenFile"     onchange="return diplomaValidation()"accept=".pdf" name="diploma_file">
+                            <input type="file"     id="diploma_file"   class="required_field hiddenFile"     onchange="return diplomaValidation(diploma_file)"accept=".pdf" name="diploma_file">
                             <span id="diploma_text">No file chosen.</span>
                         </td>
                         <td>

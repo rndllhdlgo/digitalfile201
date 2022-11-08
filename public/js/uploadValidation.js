@@ -342,7 +342,7 @@ function pagibigValidation(pag_ibig_file) {
     var pagibigData = document.getElementById('pag_ibig_file');
     var pagibigUploadPath = pagibigData.value;
     var pagibigExtension = pagibigUploadPath.substring(pagibigUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var pagibigFileSize = $("#philhealth_file").get(0).files[0].size;
+    var pagibigFileSize = $("#pag_ibig_file").get(0).files[0].size;
 
     if (pagibigExtension != "pdf" && pagibigFileSize > 5242880 * 2) {
         Swal.fire({
@@ -391,7 +391,7 @@ function medicalCertificateValidation(medical_certificate_file) {
     var medicalCertificateExtension = medicalCertificateUploadPath.substring(medicalCertificateUploadPath.lastIndexOf('.') + 1).toLowerCase();
     var medicalCertificateFileSize = $("#medical_certificate_file").get(0).files[0].size;
 
-    if (medicalCertificateExtension != "pdf" > medicalCertificateFileSize > 5242880 * 2) {
+    if (medicalCertificateExtension != "pdf" && medicalCertificateFileSize > 5242880 * 2) {
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
@@ -431,6 +431,101 @@ function medicalCertificateValidation(medical_certificate_file) {
         }
     }
 }
+
+function torValidation(tor_file) {
+    var torData = document.getElementById('tor_file');
+    var torUploadPath = torData.value;
+    var torExtension = torUploadPath.substring(torUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var torFileSize = $("#tor_file").get(0).files[0].size;
+
+    if (torExtension != "pdf" && torFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(torExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(torFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (torData.files && torData.files[0]) {
+            var torReader = new FileReader();
+                torReader.onload = function(e) {
+                    $('#tor_preview').attr('src', e.target.result);
+                }
+                torReader.readAsDataURL(torData.files[0]);
+                $('#tor_view').prop('disabled',false);
+                $('#tor_replace').prop('disabled',false);
+                $('#tor_button').hide();
+        }
+    }
+}
+
+function diplomaValidation(diploma_file) {
+    var diplomaData = document.getElementById('diploma_file');
+    var diplomaUploadPath = diplomaData.value;
+    var diplomaExtension = diplomaUploadPath.substring(diplomaUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var diplomaFileSize = $("#diploma_file").get(0).files[0].size;
+
+    if (diplomaExtension != "pdf" && diplomaFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(diplomaExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(diplomaFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (diplomaData.files && diplomaData.files[0]) {
+            var diplomaReader = new FileReader();
+                diplomaReader.onload = function(e) {
+                    $('#diploma_preview').attr('src', e.target.result);
+                }
+                diplomaReader.readAsDataURL(diplomaData.files[0]);
+                $('#diploma_view').prop('disabled',false);
+                $('#diploma_replace').prop('disabled',false);
+                $('#diploma_button').hide();
+        }
+    }
+}
+
 
 //Display the selected file text and to remove fake path
 var birthcertificate_file = $('#birthcertificate_file')[0];
@@ -534,6 +629,32 @@ $('#medical_certificate_file').on('change',function(){
     } 
     else {
         medical_certificate_text.innerHTML = "No file chosen.";
+    }
+});
+
+var tor_file = $('#tor_file')[0];
+var tor_button = $('#tor_button')[0];
+var tor_text = $('#tor_text')[0];
+
+$('#tor_file').on('change',function(){
+    if (tor_file.value) {
+        tor_text.innerHTML = "<b> File Name: </b>" + tor_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        tor_text.innerHTML = "No file chosen.";
+    }
+});
+
+var diploma_file = $('#diploma_file')[0];
+var diploma_button = $('#diploma_button')[0];
+var diploma_text = $('#diploma_text')[0];
+
+$('#diploma_file').on('change',function(){
+    if (diploma_file.value) {
+        diploma_text.innerHTML = "<b> File Name: </b>" + diploma_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+    } 
+    else {
+        diploma_text.innerHTML = "No file chosen.";
     }
 });
 
