@@ -393,17 +393,21 @@ class EmployeesController extends Controller
             $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
             $document->medical_certificate = $medicalCertificateFilename;
 
+        if($request->hasFile('tor_file')){
             $torFile = $request->file('tor_file');
             $torExtension = $torFile->getClientOriginalExtension();
             $torFilename = time(). '_' . 'Transcript_of_Records'. '.' . $torExtension;
             $torFile->storeAs('public/documents',$torFilename);
             $document->transcript_of_records = $torFilename;
+        }
 
+        if($request->hasFile('diploma_file')){
             $diplomaFile = $request->file('diploma_file');
             $diplomaExtension = $diplomaFile->getClientOriginalExtension();
             $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
             $diplomaFile->storeAs('public/documents',$diplomaFilename);
             $document->diploma = $diplomaFilename;
+        }
 
             $resumeFile = $request->file('resume_file');
             $resumeExtension = $resumeFile->getClientOriginalExtension();
