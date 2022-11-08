@@ -331,7 +331,7 @@
                 </td>
                 <td class="pb-2 pt-2">
                     <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file"           onchange="return memoValidation()" accept="image/*,.pdf">
+                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file"           onchange="return memoValidation(memo_file)" accept=".pdf">
                     <span id="memo_text">No file chosen.</span>
                 </td>
                 <td>
@@ -392,7 +392,7 @@
                 </td>
                 <td>
                     <button type="button" id="evaluation_button" class="btn btn-primary bp" onclick="$('#evaluation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="evaluation_file" class="hiddenFile" id="evaluation_file"   class=""     onchange="return evaluationValidation()" accept="image/*,.pdf">
+                    <input  type="file"   name="evaluation_file" class="hiddenFile" id="evaluation_file"   class=""     onchange="return evaluationValidation(evaluation_file)" accept=".pdf">
                     <span id="evaluation_text">No file chosen.</span>
                 </td>
                 <td>
@@ -447,7 +447,7 @@
                 </td>
                 <td class="pb-3 pt-3">
                     <button type="button" id="contracts_button" class="btn btn-primary bp" onclick="$('#contracts_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="contracts_file" class="hiddenFile" id="contracts_file"   class=""     onchange="return contractsValidation()" accept="image/*,.pdf">
+                    <input  type="file"   name="contracts_file" class="hiddenFile" id="contracts_file"   class=""     onchange="return contractsValidation(contracts_file)" accept=".pdf">
                     <span id="contracts_text">No file chosen.</span>
                 </td>
                 <td>
@@ -502,7 +502,7 @@
                     </td>
                     <td>
                         <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   name="resignation_file" class="hiddenFile" id="resignation_file"      onchange="return resignationValidation()" accept="image/*,.pdf">
+                        <input  type="file"   name="resignation_file" class="hiddenFile" id="resignation_file"      onchange="return resignationValidation(resignation_file)" accept=".pdf">
                         <span id="resignation_text">No file chosen.</span>                        
                     </td>
                     <td>
@@ -546,7 +546,7 @@
                     </td>
                     <td>
                         <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   id="termination_file"   class="hiddenFile" name="termination_file"    onchange="return terminationValidation()" accept="image/*,.pdf">
+                        <input  type="file"   id="termination_file"   class="hiddenFile" name="termination_file"    onchange="return terminationValidation(termination_file)" accept=".pdf">
                         <span id="termination_text">No file chosen.</span>
                     </td>
                     <td>

@@ -1,4 +1,4 @@
-//This JS is to Display Preview of Image and Validation Upload
+//Display Upload Preview// Validation //Display filename
 
 //Personal Information Tab
 function ImageValidation(cover_image) {
@@ -7,7 +7,6 @@ function ImageValidation(cover_image) {
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
     var imageFileSize = $("#cover_image").get(0).files[0].size;
 
-    //Check what type of file that the user upload
     if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880) {
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
@@ -36,7 +35,6 @@ function ImageValidation(cover_image) {
         });
     }   
     else {
-        //To display the uploaded file
         if (imageData.files && imageData.files[0]) {
             var imageReader = new FileReader();
                 imageReader.onload = function(e) {
@@ -52,14 +50,249 @@ function ImageValidation(cover_image) {
     }
 }
 
-//Documents Tab Upload Validation
+//Performance and Evaluation Tab
+function memoValidation(memo_file) {
+    var memoData = document.getElementById('memo_file');
+    var memoUploadPath = memoData.value;
+    var memoExtension = memoUploadPath.substring(memoUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var memoFileSize = $("#memo_file").get(0).files[0].size;
+
+    if (memoExtension != "pdf" && memoFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(memoExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(memoFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (memoData.files && memoData.files[0]) {
+            var memoReader = new FileReader();
+                memoReader.onload = function(e) {
+                    $('#memo_preview').attr('src', e.target.result);
+                }
+                memoReader.readAsDataURL(memoData.files[0]);
+                $('#memo_view').prop('disabled',false);
+                $('#memo_replace').prop('disabled',false);
+                $('#memo_button').hide();
+        }
+    }
+}
+
+function evaluationValidation(evaluation_file) {
+    var evaluationData = document.getElementById('evaluation_file');
+    var evaluationUploadPath = evaluationData.value;
+    var evaluationExtension = evaluationUploadPath.substring(evaluationUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var evaluationFileSize = $("#evaluation_file").get(0).files[0].size;
+
+    if (evaluationExtension != "pdf" && evaluationFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(evaluationExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(evaluationFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (evaluationData.files && evaluationData.files[0]) {
+            var evaluationReader = new FileReader();
+                evaluationReader.onload = function(e) {
+                    $('#evaluation_preview').attr('src', e.target.result);
+                }
+                evaluationReader.readAsDataURL(evaluationData.files[0]);
+                $('#evaluation_view').prop('disabled',false);
+                $('#evaluation_replace').prop('disabled',false);
+                $('#evaluation_button').hide();
+        }
+    }
+}
+
+function contractsValidation(contracts_file) {
+    var contractsData = document.getElementById('contracts_file');
+    var contractsUploadPath = contractsData.value;
+    var contractsExtension = contractsUploadPath.substring(contractsUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var contractsFileSize = $("#contracts_file").get(0).files[0].size;
+
+    if (contractsExtension != "pdf" && contractsFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(contractsExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(contractsFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (contractsData.files && contractsData.files[0]) {
+            var contractsReader = new FileReader();
+                contractsReader.onload = function(e) {
+                    $('#contracts_preview').attr('src', e.target.result);
+                }
+                contractsReader.readAsDataURL(contractsData.files[0]);
+                $('#contracts_view').prop('disabled',false);
+                $('#contracts_replace').prop('disabled',false);
+                $('#contracts_button').hide();
+        }
+    }
+}
+
+function resumeValidation(resume_file) {
+    var resumeData = document.getElementById('resume_file');
+    var resumeUploadPath = resumeData.value;
+    var resumeExtension = resumeUploadPath.substring(resumeUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var resumeFileSize = $("#resume_file").get(0).files[0].size;
+
+    if (resumeExtension != "pdf" && resumeFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(resumeExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(resumeFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (resumeData.files && resumeData.files[0]) {
+            var resumeReader = new FileReader();
+                resumeReader.onload = function(e) {
+                    $('#resume_preview').attr('src', e.target.result);
+                }
+                eresumeReader.readAsDataURL(resumeData.files[0]);
+                $('#resume_view').prop('disabled',false);
+                $('#resume_replace').prop('disabled',false);
+                $('#resume_button').hide();
+        }
+    }
+}
+
+function resignationValidation(resignation_file) {
+    var resignationData = document.getElementById('resignation_file');
+    var resignationUploadPath = resignationData.value;
+    var resignationExtension = resignationUploadPath.substring(resignationUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var resignationFileSize = $("#resignation_file").get(0).files[0].size;
+
+    if (resignationExtension != "pdf" && resignationFileSize > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    } 
+    else if(resignationExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else if(resignationFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }
+    else {
+        if (resignationData.files && resignationData.files[0]) {
+            var resignationReader = new FileReader();
+                resignationReader.onload = function(e) {
+                    $('#resignation_preview').attr('src', e.target.result);
+                }
+                eresignationReader.readAsDataURL(resignationData.files[0]);
+                $('#resignation_view').prop('disabled',false);
+                $('#resignation_replace').prop('disabled',false);
+                $('#resignation_button').hide();
+        }
+    }
+}
+
+//Documents Tab
 function BirthCertificateValidation(birthcertificate_file) {
     var birthcertData = document.getElementById('birthcertificate_file');
     var birthcertUploadPath = birthcertData.value;
     var birthcertExtension = birthcertUploadPath.substring(birthcertUploadPath.lastIndexOf('.') + 1).toLowerCase();
     var birthcertFileSize = $("#birthcertificate_file").get(0).files[0].size;
 
-    //Check what type of file that the user upload
     if (birthcertExtension != "pdf" && birthcertFileSize > 5242880 * 2) {
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
@@ -88,7 +321,6 @@ function BirthCertificateValidation(birthcertificate_file) {
         });
     } 
     else {
-        //To display the uploaded file
         if (birthcertData.files && birthcertData.files[0]) {
             var birthcertReader = new FileReader();
                 birthcertReader.onload = function(e) {
@@ -136,7 +368,6 @@ function nbiValidation(nbi_file) {
         });
     }
     else {
-        //To display the uploaded file
         if (nbiData.files && nbiData.files[0]) {
             var nbiReader = new FileReader();
                 nbiReader.onload = function(e) {
@@ -573,8 +804,156 @@ function resumeValidation(resume_file) {
     }
 }
 
+//Display Modal Preview
+//Performance Evaluation Tab
+function performancePreview(newPerformanceFilesrc){
+    var newPerformanceFileNow = newPerformanceFilesrc.src;
+    var performanceFile = document.getElementById('performance_display');
+    performanceFile.src = newPerformanceFileNow;
+}
+//Document Tab
+function documentPreview(newDocumentSrc){
+    var newDocumentSrcNow = newDocumentSrc.src;
+    var largeDocument = document.getElementById('document_display');
+    largeDocument.src = newDocumentSrcNow;
+}
 
-//Display the selected file text and to remove fake path
+//Change Modal title
+//Performance Evaluation Tab
+$('#memo_preview').on('click',function(){
+    $('.modal-title').html('MEMO');
+});
+
+$('#evaluation_preview').on('click',function(){
+    $('.modal-title').html('EVALUATION');
+});
+
+$('#contracts_preview').on('click',function(){
+    $('.modal-title').html('CONTRACT');
+});
+
+$('#resignation_preview').on('click',function(){
+    $('.modal-title').html('RESIGNATION LETTER');
+});
+
+$('#termination_preview').on('click',function(){
+    $('.modal-title').html('TERMINATION LETTER');
+});
+
+//Document Tab
+$('#birthcertificate_preview').on('click',function(){
+    $('.modal-title').html('BIRTH CERTIFICATE');
+});
+
+$('#nbi_preview').on('click',function(){
+    $('.modal-title').html('NBI CLEARANCE');
+});
+
+$('#barangay_clearance_preview').on('click',function(){
+    $('.modal-title').html('BARANGAY CLEARANCE');
+});
+
+$('#police_clearance_preview').on('click',function(){
+    $('.modal-title').html('POLICE CLEARANCE');
+});
+
+$('#sss_preview').on('click',function(){
+    $('.modal-title').html('SSS E1 FORM');
+});
+
+$('#philhealth_preview').on('click',function(){
+    $('.modal-title').html('PHILHEALTH FORM');
+});
+
+$('#pag_ibig_preview').on('click',function(){
+    $('.modal-title').html('PAGIBIG FORM');
+});
+
+$('#medical_certificate_preview').on('click',function(){
+    $('.modal-title').html('MEDICAL CERTIFICATE');
+});
+
+$('#tor_preview').on('click',function(){
+    $('.modal-title').html('TRANSCRIPT OF RECORD');
+});
+
+$('#diploma_preview').on('click',function(){
+    $('.modal-title').html('DIPLOMA');
+});
+
+$('#resume_preview').on('click',function(){
+    $('.modal-title').html('RESUME');
+});
+
+//Display file name function
+
+//Performance Evaluation Tab
+var memo_file = $('#memo_file')[0];
+var memo_button = $('#memo_button')[0];
+var memo_text = $('#memo_text')[0];
+
+$('#memo_file').on('change',function(){
+    if (memo_file.value) {
+        memo_text.innerHTML = "<b class='text-center'> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        memo_text.innerHTML = "No file chosen.";
+    }
+});
+
+var evaluation_file = $('#evaluation_file')[0];
+var evaluation_button = $('#evaluation_button')[0];
+var evaluation_text = $('#evaluation_text')[0];
+
+$('#evaluation_file').on('change',function(){
+    if (evaluation_file.value) {
+        evaluation_text.innerHTML = "<b> File Name: </b>" + evaluation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        evaluation_text.innerHTML = "No file chosen.";
+    }
+});
+
+var contracts_file = $('#contracts_file')[0];
+var contracts_button = $('#contracts_button')[0];
+var contracts_text = $('#contracts_text')[0];
+
+$('#contracts_file').on('change',function(){
+    if (contracts_file.value) {
+        contracts_text.innerHTML = "<b>File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        contracts_text.innerHTML = "No file chosen.";
+    }
+});
+
+var resignation_file = $('#resignation_file')[0];
+var resignation_button = $('#resignation_button')[0];
+var resignation_text = $('#resignation_text')[0];
+
+$('#resignation_file').on('change',function(){
+    if (resignation_file.value) {
+        resignation_text.innerHTML = "<b>File Name:</b> " + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        resignation_text.innerHTML = "No file chosen.";
+    }
+});
+
+var termination_file = $('#termination_file')[0];
+var termination_button = $('#termination_button')[0];
+var termination_text = $('#termination_text')[0];
+
+$('#termination_file').on('change',function(){
+    if (termination_file.value) {
+        termination_text.innerHTML = "<b>File Name:</b> " + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+    }
+    else {
+        termination_text.innerHTML = "No file chosen.";
+    }
+});
+
+//Documents Tab
 var birthcertificate_file = $('#birthcertificate_file')[0];
 var birthcertificate_button = $('#birthcertificate_button')[0];
 var birthcertificate_text = $('#birthcertificate_text')[0];
@@ -718,10 +1097,68 @@ $('#resume_file').on('change',function(){
     }
 });
 
-//Document Tab Replace Function
+//Replace File Function
+
+//Performance Evaluation
+$('#memo_replace').on('click',function(){
+    $('#memo_file').val('');
+    $('#memo_preview').attr('src','');
+    $('#memo_preview').hide();
+    $('#memo_text').html('No file chosen.');
+    $('#memo_button').show();
+    $('#memo_view').prop('disabled',true);
+    $('#memo_replace').prop('disabled',true);
+    $('#memo_file').click();
+});
+
+$('#evaluation_replace').on('click',function(){
+    $('#evaluation_file').val('');
+    $('#evaluation_preview').attr('src','');
+    $('#evaluation_preview').hide();
+    $('#evaluation_text').html('No file chosen.');
+    $('#evaluation_button').show();
+    $('#evaluation_view').prop('disabled',true);
+    $('#evaluation_replace').prop('disabled',true);
+    $('#evaluation_file').click();
+});
+
+$('#contracts_replace').on('click',function(){
+    $('#contracts_file').val('');
+    $('#contracts_preview').attr('src','');
+    $('#contracts_preview').hide();
+    $('#contracts_text').html('No file chosen.');
+    $('#contracts_button').show();
+    $('#contracts_view').prop('disabled',true);
+    $('#contracts_replace').prop('disabled',true);
+    $('#contracts_file').click();
+});
+
+$('#resignation_replace').on('click',function(){
+    $('#resignation_file').val('');
+    $('#resignation_preview').attr('src','');
+    $('#resignation_preview').hide();
+    $('#resignation_text').html('No file chosen.');
+    $('#resignation_button').show();
+    $('#resignation_view').prop('disabled',true);
+    $('#resignation_replace').prop('disabled',true);
+    $('#resignation_file').click();
+});
+
+$('#termination_replace').on('click',function(){
+    $('#termination_file').val('');
+    $('#termination_preview').attr('src','');
+    $('#termination_preview').hide();
+    $('#termination_text').html('No file chosen.');
+    $('#termination_button').show();
+    $('#termination_view').prop('disabled',true);
+    $('#termination_replace').prop('disabled',true);
+    $('#termination_file').click();
+});
+
+//Documents Tab
 $('#birthcertificate_replace').on('click',function(){
     $('#birthcertificate_file').val('');
-    $('#birthcertificate_preview').attr('src','');//change the image source
+    $('#birthcertificate_preview').attr('src','');
     $('#birthcertificate_preview').hide();
     $('#birthcertificate_text').html('No file chosen.');
     $('#birthcertificate_button').show();
@@ -759,7 +1196,7 @@ $('#police_clearance_replace').on('click',function(){
     $('#police_clearance_text').html('No file chosen.');
     $('#police_clearance_button').show();
     $('#police_clearance_view').prop('disabled',true);
-    $('#replace_police-clearance').prop('disabled',true);
+    $('#police_clearance_replace').prop('disabled',true);
     $('#police_clearance_file').click();
 });
 
@@ -829,331 +1266,13 @@ $('#diploma_replace').on('click',function(){
     $('#diploma_file').click();
 });
 
-//Document Tab Preview Function
-function documentPreview(newDocumentSrc){
-    var newDocumentSrcNow = newDocumentSrc.src; //To get the source of the file uploaded
-    var largeDocument = document.getElementById('document_display');
-    largeDocument.src = newDocumentSrcNow;
-}
-
-//Document Tab Change Modal Title Function on Click
-$('#birthcertificate_preview').on('click',function(){
-    $('.modal-title').html('BIRTH CERTIFICATE');
-});
-
-$('#nbi_preview').on('click',function(){
-    $('.modal-title').html('NBI CLEARANCE');
-});
-
-$('#barangay_clearance_preview').on('click',function(){
-    $('.modal-title').html('BARANGAY CLEARANCE');
-});
-
-$('#police_clearance_preview').on('click',function(){
-    $('.modal-title').html('POLICE CLEARANCE');
-});
-
-$('#sss_preview').on('click',function(){
-    $('.modal-title').html('SSS E1 FORM');
-});
-
-$('#philhealth_preview').on('click',function(){
-    $('.modal-title').html('PHILHEALTH FORM');
-});
-
-$('#pag_ibig_preview').on('click',function(){
-    $('.modal-title').html('PAGIBIG FORM');
-});
-
-//////////////////////////////////////////////
-
-//Performance Evaluation Tab Upload Validation
-function memoValidation(){
-    var memoData = document.getElementById('memo_file');
-    var memoUploadPath = memoData.value;
-    var memoExtension = memoUploadPath.substring(memoUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    
-    if(memoExtension == "jpg" || memoExtension || "jpeg" || memoExtension == "png" || memoExtension == "gif" || memoExtension == "pdf"){
-        if (memoData.files && memoData.files[0]) {
-            var memoReader = new FileReader();
-                memoReader.onload = function(e) {
-                  $('#memo_preview').attr('src', e.target.result);
-                }
-                memoReader.readAsDataURL(memoData.files[0]);
-                $('#memo_view').prop('disabled',false);
-                $('#memo_replace').prop('disabled',false);
-                $('#memo_button').hide();
-        }
-    }
-    else{
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-}
-
-function evaluationValidation(){
-    var evaluationData = document.getElementById('evaluation_file');
-    var evaluationUploadPath = evaluationData.value;
-    var evaluationExtension = evaluationUploadPath.substring(evaluationUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    
-    if(evaluationExtension == "jpg" || evaluationExtension || "jpeg" || evaluationExtension == "png" || evaluationExtension == "gif" || evaluationExtension == "pdf"){
-        if (evaluationData.files && evaluationData.files[0]) {
-            var evaluationReader = new FileReader();
-                evaluationReader.onload = function(e) {
-                  $('#evaluation_preview').attr('src', e.target.result);
-                }
-                evaluationReader.readAsDataURL(evaluationData.files[0]);
-                $('#evaluation_view').prop('disabled',false);
-                $('#evaluation_replace').prop('disabled',false);
-                $('#evaluation_button').hide();
-        }
-    }
-    else{
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-}
-
-function contractsValidation(){
-    var contractsData = document.getElementById('contracts_file');
-    var contractsUploadPath = contractsData.value;
-    var contractsExtension = contractsUploadPath.substring(contractsUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    
-    if(contractsExtension == "jpg" || contractsExtension || "jpeg" || contractsExtension == "png" || contractsExtension == "gif" || contractsExtension == "pdf"){
-        if (contractsData.files && contractsData.files[0]) {
-            var contractsReader = new FileReader();
-                contractsReader.onload = function(e) {
-                  $('#contracts_preview').attr('src', e.target.result);
-                }
-                contractsReader.readAsDataURL(contractsData.files[0]);
-                $('#contracts_view').prop('disabled',false);
-                $('#contracts_replace').prop('disabled',false);
-                $('#contracts_button').hide();
-        }
-    }
-    else{
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-}
-
-function resignationValidation() {
-    var resignationData = document.getElementById('resignation_file');
-    var resignationUploadPath = resignationData.value;
-    var resignationExtension = resignationUploadPath.substring(resignationUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (resignationExtension == "jpg" || resignationExtension == "jpeg" || resignationExtension == "png" || resignationExtension == "gif" || resignationExtension == "pdf") {
-        if (resignationData.files && resignationData.files[0]) {
-          var resignationReader = new FileReader();
-            resignationReader.onload = function(e) {
-                $('#resignation_preview').attr('src', e.target.result);
-            }
-            resignationReader.readAsDataURL(resignationData.files[0]);
-            $('#resignation_view').prop('disabled',false);
-            $('#resignation_replace').prop('disabled',false);
-            $('#resignation_button').hide();
-        }
-    } 
-    else {
-        Swal.fire({
-            title: 'UNSUPPORTED FILE SELECTED',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-}
-
-function terminationValidation() {
-    var terminationData = document.getElementById('termination_file');
-    var terminationUploadPath = terminationData.value;
-    var terminationExtension = terminationUploadPath.substring(terminationUploadPath.lastIndexOf('.') + 1).toLowerCase();
-
-    if (terminationExtension == "jpg" || terminationExtension == "jpeg" || terminationExtension == "png" || terminationExtension == "gif" || terminationExtension == "pdf") {
-        if (terminationData.files && terminationData.files[0]) {
-            var terminationReader = new FileReader();
-                terminationReader.onload = function(e) {
-                    $('#termination_preview').attr('src', e.target.result);
-                }
-                terminationReader.readAsDataURL(terminationData.files[0]);
-                $('#termination_view').prop('disabled',false);
-                $('#termination_replace').prop('disabled',false);
-                $('#termination_button').hide();
-        }
-    } 
-    else {
-      Swal.fire({
-          title: 'UNSUPPORTED FILE SELECTED',
-          icon: 'error',
-          text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif ,pdf)',
-          allowOutsideClick: false,
-          allowEscapeKey: false
-      });
-  }
-}
-
-//Performance Evaluation Tab File Rename Function
-var memo_file = $('#memo_file')[0];
-var memo_button = $('#memo_button')[0];
-var memo_text = $('#memo_text')[0];
-
-$('#memo_file').on('change',function(){
-    if (memo_file.value) {
-        memo_text.innerHTML = "<b class='text-center'> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        memo_text.innerHTML = "No file chosen.";
-    }
-});
-
-var evaluation_file = $('#evaluation_file')[0];
-var evaluation_button = $('#evaluation_button')[0];
-var evaluation_text = $('#evaluation_text')[0];
-
-$('#evaluation_file').on('change',function(){
-    if (evaluation_file.value) {
-        evaluation_text.innerHTML = "<b> File Name: </b>" + evaluation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        evaluation_text.innerHTML = "No file chosen.";
-    }
-});
-
-var contracts_file = $('#contracts_file')[0];
-var contracts_button = $('#contracts_button')[0];
-var contracts_text = $('#contracts_text')[0];
-
-$('#contracts_file').on('change',function(){
-    if (contracts_file.value) {
-        contracts_text.innerHTML = "<b>File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        contracts_text.innerHTML = "No file chosen.";
-    }
-});
-
-var resignation_file = $('#resignation_file')[0];
-var resignation_button = $('#resignation_button')[0];
-var resignation_text = $('#resignation_text')[0];
-
-$('#resignation_file').on('change',function(){
-    if (resignation_file.value) {
-        resignation_text.innerHTML = "<b>File Name:</b> " + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        resignation_text.innerHTML = "No file chosen.";
-    }
-});
-
-var termination_file = $('#termination_file')[0];
-var termination_button = $('#termination_button')[0];
-var termination_text = $('#termination_text')[0];
-
-$('#termination_file').on('change',function(){
-    if (termination_file.value) {
-        termination_text.innerHTML = "<b>File Name:</b> " + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        termination_text.innerHTML = "No file chosen.";
-    }
-});
-
-//Performance Evaluation Tab Replace Function
-$('#memo_replace').on('click',function(){
-    $('#memo_file').val('');
-    $('#memo_preview').attr('src','');//change the image source
-    $('#memo_preview').hide();
-    $('#memo_text').html('No file chosen.');
-    $('#memo_button').show();
-    $('#memo_view').prop('disabled',true);
-    $('#memo_replace').prop('disabled',true);
-    $('#memo_file').click();
-});
-
-$('#evaluation_replace').on('click',function(){
-    $('#evaluation_file').val('');
-    $('#evaluation_preview').attr('src','');//change the image source
-    $('#evaluation_preview').hide();
-    $('#evaluation_text').html('No file chosen.');
-    $('#evaluation_button').show();
-    $('#evaluation_view').prop('disabled',true);
-    $('#evaluation_replace').prop('disabled',true);
-    $('#evaluation_file').click();
-});
-
-$('#contracts_replace').on('click',function(){
-    $('#contracts_file').val('');
-    $('#contracts_preview').attr('src','');//change the image source
-    $('#contracts_preview').hide();
-    $('#contracts_text').html('No file chosen.');
-    $('#contracts_button').show();
-    $('#contracts_view').prop('disabled',true);
-    $('#contracts_replace').prop('disabled',true);
-    $('#contracts_file').click();
-});
-
-$('#resignation_replace').on('click',function(){
-    $('#resignation_file').val('');
-    $('#resignation_preview').attr('src','');//change the image source
-    $('#resignation_preview').hide();
-    $('#resignation_text').html('No file chosen.');
-    $('#resignation_button').show();
-    $('#resignation_view').prop('disabled',true);
-    $('#resignation_replace').prop('disabled',true);
-    $('#resignation_file').click();
-});
-
-$('#termination_replace').on('click',function(){
-    $('#termination_file').val('');
-    $('#termination_preview').attr('src','');//change the image source
-    $('#termination_preview').hide();
-    $('#termination_text').html('No file chosen.');
-    $('#termination_button').show();
-    $('#termination_view').prop('disabled',true);
-    $('#termination_replace').prop('disabled',true);
-    $('#termination_file').click();
-});
-
-//Document Tab Preview Function
-function performancePreview(newPerformanceFilesrc){
-    var newPerformanceFileNow = newPerformanceFilesrc.src; //To get the source of the file uploaded
-    var performanceFile = document.getElementById('performance_display');
-    performanceFile.src = newPerformanceFileNow;
-}
-
-//Performance Tab Change Modal Title Function
-$('#memo_preview').on('click',function(){
-    $('.modal-title').html('MEMO');
-});
-
-$('#evaluation_preview').on('click',function(){
-    $('.modal-title').html('EVALUATION');
-});
-
-$('#contracts_preview').on('click',function(){
-    $('.modal-title').html('CONTRACT');
-});
-
-$('#resignation_preview').on('click',function(){
-    $('.modal-title').html('RESIGNATION LETTER');
-});
-
-$('#termination_preview').on('click',function(){
-    $('.modal-title').html('TERMINATION LETTER');
+$('#resume_replace').on('click',function(){
+    $('#resume_file').val('');
+    $('#resume_preview').attr('src','');
+    $('#resume_preview').hide();
+    $('#resume_text').html('No file chosen.');
+    $('#resume_button').show();
+    $('#resume_view').prop('disabled',true);
+    $('#resume_replace').prop('disabled',true);
+    $('#resume_file').click();
 });
