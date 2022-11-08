@@ -231,7 +231,7 @@ $(document).ready(function(){
         $('#memo_file').val('');
         $('#memo_preview').attr('src','');//change the image source
         $('#memo_preview').hide();
-        $('#memo_text').html('No file chosen, yet.');
+        $('#memo_text').html('No file chosen');
         $('#memo_button').show();
         $('#memo_view').prop('disabled',true);
         $('#memo_replace').prop('disabled',true);
@@ -262,7 +262,7 @@ $(document).ready(function(){
         $('#evaluation_file').val('');
         $('#evaluation_preview').attr('src','');//change the image source
         $('#evaluation_preview').hide();
-        $('#evaluation_text').html('No file chosen, yet.');
+        $('#evaluation_text').html('No file chosen');
         $('#evaluation_button').show();
         $('#evaluation_view').prop('disabled',true);
         $('#evaluation_replace').prop('disabled',true);
@@ -290,7 +290,7 @@ $(document).ready(function(){
         $('#contracts_file').val('');
         $('#contracts_preview').attr('src','');//change the image source
         $('#contracts_preview').hide();
-        $('#contracts_text').html('No file chosen, yet.');
+        $('#contracts_text').html('No file chosen');
         $('#contracts_button').show();
         $('#contracts_view').prop('disabled',true);
         $('#contracts_replace').prop('disabled',true);

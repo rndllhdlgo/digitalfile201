@@ -242,8 +242,9 @@ input[type="date"]{
 }
 
 /* Documents Tab */
-.title_file{
+.file_title{
     padding-top: 15px;
+    /* zoom:95%; */
 }
 
 input[type=search]:focus{
@@ -259,34 +260,12 @@ input[type=search]:focus{
 
 /* input type file */
 #cover_image,
-#memo_file,
-#evaluation_file,
-#contracts_file,
-#resignation_file,
-#termination_file,
-#birthcertificate_file,
-#nbi_file,
-#barangay_clearance_file,
-#police_clearance_file,
-#sss_file,
-#philhealth_file,
-#pag_ibig_file,
-#medical_certificate_file,
-
-#birthcertificate_preview,
-#nbi_preview,
-#barangay_clearance_preview,
-#police_clearance_preview,
-#sss_preview,
-#philhealth_preview,
-#pag_ibig_preview,
-#medical_certificate_preview,
-#memo_preview,
-#evaluation_preview,
-#contracts_preview,
-#resignation_preview,
-#termination_preview{
+.hiddenFile,
+.hiddenDocumentPreview{
     display:none;
+}
+.btnView{
+    margin-left: 10%;
 }
 
 /* Data Tables in multiple row*/
@@ -302,22 +281,7 @@ input[type=search]:focus{
     margin-top: -17px;
 }
 
-#birthcertificate_view,
-#nbi_view,
-#barangay_clearance_view,
-#police_clearance_view,
-#sss_view,
-#philhealth_view,
-#pag_ibig_view,
-#medical_certificate_view{
-    margin-left: 20%;
-}
-
-#memo_view,
-#evaluation_view,
-#contracts_view,
 #resignation_view,
-#termination_view,
 #termination_view{
     margin-left: 7%;
 }
@@ -344,6 +308,18 @@ input[type=search]:focus{
 .column-2{
     float: left;
     width: 77%;
+}
+
+.first_table{
+    float: left;
+    width:50%;
+    padding: 5px;
+}
+.second_table{
+    float: left;
+    width:50%;
+    padding: 5px;
+
 }
 .row:after {
     content: "";

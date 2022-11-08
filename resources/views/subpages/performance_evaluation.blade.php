@@ -45,7 +45,7 @@
                 <td class="pb-2 pt-2">
                     <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                     <input  type="file"   id="memo_file"   name="memo_file"           onchange="return memoValidation()" accept="image/*,.pdf">
-                    <span id="memo_text">No file chosen, yet.</span>
+                    <span id="memo_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnMemoAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
@@ -109,7 +109,7 @@
                 <td>
                     <button type="button" id="evaluation_button" class="btn btn-primary bp" onclick="$('#evaluation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                     <input  type="file"   name="evaluation_file" id="evaluation_file"   class=""     onchange="return evaluationValidation()" accept="image/*,.pdf">
-                    <span id="evaluation_text">No file chosen, yet.</span>
+                    <span id="evaluation_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnEvaluationAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
@@ -166,7 +166,7 @@
                 <td>
                     <button type="button" id="contracts_button" class="btn btn-primary bp" onclick="$('#contracts_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                     <input  type="file"   name="contracts_file" id="contracts_file"   class=""     onchange="return contractsValidation()" accept="image/*,.pdf">
-                    <span id="contracts_text">No file chosen, yet.</span>
+                    <span id="contracts_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnContractAdd"    class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
@@ -222,7 +222,7 @@
                 <td>
                     <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                     <input  type="file"   name="resignation_file" id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf">
-                    <span id="resignation_text">No file chosen, yet.</span>                        
+                    <span id="resignation_text">No file chosen.</span>                        
                 </td>
                 <td>
                     <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
@@ -264,7 +264,7 @@
                 <td>
                     <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                     <input  type="file"   id="termination_file"   name="termination_file"    onchange="return terminationValidation()" accept="image/*,.pdf">
-                    <span id="termination_text">No file chosen, yet.</span>
+                    <span id="termination_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
@@ -331,8 +331,8 @@
                 </td>
                 <td class="pb-2 pt-2">
                     <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="memo_file"   name="memo_file"           onchange="return memoValidation()" accept="image/*,.pdf">
-                    <span id="memo_text">No file chosen, yet.</span>
+                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file"           onchange="return memoValidation()" accept="image/*,.pdf">
+                    <span id="memo_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnMemoAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
@@ -392,8 +392,8 @@
                 </td>
                 <td>
                     <button type="button" id="evaluation_button" class="btn btn-primary bp" onclick="$('#evaluation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="evaluation_file" id="evaluation_file"   class=""     onchange="return evaluationValidation()" accept="image/*,.pdf">
-                    <span id="evaluation_text">No file chosen, yet.</span>
+                    <input  type="file"   name="evaluation_file" class="hiddenFile" id="evaluation_file"   class=""     onchange="return evaluationValidation()" accept="image/*,.pdf">
+                    <span id="evaluation_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnEvaluationAdd"   class="btn btn-success grow center btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
@@ -447,8 +447,8 @@
                 </td>
                 <td class="pb-3 pt-3">
                     <button type="button" id="contracts_button" class="btn btn-primary bp" onclick="$('#contracts_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="contracts_file" id="contracts_file"   class=""     onchange="return contractsValidation()" accept="image/*,.pdf">
-                    <span id="contracts_text">No file chosen, yet.</span>
+                    <input  type="file"   name="contracts_file" class="hiddenFile" id="contracts_file"   class=""     onchange="return contractsValidation()" accept="image/*,.pdf">
+                    <span id="contracts_text">No file chosen.</span>
                 </td>
                 <td>
                     <button type="button" id="btnContractAdd"    class="btn btn-success grow center btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
@@ -502,13 +502,13 @@
                     </td>
                     <td>
                         <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   name="resignation_file" id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf">
-                        <span id="resignation_text">No file chosen, yet.</span>                        
+                        <input  type="file"   name="resignation_file" class="hiddenFile" id="resignation_file"      onchange="return resignationValidation()" accept="image/*,.pdf">
+                        <span id="resignation_text">No file chosen.</span>                        
                     </td>
                     <td>
                         <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled style="margin-left:13%;"><i class="fas fa-eye"></i></button>
                         <button type="button" id="resignation_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                        <img src="" alt=""    id="resignation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
+                        <img src="" alt=""    id="resignation_preview" class="hiddenDocumentPreview"data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                     </td>
                 </tr>
             </tbody>
@@ -546,17 +546,31 @@
                     </td>
                     <td>
                         <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   id="termination_file"   name="termination_file"    onchange="return terminationValidation()" accept="image/*,.pdf">
-                        <span id="termination_text">No file chosen, yet.</span>
+                        <input  type="file"   id="termination_file"   class="hiddenFile" name="termination_file"    onchange="return terminationValidation()" accept="image/*,.pdf">
+                        <span id="termination_text">No file chosen.</span>
                     </td>
                     <td>
                         <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled style="margin-left:13%;"><i class="fas fa-eye"></i></button>
                         <button type="button" id="termination_replace"  class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                        <img src="" alt=""    id="termination_preview"  data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
+                        <img src="" alt=""    id="termination_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
                     </td>
                 </tr>
             </tbody>
         </table>
         <hr class="hr-design">
+    </div>
+    
+    <div class="modal fade" id="preview_performance">
+        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
+            <div class="modal-content" >
+                <div class="modal-header">
+                    <h4 class="modal-title"></h4>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="" alt="" id="performance_display" style="width:100%;height:100%;"></iframe>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
