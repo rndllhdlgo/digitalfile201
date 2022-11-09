@@ -7,6 +7,8 @@ use App\Models\UserLogs;
 use App\Models\Branch;
 use App\Models\Supervisor;
 use App\Models\Shift;
+use App\Models\JobPosition;
+use App\Models\JobDescription;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -278,11 +280,42 @@ class MaintenanceController extends Controller
             $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "UPDATED SHIFT: User successfully updated details of '$shift_code_orig' with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
-            return 'true';
 
+            return 'true';
         }
         else{
             return 'false';
         }
+    }
+
+    public function jobPositionSave(Request $request){
+
+        if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($request->job_position_name))->count() > 0){
+            return 'duplicate';
+        }
+
+        $jobposition = new JobPosition;
+        $jobposition->job_position_name = ucwords($request->job_position_name);
+        $sql = $jobposition->save();
+
+        if($sql){
+            $result = 'true';
+            $id = $jobposition->id;
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
+    }
+
+    public function jobDescriptionSave(Request $request){
+
+        $jobDescription = new JobDescription;
+        $jobDescription->job_position_id = $request->job_position_id;
+        $jobDescription->job_description = ucfirst($request->job_description);
+        $jobDescription->save();
     }
 }
