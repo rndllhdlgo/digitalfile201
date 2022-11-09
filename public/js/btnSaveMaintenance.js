@@ -174,18 +174,18 @@ $('#shiftSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveShiftModal').modal('hide');
-                        // Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
-                        // setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
+                        Swal.fire("SHIFT ADDED SUCCESSFULLY","","success");
+                        setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
-                    // else if(data == 'duplicate'){
-                    //     Swal.fire("SUPERVISOR NAME ALREADY EXIST","Please Enter Different Supervisor Name","error");
-                    //     $('#supervisor_name').val('');
-                    //     return false;
-                    // }
+                    else if(data == 'duplicate'){
+                        Swal.fire("SHIFT CODE ALREADY EXIST","Please Enter Different Shift Code","error");
+                        $('#shift_code').val('');
+                        return false;
+                    }
                     else{
                         $('#saveShiftModal').modal('hide');
-                        // Swal.fire("SAVE FAILED", "", "error");
-                        // setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
+                        Swal.fire("SAVE FAILED", "", "error");
+                        setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                 }
             });

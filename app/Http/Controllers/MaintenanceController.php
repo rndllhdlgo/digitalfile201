@@ -170,7 +170,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch: FROM '$supervisor_orig' TO '$supervisor_new'.";
+            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch name: FROM '$supervisor_orig' TO '$supervisor_new'.";
             $userlogs->save();
 
             return 'true';
@@ -186,13 +186,61 @@ class MaintenanceController extends Controller
     }
 
     public function shiftSave(Request $request){
+        $shift_code_logs = strtoupper($request->shift_code);
+        $shift_working_hours_logs = strtoupper($request->shift_working_hours);
+        $shift_break_time_logs = strtoupper($request->shift_break_time);
+
+        if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_logs))->count() > 0){
+            return 'duplicate';
+        }
+        
         $shift = new Shift;
-        $shift->shift_code = strtoupper($request->shift_code);
-        $shift->shift_working_hours = $request->shift_working_hours;
-        $shift->shift_break_time = $request->shift_break_time;
+        $shift->shift_code = $shift_code_logs;
+        $shift->shift_working_hours = $shift_working_hours_logs;
+        $shift->shift_break_time = $shift_break_time_logs;
         $sql = $shift->save();
 
         if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: '$shift_code_logs $shift_working_hours_logs $shift_break_time_logs'."; //Display logs in home page
+            $userlogs->save();
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    public function shiftUpdate(Request $request){
+        $shift_code_orig = $request->shift_code_orig;
+        $shift_code_new = ucwords($request->shift_code_new);
+
+        $shift_working_hours_orig = $request->shift_working_hours_orig;
+        $shift_working_hours_new = strtoupper($request->shift_working_hours_new);
+
+        $shift_break_time_orig = $request->shift_break_time_orig;
+        $shift_break_time_new = strtoupper($request->shift_break_time_new);
+
+        $shift = Shift::find($request->shift_id);
+        $shift->shift_code = $shift_code_new;
+        $shift->shift_working_hours = $shift_working_hours_new;
+        $shift->shift_break_time = $shift_break_time_new;
+        $sql = $shift->save();
+
+        if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+                if($shift_code_orig != $shift_code_new){
+                    $userlogs->activity = "UPDATED SHIFT CODE: User successfully updated Shift Code: FROM '$shift_code_orig' TO '$shift_code_new'.";
+                }
+                if($shift_working_hours_orig != $shift_working_hours_new){
+                    $userlogs->activity = "UPDATED WORKING HOURS: User successfully updated Working Hours with Shift Code:'$shift_code_orig' FROM '$shift_working_hours_orig' TO '$shift_working_hours_new'.";
+                }
+                if($shift_break_time_orig != $shift_break_time_new){
+                    $userlogs->activity = "UPDATED BREAK TIME: User successfully updated Break Time with Shift Code:'$shift_code_orig' FROM '$shift_break_time_orig' TO '$shift_break_time_new'.";
+                }
+            $userlogs->save();
             return 'true';
         }
         else{

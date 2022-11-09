@@ -152,10 +152,16 @@ $('#supervisorUpdate').on('click',function(){
     }); 
 });
 
-$('#supervisorUpdate').on('click',function(){
-    var supervisor_id = $('#supervisor_id').val();
-    var supervisor_orig = $('#supervisor_name').val();
-    var supervisor_new = $('#supervisor_details').val();
+$('#shiftUpdate').on('click',function(){
+    var shift_id = $('#shift_id').val();
+    var shift_code_orig = $('#shift_code').val();
+    var shift_code_new = $('#shift_details_code').val();
+
+    var shift_working_hours_orig = $('#shift_working_hours').val();
+    var shift_working_hours_new = $('#shift_details_working_hours').val();
+
+    var shift_break_time_orig = $('#shift_break_time').val();
+    var shift_break_time_new = $('#shift_details_break_time').val();
 
     Swal.fire({
         title: 'Do you want to update changes?',
@@ -172,33 +178,38 @@ $('#supervisorUpdate').on('click',function(){
     }).then((save) => {
         if(save.isConfirmed){
             $.ajax({
-                url: '/maintenance/supervisorUpdate',
+                url: '/maintenance/shiftUpdate',
                 type: "POST",
                 headers:{
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    supervisor_id:supervisor_id,
-                    supervisor_orig:supervisor_orig,
-                    supervisor_new:supervisor_new
+                    shift_id:shift_id,
+                    shift_code_orig:shift_code_orig,
+                    shift_code_new:shift_code_new,
+                    shift_working_hours_orig:shift_working_hours_orig,
+                    shift_working_hours_new:shift_working_hours_new,
+                    shift_break_time_orig:shift_break_time_orig,
+                    shift_break_time_new:shift_break_time_new
                 },
                 success: function(data){
                     if(data == 'true'){
-                        $('#updateSupervisorModal').modal('hide');
-                        Swal.fire("COMPANY UPDATED SUCCESSFULLY","","success");
-                        setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
+                        $('#updateShiftModal').modal('hide');
+                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
-                        Swal.fire("DUPLICATE SUPERVISOR NAME","","error");
+                        Swal.fire("DUPLICATE SHIFT CODE","","error");
                         return false;
                     }
                     else{
-                        $('#updateSupervisorModal').modal('hide');
+                        $('#updateShiftModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
-                        setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
+                        setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                 }
             });
         }
     }); 
 });
+
