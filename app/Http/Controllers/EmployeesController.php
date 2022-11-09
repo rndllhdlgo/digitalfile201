@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use App\Models\UserLogs;
+
 use App\Models\Children;
 use App\Models\College;
 use App\Models\Contracts;
@@ -39,10 +41,15 @@ class EmployeesController extends Controller
         
         $employees = new Employee;
     //Personal Information Tab
-        $employees->employee_number = $request->employee_number;//Eloquent Syntax/Form
+        $employee_number_logs = $request->employee_number; 
+        $employee_first_name_logs = ucwords($request->first_name);
+        $employee_last_name_logs = ucwords($request->last_name); 
+
+        $employees->employee_number = $employee_number_logs;//Eloquent Syntax/Form
+        $employees->first_name =  $employee_first_name_logs;
         $employees->cover_image = $request->fileName;
-        $employees->first_name = ucwords($request->first_name);
-        $employees->last_name = ucwords($request->last_name);
+        $employees->last_name = $employee_last_name_logs;
+
         $employees->middle_name = ucwords($request->middle_name);
         $employees->suffix = ucwords($request->suffix);
         $employees->nickname = ucwords($request->nickname);
@@ -100,6 +107,12 @@ class EmployeesController extends Controller
 
         // $result = $sql ? 'true' : 'false';
         if($sql){
+            //To save user logs
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: ($employee_number_logs). Employee Name:' ($employee_first_name_logs $employee_last_name_logs)'."; //Display logs in home page
+            $userlogs->save();
+
             $result = 'true';
             $id = $employees->id;
         }
@@ -337,85 +350,84 @@ class EmployeesController extends Controller
 
             $terminationFile = $request->file('termination_file');
             $terminationExtension = $terminationFile->getClientOriginalExtension();
-            $terminationFileName = time(). '_' . 'Termination_Letter'. '.' . $terminationExtension;
+            $terminationFileName = time(). '_' . 'Termination_Letter'. '.' .$terminationExtension;
             $terminationFile->storeAs('public/terminationFiles',$terminationFileName);
             $termination->termination_file = $terminationFileName;
             $termination->save();
         }
         
-            $document = new Document;
-            $document->employee_id = $request->employee_id;
-            $birthcertificateFile = $request->file('birthcertificate_file');
-            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' . $birthcertificateExtension;
-            $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
-            $document->birthcertificate = $birthcertificateFilename;
+        //     $document = new Document;
+        //     $document->employee_id = $request->employee_id;
+        //     $birthcertificateFile = $request->file('birthcertificate_file');
+        //     $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+        //     $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificateExtension;
+        //     $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
+        //     $document->birthcertificate = $birthcertificateFilename;
 
-            $nbiFile = $request->file('nbi_file');
-            $nbiExtension = $nbiFile->getClientOriginalExtension();
-            $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' . $nbiExtension;
-            $nbiFile->storeAs('public/documents',$nbiFilename);
-            $document->nbi_clearance = $nbiFilename;
+        //     $nbiFile = $request->file('nbi_file');
+        //     $nbiExtension = $nbiFile->getClientOriginalExtension();
+        //     $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' .$nbiExtension;
+        //     $nbiFile->storeAs('public/documents',$nbiFilename);
+        //     $document->nbi_clearance = $nbiFilename;
 
-            $barangayClearanceFile = $request->file('barangay_clearance_file');
-            $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' . $barangayClearanceExtension;
-            $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
-            $document->barangay_clearance = $barangayClearanceFilename;
+        //     $barangayClearanceFile = $request->file('barangay_clearance_file');
+        //     $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+        //     $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' .$barangayClearanceExtension;
+        //     $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+        //     $document->barangay_clearance = $barangayClearanceFilename;
 
-            $policeClearanceFile = $request->file('police_clearance_file');
-            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' . $policeClearanceExtension;
-            $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
-            $document->police_clearance = $policeClearanceFilename;
+        //     $policeClearanceFile = $request->file('police_clearance_file');
+        //     $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+        //     $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' .$policeClearanceExtension;
+        //     $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+        //     $document->police_clearance = $policeClearanceFilename;
 
-            $sssFile = $request->file('sss_file');
-            $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
-            $sssFile->storeAs('public/documents',$sssFilename);
-            $document->sss_form = $sssFilename;
+        //     $sssFile = $request->file('sss_file');
+        //     $sssExtension = $sssFile->getClientOriginalExtension();
+        //     $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
+        //     $sssFile->storeAs('public/documents',$sssFilename);
+        //     $document->sss_form = $sssFilename;
 
-            $philhealthFile = $request->file('philhealth_file');
-            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' . $philhealthExtension;
-            $philhealthFile->storeAs('public/documents',$philhealthFilename);
-            $document->philhealth_form = $philhealthFilename;
+        //     $philhealthFile = $request->file('philhealth_file');
+        //     $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+        //     $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' .$philhealthExtension;
+        //     $philhealthFile->storeAs('public/documents',$philhealthFilename);
+        //     $document->philhealth_form = $philhealthFilename;
 
-            $pagibigFile = $request->file('pag_ibig_file');
-            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' . $pagibigExtension;
-            $pagibigFile->storeAs('public/documents',$pagibigFilename);
-            $document->pag_ibig_form = $pagibigFilename;
+        //     $pagibigFile = $request->file('pag_ibig_file');
+        //     $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+        //     $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' .$pagibigExtension;
+        //     $pagibigFile->storeAs('public/documents',$pagibigFilename);
+        //     $document->pag_ibig_form = $pagibigFilename;
 
-            $medicalCertificateFile = $request->file('medical_certificate_file');
-            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' . $medicalCertificateExtension;
-            $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
-            $document->medical_certificate = $medicalCertificateFilename;
+        //     $medicalCertificateFile = $request->file('medical_certificate_file');
+        //     $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+        //     $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' .$medicalCertificateExtension;
+        //     $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
+        //     $document->medical_certificate = $medicalCertificateFilename;
 
-        if($request->hasFile('tor_file')){
-            $torFile = $request->file('tor_file');
-            $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = time(). '_' . 'Transcript_of_Records'. '.' . $torExtension;
-            $torFile->storeAs('public/documents',$torFilename);
-            $document->transcript_of_records = $torFilename;
-        }
+        // if($request->hasFile('tor_file')){
+        //     $torFile = $request->file('tor_file');
+        //     $torExtension = $torFile->getClientOriginalExtension();
+        //     $torFilename = time(). '_' . 'Transcript_of_Records'. '.' .$torExtension;
+        //     $torFile->storeAs('public/documents',$torFilename);
+        //     $document->transcript_of_records = $torFilename;
+        // }
 
-        if($request->hasFile('diploma_file')){
-            $diplomaFile = $request->file('diploma_file');
-            $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-            $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
-            $diplomaFile->storeAs('public/documents',$diplomaFilename);
-            $document->diploma = $diplomaFilename;
-        }
+        // if($request->hasFile('diploma_file')){
+        //     $diplomaFile = $request->file('diploma_file');
+        //     $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+        //     $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
+        //     $diplomaFile->storeAs('public/documents',$diplomaFilename);
+        //     $document->diploma = $diplomaFilename;
+        // }
 
-            $resumeFile = $request->file('resume_file');
-            $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
-            $resumeFile->storeAs('public/documents',$resumeFilename);
-            $document->resume = $resumeFilename;
-
-            $document->save();
+        //     $resumeFile = $request->file('resume_file');
+        //     $resumeExtension = $resumeFile->getClientOriginalExtension();
+        //     $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
+        //     $resumeFile->storeAs('public/documents',$resumeFilename);
+        //     $document->resume = $resumeFilename;
+        //     $document->save();
 
             //Save Document Files Function
             // $birthcertificate_file = $request->file('birthcertificate_file'); //File that will request
@@ -469,7 +481,7 @@ class EmployeesController extends Controller
             //     'resume' => $resume,
             // ]);
 
-            // return Redirect::to(url()->previous());//Return previous page
+            return Redirect::to(url()->previous());//Return previous page
             // return redirect()->back();
         }
     }
