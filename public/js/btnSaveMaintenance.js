@@ -74,7 +74,7 @@ $('#branchSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveBranchModal').modal('hide');
-                        Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
+                        Swal.fire("BRANCH ADDED SUCCESSFULLY","","success");
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -122,7 +122,7 @@ $('#supervisorSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveSupervisorModal').modal('hide');
-                        Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
+                        Swal.fire("SUPERVISOR ADDED SUCCESSFULLY","","success");
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){

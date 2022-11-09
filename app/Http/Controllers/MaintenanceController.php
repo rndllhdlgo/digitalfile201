@@ -19,19 +19,19 @@ class MaintenanceController extends Controller
     }
 
     public function companySave(Request $request){
-        $company_name = ucwords($request->company);
+        // $company_name = ucwords($request->company);
 
-        if(Company::whereRaw('UPPER(company) = ?', strtoupper($company_name))->count() > 0){
+        if(Company::whereRaw('UPPER(company) = ?', strtoupper($request->company))->count() > 0){
             return 'duplicate';
         }
         $company = new Company;
-        $company->company = $company_name;
+        $company->company = ucwords($request->company);
         $sql = $company->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED COMPANY: User successfully added Company: '$company_name'."; //Display logs in home page
+            $userlogs->activity = "ADDED COMPANY: User successfully added Company: ($request->company)."; //Display logs in home page
             $userlogs->save();
 
             return 'true';
@@ -58,7 +58,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED COMPANY: User successfully updated Company: FROM '$company_orig' TO '$company_new'.";
+            $userlogs->activity = "UPDATED COMPANY: User successfully updated Company: FROM ($company_orig) TO ($company_new).";
             $userlogs->save();
 
             return 'true';
@@ -75,20 +75,20 @@ class MaintenanceController extends Controller
     }
 
     public function branchSave(Request $request){
-        $branch_nme = ucwords($request->branch_name);
+        $branch_details_name = ucwords($request->branch_name);
 
-        if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_nme))->count() > 0){
+        if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_details_name))->count() > 0){
             return 'duplicate';
         }
 
         $branch = new Branch;
-        $branch->branch_name = $branch_nme;
+        $branch->branch_name = $branch_details_name;
         $sql = $branch->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED BRANCH: User successfully added Branch: '$branch_nme'."; //Display logs in home page
+            $userlogs->activity = "ADDED BRANCH: User successfully added Branch: ($branch_details_name)."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -114,7 +114,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch: FROM '$branch_orig' TO '$branch_new'.";
+            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch: FROM ($branch_orig) TO ($branch_new).";
             $userlogs->save();
 
             return 'true';
@@ -131,20 +131,21 @@ class MaintenanceController extends Controller
     }
 
     public function supervisorSave(Request $request){
-        $supervisor_nme = ucwords($request->supervisor_name);
+        // $supervisor_details_name = ucwords($request->supervisor_name);
 
-        if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_nme))->count() > 0){
+        if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($request->supervisor_name))->count() > 0){
             return 'duplicate';
         }
 
         $supervisor = new Supervisor;
-        $supervisor->supervisor_name = $supervisor_nme;
+        // $supervisor->supervisor_name = $supervisor_details_name;
+        $supervisor->supervisor_name = ucwords($request->supervisor_name);
         $sql = $supervisor->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED SUPERVISOR: User successfully added Supervisor: '$supervisor_nme'."; //Display logs in home page
+            $userlogs->activity = "ADDED SUPERVISOR: User successfully added Supervisor: ($request->supervisor_name)."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -170,7 +171,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch name: FROM '$supervisor_orig' TO '$supervisor_new'.";
+            $userlogs->activity = "UPDATED BRANCH: User successfully updated Branch name: FROM ($supervisor_orig) TO ($supervisor_new).";
             $userlogs->save();
 
             return 'true';
@@ -203,7 +204,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: '$shift_code_logs $shift_working_hours_logs $shift_break_time_logs'."; //Display logs in home page
+            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE ($shift_code_logs) WORKING HOURS ($shift_working_hours_logs) BREAK TIME ($shift_break_time_logs)'."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -215,6 +216,12 @@ class MaintenanceController extends Controller
     public function shiftUpdate(Request $request){
         $shift_code_orig = $request->shift_code_orig;
         $shift_code_new = ucwords($request->shift_code_new);
+
+        if(strtoupper($shift_code_orig) != strtoupper($shift_code_new)){
+            if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_new))->count() > 0){
+                return 'duplicate';
+            }
+        }
 
         $shift_working_hours_orig = $request->shift_working_hours_orig;
         $shift_working_hours_new = strtoupper($request->shift_working_hours_new);
@@ -229,19 +236,50 @@ class MaintenanceController extends Controller
         $sql = $shift->save();
 
         if($sql){
+
+            // $userlogs = new UserLogs;
+            // $userlogs->user_id = auth()->user()->id;
+            //     if($shift_code_orig != $shift_code_new){
+            //         $userlogs->activity = "UPDATED SHIFT CODE: User successfully updated Shift Code: FROM '$shift_code_orig' TO '$shift_code_new'.";
+            //     }
+            //     if($shift_working_hours_orig != $shift_working_hours_new){
+            //         $userlogs->activity = "UPDATED WORKING HOURS: User successfully updated Working Hours with Shift Code:'$shift_code_orig' FROM '$shift_working_hours_orig' TO '$shift_working_hours_new'.";
+            //     }
+            //     if($shift_break_time_orig != $shift_break_time_new){
+            //         $userlogs->activity = "UPDATED BREAK TIME: User successfully updated Break Time with Shift Code:'$shift_code_orig' FROM '$shift_break_time_orig' TO '$shift_break_time_new'.";
+            //     }
+            //     if($shift_code_orig != $shift_code_new && $shift_working_hours_orig != $shift_working_hours_new && $shift_break_time_orig != $shift_break_time_new){
+            //         $userlogs->activity = "UPDATED SHIFT: Shift Code updated FROM '$shift_code_orig 'TO' '$shift_code_new', Working Hours updated FROM '$shift_working_hours_orig' 'TO' $shift_working_hours_new', Break Time updated FROM '$shift_break_time_orig 'TO' $shift_break_time_new'.";
+            //     }
+            // $userlogs->save();
+
+            if($shift_code_orig != $shift_code_new){
+                $shift_code_change = "(Shift Code: FROM '$shift_code_orig' TO '$shift_code_new')";
+            }
+            else{
+                $shift_code_change = NULL;
+            }
+
+            if($shift_working_hours_orig != $shift_working_hours_new){
+                $shift_working_hours_change = "(Working Hours: FROM '$shift_working_hours_orig' TO '$shift_working_hours_new')";
+            }
+            else{
+                $shift_working_hours_change = NULL;
+            }
+
+            if($shift_break_time_orig != $shift_break_time_new){
+                $shift_break_time_change = "(Working Hours: FROM '$shift_break_time_orig' TO '$shift_break_time_new')";
+            }
+            else{
+                $shift_break_time_change = NULL;
+            }
+
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-                if($shift_code_orig != $shift_code_new){
-                    $userlogs->activity = "UPDATED SHIFT CODE: User successfully updated Shift Code: FROM '$shift_code_orig' TO '$shift_code_new'.";
-                }
-                if($shift_working_hours_orig != $shift_working_hours_new){
-                    $userlogs->activity = "UPDATED WORKING HOURS: User successfully updated Working Hours with Shift Code:'$shift_code_orig' FROM '$shift_working_hours_orig' TO '$shift_working_hours_new'.";
-                }
-                if($shift_break_time_orig != $shift_break_time_new){
-                    $userlogs->activity = "UPDATED BREAK TIME: User successfully updated Break Time with Shift Code:'$shift_code_orig' FROM '$shift_break_time_orig' TO '$shift_break_time_new'.";
-                }
+            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of '$shift_code_orig' with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
             return 'true';
+
         }
         else{
             return 'false';

@@ -31,11 +31,11 @@ $('#companyUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateCompanyModal').modal('hide');
-                        Swal.fire("COMPANY UPDATED SUCCESSFULLY","","success");
+                        Swal.fire("COMPANY NAME UPDATED SUCCESSFULLY","","success");
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
-                        Swal.fire("DUPLICATE COMPANY NAME","","error");
+                        Swal.fire("COMPANY NAME ALREADY EXIST!","Please enter different Company Name","error");
                         return false;
                     }
                     else{
@@ -82,11 +82,11 @@ $('#branchUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateBranchModal').modal('hide');
-                        Swal.fire("COMPANY UPDATED SUCCESSFULLY","","success");
+                        Swal.fire("BRANCH NAME UPDATED SUCCESSFULLY","","success");
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
-                        Swal.fire("DUPLICATE BRANCH NAME","","error");
+                        Swal.fire("BRANCH NAME ALREADY EXIST!","Please enter different Branch Name","error");
                         return false;
                     }
                     else{
@@ -134,11 +134,11 @@ $('#supervisorUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateSupervisorModal').modal('hide');
-                        Swal.fire("COMPANY UPDATED SUCCESSFULLY","","success");
+                        Swal.fire("SUPERVISOR NAME UPDATED SUCCESSFULLY","","success");
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
-                        Swal.fire("DUPLICATE SUPERVISOR NAME","","error");
+                        Swal.fire("SUPERVISOR NAME ALREADY EXIST!","Please enter different Supervisor Name","error");
                         return false;
                     }
                     else{
@@ -195,11 +195,11 @@ $('#shiftUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateShiftModal').modal('hide');
-                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
-                        Swal.fire("DUPLICATE SHIFT CODE","","error");
+                        Swal.fire("SHIFT CODE ALREADY EXIST!","Please enter different Shift Code","error");
                         return false;
                     }
                     else{
