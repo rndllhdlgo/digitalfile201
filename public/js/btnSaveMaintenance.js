@@ -192,3 +192,69 @@ $('#shiftSave').on('click',function(){
         }
     }); 
 });
+
+$('#jobPositionSave').on('click',function(){
+    var job_position_name = $('#job_position_name').val();
+
+    Swal.fire({
+        title: 'Do you want to save?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $.ajax({
+                url: '/maintenance/jobPositionSave',
+                type: "POST",
+                headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    job_position_name:job_position_name
+                },
+                success: function(data){
+                    if(data.result == 'true'){
+                        $('#savePositionModal').modal('hide');
+                        $('#job_position_id').val(data.id);
+                        var jobDescriptionTable = $('#job_description_data_table').DataTable({
+                            dom:'t',
+                        });
+                        var jobDescription_data  = jobDescriptionTable.rows().data();
+                        $.each(jobDescription_data, function(key, value){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/maintenance/jobDescriptionSave',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    'job_position_id': data.id,
+                                    'job_description': value[1]
+                                },
+                            });
+                        });
+                        // Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
+                        // setTimeout(function(){companyTable.ajax.reload();}, 2000);
+                    }
+                    else if(data == 'duplicate'){
+                        Swal.fire("JOB POSITION NAME ALREADY EXIST","Please enter different Job Position Name","error");
+                        return false;
+                    }
+                    else{
+                        $('#savePositionModal').modal('hide');
+                        // Swal.fire("SAVE FAILED", "", "error");
+                        // setTimeout(function(){companyTable.ajax.reload();}, 2000);
+                    }
+                }
+            });
+        }
+    }); 
+});
