@@ -151,20 +151,6 @@ $('#employee_contact_number').on('click',function(){
     $('#employee_contact_number').val('+63 9');
 });
 
-//Verify that the user has filled out all required fields.
-setInterval(checkRequiredFields, 0);
-function checkRequiredFields(){
-    if($(".required_field:visible").length > 0){
-        $('.required_field').each(function(){
-            if(!$(this).val()){
-                $(this).addClass('requiredInput');
-            }
-            else{
-                $(this).removeClass('requiredInput');
-            }
-        });
-    }
-}
 
 
 

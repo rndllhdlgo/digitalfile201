@@ -1,4 +1,5 @@
 var table = $('table.user_activity_table').DataTable({
+    dom:'lf<"breakspace">trip',
     language:{
         processing: "Loading...",
         emptyTable: "No data available in table"
@@ -30,4 +31,6 @@ var table = $('table.user_activity_table').DataTable({
     initComplete: function(){
         $('#loading').hide();
     }
+    
 });
+$('div.breakspace').html('<br><br>');

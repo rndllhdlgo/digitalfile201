@@ -15,12 +15,12 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Company</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-outline">
-                        <input type="text" id="company" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="company">Company Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="company" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="company" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -35,13 +35,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Company Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="company_id">
-                    <div class="form-outline">
-                        <input type="text" id="company_details" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="company_details">Company Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="company_details" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="company_details" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">

@@ -118,6 +118,9 @@
         @if(Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/btnViewMaintenance.js"></script>
         @endif
+        @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance'))
+            <script src="{{ env('APP_URL')}}js/global.js"></script>
+        @endif
         
         <script>
             const d = new Date().toDateString();

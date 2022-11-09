@@ -5,7 +5,7 @@
             <!-- Modal Header -->
             <div class="modal-header" style="background-color:#0d1a80">
                 <h4 class="modal-title text-white"></h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE" style="background-color:white !important;"> </button>
+                <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
             </div>
 
             <!-- Modal body -->

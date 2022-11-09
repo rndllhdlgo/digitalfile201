@@ -15,12 +15,12 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Supervisor</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-outline">
-                        <input type="text" id="supervisor_name" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="supervisor_name">Supervisor Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="supervisor_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="supervisor_name" class="formlabel form-label"><i class="fas fa-address-card"></i> SUPERVISOR NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -35,13 +35,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Supervisor Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="supervisor_id">
-                    <div class="form-outline">
-                        <input type="text" id="supervisor_details" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="supervisor_details">Supervisor Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="supervisor_details" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="supervisor_details" class="formlabel form-label"><i class="fas fa-address-card"></i> SUPERVISOR NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">

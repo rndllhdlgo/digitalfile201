@@ -7,9 +7,9 @@ $('#company_tab').on('click',function(){
     $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#company_div').fadeIn();
-    $('#branch').hide();
+    $('#branch_div').hide();
     $('#shift_div').hide();
-    $('#position').hide();
+    $('#position_div').hide();
     $('#supervisor_div').hide();
 
     $('#addCompanyBtn').show();
@@ -26,9 +26,9 @@ $('#branch_tab').on('click',function(){
     $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#company_div').hide();
-    $('#branch').show();
+    $('#branch_div').show();
     $('#shift_div').hide();
-    $('#position').hide();
+    $('#position_div').hide();
     $('#supervisor_div').hide();
 
     $('#addCompanyBtn').hide();
@@ -45,9 +45,9 @@ $('#shift_tab').on('click',function(){
     $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#company_div').hide();
-    $('#branch').hide();
+    $('#branch_div').hide();
     $('#shift_div').show();
-    $('#position').hide();
+    $('#position_div').hide();
     $('#supervisor_div').hide();
 
     $('#addCompanyBtn').hide();
@@ -64,9 +64,9 @@ $('#position_tab').on('click',function(){
     $('#position_tab').addClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#company_div').hide();
-    $('#branch').hide();
+    $('#branch_div').hide();
     $('#shift_div').hide();
-    $('#position').show();
+    $('#position_div').show();
     $('#supervisor_div').hide();
 
     $('#addCompanyBtn').hide();
@@ -83,9 +83,9 @@ $('#supervisor_tab').on('click',function(){
     $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').addClass('tabactive');
     $('#company_div').hide();
-    $('#branch').hide();
+    $('#branch_div').hide();
     $('#shift_div').hide();
-    $('#position').hide();
+    $('#position_div').hide();
     $('#supervisor_div').show();
 
     $('#addCompanyBtn').hide();
@@ -169,6 +169,15 @@ function checkField(){
             $('#shiftUpdate').prop('disabled',false);
         }
     }
+
+    // if($('#savePositionModal').is(":visible")){
+    //     if(!$('#job_position').val() || !$('#job_description').val()){
+    //         $('#jobPositionSave').prop('disabled',true);
+    //     }
+    //     else{
+    //         $('#jobPositionSave').prop('disabled',false);
+    //     }
+    // }
 }
 
 //Open Modal on click
@@ -192,4 +201,37 @@ $('#addShiftBtn').on('click',function(){
     $('#shift_code').val('');
     $('#shift_working_hours').val('');
     $('#shift_break_time').val('');
+});
+
+$('#addPositionBtn').on('click',function(){
+    $('#savePositionModal').modal('show');
+    $('#job_position_name').val('');
+    $('.btn-jobPosition').click();
+});
+
+setInterval(checkblankforJobPosition,0);
+function checkblankforJobPosition(){
+    if(!$('#job_description').val()){
+        $('#btnPositionAdd').prop('disabled',true);
+    }
+    else{
+        $('#btnPositionAdd').prop('disabled',false);
+        $('#btnPositionAdd').css('display','block');
+    }
+}
+//Multiple Column Job Position
+$('#btnPositionAdd').click(function(){
+    $('#job_description_data_table').show();
+    var job_description = $('#job_description').val().trim();
+
+    var dynamicJobPosition = "<tr>"+
+                                "<td style='width:200px' class='pb-3 pt-3'></td>"+
+                                "<td style='width:450px' class='pb-3 pt-3 text-capitalize'>" + job_description + "</td>" + 
+                                "<td><button class='btn btn-danger btn-jobPosition center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                            "</tr>";
+    $('#job_description_data_table tbody').append(dynamicJobPosition);
+    $('#job_description').val("");
+    $('.btn-jobPosition').click(function(){
+        $(this).parent().parent().remove();  
+    });
 });

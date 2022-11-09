@@ -82,7 +82,7 @@
                         <td><p class="file_title"><b>RESUME</b></p></td>
                         <td>
                             <button type="button" id="resume_button" class="btn btn-primary bp" onclick="$('#resume_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"    id="resume_file"   class="hiddenFile"     onchange="return resumeValidation(resume_file)" accept=".pdf" name="resume_file">
+                            <input type="file"    id="resume_file"   class="required_field hiddenFile"     onchange="return resumeValidation(resume_file)" accept=".pdf" name="resume_file">
                             <span id="resume_text">No file chosen.</span>
                         </td>
                         <td> 
@@ -135,7 +135,7 @@
                         <td><p class="file_title"><b>MEDICAL CERTIFICATE</b></p></td>
                         <td>
                             <button type="button"  id="medical_certificate_button" class="btn btn-primary bp" onclick="$('#medical_certificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                            <input type="file"     id="medical_certificate_file"   class="hiddenFile"     onchange="return medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
+                            <input type="file"     id="medical_certificate_file"   class="required_field hiddenFile"     onchange="return medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
                             <span id="medical_certificate_text">No file chosen.</span>
                         </td>
                         <td>

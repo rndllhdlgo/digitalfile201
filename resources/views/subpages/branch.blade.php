@@ -1,4 +1,4 @@
-<div id="branch" class="tab-pane fade" style="border-radius:0px;">
+<div id="branch_div" class="tab-pane fade" style="border-radius:0px;">
     <br>
     <table class="table table-striped table-hover table-bordered w-100 branchTable" id="branchTable">
         <thead class="text-white" style="background-color:#0d1a80;">
@@ -15,12 +15,12 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Branch</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-outline">
-                        <input type="text" id="branch_name" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="branch_name">Branch Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="branch_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="branch_name" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -35,13 +35,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Branch Details</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="branch_id">
-                    <div class="form-outline">
-                        <input type="text" id="branch_details" class="form-control text-capitalize" autocomplete="off">
-                        <label class="form-label" for="branch_details">Branch Name</label>
+                    <div class="f-outline">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="branch_details" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="branch_details" class="formlabel form-label"><i class="fas fa-address-card"></i> BRANCH NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">

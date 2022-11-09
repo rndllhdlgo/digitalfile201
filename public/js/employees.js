@@ -24,14 +24,6 @@
 //     if(go) return "You have unsaved changes";
 // });
 
-//Display current date and time
-setInterval(dateTime,0)
-function dateTime(){
-    var d = new Date().toDateString();
-    var t = new Date().toLocaleTimeString();
-    document.getElementById("date").innerHTML = d + ' ' + t;
-}
-
 //Display Data Table Function
 var employeesTable;
 $(document).ready(function () {

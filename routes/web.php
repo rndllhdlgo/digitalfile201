@@ -109,3 +109,7 @@ Route::any('/maintenance/supervisorUpdate','MaintenanceController@supervisorUpda
 
 Route::any('/maintenance/shiftData','MaintenanceController@shiftData');
 Route::any('/maintenance/shiftSave','MaintenanceController@shiftSave');
+Route::any('/maintenance/shiftUpdate','MaintenanceController@shiftUpdate');
+
+Route::any('/maintenance/jobPositionSave','MaintenanceController@jobPositionSave');
+Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');

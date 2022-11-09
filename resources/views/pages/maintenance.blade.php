@@ -16,13 +16,13 @@
             <a class="nav-link pill" id="company_tab" data-bs-toggle="tab" href="#company_div"> COMPANY</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pill" id="branch_tab" data-bs-toggle="tab" href="#branch"> BRANCH</a>
+            <a class="nav-link pill" id="branch_tab" data-bs-toggle="tab" href="#branch_div"> BRANCH</a>
         </li>
         <li class="nav-item">
             <a class="nav-link pill" id="shift_tab" data-bs-toggle="tab" href="#shift_div"> SHIFT</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pill" id="position_tab" data-bs-toggle="tab" href="#position"> POSITION</a>
+            <a class="nav-link pill" id="position_tab" data-bs-toggle="tab" href="#position_div"> POSITION</a>
         </li>
         <li class="nav-item">
             <a class="nav-link pill" id="supervisor_tab" data-bs-toggle="tab" href="#supervisor_div"> SUPERVISOR</a>
