@@ -249,14 +249,66 @@ $('#jobPositionUpdate').on('click',function(){
                         // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
                     }
-                    // else if(data == 'duplicate'){
-                    //     Swal.fire("SHIFT CODE ALREADY EXIST!","Please enter different Shift Code","error");
-                    //     return false;
-                    // }
+                    else if(data == 'duplicate'){
+                        Swal.fire("JOB POSITION NAME ALREADY EXIST!","Please enter different Job Position Name","error");
+                        return false;
+                    }
                     else{
                         $('#updateJobPositionModal').modal('hide');
                         // Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+                    }
+                }
+            });
+        }
+    }); 
+});
+
+
+$('#jobDescriptionUpdate').on('click',function(){
+    var job_description_id = $('#job_description_id').val();
+    var job_description_orig = $('#job_description').val();
+    var job_description_new = $('#job_details_description').val();
+
+    Swal.fire({
+        title: 'Do you want to update changes?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $.ajax({
+                url: '/maintenance/jobDescriptionUpdate',
+                type: "POST",
+                headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    job_description_id:job_description_id,
+                    job_description_orig:job_description_orig,
+                    job_description_new:job_description_new
+                },
+                success: function(data){
+                    if(data == 'true'){
+                        $('#updateJobDescriptionModal').modal('hide');
+                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
+                    }
+                    // else if(data == 'duplicate'){
+                    //     Swal.fire("JOB POSITION NAME ALREADY EXIST!","Please enter different Job Position Name","error");
+                    //     return false;
+                    // }
+                    else{
+                        $('#updateJobDescriptionModal').modal('hide');
+                        // Swal.fire("UPDATE FAILED", "", "error");
+                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }
                 }
             });

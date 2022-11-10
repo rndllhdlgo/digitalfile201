@@ -178,6 +178,15 @@ function checkField(){
     //         $('#jobPositionSave').prop('disabled',false);
     //     }
     // }
+
+    if($('#updateJobPositionModal').is(":visible")){
+        if($('#job_position_name').val() == $('#job_details_position_name').val() || !$('#job_details_position_name').val()){
+            $('#jobPositionUpdate').prop('disabled',true);
+        }
+        else{
+            $('#jobPositionUpdate').prop('disabled',false);
+        }
+    }
 }
 
 //Open Modal on click
@@ -219,6 +228,7 @@ function checkblankforJobPosition(){
         $('#btnPositionAdd').css('display','block');
     }
 }
+
 //Multiple Column Job Position
 $('#btnPositionAdd').click(function(){
     $('#job_description_data_table').show();
@@ -228,7 +238,7 @@ $('#btnPositionAdd').click(function(){
                                 "<td style='width:200px' class='pb-3 pt-3'></td>"+
                                 "<td style='width:450px' class='pb-3 pt-3 text-capitalize'>" + job_description + "</td>" + 
                                 "<td><button class='btn btn-danger btn-jobPosition center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-                            "</tr>";
+                             "</tr>";
     $('#job_description_data_table tbody').append(dynamicJobPosition);
     $('#job_description').val("");
     $('.btn-jobPosition').click(function(){

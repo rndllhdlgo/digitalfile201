@@ -118,7 +118,7 @@ var jobPositionTable = $('#jobPositionTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-//View Branch Data
+//View Job Position Data
 $('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = jobPositionTable.row(this).data();
 
@@ -129,16 +129,27 @@ $('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee infor
     $('#updateJobPositionModal').modal('show');
 });
 
-// //Job Position DataTable
-// var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
-//     dom:'lf<"breakspace">rtip',
-//     processing:true,
-//     serverSide:false,
-//     ajax: {
-//         url: '/maintenance/jobDescriptionData',
-//     },
-//     columns: [
-//         {data: 'job_description'}
-//     ] 
-// });
-// $('div.breakspace').html('<br><br>');
+//Job Position DataTable
+var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
+    dom:'lf<"breakspace">rtip',
+    processing:true,
+    serverSide:false,
+    ajax: {
+        url: '/maintenance/jobDescriptionData',
+    },
+    columns: [
+        {data: 'job_description'}
+    ] 
+});
+$('div.breakspace').html('<br><br>');
+
+//View Job Description Data
+$('#jobDescriptionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+    var data = jobDescriptionTable.row(this).data();
+
+    $('#job_description_id').val(data.id);
+    $('#job_description').val(data.job_description);
+    $('#job_details_description').val(data.job_description);
+
+    $('#updateJobDescriptionModal').modal('show');
+});

@@ -223,10 +223,10 @@ $('#jobPositionSave').on('click',function(){
                     if(data.result == 'true'){
                         $('#savePositionModal').modal('hide');
                         $('#job_position_id').val(data.id);
-                        var jobDescriptionTable = $('#job_description_data_table').DataTable({
+                        var jobDescription_Table = $('#job_description_data_table').DataTable({
                             dom:'t',
                         });
-                        var jobDescription_data  = jobDescriptionTable.rows().data();
+                        var jobDescription_data  = jobDescription_Table.rows().data();
                         $.each(jobDescription_data, function(key, value){
                             $.ajax({
                                 type: 'POST',
@@ -243,6 +243,7 @@ $('#jobPositionSave').on('click',function(){
                         });
                         // Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
                         Swal.fire("JOB POSITION NAME ALREADY EXIST","Please enter different Job Position Name","error");
@@ -251,7 +252,8 @@ $('#jobPositionSave').on('click',function(){
                     else{
                         $('#savePositionModal').modal('hide');
                         // Swal.fire("SAVE FAILED", "", "error");
-                        // setTimeout(function(){companyTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }
                 }
             });

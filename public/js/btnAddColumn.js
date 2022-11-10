@@ -190,7 +190,7 @@ $(document).ready(function(){
         var job_inclusive_years = $('#job_inclusive_years').val().trim();
 
         var dynamicJobHistory = "<tr>"+
-                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'> " + job_name + "</td>" + 
+                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_name + "</td>" + 
                                     "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_position + "</td>" +
                                     "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_address + "</td>" + 
                                     "<td style='width:18%' class='text-center pb-3 pt-3'>" + job_contact_details + "</td>" + 

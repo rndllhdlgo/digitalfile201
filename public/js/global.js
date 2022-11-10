@@ -20,3 +20,13 @@ function checkRequiredFields(){
         });
     }
 }
+
+setInterval(checkJobDescription, 0);
+function checkJobDescription(){
+    if(!$('#employee_position').val()){
+        $('#viewJobDescriptionBtn').prop('disabled',true);
+    }
+    else{
+        $('#viewJobDescriptionBtn').prop('disabled',false);
+    }
+}

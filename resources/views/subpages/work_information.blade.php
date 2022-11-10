@@ -55,14 +55,14 @@
     </div>
 
     <div class="row mb-3">
-        <div class="col">
+        <div class="col-2">
             <div class="f-outline">
                 <input class="forminput form-control required_field capitalize" type="search" id="employee_salary" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                 <label for="employee_salary" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> SALARY <span class="span_salary span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
         </div>
 
-        <div class="col">
+        <div class="col-2">
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
@@ -74,19 +74,22 @@
             </div>
         </div>
 
-        <div class="col">
+        <div class="col-2">
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT POSITION</option>
-                        @foreach($jobpositions as $jobposition)
-                            <option value="{{$jobposition->id}}">{{$jobposition->job_position_name}}</option>
+                        @foreach($jobPositions as $jobPosition)
+                            <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
                         @endforeach
                 </select>
-                <label for="employee_position" class="formlabel form-label"><i class="fas fa-info"></i> POSITION <span class="span_employee_position span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                <label for="employee_position" class="formlabel form-label"><i class="fas fa-info"></i> JOB POSITION <span class="span_employee_position span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>
         </div>
+        <div class="col-2">
+            <button type="button" class="btn btn-sm btn-primary grow p-2 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
+        </div>
 
-        <div class="col">
+        <div class="col-4">
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SUPERVISOR </option>
@@ -116,7 +119,6 @@
         </div>
         <div class="col">
             <div class="f-outline">
-                {{-- <input class="forminput form-control optional" type="search" id="employee_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onInput="this.value = phoneFormat(this.value)" ondrop="return false;" onpaste="return false;"> --}}
                 <input class="forminput form-control optional" type="search" id="employee_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="14" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)" onkeydown="return ValidateInput(this);">
                 <p id="employee_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p>
                 <p id="duplicate_employee_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
@@ -163,4 +165,28 @@
         </div>
     </div>
     <hr class="hr-design">
+
+    <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0d1a80;">
+                    <h5 class="modal-title text-white" id="exampleModalLabel">JOB DESCRIPTION</h5>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                     <ul class="job_description_div" style="color:black !important;">
+
+                     </ul>
+                    {{-- @foreach($jobDescriptions as $jobDescription)
+                        <ul>
+                            <li style="color:black;">{{$jobDescription->job_description}}</li>
+                        </ul> 
+                    @endforeach --}}
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div> {{-- End of Work Information Nav --}}

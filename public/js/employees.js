@@ -167,6 +167,7 @@ function checkclearform(){
     }
 }
 
+
 $('#btnUpdate').hide();
 $('#btnCancelEdit').hide();
 $('#solo_parent').hide();//Hide solo parent section
@@ -583,6 +584,43 @@ $('#province').on('change', function(){
             });
         }
     });
+});
+
+
+$('#viewJobDescriptionBtn').on('click',function(){
+    $('ul.job_description_div').empty();
+    $.ajax({
+        type: 'GET',
+        url: '/setJobDescription',
+        data:{
+            'id': $('#employee_position').val()
+        },
+        success: function(data){
+            var list = $.map(data, function(value, index){
+                return [value];
+            });
+            list.forEach(value => {
+                $('ul.job_description_div').append('<li>' + value.job_description + '</li>');
+            });
+        }
+    });
+    
+    $.ajax({
+        type: 'GET',
+        url: '/setJobPosition',
+        data:{
+            'id': $('#employee_position').val()
+        },
+        success: function(data){
+            var list = $.map(data, function(value, index){
+                return [value];
+            });
+            list.forEach(value => {
+                $('ul.job_description_div').append('<h3 style="font-size:30px;">'+value.job_position_name+'</h3>');
+            });
+        }
+    });
+    $('#viewJobDescriptionModal').modal('show');
 });
 
 //Fill All Function

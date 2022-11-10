@@ -111,5 +111,15 @@ Route::any('/maintenance/shiftData','MaintenanceController@shiftData');
 Route::any('/maintenance/shiftSave','MaintenanceController@shiftSave');
 Route::any('/maintenance/shiftUpdate','MaintenanceController@shiftUpdate');
 
+Route::any('/maintenance/jobPositionData','MaintenanceController@jobPositionData');
 Route::any('/maintenance/jobPositionSave','MaintenanceController@jobPositionSave');
+Route::any('/maintenance/jobPositionUpdate','MaintenanceController@jobPositionUpdate');
+
+Route::any('/maintenance/jobDescriptionData','MaintenanceController@jobDescriptionData');
 Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');
+Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescriptionUpdate');
+
+Route::any('/setJobPosition','PagesController@setJobPosition');
+Route::any('/setJobDescription','PagesController@setJobDescription');
+
+
