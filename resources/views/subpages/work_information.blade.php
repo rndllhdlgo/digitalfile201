@@ -78,9 +78,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT POSITION</option>
-                    <option value="Jr. Programmer">Jr. Programmer</option>
-                    <option value="Position 2">Position 2</option>
-                    <option value="Position 3">Position 3</option>
+                        @foreach($jobpositions as $jobposition)
+                            <option value="{{$jobposition->id}}">{{$jobposition->job_position_name}}</option>
+                        @endforeach
                 </select>
                 <label for="employee_position" class="formlabel form-label"><i class="fas fa-info"></i> POSITION <span class="span_employee_position span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
             </div>

@@ -238,23 +238,6 @@ class MaintenanceController extends Controller
         $sql = $shift->save();
 
         if($sql){
-
-            // $userlogs = new UserLogs;
-            // $userlogs->user_id = auth()->user()->id;
-            //     if($shift_code_orig != $shift_code_new){
-            //         $userlogs->activity = "UPDATED SHIFT CODE: User successfully updated Shift Code: FROM '$shift_code_orig' TO '$shift_code_new'.";
-            //     }
-            //     if($shift_working_hours_orig != $shift_working_hours_new){
-            //         $userlogs->activity = "UPDATED WORKING HOURS: User successfully updated Working Hours with Shift Code:'$shift_code_orig' FROM '$shift_working_hours_orig' TO '$shift_working_hours_new'.";
-            //     }
-            //     if($shift_break_time_orig != $shift_break_time_new){
-            //         $userlogs->activity = "UPDATED BREAK TIME: User successfully updated Break Time with Shift Code:'$shift_code_orig' FROM '$shift_break_time_orig' TO '$shift_break_time_new'.";
-            //     }
-            //     if($shift_code_orig != $shift_code_new && $shift_working_hours_orig != $shift_working_hours_new && $shift_break_time_orig != $shift_break_time_new){
-            //         $userlogs->activity = "UPDATED SHIFT: Shift Code updated FROM '$shift_code_orig 'TO' '$shift_code_new', Working Hours updated FROM '$shift_working_hours_orig' 'TO' $shift_working_hours_new', Break Time updated FROM '$shift_break_time_orig 'TO' $shift_break_time_new'.";
-            //     }
-            // $userlogs->save();
-
             if($shift_code_orig != $shift_code_new){
                 $shift_code_change = "(Shift Code: FROM '$shift_code_orig' TO '$shift_code_new')";
             }
@@ -288,17 +271,27 @@ class MaintenanceController extends Controller
         }
     }
 
+    public function jobPositionData(){
+        $jobposition = JobPosition::all();
+        return DataTables::of($jobposition)->make(true);
+    }
+
     public function jobPositionSave(Request $request){
 
         if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($request->job_position_name))->count() > 0){
             return 'duplicate';
         }
 
-        $jobposition = new JobPosition;
-        $jobposition->job_position_name = ucwords($request->job_position_name);
-        $sql = $jobposition->save();
+        $jobPosition = new JobPosition;
+        $jobPosition->job_position_name = ucwords($request->job_position_name);
+        $sql = $jobPosition->save();
 
         if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: ($request->job_position_name)."; //Display logs in home page
+            $userlogs->save();
+
             $result = 'true';
             $id = $jobposition->id;
         }
@@ -311,11 +304,37 @@ class MaintenanceController extends Controller
         return response()->json($data);
     }
 
+    public function jobPositionUpdate(Request $request){
+        $job_position_name_orig = $request->job_position_name_orig;
+        $job_position_name_new = $request->job_position_name_new;
+
+        $jobPosition = JobPosition::find($request->job_position_name_id);
+        $jobPosition->job_position_name = $job_position_name_new;
+        $sql = $jobPosition->save();
+
+        if($sql){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    public function jobDescriptionData(){
+        $jobDescription = JobDescription::all();
+        return DataTables::of($jobDescription)->make(true);
+    }
+
     public function jobDescriptionSave(Request $request){
 
         $jobDescription = new JobDescription;
         $jobDescription->job_position_id = $request->job_position_id;
         $jobDescription->job_description = ucfirst($request->job_description);
         $jobDescription->save();
+
+        $userlogs = new UserLogs;
+        $userlogs->user_id = auth()->user()->id;
+        $userlogs->activity = "ADDED JOB DESCRIPTION: User successfully added Job Description: ($request->job_description) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
+        $userlogs->save();
     }
 }

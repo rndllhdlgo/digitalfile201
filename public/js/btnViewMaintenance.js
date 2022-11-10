@@ -103,3 +103,42 @@ $('#shiftTable').on('dblclick','tbody tr',function(){//View employee information
 
     $('#updateShiftModal').modal('show');
 });
+
+//Job Position DataTable
+var jobPositionTable = $('#jobPositionTable').DataTable({
+    dom:'lf<"breakspace">rtip',
+    processing:true,
+    serverSide:false,
+    ajax: {
+        url: '/maintenance/jobPositionData',
+    },
+    columns: [
+        {data: 'job_position_name'}
+    ] 
+});
+$('div.breakspace').html('<br><br>');
+
+//View Branch Data
+$('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+    var data = jobPositionTable.row(this).data();
+
+    $('#job_position_name_id').val(data.id);
+    $('#job_position_name').val(data.job_position_name);
+    $('#job_details_position_name').val(data.job_position_name);
+
+    $('#updateJobPositionModal').modal('show');
+});
+
+// //Job Position DataTable
+// var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
+//     dom:'lf<"breakspace">rtip',
+//     processing:true,
+//     serverSide:false,
+//     ajax: {
+//         url: '/maintenance/jobDescriptionData',
+//     },
+//     columns: [
+//         {data: 'job_description'}
+//     ] 
+// });
+// $('div.breakspace').html('<br><br>');

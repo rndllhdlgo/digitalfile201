@@ -242,7 +242,7 @@ $('#jobPositionSave').on('click',function(){
                             });
                         });
                         // Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
-                        // setTimeout(function(){companyTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
                         Swal.fire("JOB POSITION NAME ALREADY EXIST","Please enter different Job Position Name","error");

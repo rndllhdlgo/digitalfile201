@@ -213,3 +213,54 @@ $('#shiftUpdate').on('click',function(){
     }); 
 });
 
+$('#jobPositionUpdate').on('click',function(){
+    var job_position_name_id = $('#job_position_name_id').val();
+    var job_position_name_orig = $('#job_position_name').val();
+    var job_position_name_new = $('#job_details_position_name').val();
+
+    Swal.fire({
+        title: 'Do you want to update changes?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $.ajax({
+                url: '/maintenance/jobPositionUpdate',
+                type: "POST",
+                headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    job_position_name_id:job_position_name_id,
+                    job_position_name_orig:job_position_name_orig,
+                    job_position_name_new:job_position_name_new
+                },
+                success: function(data){
+                    if(data == 'true'){
+                        $('#updateJobPositionModal').modal('hide');
+                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+                    }
+                    // else if(data == 'duplicate'){
+                    //     Swal.fire("SHIFT CODE ALREADY EXIST!","Please enter different Shift Code","error");
+                    //     return false;
+                    // }
+                    else{
+                        $('#updateJobPositionModal').modal('hide');
+                        // Swal.fire("UPDATE FAILED", "", "error");
+                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+                    }
+                }
+            });
+        }
+    }); 
+});
+

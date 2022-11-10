@@ -11,6 +11,7 @@ use App\Models\Company;
 use App\Models\Branch;
 use App\Models\Supervisor;
 use App\Models\Shift;
+use App\Models\JobPosition;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -30,7 +31,8 @@ class PagesController extends Controller
         $branches = Branch::select('id','branch_name')->get()->sortBy('branch_name');
         $supervisors = Supervisor::select('id','supervisor_name')->get()->sortBy('supervisor_name');
         $shifts = Shift::select('id','shift_code','shift_working_hours','shift_break_time')->get()->sortBy('shift_code');
-        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts'));
+        $jobpositions = JobPosition::select('id','job_position_name')->get()->sortBy('job_position_name');
+        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobpositions'));
     }
 
     public function setprovince(Request $request){
