@@ -362,3 +362,6 @@ input[type=search]:focus{
     width:50%;
 } */
 
+input[type="checkbox"]{
+    color:black !important;
+}
