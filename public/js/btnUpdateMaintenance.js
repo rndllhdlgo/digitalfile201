@@ -1,7 +1,7 @@
 $('#companyUpdate').on('click',function(){
     var company_id = $('#company_id').val();
-    var company_orig = $('#company').val();
-    var company_new = $('#company_details').val();
+    var company_name_orig = $('#company_name').val();
+    var company_name_new = $('#company_name_new').val();
 
     Swal.fire({
         title: 'Do you want to update changes?',
@@ -25,8 +25,8 @@ $('#companyUpdate').on('click',function(){
                 },
                 data:{
                     company_id:company_id,
-                    company_orig:company_orig,
-                    company_new:company_new
+                    company_name_orig:company_name_orig,
+                    company_name_new:company_name_new
                 },
                 success: function(data){
                     if(data == 'true'){
@@ -51,8 +51,8 @@ $('#companyUpdate').on('click',function(){
 
 $('#branchUpdate').on('click',function(){
     var branch_id = $('#branch_id').val();
-    var branch_orig = $('#branch_name').val();
-    var branch_new = $('#branch_details').val();
+    var branch_name_orig = $('#branch_name').val();
+    var branch_name_new = $('#branch_name_new').val();
 
     Swal.fire({
         title: 'Do you want to update changes?',
@@ -76,8 +76,8 @@ $('#branchUpdate').on('click',function(){
                 },
                 data:{
                     branch_id:branch_id,
-                    branch_orig:branch_orig,
-                    branch_new:branch_new
+                    branch_name_orig:branch_name_orig,
+                    branch_name_new:branch_name_new
                 },
                 success: function(data){
                     if(data == 'true'){
@@ -103,8 +103,8 @@ $('#branchUpdate').on('click',function(){
 
 $('#supervisorUpdate').on('click',function(){
     var supervisor_id = $('#supervisor_id').val();
-    var supervisor_orig = $('#supervisor_name').val();
-    var supervisor_new = $('#supervisor_details').val();
+    var supervisor_name_orig = $('#supervisor_name').val();
+    var supervisor_name_new = $('#supervisor_name_new').val();
 
     Swal.fire({
         title: 'Do you want to update changes?',
@@ -128,8 +128,8 @@ $('#supervisorUpdate').on('click',function(){
                 },
                 data:{
                     supervisor_id:supervisor_id,
-                    supervisor_orig:supervisor_orig,
-                    supervisor_new:supervisor_new
+                    supervisor_name_orig:supervisor_name_orig,
+                    supervisor_name_new:supervisor_name_new
                 },
                 success: function(data){
                     if(data == 'true'){

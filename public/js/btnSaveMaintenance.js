@@ -1,5 +1,5 @@
 $('#companySave').on('click',function(){
-    var company = $('#company').val();
+    var company_name = $('#company_name').val();
 
     Swal.fire({
         title: 'Do you want to save?',
@@ -22,7 +22,7 @@ $('#companySave').on('click',function(){
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    company:company
+                    company_name:company_name
                 },
                 success: function(data){
                     if(data == 'true'){
@@ -32,6 +32,7 @@ $('#companySave').on('click',function(){
                     }
                     else if(data == 'duplicate'){
                         Swal.fire("COMPANY NAME ALREADY EXIST","Please Enter Different Company Name","error");
+                        $('#company_name').val('');
                         return false;
                     }
                     else{

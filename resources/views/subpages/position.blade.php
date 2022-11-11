@@ -4,6 +4,7 @@
         <table class="table table-striped table-hover table-bordered w-100 jobPositionTable" id="jobPositionTable">
             <thead class="text-white" style="background-color:#0d1a80;">
                     <tr>
+                        {{-- <th><i class="fas fa-id-card"></i> JOB POSITION ID</th> --}}
                         <th><i class="fas fa-id-card"></i> JOB POSITION NAME</th>
                     </tr>
             </thead>
@@ -16,6 +17,7 @@
         <table class="table table-striped table-hover table-bordered w-100 jobDescriptionTable" id="jobDescriptionTable">
             <thead class="text-white" style="background-color:#0d1a80;">
                     <tr>
+                        {{-- <th><i class="fas fa-id-card"></i> JOB POSITION ID</th> --}}
                         <th><i class="fas fa-id-card"></i> JOB DESCRIPTION</th>
                     </tr>
             </thead>
@@ -37,8 +39,8 @@
                     <table class="table table-striped table-bordered table-hover mt-1 align-middle">
                         <thead class="thead-educational">
                             <tr>
-                                <th style="width: 200px;">Job Position</th>
-                                <th style="width: 450px;">Job Description</th>
+                                <th style="width: 200px;">JOB POSITION</th>
+                                <th style="width: 450px;">JOB DESCRIPTION</th>
                                 <th>Action</th>
                             </tr>
                         </thead>

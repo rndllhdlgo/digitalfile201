@@ -28,7 +28,7 @@ class PagesController extends Controller
             return redirect('/');
         }
         $regions = Region::select('regCode','regDesc')->get()->sortBy('regCode');
-        $companies = Company::select('id','company')->get();
+        $companies = Company::select('id','company_name')->get();
         $branches = Branch::select('id','branch_name')->get();
         $supervisors = Supervisor::select('id','supervisor_name')->get();
         $shifts = Shift::select('id','shift_code','shift_working_hours','shift_break_time')->get();

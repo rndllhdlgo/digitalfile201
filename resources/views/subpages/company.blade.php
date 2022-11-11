@@ -19,8 +19,8 @@
                 </div>
                 <div class="modal-body">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="company" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="company" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME</label>
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="company_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="company_name" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME</label>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -40,8 +40,8 @@
                 <div class="modal-body">
                     <input type="hidden" id="company_id">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="company_details" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="company_details" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME </label>
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="company_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="company_name_new" class="formlabel form-label"><i class="fas fa-address-card"></i> COMPANY NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">

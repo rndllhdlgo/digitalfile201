@@ -40,8 +40,8 @@
                 <div class="modal-body">
                     <input type="hidden" id="branch_id">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="branch_details" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="branch_details" class="formlabel form-label"><i class="fas fa-address-card"></i> BRANCH NAME </label>
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="branch_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <label for="branch_name_new" class="formlabel form-label"><i class="fas fa-address-card"></i> BRANCH NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">

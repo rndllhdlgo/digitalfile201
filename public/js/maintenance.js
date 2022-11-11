@@ -99,7 +99,7 @@ $('#supervisor_tab').on('click',function(){
 setInterval(checkField,0);
 function checkField(){
     if($('#saveCompanyModal').is(":visible")){
-        if(!$('#company').val()){
+        if(!$('#company_name').val()){
             $('#companySave').prop('disabled',true);
         }
         else{
@@ -108,7 +108,7 @@ function checkField(){
     }
 
     if($('#updateCompanyModal').is(":visible")){
-        if($('#company').val() == $('#company_details').val() || !$('#company_details').val()){
+        if($('#company_name').val() == $('#company_name_new').val() || !$('#company_name_new').val()){
             $('#companyUpdate').prop('disabled',true);
         }
         else{
@@ -126,7 +126,7 @@ function checkField(){
     }
 
     if($('#updateBranchModal').is(":visible")){
-        if($('#branch_name').val() == $('#branch_details').val() || !$('#branch_details').val()){
+        if($('#branch_name').val() == $('#branch_name_new').val() || !$('#branch_name_new').val()){
             $('#branchUpdate').prop('disabled',true);
         }
         else{
@@ -144,7 +144,7 @@ function checkField(){
     }
 
     if($('#updateSupervisorModal').is(":visible")){
-        if($('#supervisor_name').val() == $('#supervisor_details').val() || !$('#supervisor_details').val()){
+        if($('#supervisor_name').val() == $('#supervisor_name_new').val() || !$('#supervisor_name_new').val()){
             $('#supervisorUpdate').prop('disabled',true);
         }
         else{
@@ -187,12 +187,21 @@ function checkField(){
             $('#jobPositionUpdate').prop('disabled',false);
         }
     }
+
+    if($('#updateJobDescriptionModal').is(":visible")){
+        if(!$('#job_details_description').val()){
+            $('#jobDescriptionUpdate').prop('disabled',true);
+        }
+        else{
+            $('#jobDescriptionUpdate').prop('disabled',false);
+        }
+    }
 }
 
 //Open Modal on click
 $('#addCompanyBtn').on('click',function(){
     $('#saveCompanyModal').modal('show');
-    $('#company').val('');
+    $('#company_name').val('');
 });
 
 $('#addBranchBtn').on('click',function(){

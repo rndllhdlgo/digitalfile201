@@ -21,21 +21,22 @@ class MaintenanceController extends Controller
     }
 
     public function companySave(Request $request){
-        // $company_name = ucwords($request->company);
+        $company_name_logs = ucwords($request->company_name);
 
-        if(Company::whereRaw('UPPER(company) = ?', strtoupper($request->company))->count() > 0){
+        //To prevent add/Capital Letters
+        if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_logs))->count() > 0){
             return 'duplicate';
         }
+
         $company = new Company;
-        $company->company = ucwords($request->company);
+        $company->company_name = $company_name_logs;
         $sql = $company->save();
 
         if($sql){
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "COMPANY ADDED: User successfully added Company: ($request->company)."; //Display logs in home page
-            $userlogs->save();
-
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "ADDED COMPANY: User successfully added Company: ($company_name_logs)."; //Display logs in home page
+                $userlogs->save();
             return 'true';
         }
         else{
@@ -44,23 +45,23 @@ class MaintenanceController extends Controller
     }
 
     public function companyUpdate(Request $request){
-        $company_orig = $request->company_orig;
-        $company_new = ucwords($request->company_new);
+        $company_name_orig = ucwords($request->company_name_orig);
+        $company_name_new = ucwords($request->company_name_new);
 
-        if(strtoupper($company_orig) != strtoupper($company_new)){
-            if(Company::whereRaw('UPPER(company) = ?', strtoupper($company_new))->count() > 0){
+        if(strtoupper($company_name_orig) != strtoupper($company_name_new)){
+            if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_new))->count() > 0){
                 return 'duplicate';
             }
         }
 
         $company = Company::find($request->company_id);
-        $company->company = $company_new;
+        $company->company_name = $company_name_new;
         $sql = $company->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "COMPANY UPDATED: User successfully updated the Company: FROM ($company_orig) TO ($company_new).";
+            $userlogs->activity = "UPDATED COMPANY: User successfully updated the Company: FROM ($company_name_orig) TO ($company_name_new).";
             $userlogs->save();
             return 'true';
         }
@@ -76,20 +77,20 @@ class MaintenanceController extends Controller
     }
 
     public function branchSave(Request $request){
-        $branch_details_name = ucwords($request->branch_name);
+        $branch_name_logs = ucwords($request->branch_name);
 
-        if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_details_name))->count() > 0){
+        if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_logs))->count() > 0){
             return 'duplicate';
         }
 
         $branch = new Branch;
-        $branch->branch_name = $branch_details_name;
+        $branch->branch_name = $branch_name_logs;
         $sql = $branch->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "BRANCH ADDED: User successfully added Branch: ($branch_details_name)."; //Display logs in home page
+            $userlogs->activity = "ADDED BRANCH: User successfully added Branch: ($branch_name_logs)."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -99,23 +100,23 @@ class MaintenanceController extends Controller
     }
 
     public function branchUpdate(Request $request){
-        $branch_orig = $request->branch_orig;
-        $branch_new = ucwords($request->branch_new);
+        $branch_name_orig = ucwords($request->branch_name_orig);
+        $branch_name_new = ucwords($request->branch_name_new);
 
-        if(strtoupper($branch_orig) != strtoupper($branch_new)){
-            if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_new))->count() > 0){
+        if(strtoupper($branch_name_orig) != strtoupper($branch_name_new)){
+            if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_new))->count() > 0){
                 return 'duplicate';
             }
         }
 
         $branch = Branch::find($request->branch_id);
-        $branch->branch_name = $branch_new;
+        $branch->branch_name = $branch_name_new;
         $sql = $branch->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "BRANCH UPDATED: User successfully updated the Branch: FROM ($branch_orig) TO ($branch_new).";
+            $userlogs->activity = "UPDATED BRANCH: User successfully updated the Branch: FROM ($branch_name_orig) TO ($branch_name_new).";
             $userlogs->save();
 
             return 'true';
@@ -125,63 +126,7 @@ class MaintenanceController extends Controller
         }
     }
 
-    // Supervisor
-    public function supervisorData(){
-        $supervisor = Supervisor::all();
-        return DataTables::of($supervisor)->make(true);
-    }
-
-    public function supervisorSave(Request $request){
-        // $supervisor_details_name = ucwords($request->supervisor_name);
-
-        if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($request->supervisor_name))->count() > 0){
-            return 'duplicate';
-        }
-
-        $supervisor = new Supervisor;
-        // $supervisor->supervisor_name = $supervisor_details_name;
-        $supervisor->supervisor_name = ucwords($request->supervisor_name);
-        $sql = $supervisor->save();
-
-        if($sql){
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "SUPERVISOR ADDED: User successfully added Supervisor: ($request->supervisor_name)."; //Display logs in home page
-            $userlogs->save();
-            return 'true';
-        }
-        else{
-            return 'false';
-        }
-    }
-
-    public function supervisorUpdate(Request $request){
-        $supervisor_orig = $request->supervisor_orig;
-        $supervisor_new = ucwords($request->supervisor_new);
-
-        if(strtoupper($supervisor_orig) != strtoupper($supervisor_new)){
-            if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_new))->count() > 0){
-                return 'duplicate';
-            }
-        }
-
-        $supervisor = Supervisor::find($request->supervisor_id);
-        $supervisor->supervisor_name = $supervisor_new;
-        $sql = $supervisor->save();
-
-        if($sql){
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "SUPERVISOR UPDATED: User successfully updated Supervisor: FROM ($supervisor_orig) TO ($supervisor_new).";
-            $userlogs->save();
-
-            return 'true';
-        }
-        else{
-            return 'false';
-        }
-    }
-
+    //Shift
     public function shiftData(){
         $shift = Shift::all();
         return DataTables::of($shift)->make(true);
@@ -205,7 +150,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "SHIFT ADDED: User successfully added Shift: with SHIFT CODE ($shift_code_logs) WORKING HOURS ($shift_working_hours_logs) BREAK TIME ($shift_break_time_logs)'."; //Display logs in home page
+            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE ($shift_code_logs) WORKING HOURS ($shift_working_hours_logs) BREAK TIME ($shift_break_time_logs)."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -215,8 +160,8 @@ class MaintenanceController extends Controller
     }
 
     public function shiftUpdate(Request $request){
-        $shift_code_orig = $request->shift_code_orig;
-        $shift_code_new = ucwords($request->shift_code_new);
+        $shift_code_orig = strtoupper($request->shift_code_orig);
+        $shift_code_new = strtoupper($request->shift_code_new);
 
         if(strtoupper($shift_code_orig) != strtoupper($shift_code_new)){
             if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_new))->count() > 0){
@@ -252,7 +197,7 @@ class MaintenanceController extends Controller
             }
 
             if($shift_break_time_orig != $shift_break_time_new){
-                $shift_break_time_change = "(Working Hours: FROM '$shift_break_time_orig' TO '$shift_break_time_new')";
+                $shift_break_time_change = "(Break Time: FROM '$shift_break_time_orig' TO '$shift_break_time_new')";
             }
             else{
                 $shift_break_time_change = NULL;
@@ -260,7 +205,7 @@ class MaintenanceController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "SHIFT UPDATED: User successfully updated details of '$shift_code_orig' with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
+            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of ($shift_code_orig) with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
 
             return 'true';
@@ -270,6 +215,63 @@ class MaintenanceController extends Controller
         }
     }
 
+    // Supervisor
+    public function supervisorData(){
+        $supervisor = Supervisor::all();
+        return DataTables::of($supervisor)->make(true);
+    }
+
+    public function supervisorSave(Request $request){
+        $supervisor_name_logs = ucwords($request->supervisor_name);
+
+        if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_logs))->count() > 0){
+            return 'duplicate';
+        }
+
+        $supervisor = new Supervisor;
+        $supervisor->supervisor_name = $supervisor_name_logs;
+        $sql = $supervisor->save();
+
+        if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED SUPERVISOR: User successfully added Supervisor: ($supervisor_name_logs)."; //Display logs in home page
+            $userlogs->save();
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    public function supervisorUpdate(Request $request){
+        $supervisor_name_orig = ucwords($request->supervisor_name_orig);
+        $supervisor_name_new = ucwords($request->supervisor_name_new);
+
+        if(strtoupper($supervisor_name_orig) != strtoupper($supervisor_name_new)){
+            if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_new))->count() > 0){
+                return 'duplicate';
+            }
+        }
+
+        $supervisor = Supervisor::find($request->supervisor_id);
+        $supervisor->supervisor_name = $supervisor_name_new;
+        $sql = $supervisor->save();
+
+        if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "UPDATED SUPERVISOR: User successfully updated Supervisor: FROM ($supervisor_name_orig) TO ($supervisor_name_new).";
+            $userlogs->save();
+
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    //Job Position
     public function jobPositionData(){
         $jobPosition = JobPosition::all();
         return DataTables::of($jobPosition)->make(true);
@@ -288,7 +290,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "JOB POSITION ADDED: User successfully added Job Position: ($request->job_position_name)."; //Display logs in home page
+            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: ($request->job_position_name)."; //Display logs in home page
             $userlogs->save();
 
             $result = 'true';
@@ -319,10 +321,9 @@ class MaintenanceController extends Controller
         $sql = $jobPosition->save();
 
         if($sql){
-
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "JOB POSITION UPDATED: User successfully updated Job Position: FROM ($job_position_name_orig) TO ($job_position_name_new)."; //Display logs in home page
+                $userlogs->activity = "UPDATED JOB POSITION: User successfully updated Job Position: FROM ($job_position_name_orig) TO ($job_position_name_new)."; //Display logs in home page
                 $userlogs->save();
             return 'true';
         }
@@ -331,6 +332,7 @@ class MaintenanceController extends Controller
         }
     }
 
+    //Job Description
     public function jobDescriptionData(){
         $jobDescription = JobDescription::all();
         return DataTables::of($jobDescription)->make(true);
@@ -345,7 +347,7 @@ class MaintenanceController extends Controller
 
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = "JOB DESCRIPTION ADDED: User successfully added Job Description: ($request->job_description) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
+        $userlogs->activity = "ADDED JOB DESCRIPTION: User successfully added Job Description: ($request->job_description) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
         $userlogs->save();
     }
 
@@ -358,6 +360,10 @@ class MaintenanceController extends Controller
         $sql = $jobDescription->save();
 
         if($sql){
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "UPDATED JOB DESCRIPTION: User successfully updated Job Description: FROM ($job_description_orig) TO ($job_description_new)."; //Display logs in home page
+                $userlogs->save();
             return 'true';
         }
         else{

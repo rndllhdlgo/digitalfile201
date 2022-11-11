@@ -7,7 +7,7 @@ var companyTable = $('#companyTable').DataTable({
         url: '/maintenance/companyData',
     },
     columns: [
-        {data: 'company'}
+        {data: 'company_name'}
     ] 
 });
 $('div.breakspace').html('<br><br>');
@@ -17,8 +17,8 @@ $('#companyTable').on('dblclick','tbody tr',function(){//View employee informati
     var data = companyTable.row(this).data();
 
     $('#company_id').val(data.id);
-    $('#company').val(data.company);
-    $('#company_details').val(data.company);
+    $('#company_name').val(data.company_name);
+    $('#company_name_new').val(data.company_name);
 
     $('#updateCompanyModal').modal('show');
 });
@@ -43,7 +43,7 @@ $('#branchTable').on('dblclick','tbody tr',function(){//View employee informatio
 
     $('#branch_id').val(data.id);
     $('#branch_name').val(data.branch_name);
-    $('#branch_details').val(data.branch_name);
+    $('#branch_name_new').val(data.branch_name);
 
     $('#updateBranchModal').modal('show');
 });
@@ -68,7 +68,7 @@ $('#supervisorTable').on('dblclick','tbody tr',function(){//View employee inform
 
     $('#supervisor_id').val(data.id);
     $('#supervisor_name').val(data.supervisor_name);
-    $('#supervisor_details').val(data.supervisor_name);
+    $('#supervisor_name_new').val(data.supervisor_name);
 
     $('#updateSupervisorModal').modal('show');
 });
@@ -113,8 +113,9 @@ var jobPositionTable = $('#jobPositionTable').DataTable({
         url: '/maintenance/jobPositionData',
     },
     columns: [
+        // {data: 'id'},
         {data: 'job_position_name'}
-    ] 
+    ]
 });
 $('div.breakspace').html('<br><br>');
 
@@ -129,7 +130,7 @@ $('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee infor
     $('#updateJobPositionModal').modal('show');
 });
 
-//Job Position DataTable
+//Job Description DataTable
 var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
     dom:'lf<"breakspace">rtip',
     processing:true,
@@ -138,8 +139,9 @@ var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
         url: '/maintenance/jobDescriptionData',
     },
     columns: [
+        // {data: 'job_position_id'},
         {data: 'job_description'}
-    ] 
+    ],
 });
 $('div.breakspace').html('<br><br>');
 
