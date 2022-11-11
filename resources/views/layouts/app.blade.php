@@ -43,6 +43,7 @@
         @if(Request::is('/'))<!--Route-->
             <script src="{{ env('APP_URL')}}js/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
+        
         @if(Request::is('employees')) 
             <script src="{{ env('APP_URL')}}js/btnCancelEdit.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>

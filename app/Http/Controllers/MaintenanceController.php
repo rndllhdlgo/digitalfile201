@@ -278,19 +278,19 @@ class MaintenanceController extends Controller
     }
 
     public function jobPositionSave(Request $request){
-
-        if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($request->job_position_name))->count() > 0){
+        $job_position_name_logs = ucwords($request->job_position_name);
+        if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
             return 'duplicate';
         }
 
         $jobPosition = new JobPosition;
-        $jobPosition->job_position_name = ucwords($request->job_position_name);
+        $jobPosition->job_position_name = $job_position_name_logs;
         $sql = $jobPosition->save();
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: ($request->job_position_name)."; //Display logs in home page
+            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: ($job_position_name_logs)."; //Display logs in home page
             $userlogs->save();
 
             $result = 'true';
@@ -339,24 +339,25 @@ class MaintenanceController extends Controller
     }
 
     public function jobDescriptionSave(Request $request){
+        $job_description_logs = ucfirst($request->job_description);
 
         $jobDescription = new JobDescription;
         $jobDescription->job_position_id = $request->job_position_id;
-        $jobDescription->job_description = ucfirst($request->job_description);
+        $jobDescription->job_description = $job_description_logs;
         $jobDescription->save();
 
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = "ADDED JOB DESCRIPTION: User successfully added Job Description: ($request->job_description) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
+        $userlogs->activity = "ADDED JOB DESCRIPTION: User successfully added Job Description: ($job_description_logs) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
         $userlogs->save();
     }
 
     public function jobDescriptionUpdate(Request $request){
         $job_description_orig = $request->job_description_orig;
-        $job_description_new = $request->job_description_new;
+        $job_description_new = ucfirst($request->job_description_new);
 
         $jobDescription = JobDescription::find($request->job_description_id);
-        $jobDescription->job_description = ucfirst($request->job_description_new);
+        $jobDescription->job_description = $job_description_new;
         $sql = $jobDescription->save();
 
         if($sql){

@@ -27,7 +27,12 @@ $('#companySave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveCompanyModal').modal('hide');
-                        Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title: 'COMPANY ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -37,7 +42,12 @@ $('#companySave').on('click',function(){
                     }
                     else{
                         $('#saveCompanyModal').modal('hide');
-                        Swal.fire("SAVE FAILED", "", "error");
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
                 }
@@ -75,7 +85,12 @@ $('#branchSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveBranchModal').modal('hide');
-                        Swal.fire("BRANCH ADDED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title: 'BRANCH ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -85,7 +100,12 @@ $('#branchSave').on('click',function(){
                     }
                     else{
                         $('#saveBranchModal').modal('hide');
-                        Swal.fire("SAVE FAILED", "", "error");
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                 }
@@ -123,7 +143,12 @@ $('#supervisorSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveSupervisorModal').modal('hide');
-                        Swal.fire("SUPERVISOR ADDED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title: 'SUPERVISOR ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -133,7 +158,12 @@ $('#supervisorSave').on('click',function(){
                     }
                     else{
                         $('#saveSupervisorModal').modal('hide');
-                        Swal.fire("SAVE FAILED", "", "error");
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                 }
@@ -175,7 +205,12 @@ $('#shiftSave').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#saveShiftModal').modal('hide');
-                        Swal.fire("SHIFT ADDED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'SHIFT ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -185,7 +220,12 @@ $('#shiftSave').on('click',function(){
                     }
                     else{
                         $('#saveShiftModal').modal('hide');
-                        Swal.fire("SAVE FAILED", "", "error");
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                 }
@@ -242,7 +282,13 @@ $('#jobPositionSave').on('click',function(){
                                 },
                             });
                         });
-                        // Swal.fire("COMPANY ADDED SUCCESSFULLY","","success");
+                        
+                        Swal.fire({
+                            title:'JOB POSITION AND JOB DESCRIPTION ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
                         setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }
@@ -252,7 +298,12 @@ $('#jobPositionSave').on('click',function(){
                     }
                     else{
                         $('#savePositionModal').modal('hide');
-                        // Swal.fire("SAVE FAILED", "", "error");
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
                         setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }

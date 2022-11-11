@@ -4,7 +4,7 @@ $('#companyUpdate').on('click',function(){
     var company_name_new = $('#company_name_new').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -31,7 +31,12 @@ $('#companyUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateCompanyModal').modal('hide');
-                        Swal.fire("COMPANY NAME UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'COMPANY NAME UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -55,7 +60,7 @@ $('#branchUpdate').on('click',function(){
     var branch_name_new = $('#branch_name_new').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -82,7 +87,12 @@ $('#branchUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateBranchModal').modal('hide');
-                        Swal.fire("BRANCH NAME UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'BRANCH NAME UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -107,7 +117,7 @@ $('#supervisorUpdate').on('click',function(){
     var supervisor_name_new = $('#supervisor_name_new').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -134,7 +144,12 @@ $('#supervisorUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateSupervisorModal').modal('hide');
-                        Swal.fire("SUPERVISOR NAME UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'SUPERVISOR NAME UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -164,7 +179,7 @@ $('#shiftUpdate').on('click',function(){
     var shift_break_time_new = $('#shift_details_break_time').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -195,7 +210,12 @@ $('#shiftUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateShiftModal').modal('hide');
-                        Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'SHIFT UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -219,7 +239,7 @@ $('#jobPositionUpdate').on('click',function(){
     var job_position_name_new = $('#job_details_position_name').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -246,7 +266,12 @@ $('#jobPositionUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateJobPositionModal').modal('hide');
-                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'JOB POSITION UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
                     }
                     else if(data == 'duplicate'){
@@ -271,7 +296,7 @@ $('#jobDescriptionUpdate').on('click',function(){
     var job_description_new = $('#job_details_description').val();
 
     Swal.fire({
-        title: 'Do you want to update changes?',
+        title: 'Do you want to save changes?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -298,13 +323,14 @@ $('#jobDescriptionUpdate').on('click',function(){
                 success: function(data){
                     if(data == 'true'){
                         $('#updateJobDescriptionModal').modal('hide');
-                        // Swal.fire("SHIFT UPDATED SUCCESSFULLY","","success");
+                        Swal.fire({
+                            title:'JOB DESCRIPTION UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
                         setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
                     }
-                    // else if(data == 'duplicate'){
-                    //     Swal.fire("JOB POSITION NAME ALREADY EXIST!","Please enter different Job Position Name","error");
-                    //     return false;
-                    // }
                     else{
                         $('#updateJobDescriptionModal').modal('hide');
                         // Swal.fire("UPDATE FAILED", "", "error");

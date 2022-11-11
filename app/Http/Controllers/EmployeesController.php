@@ -110,7 +110,7 @@ class EmployeesController extends Controller
             //To save user logs
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: ($employee_number_logs). Employee Name:' ($employee_first_name_logs $employee_last_name_logs)'."; //Display logs in home page
+            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: ($employee_number_logs). Employee Name: ($employee_first_name_logs $employee_last_name_logs)."; //Display logs in home page
             $userlogs->save();
 
             $result = 'true';
