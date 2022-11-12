@@ -82,7 +82,7 @@ $('#btnSave').on('click', function(){
         var primary_school_name = $.trim($('#primary_school_name').val());
         var primary_school_address = $.trim($('#primary_school_address').val());
         var primary_school_inclusive_years = $.trim($('#primary_school_inclusive_years').val());
-       
+
         // go = false,
         
         Swal.fire({
@@ -348,7 +348,22 @@ $('#btnSave').on('click', function(){
                                             'contracts_date' : value[1]
                                         },
                                     });
-                                });
+                                }); 
+
+                                var past_medical_condition = $('#past_medical_condition').val();
+                                var allergies = $('#allergies').val();
+                                    $.ajax({
+                                        url:"/employees/medicalHistorySave", //route name (web.php)
+                                        type:"POST",
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                        },
+                                        data:{
+                                            'employee_id':data.id,
+                                            allergies:allergies,
+                                            past_medical_condition:past_medical_condition
+                                        },
+                                    });
 
                                 $('#requirements_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");

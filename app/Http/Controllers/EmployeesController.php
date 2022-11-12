@@ -18,6 +18,8 @@ use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\Training;
 use App\Models\Vocational;
+
+use App\MedicalHistory;
 use DataTables;
 
 class EmployeesController extends Controller
@@ -415,8 +417,16 @@ class EmployeesController extends Controller
             $document->save();
             return Redirect::to(url()->previous());//Return previous page
             // return redirect()->back();
-        }
     }
+
+    public function medicalHistorySave(Request $request){
+        $medicalHistory = new MedicalHistory;
+        $medicalHistory->employee_id = $request->employee_id;
+        $medicalHistory->past_medical_condition = json_encode($request->past_medical_condition);
+        $medicalHistory->allergies = json_encode($request->allergies);
+        $medicalHistory->save();
+    }
+}
 
 
     

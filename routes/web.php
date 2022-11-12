@@ -24,6 +24,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 // Route::post('/multiupload','MultiFileUploadController@filesUpload');
+Route::any('/checkbox','CheckboxRadioController@checkbox');
+Route::any('/insertcheckbox','CheckboxRadioController@insertcheckbox');
 
 // Routes for web pages
 // Route::any('/home','PagesController@home');
@@ -89,6 +91,8 @@ Route::any('/employees/evaluationSave','EmployeesController@evaluationSave');
 Route::any('/employees/contractsSave','EmployeesController@contractsSave');
 Route::any('/employees/resignationSave','EmployeesController@resignationSave');
 Route::any('/employees/terminationSave','EmployeesController@terminationSave');
+Route::any('/employees/medicalHistorySave','EmployeesController@medicalHistorySave');
+
 
 //Route for home page
 Route::get('/index/data','PagesController@index_data');
@@ -121,5 +125,13 @@ Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescrip
 
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
+
+
+
+
+
+
+
+
 
 
