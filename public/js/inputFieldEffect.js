@@ -130,26 +130,28 @@ $('#employee_contact_number').on('keyup',function(){
 });
 
 
-//Declare a value based on the element's id if the user clicks it.
-$('#cellphone_number').on('click',function(){
-    $('#cellphone_number').val('+63 9');
-});
+// //Declare a value based on the element's id if the user clicks it.
+// $('#cellphone_number').on('click',function(){
+//     $('#cellphone_number_format').show();
+// });
 
-$('#father_contact_number').on('click',function(){
-    $('#father_contact_number').val('+63 9');
-});
+// $('#father_contact_number').on('click',function(){
+//     $('#father_contact_number').val('+63 9');
+// });
 
-$('#mother_contact_number').on('click',function(){
-    $('#mother_contact_number').val('+63 9');
-});
+// $('#mother_contact_number').on('click',function(){
+//     $('#mother_contact_number').val('+63 9');
+// });
 
-$('#emergency_contact_number').on('click',function(){
-    $('#emergency_contact_number').val('+63 9');
-});
+// $('#emergency_contact_number').on('click',function(){
+//     $('#emergency_contact_number').val('+63 9');
+// });
 
-$('#employee_contact_number').on('click',function(){
-    $('#employee_contact_number').val('+63 9');
-});
+// $('#employee_contact_number').on('click',function(){
+//     $('#employee_contact_number').val('+63 9');
+// });
+
+
 
 
 

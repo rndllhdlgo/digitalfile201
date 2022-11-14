@@ -54,7 +54,7 @@
                                 </td>
                                 <td class="pb-3 pt-3">
                                     <div class="f-outline">
-                                        <input class="forminput form-control required_field text-capitalize" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off">
+                                        <input class="forminput form-control required_field" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off">
                                         <label for="job_description" class="formlabel form-label"><i class="fas fa-address-card"></i> JOB DESCRIPTION</label>
                                     </div>
                                 </td>
@@ -116,7 +116,7 @@
                 <div class="modal-body">
                     <input type="hidden" name="job_description_id" id="job_description_id">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="job_details_description" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field" type="search" id="job_details_description" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="job_details_description" class="formlabel form-label"><i class="fas fa-address-card"></i> JOB DESCRIPTION </label>
                     </div>
                 </div>

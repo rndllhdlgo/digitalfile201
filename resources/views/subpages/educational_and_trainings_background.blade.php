@@ -104,19 +104,19 @@
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
                             <input class="forminput form-control required_field text-capitalize" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <label for="primary" class="formlabel form-label"><span class="span_primary_school_name span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                            <label for="primary" class="formlabel form-label"><span class="span_primary_school_name span_all"></span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
                             <input class="forminput form-control required_field text-capitalize" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="primary_address" class="formlabel form-label"><span class="span_primary_school_address span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                            <label for="primary_address" class="formlabel form-label"><span class="span_primary_school_address span_all"></span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
                             <input class="forminput form-control required_field" type="search" id="primary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <label for="primary_inclusive_years" class="formlabel form-label"><span class="span_primary_school_inclusive_years span_all"><i class="fa-solid fa-triangle-exclamation text-danger" style="zoom: 125%;" title="Required"></i></span></label>
+                            <label for="primary_inclusive_years" class="formlabel form-label"><span class="span_primary_school_inclusive_years span_all"></span></label>
                         </div>
                     </td>
                 </tr>

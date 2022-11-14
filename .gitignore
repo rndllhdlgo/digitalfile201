@@ -31,3 +31,4 @@ app/Models/Fileupload.php
 database/migrations/2022_11_12_084903_create_checkboxes_table.php
 app/Http/Controllers/CheckboxRadioController.php
 app/Checkbox.php
+resources/views/checkbox.blade.php

@@ -281,7 +281,6 @@ input[type=search]:focus{
 #memo_data_table,
 #evaluation_data_table,
 #contracts_data_table,
-
 #job_description_data_table{
     display: none;
     margin-top: -17px;
@@ -362,6 +361,6 @@ input[type=search]:focus{
     width:50%;
 } */
 
-input[type="checkbox"]{
-    color:black !important;
+.text-default{
+    color:#0d1a80 !important;
 }

@@ -87,14 +87,14 @@
       });
 
   //Prevent delete the value inside input field
-    function ValidateInput(ctrl) {
-        if (event.keyCode == 8 ||event.keyCode == 46) {   //backspace pressed or delete key pressed
-            //check whether the user is trying to delete the fixed text
-            if (ctrl.selectionStart <= 5) 
-            return false;
-        }
-            return true;
-    }
+    // function ValidateInput(ctrl) {
+    //     if (event.keyCode == 8 ||event.keyCode == 46) {   //backspace pressed or delete key pressed
+    //         //check whether the user is trying to delete the fixed text
+    //         if (ctrl.selectionStart <= 5) 
+    //         return false;
+    //     }
+    //         return true;
+    // }
   //Prevent space bar
     function keyDown(e) { 
       var e = window.event || e;

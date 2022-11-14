@@ -52,8 +52,8 @@ $(document).ready(function () {
             columns:[
                 {data: 'employee_number'},//data column name
                 {data: 'first_name'},
-                {data: 'last_name'},
                 {data: 'middle_name'},
+                {data: 'last_name'},
                 {data: 'employee_position'},
                 {data: 'employee_branch'},
                 {data: 'employee_status'},
@@ -183,7 +183,7 @@ $('#spouse').hide();//Hide spouse section
             $('#spouse_name').addClass('required_field');
             $('#spouse_contact_number').addClass('required_field');
             $('#spouse_profession').addClass('required_field');
-            $('#spouse_contact_number').val('+63 9');
+            // $('#spouse_contact_number').val('+63 9');
             $('#solo_parent').hide();
             $('#solo_parent_data_table').hide();
         }
@@ -589,6 +589,8 @@ $('#province').on('change', function(){
 
 $('#viewJobDescriptionBtn').on('click',function(){
     $('ul.job_description_div').empty();
+    $('#jobDescriptionModalTitle').empty();
+
     $.ajax({
         type: 'GET',
         url: '/setJobDescription',
@@ -604,7 +606,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
             });
         }
     });
-    
+
     $.ajax({
         type: 'GET',
         url: '/setJobPosition',
@@ -616,10 +618,16 @@ $('#viewJobDescriptionBtn').on('click',function(){
                 return [value];
             });
             list.forEach(value => {
-                $('ul.job_description_div').append('<h3 style="font-size:30px;">'+value.job_position_name+'</h3>');
+                // $('ul.job_description_div').append('<p class="h3"> <br>'+value.job_position_name+'</p>');
+                $('#jobDescriptionModalTitle').append(value.job_position_name);
             });
         }
     });
+    $('#viewJobDescriptionModal').modal({
+        backdrop: 'static',
+        keyboard: false
+    })
+
     $('#viewJobDescriptionModal').modal('show');
 });
 
@@ -670,3 +678,4 @@ $('#title_details').on('click',function(){
     $('#father_contact_number').val('+63 9322003718');
     $('#mother_contact_number').val('+63 9322003718');
 });
+
