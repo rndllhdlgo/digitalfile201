@@ -350,10 +350,8 @@ $('#btnSave').on('click', function(){
                                     });
                                 }); 
 
-                                // var past_medical_condition = $('#past_medical_condition').val();
                                 var past_medical_condition = ($.trim($('#past_medical_condition').val()).split("\n")).join(', ');
                                 var allergies = ($.trim($('#allergies').val()).split("\n")).join(', ');
-                                // var match = /\r|\n/.exec(past_medical_condition);
                                     $.ajax({
                                         url:"/employees/medicalHistorySave", //route name (web.php)
                                         type:"POST",
