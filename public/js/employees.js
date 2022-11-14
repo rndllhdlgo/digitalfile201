@@ -587,8 +587,53 @@ $('#province').on('change', function(){
 });
 
 
+// $('#viewJobDescriptionBtn').on('click',function(){
+//     $('ul.job_description_div').empty();
+//     $('#jobDescriptionModalTitle').empty();
+
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setJobDescription',
+//         data:{
+//             'id': $('#employee_position').val()
+//         },
+//         success: function(data){
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 $('ul.job_description_div').append('<li>' + value.job_description + '</li>');
+//             });
+//         }
+//     });
+
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setJobPosition',
+//         data:{
+//             'id': $('#employee_position').val()
+//         },
+//         success: function(data){
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 // $('ul.job_description_div').append('<p class="h3"> <br>'+value.job_position_name+'</p>');
+//                 $('#jobDescriptionModalTitle').append(value.job_position_name);
+//             });
+//         }
+//     });
+//     $('#viewJobDescriptionModal').modal({
+//         backdrop: 'static',
+//         keyboard: false
+//     })
+
+//     $('#viewJobDescriptionModal').modal('show');
+// });
+
 $('#viewJobDescriptionBtn').on('click',function(){
     $('ul.job_description_div').empty();
+    $('ul.job_requirements_div').empty();
     $('#jobDescriptionModalTitle').empty();
 
     $.ajax({
@@ -598,12 +643,25 @@ $('#viewJobDescriptionBtn').on('click',function(){
             'id': $('#employee_position').val()
         },
         success: function(data){
-            var list = $.map(data, function(value, index){
-                return [value];
-            });
-            list.forEach(value => {
-                $('ul.job_description_div').append('<li>' + value.job_description + '</li>');
-            });
+            console.log(data[0].job_description);
+            var job_description = data[0].job_description;
+            var job_requirements = data[0].job_requirements;
+            var job_description_details = job_description.split('||');
+            var job_requirements_details = job_requirements.split('||');
+            for(var i=0; i < job_description_details.length; i++){
+                $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
+            }
+            for(var j=0; j < job_requirements_details.length; j++){
+                $('.job_requirements_div').append('<li>' + job_requirements_details[j].replace(/\"/g,'') + '</li>');
+            }
+
+            // var list = $.map(data, function(value, index){
+            //     return [value];
+            // });
+            // list.forEach(value => {
+            //     // $('ul.job_description_div').append('<li style="font-size:20px">'+ value.job_description +'</li>');
+            //     $('div.job_description_div').append(value.job_description);
+            // });
         }
     });
 
@@ -630,6 +688,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
 
     $('#viewJobDescriptionModal').modal('show');
 });
+
 
 //Fill All Function
 $('#title_details').on('click',function(){

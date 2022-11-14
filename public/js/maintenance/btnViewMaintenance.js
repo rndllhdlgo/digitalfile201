@@ -104,54 +104,85 @@ $('#shiftTable').on('dblclick','tbody tr',function(){//View employee information
     $('#updateShiftModal').modal('show');
 });
 
-//Job Position DataTable
-var jobPositionTable = $('#jobPositionTable').DataTable({
+//Job Position and Description DataTable
+var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTable({
     dom:'lf<"breakspace">rtip',
     processing:true,
     serverSide:false,
     ajax: {
-        url: '/maintenance/jobPositionData',
+        url: '/maintenance/jobPositionAndDescriptionData',
     },
     columns: [
-        // {data: 'id'},
-        {data: 'job_position_name'}
-    ]
+        {data: 'job_position_name'},
+        {data: 'job_description'},
+        {data: 'job_requirements'}
+    ] 
 });
 $('div.breakspace').html('<br><br>');
 
-//View Job Position Data
-$('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
-    var data = jobPositionTable.row(this).data();
+//View Job Position and Description Data
+$('#jobPositionAndDescriptionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+    var data = jobPositionAndDescriptionTable.row(this).data();
 
-    $('#job_position_name_id').val(data.id);
+    $('#job_position_and_description_id').val(data.id);
     $('#job_position_name').val(data.job_position_name);
-    $('#job_details_position_name').val(data.job_position_name);
-
-    $('#updateJobPositionModal').modal('show');
-});
-
-//Job Description DataTable
-var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
-    dom:'lf<"breakspace">rtip',
-    processing:true,
-    serverSide:false,
-    ajax: {
-        url: '/maintenance/jobDescriptionData',
-    },
-    columns: [
-        // {data: 'job_position_id'},
-        {data: 'job_description'}
-    ],
-});
-$('div.breakspace').html('<br><br>');
-
-//View Job Description Data
-$('#jobDescriptionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
-    var data = jobDescriptionTable.row(this).data();
-
-    $('#job_description_id').val(data.id);
     $('#job_description').val(data.job_description);
-    $('#job_details_description').val(data.job_description);
+    $('#job_requirements').val(data.job_requirements);
+    $('#job_position_name_new').val(data.job_position_name);
+    $('#job_description_new').val(data.job_description);
+    $('#job_requirements_new').val(data.job_requirements);
 
-    $('#updateJobDescriptionModal').modal('show');
+    $('#updateJobPositionAndDescriptionModal').modal('show');
 });
+
+// //Job Position DataTable
+// var jobPositionTable = $('#jobPositionTable').DataTable({
+//     dom:'lf<"breakspace">rtip',
+//     processing:true,
+//     serverSide:false,
+//     ajax: {
+//         url: '/maintenance/jobPositionData',
+//     },
+//     columns: [
+//         // {data: 'id'},
+//         {data: 'job_position_name'}
+//     ]
+// });
+// $('div.breakspace').html('<br><br>');
+
+// //View Job Position Data
+// $('#jobPositionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+//     var data = jobPositionTable.row(this).data();
+
+//     $('#job_position_name_id').val(data.id);
+//     $('#job_position_name').val(data.job_position_name);
+//     $('#job_details_position_name').val(data.job_position_name);
+
+//     $('#updateJobPositionModal').modal('show');
+// });
+
+// //Job Description DataTable
+// var jobDescriptionTable = $('#jobDescriptionTable').DataTable({
+//     dom:'lf<"breakspace">rtip',
+//     processing:true,
+//     serverSide:false,
+//     ajax: {
+//         url: '/maintenance/jobDescriptionData',
+//     },
+//     columns: [
+//         // {data: 'job_position_id'},
+//         {data: 'job_description'}
+//     ],
+// });
+// $('div.breakspace').html('<br><br>');
+
+// //View Job Description Data
+// $('#jobDescriptionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
+//     var data = jobDescriptionTable.row(this).data();
+
+//     $('#job_description_id').val(data.id);
+//     $('#job_description').val(data.job_description);
+//     $('#job_details_description').val(data.job_description);
+
+//     $('#updateJobDescriptionModal').modal('show');
+// });

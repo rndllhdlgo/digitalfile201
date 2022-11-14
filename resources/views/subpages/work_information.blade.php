@@ -73,8 +73,22 @@
                 <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock"></i> SHIFT <span class="span_employee_shift span_all"></span></label>
             </div>
         </div>
+        <div class="col">
+            <div class="f-outline">
+                <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
+                    <option value="" disabled selected>SELECT POSITION </option>
+                        @foreach($jobPositions as $jobPosition)
+                            <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
+                        @endforeach
+                </select>
+                <label for="employee_position" class="formlabel form-label"><i class="fas fa-user-tie"></i> POSITION <span class="span_employee_supervisor span_all"></span></label>
+            </div>
+        </div>
+        <div class="col">
+            <button type="button" class="btn btn-sm btn-primary grow p-1 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
+        </div>
 
-        <div class="col-2">
+        {{-- <div class="col-2">
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT POSITION</option>
@@ -84,10 +98,10 @@
                 </select>
                 <label for="employee_position" class="formlabel form-label"><i class="fas fa-info"></i> JOB POSITION <span class="span_employee_position span_all"></span></label>
             </div>
-        </div>
-        <div class="col-2">
+        </div> --}}
+        {{-- <div class="col-2">
             <button type="button" class="btn btn-sm btn-primary grow p-1 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
-        </div>
+        </div> --}}
 
         <div class="col-4">
             <div class="f-outline">
@@ -166,6 +180,7 @@
     </div>
     <hr class="hr-design">
 
+    <!--
     <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">
@@ -182,6 +197,31 @@
                             <li style="color:black;">{{$jobDescription->job_description}}</li>
                         </ul> 
                     @endforeach --}}
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
+    -->
+    
+    <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #0d1a80;">
+                    <h5 class="modal-title text-white" id="jobDescriptionModalTitle"></h5>
+                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal" title="CLOSE"></button>
+                </div>
+                <div class="modal-body">
+                    <strong>JOB DESCRIPTION</strong>
+                    <ul class="job_description_div" style="zoom: 110%;color:black;">
+
+                    </ul>
+
+                    <strong>JOB REQUIREMENTS/SKILLS</strong>
+                    <ul class="job_requirements_div" style="zoom:110%;color:black">
+
+                    </ul>
                 </div>
                 <div class="modal-footer">
                 </div>

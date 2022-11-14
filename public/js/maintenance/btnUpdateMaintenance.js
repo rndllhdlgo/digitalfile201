@@ -233,67 +233,123 @@ $('#shiftUpdate').on('click',function(){
     }); 
 });
 
-$('#jobPositionUpdate').on('click',function(){
-    var job_position_name_id = $('#job_position_name_id').val();
+// $('#jobPositionUpdate').on('click',function(){
+//     var job_position_name_id = $('#job_position_name_id').val();
+//     var job_position_name_orig = $('#job_position_name').val();
+//     var job_position_name_new = $('#job_details_position_name').val();
+
+//     Swal.fire({
+//         title: 'Do you want to save changes?',
+//         allowOutsideClick: false,
+//         allowEscapeKey: false,
+//         showDenyButton: true,
+//         confirmButtonText: 'Yes',
+//         denyButtonText: 'No',
+//         customClass: {
+//         actions: 'my-actions',
+//         confirmButton: 'order-2',
+//         denyButton: 'order-3',
+//         }
+//     }).then((save) => {
+//         if(save.isConfirmed){
+//             $.ajax({
+//                 url: '/maintenance/jobPositionUpdate',
+//                 type: "POST",
+//                 headers:{
+//                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 },
+//                 data:{
+//                     job_position_name_id:job_position_name_id,
+//                     job_position_name_orig:job_position_name_orig,
+//                     job_position_name_new:job_position_name_new
+//                 },
+//                 success: function(data){
+//                     if(data == 'true'){
+//                         $('#updateJobPositionModal').modal('hide');
+//                         Swal.fire({
+//                             title:'JOB POSITION UPDATED SUCCESSFULLY',
+//                             icon: 'success',
+//                             showConfirmButton: false,
+//                             timer: 1500
+//                         });
+//                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+//                     }
+//                     else if(data == 'duplicate'){
+//                         Swal.fire("JOB POSITION NAME ALREADY EXIST!","Please enter different Job Position Name","error");
+//                         return false;
+//                     }
+//                     else{
+//                         $('#updateJobPositionModal').modal('hide');
+//                         // Swal.fire("UPDATE FAILED", "", "error");
+//                         setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
+//                     }
+//                 }
+//             });
+//         }
+//     }); 
+// });
+
+
+// $('#jobDescriptionUpdate').on('click',function(){
+//     var job_description_id = $('#job_description_id').val();
+//     var job_description_orig = $('#job_description').val();
+//     var job_description_new = $('#job_details_description').val();
+
+//     Swal.fire({
+//         title: 'Do you want to save changes?',
+//         allowOutsideClick: false,
+//         allowEscapeKey: false,
+//         showDenyButton: true,
+//         confirmButtonText: 'Yes',
+//         denyButtonText: 'No',
+//         customClass: {
+//         actions: 'my-actions',
+//         confirmButton: 'order-2',
+//         denyButton: 'order-3',
+//         }
+//     }).then((save) => {
+//         if(save.isConfirmed){
+//             $.ajax({
+//                 url: '/maintenance/jobDescriptionUpdate',
+//                 type: "POST",
+//                 headers:{
+//                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//                 },
+//                 data:{
+//                     job_description_id:job_description_id,
+//                     job_description_orig:job_description_orig,
+//                     job_description_new:job_description_new
+//                 },
+//                 success: function(data){
+//                     if(data == 'true'){
+//                         $('#updateJobDescriptionModal').modal('hide');
+//                         Swal.fire({
+//                             title:'JOB DESCRIPTION UPDATED SUCCESSFULLY',
+//                             icon: 'success',
+//                             showConfirmButton: false,
+//                             timer: 1500
+//                         });
+//                         setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
+//                     }
+//                     else{
+//                         $('#updateJobDescriptionModal').modal('hide');
+//                         // Swal.fire("UPDATE FAILED", "", "error");
+//                         setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
+//                     }
+//                 }
+//             });
+//         }
+//     }); 
+// });
+
+$('#jobPositionAndDescriptionUpdate').on('click',function(){
+    var job_position_and_description_id = $('#job_position_and_description_id').val();
     var job_position_name_orig = $('#job_position_name').val();
-    var job_position_name_new = $('#job_details_position_name').val();
-
-    Swal.fire({
-        title: 'Do you want to save changes?',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showDenyButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No',
-        customClass: {
-        actions: 'my-actions',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
-        }
-    }).then((save) => {
-        if(save.isConfirmed){
-            $.ajax({
-                url: '/maintenance/jobPositionUpdate',
-                type: "POST",
-                headers:{
-                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
-                data:{
-                    job_position_name_id:job_position_name_id,
-                    job_position_name_orig:job_position_name_orig,
-                    job_position_name_new:job_position_name_new
-                },
-                success: function(data){
-                    if(data == 'true'){
-                        $('#updateJobPositionModal').modal('hide');
-                        Swal.fire({
-                            title:'JOB POSITION UPDATED SUCCESSFULLY',
-                            icon: 'success',
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
-                    }
-                    else if(data == 'duplicate'){
-                        Swal.fire("JOB POSITION NAME ALREADY EXIST!","Please enter different Job Position Name","error");
-                        return false;
-                    }
-                    else{
-                        $('#updateJobPositionModal').modal('hide');
-                        // Swal.fire("UPDATE FAILED", "", "error");
-                        setTimeout(function(){jobPositionTable.ajax.reload();}, 2000);
-                    }
-                }
-            });
-        }
-    }); 
-});
-
-
-$('#jobDescriptionUpdate').on('click',function(){
-    var job_description_id = $('#job_description_id').val();
+    var job_position_name_new = $('#job_position_name_new').val();
     var job_description_orig = $('#job_description').val();
-    var job_description_new = $('#job_details_description').val();
+    var job_description_new = $('#job_description_new').val();
+    var job_requirements_orig = $('#job_requirements').val();
+    var job_requirements_new = $('#job_requirements_new').val();
 
     Swal.fire({
         title: 'Do you want to save changes?',
@@ -310,35 +366,41 @@ $('#jobDescriptionUpdate').on('click',function(){
     }).then((save) => {
         if(save.isConfirmed){
             $.ajax({
-                url: '/maintenance/jobDescriptionUpdate',
+                url: '/maintenance/jobPositionAndDescriptionUpdate',
                 type: "POST",
                 headers:{
                   'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    job_description_id:job_description_id,
+                    job_position_and_description_id:job_position_and_description_id,
+                    job_position_name_orig:job_position_name_orig,
+                    job_position_name_new:job_position_name_new,
                     job_description_orig:job_description_orig,
-                    job_description_new:job_description_new
+                    job_description_new:job_description_new,
+                    job_requirements_orig:job_requirements_orig,
+                    job_requirements_new:job_requirements_new
                 },
                 success: function(data){
                     if(data == 'true'){
-                        $('#updateJobDescriptionModal').modal('hide');
+                        $('#updateJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire({
                             title:'JOB DESCRIPTION UPDATED SUCCESSFULLY',
                             icon: 'success',
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);
                     }
                     else{
-                        $('#updateJobDescriptionModal').modal('hide');
+                        $('#updateJobPositionAndDescriptionModal').modal('hide');
                         // Swal.fire("UPDATE FAILED", "", "error");
-                        setTimeout(function(){jobDescriptionTable.ajax.reload();}, 2000);
+                        setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);
                     }
                 }
             });
         }
     }); 
 });
+
+
 

@@ -119,12 +119,19 @@ Route::any('/maintenance/jobPositionData','MaintenanceController@jobPositionData
 Route::any('/maintenance/jobPositionSave','MaintenanceController@jobPositionSave');
 Route::any('/maintenance/jobPositionUpdate','MaintenanceController@jobPositionUpdate');
 
+Route::any('/maintenance/jobPositionAndDescriptionData','MaintenanceController@jobPositionAndDescriptionData');
+Route::any('/maintenance/jobPositionAndDescriptionSave','MaintenanceController@jobPositionAndDescriptionSave');
+Route::any('/maintenance/jobPositionAndDescriptionUpdate','MaintenanceController@jobPositionAndDescriptionUpdate');
+
 Route::any('/maintenance/jobDescriptionData','MaintenanceController@jobDescriptionData');
 Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');
 Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescriptionUpdate');
 
+// Route::any('/setJobPosition','PagesController@setJobPosition');
+// Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
+
 
 
 

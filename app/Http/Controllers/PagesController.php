@@ -13,6 +13,7 @@ use App\Models\Supervisor;
 use App\Models\Shift;
 use App\Models\JobPosition;
 use App\Models\JobDescription;
+use App\Position;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -32,10 +33,14 @@ class PagesController extends Controller
         $branches = Branch::select('id','branch_name')->get();
         $supervisors = Supervisor::select('id','supervisor_name')->get();
         $shifts = Shift::select('id','shift_code','shift_working_hours','shift_break_time')->get();
-        $jobPositions = JobPosition::select('id','job_position_name')->get();
-        $jobDescriptions = JobDescription::select('id','job_description')->get();
+        // $jobPositions = JobPosition::select('id','job_position_name')->get();
+        // $jobDescriptions = JobDescription::select('id','job_description')->get();
+        $jobPositions = Position::select('id','job_position_name')->get();
+        $jobDescriptions = Position::select('id','job_description')->get();
+        $jobRequirements = Position::select('id','job_requirements')->get();
         
-        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions'));
+        // return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobPositionAndJobDescription'));
+        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements'));
     }
 
     public function setprovince(Request $request){
@@ -48,16 +53,30 @@ class PagesController extends Controller
         return response()->json($list);
     }
 
-    public function setJobDescription(Request $request){
-        $list = JobDescription::where('job_position_id',$request->id)->get()->sortBy('job_description');
-        return response()->json($list);
-    }
+    // public function setJobDescription(Request $request){
+    //     $list = JobDescription::where('job_position_id',$request->id)->get()->sortBy('job_description');
+    //     return response()->json($list);
+    // }
+
+    // public function setJobPosition(Request $request){
+    //     $list = JobPosition::where('id',$request->id)->get()->sortBy('job_position_name');
+    //     return response()->json($list);
+    // }
 
     public function setJobPosition(Request $request){
-        $list = JobPosition::where('id',$request->id)->get()->sortBy('job_position_name');
+        $list = Position::where('id',$request->id)->get()->sortBy('job_position_name');
         return response()->json($list);
     }
 
+    public function setJobDescription(Request $request){
+        $list = Position::where('id',$request->id)->get()->sortBy('job_description');
+        return response()->json($list);
+    }
+
+    public function setJobRequirements(Request $request){
+        $list = Position::where('id',$request->id)->get()->sortBy('job_requirements');
+        return response()->json($list);
+    }
 
     public function users(){
         if(!auth()->user()){
