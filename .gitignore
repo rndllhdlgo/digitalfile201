@@ -28,3 +28,6 @@ resources/views/subpages/personal_information.blade copy.php
 resources/views/subpages/work_information.blade copy.php
 routes/web copy.php
 app/Models/Fileupload.php
+database/migrations/2022_11_12_084903_create_checkboxes_table.php
+app/Http/Controllers/CheckboxRadioController.php
+app/Checkbox.php
