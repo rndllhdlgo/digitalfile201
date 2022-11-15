@@ -7,7 +7,6 @@
     <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD COMPANY</button>
     <button type="button" class="btn btn-success float-end grow" id="addBranchBtn" title="ADD BRANCH" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD BRANCH</button>
     <button type="button" class="btn btn-success float-end grow" id="addShiftBtn" title="ADD SHIFT" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD SHIFT</button>
-    {{-- <button type="button" class="btn btn-success float-end grow" id="addPositionBtn" title="ADD POSITION" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD POSITION</button> --}}
     <button type="button" class="btn btn-success float-end grow" id="addSupervisorBtn" title="ADD SUPERVISOR" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD SUPERVISOR</button>
     <button type="button" class="btn btn-success float-end grow" id="addJobPositionAndDescriptionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-user-plus"></i> ADD JOB POSITION</button>
 <br>
@@ -22,9 +21,6 @@
         <li class="nav-item">
             <a class="nav-link pill" id="shift_tab" data-bs-toggle="tab" href="#shift_div"> SHIFT</a>
         </li>
-        {{-- <li class="nav-item">
-            <a class="nav-link pill" id="position_tab" data-bs-toggle="tab" href="#position_div"> POSITION</a>
-        </li> --}}
         <li class="nav-item">
             <a class="nav-link pill" id="supervisor_tab" data-bs-toggle="tab" href="#supervisor_div"> SUPERVISOR</a>
         </li>
@@ -37,7 +33,6 @@
         @include('subpages.company')
         @include('subpages.branch')
         @include('subpages.shift')
-        {{-- @include('subpages.position') --}}
         @include('subpages.supervisor')
         @include('subpages.job_position_and_description')
     </div>

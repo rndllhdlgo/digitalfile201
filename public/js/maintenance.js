@@ -4,21 +4,18 @@ $('#company_tab').on('click',function(){
     $('#company_tab').addClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
-    // $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#job_position_and_description_tab').removeClass('tabactive');
 
     $('#company_div').fadeIn();
     $('#branch_div').hide();
     $('#shift_div').hide();
-    // $('#position_div').hide();
     $('#supervisor_div').hide();
     $('#job_position_and_description_div').hide();
 
     $('#addCompanyBtn').show();
     $('#addBranchBtn').hide();
     $('#addShiftBtn').hide();
-    // $('#addPositionBtn').hide();
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
 });
@@ -27,21 +24,18 @@ $('#branch_tab').on('click',function(){
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').addClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
-    // $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#job_position_and_description_tab').removeClass('tabactive');
 
     $('#company_div').hide();
     $('#branch_div').show();
     $('#shift_div').hide();
-    // $('#position_div').hide();
     $('#supervisor_div').hide();
     $('#job_position_and_description_div').hide();
 
     $('#addCompanyBtn').hide();
     $('#addBranchBtn').show();
     $('#addShiftBtn').hide();
-    // $('#addPositionBtn').hide();
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
 
@@ -51,21 +45,18 @@ $('#shift_tab').on('click',function(){
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').addClass('tabactive');
-    // $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#job_position_and_description_tab').removeClass('tabactive');
 
     $('#company_div').hide();
     $('#branch_div').hide();
     $('#shift_div').show();
-    // $('#position_div').hide();
     $('#supervisor_div').hide();
     $('#job_position_and_description_div').hide();
 
     $('#addCompanyBtn').hide();
     $('#addBranchBtn').hide();
     $('#addShiftBtn').show();
-    // $('#addPositionBtn').hide();
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
 });
@@ -74,21 +65,18 @@ $('#position_tab').on('click',function(){
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
-    // $('#position_tab').addClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#job_position_and_description_tab').removeClass('tabactive');
 
     $('#company_div').hide();
     $('#branch_div').hide();
     $('#shift_div').hide();
-    // $('#position_div').show();
     $('#supervisor_div').hide();
     $('#job_position_and_description_div').hide();
 
     $('#addCompanyBtn').hide();
     $('#addBranchBtn').hide();
     $('#addShiftBtn').hide();
-    // $('#addPositionBtn').show();
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
 });
@@ -97,21 +85,18 @@ $('#supervisor_tab').on('click',function(){
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
-    // $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').addClass('tabactive');
     $('#job_position_and_description_tab').removeClass('tabactive');
 
     $('#company_div').hide();
     $('#branch_div').hide();
     $('#shift_div').hide();
-    // $('#position_div').hide();
     $('#supervisor_div').show();
     $('#job_position_and_description_div').hide();
 
     $('#addCompanyBtn').hide();
     $('#addBranchBtn').hide();
     $('#addShiftBtn').hide();
-    // $('#addPositionBtn').hide();
     $('#addSupervisorBtn').show();
     $('#addJobPositionAndDescriptionBtn').hide();
 });
@@ -120,21 +105,18 @@ $('#job_position_and_description_tab').on('click',function(){
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
-    // $('#position_tab').removeClass('tabactive');
     $('#supervisor_tab').removeClass('tabactive');
     $('#job_position_and_description_tab').addClass('tabactive');
 
     $('#company_div').hide();
     $('#branch_div').hide();
     $('#shift_div').hide();
-    // $('#position_div').hide();
     $('#supervisor_div').hide();
     $('#job_position_and_description_div').show();
 
     $('#addCompanyBtn').hide();
     $('#addBranchBtn').hide();
     $('#addShiftBtn').hide();
-    // $('#addPositionBtn').hide();
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').show();
 });
@@ -231,32 +213,6 @@ function checkField(){
             $('#jobPositionAndDescriptionUpdate').prop('disabled',false);
         }
     }
-    // if($('#savePositionModal').is(":visible")){
-    //     if(!$('#job_position').val() || !$('#job_description').val()){
-    //         $('#jobPositionSave').prop('disabled',true);
-    //     }
-    //     else{
-    //         $('#jobPositionSave').prop('disabled',false);
-    //     }
-    // }
-
-    // if($('#updateJobPositionModal').is(":visible")){
-    //     if($('#job_position_name').val() == $('#job_details_position_name').val() || !$('#job_details_position_name').val()){
-    //         $('#jobPositionUpdate').prop('disabled',true);
-    //     }
-    //     else{
-    //         $('#jobPositionUpdate').prop('disabled',false);
-    //     }
-    // }
-
-    // if($('#updateJobDescriptionModal').is(":visible")){
-    //     if(!$('#job_details_description').val()){
-    //         $('#jobDescriptionUpdate').prop('disabled',true);
-    //     }
-    //     else{
-    //         $('#jobDescriptionUpdate').prop('disabled',false);
-    //     }
-    // }
 }
 
 //Open Modal on click
@@ -282,12 +238,6 @@ $('#addShiftBtn').on('click',function(){
     $('#shift_break_time').val('');
 });
 
-// $('#addPositionBtn').on('click',function(){
-//     $('#savePositionModal').modal('show');
-//     $('#job_position_name').val('');
-//     $('.btn-jobPosition').click();
-// });
-
 $('#addJobPositionAndDescriptionBtn').on('click',function(){
     $('#job_position_name').val('');
     $('#job_description').val('');
@@ -295,30 +245,3 @@ $('#addJobPositionAndDescriptionBtn').on('click',function(){
     $('#saveJobPositionAndDescriptionModal').modal('show');
 });
 
-// setInterval(checkblankforJobPosition,0);
-// function checkblankforJobPosition(){
-//     if(!$('#job_description').val()){
-//         $('#btnPositionAdd').prop('disabled',true);
-//     }
-//     else{
-//         $('#btnPositionAdd').prop('disabled',false);
-//         $('#btnPositionAdd').css('display','block');
-//     }
-// }
-
-// //Multiple Column Job Position
-// $('#btnPositionAdd').click(function(){
-//     $('#job_description_data_table').show();
-//     var job_description = $('#job_description').val().trim();
-
-//     var dynamicJobPosition = "<tr>"+
-//                                 "<td style='width:200px' class='pb-3 pt-3'></td>"+
-//                                 "<td style='width:450px' class='pb-3 pt-3 text-capitalize'>" + job_description + "</td>" + 
-//                                 "<td><button class='btn btn-danger btn-jobPosition center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-//                              "</tr>";
-//     $('#job_description_data_table tbody').append(dynamicJobPosition);
-//     $('#job_description').val("");
-//     $('.btn-jobPosition').click(function(){
-//         $(this).parent().parent().remove();  
-//     });
-// });

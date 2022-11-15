@@ -270,107 +270,6 @@ class MaintenanceController extends Controller
         }
     }
 
-    // //Job Position
-    // public function jobPositionData(){
-    //     $jobPosition = JobPosition::all();
-    //     return DataTables::of($jobPosition)->make(true);
-    // }
-
-    // public function jobPositionSave(Request $request){
-    //     $job_position_name_logs = ucwords($request->job_position_name);
-    //     if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
-    //         return 'duplicate';
-    //     }
-
-    //     $jobPosition = new JobPosition;
-    //     $jobPosition->job_position_name = $job_position_name_logs;
-    //     $sql = $jobPosition->save();
-
-    //     if($sql){
-    //         $userlogs = new UserLogs;
-    //         $userlogs->user_id = auth()->user()->id;
-    //         $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: ($job_position_name_logs)."; //Display logs in home page
-    //         $userlogs->save();
-
-    //         $result = 'true';
-    //         $id = $jobPosition->id;
-    //     }
-    //     else{
-    //         $result = 'false';
-    //         $id = '';
-    //     }
-
-    //     $data = array('result' => $result, 'id' => $id);
-    //     return response()->json($data);
-    // }
-
-    // public function jobPositionUpdate(Request $request){
-    //     $job_position_name_orig = $request->job_position_name_orig;
-    //     $job_position_name_new = $request->job_position_name_new;
-        
-    //     //To prevent update/Capital Letters
-    //     if(strtoupper($job_position_name_orig) != strtoupper($job_position_name_new)){
-    //         if(JobPosition::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_new))->count() > 0){
-    //             return 'duplicate';
-    //         }
-    //     }
-
-    //     $jobPosition = JobPosition::find($request->job_position_name_id);
-    //     $jobPosition->job_position_name = $job_position_name_new;
-    //     $sql = $jobPosition->save();
-
-    //     if($sql){
-    //             $userlogs = new UserLogs;
-    //             $userlogs->user_id = auth()->user()->id;
-    //             $userlogs->activity = "UPDATED JOB POSITION: User successfully updated Job Position: FROM ($job_position_name_orig) TO ($job_position_name_new)."; //Display logs in home page
-    //             $userlogs->save();
-    //         return 'true';
-    //     }
-    //     else{
-    //         return 'false';
-    //     }
-    // }
-
-    // //Job Description
-    // public function jobDescriptionData(){
-    //     $jobDescription = JobDescription::all();
-    //     return DataTables::of($jobDescription)->make(true);
-    // }
-
-    // public function jobDescriptionSave(Request $request){
-    //     $job_description_logs = ucfirst($request->job_description);
-
-    //     $jobDescription = new JobDescription;
-    //     $jobDescription->job_position_id = $request->job_position_id;
-    //     $jobDescription->job_description = $job_description_logs;
-    //     $jobDescription->save();
-
-    //     $userlogs = new UserLogs;
-    //     $userlogs->user_id = auth()->user()->id;
-    //     $userlogs->activity = "ADDED JOB DESCRIPTION: User successfully added Job Description: ($job_description_logs) with Job Position ID: ($request->job_position_id)."; //Display logs in home page
-    //     $userlogs->save();
-    // }
-
-    // public function jobDescriptionUpdate(Request $request){
-    //     $job_description_orig = $request->job_description_orig;
-    //     $job_description_new = ucfirst($request->job_description_new);
-
-    //     $jobDescription = JobDescription::find($request->job_description_id);
-    //     $jobDescription->job_description = $job_description_new;
-    //     $sql = $jobDescription->save();
-
-    //     if($sql){
-    //             $userlogs = new UserLogs;
-    //             $userlogs->user_id = auth()->user()->id;
-    //             $userlogs->activity = "UPDATED JOB DESCRIPTION: User successfully updated Job Description: FROM ($job_description_orig) TO ($job_description_new)."; //Display logs in home page
-    //             $userlogs->save();
-    //         return 'true';
-    //     }
-    //     else{
-    //         return 'false';
-    //     }
-    // }
-
     public function jobPositionAndDescriptionData(){
         $jobPositionAndDescription = Position::all();
         return DataTables::of($jobPositionAndDescription)->make(true);
@@ -394,7 +293,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: [$job_position_name_logs] Job Description: [$job_description_logs] Job Requirements: [$job_requirements_logs]."; //Display logs in home page
+            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: [$job_position_name_logs]"; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -420,21 +319,21 @@ class MaintenanceController extends Controller
 
         if($sql){
             // if($job_position_name_orig != $job_position_name_new){
-            //     $job_position_name_change = "(Job Position : FROM '$job_position_name_orig' TO '$job_position_name_new')";
+            //     $job_position_name_change = "[Job Position : FROM '$job_position_name_orig' TO '$job_position_name_new']";
             // }
             // else{
             //     $job_position_name_change = NULL;
             // }
 
             // if($job_description_orig != $job_description_new){
-            //     $job_description_change = "(Job Description: FROM '$job_description_orig' TO '$job_description_new')";
+            //     $job_description_change = "[Job Description: FROM '$job_description_orig' TO '$job_description_new']";
             // }
             // else{
             //     $job_description_change = NULL;
             // }
 
             // if($job_requirements_orig != $job_requirements_new){
-            //     $job_requirements_change = "(Job Requirements: FROM '$job_requirements_orig' TO '$job_requirements_new')";
+            //     $job_requirements_change = "[Job Requirements: FROM '$job_requirements_orig' TO '$job_requirements_new']";
             // }
             // else{
             //     $job_requirements_change = NULL;
@@ -442,7 +341,7 @@ class MaintenanceController extends Controller
 
             // $userlogs = new UserLogs;
             // $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "UPDATED JOB POSITION: User successfully updated details of ($job_position_name_orig) with the following CHANGES: $job_position_name_change $job_description_change $job_requirements_change.";
+            // $userlogs->activity = "UPDATED JOB POSITION: User successfully updated details of [$job_position_name_orig] with the following CHANGES: $job_position_name_change $job_description_change $job_requirements_change.";
             // $userlogs->save();
             return 'true';
         }
