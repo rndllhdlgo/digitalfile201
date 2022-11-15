@@ -7,9 +7,7 @@ use App\Models\UserLogs;
 use App\Models\Branch;
 use App\Models\Supervisor;
 use App\Models\Shift;
-use App\Models\JobPosition;
-use App\Models\JobDescription;
-use App\Position;
+use App\Models\Position;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -34,10 +32,10 @@ class MaintenanceController extends Controller
         $sql = $company->save();
 
         if($sql){
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "ADDED COMPANY: User successfully added Company: ($company_name_logs)."; //Display logs in home page
-                $userlogs->save();
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED COMPANY: User successfully added Company: [$company_name_logs]."; //Display logs in home page
+            $userlogs->save();
             return 'true';
         }
         else{
@@ -62,7 +60,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED COMPANY: User successfully updated the Company: FROM ($company_name_orig) TO ($company_name_new).";
+            $userlogs->activity = "UPDATED COMPANY: User successfully updated the Company: FROM [$company_name_orig] TO [$company_name_new].";
             $userlogs->save();
             return 'true';
         }
@@ -91,7 +89,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED BRANCH: User successfully added Branch: ($branch_name_logs)."; //Display logs in home page
+            $userlogs->activity = "ADDED BRANCH: User successfully added Branch: [$branch_name_logs]."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -117,7 +115,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED BRANCH: User successfully updated the Branch: FROM ($branch_name_orig) TO ($branch_name_new).";
+            $userlogs->activity = "UPDATED BRANCH: User successfully updated the Branch: FROM [$branch_name_orig] TO [$branch_name_new].";
             $userlogs->save();
 
             return 'true';
@@ -151,7 +149,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE ($shift_code_logs) WORKING HOURS ($shift_working_hours_logs) BREAK TIME ($shift_break_time_logs)."; //Display logs in home page
+            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE [$shift_code_logs] WORKING HOURS [$shift_working_hours_logs] BREAK TIME [$shift_break_time_logs]."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -184,21 +182,21 @@ class MaintenanceController extends Controller
 
         if($sql){
             if($shift_code_orig != $shift_code_new){
-                $shift_code_change = "(Shift Code: FROM '$shift_code_orig' TO '$shift_code_new')";
+                $shift_code_change = "[Shift Code: FROM '$shift_code_orig' TO '$shift_code_new']";
             }
             else{
                 $shift_code_change = NULL;
             }
 
             if($shift_working_hours_orig != $shift_working_hours_new){
-                $shift_working_hours_change = "(Working Hours: FROM '$shift_working_hours_orig' TO '$shift_working_hours_new')";
+                $shift_working_hours_change = "[Working Hours: FROM '$shift_working_hours_orig' TO '$shift_working_hours_new']";
             }
             else{
                 $shift_working_hours_change = NULL;
             }
 
             if($shift_break_time_orig != $shift_break_time_new){
-                $shift_break_time_change = "(Break Time: FROM '$shift_break_time_orig' TO '$shift_break_time_new')";
+                $shift_break_time_change = "[Break Time: FROM '$shift_break_time_orig' TO '$shift_break_time_new']";
             }
             else{
                 $shift_break_time_change = NULL;
@@ -206,7 +204,7 @@ class MaintenanceController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of ($shift_code_orig) with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
+            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of [$shift_code_orig] with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
 
             return 'true';
@@ -236,7 +234,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED SUPERVISOR: User successfully added Supervisor: ($supervisor_name_logs)."; //Display logs in home page
+            $userlogs->activity = "ADDED SUPERVISOR: User successfully added Supervisor: [$supervisor_name_logs]."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -262,7 +260,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED SUPERVISOR: User successfully updated Supervisor: FROM ($supervisor_name_orig) TO ($supervisor_name_new).";
+            $userlogs->activity = "UPDATED SUPERVISOR: User successfully updated Supervisor: FROM [$supervisor_name_orig] TO [$supervisor_name_new].";
             $userlogs->save();
 
             return 'true';
@@ -380,6 +378,8 @@ class MaintenanceController extends Controller
 
     public function jobPositionAndDescriptionSave(Request $request){
         $job_position_name_logs = ucwords($request->job_position_name);
+        $job_description_logs = preg_replace('#<br\s*/?>#', "\n", $request->job_description);
+        $job_requirements_logs = preg_replace('#<br\s*/?>#', "\n", $request->job_requirements);
         
         if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
             return 'duplicate';
@@ -387,11 +387,15 @@ class MaintenanceController extends Controller
 
         $jobPositionAndDescription = new Position;
         $jobPositionAndDescription->job_position_name = $job_position_name_logs;
-        $jobPositionAndDescription->job_description = preg_replace('#<br\s*/?>#', "\n", $request->job_description);
-        $jobPositionAndDescription->job_requirements = preg_replace('#<br\s*/?>#', "\n", $request->job_requirements);
+        $jobPositionAndDescription->job_description = $job_description_logs;
+        $jobPositionAndDescription->job_requirements = $job_requirements_logs;
         $sql = $jobPositionAndDescription->save();
 
         if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED JOB POSITION: User successfully added Job Position: [$job_position_name_logs] Job Description: [$job_description_logs] Job Requirements: [$job_requirements_logs]."; //Display logs in home page
+            $userlogs->save();
             return 'true';
         }
         else{
@@ -415,6 +419,31 @@ class MaintenanceController extends Controller
         $sql = $jobPositionAndDescription->save();
 
         if($sql){
+            // if($job_position_name_orig != $job_position_name_new){
+            //     $job_position_name_change = "(Job Position : FROM '$job_position_name_orig' TO '$job_position_name_new')";
+            // }
+            // else{
+            //     $job_position_name_change = NULL;
+            // }
+
+            // if($job_description_orig != $job_description_new){
+            //     $job_description_change = "(Job Description: FROM '$job_description_orig' TO '$job_description_new')";
+            // }
+            // else{
+            //     $job_description_change = NULL;
+            // }
+
+            // if($job_requirements_orig != $job_requirements_new){
+            //     $job_requirements_change = "(Job Requirements: FROM '$job_requirements_orig' TO '$job_requirements_new')";
+            // }
+            // else{
+            //     $job_requirements_change = NULL;
+            // }
+
+            // $userlogs = new UserLogs;
+            // $userlogs->user_id = auth()->user()->id;
+            // $userlogs->activity = "UPDATED JOB POSITION: User successfully updated details of ($job_position_name_orig) with the following CHANGES: $job_position_name_change $job_description_change $job_requirements_change.";
+            // $userlogs->save();
             return 'true';
         }
         else{
