@@ -49,6 +49,7 @@ $(document).ready(function () {
             ajax:{
                 url: '/employees/listOfEmployees',
             },
+            order: [],
             columns:[
                 {data: 'employee_number'},//data column name
                 {data: 'first_name'},
@@ -586,51 +587,6 @@ $('#province').on('change', function(){
     });
 });
 
-
-// $('#viewJobDescriptionBtn').on('click',function(){
-//     $('ul.job_description_div').empty();
-//     $('#jobDescriptionModalTitle').empty();
-
-//     $.ajax({
-//         type: 'GET',
-//         url: '/setJobDescription',
-//         data:{
-//             'id': $('#employee_position').val()
-//         },
-//         success: function(data){
-//             var list = $.map(data, function(value, index){
-//                 return [value];
-//             });
-//             list.forEach(value => {
-//                 $('ul.job_description_div').append('<li>' + value.job_description + '</li>');
-//             });
-//         }
-//     });
-
-//     $.ajax({
-//         type: 'GET',
-//         url: '/setJobPosition',
-//         data:{
-//             'id': $('#employee_position').val()
-//         },
-//         success: function(data){
-//             var list = $.map(data, function(value, index){
-//                 return [value];
-//             });
-//             list.forEach(value => {
-//                 // $('ul.job_description_div').append('<p class="h3"> <br>'+value.job_position_name+'</p>');
-//                 $('#jobDescriptionModalTitle').append(value.job_position_name);
-//             });
-//         }
-//     });
-//     $('#viewJobDescriptionModal').modal({
-//         backdrop: 'static',
-//         keyboard: false
-//     })
-
-//     $('#viewJobDescriptionModal').modal('show');
-// });
-
 $('#viewJobDescriptionBtn').on('click',function(){
     $('ul.job_description_div').empty();
     $('ul.job_requirements_div').empty();
@@ -646,13 +602,17 @@ $('#viewJobDescriptionBtn').on('click',function(){
             console.log(data[0].job_description);
             var job_description = data[0].job_description;
             var job_requirements = data[0].job_requirements;
-            var job_description_details = job_description.split('||');
-            var job_requirements_details = job_requirements.split('||');
+            var job_description_details = job_description.split('•');
+            var job_requirements_details = job_requirements.split('•');
             for(var i=0; i < job_description_details.length; i++){
-                $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
+                if(job_description_details[i]){
+                    $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
+                }
             }
             for(var j=0; j < job_requirements_details.length; j++){
-                $('.job_requirements_div').append('<li>' + job_requirements_details[j].replace(/\"/g,'') + '</li>');
+                if(job_requirements_details[j]){
+                    $('.job_requirements_div').append('<li>' + job_requirements_details[j].replace(/\"/g,'') + '</li>');
+                }
             }
 
             // var list = $.map(data, function(value, index){
