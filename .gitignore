@@ -32,3 +32,4 @@ app/Http/Controllers/CheckboxRadioController.php
 app/Checkbox.php
 resources/views/checkbox.blade.php
 public/js/global/sample.js
+routes/web copy.php
