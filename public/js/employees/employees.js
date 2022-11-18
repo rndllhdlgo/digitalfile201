@@ -113,7 +113,6 @@ $(document).ready(function () {
 });
 
 //Hide Employee fill up form
-
 //Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
     $('#employee_personal_information').fadeIn();
@@ -140,13 +139,23 @@ function checkforblank(){
     || $('#father_name').val().length < 2
     || $('#mother_name').val().length < 2
     || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 14
-    || $('#father_contact_number').val().length < 14
-    || $('#mother_contact_number').val().length < 14
-    || $('#emergency_contact_number').val().length < 14
-    || $('#employee_contact_number').val().length < 14
+    || $('#cellphone_number').val().length < 11
+    || $('#father_contact_number').val().length < 11
+    || $('#mother_contact_number').val().length < 11
+    || $('#emergency_contact_number').val().length < 11
+    || $('#employee_contact_number').val().length < 11
     || !email_address.value.match(regExp)
     || !employee_email_address.value.match(regExp)
+    || $('#employee_number').hasClass('check_duplicate')
+    || $('#email_address').hasClass('check_duplicate')
+    || $('#telephone_number').hasClass('check_duplicate')
+    || $('#cellphone_number').hasClass('check_duplicate')
+    || $('#father_contact_number').hasClass('check_duplicate')
+    || $('#mother_contact_number').hasClass('check_duplicate')
+    || $('#spouse_contact_number').hasClass('check_duplicate')
+    || $('#emergency_contact_number').hasClass('check_duplicate')
+    || $('#employee_email_address').hasClass('check_duplicate')
+    || $('#employee_contact_number').hasClass('check_duplicate')
     ){
         $('#title_details').show();
         $('#btnSave').prop("disabled",true);
@@ -160,7 +169,7 @@ function checkforblank(){
 //Clear Form (Current Page,All Pages)
 setInterval(checkclearform,0);
 function checkclearform(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1) {
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1 && $('.separated').filter(function(){ return !!this.value; }).length < 1) {
         $('#btnClear').prop("disabled",true);
     }
     else{
@@ -168,15 +177,8 @@ function checkclearform(){
     }
 }
 
-
-$('#btnUpdate').hide();
-$('#btnCancelEdit').hide();
-$('#solo_parent').hide();//Hide solo parent section
-$('#spouse').hide();//Hide spouse section
-
 //Hide/Show (Civil Status, Solo Parent) Section Function
     function changeStatus(){
-        // var status = document.getElementById("civil_status");
         var status = $('#civil_status');
 
         if($('#civil_status').val() == "Married"){
@@ -184,7 +186,6 @@ $('#spouse').hide();//Hide spouse section
             $('#spouse_name').addClass('required_field');
             $('#spouse_contact_number').addClass('required_field');
             $('#spouse_profession').addClass('required_field');
-            // $('#spouse_contact_number').val('+63 9');
             $('#solo_parent').hide();
             $('#solo_parent_data_table').hide();
         }
@@ -201,7 +202,6 @@ $('#spouse').hide();//Hide spouse section
             $('#spouse_name').removeClass('required_field');
             $('#spouse_contact_number').removeClass('required_field');
             $('#spouse_profession').removeClass('required_field');
-            
         }
     }
 
@@ -213,11 +213,6 @@ $('#benefits').hide();
   
         if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern"){
             $('#benefits').show();
-            $('#sss_number').addClass('required_field');
-            $('#pag_ibig_number').addClass('required_field');
-            $('#philhealth_number').addClass('required_field');
-            $('#tin_number').addClass('required_field');
-            $('#account_number').addClass('required_field');
         }
         else if($('#employee_status').val() == 'Probationary'){
                 $('#benefits').show();
@@ -599,7 +594,6 @@ $('#viewJobDescriptionBtn').on('click',function(){
             'id': $('#employee_position').val()
         },
         success: function(data){
-            console.log(data[0].job_description);
             var job_description = data[0].job_description;
             var job_requirements = data[0].job_requirements;
             var job_description_details = job_description.split('•');
@@ -614,14 +608,6 @@ $('#viewJobDescriptionBtn').on('click',function(){
                     $('.job_requirements_div').append('<li>' + job_requirements_details[j].replace(/\"/g,'') + '</li>');
                 }
             }
-
-            // var list = $.map(data, function(value, index){
-            //     return [value];
-            // });
-            // list.forEach(value => {
-            //     // $('ul.job_description_div').append('<li style="font-size:20px">'+ value.job_description +'</li>');
-            //     $('div.job_description_div').append(value.job_description);
-            // });
         }
     });
 
@@ -644,7 +630,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
     $('#viewJobDescriptionModal').modal({
         backdrop: 'static',
         keyboard: false
-    })
+    });
 
     $('#viewJobDescriptionModal').modal('show');
 });
@@ -654,8 +640,8 @@ $('#viewJobDescriptionBtn').on('click',function(){
 $('#title_details').on('click',function(){
 //Required Field
     $('#first_name').val('Rendell');
-    $('#last_name').val('Hidalgo');
     $('#middle_name').val('Mendez');
+    $('#last_name').val('Hidalgo');
     $('#nickname').val('Dell');
     $('#street').val('West Antipolo Street');
     $('#gender').val('Male');
@@ -664,23 +650,24 @@ $('#title_details').on('click',function(){
     $('#religion').val('Catholic');
     $('#civil_status').val('Single');
     $('#email_address').val('rendellhidalgo11@gmail.com');
-    $('#cellphone_number').val('+63 9322003718');
+    $('#cellphone_number').val('09322003718');
     $('#father_name').val('Reynaldo Hidalgo');
     $('#father_profession').val('Utility Worker');
     $('#mother_name').val('Marlyn Hidalgo');
     $('#mother_profession').val('House Wife');
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
-    $('#emergency_contact_number').val('+63 9322003718');
+    $('#emergency_contact_number').val('09322003718');
     $('#employee_number').val('1');
-    $('#employee_company').val('PHILLOGIX SYSTEMS INC.');
-    $('#employee_branch').val('SAN JUAN');
+    $('#employee_company').val('Phillogix Systems, Inc.');
+    $('#employee_branch').val('San Juan');
     $('#employee_status').val('Probationary');
-    $('#employee_position').val('Jr. Programmer');
+    $('#employee_position').val('Web Developer');
     $('#employee_supervisor').val('Gerard Mallari');
     $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
-    $('#employee_email_address').val('rendellhidalgo111@gmail.com');
-    $('#employee_contact_number').val('+63 9322003718');
+    $('#employee_email_address').val('rendellhidalgo11@gmail.com');
+    $('#employee_contact_number').val('09322003718');
+    $('#employee_salary').val('15,000');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
     $('#philhealth_number').val('3');
@@ -694,7 +681,6 @@ $('#title_details').on('click',function(){
     $('#primary_school_inclusive_years').val('2006-2012');
 //Optional Field
     $('#telephone_number').val('1231243');
-    $('#father_contact_number').val('+63 9322003718');
-    $('#mother_contact_number').val('+63 9322003718');
+    $('#father_contact_number').val('09322003718');
+    $('#mother_contact_number').val('09322003718');
 });
-
