@@ -61,6 +61,7 @@ $('#btnSave').on('click', function(){
         var employee_company = $('#employee_company').val();
         var employee_branch = $('#employee_branch').val();
         var employee_status = $('#employee_status').val();
+        var employment_origin = $('#employment_origin option:selected').text();
         var employee_salary = $('#employee_salary').val();
         var employee_shift = $('#employee_shift').val();
         var employee_position = $('#employee_position').val();
@@ -142,6 +143,7 @@ $('#btnSave').on('click', function(){
                     employee_company:employee_company,
                     employee_branch:employee_branch,
                     employee_status:employee_status,
+                    employment_origin:employment_origin,
                     employee_salary:employee_salary,
                     employee_shift:employee_shift,
                     employee_position:employee_position,
@@ -284,7 +286,8 @@ $('#btnSave').on('click', function(){
                                             'employee_id' : data.id,
                                             'memo_subject' : value[0],
                                             'memo_date' : value[1],
-                                            'memo_penalty': value[2]
+                                            'memo_penalty': value[2],
+                                            'memo_file' : value[3]
                                         },
                                     });
                                 });
@@ -329,11 +332,10 @@ $('#btnSave').on('click', function(){
                                     });
                                 }); 
 
-                                var past_medical_condition = ($.trim($('#past_medical_condition').val()).split("\n")).join(' <br>');
-                                var allergies = ($.trim($('#allergies').val()).split("\n")).join(' <br>');
-                                var medication = ($.trim($('#medication').val()).split("\n")).join(' <br>');
-                                var psychiatric_history = ($.trim($('#psychiatric_history').val()).split("\n")).join(' <br>');
-
+                                var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
+                                var allergies = $('#allergies').val().split("\n").join(' \n');
+                                var medication = $('#medication').val().split("\n").join(' \n');
+                                var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
                                     $.ajax({
                                         url:"/employees/medicalHistorySave", //route name (web.php)
                                         type:"POST",
@@ -345,11 +347,31 @@ $('#btnSave').on('click', function(){
                                             allergies:allergies,
                                             past_medical_condition:past_medical_condition,
                                             medication:medication,
-                                            psychiatric_history:psychiatric_history
+                                            psychological_history:psychological_history
                                         },
                                     });
 
-                                $('#requirements_form').submit();
+                                var employee_salary = $('#employee_salary').val();
+                                var employee_incentives = $('#employee_incentives').val();
+                                var employee_overtime_pay = $('#employee_overtime_pay').val();
+                                var employee_bonus = $('#employee_bonus').val();
+                                var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+                                    $.ajax({
+                                        url:"/employees/compensationBenefitsSave", //route name (web.php)
+                                        type:"POST",
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                        },
+                                        data:{
+                                            'employee_id':data.id,
+                                            employee_salary:employee_salary,
+                                            employee_incentives:employee_incentives,
+                                            employee_overtime_pay:employee_overtime_pay,
+                                            employee_bonus:employee_bonus,
+                                            employee_insurance:employee_insurance
+                                        },
+                                    });
+                                // $('#requirements_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 // $('#solo_parent_data_table').hide();
                                 // $('#college_data_table').hide();

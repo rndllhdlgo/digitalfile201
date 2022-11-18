@@ -15,7 +15,11 @@ class CreateCompensationBenefitsTable extends Migration
     {
         Schema::create('compensation_benefits', function (Blueprint $table) {
             $table->id();
-            $table->string('hmo_benefits');
+            $table->string('employee_salary');
+            $table->string('employee_incentives');
+            $table->string('employee_overtime_pay');
+            $table->string('employee_bonus');
+            $table->string('employee_insurance');
             $table->timestamps();
         });
     }

@@ -18,8 +18,9 @@ use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\Training;
 use App\Models\Vocational;
+use App\Models\MedicalHistory;
+use App\Models\CompensationBenefits;
 
-use App\MedicalHistory;
 use DataTables;
 
 class EmployeesController extends Controller
@@ -84,6 +85,7 @@ class EmployeesController extends Controller
         $employees->employee_company = $request->employee_company;
         $employees->employee_branch = $request->employee_branch;
         $employees->employee_status = $request->employee_status;
+        $employees->employment_origin = $request->employment_origin;
         $employees->employee_salary = $request->employee_salary;
         $employees->employee_shift = $request->employee_shift;
         $employees->employee_position = $request->employee_position;
@@ -112,7 +114,7 @@ class EmployeesController extends Controller
             //To save user logs
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: ($employee_number_logs). Employee Name: ($employee_first_name_logs $employee_last_name_logs)."; //Display logs in home page
+            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_first_name_logs $employee_last_name_logs]."; //Display logs in home page
             $userlogs->save();
 
             $result = 'true';
@@ -184,6 +186,7 @@ class EmployeesController extends Controller
         $employees->employee_company = $request->employee_company;
         $employees->employee_branch = $request->employee_branch;
         $employees->employee_status = $request->employee_status;
+        $employees->employment_origin = $request->employment_origin;
         $employees->employee_shift = $request->employee_shift;
         $employees->employee_position = $request->employee_position;
         $employees->employee_supervisor = $request->employee_supervisor;
@@ -250,16 +253,16 @@ class EmployeesController extends Controller
 
     public function collegeSave(Request $request){
         $college = new College;
-        $college->employee_id = $request->employee_id;//use to associate employee id
+        $college->employee_id = $request->employee_id;
         $college->college_name = ucfirst($request->college_name);
         $college->college_degree = ucfirst($request->college_degree);
         $college->college_inclusive_years = $request->college_inclusive_years;
-        $college->save();
+        $college->save();  
     }
 
     public function trainingSave(Request $request){
         $training = new Training;
-        $training->employee_id = $request->employee_id;//use to associate employee id
+        $training->employee_id = $request->employee_id;
         $training->training_name = ucfirst($request->training_name);
         $training->training_title = ucfirst($request->training_title);
         $training->training_inclusive_years = $request->training_inclusive_years;
@@ -268,7 +271,7 @@ class EmployeesController extends Controller
 
     public function vocationalSave(Request $request){
         $vocational = new Vocational;
-        $vocational->employee_id = $request->employee_id;//use to associate employee id
+        $vocational->employee_id = $request->employee_id;
         $vocational->vocational_name = ucfirst($request->vocational_name);
         $vocational->vocational_course = ucfirst($request->vocational_course);
         $vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
@@ -277,7 +280,7 @@ class EmployeesController extends Controller
 
     public function jobSave(Request $request){
         $job = new Job;
-        $job->employee_id = $request->employee_id;//use to associate employee id
+        $job->employee_id = $request->employee_id;
         $job->job_name = ucfirst($request->job_name);
         $job->job_position = ucfirst($request->job_position);
         $job->job_address = ucwords($request->job_address);
@@ -287,8 +290,8 @@ class EmployeesController extends Controller
     }
 
     public function memoSave(Request $request){
-        $memo = new Memo;
-        $memo->employee_id = $request->employee_id;//use to associate employee id
+        
+        $memo->employee_id = $request->employee_id;
         $memo->memo_subject = ucfirst($request->memo_subject);
         $memo->memo_date = $request->memo_date;
         $memo->memo_penalty = $request->memo_penalty;
@@ -297,7 +300,7 @@ class EmployeesController extends Controller
 
     public function evaluationSave(Request $request){
         $evaluation = new Evaluation;
-        $evaluation->employee_id = $request->employee_id;//use to associate employee id
+        $evaluation->employee_id = $request->employee_id;
         $evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
         $evaluation->evaluation_date = $request->evaluation_date;
         $evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
@@ -306,10 +309,36 @@ class EmployeesController extends Controller
 
     public function contractsSave(Request $request){
         $contract = new Contracts;
-        $contract->employee_id = $request->employee_id;//use to associate employee id
+        $contract->employee_id = $request->employee_id;
         $contract->contracts_type = ucfirst($request->contracts_type);
         $contract->contracts_date = $request->contracts_date;
         $contract->save();
+    }
+
+    public function medicalHistorySave(Request $request){
+        if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
+            $medicalHistory = new MedicalHistory;
+            $medicalHistory->employee_id = $request->employee_id;
+            $medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
+            $medicalHistory->allergies = ucwords($request->allergies);
+            $medicalHistory->medication = $request->medication;
+            $medicalHistory->psychological_history = $request->psychological_history;
+            $medicalHistory->save();
+        } 
+    }
+
+    public function compensationBenefitsSave(Request $request){
+        
+        if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
+            $compensationBenefits = new CompensationBenefits;
+            $compensationBenefits->employee_id = $request->employee_id;
+            $compensationBenefits->employee_salary = $request->employee_salary;
+            $compensationBenefits->employee_incentives = $request->employee_incentives;
+            $compensationBenefits->employee_overtime_pay = $request->employee_overtime_pay;
+            $compensationBenefits->employee_bonus = $request->employee_bonus;
+            $compensationBenefits->employee_insurance = $request->employee_insurance;
+            $compensationBenefits->save();
+        }
     }
 
     public function storeRequirements(Request $request)
@@ -416,18 +445,6 @@ class EmployeesController extends Controller
         }
             $document->save();
             return Redirect::to(url()->previous());//Return previous page/url
-            // return redirect()->back();
-    }
-
-    public function medicalHistorySave(Request $request){
-
-        $medicalHistory = new MedicalHistory;
-        $medicalHistory->employee_id = $request->employee_id;
-        // $medicalHistory->past_medical_condition = json_encode(array(preg_replace('/\n/',',',$request->past_medical_condition)));
-        // $medicalHistory->allergies = json_encode(array(preg_replace('/\n/',',',$request->allergies)));//Remove \n in textarea
-        $medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
-        $medicalHistory->allergies = ucwords($request->allergies);
-        $medicalHistory->save();
     }
 }
 
