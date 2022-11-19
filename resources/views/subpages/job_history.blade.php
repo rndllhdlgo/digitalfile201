@@ -12,7 +12,7 @@
                 <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
-        <tbody id="job_tbody">
+        <tbody>
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">

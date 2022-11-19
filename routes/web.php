@@ -13,17 +13,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Random Routes
-// Route::get('/upload', function () {
-//     return view('uploadfile');
-// });
-// Route::resource('fileupload', 'FileuploadController');
 
-// Route::get('/multiupload',function(){
-//     return view('multiUploadFile');
-// });
-
-// Route::post('/multiupload','MultiFileUploadController@filesUpload');
 Route::any('/checkbox','CheckboxRadioController@checkbox');
 Route::any('/insertcheckbox','CheckboxRadioController@insertcheckbox');
 
@@ -40,7 +30,7 @@ Route::any('/maintenance', 'PagesController@maintenance');
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');//To display data table of list of employees
 Route::any('/employees/save','EmployeesController@save');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
-Route::any('/employees/fetch','EmployeesController@fetch');
+Route::any('/employees/fetchPersonalInformation','EmployeesController@fetchPersonalInformation');
 Route::any('/employees/update','EmployeesController@update');
 Route::any('/employees/insert', 'EmployeesController@insert');
 
@@ -78,7 +68,7 @@ Route::get('/setcity','PagesController@setcity');
 Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
-Route::any('/employees/storeRequirements','EmployeesController@storeRequirements');
+Route::any('/employees/saveRequirements','EmployeesController@saveRequirements');
 
 // Routes for saving multiple tables
 Route::any('/employees/childrenSave','EmployeesController@childrenSave');
@@ -127,18 +117,24 @@ Route::any('/maintenance/jobDescriptionData','MaintenanceController@jobDescripti
 Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');
 Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescriptionUpdate');
 
-// Route::any('/setJobPosition','PagesController@setJobPosition');
-// Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
 
 
 
+//Multiple File Upload
+Route::any('/multipleFileUpload','MultipleFileUpload@multipleFileUpload');
+Route::any('/saveMultipleFileUpload','MultipleFileUpload@saveMultipleFileUpload');
 
+// Revise DataBase
+Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
+Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
+Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompensationBenefits');
+Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
+Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
 
-
-
-
-
-
-
+Route::any('/employees/saveCollege','EmployeesController@saveCollege');
+Route::any('/employees/saveTraining','EmployeesController@saveTraining');
+Route::any('/employees/saveVocational','EmployeesController@saveVocational');
+Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
+Route::any('/employees/saveChildren','EmployeesController@saveChildren');

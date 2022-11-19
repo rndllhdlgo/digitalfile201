@@ -331,7 +331,7 @@
                 </td>
                 <td class="pb-2 pt-2">
                     <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file"           onchange="return memoValidation(memo_file)" accept=".pdf">
+                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file[]"           onchange="return memoValidation(memo_file)" accept=".pdf">
                     <span id="memo_text">No file chosen.</span>
                 </td>
                 <td>

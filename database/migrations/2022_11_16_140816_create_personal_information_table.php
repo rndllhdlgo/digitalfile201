@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployeesTable extends Migration
+class CreatePersonalInformationTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateEmployeesTable extends Migration
      */
     public function up()
     {
-        Schema::create('employees', function (Blueprint $table) {
+        Schema::create('personal_information', function (Blueprint $table) {
             $table->id();
-            $table->string('employee_number');
             $table->string('first_name');
-            $table->string('last_name');
             $table->string('middle_name');
+            $table->string('last_name');
             $table->string('suffix');
             $table->string('nickname');
             $table->string('birthday');
@@ -46,28 +45,7 @@ class CreateEmployeesTable extends Migration
             $table->string('emergency_contact_name');
             $table->string('emergency_contact_relationship');
             $table->string('emergency_contact_number');
-            $table->string('employee_company');
-            $table->string('employee_branch');
-            $table->string('employee_status');
-            $table->string('employment_origin');
-            $table->string('employee_salary');
-            $table->string('employee_shift');
-            $table->string('employee_position');
-            $table->string('employee_supervisor');
-            $table->string('date_hired');
-            $table->string('employee_email_address');
-            $table->string('employee_contact_number');
-            $table->string('sss_number');
-            $table->string('pag_ibig_number');
-            $table->string('philhealth_number');
-            $table->string('tin_number');
-            $table->string('account_number');
-            $table->string('secondary_school_name');
-            $table->string('secondary_school_address');
-            $table->string('secondary_school_inclusive_years');
-            $table->string('primary_school_name');
-            $table->string('primary_school_address');
-            $table->string('primary_school_inclusive_years');
+            $table->string('employee_image');
             $table->timestamps();
         });
     }
@@ -79,6 +57,6 @@ class CreateEmployeesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employees');
+        Schema::dropIfExists('personal_information');
     }
 }

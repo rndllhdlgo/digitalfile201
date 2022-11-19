@@ -11,8 +11,8 @@
                         <img id="image_preview">
 
                     {{-- <form method="POST" id="image_form" enctype="multipart/form-data"> form for inserting image --}}
-                        <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#cover_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
-                        <input type="file" name="cover_image" id="cover_image" class="required_field" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(cover_image)">
+                        <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                        <input type="file" name="employee_image" id="employee_image" class="required_field" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
                     {{-- </form>  --}}
                 </div>
             </div>
@@ -125,13 +125,13 @@
             <div class="row mb-3 mt-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT <span class="span_height span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control required_field text-capitalize" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT <span class="span_weight span_all"></span></label>
                     </div>
                 </div>
@@ -186,7 +186,7 @@
         </div>
     </div>
 
-            <div class="row mb-2 mt-3" id="spouse">
+            <div class="row mb-2 mt-3" id="spouse" style="display: none;">
                 <div class="col">
                         <div class="f-outline">
                             <input class="forminput form-control text-capitalize" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
@@ -201,7 +201,7 @@
                         <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         {{-- <p id="spouse_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number </p> --}}
                         <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
-                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NUMBER <span class="span_spouse_number span_all"></span> </label>
+                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NUMBER (Optional) <span class="span_spouse_number span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
@@ -291,7 +291,7 @@
             </div>
 
             <hr class="hr-design">
-            <div class="row mt-2" id="solo_parent">
+            <div class="row mt-2" id="solo_parent" style="display: none;">
                 <strong style="font-size:20px;color:#0d1a80;">CHILDREN INFORMATION</strong>
                 <div class="col">
                     <table class="table table-bordered table-hover table-striped" style="margin-top:15px;" id="solo_parent_table">

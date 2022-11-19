@@ -1,11 +1,11 @@
 //Display Upload Preview// Validation //Display filename
 
 //Personal Information Tab
-function ImageValidation(cover_image) {
-    var imageData = document.getElementById('cover_image');
+function ImageValidation(employee_image) {
+    var imageData = document.getElementById('employee_image');
     var imageUploadPath = imageData.value;
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var imageFileSize = $("#cover_image").get(0).files[0].size;
+    var imageFileSize = $("#employee_image").get(0).files[0].size;
 
     if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880) {
         Swal.fire({

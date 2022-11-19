@@ -258,7 +258,7 @@ input[type=search]:focus{
 }
 
 /* input type file */
-#cover_image,
+#employee_image,
 .hiddenFile,
 .hiddenDocumentPreview{
     display:none;
@@ -337,6 +337,7 @@ input[type=search]:focus{
     zoom: 150%;
     margin-left: 26%;
 }
+
 /* Document Tab */
 /* Divide Two Tables */
 .first_table{
@@ -350,17 +351,10 @@ input[type=search]:focus{
     padding: 5px;
 }
 
-/* Position Tab */
-/* Divide Two DataTables */
-/* .jobPositionTable{
-    float: left;
-    width:50%;
-} 
-.jobDescriptionTable{
-    float: left;
-    width:50%;
-} */
-
 .text-default{
     color:#0d1a80 !important;
+}
+
+.separated{
+    border-color:#0d1a80;
 }

@@ -55,9 +55,9 @@ $(document).ready(function () {
                 {data: 'first_name'},
                 {data: 'middle_name'},
                 {data: 'last_name'},
-                {data: 'employee_position'},
-                {data: 'employee_branch'},
-                {data: 'employee_status'},
+                // {data: 'employee_position'},
+                // {data: 'employee_branch'},
+                // {data: 'employee_status'},
             ],
             initComplete: function () {
                 var api = this.api();
@@ -120,7 +120,7 @@ $('#addEmployeeBtn').on('click',function(){
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();
     $('#navigation').show();
-    $('#tab1').click();
+    $('#tab1').addClass('tabactive');
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
 
@@ -409,8 +409,8 @@ $('#tab7').on('click',function(){
     $('#educational_background').hide();
     $('#job_history').hide();
     $('#medical_history').hide();
-    $('#performance_evaluation').show();
-    $('#documents').hide();
+    $('#documents').show();
+    $('#performance_evaluation').hide();
     $('#logs').hide();
 });
 
@@ -431,8 +431,8 @@ $('#tab8').on('click',function(){
     $('#educational_background').hide();
     $('#job_history').hide();
     $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').show();
+    $('#documents').hide();
+    $('#performance_evaluation').show();
     $('#logs').hide();
 });
 
@@ -668,6 +668,9 @@ $('#title_details').on('click',function(){
     $('#employee_email_address').val('rendellhidalgo11@gmail.com');
     $('#employee_contact_number').val('09322003718');
     $('#employee_salary').val('15,000');
+    $('#employee_incentives').val('1');
+    $('#employee_overtime_pay').val('1');
+    $('#employee_bonus').val('1');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
     $('#philhealth_number').val('3');

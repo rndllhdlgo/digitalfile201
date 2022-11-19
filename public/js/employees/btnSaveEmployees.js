@@ -3,7 +3,7 @@
 var fileName;
 function sendFile() {//This function will trigger if the btnSave click
     var formData = new FormData();
-    var file = $('#cover_image').prop('files')[0];
+    var file = $('#employee_image').prop('files')[0];
 
     formData.append('file', file);
     // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
@@ -26,6 +26,7 @@ function sendFile() {//This function will trigger if the btnSave click
 
 //Save Employee Function
 $('#btnSave').on('click', function(){
+    //Personal Information
         sendFile();
         var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
         var first_name = $.trim($('#first_name').val());
@@ -44,9 +45,9 @@ $('#btnSave').on('click', function(){
         var weight = $("#weight").val();
         var religion = $("#religion").val();
         var email_address = $('#email_address').val();
-        var telephone_number = $.trim($('#telephone_number').val());
-        var cellphone_number = $.trim($('#cellphone_number').val());
-        var spouse_name = $.trim($('#spouse_name').val());
+        var telephone_number = $('#telephone_number').val();
+        var cellphone_number = $('#cellphone_number').val();
+        var spouse_name = $('#spouse_name').val();
         var spouse_contact_number = $.trim($('#spouse_contact_number').val());
         var spouse_profession = $.trim($('#spouse_profession').val());
         var father_name = $.trim($('#father_name').val());
@@ -58,31 +59,6 @@ $('#btnSave').on('click', function(){
         var emergency_contact_name = $.trim($('#emergency_contact_name').val());
         var emergency_contact_relationship = $.trim($('#emergency_contact_relationship').val());
         var emergency_contact_number = $.trim($('#emergency_contact_number').val());
-        var employee_company = $('#employee_company').val();
-        var employee_branch = $('#employee_branch').val();
-        var employee_status = $('#employee_status').val();
-        var employment_origin = $('#employment_origin option:selected').text();
-        var employee_salary = $('#employee_salary').val();
-        var employee_shift = $('#employee_shift').val();
-        var employee_position = $('#employee_position').val();
-        var employee_supervisor = $('#employee_supervisor').val();
-        var date_hired = $('#date_hired').val();
-        var employee_email_address = $.trim($('#employee_email_address').val());
-        var employee_contact_number = $.trim($('#employee_contact_number').val());
-        var sss_number = $.trim($('#sss_number').val());
-        var pag_ibig_number = $.trim($('#pag_ibig_number').val());
-        var philhealth_number = $.trim($('#philhealth_number').val());
-        var tin_number = $.trim($('#tin_number').val());
-        var account_number = $.trim($('#account_number').val());
-        var cover_image = $('#cover_image').prop('files')[0];
-        console.log(cover_image);
-        var secondary_school_name = $.trim($('#secondary_school_name').val());
-        var secondary_school_address = $.trim($('#secondary_school_address').val());
-        var secondary_school_inclusive_years = $.trim($('#secondary_school_inclusive_years').val());
-        var primary_school_name = $.trim($('#primary_school_name').val());
-        var primary_school_address = $.trim($('#primary_school_address').val());
-        var primary_school_inclusive_years = $.trim($('#primary_school_inclusive_years').val());
-
         // go = false,
         
         Swal.fire({
@@ -100,7 +76,7 @@ $('#btnSave').on('click', function(){
     }).then((save) => {
         if (save.isConfirmed) {
             $.ajax({
-                url:"/employees/save", //route name (web.php)
+                url:"/employees/savePersonalInformation", //route name (web.php)
                 type:"POST",
                 headers:{
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
@@ -139,34 +115,121 @@ $('#btnSave').on('click', function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
-                //Work Information Tab
-                    employee_company:employee_company,
-                    employee_branch:employee_branch,
-                    employee_status:employee_status,
-                    employment_origin:employment_origin,
-                    employee_salary:employee_salary,
-                    employee_shift:employee_shift,
-                    employee_position:employee_position,
-                    employee_supervisor:employee_supervisor,
-                    date_hired:date_hired,
-                    employee_email_address:employee_email_address,
-                    employee_contact_number:employee_contact_number,
-                    sss_number:sss_number,
-                    pag_ibig_number:pag_ibig_number,
-                    philhealth_number:philhealth_number,
-                    tin_number:tin_number,
-                    account_number:account_number,
-                //School Information 
-                    secondary_school_name:secondary_school_name,
-                    secondary_school_address:secondary_school_address,
-                    secondary_school_inclusive_years:secondary_school_inclusive_years,
-                    primary_school_name:primary_school_name,
-                    primary_school_address:primary_school_address,
-                    primary_school_inclusive_years:primary_school_inclusive_years
                 },
                 success: function(data){
                         if(data.result == 'true'){
                             $('#employee_id').val(data.id);
+                        //Work Information Tab
+                            var employee_company = $('#employee_company').val();
+                            var employee_branch = $('#employee_branch').val();
+                            var employee_status = $('#employee_status').val();
+                            var employment_origin = $('#employment_origin option:selected').text();
+                            var employee_salary = $('#employee_salary').val();
+                            var employee_shift = $('#employee_shift').val();
+                            var employee_position = $('#employee_position').val();
+                            var employee_supervisor = $('#employee_supervisor').val();
+                            var date_hired = $('#date_hired').val();
+                            var employee_email_address = $.trim($('#employee_email_address').val());
+                            var employee_contact_number = $.trim($('#employee_contact_number').val());
+                            var sss_number = $.trim($('#sss_number').val());
+                            var pag_ibig_number = $.trim($('#pag_ibig_number').val());
+                            var philhealth_number = $.trim($('#philhealth_number').val());
+                            var tin_number = $.trim($('#tin_number').val());
+                            var account_number = $.trim($('#account_number').val());
+
+                            $.ajax({
+                                url:"/employees/saveWorkInformation", //route name (web.php)
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                },
+                                data:{
+                                    employee_id:data.id,
+                                    employee_company:employee_company,
+                                    employee_branch:employee_branch,
+                                    employee_status:employee_status,
+                                    employment_origin:employment_origin,
+                                    employee_salary:employee_salary,
+                                    employee_shift:employee_shift,
+                                    employee_position:employee_position,
+                                    employee_supervisor:employee_supervisor,
+                                    date_hired:date_hired,
+                                    employee_email_address:employee_email_address,
+                                    employee_contact_number:employee_contact_number,
+                                    sss_number:sss_number,
+                                    pag_ibig_number:pag_ibig_number,
+                                    philhealth_number:philhealth_number,
+                                    tin_number:tin_number,
+                                    account_number:account_number
+                                },
+                            });
+
+                            var employee_salary = $('#employee_salary').val();
+                            var employee_incentives = $('#employee_incentives').val();
+                            var employee_overtime_pay = $('#employee_overtime_pay').val();
+                            var employee_bonus = $('#employee_bonus').val();
+                            var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+
+                            $.ajax({
+                                url:"/employees/saveCompensationBenefits", //route name (web.php)
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                },
+                                data:{
+                                    employee_id:data.id,
+                                    employee_salary:employee_salary,
+                                    employee_incentives:employee_incentives,
+                                    employee_overtime_pay:employee_overtime_pay,
+                                    employee_bonus:employee_bonus,
+                                    employee_insurance:employee_insurance
+                                },
+                            });
+
+                            var secondary_school_name = $('#secondary_school_name').val();
+                            var secondary_school_address = $('#secondary_school_address').val();
+                            var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
+                            var primary_school_name = $('#primary_school_name').val();
+                            var primary_school_address = $('#primary_school_address').val();
+                            var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
+
+                            $.ajax({
+                                url:"/employees/saveEducationalAttainment", //route name (web.php)
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                },
+                                data:{
+                                    employee_id:data.id,
+                                    secondary_school_name:secondary_school_name,
+                                    secondary_school_address:secondary_school_address,
+                                    secondary_school_inclusive_years:secondary_school_inclusive_years,
+                                    primary_school_name:primary_school_name,
+                                    primary_school_address:primary_school_address,
+                                    primary_school_inclusive_years:primary_school_inclusive_years
+                                },
+                            });
+
+                            var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
+                            var allergies = $('#allergies').val().split("\n").join(' \n');
+                            var medication = $('#medication').val().split("\n").join(' \n');
+                            var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
+
+                            $.ajax({
+                                url:"/employees/saveMedicalHistory", //route name (web.php)
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                },
+                                data:{
+                                    employee_id:data.id,
+                                    allergies:allergies,
+                                    past_medical_condition:past_medical_condition,
+                                    medication:medication,
+                                    psychological_history:psychological_history
+                                },
+                            });
+
                             //This code is to save the data in multiple rows
                                 var soloParentTable = $('#solo_parent_data_table').DataTable({
                                     dom:'t',
@@ -188,6 +251,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+                                
                                 var collegeTable = $('#college_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -195,7 +259,7 @@ $('#btnSave').on('click', function(){
                                 $.each(college_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/collegeSave',
+                                        url: '/employees/saveCollege',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -208,6 +272,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+
                                 var trainingTable = $('#training_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -215,7 +280,7 @@ $('#btnSave').on('click', function(){
                                 $.each(training_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/trainingSave',
+                                        url: '/employees/saveTraining',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -228,6 +293,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+
                                 var vocationalTable = $('#vocational_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -235,7 +301,7 @@ $('#btnSave').on('click', function(){
                                 $.each(vocational_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/vocationalSave',
+                                        url: '/employees/saveVocational',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -248,6 +314,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+
                                 var jobTable = $('#job_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -255,7 +322,7 @@ $('#btnSave').on('click', function(){
                                 $.each(job_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/jobSave',
+                                        url: '/employees/saveJobHistory',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -270,6 +337,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
+
                                 var memoTable = $('#memo_data_table').DataTable({
                                     dom:'t',
                                 });
@@ -332,55 +400,16 @@ $('#btnSave').on('click', function(){
                                     });
                                 }); 
 
-                                var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
-                                var allergies = $('#allergies').val().split("\n").join(' \n');
-                                var medication = $('#medication').val().split("\n").join(' \n');
-                                var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
-                                    $.ajax({
-                                        url:"/employees/medicalHistorySave", //route name (web.php)
-                                        type:"POST",
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
-                                        },
-                                        data:{
-                                            'employee_id':data.id,
-                                            allergies:allergies,
-                                            past_medical_condition:past_medical_condition,
-                                            medication:medication,
-                                            psychological_history:psychological_history
-                                        },
-                                    });
-
-                                var employee_salary = $('#employee_salary').val();
-                                var employee_incentives = $('#employee_incentives').val();
-                                var employee_overtime_pay = $('#employee_overtime_pay').val();
-                                var employee_bonus = $('#employee_bonus').val();
-                                var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
-                                    $.ajax({
-                                        url:"/employees/compensationBenefitsSave", //route name (web.php)
-                                        type:"POST",
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
-                                        },
-                                        data:{
-                                            'employee_id':data.id,
-                                            employee_salary:employee_salary,
-                                            employee_incentives:employee_incentives,
-                                            employee_overtime_pay:employee_overtime_pay,
-                                            employee_bonus:employee_bonus,
-                                            employee_insurance:employee_insurance
-                                        },
-                                    });
                                 // $('#requirements_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
-                                // $('#solo_parent_data_table').hide();
-                                // $('#college_data_table').hide();
-                                // $('#training_data_table').hide();
-                                // $('#vocational_data_table').hide();
-                                // $('#job_data_table').hide();
-                                // $('#memo_data_table').hide();
-                                // $('#evaluation_data_table').hide();
-                                // $('#contracts_data_table').hide();
+                                $('#solo_parent_data_table').hide();
+                                $('#college_data_table').hide();
+                                $('#training_data_table').hide();
+                                $('#vocational_data_table').hide();
+                                $('#job_data_table').hide();
+                                $('#memo_data_table').hide();
+                                $('#evaluation_data_table').hide();
+                                $('#contracts_data_table').hide();
                         }
                         else{
                             Swal.fire("SAVE FAILED", "", "error");

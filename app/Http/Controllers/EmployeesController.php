@@ -19,7 +19,13 @@ use App\Models\Termination;
 use App\Models\Training;
 use App\Models\Vocational;
 use App\Models\MedicalHistory;
+
+
+use App\Models\PersonalInformation;
+use App\Models\WorkInformation;
 use App\Models\CompensationBenefits;
+use App\Models\EducationalAttainment;
+use App\Models\JobHistory;
 
 use DataTables;
 
@@ -30,8 +36,13 @@ class EmployeesController extends Controller
         $this->middleware('auth');//For Authentication
     }
     
+    // public function listOfEmployees(){
+    //     $employees = Employee::all();
+    //     return DataTables::of($employees)->make(true);
+    // }
+
     public function listOfEmployees(){
-        $employees = Employee::all();
+        $employees = PersonalInformation::all();
         return DataTables::of($employees)->make(true);
     }
     
@@ -40,72 +51,46 @@ class EmployeesController extends Controller
         return DataTables::of($children)->make(true);
     }
 
-    public function save(Request $request){//To save only Work,Personal,School Information Form
-        
-        $employees = new Employee;
-    //Personal Information Tab
+    public function savePersonalInformation(Request $request){//To save only Work,Personal,School Information Form
+        $employee_personal_information = new PersonalInformation;
         $employee_number_logs = $request->employee_number; 
         $employee_first_name_logs = ucwords($request->first_name);
         $employee_last_name_logs = ucwords($request->last_name); 
 
-        $employees->employee_number = $employee_number_logs;//Eloquent Syntax/Form
-        $employees->first_name =  $employee_first_name_logs;
-        $employees->cover_image = $request->fileName;
-        $employees->last_name = $employee_last_name_logs;
+        $employee_personal_information->employee_number = $employee_number_logs;//Eloquent Syntax/Form
+        $employee_personal_information->first_name =  $employee_first_name_logs;
+        $employee_personal_information->employee_image = $request->fileName;
+        $employee_personal_information->last_name = $employee_last_name_logs;
 
-        $employees->middle_name = ucwords($request->middle_name);
-        $employees->suffix = ucwords($request->suffix);
-        $employees->nickname = ucwords($request->nickname);
-        $employees->birthday = $request->birthday;
-        $employees->gender = $request->gender;
-        $employees->civil_status = $request->civil_status;
-        $employees->street = ucwords($request->street);
-        $employees->region = $request->region;
-        $employees->province = $request->province;
-        $employees->city = $request->city;
-        $employees->height = $request->height;
-        $employees->weight = $request->weight;
-        $employees->religion = ucwords($request->religion);
-        $employees->email_address = strtolower($request->email_address);
-        $employees->telephone_number = $request->telephone_number;
-        $employees->cellphone_number = $request->cellphone_number;
-        $employees->spouse_name = ucwords($request->spouse_name);
-        $employees->spouse_contact_number = $request->spouse_contact_number;
-        $employees->spouse_profession = ucwords($request->spouse_profession);
-        $employees->father_name = ucwords($request->father_name);
-        $employees->father_contact_number = $request->father_contact_number;
-        $employees->father_profession = ucwords($request->father_profession);
-        $employees->mother_name = ucwords($request->mother_name);
-        $employees->mother_contact_number = $request->mother_contact_number;
-        $employees->mother_profession = ucwords($request->mother_profession);
-        $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
-        $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
-        $employees->emergency_contact_number = $request->emergency_contact_number;
-    //Work Information Tab
-        $employees->employee_company = $request->employee_company;
-        $employees->employee_branch = $request->employee_branch;
-        $employees->employee_status = $request->employee_status;
-        $employees->employment_origin = $request->employment_origin;
-        $employees->employee_salary = $request->employee_salary;
-        $employees->employee_shift = $request->employee_shift;
-        $employees->employee_position = $request->employee_position;
-        $employees->employee_supervisor = $request->employee_supervisor;
-        $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = $request->employee_email_address;
-        $employees->employee_contact_number = $request->employee_contact_number;
-        $employees->sss_number = $request->sss_number;
-        $employees->pag_ibig_number = $request->pag_ibig_number;
-        $employees->philhealth_number = $request->philhealth_number;
-        $employees->tin_number = $request->tin_number;
-        $employees->account_number = $request->account_number;
-    //Educational and Trainings Background Tab
-        $employees->secondary_school_name = ucwords($request->secondary_school_name);
-        $employees->secondary_school_address = ucwords($request->secondary_school_address);
-        $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = ucwords($request->primary_school_name);
-        $employees->primary_school_address = ucwords($request->primary_school_address);
-        $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
-        $sql = $employees->save();//To save data
+        $employee_personal_information->middle_name = ucwords($request->middle_name);
+        $employee_personal_information->suffix = ucwords($request->suffix);
+        $employee_personal_information->nickname = ucwords($request->nickname);
+        $employee_personal_information->birthday = $request->birthday;
+        $employee_personal_information->gender = $request->gender;
+        $employee_personal_information->civil_status = $request->civil_status;
+        $employee_personal_information->street = ucwords($request->street);
+        $employee_personal_information->region = $request->region;
+        $employee_personal_information->province = $request->province;
+        $employee_personal_information->city = $request->city;
+        $employee_personal_information->height = $request->height;
+        $employee_personal_information->weight = $request->weight;
+        $employee_personal_information->religion = ucwords($request->religion);
+        $employee_personal_information->email_address = strtolower($request->email_address);
+        $employee_personal_information->telephone_number = $request->telephone_number;
+        $employee_personal_information->cellphone_number = $request->cellphone_number;
+        $employee_personal_information->spouse_name = ucwords($request->spouse_name);
+        $employee_personal_information->spouse_contact_number = $request->spouse_contact_number;
+        $employee_personal_information->spouse_profession = ucwords($request->spouse_profession);
+        $employee_personal_information->father_name = ucwords($request->father_name);
+        $employee_personal_information->father_contact_number = $request->father_contact_number;
+        $employee_personal_information->father_profession = ucwords($request->father_profession);
+        $employee_personal_information->mother_name = ucwords($request->mother_name);
+        $employee_personal_information->mother_contact_number = $request->mother_contact_number;
+        $employee_personal_information->mother_profession = ucwords($request->mother_profession);
+        $employee_personal_information->emergency_contact_name = ucwords($request->emergency_contact_name);
+        $employee_personal_information->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
+        $employee_personal_information->emergency_contact_number = $request->emergency_contact_number;
+        $sql = $employee_personal_information->save();//To save data
         
         // $id = $employees->id;
 
@@ -118,7 +103,7 @@ class EmployeesController extends Controller
             $userlogs->save();
 
             $result = 'true';
-            $id = $employees->id;
+            $id = $employee_personal_information->id;
         }
         else{
             $result = 'false';
@@ -127,6 +112,15 @@ class EmployeesController extends Controller
 
         $data = array('result' => $result, 'id' => $id);
         return response()->json($data);
+    }
+
+    public function saveChildren(Request $request){
+        $children = new Children;
+        $children->employee_id = $request->employee_id;//use to associate employee id
+        $children->child_name = ucwords($request->child_name);
+        $children->child_birthday = $request->child_birthday;
+        $children->child_gender = $request->child_gender;
+        $children->save();
     }
 
     public function insertImage(Request $request){//This function is to save the image
@@ -144,9 +138,104 @@ class EmployeesController extends Controller
             return $fileNameToStore;
     }
 
-    public function fetch(Request $request){
-        $employees = Employee::where('id',$request->id)->first();
-        return $employees;
+    public function saveWorkInformation(Request $request){
+        $employee_work_information = new WorkInformation;
+        $employee_work_information->employee_id = $request->employee_id;
+        $employee_work_information->employee_company = $request->employee_company;
+        $employee_work_information->employee_branch = $request->employee_branch;
+        $employee_work_information->employee_status = $request->employee_status;
+        $employee_work_information->employment_origin = $request->employment_origin;
+        $employee_work_information->employee_salary = $request->employee_salary;
+        $employee_work_information->employee_shift = $request->employee_shift;
+        $employee_work_information->employee_position = $request->employee_position;
+        $employee_work_information->employee_supervisor = $request->employee_supervisor;
+        $employee_work_information->date_hired = $request->date_hired;
+        $employee_work_information->employee_email_address = $request->employee_email_address;
+        $employee_work_information->employee_contact_number = $request->employee_contact_number;
+        $employee_work_information->sss_number = $request->sss_number;
+        $employee_work_information->pag_ibig_number = $request->pag_ibig_number;
+        $employee_work_information->philhealth_number = $request->philhealth_number;
+        $employee_work_information->tin_number = $request->tin_number;
+        $employee_work_information->account_number = $request->account_number;
+        $employee_work_information->save();
+    }
+
+    public function saveCompensationBenefits(Request $request){
+        $employee_compensationBenefits = new CompensationBenefits;
+        $employee_compensationBenefits->employee_id = $request->employee_id;
+        $employee_compensationBenefits->employee_salary = $request->employee_salary;
+        $employee_compensationBenefits->employee_incentives = $request->employee_incentives;
+        $employee_compensationBenefits->employee_overtime_pay = $request->employee_overtime_pay;
+        $employee_compensationBenefits->employee_bonus = $request->employee_bonus;
+        $employee_compensationBenefits->employee_insurance = $request->employee_insurance;
+        $employee_compensationBenefits->save();
+    }
+
+    public function saveEducationalAttainment(Request $request){
+        $employee_educational_attainment = new EducationalAttainment;
+        $employee_educational_attainment->employee_id = $request->employee_id;
+        $employee_educational_attainment->secondary_school_name = $request->secondary_school_name;
+        $employee_educational_attainment->secondary_school_address = $request->secondary_school_address;
+        $employee_educational_attainment->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
+        $employee_educational_attainment->primary_school_name = $request->primary_school_name;
+        $employee_educational_attainment->primary_school_address = $request->primary_school_address;
+        $employee_educational_attainment->primary_school_inclusive_years = $request->primary_school_inclusive_years;
+        $employee_educational_attainment->save();
+    }
+
+    public function saveCollege(Request $request){
+        $employee_college = new College;
+        $employee_college->employee_id = $request->employee_id;
+        $employee_college->college_name = ucfirst($request->college_name);
+        $employee_college->college_degree = ucfirst($request->college_degree);
+        $employee_college->college_inclusive_years = $request->college_inclusive_years;
+        $employee_college->save();  
+    }
+
+    public function saveTraining(Request $request){
+        $employee_training = new Training;
+        $employee_training->employee_id = $request->employee_id;
+        $employee_training->training_name = ucfirst($request->training_name);
+        $employee_training->training_title = ucfirst($request->training_title);
+        $employee_training->training_inclusive_years = $request->training_inclusive_years;
+        $employee_training->save();
+    }
+
+    public function saveVocational(Request $request){
+        $employee_vocational = new Vocational;
+        $employee_vocational->employee_id = $request->employee_id;
+        $employee_vocational->vocational_name = ucfirst($request->vocational_name);
+        $employee_vocational->vocational_course = ucfirst($request->vocational_course);
+        $employee_vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
+        $employee_vocational->save();
+    }
+
+    public function saveJobHistory(Request $request){
+        $employee_job = new JobHistory;
+        $employee_job->employee_id = $request->employee_id;
+        $employee_job->job_name = ucfirst($request->job_name);
+        $employee_job->job_position = ucfirst($request->job_position);
+        $employee_job->job_address = ucwords($request->job_address);
+        $employee_job->job_contact_details = $request->job_contact_details;
+        $employee_job->job_inclusive_years = $request->job_inclusive_years;
+        $employee_job->save();
+    }
+
+    public function saveMedicalHistory(Request $request){
+        if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
+            $employee_medicalHistory = new MedicalHistory;
+            $employee_medicalHistory->employee_id = $request->employee_id;
+            $employee_medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
+            $employee_medicalHistory->allergies = ucwords($request->allergies);
+            $employee_medicalHistory->medication = $request->medication;
+            $employee_medicalHistory->psychological_history = $request->psychological_history;
+            $employee_medicalHistory->save();
+        } 
+    }
+
+    public function fetchPersonalInformation(Request $request){
+        $employees_personal_information = PersonalInformation::where('id',$request->id)->first();
+        return $employees_personal_information;
     }
 
     public function update(Request $request){
@@ -212,136 +301,63 @@ class EmployeesController extends Controller
 
     //Check Duplication of Data
     public function checkDuplicate(Request $request){
-        return Employee::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmailDuplicate(Request $request){
-        return Employee::where('email_address',$request->email_address)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('email_address',$request->email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkTelephoneNumberDuplicate(Request $request){
-        return Employee::where('telephone_number',$request->telephone_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('telephone_number',$request->telephone_number)->count() > 0 ? 'true': 'false';
     }
     public function checkCellphoneNumberDuplicate(Request $request){
-        return Employee::where('cellphone_number',$request->cellphone_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('cellphone_number',$request->cellphone_number)->count() > 0 ? 'true': 'false';
     }
     public function checkFatherCellphoneNumberDuplicate(Request $request){
-        return Employee::where('father_contact_number',$request->father_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('father_contact_number',$request->father_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkMotherCellphoneNumberDuplicate(Request $request){
-        return Employee::where('mother_contact_number',$request->mother_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('mother_contact_number',$request->mother_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkSpouseCellphoneNumberDuplicate(Request $request){
-        return Employee::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmergencyContactNumberDuplicate(Request $request){
-        return Employee::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformation::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeEmailAddressDuplicate(Request $request){
-        return Employee::where('employee_email_address',$request->employee_email_address)->count() > 0 ? 'true': 'false';
+        return WorkInformation::where('employee_email_address',$request->employee_email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeContactNumberDuplicate(Request $request){
-        return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
-    }
-
-    public function childrenSave(Request $request){
-        $children = new Children;
-        $children->employee_id = $request->employee_id;//use to associate employee id
-        $children->child_name = ucwords($request->child_name);
-        $children->child_birthday = $request->child_birthday;
-        $children->child_gender = $request->child_gender;
-        $children->save();
-    }
-
-    public function collegeSave(Request $request){
-        $college = new College;
-        $college->employee_id = $request->employee_id;
-        $college->college_name = ucfirst($request->college_name);
-        $college->college_degree = ucfirst($request->college_degree);
-        $college->college_inclusive_years = $request->college_inclusive_years;
-        $college->save();  
-    }
-
-    public function trainingSave(Request $request){
-        $training = new Training;
-        $training->employee_id = $request->employee_id;
-        $training->training_name = ucfirst($request->training_name);
-        $training->training_title = ucfirst($request->training_title);
-        $training->training_inclusive_years = $request->training_inclusive_years;
-        $training->save();
-    }
-
-    public function vocationalSave(Request $request){
-        $vocational = new Vocational;
-        $vocational->employee_id = $request->employee_id;
-        $vocational->vocational_name = ucfirst($request->vocational_name);
-        $vocational->vocational_course = ucfirst($request->vocational_course);
-        $vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
-        $vocational->save();
-    }
-
-    public function jobSave(Request $request){
-        $job = new Job;
-        $job->employee_id = $request->employee_id;
-        $job->job_name = ucfirst($request->job_name);
-        $job->job_position = ucfirst($request->job_position);
-        $job->job_address = ucwords($request->job_address);
-        $job->job_contact_details = $request->job_contact_details;
-        $job->job_inclusive_years = $request->job_inclusive_years;
-        $job->save();
+        return WorkInformation::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
     }
 
     public function memoSave(Request $request){
-        
-        $memo->employee_id = $request->employee_id;
-        $memo->memo_subject = ucfirst($request->memo_subject);
-        $memo->memo_date = $request->memo_date;
-        $memo->memo_penalty = $request->memo_penalty;
-        $memo->save();
-}
+        $employee_memo = new Memo;
+        $employee_memo->employee_id = $request->employee_id;
+        $employee_memo->memo_subject = ucfirst($request->memo_subject);
+        $employee_memo->memo_date = $request->memo_date;
+        $employee_memo->memo_penalty = $request->memo_penalty;
+        $employee_memo->save();
+    }
 
     public function evaluationSave(Request $request){
-        $evaluation = new Evaluation;
-        $evaluation->employee_id = $request->employee_id;
-        $evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
-        $evaluation->evaluation_date = $request->evaluation_date;
-        $evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
-        $evaluation->save();
+        $employee_evaluation = new Evaluation;
+        $employee_evaluation->employee_id = $request->employee_id;
+        $employee_evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
+        $employee_evaluation->evaluation_date = $request->evaluation_date;
+        $employee_evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
+        $employee_evaluation->save();
     }
 
     public function contractsSave(Request $request){
-        $contract = new Contracts;
-        $contract->employee_id = $request->employee_id;
-        $contract->contracts_type = ucfirst($request->contracts_type);
-        $contract->contracts_date = $request->contracts_date;
-        $contract->save();
+        $employee_contract = new Contracts;
+        $employee_contract->employee_id = $request->employee_id;
+        $employee_contract->contracts_type = ucfirst($request->contracts_type);
+        $employee_contract->contracts_date = $request->contracts_date;
+        $employee_contract->save();
     }
 
-    public function medicalHistorySave(Request $request){
-        if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
-            $medicalHistory = new MedicalHistory;
-            $medicalHistory->employee_id = $request->employee_id;
-            $medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
-            $medicalHistory->allergies = ucwords($request->allergies);
-            $medicalHistory->medication = $request->medication;
-            $medicalHistory->psychological_history = $request->psychological_history;
-            $medicalHistory->save();
-        } 
-    }
-
-    public function compensationBenefitsSave(Request $request){
-        
-        if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
-            $compensationBenefits = new CompensationBenefits;
-            $compensationBenefits->employee_id = $request->employee_id;
-            $compensationBenefits->employee_salary = $request->employee_salary;
-            $compensationBenefits->employee_incentives = $request->employee_incentives;
-            $compensationBenefits->employee_overtime_pay = $request->employee_overtime_pay;
-            $compensationBenefits->employee_bonus = $request->employee_bonus;
-            $compensationBenefits->employee_insurance = $request->employee_insurance;
-            $compensationBenefits->save();
-        }
-    }
-
-    public function storeRequirements(Request $request)
+    public function saveRequirements(Request $request)
     {   
         //Save Resignation and Termination File
         if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
@@ -371,7 +387,6 @@ class EmployeesController extends Controller
             $termination->termination_file = $terminationFileName;
             $termination->save();
         }
-        
             $document = new Document;
             $document->employee_id = $request->employee_id;
             $birthcertificateFile = $request->file('birthcertificate_file');
@@ -447,6 +462,3 @@ class EmployeesController extends Controller
             return Redirect::to(url()->previous());//Return previous page/url
     }
 }
-
-
-    

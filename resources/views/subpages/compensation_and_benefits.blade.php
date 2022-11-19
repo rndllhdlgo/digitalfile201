@@ -54,7 +54,7 @@
                 
                 <tr>
                     <td>
-                        <textarea class="form-control text-capitalize separated textarea_insurance" id="employee_insurance" rows="3" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                        <textarea class="form-control text-capitalize separated textarea_insurance" id="employee_insurance" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                     </td>
                 </tr>
             </tbody>

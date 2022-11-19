@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMedicalHistoriesTable extends Migration
+class CreateJobHistoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,13 @@ class CreateMedicalHistoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('medical_histories', function (Blueprint $table) {
+        Schema::create('job_histories', function (Blueprint $table) {
             $table->id();
-            $table->string('past_medical_condition');
-            $table->string('allergies');
-            $table->string('medication');
-            $table->string('psychological_history');
+            $table->string('job_name');
+            $table->string('job_position');
+            $table->string('job_address');
+            $table->string('job_contact_details');
+            $table->string('job_inclusive_years');
             $table->timestamps();
         });
     }
@@ -30,6 +31,6 @@ class CreateMedicalHistoriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('medical_histories');
+        Schema::dropIfExists('job_histories');
     }
 }
