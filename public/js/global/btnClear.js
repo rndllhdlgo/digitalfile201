@@ -21,6 +21,7 @@ $('#btnClear').on('click',function(){
                 //Clear All Pages
                 new bootstrap.Toast(document.querySelector('#clearAll')).show();
                 $('#personal_information').css('zoom','100%');
+                $('.separated').val('');
                 $('.required_field').val('');
                 $('.required_field').removeClass('blue');
                 $('.optional').val('');
@@ -151,6 +152,7 @@ $('#btnClear').on('click',function(){
             else if (clear.isConfirmed) {
                 //Clear Current Page
                 new bootstrap.Toast(document.querySelector('#clearCurrent')).show();
+                $('.separated').val('');
                 $('#personal_information').css('zoom','100%');
                 $('.required_field:visible').val('');
                 $('.optional:visible').val('');

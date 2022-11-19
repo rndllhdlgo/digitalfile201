@@ -72,5 +72,5 @@
             </div>
         </div>
     </div>
-
+    <hr class="hr-design">
 </div>

@@ -117,7 +117,6 @@ class MaintenanceController extends Controller
             $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "UPDATED BRANCH: User successfully updated the Branch: FROM [$branch_name_orig] TO [$branch_name_new].";
             $userlogs->save();
-
             return 'true';
         }
         else{
@@ -149,7 +148,7 @@ class MaintenanceController extends Controller
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE [$shift_code_logs] WORKING HOURS [$shift_working_hours_logs] BREAK TIME [$shift_break_time_logs]."; //Display logs in home page
+            $userlogs->activity = "ADDED SHIFT: User successfully added Shift: with SHIFT CODE: [$shift_code_logs] WORKING HOURS: [$shift_working_hours_logs] BREAK TIME: [$shift_break_time_logs]."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -206,7 +205,6 @@ class MaintenanceController extends Controller
             $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "UPDATED SHIFT: User successfully updated details of [$shift_code_orig] with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
-
             return 'true';
         }
         else{
@@ -277,8 +275,6 @@ class MaintenanceController extends Controller
 
     public function jobPositionAndDescriptionSave(Request $request){
         $job_position_name_logs = ucwords($request->job_position_name);
-        $job_description_logs = preg_replace('#<br\s*/?>#', "\n", $request->job_description);
-        $job_requirements_logs = preg_replace('#<br\s*/?>#', "\n", $request->job_requirements);
         
         if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
             return 'duplicate';
@@ -286,8 +282,8 @@ class MaintenanceController extends Controller
 
         $jobPositionAndDescription = new Position;
         $jobPositionAndDescription->job_position_name = $job_position_name_logs;
-        $jobPositionAndDescription->job_description = $job_description_logs;
-        $jobPositionAndDescription->job_requirements = $job_requirements_logs;
+        $jobPositionAndDescription->job_description = $request->job_description;
+        $jobPositionAndDescription->job_requirements = $request->job_requirements;
         $sql = $jobPositionAndDescription->save();
 
         if($sql){
@@ -318,31 +314,6 @@ class MaintenanceController extends Controller
         $sql = $jobPositionAndDescription->save();
 
         if($sql){
-            // if($job_position_name_orig != $job_position_name_new){
-            //     $job_position_name_change = "[Job Position : FROM '$job_position_name_orig' TO '$job_position_name_new']";
-            // }
-            // else{
-            //     $job_position_name_change = NULL;
-            // }
-
-            // if($job_description_orig != $job_description_new){
-            //     $job_description_change = "[Job Description: FROM '$job_description_orig' TO '$job_description_new']";
-            // }
-            // else{
-            //     $job_description_change = NULL;
-            // }
-
-            // if($job_requirements_orig != $job_requirements_new){
-            //     $job_requirements_change = "[Job Requirements: FROM '$job_requirements_orig' TO '$job_requirements_new']";
-            // }
-            // else{
-            //     $job_requirements_change = NULL;
-            // }
-
-            // $userlogs = new UserLogs;
-            // $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "UPDATED JOB POSITION: User successfully updated details of [$job_position_name_orig] with the following CHANGES: $job_position_name_change $job_description_change $job_requirements_change.";
-            // $userlogs->save();
             return 'true';
         }
         else{

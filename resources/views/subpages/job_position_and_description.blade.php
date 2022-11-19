@@ -28,13 +28,13 @@
                     <div class="row mb-3">
                         <div class="col">
                             <label for="job_description" class="form-label text-black"><strong>JOB DESCRIPTION</strong></label>
-                            <textarea class="form-control border-primary required_field separated" id="job_description" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                            <textarea class="form-control border-primary required_field separated textarea_job_description" id="job_description" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                         </div>
                     </div>
                     <div class="row mb-1">
                         <div class="col">
                             <label for="job_requirements" class="form-label text-black"><strong>JOB REQUIREMENTS/SKILLS</strong></label>
-                            <textarea class="form-control border-primary required_field separated" id="job_requirements" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                            <textarea class="form-control border-primary required_field separated textarea_job_requirements" id="job_requirements" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -60,12 +60,12 @@
                     </div>
                     <div class="mb-3">
                         <label for="job_description_new" class="form-label text-black"><strong>JOB DESCRIPTION</strong></label>
-                        <textarea class="form-control border-primary required_field separated" id="job_description_new" rows="3" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                        <textarea class="form-control border-primary required_field separated textarea_job_description_new" id="job_description_new" rows="3" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                     </div>
                     <div class="row mb-1">
                         <div class="col">
                             <label for="job_requirements_new" class="form-label text-black"><strong>JOB REQUIREMENTS/SKILLS</strong></label>
-                            <textarea class="form-control border-primary required_field separated" id="job_requirements_new" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                            <textarea class="form-control border-primary required_field separated textarea_job_requirements_new" id="job_requirements_new" rows="3" style="resize: none; white-space: pre-line" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                         </div>
                     </div>
                 </div>
@@ -75,4 +75,5 @@
             </div>
         </div>
     </div>
+    <hr class="hr-design">
 </div>
