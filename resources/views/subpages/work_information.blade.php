@@ -121,23 +121,23 @@
         </div>
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional" type="search" id="employee_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()" ondrop="return false;" onpaste="return false;" onkeydown="keyDown(event)">
-                <p id="employee_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
+                <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="companyEmailValidation()" ondrop="return false;" onpaste="return false;">
+                <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <p id="duplicate_employee_email" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
-                <label for="employee_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> COMPANY EMAIL ADDRESS <span class="span_employee_email_address span_all">(Optional)</span></label>
+                <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> COMPANY EMAIL ADDRESS <span class="span_company_email_address span_all">(Optional)</span></label>
             </div>
         </div>
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional" type="search" id="employee_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                {{-- <p id="employee_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
-                <p id="duplicate_employee_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
-                <label for="employee_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT NO. <span class="span_employee_contact_number span_all">(Optional)</span></label>
+                <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
+                {{-- <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
+                <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
+                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT NO. <span class="span_company_contact_number span_all">(Optional)</span></label>
             </div>
         </div>
     </div>
     
-    <div id="benefits">
+    <div id="benefits" style="display: none;">
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">

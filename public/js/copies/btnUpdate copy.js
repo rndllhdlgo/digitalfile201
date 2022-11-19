@@ -37,8 +37,8 @@ $('#btnUpdate').on('click',function(){
     var position_of_employee = $('#position_of_employee').val();
     var supervisor_of_employee = $('#supervisor_of_employee').val();
     var date_hired = $('#date_hired').val();
-    var employee_email_address = $('#employee_email_address').val();
-    var employee_contact_number = $('#employee_contact_number').val();
+    var company_email_address = $('#company_email_address').val();
+    var company_contact_number = $('#company_contact_number').val();
     var sss_number = $('#sss_number').val();
     var pag_ibig_number = $('#pag_ibig_number').val();
     var philhealth_number = $('#philhealth_number').val();
@@ -108,8 +108,8 @@ $('#btnUpdate').on('click',function(){
                     position_of_employee:position_of_employee,
                     supervisor_of_employee:supervisor_of_employee,
                     date_hired:date_hired,
-                    employee_email_address:employee_email_address,
-                    employee_contact_number:employee_contact_number,
+                    company_email_address:company_email_address,
+                    company_contact_number:company_contact_number,
                     sss_number:sss_number,
                     pag_ibig_number:pag_ibig_number,
                     philhealth_number:philhealth_number,

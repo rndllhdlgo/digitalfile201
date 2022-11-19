@@ -12,34 +12,22 @@
 
                 <tr>
                     <td class="pb-3 pt-3">
-                        <div class="f-outline">
+                        <div class="f-outline mb-3">
                             <input class="forminput form-control required_field" type="search" id="employee_salary" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_salary" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> BASIC SALARY <span class="span_employee_salary span_all"></span></label>
                         </div>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td class="pb-3 pt-3">
-                        <div class="f-outline">
+                        <div class="f-outline mb-3">
                             <input class="forminput form-control required_field" type="search" id="employee_incentives" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_incentives" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> INCENTIVE PAY <span class="span_employee_incentives span_all"></span></label>
                         </div>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td class="pb-3 pt-3">
-                        <div class="f-outline">
+                        <div class="f-outline mb-3">
                             <input class="forminput form-control required_field" type="search" id="employee_overtime_pay" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_overtime_pay" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> OVERTIME PAY <span class="span_employee_overtime_pay span_all"></span></label>
                         </div>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td class="pb-3 pt-3">
-                        <div class="f-outline">
+                        <div class="f-outline mb-3">
                             <input class="forminput form-control required_field" type="search" id="employee_bonus" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_bonus" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> BONUS <span class="span_employee_bonus span_all"></span></label>
                         </div>

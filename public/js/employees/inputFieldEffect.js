@@ -120,11 +120,11 @@ $('#emergency_contact_number').on('keyup',function(){
     }
 });
 
-$('#employee_contact_number').on('keyup',function(){
-    if($('#employee_contact_number').val().length < 11){
-        $('#employee_contact_number_validation').show();
+$('#company_contact_number').on('keyup',function(){
+    if($('#company_contact_number').val().length < 11){
+        $('#company_contact_number_validation').show();
     }
     else{
-        $('#employee_contact_number_validation').hide();
+        $('#company_contact_number_validation').hide();
     }
 });

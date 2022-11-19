@@ -113,16 +113,16 @@
         </div>
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control" type="text" id="employee_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()">
+                <input class="forminput form-control" type="text" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="employeeEmailValidation()">
                 <p id="employee_email_validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address</p>
-                <label for="employee_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_employee_email_address">(Optional)</span></label>
+                <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_company_email_address">(Optional)</span></label>
             </div>
         </div>
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control" type="text" id="employee_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
-                <p id="employee_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
-                <label for="employee_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> CONTACT NO. <span class="span_employee_contact_number">(Optional)</span></label>
+                <input class="forminput form-control" type="text" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="contactNumberOnly(this)">
+                <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter 11 Digit Number </p>
+                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> CONTACT NO. <span class="span_company_contact_number">(Optional)</span></label>
             </div>
         </div>
     </div>

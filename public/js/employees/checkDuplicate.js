@@ -187,42 +187,42 @@ $('#emergency_contact_number').on('keyup',function(){
     }
 });
 
-$('#employee_email_address').on('keyup',function(){
-    if($('#employee_email_address').val()){
+$('#company_email_address').on('keyup',function(){
+    if($('#company_email_address').val()){
         $.ajax({
             url: "/employees/checkEmployeeEmailAddressDuplicate",
             data:{
-                employee_email_address : $('#employee_email_address').val(),
+                company_email_address : $('#company_email_address').val(),
             },
             success: function(data){
                 if(data == 'true'){
                     $('#duplicate_employee_email').show();
-                    $('#employee_email_address').addClass('check_duplicate');
+                    $('#company_email_address').addClass('check_duplicate');
                 }
                 else{
                     $('#duplicate_employee_email').hide();
-                    $('#employee_email_address').removeClass('check_duplicate');
+                    $('#company_email_address').removeClass('check_duplicate');
                 }
             }
         });
     }
 });
 
-$('#employee_contact_number').on('keyup',function(){
-    if($('#employee_contact_number').val()){
+$('#company_contact_number').on('keyup',function(){
+    if($('#company_contact_number').val()){
         $.ajax({
             url: "/employees/checkEmployeeContactNumberDuplicate",
             data:{
-                employee_contact_number : $('#employee_contact_number').val(),
+                company_contact_number : $('#company_contact_number').val(),
             },
             success: function(data){
                 if(data == 'true'){
-                    $('#duplicate_employee_contact_number').show();
-                    $('#employee_contact_number').addClass('check_duplicate');
+                    $('#duplicate_company_contact_number').show();
+                    $('#company_contact_number').addClass('check_duplicate');
                 }
                 else{
-                    $('#duplicate_employee_contact_number').hide();
-                    $('#employee_contact_number').removeClass('check_duplicate');
+                    $('#duplicate_company_contact_number').hide();
+                    $('#company_contact_number').removeClass('check_duplicate');
                 }
             }
         });

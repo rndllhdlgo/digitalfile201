@@ -53,8 +53,8 @@ $('#btnCancelEdit').on('click',function(){
         $('#employee_position').prop("disabled",true);
         $('#employee_supervisor').prop("disabled",true);
         $('#date_hired').prop("disabled",true);
-        $('#employee_email_address').prop("disabled",true);
-        $('#employee_contact_number').prop("disabled",true);
+        $('#company_email_address').prop("disabled",true);
+        $('#company_contact_number').prop("disabled",true);
         $('#sss_number').prop("disabled",true);
         $('#pag_ibig_number').prop("disabled",true);
         $('#philhealth_number').prop("disabled",true);

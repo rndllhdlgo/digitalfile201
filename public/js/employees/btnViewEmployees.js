@@ -60,7 +60,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
 
             //Disable Edit
             $('.required_field').css('cursor','not-allowed');
-            $('.optional').css('cursor','not-allowed');
+            $('.optional_field').css('cursor','not-allowed');
             $('#sss_number').css('cursor','not-allowed');
             $('#pag_ibig_number').css('cursor','not-allowed');
             $('#philhealth_number').css('cursor','not-allowed');
@@ -104,8 +104,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#employee_position').prop("disabled",true);
             $('#employee_supervisor').prop("disabled",true);
             $('#date_hired').prop("disabled",true);
-            $('#employee_email_address').prop("disabled",true);
-            $('#employee_contact_number').prop("disabled",true);
+            $('#company_email_address').prop("disabled",true);
+            $('#company_contact_number').prop("disabled",true);
             $('#sss_number').prop("disabled",true);
             $('#pag_ibig_number').prop("disabled",true);
             $('#philhealth_number').prop("disabled",true);

@@ -24,7 +24,7 @@ $('#btnEnableEdit').on('click',function(){
           $('.required_label').show();
           $('.optional_label').show();
           $('.required_field').css('cursor','auto');
-          $('.optional').css('cursor','auto');
+          $('.optional_field').css('cursor','auto');
           $('#sss_number').css('cursor','auto');
           $('#pag_ibig_number').css('cursor','auto');
           $('#philhealth_number').css('cursor','auto');
@@ -65,8 +65,8 @@ $('#btnEnableEdit').on('click',function(){
           $('#employee_position').prop("disabled",false);
           $('#employee_supervisor').prop("disabled",false);
           $('#date_hired').prop("disabled",false);
-          $('#employee_email_address').prop("disabled",false);
-          $('#employee_contact_number').prop("disabled",false);
+          $('#company_email_address').prop("disabled",false);
+          $('#company_contact_number').prop("disabled",false);
           $('#sss_number').prop("disabled",false);
           $('#pag_ibig_number').prop("disabled",false);
           $('#philhealth_number').prop("disabled",false);

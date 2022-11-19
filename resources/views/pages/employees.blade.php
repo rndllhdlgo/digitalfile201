@@ -16,16 +16,17 @@
                                 <th style="width:14%"><i class="fas fa-id-card"></i> FIRST NAME</th>
                                 <th style="width:14%"><i class="fas fa-id-card"></i> MIDDLE NAME</th>
                                 <th style="width:14%"><i class="fas fa-id-card"></i> LAST NAME</th>
-                                <th style="width:14%"><i class="fas fa-briefcase"></i> POSITION</th>
-                                <th><i class="fas fa-building"></i> BRANCH</th>
-                                <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th>
+                                {{-- <th style="width:14%"><i class="fas fa-briefcase"></i> POSITION</th> --}}
+                                {{-- <th><i class="fas fa-building"></i> BRANCH</th>
+                                <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th> --}}
                             </tr>
                     </thead>
                         <tbody>
                         </tbody>
-                    </table>
-                <hr class="hr-design">
+                </table>
+            <hr class="hr-design">
         </div>
+
         <div id="employee_personal_information" style="display: none;">
             <div class="row">
                 <div class="col">
@@ -33,11 +34,11 @@
                 </div>
                 <div class="col-7">
                     <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
-                    <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;"><i class="fas fa-times"></i></button>
+                    <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;display:none;"><i class="fas fa-times"></i></button>
                     <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
                     <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
                     <button type="button" class="btn btn-success mx-1 float-end grow" id="btnEnableEdit" title="ENABLE EDIT"><i class="fas fa-edit"></i></button>
-                    <button type="button" class="btn btn-success mx-1 float-end grow" id="btnUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
+                    <button type="button" class="btn btn-success mx-1 float-end grow" id="btnUpdate" title="SAVE UPDATE" style="display: none;"><i class="fas fa-save"></i></button>
                 </div>
                 <br>
                 <br>
@@ -93,34 +94,31 @@
                         <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#performance_evaluation">EVALUATION</a>
+                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#performance_evaluation">EVALUATION</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
                     </li>
                 </ul>
 
-                <form method="POST" enctype="multipart/form-data" action="/employees/storeRequirements" id="requirements_form">
+                <form method="POST" enctype="multipart/form-data" action="/employees/saveRequirements" id="requirements_form">
                     @csrf
-                    <div class="tab-content">
-                        <input type="hidden" name="employee_id" id="employee_id">
-                            @include('subpages.personal_information')
-                            @include('subpages.work_information')
-                            @include('subpages.compensation_and_benefits')
-                            @include('subpages.educational_and_trainings_background')
-                            @include('subpages.job_history')
-                            @include('subpages.medical_history')
-                            @include('subpages.performance_evaluation')
-                            @include('subpages.documents')
-                            @include('subpages.logs')
-                        {{-- <div class="form-group"><button class="btn btn-success" id="submit_requirements_form" style="display: none;">Upload the File</button></div> Button for submit documents --}}
-                        <br>
-                    </div>{{--  End of Tab Content  --}}
-        </div> {{-- End of Employee Form --}}
+                        <div class="tab-content">
+                            <input type="hidden" name="employee_id" id="employee_id">
+                                @include('subpages.personal_information')
+                                @include('subpages.work_information')
+                                @include('subpages.compensation_and_benefits')
+                                @include('subpages.educational_and_trainings_background')
+                                @include('subpages.job_history')
+                                @include('subpages.medical_history')
+                                @include('subpages.documents')
+                                @include('subpages.performance_evaluation')
+                                @include('subpages.logs')
+                            <br>
+                        </div>{{--  End of Tab Content  --}}
                 </form>
-
-        {{-- <img src="/images/ideaserv_systems_logo.png" alt="" id="zoom"> --}}
+        </div> {{-- End of Employee Form --}}
 @endsection

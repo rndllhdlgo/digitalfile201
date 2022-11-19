@@ -1,5 +1,4 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
-   
         <hr class="hr-design">
             <div class="first_table">
                 <strong class="table-title">REQUIREMENTS</strong>

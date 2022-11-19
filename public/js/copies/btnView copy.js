@@ -100,8 +100,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#position_of_employee').css('border','1px solid #0d1a80');
             $('#supervisor_of_employee').css('border','1px solid #0d1a80');
             $('#date_hired').css('border','1px solid #0d1a80');
-            $('#employee_email_address').css('border','1px solid #0d1a80');
-            $('#employee_contact_number').css('border','1px solid #0d1a80');
+            $('#company_email_address').css('border','1px solid #0d1a80');
+            $('#company_contact_number').css('border','1px solid #0d1a80');
             $('#sss_number').css('border','1px solid #0d1a80');
             $('#pag_ibig_number').css('border','1px solid #0d1a80');
             $('#philhealth_number').css('border','1px solid #0d1a80');
@@ -146,8 +146,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('.span_position_of_employee').hide();
             $('.span_supervisor_of_employee').hide();
             $('.span_date_hired').hide();
-            $('.span_employee_email_address').hide();
-            $('.span_employee_contact_number').hide();
+            $('.span_company_email_address').hide();
+            $('.span_company_contact_number').hide();
             $('.span_sss_number').hide();
             $('.span_pag-ibig_number').hide();
             $('.span_philhealth_number').hide();
@@ -199,8 +199,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#position_of_employee').val(data.position_of_employee);
             $('#supervisor_of_employee').val(data.supervisor_of_employee);
             $('#date_hired').val(data.date_hired);
-            $('#employee_email_address').val(data.employee_email_address);
-            $('#employee_contact_number').val(data.employee_contact_number);
+            $('#company_email_address').val(data.company_email_address);
+            $('#company_contact_number').val(data.company_contact_number);
             $('#sss_number').val(data.sss_number);
             $('#pag_ibig_number').val(data.pag_ibig_number);
             $('#philhealth_number').val(data.philhealth_number);
@@ -215,8 +215,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#position_of_employee').prop("disabled",true);
             $('#supervisor_of_employee').prop("disabled",true);
             $('#date_hired').prop("disabled",true);
-            $('#employee_email_address').prop("disabled",true);
-            $('#employee_contact_number').prop("disabled",true);
+            $('#company_email_address').prop("disabled",true);
+            $('#company_contact_number').prop("disabled",true);
             $('#sss_number').prop("disabled",true);
             $('#pag_ibig_number').prop("disabled",true);
             $('#philhealth_number').prop("disabled",true);

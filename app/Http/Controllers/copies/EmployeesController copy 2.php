@@ -89,8 +89,8 @@ class EmployeesController extends Controller
         $employees->employee_position = $request->employee_position;
         $employees->employee_supervisor = $request->employee_supervisor;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = $request->employee_email_address;
-        $employees->employee_contact_number = $request->employee_contact_number;
+        $employees->company_email_address = $request->company_email_address;
+        $employees->company_contact_number = $request->company_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;
@@ -188,8 +188,8 @@ class EmployeesController extends Controller
         $employees->employee_position = $request->employee_position;
         $employees->employee_supervisor = $request->employee_supervisor;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = strtolower($request->employee_email_address);
-        $employees->employee_contact_number = $request->employee_contact_number;
+        $employees->company_email_address = strtolower($request->company_email_address);
+        $employees->company_contact_number = $request->company_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;
@@ -233,10 +233,10 @@ class EmployeesController extends Controller
         return Employee::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeEmailAddressDuplicate(Request $request){
-        return Employee::where('employee_email_address',$request->employee_email_address)->count() > 0 ? 'true': 'false';
+        return Employee::where('company_email_address',$request->company_email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeContactNumberDuplicate(Request $request){
-        return Employee::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
+        return Employee::where('company_contact_number',$request->company_contact_number)->count() > 0 ? 'true': 'false';
     }
 
     public function childrenSave(Request $request){

@@ -61,8 +61,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#employee_position').val(data.employee_position);
             $('#employee_supervisor').val(data.employee_supervisor);
             $('#date_hired').val(data.date_hired);
-            $('#employee_email_address').val(data.employee_email_address);
-            $('#employee_contact_number').val(data.employee_contact_number);
+            $('#company_email_address').val(data.company_email_address);
+            $('#company_contact_number').val(data.company_contact_number);
             if($('#sss_number').val(data.sss_number) || $('#pag_ibig_number').val(data.pag_ibig_number) || $('#philhealth_number').val(data.philhealth_number) || $('#tin_number').val(data.tin_number) || $('#account_number').val(data.account_number)){
                 $('#benefits').show();
             }
@@ -94,7 +94,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
 
             //Disable Edit
             $('.required_field').css('cursor','not-allowed');
-            $('.optional').css('cursor','not-allowed');
+            $('.optional_field').css('cursor','not-allowed');
             $('#sss_number').css('cursor','not-allowed');
             $('#pag_ibig_number').css('cursor','not-allowed');
             $('#philhealth_number').css('cursor','not-allowed');
@@ -138,8 +138,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#employee_position').prop("disabled",true);
             $('#employee_supervisor').prop("disabled",true);
             $('#date_hired').prop("disabled",true);
-            $('#employee_email_address').prop("disabled",true);
-            $('#employee_contact_number').prop("disabled",true);
+            $('#company_email_address').prop("disabled",true);
+            $('#company_contact_number').prop("disabled",true);
             $('#sss_number').prop("disabled",true);
             $('#pag_ibig_number').prop("disabled",true);
             $('#philhealth_number').prop("disabled",true);

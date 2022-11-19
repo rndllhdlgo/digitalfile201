@@ -1,6 +1,7 @@
+<!--
 <div id="position_div" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-    <div class="jobPositionTable"> <!-- To Divide Two Tables -->
+    <div class="jobPositionTable">  To Divide Two Tables 
         <table class="table table-striped table-hover table-bordered w-100 jobPositionTable" id="jobPositionTable">
             <thead class="text-white" style="background-color:#0d1a80;">
                     <tr>

@@ -15,7 +15,7 @@ $('#btnClear').on('click',function(){
     }).then((clear) => {
       if (clear.isConfirmed) {
         $('.required_field').val('');
-        $('.optional').val('');
+        $('.optional_field').val('');
         $('#cover_image').val(''); //Remove the image uploaded
         $('#preview_image').attr('src',''); //Remove current preview
         $('#preview_image').hide();

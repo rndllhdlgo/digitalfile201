@@ -67,19 +67,19 @@
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control optional text-capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control optional_field text-capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_name" class="formlabel form-label"><span class="span_secondary_school_name span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control optional text-capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control optional_field text-capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_address" class="formlabel form-label"><span class="span_secondary_school_address span_all">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control optional" type="search" id="secondary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control optional_field" type="search" id="secondary_school_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_inclusive_years" class="formlabel form-label"><span class="span_secondary_school_inclusive_years span_all">(Optional)</span></label>
                     </div>
                 </td>

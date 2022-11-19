@@ -116,8 +116,8 @@ class EmployeesController extends Controller
         $employees->position_of_employee = $request->position_of_employee;
         $employees->supervisor_of_employee = $request->supervisor_of_employee;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = $request->employee_email_address;
-        $employees->employee_contact_number = $request->employee_contact_number;
+        $employees->company_email_address = $request->company_email_address;
+        $employees->company_contact_number = $request->company_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;
@@ -204,8 +204,8 @@ class EmployeesController extends Controller
         $employees->position_of_employee = $request->position_of_employee;
         $employees->supervisor_of_employee = $request->supervisor_of_employee;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = $request->employee_email_address;
-        $employees->employee_contact_number = $request->employee_contact_number;
+        $employees->company_email_address = $request->company_email_address;
+        $employees->company_contact_number = $request->company_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;

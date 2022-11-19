@@ -150,8 +150,8 @@ class EmployeesController extends Controller
         $employee_work_information->employee_position = $request->employee_position;
         $employee_work_information->employee_supervisor = $request->employee_supervisor;
         $employee_work_information->date_hired = $request->date_hired;
-        $employee_work_information->employee_email_address = $request->employee_email_address;
-        $employee_work_information->employee_contact_number = $request->employee_contact_number;
+        $employee_work_information->company_email_address = $request->company_email_address;
+        $employee_work_information->company_contact_number = $request->company_contact_number;
         $employee_work_information->sss_number = $request->sss_number;
         $employee_work_information->pag_ibig_number = $request->pag_ibig_number;
         $employee_work_information->philhealth_number = $request->philhealth_number;
@@ -280,8 +280,8 @@ class EmployeesController extends Controller
         $employees->employee_position = $request->employee_position;
         $employees->employee_supervisor = $request->employee_supervisor;
         $employees->date_hired = $request->date_hired;
-        $employees->employee_email_address = strtolower($request->employee_email_address);
-        $employees->employee_contact_number = $request->employee_contact_number;
+        $employees->company_email_address = strtolower($request->company_email_address);
+        $employees->company_contact_number = $request->company_contact_number;
         $employees->sss_number = $request->sss_number;
         $employees->pag_ibig_number = $request->pag_ibig_number;
         $employees->philhealth_number = $request->philhealth_number;
@@ -325,10 +325,10 @@ class EmployeesController extends Controller
         return PersonalInformation::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeEmailAddressDuplicate(Request $request){
-        return WorkInformation::where('employee_email_address',$request->employee_email_address)->count() > 0 ? 'true': 'false';
+        return WorkInformation::where('company_email_address',$request->company_email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeContactNumberDuplicate(Request $request){
-        return WorkInformation::where('employee_contact_number',$request->employee_contact_number)->count() > 0 ? 'true': 'false';
+        return WorkInformation::where('company_contact_number',$request->company_contact_number)->count() > 0 ? 'true': 'false';
     }
 
     public function memoSave(Request $request){

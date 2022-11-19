@@ -94,20 +94,20 @@ $('#emergency_contact_number').on('focusout',function(){
 });
 
 //Employee Contact Number
-$('#employee_contact_number').on('keyup',function(){
-    if($('#employee_contact_number').val().length < 11){
-        $('#employee_contact_number_validation').show();
+$('#company_contact_number').on('keyup',function(){
+    if($('#company_contact_number').val().length < 11){
+        $('#company_contact_number_validation').show();
     }
     else{
-        $('#employee_contact_number_validation').hide();
+        $('#company_contact_number_validation').hide();
     }
 });
 
-$('#employee_contact_number').on('focusin',function(){
-      $('#employee_contact_number').attr('placeholder','09xx-xxx-xxxx');
+$('#company_contact_number').on('focusin',function(){
+      $('#company_contact_number').attr('placeholder','09xx-xxx-xxxx');
 });
-$('#employee_contact_number').on('focusout',function(){
-      $('#employee_contact_number').attr('placeholder',' ');
+$('#company_contact_number').on('focusout',function(){
+      $('#company_contact_number').attr('placeholder',' ');
 });
 
 //Spouse Contact Number
@@ -322,20 +322,20 @@ $(document).on('keyup',function(){
     //     $('.span_position_of_employee').show();
     // }
     
-    if($('#employee_email_address').val()){
-        // $('#employee_email_address').css('border','2px solid #0d1a80');
-        $('.span_employee_email_address').hide();
+    if($('#company_email_address').val()){
+        // $('#company_email_address').css('border','2px solid #0d1a80');
+        $('.span_company_email_address').hide();
     }
     else{
-        $('.span_employee_email_address').show();
+        $('.span_company_email_address').show();
     }
 
-    if($('#employee_contact_number').val()){
-        // $('#employee_contact_number').css('border','2px solid #0d1a80');
-        $('.span_employee_contact_number').hide();
+    if($('#company_contact_number').val()){
+        // $('#company_contact_number').css('border','2px solid #0d1a80');
+        $('.span_company_contact_number').hide();
     }
     else{
-        $('.span_employee_contact_number').show();
+        $('.span_company_contact_number').show();
     }
 
     if($('#sss_number').val()){

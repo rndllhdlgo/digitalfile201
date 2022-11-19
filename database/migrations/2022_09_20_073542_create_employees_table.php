@@ -55,8 +55,8 @@ class CreateEmployeesTable extends Migration
             $table->string('employee_position');
             $table->string('employee_supervisor');
             $table->string('date_hired');
-            $table->string('employee_email_address');
-            $table->string('employee_contact_number');
+            $table->string('company_email_address');
+            $table->string('company_contact_number');
             $table->string('sss_number');
             $table->string('pag_ibig_number');
             $table->string('philhealth_number');

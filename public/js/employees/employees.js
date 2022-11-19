@@ -143,9 +143,9 @@ function checkforblank(){
     || $('#father_contact_number').val().length < 11
     || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
-    || $('#employee_contact_number').val().length < 11
+    || $('#company_contact_number').val().length < 11
     || !email_address.value.match(regExp)
-    || !employee_email_address.value.match(regExp)
+    || !company_email_address.value.match(regExp)
     || $('#employee_number').hasClass('check_duplicate')
     || $('#email_address').hasClass('check_duplicate')
     || $('#telephone_number').hasClass('check_duplicate')
@@ -154,8 +154,8 @@ function checkforblank(){
     || $('#mother_contact_number').hasClass('check_duplicate')
     || $('#spouse_contact_number').hasClass('check_duplicate')
     || $('#emergency_contact_number').hasClass('check_duplicate')
-    || $('#employee_email_address').hasClass('check_duplicate')
-    || $('#employee_contact_number').hasClass('check_duplicate')
+    || $('#company_email_address').hasClass('check_duplicate')
+    || $('#company_contact_number').hasClass('check_duplicate')
     ){
         $('#title_details').show();
         $('#btnSave').prop("disabled",true);
@@ -205,10 +205,7 @@ function checkclearform(){
         }
     }
 
-$('#benefits').hide();
-//Hide/Show (employment status) Section Function
     function changeEmploymentStatus(){
-        // var employment_status = document.getElementById("employee_status");
         var employment_status = $('#employee_status');
   
         if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern"){
@@ -257,206 +254,6 @@ $('#benefits').hide();
             $('#account_number').removeClass('required_field');
         }
     }
-
-//Nav pill Function
-$('#tab1').on('click',function(){
-    $('#tab1').addClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').fadeIn();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-});
-
-$('#tab2').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').addClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-    
-    $('#personal_information').hide();
-    $('#work_information').show();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-
-});
-
-$('#tab3').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').addClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').show();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-});
-
-$('#tab4').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').addClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').show();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-});
-
-$('#tab5').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').addClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').show();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-});
-
-$('#tab6').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').addClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').show();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').hide();
-});
-
-$('#tab7').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').addClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#documents').show();
-    $('#performance_evaluation').hide();
-    $('#logs').hide();
-});
-
-$('#tab8').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').addClass('tabactive');
-    $('#tab9').removeClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#documents').hide();
-    $('#performance_evaluation').show();
-    $('#logs').hide();
-});
-
-$('#tab9').on('click',function(){
-    $('#tab1').removeClass('tabactive');
-    $('#tab2').removeClass('tabactive');
-    $('#tab3').removeClass('tabactive');
-    $('#tab4').removeClass('tabactive');
-    $('#tab5').removeClass('tabactive');
-    $('#tab6').removeClass('tabactive');
-    $('#tab7').removeClass('tabactive');
-    $('#tab8').removeClass('tabactive');
-    $('#tab9').addClass('tabactive');
-
-    $('#personal_information').hide();
-    $('#work_information').hide();
-    $('#compensation_and_benefits').hide();
-    $('#educational_background').hide();
-    $('#job_history').hide();
-    $('#medical_history').hide();
-    $('#performance_evaluation').hide();
-    $('#documents').hide();
-    $('#logs').show();
-});
 
 //Calculate Age Function
 $('#birthday').on('change',function(){
@@ -658,15 +455,15 @@ $('#title_details').on('click',function(){
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
     $('#emergency_contact_number').val('09322003718');
-    $('#employee_number').val('1');
+    $('#employee_number').val('50006');
     $('#employee_company').val('Phillogix Systems, Inc.');
     $('#employee_branch').val('San Juan');
     $('#employee_status').val('Probationary');
     $('#employee_position').val('Web Developer');
     $('#employee_supervisor').val('Gerard Mallari');
     $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
-    $('#employee_email_address').val('rendellhidalgo11@gmail.com');
-    $('#employee_contact_number').val('09322003718');
+    $('#company_email_address').val('rendellhidalgo11@gmail.com');
+    $('#company_contact_number').val('09322003718');
     $('#employee_salary').val('15,000');
     $('#employee_incentives').val('1');
     $('#employee_overtime_pay').val('1');

@@ -1,0 +1,199 @@
+//Nav pill Function
+$('#tab1').on('click',function(){
+    $('#tab1').addClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').fadeIn();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab2').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').addClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+    
+    $('#personal_information').hide();
+    $('#work_information').show();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+
+});
+
+$('#tab3').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').addClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').show();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab4').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').addClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').show();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab5').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').addClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').show();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab6').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').addClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').show();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').hide();
+});
+
+$('#tab7').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').addClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#documents').show();
+    $('#performance_evaluation').hide();
+    $('#logs').hide();
+});
+
+$('#tab8').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').addClass('tabactive');
+    $('#tab9').removeClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#documents').hide();
+    $('#performance_evaluation').show();
+    $('#logs').hide();
+});
+
+$('#tab9').on('click',function(){
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+    $('#tab5').removeClass('tabactive');
+    $('#tab6').removeClass('tabactive');
+    $('#tab7').removeClass('tabactive');
+    $('#tab8').removeClass('tabactive');
+    $('#tab9').addClass('tabactive');
+
+    $('#personal_information').hide();
+    $('#work_information').hide();
+    $('#compensation_and_benefits').hide();
+    $('#educational_background').hide();
+    $('#job_history').hide();
+    $('#medical_history').hide();
+    $('#performance_evaluation').hide();
+    $('#documents').hide();
+    $('#logs').show();
+});

@@ -1,102 +1,80 @@
-//Cellphone Number Format
-  function phoneFormat(input) {//returns (##) ####-####
-      input = input.replace(/\D/g,'');
-      var size = input.length;
-      if (size>0) {input="("+input}
-      if (size>3) {input=input.slice(0,3)+") "+input.slice(3,12)}
-      if (size>6) {input=input.slice(0,9)+"-" +input.slice(9)}
-      return input;
-  }
+function lettersOnly(input){
+    var letters_only = /[^- ñ a-z]/gi;
+    input.value = input.value.replace(letters_only,"");
+}
 
-//Email Format Validation Function
-  var email_address = document.querySelector("#email_address");
-  var email_validation = document.querySelector("#email_validation");
-  let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/; //
+function firstNameField(input){
+    var firstNameField = /[^- ñ a-z 0-9]/gi;
+    input.value = input.value.replace(firstNameField,"");
+}
 
-  function emailValidation(){
-      if(email_address.value.match(regExp)){
-          $('#email_validation').hide();
-      }
-      else{
-          $('#email_validation').show();
-      }
-  }
+function numbersOnly(input){
+    var numbers_only = /[^- 0-9]/g;
+    input.value = input.value.replace(numbers_only,"");
+}
 
-  //Employee Email Format Validation Function
-  var employee_email_address = document.querySelector("#employee_email_address");
-  var employee_email_validation = document.querySelector("#employee_email_validation");
-  let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+function salaryField(input){
+    var salaryField = /[^- ₱ , . 0-9]/g;
+    input.value = input.value.replace(salary_only,"");
+}
 
-  function employeeEmailValidation(){
-      if(employee_email_address.value.match(regExpr)){
-        $('#employee_email_validation').hide();
-      }
-      else{
-        $('#employee_email_validation').show();
-      }
-  }
+function contactNumberOnly(input){
+    var contact_number = /[^ +()0-9]/g; 
+    input.value = input.value.replace(contact_number,"");
+}
 
-  //Input(Letters Only) Function
-      function lettersOnly(input){
-        var letters_only = /[^- ñ a-z]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
-            input.value = input.value.replace(letters_only,"");
-      }
+function telephoneNumberField(input){
+    var telephoneNumberField = /[^- +()0-9]/g; 
+    input.value = input.value.replace(telephoneNumberField,"");
+}
 
-      function firstNameField(input){
-        var firstnameField = /[^- ñ a-z 0-9]/gi;//Everything (^) //Uppercase allowed (i) //Global (g)
-            input.value = input.value.replace(firstnameField,"");
-      }
+$('.required_field').keypress(function(e){
+    if(e.which == 13)
+    return false;
+});
 
-  //Input(Numbers Only) Function
-      function numbersOnly(input){
-        var numbers_only = /[^- 0-9]/g;
-          input.value = input.value.replace(numbers_only,"");
-      }
+$('.optional_field').keypress(function(e){
+    if(e.which == 13)
+    return false;
+});
 
-      function salaryField(input){
-        var salary_only = /[^- ₱ , . 0-9]/g;
-          input.value = input.value.replace(salary_only,"");
-      }
-  //Input(Contact Number Only) Function
-      function contactNumberOnly(input){
-        var contact_number = /[^ +()0-9]/g;
-          input.value = input.value.replace(contact_number,"");
-      }
+$('.multiple_field').keypress(function(e){
+    if(e.which == 13)
+    return false;
+});
 
-  //Prevent Enter key for submitting the form
-      $('.required_field').keypress(function(e){
-        if ( e.which == 13 ) return false;
-        //or...
-        if ( e.which == 13 ) e.preventDefault();
-      });
+$('#email_address').keypress(function(e){
+    if(e.which == 32)
+    return false;
+});
 
-      $('.optional').keypress(function(e){
-        if ( e.which == 13 ) return false;
-        //or...
-        if ( e.which == 13 ) e.preventDefault();
-      });
+$('#company_email_address').keypress(function(e){
+    if(e.which == 32)
+    return false;
+});
 
-      $('.multiple_field').keypress(function(e){
-        if ( e.which == 13 ) return false;
-        //or...
-        if ( e.which == 13 ) e.preventDefault();
-      });
+var email_address = document.querySelector('#email_address');
+var email_validation = document.querySelector('#email_validation');
+let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-//Prevent delete the value inside input field
-  // function ValidateInput(ctrl) {
-  //     if (event.keyCode == 8 ||event.keyCode == 46) {   //backspace pressed or delete key pressed
-  //         //check whether the user is trying to delete the fixed text
-  //         if (ctrl.selectionStart <= 5) 
-  //         return false;
-  //     }
-  //         return true;
-  // }
-//Prevent space bar
-  function keyDown(e) { 
-    var e = window.event || e;
-    var key = e.keyCode;
-    //space pressed
-      if (key == 32) { //space
-      e.preventDefault();
-      }       
-  }
+    function emailValidation(){
+        if(email_address.value.match(regExp)){
+            $('#email_validation').hide();
+        }
+        else{
+            $('#email_validation').show();
+        }
+    }
+
+var company_email_address = document.querySelector('#company_email_address');
+var company_email_validation = document.querySelector('#company_email_validation');
+let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+    function companyEmailValidation(){
+        if(company_email_address.value.match(regExp)){
+            $('#company_email_validation').hide();
+        }
+        else{
+            $('#company_email_validation').show();
+        }
+    }

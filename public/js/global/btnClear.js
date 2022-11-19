@@ -24,8 +24,8 @@ $('#btnClear').on('click',function(){
                 $('.separated').val('');
                 $('.required_field').val('');
                 $('.required_field').removeClass('blue');
-                $('.optional').val('');
-                $('.optional').removeClass('blue');
+                $('.optional_field').val('');
+                $('.optional_field').removeClass('blue');
                 $('.span_all').show();
                 $('.multiple_field').val('');
                 $('.multiple_field').removeClass('blue');
@@ -155,7 +155,7 @@ $('#btnClear').on('click',function(){
                 $('.separated').val('');
                 $('#personal_information').css('zoom','100%');
                 $('.required_field:visible').val('');
-                $('.optional:visible').val('');
+                $('.optional_field:visible').val('');
                 $('.multiple_field:visible').val('');
                 $('#btnClear').prop('disabled',true);
                 $('#spouse').hide();

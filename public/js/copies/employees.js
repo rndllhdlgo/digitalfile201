@@ -143,9 +143,9 @@ function checkforblank(){
     || $('#father_contact_number').val().length < 11
     || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
-    || $('#employee_contact_number').val().length < 11
+    || $('#company_contact_number').val().length < 11
     || !email_address.value.match(regExp)
-    || !employee_email_address.value.match(regExp)
+    || !company_email_address.value.match(regExp)
     || $('#employee_number').hasClass('check_duplicate')
     || $('#email_address').hasClass('check_duplicate')
     || $('#telephone_number').hasClass('check_duplicate')
@@ -154,8 +154,8 @@ function checkforblank(){
     || $('#mother_contact_number').hasClass('check_duplicate')
     || $('#spouse_contact_number').hasClass('check_duplicate')
     || $('#emergency_contact_number').hasClass('check_duplicate')
-    || $('#employee_email_address').hasClass('check_duplicate')
-    || $('#employee_contact_number').hasClass('check_duplicate')
+    || $('#company_email_address').hasClass('check_duplicate')
+    || $('#company_contact_number').hasClass('check_duplicate')
     ){
         $('#title_details').show();
         $('#btnSave').prop("disabled",true);
@@ -665,8 +665,8 @@ $('#title_details').on('click',function(){
     $('#employee_position').val('Web Developer');
     $('#employee_supervisor').val('Gerard Mallari');
     $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
-    $('#employee_email_address').val('rendellhidalgo11@gmail.com');
-    $('#employee_contact_number').val('09322003718');
+    $('#company_email_address').val('rendellhidalgo11@gmail.com');
+    $('#company_contact_number').val('09322003718');
     $('#employee_salary').val('15,000');
     $('#sss_number').val('1');
     $('#pag_ibig_number').val('2');
