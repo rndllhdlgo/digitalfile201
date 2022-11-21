@@ -24,95 +24,6 @@
 //     if(go) return "You have unsaved changes";
 // });
 
-//Display Data Table Function
-var employeesTable;
-$(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#employeesTable thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#employeesTable thead');
-
-        employeesTable = $('#employeesTable').DataTable({
-            dom:'l<"breakspace">trip',
-            language:{
-                "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
-                "lengthMenu":"Show _MENU_ Employees",
-                "emptyTable":"No Employees Data Found!",
-                "loadingRecords": "Loading Employee Records...",
-            },
-            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            processing:true,
-            serverSide:false,
-            orderCellsTop: true,
-            fixedHeader: true,
-            ajax:{
-                url: '/employees/listOfEmployees',
-            },
-            order: [],
-            columns:[
-                {data: 'employee_number'},//data column name
-                {data: 'first_name'},
-                {data: 'middle_name'},
-                {data: 'last_name'},
-                // {data: 'employee_position'},
-                // {data: 'employee_branch'},
-                // {data: 'employee_status'},
-            ],
-            initComplete: function () {
-                var api = this.api();
-    
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
-    
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('change', function (e) {
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
-    
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-                            })
-                            .on('keyup', function (e) {
-                                e.stopPropagation();
-    
-                                $(this).trigger('change');
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-        });
-    $('div.breakspace').html('<br><br>');
-});
-
-//Hide Employee fill up form
 //Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
     $('#employee_personal_information').fadeIn();
@@ -140,12 +51,12 @@ function checkforblank(){
     || $('#mother_name').val().length < 2
     || $('#emergency_contact_name').val().length < 2
     || $('#cellphone_number').val().length < 11
-    || $('#father_contact_number').val().length < 11
-    || $('#mother_contact_number').val().length < 11
+    // || $('#father_contact_number').val().length < 11
+    // || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
-    || $('#company_contact_number').val().length < 11
+    // || $('#company_contact_number').val().length < 11
     || !email_address.value.match(regExp)
-    || !company_email_address.value.match(regExp)
+    // || !company_email_address.value.match(regExp)
     || $('#employee_number').hasClass('check_duplicate')
     || $('#email_address').hasClass('check_duplicate')
     || $('#telephone_number').hasClass('check_duplicate')
@@ -163,17 +74,6 @@ function checkforblank(){
     else{
         $('#title_details').hide();
         $('#btnSave').prop("disabled",false);
-    }
-}
-
-//Clear Form (Current Page,All Pages)
-setInterval(checkclearform,0);
-function checkclearform(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1 && $('.separated').filter(function(){ return !!this.value; }).length < 1) {
-        $('#btnClear').prop("disabled",true);
-    }
-    else{
-        $('#btnClear').prop("disabled",false);
     }
 }
 
@@ -208,50 +108,21 @@ function checkclearform(){
     function changeEmploymentStatus(){
         var employment_status = $('#employee_status');
   
-        if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern"){
+        if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern" || $('#employee_status').val() == 'Probationary'){
             $('#benefits').show();
-        }
-        else if($('#employee_status').val() == 'Probationary'){
-                $('#benefits').show();
-                $('#sss_number').removeClass('required_field');
-                $('#pag_ibig_number').removeClass('required_field');
-                $('#philhealth_number').removeClass('required_field');
-                $('#tin_number').removeClass('required_field');
-                $('#account_number').removeClass('required_field');
-
-                $('#sss_number').removeClass('requiredInput');
-                $('#pag_ibig_number').removeClass('requiredInput');
-                $('#philhealth_number').removeClass('requiredInput');
-                $('#tin_number').removeClass('requiredInput');
-                $('#account_number').removeClass('requiredInput');
         }
         else if($('#employee_status').val() == 'Resign'){
                 $('.resignation-table').show();
                 $('.termination-table').hide();
                 $('#benefits').hide();
-                $('#sss_number').removeClass('required_field');
-                $('#pag_ibig_number').removeClass('required_field');
-                $('#philhealth_number').removeClass('required_field');
-                $('#tin_number').removeClass('required_field');
-                $('#account_number').removeClass('required_field');
         }
         else if($('#employee_status').val() == 'Terminate'){
                 $('.termination-table').show();
                 $('.resignation-table').hide();
                 $('#benefits').hide();
-                $('#sss_number').removeClass('required_field');
-                $('#pag_ibig_number').removeClass('required_field');
-                $('#philhealth_number').removeClass('required_field');
-                $('#tin_number').removeClass('required_field');
-                $('#account_number').removeClass('required_field');
         }
         else{
             $('#benefits').hide();
-            $('#sss_number').removeClass('required_field');
-            $('#pag_ibig_number').removeClass('required_field');
-            $('#philhealth_number').removeClass('required_field');
-            $('#tin_number').removeClass('required_field');
-            $('#account_number').removeClass('required_field');
         }
     }
 
@@ -280,14 +151,14 @@ $('#child_birthday').on('change',function(){
 
 //Close Preview Image Function
 $('#image_close').on('click',function(){
-    $('#cover_image').val(''); //Remove the image inserted
+    $('#employee_image').val(''); //Remove the image inserted
     $('#image_preview').attr('src',''); //Remove current preview
     $('#image_preview').hide();
     $('#image_close').hide();
     $('#image_user').show();
     $('#image_button').show();
     $('.column-1').css("height","250px");
-    $('#cover_image').click();
+    $('#employee_image').click();
 });
 
 //Disable future dates/ Date Hired Function
@@ -483,4 +354,7 @@ $('#title_details').on('click',function(){
     $('#telephone_number').val('1231243');
     $('#father_contact_number').val('09322003718');
     $('#mother_contact_number').val('09322003718');
+    $('#college_name').val('Universidad De Manila');
+    $('#college_degree').val('BTVTE Major in CPT');
+    $('#college_inclusive_years').val('2018-2022');
 });

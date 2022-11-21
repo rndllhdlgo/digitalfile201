@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
+
 use App\Models\UserLogs;
 
 use App\Models\Children;
@@ -42,14 +44,16 @@ class EmployeesController extends Controller
     // }
 
     public function listOfEmployees(){
-        $employees = PersonalInformation::all();
+        $employees = DB::table('personal_information')
+        ->join('work_information','personal_information.id','=','work_information.employee_id')
+        ->select('personal_information.employee_number','personal_information.first_name','personal_information.middle_name','personal_information.last_name','work_information.employee_position','work_information.employee_branch','work_information.employee_status');
         return DataTables::of($employees)->make(true);
     }
     
-    public function childrenDataTable(Request $request){
-        $children = Children::where('employee_id',$request->employee_id)->get();
-        return DataTables::of($children)->make(true);
-    }
+    // public function childrenDataTable(Request $request){
+    //     $children = Children::where('employee_id',$request->employee_id)->get();
+    //     return DataTables::of($children)->make(true);
+    // }
 
     public function savePersonalInformation(Request $request){//To save only Work,Personal,School Information Form
         $employee_personal_information = new PersonalInformation;
@@ -129,8 +133,8 @@ class EmployeesController extends Controller
             $filenameWithExt = $request->file('file')->getClientOriginalName();//Get filename with the extension
             $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);//Get Just filename
             $extension = $request->file('file')->getClientOriginalExtension();//Get just extension
-            $fileNameToStore = time().'_'."Picture".'.'.$extension;// Filename to store
-            $path = $request->file('file')->storeAs('public/cover_images',$fileNameToStore);//To create folder for images under public folder
+            $fileNameToStore = time().'_'.'employee_image'.'.'.$extension;// Filename to store
+            $path = $request->file('file')->storeAs('public/employee_images',$fileNameToStore);//To create folder for images under public folder
         }
         else{
             $fileNameToStore = 'noimage.png';
