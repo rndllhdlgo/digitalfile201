@@ -258,7 +258,6 @@ input[type=search]:focus{
 }
 
 /* input type file */
-#employee_image,
 .hiddenFile,
 .hiddenDocumentPreview{
     display:none;

@@ -18,6 +18,7 @@
             <tbody>
             </tbody>
         </table>
+        <hr class="hr-design">
 @include('pages.usersModal')
 
 @endsection

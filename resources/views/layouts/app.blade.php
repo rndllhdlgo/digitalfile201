@@ -80,6 +80,8 @@
         @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="{{ env('APP_URL')}}js/global/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
         <script>

@@ -37,7 +37,7 @@ $('#addEmployeeBtn').on('click',function(){
 
     $('#title_details').removeClass('alert-info');
     $('#title_details').addClass('alert-warning');
-    $('#title_details').html('<i class="fa-solid fa-circle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.');
+    $('#title_details').html('<i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.');
 });
 
 //Check all required field function
@@ -108,8 +108,15 @@ function checkforblank(){
     function changeEmploymentStatus(){
         var employment_status = $('#employee_status');
   
-        if($('#employee_status').val() == "Regular" || $('#employee_status').val() == "Intern" || $('#employee_status').val() == 'Probationary'){
+        if($('#employee_status').val() == "Regular" 
+        || $('#employee_status').val() == "Intern" 
+        || $('#employee_status').val() == 'Probationary'
+        || $('#employee_status').val() == 'Part Time'
+        || $('#employee_status').val() == 'Retired'
+        ){
             $('#benefits').show();
+            $('.resignation-table').hide();
+            $('.termination-table').hide();
         }
         else if($('#employee_status').val() == 'Resign'){
                 $('.resignation-table').show();

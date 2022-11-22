@@ -1,3 +1,14 @@
+//Clear Form (Current Page,All Pages)
+setInterval(checkclearform,0);
+function checkclearform(){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1 && $('.separated').filter(function(){ return !!this.value; }).length < 1) {
+        $('#btnClear').prop("disabled",true);
+    }
+    else{
+        $('#btnClear').prop("disabled",false);
+    }
+}
+
 //This JS page is to clear form (current page, all pages)
 $('#btnClear').on('click',function(){
     $('#personal_information').css('zoom','95%');
@@ -33,7 +44,7 @@ $('#btnClear').on('click',function(){
                 $('#solo_parent').hide();
                 $('#spouse').hide();
                 $('#benefits').hide();
-                $('#cover_image').val(''); //Remove the image uploaded
+                $('#employee_image').val(''); //Remove the image uploaded
                 $('#image_preview').attr('src',''); //Remove current preview
                 $('#image_preview').hide();
 
@@ -162,7 +173,7 @@ $('#btnClear').on('click',function(){
                 $('#solo_parent').hide();
         
                 if($('.column-1').is(":visible")){
-                    $('#cover_image').val(''); //Remove the image inserted
+                    $('#employee_image').val(''); //Remove the image inserted
                     $('#image_preview').attr('src',''); //Remove current preview
                     $('#image_preview').hide();
                     $('#image_close').hide();

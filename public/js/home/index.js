@@ -36,6 +36,8 @@ $(document).ready(function () {
                     data: 'date',
                     "render": function(data, type, row){
                         return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                        // return moment(row.date).format('MMM. DD, YYYY, h:mm A');
+
                     }
                 },
                 { data: 'username' },
@@ -94,3 +96,9 @@ $(document).ready(function () {
         });
     $('div.breakspace').html('<br><br>');
 });
+
+//Display current date and time
+const d = new Date().toDateString();
+const t = new Date().toLocaleTimeString();
+document.getElementById("date").innerHTML = d + ' ' + t;
+

@@ -3,7 +3,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
     var data = employeesTable.row(this).data();
     // var id = $(this).attr('id');
     var id = data.id;
-    alert('.');
+    // alert('.');
     return false;
     $('#tab1').click();
     $('#btnClear').hide();
@@ -12,14 +12,14 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
     $('#title_details').html('<i class="fas fa-info"></i> <b>VIEW DETAILS</b>');
     
     $.ajax({
-        url: "/employees/fetchPersonalInformation",
+        url: "/employees/fetch",
         method: 'get',
         data:{id:id},
         dataType:'json',
         success:function(data){
-            //Show Data
+        //Show Data
         //Personal Information Tab
-            $('#image_preview').prop('src',window.location.origin+'/storage/cover_images/'+data.employee_image);//Returns base URL/to get the current url (window.location.origin)
+            $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+data.employee_image);//Returns base URL/to get the current url (window.location.origin)
             $('#image_preview').css('height','240px');
             $('#first_name').val(data.first_name);
             $('#middle_name').val(data.middle_name);
@@ -53,7 +53,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#emergency_contact_relationship').val(data.emergency_contact_relationship);
             $('#emergency_contact_number').val(data.emergency_contact_number);
         //Work Information Tab
-            $('#employee_number').val(data.employee_number);
+            // $('#employee_number').val(data.employee_number);
 
         //Hide (Required,Optional) text
             $('.span_all').hide();
@@ -134,31 +134,6 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
             $('#image_button').hide();
             $('.image_icon').hide();
             $('#image_preview').show();
-
-            // $('#solo_parent_table').hide();
-            // $('#solo_parent_data_table').show();
-            // $('#solo_parent_tr').show();
-            // $('#child_age').change();
-
-            // $(document).ready( function () { 
-            //       $('#solo_parent_data_table').DataTable({
-            //           dom:'rt',
-            //           processing:true,
-            //           serverSide:false,
-            //           ajax: {
-            //           url: '/employees/childrenDataTable', //route-name
-            //           data:{
-            //               employee_id: id
-            //           }
-            //           },
-            //           //data column name
-            //           columns: [
-            //               {data: 'child_name'},
-            //               {data: 'child_birthday'},
-            //               {data: 'child_gender'}
-            //           ],
-            //       });    
-            //   });
         }
     });
 });

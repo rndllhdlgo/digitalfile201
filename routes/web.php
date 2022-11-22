@@ -1,6 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EmployeesController;
+use App\Http\Controllers\MaintenanceController;
+use App\Http\Controllers\PagesController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,7 +34,7 @@ Route::any('/maintenance', 'PagesController@maintenance');
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');//To display data table of list of employees
 Route::any('/employees/save','EmployeesController@save');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
-Route::any('/employees/fetchPersonalInformation','EmployeesController@fetchPersonalInformation');
+Route::any('/employees/fetch','EmployeesController@fetch');
 Route::any('/employees/update','EmployeesController@update');
 Route::any('/employees/insert', 'EmployeesController@insert');
 
@@ -126,6 +130,9 @@ Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/multipleFileUpload','MultipleFileUpload@multipleFileUpload');
 Route::any('/saveMultipleFileUpload','MultipleFileUpload@saveMultipleFileUpload');
 
+Route::any('/uploadMultipleFile','UploadMultipleFile@uploadMultipleFile');
+Route::any('/saveuploadMultipleFile','UploadMultipleFile@saveuploadMultipleFile');
+
 // Revise DataBase
 Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
 Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
@@ -138,3 +145,4 @@ Route::any('/employees/saveTraining','EmployeesController@saveTraining');
 Route::any('/employees/saveVocational','EmployeesController@saveVocational');
 Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
 Route::any('/employees/saveChildren','EmployeesController@saveChildren');
+

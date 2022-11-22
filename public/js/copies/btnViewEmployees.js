@@ -12,7 +12,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
     $('#title_details').html('<i class="fas fa-info"></i> <b>VIEW DETAILS</b>');
     
     $.ajax({
-        url: "/employees/fetchPersonalInformation",
+        url: "/employees/fetch",
         method: 'get',
         data:{id:id},
         dataType:'json',

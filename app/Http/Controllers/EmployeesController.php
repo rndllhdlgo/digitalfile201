@@ -239,71 +239,71 @@ class EmployeesController extends Controller
         } 
     }
 
-    public function fetchPersonalInformation(Request $request){
-        $employees_personal_information = PersonalInformation::where('id',$request->id)->first();
-        return $employees_personal_information;
-    }
+    // public function fetch(Request $request){
+    //     $employees = PersonalInformation::where('id',$request->id)->first();
+    //     return $employees;
+    // }
 
-    public function update(Request $request){
+    // public function update(Request $request){
         
-        $employees = Employee::find($request->id);
-    //Personal Information Tab
-        $employees->cover_image = $request->fileName;
-        $employees->first_name = ucwords($request->first_name);
-        $employees->last_name = ucwords($request->last_name);
-        $employees->middle_name = ucwords($request->middle_name);
-        $employees->suffix = ucwords($request->suffix);
-        $employees->nickname = ucwords($request->nickname);
-        $employees->birthday = $request->birthday;
-        $employees->gender = $request->gender;
-        $employees->civil_status = $request->civil_status;
-        $employees->street = ucwords($request->street);
-        $employees->region = $request->region;
-        $employees->province = $request->province;
-        $employees->city = $request->city;
-        $employees->email_address = strtolower($request->email_address);
-        $employees->telephone_number = $request->telephone_number;
-        $employees->cellphone_number = $request->cellphone_number;
-        $employees->spouse_name = ucwords($request->spouse_name);
-        $employees->spouse_contact_number = $request->spouse_contact_number;
-        $employees->spouse_profession = ucwords($request->spouse_profession);
-        $employees->father_name = ucwords($request->father_name);
-        $employees->father_contact_number = $request->father_contact_number;
-        $employees->father_profession = ucwords($request->father_profession);
-        $employees->mother_name = ucwords($request->mother_name);
-        $employees->mother_contact_number = $request->mother_contact_number;
-        $employees->mother_profession = ucwords($request->mother_profession);
-        $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
-        $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
-        $employees->emergency_contact_number = $request->emergency_contact_number;
-    //Work Information Tab
-        $employees->employee_number = $request->employee_number;
-        $employees->employee_company = $request->employee_company;
-        $employees->employee_branch = $request->employee_branch;
-        $employees->employee_status = $request->employee_status;
-        $employees->employment_origin = $request->employment_origin;
-        $employees->employee_shift = $request->employee_shift;
-        $employees->employee_position = $request->employee_position;
-        $employees->employee_supervisor = $request->employee_supervisor;
-        $employees->date_hired = $request->date_hired;
-        $employees->company_email_address = strtolower($request->company_email_address);
-        $employees->company_contact_number = $request->company_contact_number;
-        $employees->sss_number = $request->sss_number;
-        $employees->pag_ibig_number = $request->pag_ibig_number;
-        $employees->philhealth_number = $request->philhealth_number;
-        $employees->tin_number = $request->tin_number;
-        $employees->account_number = $request->account_number;
-    //Educational and Trainings Background Tab
-        $employees->secondary_school_name = ucwords($request->secondary_school_name);
-        $employees->secondary_school_address = ucwords($request->secondary_school_address);
-        $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-        $employees->primary_school_name = ucwords($request->primary_school_name);
-        $employees->primary_school_address = ucwords($request->primary_school_address);
-        $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
-        $sql = $employees->save();
+    //     $employees = Employee::find($request->id);
+    // //Personal Information Tab
+    //     $employees->cover_image = $request->fileName;
+    //     $employees->first_name = ucwords($request->first_name);
+    //     $employees->last_name = ucwords($request->last_name);
+    //     $employees->middle_name = ucwords($request->middle_name);
+    //     $employees->suffix = ucwords($request->suffix);
+    //     $employees->nickname = ucwords($request->nickname);
+    //     $employees->birthday = $request->birthday;
+    //     $employees->gender = $request->gender;
+    //     $employees->civil_status = $request->civil_status;
+    //     $employees->street = ucwords($request->street);
+    //     $employees->region = $request->region;
+    //     $employees->province = $request->province;
+    //     $employees->city = $request->city;
+    //     $employees->email_address = strtolower($request->email_address);
+    //     $employees->telephone_number = $request->telephone_number;
+    //     $employees->cellphone_number = $request->cellphone_number;
+    //     $employees->spouse_name = ucwords($request->spouse_name);
+    //     $employees->spouse_contact_number = $request->spouse_contact_number;
+    //     $employees->spouse_profession = ucwords($request->spouse_profession);
+    //     $employees->father_name = ucwords($request->father_name);
+    //     $employees->father_contact_number = $request->father_contact_number;
+    //     $employees->father_profession = ucwords($request->father_profession);
+    //     $employees->mother_name = ucwords($request->mother_name);
+    //     $employees->mother_contact_number = $request->mother_contact_number;
+    //     $employees->mother_profession = ucwords($request->mother_profession);
+    //     $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
+    //     $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
+    //     $employees->emergency_contact_number = $request->emergency_contact_number;
+    // //Work Information Tab
+    //     $employees->employee_number = $request->employee_number;
+    //     $employees->employee_company = $request->employee_company;
+    //     $employees->employee_branch = $request->employee_branch;
+    //     $employees->employee_status = $request->employee_status;
+    //     $employees->employment_origin = $request->employment_origin;
+    //     $employees->employee_shift = $request->employee_shift;
+    //     $employees->employee_position = $request->employee_position;
+    //     $employees->employee_supervisor = $request->employee_supervisor;
+    //     $employees->date_hired = $request->date_hired;
+    //     $employees->company_email_address = strtolower($request->company_email_address);
+    //     $employees->company_contact_number = $request->company_contact_number;
+    //     $employees->sss_number = $request->sss_number;
+    //     $employees->pag_ibig_number = $request->pag_ibig_number;
+    //     $employees->philhealth_number = $request->philhealth_number;
+    //     $employees->tin_number = $request->tin_number;
+    //     $employees->account_number = $request->account_number;
+    // //Educational and Trainings Background Tab
+    //     $employees->secondary_school_name = ucwords($request->secondary_school_name);
+    //     $employees->secondary_school_address = ucwords($request->secondary_school_address);
+    //     $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
+    //     $employees->primary_school_name = ucwords($request->primary_school_name);
+    //     $employees->primary_school_address = ucwords($request->primary_school_address);
+    //     $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
+    //     $sql = $employees->save();
 
-        return $sql ? 'true' : 'false';
-    }
+    //     return $sql ? 'true' : 'false';
+    // }
 
     //Check Duplication of Data
     public function checkDuplicate(Request $request){

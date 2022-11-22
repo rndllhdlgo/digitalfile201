@@ -15,7 +15,7 @@ function numbersOnly(input){
 
 function salaryField(input){
     var salaryField = /[^- ₱ , . 0-9]/g;
-    input.value = input.value.replace(salary_only,"");
+    input.value = input.value.replace(salaryField,"");
 }
 
 function contactNumberOnly(input){

@@ -8,13 +8,6 @@
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
             </div>
         </div>
-
-        {{-- <div class="col">
-            <div class="f-outline">
-                <input class="forminput form-control required_field" type="search" id="employee_salary" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                <label for="employee_salary" class="formlabel form-label"><i class="fa-solid fa-peso-sign"></i> BASIC SALARY <span class="span_employee_salary span_all"></span></label>
-            </div>
-        </div> --}}
         
         <div class="col">
             <div class="f-outline">
@@ -141,25 +134,25 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)<span class="span_sss_number span_all"></span></label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)<span class="span_pag-ibig_number span_all"></span></label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)<span class="span_philhealth_number span_all"></span></label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)<span class="span_tin_number span_all"></span></label>
                 </div>
             </div>
@@ -168,7 +161,7 @@
         <div class="row mb-3">
             <div class="col-3">
                 <div class="f-outline">
-                    <input class="forminput form-control" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> BANK ACCOUNT NO. (Optional)<span class="span_account_number span_all"></span></label>
                 </div>
             </div>
