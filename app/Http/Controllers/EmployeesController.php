@@ -44,9 +44,11 @@ class EmployeesController extends Controller
     // }
 
     public function listOfEmployees(){
-        $employees = DB::table('personal_information')
-        ->join('work_information','personal_information.id','=','work_information.employee_id')
-        ->select('personal_information.employee_number','personal_information.first_name','personal_information.middle_name','personal_information.last_name','work_information.employee_position','work_information.employee_branch','work_information.employee_status');
+        $employees = PersonalInformation::selectRaw('employee_number, first_name, middle_name, last_name, positions.job_position_name AS employee_position, branches.branch_name AS employee_branch, employee_status')
+        ->join('work_information','work_information.employee_id','=','personal_information.id')
+        ->join('positions','positions.id','=','work_information.employee_position')
+        ->join('branches','branches.id','=','work_information.employee_branch')
+        ->get();
         return DataTables::of($employees)->make(true);
     }
     
