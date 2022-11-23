@@ -130,8 +130,8 @@ Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/multipleFileUpload','MultipleFileUpload@multipleFileUpload');
 Route::any('/saveMultipleFileUpload','MultipleFileUpload@saveMultipleFileUpload');
 
-Route::any('/uploadMultipleFile','UploadMultipleFile@uploadMultipleFile');
-Route::any('/saveuploadMultipleFile','UploadMultipleFile@saveuploadMultipleFile');
+Route::any('/uploadMultipleFile','UploadMultipleFileController@uploadMultipleFile');
+Route::any('/saveuploadMultipleFile','UploadMultipleFileController@saveuploadMultipleFile');
 
 // Revise DataBase
 Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');

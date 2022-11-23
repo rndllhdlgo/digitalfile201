@@ -16,6 +16,8 @@ class CreateMultipleFilesTable extends Migration
         Schema::create('multiple_files', function (Blueprint $table) {
             $table->id();
             $table->string('memo_subject');
+            $table->string('memo_date');
+            $table->string('memo_penalty');
             $table->string('memo_file');
             $table->timestamps();
         });

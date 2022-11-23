@@ -399,7 +399,7 @@ $('#btnSave').on('click', function(){
                                     });
                                 }); 
 
-                                // $('#requirements_form').submit();
+                                $('#requirements_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();

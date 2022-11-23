@@ -14,14 +14,14 @@
 
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" name="memo_date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="f-outline">
-                        <select class="form-select forminput multiple_field form-control"  id="memo_penalty" placeholder=" " style="background-color:white;">
+                        <select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">
                             <option value="" disabled selected>SELECT PENALTY</option>
                             <option value="Verbal">Verbal</option>
                             <option value="Written">Written</option>
@@ -52,13 +52,13 @@
                     </div>
                     <div class="col">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field" type="date" name="memo_date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
                         </div>
                     </div>
                     <div class="col">
                         <div class="f-outline">
-                            <select class="form-select forminput multiple_field form-control"  id="memo_penalty" placeholder=" " style="background-color:white;">
+                            <select class="form-select forminput multiple_field form-control" name="memo_penalty[]"  id="memo_penalty" placeholder=" " style="background-color:white;">
                                 <option value="" disabled selected>SELECT PENALTY</option>
                                 <option value="Verbal">Verbal</option>
                                 <option value="Written">Written</option>
