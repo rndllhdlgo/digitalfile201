@@ -115,17 +115,17 @@ function checkforblank(){
         || $('#employee_status').val() == 'Retired'
         ){
             $('#benefits').show();
-            $('.resignation-table').hide();
-            $('.termination-table').hide();
+            $('#resignation_div').hide();
+            $('#termination_div').hide();
         }
         else if($('#employee_status').val() == 'Resign'){
-                $('.resignation-table').show();
-                $('.termination-table').hide();
+                $('#resignation_div').show();
+                $('#termination_div').hide();
                 $('#benefits').hide();
         }
         else if($('#employee_status').val() == 'Terminate'){
-                $('.termination-table').show();
-                $('.resignation-table').hide();
+                $('#termination_div').show();
+                $('#resignation_div').hide();
                 $('#benefits').hide();
         }
         else{
@@ -166,43 +166,6 @@ $('#image_close').on('click',function(){
     $('#image_button').show();
     $('.column-1').css("height","250px");
     $('#employee_image').click();
-});
-
-//Disable future dates/ Date Hired Function
-$(function(){
-    var dtToday = new Date();
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
-    if(month < 0){
-        month = '0' + month.toString();
-    }
-    if(day < 10){
-        day = '0' + day.toString();
-    }
-    var maxDate = year + '-' + month + '-' + day;
-    $('#date_hired').attr('max', maxDate);
-    $('#child_birthday').attr('max', maxDate);
-    $('#memo_date').attr('max', maxDate);
-    $('#evaluation_date').attr('max', maxDate);
-    $('#contracts_date').attr('max', maxDate);
-    $('#resignation_date').attr('max', maxDate);
-    $('#termination_date').attr('max', maxDate);
-});
-
-//Disable Birthday Under 18
-$(function(){
-    var dtTodays = new Date();
-    var months = dtTodays.getMonth() + 1;// jan=0; feb=1
-    var days = dtTodays.getDate();
-    var years = dtTodays.getFullYear() - 18;
-    if(months < 10)
-        months = '0' + months.toString();
-    if(days < 10)
-        days = '0' + days.toString();
-    var minDates = years + '-' + months + '-' + days;
-    var maxDates = years + '-' + months + '-' + days;
-    $('#birthday').attr('max', maxDates);
 });
 
 //Region,Province,City DropDown Function
@@ -365,3 +328,41 @@ $('#title_details').on('click',function(){
     $('#college_degree').val('BTVTE Major in CPT');
     $('#college_inclusive_years').val('2018-2022');
 });
+
+// $('input#employee_bonus').on('blur', function() {
+//     const value = this.value.replace(/,/g, '');
+//     this.value = parseFloat(value).toLocaleString('en-PH', {
+//         style: 'decimal',
+//         maximumFractionDigits: 2,
+//         minimumFractionDigits: 2
+//     });
+// });
+
+//Currency Format
+var formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'PHP',
+  });
+  
+  $('#employee_salary').on('change', (e)=>{
+      e.target.value = formatter.format(e.target.value);
+  });
+  $('#employee_incentives').on('change', (e)=>{
+      e.target.value = formatter.format(e.target.value);
+  });
+  $('#employee_overtime_pay').on('change', (e)=>{
+      e.target.value = formatter.format(e.target.value);
+  });
+  $('#employee_bonus').on('change', (e)=>{
+      e.target.value = formatter.format(e.target.value);
+  });
+
+// $(function(){
+//     $('#employee_salary').inputmask({
+//         alias: 'currency',
+//         digits: 0,
+//         rightAlign: 0,
+//         placeholder: '',
+//         clearMaskOnLostFocus: true
+//       });
+// });

@@ -72,7 +72,7 @@ Route::get('/setcity','PagesController@setcity');
 Route::get('/setprovince','PagesController@setprovince');
 
 // Route::resource('document','DocumentuploadController');
-Route::any('/employees/saveRequirements','EmployeesController@saveRequirements');
+Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
 
 // Routes for saving multiple tables
 Route::any('/employees/childrenSave','EmployeesController@childrenSave');

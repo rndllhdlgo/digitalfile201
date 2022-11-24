@@ -41,10 +41,10 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
+                        <input type="file" class="" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center grow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -83,10 +83,10 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                        <input type="file" class="" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center grow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -118,15 +118,17 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <input type="file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                        <input type="file" class="" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center grow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <br>
+
+    <div id="resignation_div" style="display: none;">
+    <br>
     <!-- Resignation -->
         <strong class="table-title">RESIGNATION</strong>
         <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
@@ -153,48 +155,51 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <input type="file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                        <input type="file" class="" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center grow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
 <br>
-    <!-- Termination -->
-    <strong class="table-title">TERMINATION</strong>
-        <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
-            <thead class="thead-educational">
-                <tr>
-                    <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> TERMINATION DATE</th>
-                    <th style="width:32%"><i class="fas fa-folder"></i> TERMINATION FILE</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td class="pb-3 pt-3">
-                        <div class="f-outline">
-                            <input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>
-                        </div>
-                    </td>
-                    <td class="pb-3 pt-3">
-                        <div class="f-outline">
-                            <input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                            <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
-                        </div>
-                    </td>
-                    <td class="pb-3 pt-3">
-                        <input type="file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-success center grow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+    <div id="termination_div" style="display: none;">
+        <!-- Termination -->
+        <strong class="table-title">TERMINATION</strong>
+            <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+                <thead class="thead-educational">
+                    <tr>
+                        <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
+                        <th style="width:30%"><i class="fas fa-calendar-week"></i> TERMINATION DATE</th>
+                        <th style="width:32%"><i class="fas fa-folder"></i> TERMINATION FILE</th>
+                        <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <input type="file" class="" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    </div>
     <hr class="hr-design">
 </div>

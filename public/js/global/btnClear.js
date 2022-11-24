@@ -32,6 +32,8 @@ $('#btnClear').on('click',function(){
                 //Clear All Pages
                 new bootstrap.Toast(document.querySelector('#clearAll')).show();
                 $('#personal_information').css('zoom','100%');
+                $('#termination_div').hide();
+                $('#resignation_div').hide();
                 $('.separated').val('');
                 $('.required_field').val('');
                 $('.required_field').removeClass('blue');
@@ -165,6 +167,8 @@ $('#btnClear').on('click',function(){
                 //Clear Current Page
                 new bootstrap.Toast(document.querySelector('#clearCurrent')).show();
                 $('.separated').val('');
+                $('#termination_div').hide();
+                $('#resignation_div').hide();
                 $('#personal_information').css('zoom','100%');
                 $('.required_field:visible').val('');
                 $('.optional_field:visible').val('');

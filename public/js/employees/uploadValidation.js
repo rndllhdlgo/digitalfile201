@@ -67,6 +67,7 @@ function memoValidation(memo_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#memo_file').val('');
     } 
     else if(memoExtension != "pdf"){
         Swal.fire({
@@ -76,6 +77,7 @@ function memoValidation(memo_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#memo_file').val('');
     }
     else if(memoFileSize > 5242880 * 2){
         Swal.fire({
@@ -85,6 +87,7 @@ function memoValidation(memo_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#memo_file').val('');
     }
     else {
         if (memoData.files && memoData.files[0]) {
@@ -114,6 +117,7 @@ function evaluationValidation(evaluation_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#evaluation_file').val('');
     } 
     else if(evaluationExtension != "pdf"){
         Swal.fire({
@@ -132,6 +136,8 @@ function evaluationValidation(evaluation_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#evaluation_file').val('');
+
     }
     else {
         if (evaluationData.files && evaluationData.files[0]) {
@@ -161,6 +167,7 @@ function contractsValidation(contracts_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#contracts_file').val('');
     } 
     else if(contractsExtension != "pdf"){
         Swal.fire({
@@ -170,6 +177,7 @@ function contractsValidation(contracts_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#contracts_file').val('');
     }
     else if(contractsFileSize > 5242880 * 2){
         Swal.fire({
@@ -179,6 +187,7 @@ function contractsValidation(contracts_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#contracts_file').val('');
     }
     else {
         if (contractsData.files && contractsData.files[0]) {
@@ -190,53 +199,6 @@ function contractsValidation(contracts_file) {
                 $('#contracts_view').prop('disabled',false);
                 $('#contracts_replace').prop('disabled',false);
                 $('#contracts_button').hide();
-        }
-    }
-}
-
-function resumeValidation(resume_file) {
-    var resumeData = document.getElementById('resume_file');
-    var resumeUploadPath = resumeData.value;
-    var resumeExtension = resumeUploadPath.substring(resumeUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var resumeFileSize = $("#resume_file").get(0).files[0].size;
-
-    if (resumeExtension != "pdf" && resumeFileSize > 5242880 * 2) {
-        Swal.fire({
-            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    } 
-    else if(resumeExtension != "pdf"){
-        Swal.fire({
-            title: 'UNSUPPORTED FILE TYPE',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.pdf).',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-    else if(resumeFileSize > 5242880 * 2){
-        Swal.fire({
-            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
-            icon: 'error',
-            text: 'Please upload valid file with size not greater than 10MB.',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }
-    else {
-        if (resumeData.files && resumeData.files[0]) {
-            var resumeReader = new FileReader();
-                resumeReader.onload = function(e) {
-                    $('#resume_preview').attr('src', e.target.result);
-                }
-                eresumeReader.readAsDataURL(resumeData.files[0]);
-                $('#resume_view').prop('disabled',false);
-                $('#resume_replace').prop('disabled',false);
-                $('#resume_button').hide();
         }
     }
 }
@@ -255,6 +217,7 @@ function resignationValidation(resignation_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resignation_file').val('');
     } 
     else if(resignationExtension != "pdf"){
         Swal.fire({
@@ -264,6 +227,7 @@ function resignationValidation(resignation_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resignation_file').val('');
     }
     else if(resignationFileSize > 5242880 * 2){
         Swal.fire({
@@ -273,6 +237,7 @@ function resignationValidation(resignation_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resignation_file').val('');
     }
     else {
         if (resignationData.files && resignationData.files[0]) {
@@ -280,10 +245,60 @@ function resignationValidation(resignation_file) {
                 resignationReader.onload = function(e) {
                     $('#resignation_preview').attr('src', e.target.result);
                 }
-                eresignationReader.readAsDataURL(resignationData.files[0]);
+                resignationReader.readAsDataURL(resignationData.files[0]);
                 $('#resignation_view').prop('disabled',false);
                 $('#resignation_replace').prop('disabled',false);
                 $('#resignation_button').hide();
+        }
+    }
+}
+
+function terminationValidation(termination_file) {
+    var terminationData = document.getElementById('termination_file');
+    var terminationUploadPath = terminationData.value;
+    var terminationExtension = terminationUploadPath.substring(terminationUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var terminationFileSize = $("#termination_file").get(0).files[0].size;
+
+    if (terminationExtension != "pdf" && terminationExtension > 5242880 * 2) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $('#termination_file').val('');
+    } 
+    else if(terminationExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $('#termination_file').val('');
+    }
+    else if(terminationFileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $('#termination_file').val('');
+    }
+    else {
+        if (terminationData.files && terminationData.files[0]) {
+            var terminationReader = new FileReader();
+                terminationReader.onload = function(e) {
+                    $('#termination_preview').attr('src', e.target.result);
+                }
+                terminationReader.readAsDataURL(terminationData.files[0]);
+                $('#termination_view').prop('disabled',false);
+                $('#termination_replace').prop('disabled',false);
+                $('#termination_button').hide();
         }
     }
 }

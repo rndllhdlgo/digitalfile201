@@ -67,8 +67,8 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
-                        <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE</label>
+                        <input class="forminput form-control required_field" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                        <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i><span class="span_age span_all"> AGE </span> </label>
                     </div>
                 </div>
                 <div class="col">

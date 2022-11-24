@@ -2,6 +2,7 @@
 //Verify that the user has filled out all field on multiple field.
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
+    //Personal Information Tab
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
         $('#btnSoloParentAdd').prop('disabled',true);
     }
@@ -9,7 +10,7 @@ function checkforblankMultiple(){
         $('#btnSoloParentAdd').prop('disabled',false);
         $('#btnSoloParentAdd').css('display','block');
     }
-
+    //Education Tab
     if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years').val()){
         $('#btnCollegeAdd').prop('disabled',true);
     }
@@ -33,37 +34,7 @@ function checkforblankMultiple(){
         $('#btnVocationalAdd').prop('disabled',false);
         $('#btnVocationalAdd').css('display','block');
     }
-
-    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
-        $('#btnEvaluationAdd').prop('disabled',true);
-    }
-    else{
-        $('#btnEvaluationAdd').prop('disabled',false);
-    }
-
-    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
-        $('#btnContractAdd').prop('disabled',true);
-    }
-    else{
-        $('#btnContractAdd').prop('disabled',false);
-    }
-
-    if(!$('#resignation_letter').val() || !$('#resignation_date').val()){
-        $('#btnResignationAdd').prop('disabled',true);
-    }
-    else{
-        $('#btnResignationAdd').prop('disabled',false);
-        $('#btnResignationAdd').css('display','block');
-    }
-
-    if(!$('#termination_letter').val() || !$('#termination_date').val()){
-        $('#btnTerminationAdd').prop('disabled',true);
-    }
-    else{
-        $('#btnTerminationAdd').prop('disabled',false);
-        $('#btnTerminationAdd').css('display','block');
-    }
-
+    //Job History Tab
     if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
         $('#btnJobHistoryAdd').prop('disabled',true);
     }
@@ -71,11 +42,46 @@ function checkforblankMultiple(){
         $('#btnJobHistoryAdd').prop('disabled',false);
         $('#btnJobHistoryAdd').css('display','block');
     }
+    
+    //Evaluation Tab
+    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
+        $('#btnAddMemoRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddMemoRow').prop('disabled',false);
+    }
+
+    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
+        $('#btnAddEvaluationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddEvaluationRow').prop('disabled',false);
+    }
+
+    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
+        $('#btnAddContractRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddContractRow').prop('disabled',false);
+    }
+
+    if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
+        $('#btnAddResignationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddResignationRow').prop('disabled',false);
+    }
+
+    if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
+        $('#btnAddTerminationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddTerminationRow').prop('disabled',false);
+    }
 }
 
 
 $(document).ready(function(){
-
     //Personal Information Tab
     //Solo Parent Table Add
     $('#btnSoloParentAdd').click(function(){
@@ -200,100 +206,11 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     });
-
-    //Performance Evaluation Tab
-    //Memo Table Add
-    // $('#btnMemoAdd').click(function(){
-    //     $('#memo_data_table').show();
-    //     var memo_subject = $('#memo_subject').val().trim();
-    //     var memo_date = $('#memo_date').val();
-    //     var memo_penalty = $('#memo_penalty').val();
-    //     var memo_file = document.getElementById('memo_file').files[0].name;//Remove Fake Path
-
-    //     var dynamicMemo =   "<tr>" + 
-    //                             "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ memo_subject +"</td>"+
-    //                             "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_date + "</td>"+
-    //                             "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_penalty + "</td>"+
-    //                             "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + memo_file + "</td>"+
-    //                             "<td style='width:10%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-    //                         "</tr>";
-    //     $("#memo_data_table").append(dynamicMemo);
-    //     $("#memo_subject").val(""); 
-    //     $("#memo_date").val(""); 
-    //     $("#memo_penalty").val("");
-    //     $('#memo_file').val('');
-    //     $('#memo_preview').attr('src','');//change the image source
-    //     $('#memo_preview').hide();
-    //     $('#memo_text').html('No file chosen');
-    //     $('#memo_button').show();
-    //     $('#memo_view').prop('disabled',true);
-    //     $('#memo_replace').prop('disabled',true);
-    //     $(".btn-memo").click(function(){
-    //         $(this).parent().parent().remove();
-    //     });
-    // });
-
-    //Evaluation Table Add
-    // $('#btnEvaluationAdd').click(function(){
-    //     $('#evaluation_data_table').show();
-    //     var evaluation_reason = $('#evaluation_reason').val().trim();
-    //     var evaluation_date = $('#evaluation_date').val();
-    //     var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
-    //     var evaluation_file = document.getElementById('evaluation_file').files[0].name;
-
-    //     var dynamicEvaluation = "<tr>" + 
-    //                                 "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ evaluation_reason +"</td>"+
-    //                                 "<td style='width:15%' class='text-center pb-3 pt-3'>" + evaluation_date + "</td>"+
-    //                                 "<td style='width:15%' class='text-capitalize text-center pb-3 pt-3'>" + evaluation_evaluated_by + "</td>" +
-    //                                 "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + evaluation_file + "</td>" +
-    //                                 "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-    //                             "</tr>";
-    //     $("#evaluation_data_table").append(dynamicEvaluation);
-    //     $("#evaluation_reason").val(""); 
-    //     $("#evaluation_date").val(""); 
-    //     $("#evaluation_evaluated_by").val("");
-    //     $('#evaluation_file').val('');
-    //     $('#evaluation_preview').attr('src','');//change the image source
-    //     $('#evaluation_preview').hide();
-    //     $('#evaluation_text').html('No file chosen');
-    //     $('#evaluation_button').show();
-    //     $('#evaluation_view').prop('disabled',true);
-    //     $('#evaluation_replace').prop('disabled',true);
-    //     $(".btn-evaluation").click(function(){
-    //         $(this).parent().parent().remove();
-    //     });
-    // });
-
-    //Contract Table Add
-    // $('#btnContractAdd').click(function(){
-    //     $('#contracts_data_table').show();
-    //     var contracts_type = $('#contracts_type').val().trim();
-    //     var contracts_date = $('#contracts_date').val();
-    //     var contracts_file = document.getElementById('contracts_file').files[0].name;
-
-    //     var dynamicContract =   "<tr>" + 
-    //                                 "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ contracts_type +"</td>" + 
-    //                                 "<td style='width:30%' class='text-center pb-3 pt-3'>" + contracts_date + "</td>" + 
-    //                                 "<td style='width:32%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
-    //                                 "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-    //                             "</tr>";
-    //     $("#contracts_data_table").append(dynamicContract);
-    //     $("#contracts_type").val(""); 
-    //     $("#contracts_date").val("");
-    //     $('#contracts_file').val('');
-    //     $('#contracts_preview').attr('src','');//change the image source
-    //     $('#contracts_preview').hide();
-    //     $('#contracts_text').html('No file chosen');
-    //     $('#contracts_button').show();
-    //     $('#contracts_view').prop('disabled',true);
-    //     $('#contracts_replace').prop('disabled',true);
-    //     $(".btn-contract").click(function(){
-    //         $(this).parent().parent().remove();
-    //     });
-    // });
 });
 
+//Performance Evaluation Tab
 //Clone Fields
+
     function addMemoRow(){
     $('#memoTable').append('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
@@ -323,7 +240,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td>'+
-                                '<input type="file" id="memo_file" name="memo_file[]" accept=".pdf">'+
+                                '<input type="file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -443,3 +360,4 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     }
+    

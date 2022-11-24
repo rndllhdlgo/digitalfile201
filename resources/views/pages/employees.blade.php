@@ -104,7 +104,7 @@
                     </li>
                 </ul>
 
-                <form method="POST" enctype="multipart/form-data" action="/employees/saveRequirements" id="requirements_form">
+                <form method="POST" enctype="multipart/form-data" action="/employees/saveDocuments" id="documents_form">
                     @csrf
                         <div class="tab-content">
                             <input type="hidden" name="employee_id" id="employee_id">

@@ -237,7 +237,7 @@ $('#btnSave').on('click', function(){
                                 $.each(soloParent_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
-                                        url: '/employees/childrenSave',
+                                        url: '/employees/saveChildren',
                                         async: false,
                                         headers:{
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -399,7 +399,7 @@ $('#btnSave').on('click', function(){
                                 //     });
                                 // }); 
 
-                                $('#requirements_form').submit();
+                                $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
