@@ -22,12 +22,17 @@ use App\Models\Training;
 use App\Models\Vocational;
 use App\Models\MedicalHistory;
 
-
 use App\Models\PersonalInformation;
 use App\Models\WorkInformation;
 use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
 use App\Models\JobHistory;
+
+use App\Models\MemoInformation;
+use App\Models\EvaluationInformation;
+use App\Models\ContractsInformation;
+use App\Models\ResignationInformation;
+use App\Models\TerminationInformation;
 
 use DataTables;
 
@@ -337,134 +342,221 @@ class EmployeesController extends Controller
         return WorkInformation::where('company_contact_number',$request->company_contact_number)->count() > 0 ? 'true': 'false';
     }
 
-    public function memoSave(Request $request){
-        $employee_memo = new Memo;
-        $employee_memo->employee_id = $request->employee_id;
-        $employee_memo->memo_subject = ucfirst($request->memo_subject);
-        $employee_memo->memo_date = $request->memo_date;
-        $employee_memo->memo_penalty = $request->memo_penalty;
-        $employee_memo->save();
-    }
+    // public function memoSave(Request $request){
+    //     $employee_memo = new Memo;
+    //     $employee_memo->employee_id = $request->employee_id;
+    //     $employee_memo->memo_subject = ucfirst($request->memo_subject);
+    //     $employee_memo->memo_date = $request->memo_date;
+    //     $employee_memo->memo_penalty = $request->memo_penalty;
+    //     $employee_memo->save();
+    // }
 
-    public function evaluationSave(Request $request){
-        $employee_evaluation = new Evaluation;
-        $employee_evaluation->employee_id = $request->employee_id;
-        $employee_evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
-        $employee_evaluation->evaluation_date = $request->evaluation_date;
-        $employee_evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
-        $employee_evaluation->save();
-    }
+    // public function evaluationSave(Request $request){
+    //     $employee_evaluation = new Evaluation;
+    //     $employee_evaluation->employee_id = $request->employee_id;
+    //     $employee_evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
+    //     $employee_evaluation->evaluation_date = $request->evaluation_date;
+    //     $employee_evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
+    //     $employee_evaluation->save();
+    // }
 
-    public function contractsSave(Request $request){
-        $employee_contract = new Contracts;
-        $employee_contract->employee_id = $request->employee_id;
-        $employee_contract->contracts_type = ucfirst($request->contracts_type);
-        $employee_contract->contracts_date = $request->contracts_date;
-        $employee_contract->save();
-    }
+    // public function contractsSave(Request $request){
+    //     $employee_contract = new Contracts;
+    //     $employee_contract->employee_id = $request->employee_id;
+    //     $employee_contract->contracts_type = ucfirst($request->contracts_type);
+    //     $employee_contract->contracts_date = $request->contracts_date;
+    //     $employee_contract->save();
+    // }
 
+    // public function saveMultipleFile(Request $request){
+    //     if($request->hasFile('memo_file')){
+    //         foreach($request->file('memo_file') as $key => $value){
+    //             $memoFileName = time().'_Memo_File.'.$request->memo_file[$key]->extension();
+    //             $request->memo_file[$key]->storeAs('public/memo_file',$memoFileName);
+                
+    //             $memo = new MemoInformation;
+    //             $memo->memo_subject = $request->memo_subject[$key];
+    //             $memo->memo_date = $request->memo_date[$key];
+    //             $memo->memo_penalty = $request->memo_penalty[$key];
+    //             $memo->memo_file = $memoFileName;
+    //             $memo->save();
+    //         }
+    //     }
+    // }
     public function saveRequirements(Request $request)
     {   
+        if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+            foreach($request->file('memo_file') as $key => $value){
+                $memoFileName = time().'_Memo_File.'.$request->memo_file[$key]->extension();
+                $request->memo_file[$key]->storeAs('public/memo_file',$memoFileName);
+                
+                $memo = new MemoInformation;
+                $memo->employee_id = $request->employee_id;
+                $memo->memo_subject = $request->memo_subject[$key];
+                $memo->memo_date = $request->memo_date[$key];
+                $memo->memo_penalty = $request->memo_penalty[$key];
+                $memo->memo_file = $memoFileName;
+                $memo->save();
+            }
+        }
+
+        if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+            foreach($request->file('evaluation_file') as $key => $value){
+                $evaluationFileName = time().'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
+                $request->evaluation_file[$key]->storeAs('public/evaluation_file',$evaluationFileName);
+                
+                $evaluation = new EvaluationInformation;
+                $evaluation->employee_id = $request->employee_id;
+                $evaluation->evaluation_reason = $request->evaluation_reason[$key];
+                $evaluation->evaluation_date = $request->evaluation_date[$key];
+                $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
+                $evaluation->evaluation_file = $evaluationFileName;
+                $evaluation->save();
+            }
+        }
+
+        if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
+            foreach($request->file('contracts_file') as $key => $value){
+                $contractsFileName = time().'_Contracts_File.'.$request->contracts_file[$key]->extension();
+                $request->contracts_file[$key]->storeAs('public/contracts_file',$contractsFileName);
+                
+                $contracts = new ContractsInformation;
+                $contracts->employee_id = $request->employee_id;
+                $contracts->contracts_type = $request->contracts_type[$key];
+                $contracts->contracts_date = $request->contracts_date[$key];
+                $contracts->contracts_file = $contractsFileName;
+                $contracts->save();
+            }
+        }
+
+        if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+            foreach($request->file('resignation_file') as $key => $value){
+                $resignationFileName = time().'_Resignation_File.'.$request->resignation_file[$key]->extension();
+                $request->resignation_file[$key]->storeAs('public/resignation_files',$resignationFileName);
+                
+                $resignation = new ResignationInformation;
+                $resignation->employee_id = $request->employee_id;
+                $resignation->resignation_reason = $request->resignation_reason[$key];
+                $resignation->resignation_date = $request->resignation_date[$key];
+                $resignation->resignation_file = $resignationFileName;
+                $resignation->save();
+            }
+        }
+
+        if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+            foreach($request->file('termination_file') as $key => $value){
+                $terminationFileName = time().'_Termination_File.'.$request->termination_file[$key]->extension();
+                $request->termination_file[$key]->storeAs('public/termination_files',$terminationFileName);
+
+                $termination = new TerminationInformation;
+                $termination->employee_id = $request->employee_id;
+                $termination->termination_reason = $request->termination_reason[$key];
+                $termination->termination_date = $request->termination_date[$key];
+                $termination->termination_file = $terminationFileName;
+                $termination->save();
+            }
+        }
+        
         //Save Resignation and Termination File
-        if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
-            $resignation = new Resignation;
-            $resignation->employee_id = $request->employee_id;
-            $resignation->resignation_letter = ucfirst($request->resignation_letter);
-            $resignation->resignation_date = $request->resignation_date;
+        // if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
+        //     $resignation = new Resignation;
+        //     $resignation->employee_id = $request->employee_id;
+        //     $resignation->resignation_letter = ucfirst($request->resignation_letter);
+        //     $resignation->resignation_date = $request->resignation_date;
 
-            $resignationFile = $request->file('resignation_file');
-            $resignationExtension = $resignationFile->getClientOriginalExtension();
-            $resignationFileName = time(). '_' . 'Resignation_Letter'. '.' . $resignationExtension;
-            $resignationFile->storeAs('public/resignationFiles',$resignationFileName);
-            $resignation->resignation_file = $resignationFileName;
-            $resignation->save();
-        }
+        //     $resignationFile = $request->file('resignation_file');
+        //     $resignationExtension = $resignationFile->getClientOriginalExtension();
+        //     $resignationFileName = time(). '_' . 'Resignation_Letter'. '.' . $resignationExtension;
+        //     $resignationFile->storeAs('public/resignationFiles',$resignationFileName);
+        //     $resignation->resignation_file = $resignationFileName;
+        //     $resignation->save();
+        // }
 
-        if($request->termination_letter && $request->termination_date && $request->hasFile('termination_file')){
-            $termination = new Termination;
-            $termination->employee_id = $request->employee_id;
-            $termination->termination_letter = ucfirst($request->termination_letter);
-            $termination->termination_date = $request->termination_date;
+        // if($request->termination_letter && $request->termination_date && $request->hasFile('termination_file')){
+        //     $termination = new Termination;
+        //     $termination->employee_id = $request->employee_id;
+        //     $termination->termination_letter = ucfirst($request->termination_letter);
+        //     $termination->termination_date = $request->termination_date;
 
-            $terminationFile = $request->file('termination_file');
-            $terminationExtension = $terminationFile->getClientOriginalExtension();
-            $terminationFileName = time(). '_' . 'Termination_Letter'. '.' .$terminationExtension;
-            $terminationFile->storeAs('public/terminationFiles',$terminationFileName);
-            $termination->termination_file = $terminationFileName;
-            $termination->save();
-        }
-            $document = new Document;
-            $document->employee_id = $request->employee_id;
-            $birthcertificateFile = $request->file('birthcertificate_file');
-            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificateExtension;
-            $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
-            $document->birthcertificate = $birthcertificateFilename;
+        //     $terminationFile = $request->file('termination_file');
+        //     $terminationExtension = $terminationFile->getClientOriginalExtension();
+        //     $terminationFileName = time(). '_' . 'Termination_Letter'. '.' .$terminationExtension;
+        //     $terminationFile->storeAs('public/terminationFiles',$terminationFileName);
+        //     $termination->termination_file = $terminationFileName;
+        //     $termination->save();
+        // }
+        //     $document = new Document;
+        //     $document->employee_id = $request->employee_id;
+        //     $birthcertificateFile = $request->file('birthcertificate_file');
+        //     $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+        //     $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificateExtension;
+        //     $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
+        //     $document->birthcertificate = $birthcertificateFilename;
 
-            $nbiFile = $request->file('nbi_file');
-            $nbiExtension = $nbiFile->getClientOriginalExtension();
-            $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' .$nbiExtension;
-            $nbiFile->storeAs('public/documents',$nbiFilename);
-            $document->nbi_clearance = $nbiFilename;
+        //     $nbiFile = $request->file('nbi_file');
+        //     $nbiExtension = $nbiFile->getClientOriginalExtension();
+        //     $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' .$nbiExtension;
+        //     $nbiFile->storeAs('public/documents',$nbiFilename);
+        //     $document->nbi_clearance = $nbiFilename;
 
-            $barangayClearanceFile = $request->file('barangay_clearance_file');
-            $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' .$barangayClearanceExtension;
-            $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
-            $document->barangay_clearance = $barangayClearanceFilename;
+        //     $barangayClearanceFile = $request->file('barangay_clearance_file');
+        //     $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+        //     $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' .$barangayClearanceExtension;
+        //     $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+        //     $document->barangay_clearance = $barangayClearanceFilename;
 
-            $policeClearanceFile = $request->file('police_clearance_file');
-            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' .$policeClearanceExtension;
-            $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
-            $document->police_clearance = $policeClearanceFilename;
+        //     $policeClearanceFile = $request->file('police_clearance_file');
+        //     $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+        //     $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' .$policeClearanceExtension;
+        //     $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+        //     $document->police_clearance = $policeClearanceFilename;
 
-            $sssFile = $request->file('sss_file');
-            $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
-            $sssFile->storeAs('public/documents',$sssFilename);
-            $document->sss_form = $sssFilename;
+        //     $sssFile = $request->file('sss_file');
+        //     $sssExtension = $sssFile->getClientOriginalExtension();
+        //     $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
+        //     $sssFile->storeAs('public/documents',$sssFilename);
+        //     $document->sss_form = $sssFilename;
 
-            $philhealthFile = $request->file('philhealth_file');
-            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' .$philhealthExtension;
-            $philhealthFile->storeAs('public/documents',$philhealthFilename);
-            $document->philhealth_form = $philhealthFilename;
+        //     $philhealthFile = $request->file('philhealth_file');
+        //     $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+        //     $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' .$philhealthExtension;
+        //     $philhealthFile->storeAs('public/documents',$philhealthFilename);
+        //     $document->philhealth_form = $philhealthFilename;
 
-            $pagibigFile = $request->file('pag_ibig_file');
-            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' .$pagibigExtension;
-            $pagibigFile->storeAs('public/documents',$pagibigFilename);
-            $document->pag_ibig_form = $pagibigFilename;
+        //     $pagibigFile = $request->file('pag_ibig_file');
+        //     $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+        //     $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' .$pagibigExtension;
+        //     $pagibigFile->storeAs('public/documents',$pagibigFilename);
+        //     $document->pag_ibig_form = $pagibigFilename;
 
-            $medicalCertificateFile = $request->file('medical_certificate_file');
-            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' .$medicalCertificateExtension;
-            $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
-            $document->medical_certificate = $medicalCertificateFilename;
+        //     $medicalCertificateFile = $request->file('medical_certificate_file');
+        //     $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+        //     $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' .$medicalCertificateExtension;
+        //     $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
+        //     $document->medical_certificate = $medicalCertificateFilename;
             
-            $resumeFile = $request->file('resume_file');
-            $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
-            $resumeFile->storeAs('public/documents',$resumeFilename);
-            $document->resume = $resumeFilename;
+        //     $resumeFile = $request->file('resume_file');
+        //     $resumeExtension = $resumeFile->getClientOriginalExtension();
+        //     $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
+        //     $resumeFile->storeAs('public/documents',$resumeFilename);
+        //     $document->resume = $resumeFilename;
             
-        if($request->hasFile('tor_file')){
-            $torFile = $request->file('tor_file');
-            $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = time(). '_' . 'Transcript_of_Records'. '.' .$torExtension;
-            $torFile->storeAs('public/documents',$torFilename);
-            $document->transcript_of_records = $torFilename;
-        }
+        // if($request->hasFile('tor_file')){
+        //     $torFile = $request->file('tor_file');
+        //     $torExtension = $torFile->getClientOriginalExtension();
+        //     $torFilename = time(). '_' . 'Transcript_of_Records'. '.' .$torExtension;
+        //     $torFile->storeAs('public/documents',$torFilename);
+        //     $document->transcript_of_records = $torFilename;
+        // }
 
-        if($request->hasFile('diploma_file')){
-            $diplomaFile = $request->file('diploma_file');
-            $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-            $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
-            $diplomaFile->storeAs('public/documents',$diplomaFilename);
-            $document->diploma = $diplomaFilename;
-        }
-            $document->save();
-            return Redirect::to(url()->previous());//Return previous page/url
+        // if($request->hasFile('diploma_file')){
+        //     $diplomaFile = $request->file('diploma_file');
+        //     $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+        //     $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
+        //     $diplomaFile->storeAs('public/documents',$diplomaFilename);
+        //     $document->diploma = $diplomaFilename;
+        // }
+        //     $document->save();
+            // return Redirect::to(url()->previous());//Return previous page/url
     }
 }

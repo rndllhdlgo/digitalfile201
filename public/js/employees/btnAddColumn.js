@@ -34,13 +34,6 @@ function checkforblankMultiple(){
         $('#btnVocationalAdd').css('display','block');
     }
 
-    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
-        $('#btnMemoAdd').prop('disabled',true);
-    }
-    else{
-        $('#btnMemoAdd').prop('disabled',false);
-    }
-
     if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
         $('#btnEvaluationAdd').prop('disabled',true);
     }
@@ -210,96 +203,243 @@ $(document).ready(function(){
 
     //Performance Evaluation Tab
     //Memo Table Add
-    $('#btnMemoAdd').click(function(){
-        $('#memo_data_table').show();
-        var memo_subject = $('#memo_subject').val().trim();
-        var memo_date = $('#memo_date').val();
-        var memo_penalty = $('#memo_penalty').val();
-        var memo_file = document.getElementById('memo_file').files[0].name;//Remove Fake Path
+    // $('#btnMemoAdd').click(function(){
+    //     $('#memo_data_table').show();
+    //     var memo_subject = $('#memo_subject').val().trim();
+    //     var memo_date = $('#memo_date').val();
+    //     var memo_penalty = $('#memo_penalty').val();
+    //     var memo_file = document.getElementById('memo_file').files[0].name;//Remove Fake Path
 
-        var dynamicMemo =   "<tr>" + 
-                                "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ memo_subject +"</td>"+
-                                "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_date + "</td>"+
-                                "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_penalty + "</td>"+
-                                "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + memo_file + "</td>"+
-                                "<td style='width:10%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-                            "</tr>";
-        $("#memo_data_table").append(dynamicMemo);
-        $("#memo_subject").val(""); 
-        $("#memo_date").val(""); 
-        $("#memo_penalty").val("");
-        $('#memo_file').val('');
-        $('#memo_preview').attr('src','');//change the image source
-        $('#memo_preview').hide();
-        $('#memo_text').html('No file chosen');
-        $('#memo_button').show();
-        $('#memo_view').prop('disabled',true);
-        $('#memo_replace').prop('disabled',true);
+    //     var dynamicMemo =   "<tr>" + 
+    //                             "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ memo_subject +"</td>"+
+    //                             "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_date + "</td>"+
+    //                             "<td style='width:15%' class='text-center pb-3 pt-3'>" + memo_penalty + "</td>"+
+    //                             "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + memo_file + "</td>"+
+    //                             "<td style='width:10%'><button class='btn btn-danger btn-memo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+    //                         "</tr>";
+    //     $("#memo_data_table").append(dynamicMemo);
+    //     $("#memo_subject").val(""); 
+    //     $("#memo_date").val(""); 
+    //     $("#memo_penalty").val("");
+    //     $('#memo_file').val('');
+    //     $('#memo_preview').attr('src','');//change the image source
+    //     $('#memo_preview').hide();
+    //     $('#memo_text').html('No file chosen');
+    //     $('#memo_button').show();
+    //     $('#memo_view').prop('disabled',true);
+    //     $('#memo_replace').prop('disabled',true);
+    //     $(".btn-memo").click(function(){
+    //         $(this).parent().parent().remove();
+    //     });
+    // });
+
+    //Evaluation Table Add
+    // $('#btnEvaluationAdd').click(function(){
+    //     $('#evaluation_data_table').show();
+    //     var evaluation_reason = $('#evaluation_reason').val().trim();
+    //     var evaluation_date = $('#evaluation_date').val();
+    //     var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
+    //     var evaluation_file = document.getElementById('evaluation_file').files[0].name;
+
+    //     var dynamicEvaluation = "<tr>" + 
+    //                                 "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ evaluation_reason +"</td>"+
+    //                                 "<td style='width:15%' class='text-center pb-3 pt-3'>" + evaluation_date + "</td>"+
+    //                                 "<td style='width:15%' class='text-capitalize text-center pb-3 pt-3'>" + evaluation_evaluated_by + "</td>" +
+    //                                 "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + evaluation_file + "</td>" +
+    //                                 "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+    //                             "</tr>";
+    //     $("#evaluation_data_table").append(dynamicEvaluation);
+    //     $("#evaluation_reason").val(""); 
+    //     $("#evaluation_date").val(""); 
+    //     $("#evaluation_evaluated_by").val("");
+    //     $('#evaluation_file').val('');
+    //     $('#evaluation_preview').attr('src','');//change the image source
+    //     $('#evaluation_preview').hide();
+    //     $('#evaluation_text').html('No file chosen');
+    //     $('#evaluation_button').show();
+    //     $('#evaluation_view').prop('disabled',true);
+    //     $('#evaluation_replace').prop('disabled',true);
+    //     $(".btn-evaluation").click(function(){
+    //         $(this).parent().parent().remove();
+    //     });
+    // });
+
+    //Contract Table Add
+    // $('#btnContractAdd').click(function(){
+    //     $('#contracts_data_table').show();
+    //     var contracts_type = $('#contracts_type').val().trim();
+    //     var contracts_date = $('#contracts_date').val();
+    //     var contracts_file = document.getElementById('contracts_file').files[0].name;
+
+    //     var dynamicContract =   "<tr>" + 
+    //                                 "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ contracts_type +"</td>" + 
+    //                                 "<td style='width:30%' class='text-center pb-3 pt-3'>" + contracts_date + "</td>" + 
+    //                                 "<td style='width:32%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
+    //                                 "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+    //                             "</tr>";
+    //     $("#contracts_data_table").append(dynamicContract);
+    //     $("#contracts_type").val(""); 
+    //     $("#contracts_date").val("");
+    //     $('#contracts_file').val('');
+    //     $('#contracts_preview').attr('src','');//change the image source
+    //     $('#contracts_preview').hide();
+    //     $('#contracts_text').html('No file chosen');
+    //     $('#contracts_button').show();
+    //     $('#contracts_view').prop('disabled',true);
+    //     $('#contracts_replace').prop('disabled',true);
+    //     $(".btn-contract").click(function(){
+    //         $(this).parent().parent().remove();
+    //     });
+    // });
+});
+
+//Clone Fields
+    function addMemoRow(){
+    $('#memoTable').append('<tr>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+
+                                '<div class="f-outline">'+
+                                    '<input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+
+                            '<td class="pb-3 pt-3">'+
+                                '<div class="f-outline">'+
+                                    '<select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">'+
+                                        '<option value="" disabled selected>SELECT PENALTY</option>'+
+                                        '<option value="Verbal">Verbal</option>'+
+                                        '<option value="Written">Written</option>'+
+                                        '<option value="2nd Offense">2nd Offense</option>'+
+                                        '<option value="3rd Offense">3rd Offense</option>'+
+                                        '<option value="Final">Final</option>'+
+                                    '</select>'+
+                                    '<label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td>'+
+                                '<input type="file" id="memo_file" name="memo_file[]" accept=".pdf">'+
+                            '</td>'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                            '</td>'+
+                        '</tr>');
         $(".btn-memo").click(function(){
             $(this).parent().parent().remove();
         });
-    });
+    }
 
-    //Evaluation Table Add
-    $('#btnEvaluationAdd').click(function(){
-        $('#evaluation_data_table').show();
-        var evaluation_reason = $('#evaluation_reason').val().trim();
-        var evaluation_date = $('#evaluation_date').val();
-        var evaluation_evaluated_by = $('#evaluation_evaluated_by').val().trim();
-        var evaluation_file = document.getElementById('evaluation_file').files[0].name;
-
-        var dynamicEvaluation = "<tr>" + 
-                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ evaluation_reason +"</td>"+
-                                    "<td style='width:15%' class='text-center pb-3 pt-3'>" + evaluation_date + "</td>"+
-                                    "<td style='width:15%' class='text-capitalize text-center pb-3 pt-3'>" + evaluation_evaluated_by + "</td>" +
-                                    "<td style='width:32%' class='text-center pb-3 pt-3'> <b>File Name: </b>" + evaluation_file + "</td>" +
-                                    "<td style='width:10%'> <button class='btn btn-danger btn-evaluation center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-                                "</tr>";
-        $("#evaluation_data_table").append(dynamicEvaluation);
-        $("#evaluation_reason").val(""); 
-        $("#evaluation_date").val(""); 
-        $("#evaluation_evaluated_by").val("");
-        $('#evaluation_file').val('');
-        $('#evaluation_preview').attr('src','');//change the image source
-        $('#evaluation_preview').hide();
-        $('#evaluation_text').html('No file chosen');
-        $('#evaluation_button').show();
-        $('#evaluation_view').prop('disabled',true);
-        $('#evaluation_replace').prop('disabled',true);
+    function addEvaluationRow(){
+    $('#evaluationTable').append('<tr>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" type="date" name="evaluation_date[]" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td>'+
+                                '<input  type="file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
+                            '</td>'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                            '</td>'+
+                        '</tr>');
         $(".btn-evaluation").click(function(){
             $(this).parent().parent().remove();
         });
-    });
+    }
 
-    //Contract Table Add
-    $('#btnContractAdd').click(function(){
-        $('#contracts_data_table').show();
-        var contracts_type = $('#contracts_type').val().trim();
-        var contracts_date = $('#contracts_date').val();
-        var contracts_file = document.getElementById('contracts_file').files[0].name;
-
-        var dynamicContract =   "<tr>" + 
-                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>"+ contracts_type +"</td>" + 
-                                    "<td style='width:30%' class='text-center pb-3 pt-3'>" + contracts_date + "</td>" + 
-                                    "<td style='width:32%' class='text-center pb-3 pt-3'><b>File Name: </b>" + contracts_file + "</td>" + 
-                                    "<td style='width:10%'> <button class='btn btn-danger btn-contract center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
-                                "</tr>";
-        $("#contracts_data_table").append(dynamicContract);
-        $("#contracts_type").val(""); 
-        $("#contracts_date").val("");
-        $('#contracts_file').val('');
-        $('#contracts_preview').attr('src','');//change the image source
-        $('#contracts_preview').hide();
-        $('#contracts_text').html('No file chosen');
-        $('#contracts_button').show();
-        $('#contracts_view').prop('disabled',true);
-        $('#contracts_replace').prop('disabled',true);
-        $(".btn-contract").click(function(){
+    function addContractsRow(){
+    $('#contractsTable').append('<tr>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" type="date" name="contracts_date[]" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+
+                                '<input  type="file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
+                            '</td>'+
+                            '<td>'+ 
+                                '<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                            '</td>'+
+                        '</tr>');
+        $(".btn-contracts").click(function(){
             $(this).parent().parent().remove();
         });
-    });
-});
+    }
 
+    function addResignationRow(){
+    $('#resignationTable').append('<tr>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+
+                                '<input  type="file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
+                            '</td>'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                            '</td>'+
+                        '</tr>');
+        $(".btn-resignation").click(function(){
+            $(this).parent().parent().remove();
+        });
+    }
 
-
-
+    function addTerminationRow(){
+    $('#terminationTable').append('<tr>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+ 
+                                '<div class="f-outline">' + 
+                                    '<input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>'+
+                                '</div>'+
+                            '</td>'+
+                            '<td class="pb-3 pt-3">'+
+                                '<input  type="file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
+                            '</td>'+
+                            '<td>'+
+                                '<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                            '</td>'+
+                        '</tr>');
+        $(".btn-termination").click(function(){
+            $(this).parent().parent().remove();
+        });
+    }

@@ -15,6 +15,7 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+
     } 
     else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif"){
         Swal.fire({
@@ -24,6 +25,7 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        
     }
     else if(imageFileSize > 5242880){
         Swal.fire({
@@ -301,6 +303,8 @@ function BirthCertificateValidation(birthcertificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#birthcertificate_file').val('');
+        $('#birthcertificate_preview').attr('src','');
     }
     else if(birthcertExtension != "pdf"){
         Swal.fire({
@@ -310,6 +314,9 @@ function BirthCertificateValidation(birthcertificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#birthcertificate_file').val('');
+        $('#birthcertificate_preview').attr('src','');
+
     }
     else if(birthcertFileSize > 5242880 * 2){
         Swal.fire({
@@ -319,6 +326,8 @@ function BirthCertificateValidation(birthcertificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#birthcertificate_file').val('');
+        $('#birthcertificate_preview').attr('src','');
     } 
     else {
         if (birthcertData.files && birthcertData.files[0]) {
@@ -348,6 +357,8 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#nbi_file').val('');
+        $('#nbi_preview').attr('src','');
     }
     else if(nbiExtension != "pdf"){
         Swal.fire({
@@ -357,6 +368,8 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#nbi_file').val('');
+        $('#nbi_preview').attr('src','');
     }
     else if(nbiFileSize > 5242880 * 2){
         Swal.fire({
@@ -366,6 +379,8 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#nbi_file').val('');
+        $('#nbi_preview').attr('src','');
     }
     else {
         if (nbiData.files && nbiData.files[0]) {
@@ -395,6 +410,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#barangay_clearance_file').val('');
+        $('#barangay_clearance_preview').attr('src','');
     }
     else if(barangayClearanceExtension != "pdf"){
         Swal.fire({
@@ -404,6 +421,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#barangay_clearance_file').val('');
+        $('#barangay_clearance_preview').attr('src','');
     }
     else if(barangayClearanceFileSize > 5242880 * 2){
         Swal.fire({
@@ -413,6 +432,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#barangay_clearance_file').val('');
+        $('#barangay_clearance_preview').attr('src','');
     }
     else {
         if (barangayClearanceData.files && barangayClearanceData.files[0]) {
@@ -442,6 +463,8 @@ function policeclearanceValidation(police_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#police_clearance_file').val('');
+        $('#police_clearance_preview').attr('src','');
     } 
     else if(policeClearanceExtension != "pdf"){
         Swal.fire({
@@ -451,6 +474,8 @@ function policeclearanceValidation(police_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#police_clearance_file').val('');
+        $('#police_clearance_preview').attr('src','');
     }
     else if(policeClearanceFileSize > 5242880 * 2){
         Swal.fire({
@@ -460,6 +485,8 @@ function policeclearanceValidation(police_clearance_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#police_clearance_file').val('');
+        $('#police_clearance_preview').attr('src','');
     }
     else {
         if (policeClearanceData.files && policeClearanceData.files[0]) {
@@ -489,6 +516,8 @@ function sssValidation(sss_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#sss_file').val('');
+        $('#sss_preview').attr('src','');
     } 
     else if(sssExtension != "pdf"){
         Swal.fire({
@@ -498,6 +527,8 @@ function sssValidation(sss_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#sss_file').val('');
+        $('#sss_preview').attr('src','');
     }
     else if(sssFileSize > 5242880 * 2){
         Swal.fire({
@@ -536,6 +567,8 @@ function philhealthValidation(philhealth_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#philhealth_file').val('');
+        $('#philhealth_preview').attr('src','');
     } 
     else if(philhealthExtension != "pdf"){
         Swal.fire({
@@ -554,6 +587,8 @@ function philhealthValidation(philhealth_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#philhealth_file').val('');
+        $('#philhealth_preview').attr('src','');
     }
     else {
         if (philhealthData.files && philhealthData.files[0]) {
@@ -583,6 +618,8 @@ function pagibigValidation(pag_ibig_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#pag_ibig_file').val('');
+        $('#pag_ibig_preview').attr('src','');
     } 
     else if(pagibigExtension != "pdf"){
         Swal.fire({
@@ -592,6 +629,8 @@ function pagibigValidation(pag_ibig_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#pag_ibig_file').val('');
+        $('#pag_ibig_preview').attr('src','');
     }
     else if(pagibigFileSize > 5242880 * 2){
         Swal.fire({
@@ -601,6 +640,9 @@ function pagibigValidation(pag_ibig_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#pag_ibig_file').val('');
+        $('#pag_ibig_preview').attr('src','');
+
     }
     else {
         if (pagibigData.files && pagibigData.files[0]) {
@@ -630,6 +672,8 @@ function medicalCertificateValidation(medical_certificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#medical_certificate_file').val('');
+        $('#medical_certificate_preview').attr('src','');
     } 
     else if(medicalCertificateExtension != "pdf"){
         Swal.fire({
@@ -639,6 +683,8 @@ function medicalCertificateValidation(medical_certificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#medical_certificate_file').val('');
+        $('#medical_certificate_preview').attr('src','');
     }
     else if(medicalCertificateFileSize > 5242880 * 2){
         Swal.fire({
@@ -648,6 +694,8 @@ function medicalCertificateValidation(medical_certificate_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#medical_certificate_file').val('');
+        $('#medical_certificate_preview').attr('src','');
     }
     else {
         if (medicalCertificateData.files && medicalCertificateData.files[0]) {
@@ -677,6 +725,8 @@ function torValidation(tor_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#tor_file').val('');
+        $('#tor_preview').attr('src','');
     } 
     else if(torExtension != "pdf"){
         Swal.fire({
@@ -686,6 +736,8 @@ function torValidation(tor_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#tor_file').val('');
+        $('#tor_preview').attr('src','');
     }
     else if(torFileSize > 5242880 * 2){
         Swal.fire({
@@ -695,6 +747,8 @@ function torValidation(tor_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#tor_file').val('');
+        $('#tor_preview').attr('src','');
     }
     else {
         if (torData.files && torData.files[0]) {
@@ -724,6 +778,8 @@ function diplomaValidation(diploma_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#diploma_file').val('');
+        $('#diploma_preview').attr('src','');
     } 
     else if(diplomaExtension != "pdf"){
         Swal.fire({
@@ -733,6 +789,8 @@ function diplomaValidation(diploma_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#diploma_file').val('');
+        $('#diploma_preview').attr('src','');
     }
     else if(diplomaFileSize > 5242880 * 2){
         Swal.fire({
@@ -742,6 +800,8 @@ function diplomaValidation(diploma_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#diploma_file').val('');
+        $('#diploma_preview').attr('src','');
     }
     else {
         if (diplomaData.files && diplomaData.files[0]) {
@@ -771,6 +831,8 @@ function resumeValidation(resume_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resume_file').val('');
+        $('#resume_preview').attr('src','');
     } 
     else if(resumeExtension != "pdf"){
         Swal.fire({
@@ -780,6 +842,8 @@ function resumeValidation(resume_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resume_file').val('');
+        $('#resume_preview').attr('src','');
     }
     else if(resumeFileSize > 5242880 * 2){
         Swal.fire({
@@ -789,6 +853,8 @@ function resumeValidation(resume_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#resume_file').val('');
+        $('#resume_preview').attr('src','');
     }
     else {
         if (resumeData.files && resumeData.files[0]) {
@@ -888,70 +954,70 @@ $('#resume_preview').on('click',function(){
 //Display file name function
 
 //Performance Evaluation Tab
-var memo_file = $('#memo_file')[0];
-var memo_button = $('#memo_button')[0];
-var memo_text = $('#memo_text')[0];
+// var memo_file = $('#memo_file')[0];
+// var memo_button = $('#memo_button')[0];
+// var memo_text = $('#memo_text')[0];
 
-$('#memo_file').on('change',function(){
-    if (memo_file.value) {
-        memo_text.innerHTML = "<b class='text-center'> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        memo_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#memo_file').on('change',function(){
+//     if (memo_file.value) {
+//         memo_text.innerHTML = "<b class='text-center'> File Name: </b>" + memo_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         memo_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var evaluation_file = $('#evaluation_file')[0];
-var evaluation_button = $('#evaluation_button')[0];
-var evaluation_text = $('#evaluation_text')[0];
+// var evaluation_file = $('#evaluation_file')[0];
+// var evaluation_button = $('#evaluation_button')[0];
+// var evaluation_text = $('#evaluation_text')[0];
 
-$('#evaluation_file').on('change',function(){
-    if (evaluation_file.value) {
-        evaluation_text.innerHTML = "<b> File Name: </b>" + evaluation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        evaluation_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#evaluation_file').on('change',function(){
+//     if (evaluation_file.value) {
+//         evaluation_text.innerHTML = "<b> File Name: </b>" + evaluation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         evaluation_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var contracts_file = $('#contracts_file')[0];
-var contracts_button = $('#contracts_button')[0];
-var contracts_text = $('#contracts_text')[0];
+// var contracts_file = $('#contracts_file')[0];
+// var contracts_button = $('#contracts_button')[0];
+// var contracts_text = $('#contracts_text')[0];
 
-$('#contracts_file').on('change',function(){
-    if (contracts_file.value) {
-        contracts_text.innerHTML = "<b>File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        contracts_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#contracts_file').on('change',function(){
+//     if (contracts_file.value) {
+//         contracts_text.innerHTML = "<b>File Name: </b>" + contracts_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         contracts_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var resignation_file = $('#resignation_file')[0];
-var resignation_button = $('#resignation_button')[0];
-var resignation_text = $('#resignation_text')[0];
+// var resignation_file = $('#resignation_file')[0];
+// var resignation_button = $('#resignation_button')[0];
+// var resignation_text = $('#resignation_text')[0];
 
-$('#resignation_file').on('change',function(){
-    if (resignation_file.value) {
-        resignation_text.innerHTML = "<b>File Name:</b> " + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        resignation_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#resignation_file').on('change',function(){
+//     if (resignation_file.value) {
+//         resignation_text.innerHTML = "<b>File Name:</b> " + resignation_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         resignation_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var termination_file = $('#termination_file')[0];
-var termination_button = $('#termination_button')[0];
-var termination_text = $('#termination_text')[0];
+// var termination_file = $('#termination_file')[0];
+// var termination_button = $('#termination_button')[0];
+// var termination_text = $('#termination_text')[0];
 
-$('#termination_file').on('change',function(){
-    if (termination_file.value) {
-        termination_text.innerHTML = "<b>File Name:</b> " + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        termination_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#termination_file').on('change',function(){
+//     if (termination_file.value) {
+//         termination_text.innerHTML = "<b>File Name:</b> " + termination_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         termination_text.innerHTML = "No file chosen.";
+//     }
+// });
 
 //Documents Tab
 var birthcertificate_file = $('#birthcertificate_file')[0];

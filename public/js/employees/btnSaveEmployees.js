@@ -337,67 +337,67 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
-                                var memoTable = $('#memo_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var memo_data  = memoTable.rows().data();
-                                $.each(memo_data, function(key, value){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/memoSave',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            'employee_id' : data.id,
-                                            'memo_subject' : value[0],
-                                            'memo_date' : value[1],
-                                            'memo_penalty': value[2],
-                                            'memo_file' : value[3]
-                                        },
-                                    });
-                                });
+                                // var memoTable = $('#memo_data_table').DataTable({
+                                //     dom:'t',
+                                // });
+                                // var memo_data  = memoTable.rows().data();
+                                // $.each(memo_data, function(key, value){
+                                //     $.ajax({
+                                //         type: 'POST',
+                                //         url: '/employees/memoSave',
+                                //         async: false,
+                                //         headers:{
+                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                //         },
+                                //         data:{
+                                //             'employee_id' : data.id,
+                                //             'memo_subject' : value[0],
+                                //             'memo_date' : value[1],
+                                //             'memo_penalty': value[2],
+                                //             'memo_file' : value[3]
+                                //         },
+                                //     });
+                                // });
             
-                                var evaluationTable = $('#evaluation_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var evaluation_data  = evaluationTable.rows().data();
-                                $.each(evaluation_data, function(key, value){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/evaluationSave',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            'employee_id' : data.id,
-                                            'evaluation_reason' : value[0],
-                                            'evaluation_date' : value[1],
-                                            'evaluation_evaluated_by': value[2] 
-                                        },
-                                    });
-                                });
-                                var contractsTable = $('#contracts_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var contracts_data  = contractsTable.rows().data();
-                                $.each(contracts_data, function(key, value){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/contractsSave',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            'employee_id' : data.id,
-                                            'contracts_type' : value[0],
-                                            'contracts_date' : value[1]
-                                        },
-                                    });
-                                }); 
+                                // var evaluationTable = $('#evaluation_data_table').DataTable({
+                                //     dom:'t',
+                                // });
+                                // var evaluation_data  = evaluationTable.rows().data();
+                                // $.each(evaluation_data, function(key, value){
+                                //     $.ajax({
+                                //         type: 'POST',
+                                //         url: '/employees/evaluationSave',
+                                //         async: false,
+                                //         headers:{
+                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                //         },
+                                //         data:{
+                                //             'employee_id' : data.id,
+                                //             'evaluation_reason' : value[0],
+                                //             'evaluation_date' : value[1],
+                                //             'evaluation_evaluated_by': value[2] 
+                                //         },
+                                //     });
+                                // });
+                                // var contractsTable = $('#contracts_data_table').DataTable({
+                                //     dom:'t',
+                                // });
+                                // var contracts_data  = contractsTable.rows().data();
+                                // $.each(contracts_data, function(key, value){
+                                //     $.ajax({
+                                //         type: 'POST',
+                                //         url: '/employees/contractsSave',
+                                //         async: false,
+                                //         headers:{
+                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                //         },
+                                //         data:{
+                                //             'employee_id' : data.id,
+                                //             'contracts_type' : value[0],
+                                //             'contracts_date' : value[1]
+                                //         },
+                                //     });
+                                // }); 
 
                                 $('#requirements_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");

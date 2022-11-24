@@ -50,7 +50,7 @@ $('#btnClear').on('click',function(){
 
                 //Performance Evaluation Tab
                 $('#memo_file').val('');
-                $('#memo_preview').attr('src','');//change the image source
+                $('#memo_preview').attr('src','');
                 $('#memo_preview').hide();
                 $('#memo_text').html('No file chosen');
                 $('#memo_button').show();
@@ -58,7 +58,7 @@ $('#btnClear').on('click',function(){
                 $('#memo_replace').prop('disabled',true);
 
                 $('#evaluation_file').val('');
-                $('#evaluation_preview').attr('src','');//change the image source
+                $('#evaluation_preview').attr('src','');
                 $('#evaluation_preview').hide();
                 $('#evaluation_text').html('No file chosen.');
                 $('#evaluation_button').show();
@@ -66,7 +66,7 @@ $('#btnClear').on('click',function(){
                 $('#evaluation_replace').prop('disabled',true);
 
                 $('#contracts_file').val('');
-                $('#contracts_preview').attr('src','');//change the image source
+                $('#contracts_preview').attr('src','');
                 $('#contracts_preview').hide();
                 $('#contracts_text').html('No file chosen.');
                 $('#contracts_button').show();
@@ -74,7 +74,7 @@ $('#btnClear').on('click',function(){
                 $('#contracts_replace').prop('disabled',true);
 
                 $('#resignation_file').val('');
-                $('#resignation_preview').attr('src','');//change the image source
+                $('#resignation_preview').attr('src','');
                 $('#resignation_preview').hide();
                 $('#resignation_text').html('No file chosen.');
                 $('#resignation_button').show();
@@ -82,7 +82,7 @@ $('#btnClear').on('click',function(){
                 $('#resignation_replace').prop('disabled',true);
 
                 $('#termination_file').val('');
-                $('#termination_preview').attr('src','');//change the image source
+                $('#termination_preview').attr('src','');
                 $('#termination_preview').hide();
                 $('#termination_text').html('No file chosen.');
                 $('#termination_button').show();
@@ -158,7 +158,8 @@ $('#btnClear').on('click',function(){
                 $('.btn-job').click();
                 $('.btn-memo').click();
                 $('.btn-evaluation').click();
-                $('.btn-contract').click();
+                $('.btn-contracts').click();
+                $('.btn-resignation').click();
             } 
             else if (clear.isConfirmed) {
                 //Clear Current Page
@@ -201,10 +202,12 @@ $('#btnClear').on('click',function(){
                 if($('#performance_evaluation').is(":visible")){
                     $('.btn-memo').click();
                     $('.btn-evaluation').click();
-                    $('.btn-contract').click();
+                    $('.btn-contracts').click();
+                    $('.btn-resignation').click();
+                    $('.btn-evaluation').click();
 
                     $('#memo_file').val('');
-                    $('#memo_preview').attr('src','');//change the image source
+                    $('#memo_preview').attr('src','');
                     $('#memo_preview').hide();
                     $('#memo_text').html('No file chosen.');
                     $('#memo_button').show();
@@ -212,7 +215,7 @@ $('#btnClear').on('click',function(){
                     $('#memo_replace').prop('disabled',true);
 
                     $('#evaluation_file').val('');
-                    $('#evaluation_preview').attr('src','');//change the image source
+                    $('#evaluation_preview').attr('src','');
                     $('#evaluation_preview').hide();
                     $('#evaluation_text').html('No file chosen.');
                     $('#evaluation_button').show();
@@ -220,7 +223,7 @@ $('#btnClear').on('click',function(){
                     $('#evaluation_replace').prop('disabled',true);
 
                     $('#contracts_file').val('');
-                    $('#contracts_preview').attr('src','');//change the image source
+                    $('#contracts_preview').attr('src','');
                     $('#contracts_preview').hide();
                     $('#contracts_text').html('No file chosen.');
                     $('#contracts_button').show();
@@ -228,7 +231,7 @@ $('#btnClear').on('click',function(){
                     $('#contracts_replace').prop('disabled',true);
 
                     $('#resignation_file').val('');
-                    $('#resignation_preview').attr('src','');//change the image source
+                    $('#resignation_preview').attr('src','');
                     $('#resignation_preview').hide();
                     $('#resignation_text').html('No file chosen.');
                     $('#resignation_button').show();
@@ -236,7 +239,7 @@ $('#btnClear').on('click',function(){
                     $('#resignation_replace').prop('disabled',true);
 
                     $('#termination_file').val('');
-                    $('#termination_preview').attr('src','');//change the image source
+                    $('#termination_preview').attr('src','');
                     $('#termination_preview').hide();
                     $('#termination_text').html('No file chosen.');
                     $('#termination_button').show();

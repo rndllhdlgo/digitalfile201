@@ -1,488 +1,140 @@
 <div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
-
-    <!--
-    {{-- Memo Table --}}
     <hr class="hr-design">
-    <strong class="table-title">MEMOS</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                {{-- <th style="width:15%"><i class="fas fa-cogs"></i> OPTION</th> --}}
-                <th style="width:15%"><i class="fas fa-cogs"></i> PENALTY</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody id="memo_tbody">
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <select class="form-select forminput multiple_field form-control"  id="memo_penalty" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT PENALTY</option>
-                            <option value="Verbal">Verbal</option>
-                            <option value="Written">Written</option>
-                            <option value="2nd Offense">2nd Offense</option>
-                            <option value="3rd Offense">3rd Offense</option>
-                            <option value="Final">Final</option>
-                        </select>
-                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
-                    </div>
-                </td>
-                <td class="pb-2 pt-2">
-                    <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="memo_file"   name="memo_file"           onchange="return memoValidation()" accept="image/*,.pdf">
-                    <span id="memo_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnMemoAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="memo_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#memo_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                    <button type="button" id="memo_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                    <img src="" alt=""    id="memo_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{-- Memo Data Table --}}
-    <table id="memo_data_table" class="table table-bordered table-hover table-striped">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="fas fa-cogs"></i> OPTION</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
+    <!-- Memo -->
+        <strong class="table-title">MEMO</strong>
+        <table id="memoTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+            <thead class="thead-educational">
+                <tr>
+                    <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> MEMO SUBJECT</th>
+                    <th style="width:22.5%"><i class="fas fa-calendar-week"></i> MEMO DATE</th>
+                    <th style="width:22.5%"><i class="fas fa-cogs"></i> MEMO PENALTY</th>
+                    <th style="width:22.5%"><i class="fas fa-folder"></i> MEMO FILE</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
+                        </div> 
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">
+                                <option value="" disabled selected>SELECT PENALTY</option>
+                                <option value="Verbal">Verbal</option>
+                                <option value="Written">Written</option>
+                                <option value="1st Offense">1st Offense</option>
+                                <option value="2nd Offense">2nd Offense</option>
+                                <option value="3rd Offense">3rd Offense</option>
+                                <option value="Final">Final</option>
+                            </select>
+                            <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="file" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success center grow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <!-- Evaluation -->
+        <strong class="table-title">EVALUATION</strong>
+        <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+            <thead class="thead-educational">
+                <tr>
+                    <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> EVALUATION REASON</th>
+                    <th style="width:22.5%"><i class="fas fa-calendar-week"></i> EVALUATION DATE</th>
+                    <th style="width:22.5%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
+                    <th style="width:22.5%"><i class="fas fa-folder"></i> EVALUATION FILE</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="date" name="evaluation_date[]" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success center grow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    <br>
+    <!-- Contracts -->
+        <strong class="table-title">CONTRACT</strong>
+        <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+            <thead class="thead-educational">
+                <tr>
+                    <th style="width:18%"><i class="fas fa-envelope-open-text"></i> CONTRACT TYPE</th>
+                    <th style="width:30%"><i class="fas fa-calendar-week"></i> CONTRACT DATE</th>
+                    <th style="width:32%"><i class="fas fa-folder"></i> CONTRACT FILE</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="date" name="contracts_date[]" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <input type="file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success center grow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
         <br>
-
-    {{-- Evaluation Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">EVALUATION</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" id="evaluation_button" class="btn btn-primary bp" onclick="$('#evaluation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="evaluation_file" id="evaluation_file"   class=""     onchange="return evaluationValidation()" accept="image/*,.pdf">
-                    <span id="evaluation_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnEvaluationAdd"   class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="evaluation_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#evaluation_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                    <button type="button" id="evaluation_replace" class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                    <img src="" alt=""    id="evaluation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{-- Evaluation Data Table --}}
-    <table id="evaluation_data_table" class="table table-bordered table-hover table-striped align-middle">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> REASON FOR EVALUATION</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="far fa-address-card"></i> EVALUATED BY</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-        
-    {{-- Contracts Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">CONTRACTS</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" id="contracts_button" class="btn btn-primary bp" onclick="$('#contracts_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="contracts_file" id="contracts_file"   class=""     onchange="return contractsValidation()" accept="image/*,.pdf">
-                    <span id="contracts_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnContractAdd"    class="btn btn-success grow btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                    <button type="button" id="contracts_view"    class="btn btn-success grow btnDisabled" title="VIEW FILE" onclick="$('#contracts_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                    <button type="button" id="contracts_replace" class="btn btn-primary grow btnDisabled" title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                    <img src="" alt=""    id="contracts_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{-- Contracts Data Table --}}
-    <table id="contracts_data_table" class="table table-bordered table-hover table-striped align-middle">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-
-    {{-- Resignation Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">RESIGNATION</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> RESIGNATION REASON</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" name="resignation_letter" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" name="resignation_date" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="resignation_file" id="resignation_file"   class=""     onchange="return resignationValidation()" accept="image/*,.pdf">
-                    <span id="resignation_text">No file chosen.</span>                        
-                </td>
-                <td>
-                    <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
-                    <button type="button" id="resignation_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                    <img src="" alt=""    id="resignation_preview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-
-    {{-- Termination Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">TERMINATION</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:28%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:14%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" name="termination_letter" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" name="termination_date" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="termination_file"   name="termination_file"    onchange="return terminationValidation()" accept="image/*,.pdf">
-                    <span id="termination_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled style="margin-left:25%;"><i class="fas fa-eye"></i></button>
-                    <button type="button" id="termination_replace"  class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                    <img src="" alt=""    id="termination_preview"  data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
-                </td>
-            </tr>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-
-        <div class="modal fade" id="preview_performance">
-            <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
-                <div class="modal-content" >
-                    <div class="modal-header">
-                        <h4 class="modal-title"></h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE"></button>
-                    </div>
-                    <div class="modal-body">
-                        <iframe src="" alt="" id="performance_display" style="width:100%;height:100%;"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    -->
-    <hr class="hr-design">
-    <strong class="table-title">MEMO</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="fas fa-cogs"></i> PENALTY</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody id="memo_tbody">
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <select class="form-select forminput multiple_field form-control"  id="memo_penalty" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT PENALTY</option>
-                            <option value="Verbal">Verbal</option>
-                            <option value="Written">Written</option>
-                            <option value="2nd Offense">2nd Offense</option>
-                            <option value="3rd Offense">3rd Offense</option>
-                            <option value="Final">Final</option>
-                        </select>
-                        <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
-                    </div>
-                </td>
-                <td class="pb-2 pt-2">
-                    <button type="button" id="memo_button" class="btn btn-primary bp" onclick="$('#memo_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   id="memo_file"   class="hiddenFile" name="memo_file[]"           onchange="return memoValidation(memo_file)" accept=".pdf">
-                    <span id="memo_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnMemoAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    {{-- Memo Data Table --}}
-    <table id="memo_data_table" class="table table-bordered table-hover table-striped">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="fas fa-cogs"></i> OPTION</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-
-    {{-- Evaluation Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">EVALUATION</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> SUBJECT</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="search" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field text-capitalize" type="search" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td>
-                    <button type="button" id="evaluation_button" class="btn btn-primary bp" onclick="$('#evaluation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="evaluation_file" class="hiddenFile" id="evaluation_file"   class=""     onchange="return evaluationValidation(evaluation_file)" accept=".pdf">
-                    <span id="evaluation_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnEvaluationAdd"   class="btn btn-success grow center btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    {{-- Evaluation Data Table --}}
-    <table id="evaluation_data_table" class="table table-bordered table-hover table-striped align-middle">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> REASON FOR EVALUATION</th>
-                <th style="width:15%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:15%"><i class="far fa-address-card"></i> EVALUATED BY</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-
-    {{-- Contracts Table --}}
-    <hr class="hr-design">
-    <strong class="table-title">CONTRACT</strong>
-    <table class="table table-striped table-bordered mt-1 align-middle">
-        <thead class="thead-educational">
-            <tr>
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="search" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <div class="f-outline">
-                        <input class="forminput form-control multiple_field" type="date" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
-                    </div>
-                </td>
-                <td class="pb-3 pt-3">
-                    <button type="button" id="contracts_button" class="btn btn-primary bp" onclick="$('#contracts_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                    <input  type="file"   name="contracts_file" class="hiddenFile" id="contracts_file"   class=""     onchange="return contractsValidation(contracts_file)" accept=".pdf">
-                    <span id="contracts_text">No file chosen.</span>
-                </td>
-                <td>
-                    <button type="button" id="btnContractAdd"    class="btn btn-success grow center btnDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    {{-- Contracts Data Table --}}
-    <table id="contracts_data_table" class="table table-bordered table-hover table-striped align-middle">
-        <thead class="thead-educational">
-            <tr style="display: none;">
-                <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TYPE OF CONTRACT</th>
-                <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
-                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-        <hr class="hr-design">
-        <br>
-
-    <div class="resignation-table" style="display: none;">
-        {{-- Resignation Table --}}
-        <hr class="hr-design">
+    <!-- Resignation -->
         <strong class="table-title">RESIGNATION</strong>
-        <table class="table table-striped table-bordered mt-1 align-middle">
+        <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:18%"><i class="fas fa-envelope-open-text"></i> RESIGNATION REASON</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                    <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                    <th style="width:30%"><i class="fas fa-calendar-week"></i> RESIGNATION DATE</th>
+                    <th style="width:32%"><i class="fas fa-folder"></i> RESIGNATION FILE</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
@@ -490,43 +142,34 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field text-capitalize" name="resignation_letter" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <label for="resignation_letter" class="formlabel form-label"><span class="span_resignation_letter span_all">(Optional)</span></label>
+                            <input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td>
+                    <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field" name="resignation_date" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control multiple_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td>
-                        <button type="button" id="resignation_button" class="btn btn-primary bp" onclick="$('#resignation_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   name="resignation_file" class="hiddenFile" id="resignation_file"      onchange="return resignationValidation(resignation_file)" accept=".pdf">
-                        <span id="resignation_text">No file chosen.</span>                        
+                    <td class="pb-3 pt-3">
+                        <input type="file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" id="resignation_view"    class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#resignation_preview').click();" disabled style="margin-left:13%;"><i class="fas fa-eye"></i></button>
-                        <button type="button" id="resignation_replace" class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                        <img src="" alt=""    id="resignation_preview" class="hiddenDocumentPreview"data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
+                        <button type="button" class="btn btn-success center grow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-            <hr class="hr-design">
-            <br>
-    </div>
-
-    <div class="termination-table" style="display: none;">
-    {{-- Termination Table --}}
-        <hr class="hr-design">
-        <strong class="table-title">TERMINATION</strong>
-        <table class="table table-striped table-bordered mt-1 align-middle">
+<br>
+    <!-- Termination -->
+    <strong class="table-title">TERMINATION</strong>
+        <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> DATE ISSUED</th>
-                    <th style="width:32%"><i class="fas fa-folder-plus"></i> ATTACH FILE</th>
+                    <th style="width:30%"><i class="fas fa-calendar-week"></i> TERMINATION DATE</th>
+                    <th style="width:32%"><i class="fas fa-folder"></i> TERMINATION FILE</th>
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
@@ -534,43 +177,24 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field text-capitalize" name="termination_letter" type="search" id="termination_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <label for="termination_letter" class="formlabel form-label"><span class="span_termination_letter span_all">(Optional)</span></label>
+                            <input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td>
+                    <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field" name="termination_date" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td>
-                        <button type="button" id="termination_button" class="btn btn-primary bp" onclick="$('#termination_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                        <input  type="file"   id="termination_file"   class="hiddenFile" name="termination_file"    onchange="return terminationValidation(termination_file)" accept=".pdf">
-                        <span id="termination_text">No file chosen.</span>
+                    <td class="pb-3 pt-3">
+                        <input type="file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" id="termination_view"     class="btn btn-success grow btnDisabled"    title="VIEW FILE" onclick="$('#termination_preview').click();" disabled style="margin-left:13%;"><i class="fas fa-eye"></i></button>
-                        <button type="button" id="termination_replace"  class="btn btn-primary grow btnDisabled"    title="REPLACE FILE"  disabled><i class="fa-solid fa-file-pen"></i></button>
-                        <img src="" alt=""    id="termination_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_performance" onclick="performancePreview(this)">
+                        <button type="button" class="btn btn-success center grow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <hr class="hr-design">
-    </div>
-    
-    <div class="modal fade" id="preview_performance">
-        <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
-            <div class="modal-content" >
-                <div class="modal-header">
-                    <h4 class="modal-title"></h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe src="" alt="" id="performance_display" style="width:100%;height:100%;"></iframe>
-                </div>
-            </div>
-        </div>
-    </div>
+    <hr class="hr-design">
 </div>
