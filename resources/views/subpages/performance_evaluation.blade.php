@@ -41,7 +41,7 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" class="" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
+                        <input type="file" class="customFile" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -83,7 +83,7 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" class="" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                        <input type="file" class="customFile" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -118,7 +118,7 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <input type="file" class="" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                        <input type="file" class="customFile" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -155,7 +155,7 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <input type="file" class="" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                        <input type="file" class="customFile" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -164,8 +164,9 @@
             </tbody>
         </table>
     </div>
-<br>
+
     <div id="termination_div" style="display: none;">
+        <br>
         <!-- Termination -->
         <strong class="table-title">TERMINATION</strong>
             <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
@@ -192,7 +193,7 @@
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
-                            <input type="file" class="" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                            <input type="file" class="customFile" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
                         </td>
                         <td>
                             <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>

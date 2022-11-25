@@ -1,3 +1,4 @@
+
 //Fetch Employee Data
 $(document).on('dblclick','table.employeesTable tbody tr',function(){//View employee information on tr double click
     var data = employeesTable.row(this).data();

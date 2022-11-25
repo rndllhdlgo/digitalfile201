@@ -50,11 +50,10 @@
             <tbody>
             </tbody>
         </table>
-        <hr class="hr-design">
         <br>
         
     {{-- Secondary Table --> --}}
-    <strong class="table-title">SECONDARY</strong><br>
+    <strong class="table-title">SECONDARY EDUCATION</strong><br>
     <table class="table table-striped table-bordered mt-1">
         <thead class="thead-educational">
             <tr>
@@ -86,10 +85,10 @@
             </tr>
         </tbody>
     </table> {{-- End of Secondary Table --}}
-    <hr class="hr-design">
     <br>
-    {{-- Primary Table --> --}}
-    <strong class="table-title">PRIMARY</strong>
+
+    {{-- Primary Table --}}
+    <strong class="table-title">PRIMARY EDUCATION</strong>
     <br>
         <table class="table table-striped table-bordered mt-1">
             <thead class="thead-educational">

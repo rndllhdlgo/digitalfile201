@@ -117,7 +117,7 @@ $('#father_contact_number').on('keyup',function(){
                 }
                 else{
                     $('#duplicate_father_contact_number').hide();
-                    $('#father_contact_number').addClass('check_duplicate');
+                    $('#father_contact_number').removeClass('check_duplicate');
                 }
             }
         });

@@ -20,7 +20,7 @@ function checkRequiredFields(){
         });
     }
 
-    if($('#employee_personal_information').is(":visible")){
+    if($('#employee_information').is(":visible")){
         $('.formlabel').each(function(){
             var id = '#'+$(this).attr('for');
             var icon = '.'+$(this).attr('for')+'_icon';

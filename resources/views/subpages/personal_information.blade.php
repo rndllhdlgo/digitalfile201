@@ -143,7 +143,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <select class="form-select forminput form-control required_field"  id="civil_status" placeholder=" " onchange="changeStatus()" style="background-color:white;">
+                        <select class="form-select forminput form-control required_field"  id="civil_status" placeholder=" " onchange="changeCivilStatus()" style="background-color:white;">
                             <option value="" disabled selected>SELECT CIVIL STATUS</option>
                             <option value="Single">Single</option>
                             <option value="Married">Married</option>

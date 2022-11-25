@@ -207,7 +207,6 @@ $(document).ready(function(){
         });
     });
 });
-
 //Performance Evaluation Tab
 //Clone Fields
 
@@ -240,7 +239,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td>'+
-                                '<input type="file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
+                                '<input type="file" class="customFile" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -272,7 +271,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td>'+
-                                '<input  type="file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
+                                '<input  type="file" class="customFile" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -298,7 +297,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
+                                '<input  type="file" class="customFile" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+ 
                                 '<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -324,7 +323,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
+                                '<input  type="file" class="customFile" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -350,7 +349,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
+                                '<input  type="file" class="customFile" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+

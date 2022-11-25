@@ -115,7 +115,7 @@ $(document).ready(function () {
 //Hide Employee fill up form
 //Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
-    $('#employee_personal_information').fadeIn();
+    $('#employee_information').fadeIn();
     $('#employees_list').hide();
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();

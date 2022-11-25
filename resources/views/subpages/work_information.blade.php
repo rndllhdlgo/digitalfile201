@@ -55,7 +55,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
+                <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
                     <option value="Newly_Hired">Newly Hired</option>
                     <option value="Direct_Hired">Direct Hired</option>

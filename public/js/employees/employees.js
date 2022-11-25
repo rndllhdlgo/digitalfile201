@@ -1,24 +1,4 @@
 
-// $(document).ready( function () { //The ready() method specifies what happens when a ready event occurs.
-//     $('#childrenDataTable').DataTable(
-//       {
-//         dom:'lfrtip',
-//         processing:true,
-//         serverSide:false,
-//         ajax: {
-//         //route-name
-//         url: '/employees/childrenDataTable',
-//       },
-//       //data column name
-//       columns: [
-//           {data: 'child_name'},
-//           {data: 'child_birthday'},
-//           {data: 'child_gender'}
-//       ]
-//       }
-//   );    
-// });
-
 // var go = true, $lvl = $('.lvl');
 // $(window).bind("beforeunload",function(event) {
 //     if(go) return "You have unsaved changes";
@@ -26,7 +6,7 @@
 
 //Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
-    $('#employee_personal_information').fadeIn();
+    $('#employee_information').fadeIn();
     $('#employees_list').hide();
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();
@@ -51,12 +31,12 @@ function checkforblank(){
     || $('#mother_name').val().length < 2
     || $('#emergency_contact_name').val().length < 2
     || $('#cellphone_number').val().length < 11
-    // || $('#father_contact_number').val().length < 11
-    // || $('#mother_contact_number').val().length < 11
+    || $('#father_contact_number').val().length < 11
+    || $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
-    // || $('#company_contact_number').val().length < 11
+    || $('#company_contact_number').val().length < 11
     || !email_address.value.match(regExp)
-    // || !company_email_address.value.match(regExp)
+    || !company_email_address.value.match(regExp)
     || $('#employee_number').hasClass('check_duplicate')
     || $('#email_address').hasClass('check_duplicate')
     || $('#telephone_number').hasClass('check_duplicate')
@@ -78,7 +58,7 @@ function checkforblank(){
 }
 
 //Hide/Show (Civil Status, Solo Parent) Section Function
-    function changeStatus(){
+    function changeCivilStatus(){
         var status = $('#civil_status');
 
         if($('#civil_status').val() == "Married"){
@@ -299,7 +279,7 @@ $('#title_details').on('click',function(){
     $('#employee_number').val('50006');
     $('#employee_company').val('Phillogix Systems, Inc.');
     $('#employee_branch').val('San Juan');
-    $('#employee_status').val('Probationary');
+    // $('#employee_status').val('Probationary');
     $('#employee_position').val('Web Developer');
     $('#employee_supervisor').val('Gerard Mallari');
     $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
@@ -314,9 +294,7 @@ $('#title_details').on('click',function(){
     $('#philhealth_number').val('3');
     $('#tin_number').val('4');
     $('#account_number').val('5');
-    $('#secondary_school_name').val('Florentino Torres High School');
-    $('#secondary_school_address').val('Torres');
-    $('#secondary_school_inclusive_years').val('2012-2016');
+    
     $('#primary_school_name').val('Lakandula Elementary School');
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years').val('2006-2012');
@@ -326,7 +304,22 @@ $('#title_details').on('click',function(){
     $('#mother_contact_number').val('09322003718');
     $('#college_name').val('Universidad De Manila');
     $('#college_degree').val('BTVTE Major in CPT');
-    $('#college_inclusive_years').val('2018-2022');
+    $('#college_inclusive_years').val('1');
+    $('#secondary_school_name').val('Florentino Torres High School');
+    $('#secondary_school_address').val('Torres');
+    $('#secondary_school_inclusive_years').val('2012-2016');
+    $('#training_name').val('Sample');
+    $('#training_title').val('Sample');
+    $('#training_inclusive_years').val('1');
+    $('#vocational_name').val('Sample');
+    $('#vocational_course').val('Sample');
+    $('#vocational_inclusive_years').val('1');
+    $('#job_name').val('Sample');
+    $('#job_position').val('Sample');
+    $('#job_address').val('Sample');
+    $('#job_contact_details').val('1');
+    $('#job_inclusive_years').val('1');
+    
 });
 
 // $('input#employee_bonus').on('blur', function() {

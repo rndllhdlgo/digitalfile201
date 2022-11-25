@@ -27,7 +27,7 @@
             <hr class="hr-design">
         </div>
 
-        <div id="employee_personal_information" style="display: none;">
+        <div id="employee_information" style="display: none;">
             <div class="row">
                 <div class="col">
                     <span class="alert class alert-warning" id="title_details"></span>

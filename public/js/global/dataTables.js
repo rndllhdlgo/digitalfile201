@@ -1,6 +1,5 @@
 
 //Display Data Table Function
-//Employees Data Table
 var employeesTable;
 $(document).ready(function () {
     // Setup - add a text input to each footer cell

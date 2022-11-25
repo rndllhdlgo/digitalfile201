@@ -26,7 +26,6 @@ function sendFile() {//This function will trigger if the btnSave click
 
 //Save Employee Function
 $('#btnSave').on('click', function(){
-    //Personal Information
         sendFile();
         var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
         var first_name = $.trim($('#first_name').val());
@@ -81,7 +80,6 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
                 },
                 data:{
-                //Personal Information Tab
                     employee_number:employee_number,
                     fileName:fileName,
                     first_name:first_name,
@@ -118,7 +116,6 @@ $('#btnSave').on('click', function(){
                 success: function(data){
                         if(data.result == 'true'){
                             $('#employee_id').val(data.id);
-                        //Work Information Tab
                             var employee_company = $('#employee_company').val();
                             var employee_branch = $('#employee_branch').val();
                             var employee_status = $('#employee_status').val();
@@ -337,70 +334,8 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
-                                // var memoTable = $('#memo_data_table').DataTable({
-                                //     dom:'t',
-                                // });
-                                // var memo_data  = memoTable.rows().data();
-                                // $.each(memo_data, function(key, value){
-                                //     $.ajax({
-                                //         type: 'POST',
-                                //         url: '/employees/memoSave',
-                                //         async: false,
-                                //         headers:{
-                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                //         },
-                                //         data:{
-                                //             'employee_id' : data.id,
-                                //             'memo_subject' : value[0],
-                                //             'memo_date' : value[1],
-                                //             'memo_penalty': value[2],
-                                //             'memo_file' : value[3]
-                                //         },
-                                //     });
-                                // });
-            
-                                // var evaluationTable = $('#evaluation_data_table').DataTable({
-                                //     dom:'t',
-                                // });
-                                // var evaluation_data  = evaluationTable.rows().data();
-                                // $.each(evaluation_data, function(key, value){
-                                //     $.ajax({
-                                //         type: 'POST',
-                                //         url: '/employees/evaluationSave',
-                                //         async: false,
-                                //         headers:{
-                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                //         },
-                                //         data:{
-                                //             'employee_id' : data.id,
-                                //             'evaluation_reason' : value[0],
-                                //             'evaluation_date' : value[1],
-                                //             'evaluation_evaluated_by': value[2] 
-                                //         },
-                                //     });
-                                // });
-                                // var contractsTable = $('#contracts_data_table').DataTable({
-                                //     dom:'t',
-                                // });
-                                // var contracts_data  = contractsTable.rows().data();
-                                // $.each(contracts_data, function(key, value){
-                                //     $.ajax({
-                                //         type: 'POST',
-                                //         url: '/employees/contractsSave',
-                                //         async: false,
-                                //         headers:{
-                                //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                //         },
-                                //         data:{
-                                //             'employee_id' : data.id,
-                                //             'contracts_type' : value[0],
-                                //             'contracts_date' : value[1]
-                                //         },
-                                //     });
-                                // }); 
-
-                                $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
+                                // $('#documents_form').submit();//Submit all file upload
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();

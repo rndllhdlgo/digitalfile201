@@ -350,14 +350,16 @@ input[type=search]:focus{
 
 .customFile{
     border:1px solid #0d1a80;
-    border-radius: 50px;
+    border-radius: 5px;
     padding: 2px;
 }
+
 .customFile::-webkit-file-upload-button{
     background:#0d1a80;
     color: #fff;
+    border-radius: 5px;
     pad: 8px 16px;
     border:none;
-    border-radius: 50px;
     cursor: pointer;
+    font-size: 17px;
 }
