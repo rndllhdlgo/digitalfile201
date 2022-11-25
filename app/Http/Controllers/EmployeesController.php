@@ -22,17 +22,25 @@ use App\Models\Training;
 use App\Models\Vocational;
 use App\Models\MedicalHistory;
 
+//Models for multiple tables
+use App\Models\ChildrenTable;
+use App\Models\CollegeTable;
+use App\Models\TrainingTable;
+use App\Models\VocationalTable;
+use App\Models\JobHistoryTable;
+use App\Models\MemoTable;
+use App\Models\EvaluationTable;
+use App\Models\ContractTable;
+use App\Models\ResignationTable;
+use App\Models\TerminationTable;
+
 use App\Models\PersonalInformation;
 use App\Models\WorkInformation;
 use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
 use App\Models\JobHistory;
 
-use App\Models\MemoInformation;
-use App\Models\EvaluationInformation;
-use App\Models\ContractsInformation;
-use App\Models\ResignationInformation;
-use App\Models\TerminationInformation;
+
 
 use DataTables;
 
@@ -44,7 +52,7 @@ class EmployeesController extends Controller
     }
     
     // public function listOfEmployees(){
-    //     $employees = Employee::all();
+    //     $employees = PersonalInformation::all();
     //     return DataTables::of($employees)->make(true);
     // }
 
@@ -66,14 +74,15 @@ class EmployeesController extends Controller
         $employee_personal_information = new PersonalInformation;
         $employee_number_logs = $request->employee_number; 
         $employee_first_name_logs = ucwords($request->first_name);
+        $employee_middle_name_logs = ucwords($request->middle_name);
         $employee_last_name_logs = ucwords($request->last_name); 
 
         $employee_personal_information->employee_number = $employee_number_logs;//Eloquent Syntax/Form
         $employee_personal_information->first_name =  $employee_first_name_logs;
         $employee_personal_information->employee_image = $request->fileName;
         $employee_personal_information->last_name = $employee_last_name_logs;
+        $employee_personal_information->middle_name = $employee_middle_name_logs;
 
-        $employee_personal_information->middle_name = ucwords($request->middle_name);
         $employee_personal_information->suffix = ucwords($request->suffix);
         $employee_personal_information->nickname = ucwords($request->nickname);
         $employee_personal_information->birthday = $request->birthday;
@@ -110,7 +119,7 @@ class EmployeesController extends Controller
             //To save user logs
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_first_name_logs $employee_last_name_logs]."; //Display logs in home page
+            $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_first_name_logs $employee_middle_name_logs $employee_last_name_logs]."; //Display logs in home page
             $userlogs->save();
 
             $result = 'true';
@@ -126,7 +135,7 @@ class EmployeesController extends Controller
     }
 
     public function saveChildren(Request $request){
-        $children = new Children;
+        $children = new ChildrenTable;
         $children->employee_id = $request->employee_id;//use to associate employee id
         $children->child_name = ucwords($request->child_name);
         $children->child_birthday = $request->child_birthday;
@@ -195,7 +204,7 @@ class EmployeesController extends Controller
     }
 
     public function saveCollege(Request $request){
-        $employee_college = new College;
+        $employee_college = new CollegeTable;
         $employee_college->employee_id = $request->employee_id;
         $employee_college->college_name = ucfirst($request->college_name);
         $employee_college->college_degree = ucfirst($request->college_degree);
@@ -204,7 +213,7 @@ class EmployeesController extends Controller
     }
 
     public function saveTraining(Request $request){
-        $employee_training = new Training;
+        $employee_training = new TrainingTable;
         $employee_training->employee_id = $request->employee_id;
         $employee_training->training_name = ucfirst($request->training_name);
         $employee_training->training_title = ucfirst($request->training_title);
@@ -213,7 +222,7 @@ class EmployeesController extends Controller
     }
 
     public function saveVocational(Request $request){
-        $employee_vocational = new Vocational;
+        $employee_vocational = new VocationalTable;
         $employee_vocational->employee_id = $request->employee_id;
         $employee_vocational->vocational_name = ucfirst($request->vocational_name);
         $employee_vocational->vocational_course = ucfirst($request->vocational_course);
@@ -222,7 +231,7 @@ class EmployeesController extends Controller
     }
 
     public function saveJobHistory(Request $request){
-        $employee_job = new JobHistory;
+        $employee_job = new JobHistoryTable;
         $employee_job->employee_id = $request->employee_id;
         $employee_job->job_name = ucfirst($request->job_name);
         $employee_job->job_position = ucfirst($request->job_position);
@@ -244,10 +253,22 @@ class EmployeesController extends Controller
         } 
     }
 
-    // public function fetch(Request $request){
-    //     $employees = PersonalInformation::where('id',$request->id)->first();
-    //     return $employees;
-    // }
+    public function fetch(Request $request){
+        $employees = PersonalInformation::select(
+            'employee_number',
+            'first_name',
+            'middle_name',
+            'last_name',
+            'positions.job_position_name AS employee_position',
+            'branches.branch_name AS employee_branch',
+            'employee_status')
+        ->where('personal_information.id',$request->id)
+        ->join('work_information','work_information.employee_id','personal_information.id')
+        ->join('positions','positions.id','work_information.employee_id')
+        ->join('branches','branches.id','work_information.employee_id')
+        ->first();
+        return $employees;
+    }
 
     // public function update(Request $request){
         
@@ -391,7 +412,7 @@ class EmployeesController extends Controller
                 $memoFileName = time().'_Memo_File.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/memo_file',$memoFileName);
                 
-                $memo = new MemoInformation;
+                $memo = new MemoTable;
                 $memo->employee_id = $request->employee_id;
                 $memo->memo_subject = $request->memo_subject[$key];
                 $memo->memo_date = $request->memo_date[$key];
@@ -406,7 +427,7 @@ class EmployeesController extends Controller
                 $evaluationFileName = time().'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation_file',$evaluationFileName);
                 
-                $evaluation = new EvaluationInformation;
+                $evaluation = new EvaluationTable;
                 $evaluation->employee_id = $request->employee_id;
                 $evaluation->evaluation_reason = $request->evaluation_reason[$key];
                 $evaluation->evaluation_date = $request->evaluation_date[$key];
@@ -421,7 +442,7 @@ class EmployeesController extends Controller
                 $contractsFileName = time().'_Contracts_File.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/contracts_file',$contractsFileName);
                 
-                $contracts = new ContractsInformation;
+                $contracts = new ContractTable;
                 $contracts->employee_id = $request->employee_id;
                 $contracts->contracts_type = $request->contracts_type[$key];
                 $contracts->contracts_date = $request->contracts_date[$key];
@@ -435,7 +456,7 @@ class EmployeesController extends Controller
                 $resignationFileName = time().'_Resignation_File.'.$request->resignation_file[$key]->extension();
                 $request->resignation_file[$key]->storeAs('public/resignation_files',$resignationFileName);
                 
-                $resignation = new ResignationInformation;
+                $resignation = new ResignationTable;
                 $resignation->employee_id = $request->employee_id;
                 $resignation->resignation_reason = $request->resignation_reason[$key];
                 $resignation->resignation_date = $request->resignation_date[$key];
@@ -449,7 +470,7 @@ class EmployeesController extends Controller
                 $terminationFileName = time().'_Termination_File.'.$request->termination_file[$key]->extension();
                 $request->termination_file[$key]->storeAs('public/termination_files',$terminationFileName);
 
-                $termination = new TerminationInformation;
+                $termination = new TerminationTable;
                 $termination->employee_id = $request->employee_id;
                 $termination->termination_reason = $request->termination_reason[$key];
                 $termination->termination_date = $request->termination_date[$key];
@@ -558,6 +579,6 @@ class EmployeesController extends Controller
             $document->diploma = $diplomaFilename;
         }
             $document->save();
-            // return Redirect::to(url()->previous());//Return previous page/url
+            return Redirect::to(url()->previous());//Return previous page/url
     }
 }
