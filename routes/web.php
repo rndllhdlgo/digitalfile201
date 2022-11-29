@@ -5,6 +5,11 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ChartController;
+use App\Http\Controllers\DonutController;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\DonutSalesController;
+use App\Http\Controllers\SalesMonthly;
 
 /*
 |--------------------------------------------------------------------------
@@ -145,4 +150,21 @@ Route::any('/employees/saveTraining','EmployeesController@saveTraining');
 Route::any('/employees/saveVocational','EmployeesController@saveVocational');
 Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
 Route::any('/employees/saveChildren','EmployeesController@saveChildren');
+
+Route::any('/carsView','CarController@carsView');
+Route::any('/carsSave','CarController@carsSave');
+Route::any('/carsFetch','CarController@carsFetch');
+
+Route::any('/donutSalesBlade','DonutSalesController@donutSalesBlade');
+// Route::any('/donutSalesYear','DonutSalesController@fetch_year');
+Route::any('/donutSalesFetch','DonutSalesController@donutSalesFetch');
+
+// Route::any('/donutSalesView','ChartController@donutSalesView');
+// Route::any('/fetch_data','ChartController@fetch_data');
+
+Route::any('/salesMonthlyBlade','SalesMonthly@salesMonthlyBlade');
+Route::any('/salesMonthlyData','SalesMonthly@salesMonthlyData');
+
+Route::any('/salesByMonthBlade','SalesByMonthController@salesByMonthBlade');
+Route::any('/salesByMonthData','SalesByMonthController@salesByMonthData');
 
