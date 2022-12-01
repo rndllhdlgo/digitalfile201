@@ -25,31 +25,32 @@ setInterval(checkforblank,0);
 function checkforblank(){
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
     || $('#first_name').val().length < 2
-    || $('#last_name').val().length < 2
     || $('#middle_name').val().length < 2
+    || $('#last_name').val().length < 2
     || $('#father_name').val().length < 2
     || $('#mother_name').val().length < 2
     || $('#emergency_contact_name').val().length < 2
     || $('#cellphone_number').val().length < 11
-    || $('#father_contact_number').val().length < 11
-    || $('#mother_contact_number').val().length < 11
+    && $('#father_contact_number').val().length < 11
+    && $('#mother_contact_number').val().length < 11
     || $('#emergency_contact_number').val().length < 11
-    || $('#company_contact_number').val().length < 11
+    && $('#company_contact_number').val().length < 11
     || !email_address.value.match(regExp)
-    || !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('check_duplicate')
-    || $('#email_address').hasClass('check_duplicate')
-    || $('#telephone_number').hasClass('check_duplicate')
-    || $('#cellphone_number').hasClass('check_duplicate')
-    || $('#father_contact_number').hasClass('check_duplicate')
-    || $('#mother_contact_number').hasClass('check_duplicate')
-    || $('#spouse_contact_number').hasClass('check_duplicate')
-    || $('#emergency_contact_number').hasClass('check_duplicate')
-    || $('#company_email_address').hasClass('check_duplicate')
-    || $('#company_contact_number').hasClass('check_duplicate')
-    ){
+    && !company_email_address.value.match(regExp)
+    || $('#employee_number').hasClass('duplicate_field')
+    || $('#email_address').hasClass('duplicate_field')
+    || $('#telephone_number').hasClass('duplicate_field')
+    || $('#cellphone_number').hasClass('duplicate_field')
+    || $('#father_contact_number').hasClass('duplicate_field')
+    || $('#mother_contact_number').hasClass('duplicate_field')
+    || $('#spouse_contact_number').hasClass('duplicate_field')
+    || $('#emergency_contact_number').hasClass('duplicate_field')
+    || $('#company_email_address').hasClass('duplicate_field')
+    || $('#company_contact_number').hasClass('duplicate_field')
+    )
+    {
         $('#title_details').show();
-        $('#btnSave').prop("disabled",true);
+        $('#btnSave').prop("disabled",true);    
     }
     else{
         $('#title_details').hide();
@@ -240,7 +241,6 @@ $('#viewJobDescriptionBtn').on('click',function(){
                 return [value];
             });
             list.forEach(value => {
-                // $('ul.job_description_div').append('<p class="h3"> <br>'+value.job_position_name+'</p>');
                 $('#jobDescriptionModalTitle').append(value.job_position_name);
             });
         }
@@ -276,49 +276,47 @@ $('#title_details').on('click',function(){
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
     $('#emergency_contact_number').val('09322003718');
-    $('#employee_number').val('50006');
-    $('#employee_company').val('Phillogix Systems, Inc.');
-    $('#employee_branch').val('San Juan');
-    // $('#employee_status').val('Probationary');
-    $('#employee_position').val('Web Developer');
-    $('#employee_supervisor').val('Gerard Mallari');
-    $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
-    $('#company_email_address').val('rendellhidalgo11@gmail.com');
-    $('#company_contact_number').val('09322003718');
-    $('#employee_salary').val('15,000');
-    $('#employee_incentives').val('1');
-    $('#employee_overtime_pay').val('1');
-    $('#employee_bonus').val('1');
-    $('#sss_number').val('1');
-    $('#pag_ibig_number').val('2');
-    $('#philhealth_number').val('3');
-    $('#tin_number').val('4');
-    $('#account_number').val('5');
-    
-    $('#primary_school_name').val('Lakandula Elementary School');
-    $('#primary_school_address').val('Lakandula');
-    $('#primary_school_inclusive_years').val('2006-2012');
+    // $('#employee_number').val('50006');
+    // $('#employee_company').val('Phillogix Systems, Inc.');
+    // $('#employee_branch').val('San Juan');
+    // $('#employee_position').val('Web Developer');
+    // $('#employee_supervisor').val('Gerard Mallari');
+    // $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
+    // $('#company_email_address').val('rendellhidalgo11@gmail.com');
+    // $('#company_contact_number').val('09322003718');
+    // $('#employee_salary').val('15,000');
+    // $('#employee_incentives').val('1');
+    // $('#employee_overtime_pay').val('1');
+    // $('#employee_bonus').val('1');
+    // $('#sss_number').val('1');
+    // $('#pag_ibig_number').val('2');
+    // $('#philhealth_number').val('3');
+    // $('#tin_number').val('4');
+    // $('#account_number').val('5');
+    // $('#primary_school_name').val('Lakandula Elementary School');
+    // $('#primary_school_address').val('Lakandula');
+    // $('#primary_school_inclusive_years').val('2006-2012');
 //Optional Field
-    $('#telephone_number').val('1231243');
-    $('#father_contact_number').val('09322003718');
-    $('#mother_contact_number').val('09322003718');
-    $('#college_name').val('Universidad De Manila');
-    $('#college_degree').val('BTVTE Major in CPT');
-    $('#college_inclusive_years').val('1');
-    $('#secondary_school_name').val('Florentino Torres High School');
-    $('#secondary_school_address').val('Torres');
-    $('#secondary_school_inclusive_years').val('2012-2016');
-    $('#training_name').val('Sample');
-    $('#training_title').val('Sample');
-    $('#training_inclusive_years').val('1');
-    $('#vocational_name').val('Sample');
-    $('#vocational_course').val('Sample');
-    $('#vocational_inclusive_years').val('1');
-    $('#job_name').val('Sample');
-    $('#job_position').val('Sample');
-    $('#job_address').val('Sample');
-    $('#job_contact_details').val('1');
-    $('#job_inclusive_years').val('1');
+    // $('#telephone_number').val('1231243');
+    // $('#father_contact_number').val('09322003718');
+    // $('#mother_contact_number').val('09322003718');
+    // $('#college_name').val('Universidad De Manila');
+    // $('#college_degree').val('BTVTE Major in CPT');
+    // $('#college_inclusive_years').val('1');
+    // $('#secondary_school_name').val('Florentino Torres High School');
+    // $('#secondary_school_address').val('Torres');
+    // $('#secondary_school_inclusive_years').val('2012-2016');
+    // $('#training_name').val('Sample');
+    // $('#training_title').val('Sample');
+    // $('#training_inclusive_years').val('1');
+    // $('#vocational_name').val('Sample');
+    // $('#vocational_course').val('Sample');
+    // $('#vocational_inclusive_years').val('1');
+    // $('#job_name').val('Sample');
+    // $('#job_position').val('Sample');
+    // $('#job_address').val('Sample');
+    // $('#job_contact_details').val('1');
+    // $('#job_inclusive_years').val('1');
     
 });
 

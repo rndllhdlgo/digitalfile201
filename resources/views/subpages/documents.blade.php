@@ -16,7 +16,7 @@
                                 <td>
                                     <button type="button" id="birthcertificate_button" class="btn btn-primary bp" onclick="$('#birthcertificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
                                     {{-- <input  type="file"   id="birthcertificate_file"   class=""     onchange="return BirthCertificateValidation()" accept="image/*,.pdf" name="birthcertificate_file"> --}}
-                                    <input  type="file"   id="birthcertificate_file"   class=" hiddenFile"     onchange="BirthCertificateValidation(birthcertificate_file)" accept=".pdf" name="birthcertificate_file">
+                                    <input  type="file"   id="birthcertificate_file"   class="required_field hiddenFile"     onchange="BirthCertificateValidation(birthcertificate_file)" accept=".pdf" name="birthcertificate_file">
                                     <span id="birthcertificate_text">No file chosen.</span>
                                 </td>
                                 <td>
@@ -29,7 +29,7 @@
                                 <td><p class="file_title"><b>NBI CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="nbi_button" class="btn btn-primary bp" onclick="$('#nbi_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="nbi_file"   class=" hiddenFile"     onchange="nbiValidation(nbi_file)" accept=".pdf" name="nbi_file">
+                                    <input  type="file"   id="nbi_file"   class="required_field hiddenFile"     onchange="nbiValidation(nbi_file)" accept=".pdf" name="nbi_file">
                                     <span id="nbi_text">No file chosen.</span>
                                 </td>
                                 <td>
@@ -42,7 +42,7 @@
                                 <td><p class="file_title"><b>BARANGAY CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="barangay_clearance_button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="barangay_clearance_file"   class=" hiddenFile"     onchange="barangayclearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
+                                    <input  type="file"   id="barangay_clearance_file"   class="required_field hiddenFile"     onchange="barangayclearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
                                     <span id="barangay_clearance_text">No file chosen.</span>
                                 </td>
                                 <td>
@@ -55,7 +55,7 @@
                                 <td><p class="file_title"><b>POLICE CLEARANCE</b></p></td>
                                 <td>
                                     <button type="button" id="police_clearance_button" class="btn btn-primary bp" onclick="$('#police_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input  type="file"   id="police_clearance_file"   class=" hiddenFile"     onchange="policeclearanceValidation(police_clearance_file)" accept=".pdf" name="police_clearance_file">
+                                    <input  type="file"   id="police_clearance_file"   class="required_field hiddenFile"     onchange="policeclearanceValidation(police_clearance_file)" accept=".pdf" name="police_clearance_file">
                                     <span id="police_clearance_text">No file chosen.</span>
                                 </td>
                                 <td>
@@ -68,7 +68,7 @@
                                 <td><p class="file_title"><b>SSS E1 FORM / SSS ID</b></p></td>
                                 <td>
                                     <button type="button" id="sss_button" class="btn btn-primary bp" onclick="$('#sss_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"    id="sss_file"   class=" hiddenFile"     onchange="return sssValidation(sss_file)" accept=".pdf" name="sss_file">
+                                    <input type="file"    id="sss_file"   class="required_field hiddenFile"     onchange="return sssValidation(sss_file)" accept=".pdf" name="sss_file">
                                     <span id="sss_text">No file chosen.</span>
                                 </td>
                                 <td> 
@@ -81,7 +81,7 @@
                                 <td><p class="file_title"><b>RESUME</b></p></td>
                                 <td>
                                     <button type="button" id="resume_button" class="btn btn-primary bp" onclick="$('#resume_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                    <input type="file"    id="resume_file"   class=" hiddenFile"     onchange="return resumeValidation(resume_file)" accept=".pdf" name="resume_file">
+                                    <input type="file"    id="resume_file"   class="required_field hiddenFile"     onchange="return resumeValidation(resume_file)" accept=".pdf" name="resume_file">
                                     <span id="resume_text">No file chosen.</span>
                                 </td>
                                 <td> 
@@ -108,7 +108,7 @@
                             <td><p class="file_title"><b>PHILHEALTH FORM</b></p></td>
                             <td>
                                 <button type="button" id="philhealth_button" class="btn btn-primary bp" onclick="$('#philhealth_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                <input  type="file"   id="philhealth_file"   class=" hiddenFile"     onchange="return philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
+                                <input  type="file"   id="philhealth_file"   class="required_field hiddenFile"     onchange="return philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
                                 <span id="philhealth_text">No file chosen.</span>
                             </td>
                             <td>
@@ -121,7 +121,7 @@
                             <td><p class="file_title"><b>PAG-IBIG FORM</b></p></td>
                             <td>
                                 <button type="button"  id="pag_ibig_button" class="btn btn-primary bp" onclick="$('#pag_ibig_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                <input type="file"     id="pag_ibig_file"   class=" hiddenFile"     onchange="return pagibigValidation(pag_ibig_file)"accept=".pdf" name="pag_ibig_file">
+                                <input type="file"     id="pag_ibig_file"   class="required_field hiddenFile"     onchange="return pagibigValidation(pag_ibig_file)"accept=".pdf" name="pag_ibig_file">
                                 <span id="pag_ibig_text">No file chosen.</span>
                             </td>
                             <td>
@@ -134,7 +134,7 @@
                             <td><p class="file_title"><b>MEDICAL CERTIFICATE</b></p></td>
                             <td>
                                 <button type="button"  id="medical_certificate_button" class="btn btn-primary bp" onclick="$('#medical_certificate_file').click();"><span class="fas fa-upload"></span> CHOOSE FILE</button>
-                                <input type="file"     id="medical_certificate_file"   class=" hiddenFile"     onchange="return medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
+                                <input type="file"     id="medical_certificate_file"   class="required_field hiddenFile"     onchange="return medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
                                 <span id="medical_certificate_text">No file chosen.</span>
                             </td>
                             <td>

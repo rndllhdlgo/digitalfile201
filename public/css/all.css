@@ -2,7 +2,7 @@ body{
     background-color: white;
     overflow-x: hidden;
 }
-/* For input field effect */
+
 .f-outline{
     position: relative;
 }
@@ -211,12 +211,12 @@ strong{
 .hr-design {
     border:2px solid black;
 }
+
 /* To have disable cursor if the button is in disabled form */
 .btnDisabled[disabled]{
     cursor: not-allowed;
     pointer-events:auto;
 }
-
 .btnActionDisabled[disabled]{
     cursor: not-allowed;
     pointer-events:auto;
@@ -233,7 +233,6 @@ input[type="date"]{
 /* Documents Tab */
 .file_title{
     padding-top: 15px;
-    /* zoom:95%; */
 }
 
 input[type=search]:focus{
@@ -247,7 +246,6 @@ input[type=search]:focus{
     border:1.5px solid #0d1a80;
 }
 
-/* input type file */
 .hiddenFile,
 .hiddenDocumentPreview{
     display:none;
@@ -302,7 +300,7 @@ input[type=search]:focus{
 .row:after {
     content: "";
     display: table;
-    clear: both;/* Clear floats after the columns */
+    clear: both;
 }
 
 #image_preview{
@@ -327,8 +325,6 @@ input[type=search]:focus{
     margin-left: 26%;
 }
 
-/* Document Tab */
-/* Divide Two Tables */
 .first_table{
     float: left;
     width:50%;
@@ -362,4 +358,10 @@ input[type=search]:focus{
     border:none;
     cursor: pointer;
     font-size: 17px;
+}
+
+.pie-chart{
+    width:800px;
+    height:800x;
+    margin:0 auto;
 }

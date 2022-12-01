@@ -1,12 +1,9 @@
-//This JS page is to save all the data
-//Function for Image Upload
 var fileName;
-function sendFile() {//This function will trigger if the btnSave click
+function sendFile() {
     var formData = new FormData();
     var file = $('#employee_image').prop('files')[0];
 
     formData.append('file', file);
-    // Don't use serialize here, as it is used when we want to send the data of entire form in a query string way and that will not work for file upload
     $.ajax({
         url: '/employees/insertImage',
         method: 'post',
@@ -19,12 +16,10 @@ function sendFile() {//This function will trigger if the btnSave click
         success: function(response){
           console.log(response);
           fileName = response;
-            // Do what ever you want to do on success
         }
     });
 }
 
-//Save Employee Function
 $('#btnSave').on('click', function(){
         sendFile();
         var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
@@ -74,10 +69,10 @@ $('#btnSave').on('click', function(){
     }).then((save) => {
         if (save.isConfirmed) {
             $.ajax({
-                url:"/employees/savePersonalInformation", //route name (web.php)
+                url:"/employees/savePersonalInformation",
                 type:"POST",
                 headers:{
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
                     employee_number:employee_number,
@@ -134,10 +129,10 @@ $('#btnSave').on('click', function(){
                             var account_number = $.trim($('#account_number').val());
 
                             $.ajax({
-                                url:"/employees/saveWorkInformation", //route name (web.php)
+                                url:"/employees/saveWorkInformation",
                                 type:"POST",
                                 headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
                                     employee_id:data.id,
@@ -167,10 +162,10 @@ $('#btnSave').on('click', function(){
                             var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
 
                             $.ajax({
-                                url:"/employees/saveCompensationBenefits", //route name (web.php)
+                                url:"/employees/saveCompensationBenefits",
                                 type:"POST",
                                 headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
                                     employee_id:data.id,
@@ -190,10 +185,10 @@ $('#btnSave').on('click', function(){
                             var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
 
                             $.ajax({
-                                url:"/employees/saveEducationalAttainment", //route name (web.php)
+                                url:"/employees/saveEducationalAttainment", 
                                 type:"POST",
                                 headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
                                     employee_id:data.id,
@@ -212,10 +207,10 @@ $('#btnSave').on('click', function(){
                             var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
 
                             $.ajax({
-                                url:"/employees/saveMedicalHistory", //route name (web.php)
+                                url:"/employees/saveMedicalHistory",
                                 type:"POST",
                                 headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
                                     employee_id:data.id,
@@ -335,7 +330,7 @@ $('#btnSave').on('click', function(){
                                 });
 
                                 Swal.fire("SAVE SUCCESS", "", "success");
-                                // $('#documents_form').submit();//Submit all file upload
+                                // $('#documents_form').submit();
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();
