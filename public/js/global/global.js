@@ -51,34 +51,6 @@ function checkJobDescription(){
     }
 }
 
-// $(".textarea_bullet").focus(function() {
-//     if(document.getElementById('past_medical_condition').value === ''){
-//         document.getElementById('past_medical_condition').value +='• ';
-// 	}
-//     else if(document.getElementById('allergies').value === ''){
-//         document.getElementById('allergies').value +='• ';
-//     }
-// });
-// $(".textarea_bullet").keyup(function(event){
-// 	var keycode_past_medical_condition = (event.keyCode ? event.keyCode : event.which);
-// 	var keycode_allergies = (event.keyCode ? event.keyCode : event.which);
-//     if(keycode_past_medical_condition == '13'){
-//         document.getElementById('past_medical_condition').value +='• ';
-// 	}
-//     if(keycode_allergies == '13'){
-//         document.getElementById('allergies').value +='• ';
-//     }
-
-// 	var past_medical_condition_txt_val = document.getElementById('past_medical_condition').value;
-// 	var allergies_txt_val = document.getElementById('allergies').value;
-// 	if(past_medical_condition_txt_val.substr(past_medical_condition_txt_val.length - 1) == '\n'){
-// 		document.getElementById('past_medical_condition').value = past_medical_condition_txt_val.substring(0,past_medical_condition_txt_val.length - 1);
-// 	}
-// 	else if(allergies_txt_val.substr(allergies_txt_val.length - 1) == '\n'){
-// 		document.getElementById('allergies').value = allergies_txt_val.substring(0,allergies_txt_val.length - 1);
-// 	}
-// });
-
 //Add bullet in textarea
 $(".textarea_job_description").focus(function() {
     if(document.getElementById('job_description').value === ''){
@@ -144,7 +116,7 @@ $(".textarea_job_requirements_new").keyup(function(event){
 	}
 });
 
-$(".textarea_medical_condition").focus(function() {
+$(".textarea_medical_condition").keypress(function() {
     if(document.getElementById('past_medical_condition').value === ''){
         document.getElementById('past_medical_condition').value +='• ';
 	}
@@ -160,7 +132,7 @@ $(".textarea_medical_condition").keyup(function(event){
 	}
 });
 
-$(".textarea_allergies").focus(function() {
+$(".textarea_allergies").keypress(function() {
     if(document.getElementById('allergies').value === ''){
         document.getElementById('allergies').value +='• ';
 	}
@@ -176,7 +148,7 @@ $(".textarea_allergies").keyup(function(event){
 	}
 });
 
-$(".textarea_medication").focus(function() {
+$(".textarea_medication").keypress(function() {
     if(document.getElementById('medication').value === ''){
         document.getElementById('medication').value +='• ';
 	}
@@ -192,7 +164,7 @@ $(".textarea_medication").keyup(function(event){
 	}
 });
 
-$(".textarea_psychological_history").focus(function() {
+$(".textarea_psychological_history").keypress(function() {
     if(document.getElementById('psychological_history').value === ''){
         document.getElementById('psychological_history').value +='• ';
 	}
@@ -208,7 +180,7 @@ $(".textarea_psychological_history").keyup(function(event){
 	}
 });
 
-$(".textarea_hmo_benefits").focus(function() {
+$(".textarea_hmo_benefits").keypress(function() {
     if(document.getElementById('hmo_benefits').value === ''){
         document.getElementById('hmo_benefits').value +='• ';
 	}
@@ -224,7 +196,7 @@ $(".textarea_hmo_benefits").keyup(function(event){
 	}
 });
 
-$(".textarea_insurance").focus(function() {
+$(".textarea_insurance").keypress(function() {
     if(document.getElementById('employee_insurance').value === ''){
         document.getElementById('employee_insurance').value +='• ';
 	}
@@ -239,10 +211,3 @@ $(".textarea_insurance").keyup(function(event){
 		document.getElementById('employee_insurance').value = txtval7.substring(0,txtval7.length - 1);
 	}
 });
-
-
-// $(document).on('keypress', '.separated', function(e){
-//     var k;
-//     document.all ? k = e.keyCode : k = e.which;
-//     return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8  || k == 13 || (k >= 48 && k <= 57));
-// });

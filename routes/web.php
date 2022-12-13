@@ -168,3 +168,7 @@ Route::any('/salesMonthlyData','SalesMonthly@salesMonthlyData');
 Route::any('/salesByMonthBlade','SalesByMonthController@salesByMonthBlade');
 Route::any('/salesByMonthData','SalesByMonthController@salesByMonthData');
 
+Route::any('/donutImage','DonutController@donutImageView');
+Route::any('/donutImage/insertDonutImage','DonutController@insertDonutImage');
+
+Route::any('/donut','DdController@donut_view');

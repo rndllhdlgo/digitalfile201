@@ -1,4 +1,3 @@
-//This JS page is to allow the user to edit the data
 $('#btnEnableEdit').on('click',function(){
     Swal.fire({
         title: 'Do you want to edit details?',
@@ -20,7 +19,6 @@ $('#btnEnableEdit').on('click',function(){
           $('#btnCancelEdit').show();
           $('#btnEnableEdit').hide();
           $('#btnCancel').hide();
-        //Personal Information
           $('.required_label').show();
           $('.optional_label').show();
           $('.required_field').css('cursor','auto');
@@ -56,7 +54,6 @@ $('#btnEnableEdit').on('click',function(){
           $('#emergency_contact_name').prop("disabled",false);
           $('#emergency_contact_relationship').prop("disabled",false);
           $('#emergency_contact_number').prop("disabled",false);
-        //Work Information
           $('#span_employee_number').hide();
           $('#employee_company').prop("disabled",false);
           $('#employee_branch').prop("disabled",false);
@@ -72,16 +69,12 @@ $('#btnEnableEdit').on('click',function(){
           $('#philhealth_number').prop("disabled",false);
           $('#tin_number').prop("disabled",false);
           $('#account_number').prop("disabled",false);
-          //Educational Information
-          //Secondary
           $('#secondary_school_name').prop("disabled",false);
           $('#secondary_school_address').prop("disabled",false);
           $('#secondary_school_inclusive_years').prop("disabled",false);
-          //Primary
           $('#primary_school_name').prop("disabled",false);
           $('#primary_school_address').prop("disabled",false);
           $('#primary_school_inclusive_years').prop("disabled",false);
-
       } 
       else if (cancel.isDenied) {
       

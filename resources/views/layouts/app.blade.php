@@ -16,7 +16,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link href="{{ asset('/css/all.css') }}" rel="stylesheet">        
+        <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
+
+        
     </head>
 <body>
         @if(!Auth::guest())
@@ -29,7 +31,6 @@
             @yield('content')
         </div>
 
-        <!-- To avoid repeating html structure tags -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,7 +38,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
-        <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script>
+        {{-- <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> --}}
         
         <!-- Insert JS FILES -->
         @if(Request::is('/'))<!--Route-->
@@ -83,6 +84,10 @@
             <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+        @endif
+        
+        @if(Request::is('chartsView') || Request::is('technologyView') || Request::is('donutView') || Request::is('charactersView'))
+            <script src="{{ env('APP_URL')}}js/charts/charts.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
         <script>

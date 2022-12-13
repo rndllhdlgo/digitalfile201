@@ -122,7 +122,6 @@
                 </tr>
             </tbody>
         </table>
-        <hr class="hr-design">
         <br>
     {{-- Training Table --}}
     <strong class="table-title">TRAININGS</strong><br>
@@ -177,7 +176,6 @@
             <tbody>
             </tbody>
         </table>
-        <hr class="hr-design">
         <br>
     {{-- Vocational Table --}}
     <strong class="table-title">VOCATIONAL</strong><br>

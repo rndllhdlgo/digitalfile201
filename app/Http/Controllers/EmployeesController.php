@@ -8,20 +8,6 @@ use Illuminate\Support\Facades\DB;
 
 use App\Models\UserLogs;
 
-use App\Models\Children;
-use App\Models\College;
-use App\Models\Contracts;
-use App\Models\Document;
-use App\Models\Employee;
-use App\Models\Evaluation;
-use App\Models\Job;
-use App\Models\Memo;
-use App\Models\Resignation;
-use App\Models\Termination;
-use App\Models\Training;
-use App\Models\Vocational;
-use App\Models\MedicalHistory;
-
 //Models for multiple tables
 use App\Models\ChildrenTable;
 use App\Models\CollegeTable;
@@ -34,13 +20,27 @@ use App\Models\ContractTable;
 use App\Models\ResignationTable;
 use App\Models\TerminationTable;
 
-use App\Models\PersonalInformation;
-use App\Models\WorkInformation;
+use App\Models\PersonalInformationTable;
+// use App\Models\PersonalInformation;
+use App\Models\WorkInformationTable;
+// use App\Models\WorkInformation;
 use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
-use App\Models\JobHistory;
+use App\Models\MedicalHistory;
+use App\Models\Document;
 
-
+// use App\Models\JobHistory;
+// use App\Models\Employee;
+// use App\Models\Evaluation;
+// use App\Models\Job;
+// use App\Models\Memo;
+// use App\Models\Resignation;
+// use App\Models\Termination;
+// use App\Models\Training;
+// use App\Models\Vocational;
+// use App\Models\Children;
+// use App\Models\College;
+// use App\Models\Contracts;
 
 use DataTables;
 
@@ -52,15 +52,24 @@ class EmployeesController extends Controller
     }
     
     // public function listOfEmployees(){
-    //     $employees = PersonalInformation::all();
+    //     $employees = PersonalInformationTable::all();
     //     return DataTables::of($employees)->make(true);
     // }
 
     public function listOfEmployees(){
-        $employees = PersonalInformation::selectRaw('employee_number, first_name, middle_name, last_name, positions.job_position_name AS employee_position, branches.branch_name AS employee_branch, employee_status')
-        ->join('work_information','work_information.employee_id','=','personal_information.id')
-        ->join('positions','positions.id','=','work_information.employee_position')
-        ->join('branches','branches.id','=','work_information.employee_branch')
+        $employees = PersonalInformationTable::select(
+            'employee_number', 
+            'first_name',
+            'middle_name', 
+            'last_name', 
+            'positions.job_position_name AS employee_position', 
+            'branches.branch_name AS employee_branch', 
+            'employee_status')
+        ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
+        ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        ->join('positions','positions.id','work_information_tables.employee_position')
+        ->join('branches','branches.id','work_information_tables.employee_branch')
         ->get();
         return DataTables::of($employees)->make(true);
     }
@@ -71,7 +80,7 @@ class EmployeesController extends Controller
     // }
 
     public function savePersonalInformation(Request $request){//To save only Work,Personal,School Information Form
-        $employee_personal_information = new PersonalInformation;
+        $employee_personal_information = new PersonalInformationTable;
         $employee_number_logs = $request->employee_number; 
         $employee_first_name_logs = ucwords($request->first_name);
         $employee_middle_name_logs = ucwords($request->middle_name);
@@ -159,7 +168,7 @@ class EmployeesController extends Controller
     }
 
     public function saveWorkInformation(Request $request){
-        $employee_work_information = new WorkInformation;
+        $employee_work_information = new WorkInformationTable;
         $employee_work_information->employee_id = $request->employee_id;
         $employee_work_information->employee_company = $request->employee_company;
         $employee_work_information->employee_branch = $request->employee_branch;
@@ -247,170 +256,51 @@ class EmployeesController extends Controller
             $employee_medicalHistory->employee_id = $request->employee_id;
             $employee_medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
             $employee_medicalHistory->allergies = ucwords($request->allergies);
-            $employee_medicalHistory->medication = $request->medication;
-            $employee_medicalHistory->psychological_history = $request->psychological_history;
+            $employee_medicalHistory->medication = ucwords($request->medication);
+            $employee_medicalHistory->psychological_history = ucwords($request->psychological_history);
             $employee_medicalHistory->save();
         } 
     }
 
-    public function fetch(Request $request){
-        $employees = PersonalInformation::select(
-            'employee_number',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'positions.job_position_name AS employee_position',
-            'branches.branch_name AS employee_branch',
-            'employee_status')
-        ->where('personal_information.id',$request->id)
-        ->join('work_information','work_information.employee_id','personal_information.id')
-        ->join('positions','positions.id','work_information.employee_id')
-        ->join('branches','branches.id','work_information.employee_id')
-        ->first();
-        return $employees;
-    }
-
-    // public function update(Request $request){
-        
-    //     $employees = Employee::find($request->id);
-    // //Personal Information Tab
-    //     $employees->cover_image = $request->fileName;
-    //     $employees->first_name = ucwords($request->first_name);
-    //     $employees->last_name = ucwords($request->last_name);
-    //     $employees->middle_name = ucwords($request->middle_name);
-    //     $employees->suffix = ucwords($request->suffix);
-    //     $employees->nickname = ucwords($request->nickname);
-    //     $employees->birthday = $request->birthday;
-    //     $employees->gender = $request->gender;
-    //     $employees->civil_status = $request->civil_status;
-    //     $employees->street = ucwords($request->street);
-    //     $employees->region = $request->region;
-    //     $employees->province = $request->province;
-    //     $employees->city = $request->city;
-    //     $employees->email_address = strtolower($request->email_address);
-    //     $employees->telephone_number = $request->telephone_number;
-    //     $employees->cellphone_number = $request->cellphone_number;
-    //     $employees->spouse_name = ucwords($request->spouse_name);
-    //     $employees->spouse_contact_number = $request->spouse_contact_number;
-    //     $employees->spouse_profession = ucwords($request->spouse_profession);
-    //     $employees->father_name = ucwords($request->father_name);
-    //     $employees->father_contact_number = $request->father_contact_number;
-    //     $employees->father_profession = ucwords($request->father_profession);
-    //     $employees->mother_name = ucwords($request->mother_name);
-    //     $employees->mother_contact_number = $request->mother_contact_number;
-    //     $employees->mother_profession = ucwords($request->mother_profession);
-    //     $employees->emergency_contact_name = ucwords($request->emergency_contact_name);
-    //     $employees->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
-    //     $employees->emergency_contact_number = $request->emergency_contact_number;
-    // //Work Information Tab
-    //     $employees->employee_number = $request->employee_number;
-    //     $employees->employee_company = $request->employee_company;
-    //     $employees->employee_branch = $request->employee_branch;
-    //     $employees->employee_status = $request->employee_status;
-    //     $employees->employment_origin = $request->employment_origin;
-    //     $employees->employee_shift = $request->employee_shift;
-    //     $employees->employee_position = $request->employee_position;
-    //     $employees->employee_supervisor = $request->employee_supervisor;
-    //     $employees->date_hired = $request->date_hired;
-    //     $employees->company_email_address = strtolower($request->company_email_address);
-    //     $employees->company_contact_number = $request->company_contact_number;
-    //     $employees->sss_number = $request->sss_number;
-    //     $employees->pag_ibig_number = $request->pag_ibig_number;
-    //     $employees->philhealth_number = $request->philhealth_number;
-    //     $employees->tin_number = $request->tin_number;
-    //     $employees->account_number = $request->account_number;
-    // //Educational and Trainings Background Tab
-    //     $employees->secondary_school_name = ucwords($request->secondary_school_name);
-    //     $employees->secondary_school_address = ucwords($request->secondary_school_address);
-    //     $employees->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
-    //     $employees->primary_school_name = ucwords($request->primary_school_name);
-    //     $employees->primary_school_address = ucwords($request->primary_school_address);
-    //     $employees->primary_school_inclusive_years = $request->primary_school_inclusive_years;
-    //     $sql = $employees->save();
-
-    //     return $sql ? 'true' : 'false';
-    // }
 
     //Check Duplication of Data
     public function checkDuplicate(Request $request){
-        return PersonalInformation::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmailDuplicate(Request $request){
-        return PersonalInformation::where('email_address',$request->email_address)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('email_address',$request->email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkTelephoneNumberDuplicate(Request $request){
-        return PersonalInformation::where('telephone_number',$request->telephone_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('telephone_number',$request->telephone_number)->count() > 0 ? 'true': 'false';
     }
     public function checkCellphoneNumberDuplicate(Request $request){
-        return PersonalInformation::where('cellphone_number',$request->cellphone_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('cellphone_number',$request->cellphone_number)->count() > 0 ? 'true': 'false';
     }
     public function checkFatherCellphoneNumberDuplicate(Request $request){
-        return PersonalInformation::where('father_contact_number',$request->father_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('father_contact_number',$request->father_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkMotherCellphoneNumberDuplicate(Request $request){
-        return PersonalInformation::where('mother_contact_number',$request->mother_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('mother_contact_number',$request->mother_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkSpouseCellphoneNumberDuplicate(Request $request){
-        return PersonalInformation::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmergencyContactNumberDuplicate(Request $request){
-        return PersonalInformation::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
+        return PersonalInformationTable::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeEmailAddressDuplicate(Request $request){
-        return WorkInformation::where('company_email_address',$request->company_email_address)->count() > 0 ? 'true': 'false';
+        return WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0 ? 'true': 'false';
     }
     public function checkEmployeeContactNumberDuplicate(Request $request){
-        return WorkInformation::where('company_contact_number',$request->company_contact_number)->count() > 0 ? 'true': 'false';
+        return WorkInformationTable::where('company_contact_number',$request->company_contact_number)->count() > 0 ? 'true': 'false';
     }
-
-    // public function memoSave(Request $request){
-    //     $employee_memo = new Memo;
-    //     $employee_memo->employee_id = $request->employee_id;
-    //     $employee_memo->memo_subject = ucfirst($request->memo_subject);
-    //     $employee_memo->memo_date = $request->memo_date;
-    //     $employee_memo->memo_penalty = $request->memo_penalty;
-    //     $employee_memo->save();
-    // }
-
-    // public function evaluationSave(Request $request){
-    //     $employee_evaluation = new Evaluation;
-    //     $employee_evaluation->employee_id = $request->employee_id;
-    //     $employee_evaluation->evaluation_reason = ucfirst($request->evaluation_reason);
-    //     $employee_evaluation->evaluation_date = $request->evaluation_date;
-    //     $employee_evaluation->evaluation_evaluated_by = ucwords($request->evaluation_evaluated_by);
-    //     $employee_evaluation->save();
-    // }
-
-    // public function contractsSave(Request $request){
-    //     $employee_contract = new Contracts;
-    //     $employee_contract->employee_id = $request->employee_id;
-    //     $employee_contract->contracts_type = ucfirst($request->contracts_type);
-    //     $employee_contract->contracts_date = $request->contracts_date;
-    //     $employee_contract->save();
-    // }
-
-    // public function saveMultipleFile(Request $request){
-    //     if($request->hasFile('memo_file')){
-    //         foreach($request->file('memo_file') as $key => $value){
-    //             $memoFileName = time().'_Memo_File.'.$request->memo_file[$key]->extension();
-    //             $request->memo_file[$key]->storeAs('public/memo_file',$memoFileName);
-                
-    //             $memo = new MemoInformation;
-    //             $memo->memo_subject = $request->memo_subject[$key];
-    //             $memo->memo_date = $request->memo_date[$key];
-    //             $memo->memo_penalty = $request->memo_penalty[$key];
-    //             $memo->memo_file = $memoFileName;
-    //             $memo->save();
-    //         }
-    //     }
-    // }
 
     public function saveDocuments(Request $request)
     {   
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = time().'_Memo_File.'.$request->memo_file[$key]->extension();
-                $request->memo_file[$key]->storeAs('public/memo_file',$memoFileName);
+                $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
+                $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
                 
                 $memo = new MemoTable;
                 $memo->employee_id = $request->employee_id;
@@ -424,8 +314,8 @@ class EmployeesController extends Controller
 
         if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
             foreach($request->file('evaluation_file') as $key => $value){
-                $evaluationFileName = time().'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
-                $request->evaluation_file[$key]->storeAs('public/evaluation_file',$evaluationFileName);
+                $evaluationFileName = time().rand(1,100).'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
+                $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
                 
                 $evaluation = new EvaluationTable;
                 $evaluation->employee_id = $request->employee_id;
@@ -439,8 +329,8 @@ class EmployeesController extends Controller
 
         if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
             foreach($request->file('contracts_file') as $key => $value){
-                $contractsFileName = time().'_Contracts_File.'.$request->contracts_file[$key]->extension();
-                $request->contracts_file[$key]->storeAs('public/contracts_file',$contractsFileName);
+                $contractsFileName = time().rand(1,100).'_Contracts_File.'.$request->contracts_file[$key]->extension();
+                $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
                 
                 $contracts = new ContractTable;
                 $contracts->employee_id = $request->employee_id;
@@ -453,8 +343,8 @@ class EmployeesController extends Controller
 
         if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
             foreach($request->file('resignation_file') as $key => $value){
-                $resignationFileName = time().'_Resignation_File.'.$request->resignation_file[$key]->extension();
-                $request->resignation_file[$key]->storeAs('public/resignation_files',$resignationFileName);
+                $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
+                $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
                 
                 $resignation = new ResignationTable;
                 $resignation->employee_id = $request->employee_id;
@@ -467,8 +357,8 @@ class EmployeesController extends Controller
 
         if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
             foreach($request->file('termination_file') as $key => $value){
-                $terminationFileName = time().'_Termination_File.'.$request->termination_file[$key]->extension();
-                $request->termination_file[$key]->storeAs('public/termination_files',$terminationFileName);
+                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+                $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
 
                 $termination = new TerminationTable;
                 $termination->employee_id = $request->employee_id;
@@ -478,107 +368,80 @@ class EmployeesController extends Controller
                 $termination->save();
             }
         }
-        
-        // Save Resignation and Termination File
-        // if($request->resignation_letter && $request->resignation_date && $request->hasFile('resignation_file')){
-        //     $resignation = new Resignation;
-        //     $resignation->employee_id = $request->employee_id;
-        //     $resignation->resignation_letter = ucfirst($request->resignation_letter);
-        //     $resignation->resignation_date = $request->resignation_date;
-
-        //     $resignationFile = $request->file('resignation_file');
-        //     $resignationExtension = $resignationFile->getClientOriginalExtension();
-        //     $resignationFileName = time(). '_' . 'Resignation_Letter'. '.' . $resignationExtension;
-        //     $resignationFile->storeAs('public/resignationFiles',$resignationFileName);
-        //     $resignation->resignation_file = $resignationFileName;
-        //     $resignation->save();
-        // }
-
-        // if($request->termination_letter && $request->termination_date && $request->hasFile('termination_file')){
-        //     $termination = new Termination;
-        //     $termination->employee_id = $request->employee_id;
-        //     $termination->termination_letter = ucfirst($request->termination_letter);
-        //     $termination->termination_date = $request->termination_date;
-
-        //     $terminationFile = $request->file('termination_file');
-        //     $terminationExtension = $terminationFile->getClientOriginalExtension();
-        //     $terminationFileName = time(). '_' . 'Termination_Letter'. '.' .$terminationExtension;
-        //     $terminationFile->storeAs('public/terminationFiles',$terminationFileName);
-        //     $termination->termination_file = $terminationFileName;
-        //     $termination->save();
-        // }
+    
             $document = new Document;
             $document->employee_id = $request->employee_id;
             $birthcertificateFile = $request->file('birthcertificate_file');
             $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = time(). '_' . 'Birth_Certificate'. '.' .$birthcertificateExtension;
-            $birthcertificateFile->storeAs('public/documents',$birthcertificateFilename);
+            $birthcertificateFilename = time().rand(1,100).'_Birth_Certificate.'.$birthcertificateExtension;
+            $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
             $document->birthcertificate = $birthcertificateFilename;
 
             $nbiFile = $request->file('nbi_file');
             $nbiExtension = $nbiFile->getClientOriginalExtension();
-            $nbiFilename = time(). '_' . 'NBI_Clearance'. '.' .$nbiExtension;
-            $nbiFile->storeAs('public/documents',$nbiFilename);
+            $nbiFilename = time().rand(1,100).'_NBI_Clearance.'.$nbiExtension;
+            $nbiFile->storeAs('public/documents_files',$nbiFilename);
             $document->nbi_clearance = $nbiFilename;
 
             $barangayClearanceFile = $request->file('barangay_clearance_file');
             $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = time(). '_' . 'Barangay_Clearance'. '.' .$barangayClearanceExtension;
-            $barangayClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+            $barangayClearanceFilename = time().rand(1,100).'_Barangay_Clearance.'.$barangayClearanceExtension;
+            $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
             $document->barangay_clearance = $barangayClearanceFilename;
 
             $policeClearanceFile = $request->file('police_clearance_file');
             $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = time(). '_' . 'Police_Clearance'. '.' .$policeClearanceExtension;
-            $policeClearanceFile->storeAs('public/documents',$barangayClearanceFilename);
+            $policeClearanceFilename = time().rand(1,100).'_Police_Clearance.'.$policeClearanceExtension;
+            $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
             $document->police_clearance = $policeClearanceFilename;
 
             $sssFile = $request->file('sss_file');
             $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = time(). '_' . 'SSS_Form'. '.' . $sssExtension;
-            $sssFile->storeAs('public/documents',$sssFilename);
+            $sssFilename = time().rand(1,100).'_SSS_Form.'.$sssExtension;
+            $sssFile->storeAs('public/documents_files',$sssFilename);
             $document->sss_form = $sssFilename;
 
             $philhealthFile = $request->file('philhealth_file');
             $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = time(). '_' . 'Philhealth_Form'. '.' .$philhealthExtension;
-            $philhealthFile->storeAs('public/documents',$philhealthFilename);
+            $philhealthFilename = time().rand(1,100).'_Philhealth_Form.'.$philhealthExtension;
+            $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
             $document->philhealth_form = $philhealthFilename;
 
             $pagibigFile = $request->file('pag_ibig_file');
             $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = time(). '_' . 'Pagibig_Form'. '.' .$pagibigExtension;
-            $pagibigFile->storeAs('public/documents',$pagibigFilename);
+            $pagibigFilename = time().rand(1,100).'_Pagibig_Form.'.$pagibigExtension;
+            $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
             $document->pag_ibig_form = $pagibigFilename;
 
             $medicalCertificateFile = $request->file('medical_certificate_file');
             $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = time(). '_' . 'Medical_Certificate'. '.' .$medicalCertificateExtension;
-            $medicalCertificateFile->storeAs('public/documents',$medicalCertificateFilename);
+            $medicalCertificateFilename = time().rand(1,100).'_Medical_Certificate.'.$medicalCertificateExtension;
+            $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
             $document->medical_certificate = $medicalCertificateFilename;
             
             $resumeFile = $request->file('resume_file');
             $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = time(). '_' . 'Resume'. '.' . $resumeExtension;
-            $resumeFile->storeAs('public/documents',$resumeFilename);
+            $resumeFilename = time().rand(1,100).'_Resume.'.$resumeExtension;
+            $resumeFile->storeAs('public/documents_files',$resumeFilename);
             $document->resume = $resumeFilename;
             
         if($request->hasFile('tor_file')){
             $torFile = $request->file('tor_file');
             $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = time(). '_' . 'Transcript_of_Records'. '.' .$torExtension;
-            $torFile->storeAs('public/documents',$torFilename);
+            $torFilename = time().rand(1,100).'_Transcript_of_Records.'.$torExtension;
+            $torFile->storeAs('public/documents_files',$torFilename);
             $document->transcript_of_records = $torFilename;
         }
 
         if($request->hasFile('diploma_file')){
             $diplomaFile = $request->file('diploma_file');
             $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-            $diplomaFilename = time(). '_' . 'Diploma'. '.' . $diplomaExtension;
-            $diplomaFile->storeAs('public/documents',$diplomaFilename);
+            $diplomaFilename = time().rand(1,100).'_Diploma.'.$diplomaExtension;
+            $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
             $document->diploma = $diplomaFilename;
         }
             $document->save();
             return Redirect::to(url()->previous());//Return previous page/url
+            // return view('pages.employees');
     }
 }

@@ -106,7 +106,7 @@ $('#btnSave').on('click', function(){
                     mother_profession:mother_profession,
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
-                    emergency_contact_number:emergency_contact_number,
+                    emergency_contact_number:emergency_contact_number
                 },
                 success: function(data){
                         if(data.result == 'true'){
@@ -222,10 +222,7 @@ $('#btnSave').on('click', function(){
                             });
 
                             //This code is to save the data in multiple rows
-                                var soloParentTable = $('#solo_parent_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var soloParent_data  = soloParentTable.rows().data();
+                                var soloParent_data  = $('#solo_parent_data_table').DataTable().rows().data();
                                 $.each(soloParent_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
@@ -235,18 +232,15 @@ $('#btnSave').on('click', function(){
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         data:{
-                                            'employee_id' : data.id,
-                                            'child_name' : value[0],
-                                            'child_birthday': value[1],
-                                            'child_gender'  : value[3]
+                                            employee_id : data.id,
+                                            child_name : value[0],
+                                            child_birthday: value[1],
+                                            child_gender  : value[3]
                                         },
                                     });
                                 });
                                 
-                                var collegeTable = $('#college_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var college_data  = collegeTable.rows().data();
+                                var college_data  = $('#college_data_table').DataTable().rows().data();
                                 $.each(college_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
@@ -256,18 +250,15 @@ $('#btnSave').on('click', function(){
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         data:{
-                                            'employee_id' : data.id,
-                                            'college_name' : value[0],
-                                            'college_degree' : value[1],
-                                            'college_inclusive_years': value[2]
+                                            employee_id : data.id,
+                                            college_name : value[0],
+                                            college_degree : value[1],
+                                            college_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                var trainingTable = $('#training_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var training_data  = trainingTable.rows().data();
+                                var training_data  = $('#training_data_table').DataTable().rows().data();
                                 $.each(training_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
@@ -277,18 +268,15 @@ $('#btnSave').on('click', function(){
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         data:{
-                                            'employee_id' : data.id,
-                                            'training_name' : value[0],
-                                            'training_title' : value[1],
-                                            'training_inclusive_years': value[2]
+                                            employee_id : data.id,
+                                            training_name : value[0],
+                                            training_title : value[1],
+                                            training_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                var vocationalTable = $('#vocational_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var vocational_data  = vocationalTable.rows().data();
+                                var vocational_data  = $('#vocational_data_table').DataTable().rows().data();
                                 $.each(vocational_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
@@ -298,18 +286,15 @@ $('#btnSave').on('click', function(){
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         data:{
-                                            'employee_id' : data.id,
-                                            'vocational_name' : value[0],
-                                            'vocational_course' : value[1],
-                                            'vocational_inclusive_years': value[2]
+                                            employee_id : data.id,
+                                            vocational_name : value[0],
+                                            vocational_course : value[1],
+                                            vocational_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                var jobTable = $('#job_data_table').DataTable({
-                                    dom:'t',
-                                });
-                                var job_data  = jobTable.rows().data();
+                                var job_data  = $('#job_data_table').DataTable().rows().data();
                                 $.each(job_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
@@ -319,18 +304,18 @@ $('#btnSave').on('click', function(){
                                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                         },
                                         data:{
-                                            'employee_id' : data.id,
-                                            'job_name' : value[0],
-                                            'job_position' : value[1],
-                                            'job_address': value[2],
-                                            'job_contact_details' : value[3],
-                                            'job_inclusive_years' : value[4]
+                                            employee_id : data.id,
+                                            job_name : value[0],
+                                            job_position : value[1],
+                                            job_address: value[2],
+                                            job_contact_details : value[3],
+                                            job_inclusive_years : value[4]
                                         },
                                     });
                                 });
 
+                                $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
-                                // $('#documents_form').submit();
                                 $('#solo_parent_data_table').hide();
                                 $('#college_data_table').hide();
                                 $('#training_data_table').hide();

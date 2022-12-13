@@ -2,7 +2,6 @@
 //Verify that the user has filled out all field on multiple field.
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
-    //Personal Information Tab
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
         $('#btnSoloParentAdd').prop('disabled',true);
     }
@@ -10,7 +9,7 @@ function checkforblankMultiple(){
         $('#btnSoloParentAdd').prop('disabled',false);
         $('#btnSoloParentAdd').css('display','block');
     }
-    //Education Tab
+
     if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years').val()){
         $('#btnCollegeAdd').prop('disabled',true);
     }
@@ -34,7 +33,7 @@ function checkforblankMultiple(){
         $('#btnVocationalAdd').prop('disabled',false);
         $('#btnVocationalAdd').css('display','block');
     }
-    //Job History Tab
+
     if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
         $('#btnJobHistoryAdd').prop('disabled',true);
     }
@@ -43,47 +42,44 @@ function checkforblankMultiple(){
         $('#btnJobHistoryAdd').css('display','block');
     }
     
-    //Evaluation Tab
-    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
-        $('#btnAddMemoRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddMemoRow').prop('disabled',false);
-    }
+    // if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
+    //     $('#btnAddMemoRow').prop('disabled',true);
+    // }
+    // else{
+    //     $('#btnAddMemoRow').prop('disabled',false);
+    // }
 
-    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
-        $('#btnAddEvaluationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddEvaluationRow').prop('disabled',false);
-    }
+    // if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
+    //     $('#btnAddEvaluationRow').prop('disabled',true);
+    // }
+    // else{
+    //     $('#btnAddEvaluationRow').prop('disabled',false);
+    // }
 
-    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
-        $('#btnAddContractRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddContractRow').prop('disabled',false);
-    }
+    // if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
+    //     $('#btnAddContractRow').prop('disabled',true);
+    // }
+    // else{
+    //     $('#btnAddContractRow').prop('disabled',false);
+    // }
 
-    if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
-        $('#btnAddResignationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddResignationRow').prop('disabled',false);
-    }
+    // if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
+    //     $('#btnAddResignationRow').prop('disabled',true);
+    // }
+    // else{
+    //     $('#btnAddResignationRow').prop('disabled',false);
+    // }
 
-    if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
-        $('#btnAddTerminationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddTerminationRow').prop('disabled',false);
-    }
+    // if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
+    //     $('#btnAddTerminationRow').prop('disabled',true);
+    // }
+    // else{
+    //     $('#btnAddTerminationRow').prop('disabled',false);
+    // }
 }
 
 
 $(document).ready(function(){
-    //Personal Information Tab
-    //Solo Parent Table Add
     $('#btnSoloParentAdd').click(function(){
         $('#solo_parent_data_table').show();
         var child_name = $('#child_name').val().trim();
@@ -111,8 +107,6 @@ $(document).ready(function(){
         });
     });
 
-    //Educational and Training Background Tab
-    //College Table Add
     $('#btnCollegeAdd').click(function(){
         $('#college_data_table').show();
         var college_name = $('#college_name').val().trim();
@@ -134,7 +128,6 @@ $(document).ready(function(){
         });
     });
 
-    //Training Table Add
     $('#btnTrainingAdd').click(function(){
         $('#training_data_table').show();
         var training_name = $('#training_name').val().trim();
@@ -156,7 +149,6 @@ $(document).ready(function(){
         });
     });
 
-    //Vocational Table Add
     $('#btnVocationalAdd').click(function(){
         $('#vocational_data_table').show();
         var vocational_name = $('#vocational_name').val().trim();
@@ -178,8 +170,6 @@ $(document).ready(function(){
         });
     });
 
-    //Job History Tab
-    //Job History Table Add
     $('#btnJobHistoryAdd').click(function(){
         $('#job_data_table').show();
         var job_name = $('#job_name').val().trim();
@@ -207,8 +197,6 @@ $(document).ready(function(){
         });
     });
 });
-//Performance Evaluation Tab
-//Clone Fields
 
     function addMemoRow(){
     $('#memoTable').append('<tr>'+
@@ -239,7 +227,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td>'+
-                                '<input type="file" class="customFile" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
+                                '<input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -271,7 +259,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td>'+
-                                '<input  type="file" class="customFile" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
+                                '<input  type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -297,7 +285,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="customFile" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
+                                '<input  type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+ 
                                 '<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -323,7 +311,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="customFile" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
+                                '<input  type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -349,7 +337,7 @@ $(document).ready(function(){
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="customFile" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
+                                '<input  type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
                                 '<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
@@ -358,5 +346,4 @@ $(document).ready(function(){
         $(".btn-termination").click(function(){
             $(this).parent().parent().remove();
         });
-    }
-    
+    }    

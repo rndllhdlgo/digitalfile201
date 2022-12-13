@@ -31,6 +31,7 @@ $('#btnClear').on('click',function(){
             if (clear.isDenied) { 
                 //Clear All Pages
                 new bootstrap.Toast(document.querySelector('#clearAll')).show();
+                $('#tab1').click();
                 $('#personal_information').css('zoom','100%');
                 $('#termination_div').hide();
                 $('#resignation_div').hide();

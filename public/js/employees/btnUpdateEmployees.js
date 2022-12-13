@@ -1,5 +1,3 @@
-//This JS page is to update the data
-//Update Employee Data
 $('#btnUpdate').on('click',function(){
     var id = $('#hidden_id').val();
     sendFile();
@@ -68,13 +66,12 @@ $('#btnUpdate').on('click',function(){
     }).then((update) => {
         if (update.isConfirmed) {
             $.ajax({
-                url:"/employees/update", //route name (web.php)
+                url:"/employees/update",
                 type:"POST",
                 headers:{
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')//For anti forgery
                 },
                 data:{
-                //Personal Information Tab
                     id:id,
                     fileName:fileName,
                     first_name:first_name,
@@ -84,7 +81,6 @@ $('#btnUpdate').on('click',function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
-                    // home_address:home_address,
                     street:street,
                     region:region,
                     province:province,
@@ -104,7 +100,6 @@ $('#btnUpdate').on('click',function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
-                //Work Information Tab
                     employee_number: employee_number,
                     employee_company:employee_company,
                     employee_branch:employee_branch,
@@ -120,7 +115,6 @@ $('#btnUpdate').on('click',function(){
                     philhealth_number:philhealth_number,
                     tin_number:tin_number,
                     account_number:account_number,
-                //Educational and Trainings Background Tab
                     secondary_school_name:secondary_school_name,
                     secondary_school_address:secondary_school_address,
                     secondary_school_inclusive_years:secondary_school_inclusive_years,

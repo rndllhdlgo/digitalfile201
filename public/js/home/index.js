@@ -1,6 +1,5 @@
 var user_activity_table;
 $(document).ready(function () {
-    // Setup - add a text input to each footer cell
     $('#user_activity_table thead tr')
         .clone(true)
         .addClass('filters')
@@ -36,8 +35,6 @@ $(document).ready(function () {
                     data: 'date',
                     "render": function(data, type, row){
                         return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
-                        // return moment(row.date).format('MMM. DD, YYYY, h:mm A');
-
                     }
                 },
                 { data: 'username' },
@@ -46,32 +43,26 @@ $(document).ready(function () {
             ],
             initComplete: function () {
                 var api = this.api();
-    
-                // For each column
-                api
+                    api
                     .columns()
                     .eq(0)
                     .each(function (colIdx) {
-                        // Set the header cell to contain the input element
                         var cell = $('.filters th').eq(
                             $(api.column(colIdx).header()).index()
                         );
                         var title = $(cell).text();
                         $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
     
-                        // On every keypress in this input
                         $(
                             'input',
                             $('.filters th').eq($(api.column(colIdx).header()).index())
                         )
                             .off('keyup change')
                             .on('change', function (e) {
-                                // Get the search value
                                 $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+                                var regexr = '({search})';
     
                                 var cursorPosition = this.selectionStart;
-                                // Search the column for that value
                                 api
                                     .column(colIdx)
                                     .search(
@@ -97,8 +88,4 @@ $(document).ready(function () {
     $('div.breakspace').html('<br><br>');
 });
 
-//Display current date and time
-const d = new Date().toDateString();
-const t = new Date().toLocaleTimeString();
-document.getElementById("date").innerHTML = d + ' ' + t;
 

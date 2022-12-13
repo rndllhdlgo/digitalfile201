@@ -1,24 +1,3 @@
-// //Check Duplication on Input Field
-// setInterval(checkEmployeeNumberDuplicate,200);
-//     function checkEmployeeNumberDuplicate(){
-//         if($('#employee_number').val()){
-//             $.ajax({
-//                 url: "/employees/checkDuplicate",
-//                 data:{
-//                     employee_number : $('#employee_number').val(),
-//                 },
-//                 success: function(data){
-//                     if(data == 'true'){
-//                         $('#check_duplicate').show();
-//                     }
-//                     else{
-//                         $('#check_duplicate').hide();
-//                     }
-//                 }
-//             });
-//         }
-//     };
-
 $('#employee_number').on('keyup',function(){
     if($('#employee_number').val()){
         $.ajax({

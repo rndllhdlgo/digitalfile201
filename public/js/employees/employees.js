@@ -58,6 +58,9 @@ function checkforblank(){
     }
 }
 
+// if($('.requiredField:visible').filter(function(){ return !!this.value; }).length < $(".requiredField:visible").length )
+
+
 //Hide/Show (Civil Status, Solo Parent) Section Function
     function changeCivilStatus(){
         var status = $('#civil_status');
@@ -137,16 +140,30 @@ $('#child_birthday').on('change',function(){
     return $('#child_age').val(age);
 });
 
-//Close Preview Image Function
 $('#image_close').on('click',function(){
-    $('#employee_image').val(''); //Remove the image inserted
-    $('#image_preview').attr('src',''); //Remove current preview
-    $('#image_preview').hide();
-    $('#image_close').hide();
-    $('#image_user').show();
-    $('#image_button').show();
-    $('.column-1').css("height","250px");
-    $('#employee_image').click();
+    Swal.fire({
+        title: 'Do you want to remove image?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('#employee_image').val(''); //Remove the image inserted
+            $('#image_preview').attr('src',''); //Remove current preview
+            $('#image_preview').hide();
+            $('#image_close').hide();
+            $('#image_user').show();
+            $('#image_button').show();
+            $('.column-1').css("height","250px");
+        }
+    });
 });
 
 //Region,Province,City DropDown Function
@@ -298,14 +315,14 @@ $('#title_details').on('click',function(){
     // $('#primary_school_inclusive_years').val('2006-2012');
 //Optional Field
     // $('#telephone_number').val('1231243');
-    // $('#father_contact_number').val('09322003718');
-    // $('#mother_contact_number').val('09322003718');
-    // $('#college_name').val('Universidad De Manila');
-    // $('#college_degree').val('BTVTE Major in CPT');
-    // $('#college_inclusive_years').val('1');
-    // $('#secondary_school_name').val('Florentino Torres High School');
-    // $('#secondary_school_address').val('Torres');
-    // $('#secondary_school_inclusive_years').val('2012-2016');
+    $('#father_contact_number').val('09322003718');
+    $('#mother_contact_number').val('09322003718');
+    $('#college_name').val('Universidad De Manila');
+    $('#college_degree').val('BTVTE Major in CPT');
+    $('#college_inclusive_years').val('2018-2022');
+    $('#secondary_school_name').val('Florentino Torres High School');
+    $('#secondary_school_address').val('Torres');
+    $('#secondary_school_inclusive_years').val('2012-2016');
     // $('#training_name').val('Sample');
     // $('#training_title').val('Sample');
     // $('#training_inclusive_years').val('1');
@@ -357,3 +374,5 @@ var formatter = new Intl.NumberFormat('en-US', {
 //         clearMaskOnLostFocus: true
 //       });
 // });
+
+$("input[type='date']").keydown(function (event) { event.preventDefault(); });

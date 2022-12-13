@@ -93,7 +93,7 @@ a{
     opacity: 100%;
 }
 
-/* For Scroll Bar Design */
+/* Scroll Bar Design */
 html {
     scrollbar-width: thin ;
     scrollbar-color: #777 #555;
@@ -311,6 +311,13 @@ input[type=search]:focus{
     display: none;
 }
 
+#donut_image_preview{
+    height: 100px;
+    width: 100px;
+    cursor:pointer;
+    display:none;
+}
+
 #preview_file{
     height: 150px;
     width: 150px;
@@ -345,23 +352,80 @@ input[type=search]:focus{
 }
 
 .customFile{
-    border:1px solid #0d1a80;
+    border:none;
     border-radius: 5px;
     padding: 2px;
 }
-
 .customFile::-webkit-file-upload-button{
     background:#0d1a80;
     color: #fff;
     border-radius: 5px;
-    pad: 8px 16px;
     border:none;
     cursor: pointer;
-    font-size: 17px;
+    font-weight: bold;
+}
+
+.customFile_documents{
+    border:none;
+    border-radius: 5px;
+}
+.customFile_documents::-webkit-file-upload-button{
+    background:#0d1a80;
+    color: #fff;
+    border-radius: 5px;
+    border:none;
+    cursor: pointer;
+    font-weight: bold;
 }
 
 .pie-chart{
     width:800px;
     height:800x;
     margin:0 auto;
+}
+
+.custom-file-button input[type=file] {
+    margin-left: -2px !important;
+  }
+  
+  .custom-file-button input[type=file]::-webkit-file-upload-button {
+    display: none;
+  }
+  
+  .custom-file-button input[type=file]::file-selector-button {
+    display: none;
+  }
+  
+  .custom-file-button:hover label {
+    background-color: #dde0e3;
+    cursor: pointer;
+  }
+
+.input-group-text{
+    background-color: #0d1a80 !important;
+    border-color: #0d1a80;
+    font-weight: bold;
+}
+/* .input-group-text:hover{
+    background-color: #0275d8 !important;
+    transition: 0.1s;
+} */
+
+.input-file-text{
+    border-color: #0d1a80;
+}
+
+.btnView{
+    margin-left: 30%;
+}
+
+.form_file{
+    border-color: #0d1a80;
+}
+
+.form_file::-webkit-file-upload-button{
+    background-color: #0d1a80 !important;
+    color:white !important;
+    font-weight: bold;
+    border-color: #0d1a80;
 }

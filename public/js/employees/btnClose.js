@@ -1,4 +1,3 @@
-//This JS page is to close fill up form
 $('#btnCancel').on('click',function(){
     Swal.fire({
         title: 'Do you want to exit?',

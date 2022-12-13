@@ -1,4 +1,3 @@
-//View Company Data
 $('#companyTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = companyTable.row(this).data();
 
@@ -9,7 +8,6 @@ $('#companyTable').on('dblclick','tbody tr',function(){//View employee informati
     $('#updateCompanyModal').modal('show');
 });
 
-//View Branch Data
 $('#branchTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = branchTable.row(this).data();
 
@@ -20,7 +18,6 @@ $('#branchTable').on('dblclick','tbody tr',function(){//View employee informatio
     $('#updateBranchModal').modal('show');
 });
 
-//View Branch Data
 $('#supervisorTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = supervisorTable.row(this).data();
 
@@ -31,7 +28,6 @@ $('#supervisorTable').on('dblclick','tbody tr',function(){//View employee inform
     $('#updateSupervisorModal').modal('show');
 });
 
-//View Shift Data
 $('#shiftTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = shiftTable.row(this).data();
 
@@ -47,7 +43,6 @@ $('#shiftTable').on('dblclick','tbody tr',function(){//View employee information
     $('#updateShiftModal').modal('show');
 });
 
-//View Job Position and Description Data
 $('#jobPositionAndDescriptionTable').on('dblclick','tbody tr',function(){//View employee information on tr double click
     var data = jobPositionAndDescriptionTable.row(this).data();
 

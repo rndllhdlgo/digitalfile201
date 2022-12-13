@@ -320,6 +320,8 @@ function BirthCertificateValidation(birthcertificate_file) {
         });
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
+        $('#birthcertificate_view').prop('disabled',true);
+        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(birthcertExtension != "pdf"){
         Swal.fire({
@@ -331,7 +333,8 @@ function BirthCertificateValidation(birthcertificate_file) {
         });
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
-
+        $('#birthcertificate_view').prop('disabled',true);
+        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(birthcertFileSize > 5242880 * 2){
         Swal.fire({
@@ -343,6 +346,8 @@ function BirthCertificateValidation(birthcertificate_file) {
         });
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
+        $('#birthcertificate_view').prop('disabled',true);
+        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else {
         if (birthcertData.files && birthcertData.files[0]) {
@@ -354,6 +359,7 @@ function BirthCertificateValidation(birthcertificate_file) {
                 $('#birthcertificate_view').prop('disabled',false);
                 $('#birthcertificate_replace').prop('disabled',false);
                 $('#birthcertificate_button').hide();
+                // $('.birthcertificate_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -374,6 +380,8 @@ function nbiValidation(nbi_file) {
         });
         $('#nbi_file').val('');
         $('#nbi_preview').attr('src','');
+        $('#nbi_view').prop('disabled',true);
+        // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(nbiExtension != "pdf"){
         Swal.fire({
@@ -385,6 +393,8 @@ function nbiValidation(nbi_file) {
         });
         $('#nbi_file').val('');
         $('#nbi_preview').attr('src','');
+        $('#nbi_view').prop('disabled',true);
+        // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(nbiFileSize > 5242880 * 2){
         Swal.fire({
@@ -396,6 +406,8 @@ function nbiValidation(nbi_file) {
         });
         $('#nbi_file').val('');
         $('#nbi_preview').attr('src','');
+        $('#nbi_view').prop('disabled',true);
+        // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (nbiData.files && nbiData.files[0]) {
@@ -407,11 +419,12 @@ function nbiValidation(nbi_file) {
                 $('#nbi_view').prop('disabled',false);
                 $('#nbi_replace').prop('disabled',false);
                 $('#nbi_button').hide();
+                // $('.nbi_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
 
-function barangayclearanceValidation(barangay_clearance_file) {
+function barangayClearanceValidation(barangay_clearance_file) {
     var barangayClearanceData = document.getElementById('barangay_clearance_file');
     var barangayClearanceUploadPath = barangayClearanceData.value;
     var barangayClearanceExtension = barangayClearanceUploadPath.substring(barangayClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
@@ -427,6 +440,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
         });
         $('#barangay_clearance_file').val('');
         $('#barangay_clearance_preview').attr('src','');
+        $('#barangay_clearance_view').prop('disabled',true);
+        // $('.barangay_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(barangayClearanceExtension != "pdf"){
         Swal.fire({
@@ -438,6 +453,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
         });
         $('#barangay_clearance_file').val('');
         $('#barangay_clearance_preview').attr('src','');
+        $('#barangay_clearance_view').prop('disabled',true);
+        // $('.barangay_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(barangayClearanceFileSize > 5242880 * 2){
         Swal.fire({
@@ -449,6 +466,8 @@ function barangayclearanceValidation(barangay_clearance_file) {
         });
         $('#barangay_clearance_file').val('');
         $('#barangay_clearance_preview').attr('src','');
+        $('#barangay_clearance_view').prop('disabled',true);
+        // $('.barangay_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (barangayClearanceData.files && barangayClearanceData.files[0]) {
@@ -460,11 +479,13 @@ function barangayclearanceValidation(barangay_clearance_file) {
                 $('#barangay_clearance_view').prop('disabled',false);
                 $('#barangay_clearance_replace').prop('disabled',false);
                 $('#barangay_clearance_button').hide();
+                // $('.barangay_clearance_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
+
         }
     }
 }
 
-function policeclearanceValidation(police_clearance_file) {
+function policeClearanceValidation(police_clearance_file) {
     var policeClearanceData = document.getElementById('police_clearance_file');
     var policeClearanceUploadPath = policeClearanceData.value;
     var policeClearanceExtension = policeClearanceUploadPath.substring(policeClearanceUploadPath.lastIndexOf('.') + 1).toLowerCase();
@@ -480,6 +501,8 @@ function policeclearanceValidation(police_clearance_file) {
         });
         $('#police_clearance_file').val('');
         $('#police_clearance_preview').attr('src','');
+        $('#police_clearance_view').prop('disabled',true);
+        // $('.police_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(policeClearanceExtension != "pdf"){
         Swal.fire({
@@ -491,6 +514,8 @@ function policeclearanceValidation(police_clearance_file) {
         });
         $('#police_clearance_file').val('');
         $('#police_clearance_preview').attr('src','');
+        $('#police_clearance_view').prop('disabled',true);
+        // $('.police_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(policeClearanceFileSize > 5242880 * 2){
         Swal.fire({
@@ -502,6 +527,8 @@ function policeclearanceValidation(police_clearance_file) {
         });
         $('#police_clearance_file').val('');
         $('#police_clearance_preview').attr('src','');
+        $('#police_clearance_view').prop('disabled',true);
+        // $('.police_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (policeClearanceData.files && policeClearanceData.files[0]) {
@@ -513,6 +540,7 @@ function policeclearanceValidation(police_clearance_file) {
                 $('#police_clearance_view').prop('disabled',false);
                 $('#police_clearance_replace').prop('disabled',false);
                 $('#police_clearance_button').hide();
+                // $('.police_clearance_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -533,6 +561,8 @@ function sssValidation(sss_file) {
         });
         $('#sss_file').val('');
         $('#sss_preview').attr('src','');
+        $('#sss_view').prop('disabled',true);
+        // $('.sss_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(sssExtension != "pdf"){
         Swal.fire({
@@ -544,6 +574,8 @@ function sssValidation(sss_file) {
         });
         $('#sss_file').val('');
         $('#sss_preview').attr('src','');
+        $('#sss_view').prop('disabled',true);
+        // $('.sss_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(sssFileSize > 5242880 * 2){
         Swal.fire({
@@ -553,6 +585,10 @@ function sssValidation(sss_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#sss_file').val('');
+        $('#sss_preview').attr('src','');
+        $('#sss_view').prop('disabled',true);
+        // $('.sss_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (sssData.files && sssData.files[0]) {
@@ -564,6 +600,7 @@ function sssValidation(sss_file) {
                 $('#sss_view').prop('disabled',false);
                 $('#sss_replace').prop('disabled',false);
                 $('#sss_button').hide();
+                // $('.sss_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -584,6 +621,8 @@ function philhealthValidation(philhealth_file) {
         });
         $('#philhealth_file').val('');
         $('#philhealth_preview').attr('src','');
+        $('#philhealth_view').prop('disabled',true);
+        // $('.philhealth_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(philhealthExtension != "pdf"){
         Swal.fire({
@@ -593,6 +632,10 @@ function philhealthValidation(philhealth_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
+        $('#philhealth_file').val('');
+        $('#philhealth_preview').attr('src','');
+        $('#philhealth_view').prop('disabled',true);
+        // $('.philhealth_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(philhealthFileSize > 5242880 * 2){
         Swal.fire({
@@ -604,6 +647,8 @@ function philhealthValidation(philhealth_file) {
         });
         $('#philhealth_file').val('');
         $('#philhealth_preview').attr('src','');
+        $('#philhealth_view').prop('disabled',true);
+        // $('.philhealth_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (philhealthData.files && philhealthData.files[0]) {
@@ -615,6 +660,7 @@ function philhealthValidation(philhealth_file) {
                 $('#philhealth_view').prop('disabled',false);
                 $('#philhealth_replace').prop('disabled',false);
                 $('#philhealth_button').hide();
+                // $('.philhealth_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -635,6 +681,8 @@ function pagibigValidation(pag_ibig_file) {
         });
         $('#pag_ibig_file').val('');
         $('#pag_ibig_preview').attr('src','');
+        $('#pag_ibig_view').prop('disabled',true);
+        // $('.pag_ibig_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(pagibigExtension != "pdf"){
         Swal.fire({
@@ -646,6 +694,8 @@ function pagibigValidation(pag_ibig_file) {
         });
         $('#pag_ibig_file').val('');
         $('#pag_ibig_preview').attr('src','');
+        $('#pag_ibig_view').prop('disabled',true);
+        // $('.pag_ibig_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(pagibigFileSize > 5242880 * 2){
         Swal.fire({
@@ -657,7 +707,8 @@ function pagibigValidation(pag_ibig_file) {
         });
         $('#pag_ibig_file').val('');
         $('#pag_ibig_preview').attr('src','');
-
+        $('#pag_ibig_view').prop('disabled',true);
+        // $('.pag_ibig_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (pagibigData.files && pagibigData.files[0]) {
@@ -669,6 +720,7 @@ function pagibigValidation(pag_ibig_file) {
                 $('#pag_ibig_view').prop('disabled',false);
                 $('#pag_ibig_replace').prop('disabled',false);
                 $('#pag_ibig_button').hide();
+                // $('.pag_ibig_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -689,6 +741,8 @@ function medicalCertificateValidation(medical_certificate_file) {
         });
         $('#medical_certificate_file').val('');
         $('#medical_certificate_preview').attr('src','');
+        $('#medical_certificate_view').prop('disabled',true);
+        // $('.medical_certificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(medicalCertificateExtension != "pdf"){
         Swal.fire({
@@ -700,6 +754,8 @@ function medicalCertificateValidation(medical_certificate_file) {
         });
         $('#medical_certificate_file').val('');
         $('#medical_certificate_preview').attr('src','');
+        $('#medical_certificate_view').prop('disabled',true);
+        // $('.medical_certificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(medicalCertificateFileSize > 5242880 * 2){
         Swal.fire({
@@ -711,6 +767,8 @@ function medicalCertificateValidation(medical_certificate_file) {
         });
         $('#medical_certificate_file').val('');
         $('#medical_certificate_preview').attr('src','');
+        $('#medical_certificate_view').prop('disabled',true);
+        // $('.medical_certificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (medicalCertificateData.files && medicalCertificateData.files[0]) {
@@ -722,6 +780,7 @@ function medicalCertificateValidation(medical_certificate_file) {
                 $('#medical_certificate_view').prop('disabled',false);
                 $('#medical_certificate_replace').prop('disabled',false);
                 $('#medical_certificate_button').hide();
+                // $('.medical_certificate_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -742,6 +801,8 @@ function torValidation(tor_file) {
         });
         $('#tor_file').val('');
         $('#tor_preview').attr('src','');
+        $('#tor_view').prop('disabled',true);
+        // $('.tor_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(torExtension != "pdf"){
         Swal.fire({
@@ -753,6 +814,8 @@ function torValidation(tor_file) {
         });
         $('#tor_file').val('');
         $('#tor_preview').attr('src','');
+        $('#tor_view').prop('disabled',true);
+        // $('.tor_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(torFileSize > 5242880 * 2){
         Swal.fire({
@@ -764,6 +827,8 @@ function torValidation(tor_file) {
         });
         $('#tor_file').val('');
         $('#tor_preview').attr('src','');
+        $('#tor_view').prop('disabled',true);
+        // $('.tor_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (torData.files && torData.files[0]) {
@@ -775,6 +840,7 @@ function torValidation(tor_file) {
                 $('#tor_view').prop('disabled',false);
                 $('#tor_replace').prop('disabled',false);
                 $('#tor_button').hide();
+                // $('.tor_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -795,6 +861,8 @@ function diplomaValidation(diploma_file) {
         });
         $('#diploma_file').val('');
         $('#diploma_preview').attr('src','');
+        $('#diploma_view').prop('disabled',true);
+        // $('.diploma_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(diplomaExtension != "pdf"){
         Swal.fire({
@@ -806,6 +874,8 @@ function diplomaValidation(diploma_file) {
         });
         $('#diploma_file').val('');
         $('#diploma_preview').attr('src','');
+        $('#diploma_view').prop('disabled',true);
+        // $('.diploma_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(diplomaFileSize > 5242880 * 2){
         Swal.fire({
@@ -817,6 +887,8 @@ function diplomaValidation(diploma_file) {
         });
         $('#diploma_file').val('');
         $('#diploma_preview').attr('src','');
+        $('#diploma_view').prop('disabled',true);
+        // $('.diploma_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (diplomaData.files && diplomaData.files[0]) {
@@ -828,6 +900,7 @@ function diplomaValidation(diploma_file) {
                 $('#diploma_view').prop('disabled',false);
                 $('#diploma_replace').prop('disabled',false);
                 $('#diploma_button').hide();
+                // $('.diploma_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
@@ -848,6 +921,8 @@ function resumeValidation(resume_file) {
         });
         $('#resume_file').val('');
         $('#resume_preview').attr('src','');
+        $('#resume_view').prop('disabled',true);
+        // $('.resume_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     } 
     else if(resumeExtension != "pdf"){
         Swal.fire({
@@ -859,6 +934,8 @@ function resumeValidation(resume_file) {
         });
         $('#resume_file').val('');
         $('#resume_preview').attr('src','');
+        $('#resume_view').prop('disabled',true);
+        // $('.resume_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(resumeFileSize > 5242880 * 2){
         Swal.fire({
@@ -870,6 +947,8 @@ function resumeValidation(resume_file) {
         });
         $('#resume_file').val('');
         $('#resume_preview').attr('src','');
+        $('#resume_view').prop('disabled',true);
+        // $('.resume_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (resumeData.files && resumeData.files[0]) {
@@ -881,17 +960,19 @@ function resumeValidation(resume_file) {
                 $('#resume_view').prop('disabled',false);
                 $('#resume_replace').prop('disabled',false);
                 $('#resume_button').hide();
+                // $('.resume_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
 
 //Display Modal Preview
 //Performance Evaluation Tab
-function performancePreview(newPerformanceFilesrc){
-    var newPerformanceFileNow = newPerformanceFilesrc.src;
-    var performanceFile = document.getElementById('performance_display');
-    performanceFile.src = newPerformanceFileNow;
-}
+// function performancePreview(newPerformanceFilesrc){
+//     var newPerformanceFileNow = newPerformanceFilesrc.src;
+//     var performanceFile = document.getElementById('performance_display');
+//     performanceFile.src = newPerformanceFileNow;
+// }
+
 //Document Tab
 function documentPreview(newDocumentSrc){
     var newDocumentSrcNow = newDocumentSrc.src;
@@ -966,8 +1047,55 @@ $('#resume_preview').on('click',function(){
     $('.modal-title').html('RESUME');
 });
 
-//Display file name function
 
+function ImageDonutValidation(donut_image) {
+    var donutImageData = document.getElementById('donut_image');
+    var donutImageUploadPath = donutImageData.value;
+    var donutImageExtension = donutImageUploadPath.substring(donutImageUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var donutImageFileSize = $("#donut_image").get(0).files[0].size;
+
+    if ((donutImageExtension != "jpg" && donutImageExtension != "jpeg" && donutImageExtension != "png" && donutImageExtension != "gif") && donutImageFileSize > 5242880) {
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 5MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+
+    } 
+    else if(donutImageExtension != "jpg" && donutImageExtension != "jpeg" && donutImageExtension != "png" && donutImageExtension != "gif"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        
+    }
+    else if(donutImageFileSize > 5242880){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 5MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+    }   
+    else {
+        if (donutImageData.files && donutImageData.files[0]) {
+            var donutImageReader = new FileReader();
+                donutImageReader.onload = function(e) {
+                    $('#donut_image_preview').attr('src', e.target.result);
+                }
+                donutImageReader.readAsDataURL(donutImageData.files[0]);
+                $('#donut_image').hide();
+        }
+    }
+}
+
+//Display file name function
 //Performance Evaluation Tab
 // var memo_file = $('#memo_file')[0];
 // var memo_button = $('#memo_button')[0];
@@ -1035,148 +1163,148 @@ $('#resume_preview').on('click',function(){
 // });
 
 //Documents Tab
-var birthcertificate_file = $('#birthcertificate_file')[0];
-var birthcertificate_button = $('#birthcertificate_button')[0];
-var birthcertificate_text = $('#birthcertificate_text')[0];
+// var birthcertificate_file = $('#birthcertificate_file')[0];
+// var birthcertificate_button = $('#birthcertificate_button')[0];
+// var birthcertificate_text = $('#birthcertificate_text')[0];
 
-$('#birthcertificate_file').on('change',function(){
-    if (birthcertificate_file.value) {
-        birthcertificate_text.innerHTML = "<b>File Name</b>: " + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
-    }
-    else {
-        birthcertificate_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#birthcertificate_file').on('change',function(){
+//     if (birthcertificate_file.value) {
+//         birthcertificate_text.innerHTML = "<b>File Name</b>: " + birthcertificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];//To remove the fakepath and replace by the real extension name of the file uploaded
+//     }
+//     else {
+//         birthcertificate_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var nbi_file = $('#nbi_file')[0];
-var nbi_button = $('#nbi_button')[0];
-var nbi_text = $('#nbi_text')[0];
+// var nbi_file = $('#nbi_file')[0];
+// var nbi_button = $('#nbi_button')[0];
+// var nbi_text = $('#nbi_text')[0];
 
-$('#nbi_file').on('change',function(){
-    if (nbi_file.value) {
-        nbi_text.innerHTML = "<b>File Name</b>: " + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        nbi_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#nbi_file').on('change',function(){
+//     if (nbi_file.value) {
+//         nbi_text.innerHTML = "<b>File Name</b>: " + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         nbi_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var barangay_clearance_file = $('#barangay_clearance_file')[0];
-var barangay_clearance_button = $('#barangay_clearance_button')[0];
-var barangay_clearance_text = $('#barangay_clearance_text')[0];
+// var barangay_clearance_file = $('#barangay_clearance_file')[0];
+// var barangay_clearance_button = $('#barangay_clearance_button')[0];
+// var barangay_clearance_text = $('#barangay_clearance_text')[0];
 
-$('#barangay_clearance_file').on('change',function(){
-    if (barangay_clearance_file.value) {
-        barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        barangay_clearance_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#barangay_clearance_file').on('change',function(){
+//     if (barangay_clearance_file.value) {
+//         barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         barangay_clearance_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var police_clearance_file = $('#police_clearance_file')[0];
-var police_clearance_button = $('#police_clearance_button')[0];
-var police_clearance_text = $('#police_clearance_text')[0];
+// var police_clearance_file = $('#police_clearance_file')[0];
+// var police_clearance_button = $('#police_clearance_button')[0];
+// var police_clearance_text = $('#police_clearance_text')[0];
 
-$('#police_clearance_file').on('change',function(){
-    if (police_clearance_file.value) {
-        police_clearance_text.innerHTML = "<b> File Name: </b>" + police_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        police_clearance_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#police_clearance_file').on('change',function(){
+//     if (police_clearance_file.value) {
+//         police_clearance_text.innerHTML = "<b> File Name: </b>" + police_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         police_clearance_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var sss_file = $('#sss_file')[0];
-var sss_button = $('#sss_button')[0];
-var sss_text = $('#sss_text')[0];
+// var sss_file = $('#sss_file')[0];
+// var sss_button = $('#sss_button')[0];
+// var sss_text = $('#sss_text')[0];
 
-$('#sss_file').on('change',function(){
-    if (sss_file.value) {
-        sss_text.innerHTML = "<b> File Name: </b>" + sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        sss_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#sss_file').on('change',function(){
+//     if (sss_file.value) {
+//         sss_text.innerHTML = "<b> File Name: </b>" + sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         sss_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var philhealth_file = $('#philhealth_file')[0];
-var philhealth_button = $('#philhealth_button')[0];
-var philhealth_text = $('#philhealth_text')[0];
+// var philhealth_file = $('#philhealth_file')[0];
+// var philhealth_button = $('#philhealth_button')[0];
+// var philhealth_text = $('#philhealth_text')[0];
 
-$('#philhealth_file').on('change',function(){
-    if (philhealth_file.value) {
-        philhealth_text.innerHTML = "<b> File Name: </b>" + philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        philhealth_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#philhealth_file').on('change',function(){
+//     if (philhealth_file.value) {
+//         philhealth_text.innerHTML = "<b> File Name: </b>" + philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         philhealth_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var pag_ibig_file = $('#pag_ibig_file')[0];
-var pag_ibig_button = $('#pag_ibig_button')[0];
-var pag_ibig_text = $('#pag_ibig_text')[0];
+// var pag_ibig_file = $('#pag_ibig_file')[0];
+// var pag_ibig_button = $('#pag_ibig_button')[0];
+// var pag_ibig_text = $('#pag_ibig_text')[0];
 
-$('#pag_ibig_file').on('change',function(){
-    if (pag_ibig_file.value) {
-        pag_ibig_text.innerHTML = "<b> File Name: </b>" + pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        pag_ibig_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#pag_ibig_file').on('change',function(){
+//     if (pag_ibig_file.value) {
+//         pag_ibig_text.innerHTML = "<b> File Name: </b>" + pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         pag_ibig_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var medical_certificate_file = $('#medical_certificate_file')[0];
-var medical_certificate_button = $('#medical_certificate_button')[0];
-var medical_certificate_text = $('#medical_certificate_text')[0];
+// var medical_certificate_file = $('#medical_certificate_file')[0];
+// var medical_certificate_button = $('#medical_certificate_button')[0];
+// var medical_certificate_text = $('#medical_certificate_text')[0];
 
-$('#medical_certificate_file').on('change',function(){
-    if (medical_certificate_file.value) {
-        medical_certificate_text.innerHTML = "<b> File Name: </b>" + medical_certificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        medical_certificate_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#medical_certificate_file').on('change',function(){
+//     if (medical_certificate_file.value) {
+//         medical_certificate_text.innerHTML = "<b> File Name: </b>" + medical_certificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         medical_certificate_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var tor_file = $('#tor_file')[0];
-var tor_button = $('#tor_button')[0];
-var tor_text = $('#tor_text')[0];
+// var tor_file = $('#tor_file')[0];
+// var tor_button = $('#tor_button')[0];
+// var tor_text = $('#tor_text')[0];
 
-$('#tor_file').on('change',function(){
-    if (tor_file.value) {
-        tor_text.innerHTML = "<b> File Name: </b>" + tor_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        tor_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#tor_file').on('change',function(){
+//     if (tor_file.value) {
+//         tor_text.innerHTML = "<b> File Name: </b>" + tor_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         tor_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var diploma_file = $('#diploma_file')[0];
-var diploma_button = $('#diploma_button')[0];
-var diploma_text = $('#diploma_text')[0];
+// var diploma_file = $('#diploma_file')[0];
+// var diploma_button = $('#diploma_button')[0];
+// var diploma_text = $('#diploma_text')[0];
 
-$('#diploma_file').on('change',function(){
-    if (diploma_file.value) {
-        diploma_text.innerHTML = "<b> File Name: </b>" + diploma_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        diploma_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#diploma_file').on('change',function(){
+//     if (diploma_file.value) {
+//         diploma_text.innerHTML = "<b> File Name: </b>" + diploma_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         diploma_text.innerHTML = "No file chosen.";
+//     }
+// });
 
-var resume_file = $('#resume_file')[0];
-var resume_button = $('#resume_button')[0];
-var resume_text = $('#resume_text')[0];
+// var resume_file = $('#resume_file')[0];
+// var resume_button = $('#resume_button')[0];
+// var resume_text = $('#resume_text')[0];
 
-$('#resume_file').on('change',function(){
-    if (resume_file.value) {
-        resume_text.innerHTML = "<b> File Name: </b>" + resume_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-    } 
-    else {
-        resume_text.innerHTML = "No file chosen.";
-    }
-});
+// $('#resume_file').on('change',function(){
+//     if (resume_file.value) {
+//         resume_text.innerHTML = "<b> File Name: </b>" + resume_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
+//     } 
+//     else {
+//         resume_text.innerHTML = "No file chosen.";
+//     }
+// });
 
 //Replace File Function
 

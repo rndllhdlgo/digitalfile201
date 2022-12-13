@@ -1,4 +1,3 @@
-//Company DataTable
 var companyTable = $('#companyTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
@@ -20,8 +19,6 @@ var companyTable = $('#companyTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-
-//Branch DataTable
 var branchTable = $('#branchTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
@@ -43,7 +40,6 @@ var branchTable = $('#branchTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-//Shift DataTable
 var shiftTable = $('#shiftTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
@@ -67,7 +63,6 @@ var shiftTable = $('#shiftTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-//Supervisor DataTable
 var supervisorTable = $('#supervisorTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
@@ -89,7 +84,6 @@ var supervisorTable = $('#supervisorTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-//Job Position and Description DataTable
 var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
