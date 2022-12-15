@@ -92,9 +92,9 @@ $(document).ready(function(){
     employeesTable = $('table.employeesTable').DataTable({
         dom:'l<"breakspace">trip',
         language: {
-            info: "\"Showing _START_ to _END_ of _TOTAL_ Products\"",
-            lengthMenu: "Show _MENU_ Products",
-            emptyTable: "No Products Data Found!",
+            info: "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
+            lengthMenu: "Show _MENU_ Employees",
+            emptyTable: "No Employees Data Found!",
         },
         processing: true,
         serverSide: true,
