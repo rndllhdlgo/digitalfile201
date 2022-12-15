@@ -1,9 +1,9 @@
 //Fetch Employee Data
-$(document).on('dblclick','table.employeesTable tbody tr',function(){//View employee information on tr double click
-    var data = employeesTable.row(this).data();
-    var id = data.id; 
-    console.log(id);
-    return false;
+// $(document).on('dblclick','table.employeesTable tbody tr',function(){//View employee information on tr double click
+//     var data = employeesTable.row(this).data();
+//     var id = data.id; 
+//     console.log(id);
+//     return false;
     // $('#tab1').click();
     // $('#btnClear').hide();
     // $('#btnEnableEdit').show();
@@ -137,4 +137,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){//View empl
     //         $('#image_preview').show();
     //     }
     // });
+// });
+$(document).on('click','table.employeesTable tbody tr',function(){
+    var data = employeesTable.row(this).data();
+    var id = data.id;
+    alert(id);
 });

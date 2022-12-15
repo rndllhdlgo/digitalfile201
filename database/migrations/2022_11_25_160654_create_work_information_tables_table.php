@@ -15,6 +15,7 @@ class CreateWorkInformationTablesTable extends Migration
     {
         Schema::create('work_information_tables', function (Blueprint $table) {
             $table->id();
+            $table->string('employee_number');
             $table->string('employee_company');
             $table->string('employee_branch');
             $table->string('employee_status');

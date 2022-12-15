@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\PagesController;
@@ -22,12 +23,12 @@ use App\Http\Controllers\SalesMonthly;
 |
 */
 
+//Authentication Routes
+Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
+Route::get('/logout',[LoginController::class,'logout']);
+Route::get('/', 'HomeController@index');
 
-Route::any('/checkbox','CheckboxRadioController@checkbox');
-Route::any('/insertcheckbox','CheckboxRadioController@insertcheckbox');
-
-// Routes for web pages
-// Route::any('/home','PagesController@home');
+// Pages Controller
 Route::any('/employees', 'PagesController@employees');
 Route::any('/memos', 'PagesController@memos');
 Route::any('/evaluation', 'PagesController@evaluation');
@@ -35,72 +36,55 @@ Route::any('/contracts', 'PagesController@contracts');
 Route::any('/users', 'PagesController@users');
 Route::any('/maintenance', 'PagesController@maintenance');
 
-// Routes for Employees Controller
-Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');//To display data table of list of employees
-Route::any('/employees/save','EmployeesController@save');
+Route::get('/setcity','PagesController@setcity');
+Route::get('/setprovince','PagesController@setprovince');
+
+Route::get('/index/data','PagesController@index_data');
+
+Route::any('/setJobPosition','PagesController@setJobPosition');
+Route::any('/setJobDescription','PagesController@setJobDescription');
+
+// Employees Controller
+Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
-Route::any('/employees/fetch','EmployeesController@fetch');
-Route::any('/employees/update','EmployeesController@update');
-Route::any('/employees/insert', 'EmployeesController@insert');
 
-//Routes for Checking Duplication
-Route::get('/employees/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::get('/employees/checkEmailDuplicate', 'EmployeesController@checkEmailDuplicate');
-Route::get('/employees/checkTelephoneNumberDuplicate', 'EmployeesController@checkTelephoneNumberDuplicate');
-Route::get('/employees/checkCellphoneNumberDuplicate', 'EmployeesController@checkCellphoneNumberDuplicate');
-Route::get('/employees/checkFatherCellphoneNumberDuplicate', 'EmployeesController@checkFatherCellphoneNumberDuplicate');
-Route::get('/employees/checkMotherCellphoneNumberDuplicate', 'EmployeesController@checkMotherCellphoneNumberDuplicate');
-Route::get('/employees/checkSpouseCellphoneNumberDuplicate', 'EmployeesController@checkSpouseCellphoneNumberDuplicate');
-Route::get('/employees/checkEmergencyContactNumberDuplicate', 'EmployeesController@checkEmergencyContactNumberDuplicate');
-Route::get('/employees/checkEmployeeEmailAddressDuplicate', 'EmployeesController@checkEmployeeEmailAddressDuplicate');
-Route::get('/employees/checkEmployeeContactNumberDuplicate', 'EmployeesController@checkEmployeeContactNumberDuplicate');
+Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
+Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
+Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompensationBenefits');
+Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
+Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
 
-//Routes for Fetching DataTables
+Route::any('/employees/saveCollege','EmployeesController@saveCollege');
+Route::any('/employees/saveTraining','EmployeesController@saveTraining');
+Route::any('/employees/saveVocational','EmployeesController@saveVocational');
+Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
+Route::any('/employees/saveChildren','EmployeesController@saveChildren');
+
+Route::any('/employees/checkDuplicate', 'EmployeesController@checkDuplicate');
+Route::any('/employees/checkEmailDuplicate', 'EmployeesController@checkEmailDuplicate');
+Route::any('/employees/checkTelephoneNumberDuplicate', 'EmployeesController@checkTelephoneNumberDuplicate');
+Route::any('/employees/checkCellphoneNumberDuplicate', 'EmployeesController@checkCellphoneNumberDuplicate');
+Route::any('/employees/checkFatherCellphoneNumberDuplicate', 'EmployeesController@checkFatherCellphoneNumberDuplicate');
+Route::any('/employees/checkMotherCellphoneNumberDuplicate', 'EmployeesController@checkMotherCellphoneNumberDuplicate');
+Route::any('/employees/checkSpouseCellphoneNumberDuplicate', 'EmployeesController@checkSpouseCellphoneNumberDuplicate');
+Route::any('/employees/checkEmergencyContactNumberDuplicate', 'EmployeesController@checkEmergencyContactNumberDuplicate');
+Route::any('/employees/checkEmployeeEmailAddressDuplicate', 'EmployeesController@checkEmployeeEmailAddressDuplicate');
+Route::any('/employees/checkEmployeeContactNumberDuplicate', 'EmployeesController@checkEmployeeContactNumberDuplicate');
+
 Route::any('/employees/childrenDataTable','EmployeesController@childrenDataTable');
-Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');//For Fetch data route
+Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');
 
-//Routes for users tab
+Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
+
+// Users Controller
 Route::any('/users/listOfUsers','UsersController@listOfUsers');
 Route::any('/users/saveUser','UsersController@saveUser');
 Route::any('/users/updateUser','UsersController@updateUser');
 
-//Authentication Routes
-Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
-Route::get('/logout',[LoginController::class,'logout']);
-Route::get('/', 'HomeController@index');
-
-// Auth::routes();
-// Route::get('/home', 'HomeController@index')->name('home');
-
-// Routes Select Region
-Route::get('/setcity','PagesController@setcity');
-Route::get('/setprovince','PagesController@setprovince');
-
-// Route::resource('document','DocumentuploadController');
-Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
-
-// Routes for saving multiple tables
-Route::any('/employees/childrenSave','EmployeesController@childrenSave');
-Route::any('/employees/collegeSave','EmployeesController@collegeSave');
-Route::any('/employees/trainingSave','EmployeesController@trainingSave');
-Route::any('/employees/vocationalSave','EmployeesController@vocationalSave');
-Route::any('/employees/jobSave','EmployeesController@jobSave');
-Route::any('/employees/memoSave','EmployeesController@memoSave');
-Route::any('/employees/evaluationSave','EmployeesController@evaluationSave');
-Route::any('/employees/contractsSave','EmployeesController@contractsSave');
-Route::any('/employees/resignationSave','EmployeesController@resignationSave');
-Route::any('/employees/terminationSave','EmployeesController@terminationSave');
-Route::any('/employees/medicalHistorySave','EmployeesController@medicalHistorySave');
-
-
-//Route for home page
-Route::get('/index/data','PagesController@index_data');
-
-// Routes for maintenance
+// Maintenance Controller
 Route::get('/maintenance/companyData','MaintenanceController@companyData');
 Route::any('/maintenance/companySave','MaintenanceController@companySave');
 Route::any('/maintenance/companyUpdate','MaintenanceController@companyUpdate');
-// Route::get('/maintenance/companyFetch','MaintenanceController@companyFetch');
 
 Route::any('/maintenance/branchData','MaintenanceController@branchData');
 Route::any('/maintenance/branchSave','MaintenanceController@branchSave');
@@ -125,50 +109,3 @@ Route::any('/maintenance/jobPositionAndDescriptionUpdate','MaintenanceController
 Route::any('/maintenance/jobDescriptionData','MaintenanceController@jobDescriptionData');
 Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');
 Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescriptionUpdate');
-
-Route::any('/setJobPosition','PagesController@setJobPosition');
-Route::any('/setJobDescription','PagesController@setJobDescription');
-
-
-
-//Multiple File Upload
-Route::any('/multipleFileUpload','MultipleFileUpload@multipleFileUpload');
-Route::any('/saveMultipleFileUpload','MultipleFileUpload@saveMultipleFileUpload');
-
-Route::any('/uploadMultipleFile','UploadMultipleFileController@uploadMultipleFile');
-Route::any('/saveuploadMultipleFile','UploadMultipleFileController@saveuploadMultipleFile');
-
-// Revise DataBase
-Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
-Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
-Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompensationBenefits');
-Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
-Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
-
-Route::any('/employees/saveCollege','EmployeesController@saveCollege');
-Route::any('/employees/saveTraining','EmployeesController@saveTraining');
-Route::any('/employees/saveVocational','EmployeesController@saveVocational');
-Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
-Route::any('/employees/saveChildren','EmployeesController@saveChildren');
-
-Route::any('/carsView','CarController@carsView');
-Route::any('/carsSave','CarController@carsSave');
-Route::any('/carsFetch','CarController@carsFetch');
-
-Route::any('/donutSalesBlade','DonutSalesController@donutSalesBlade');
-// Route::any('/donutSalesYear','DonutSalesController@fetch_year');
-Route::any('/donutSalesFetch','DonutSalesController@donutSalesFetch');
-
-// Route::any('/donutSalesView','ChartController@donutSalesView');
-// Route::any('/fetch_data','ChartController@fetch_data');
-
-Route::any('/salesMonthlyBlade','SalesMonthly@salesMonthlyBlade');
-Route::any('/salesMonthlyData','SalesMonthly@salesMonthlyData');
-
-Route::any('/salesByMonthBlade','SalesByMonthController@salesByMonthBlade');
-Route::any('/salesByMonthData','SalesByMonthController@salesByMonthData');
-
-Route::any('/donutImage','DonutController@donutImageView');
-Route::any('/donutImage/insertDonutImage','DonutController@insertDonutImage');
-
-Route::any('/donut','DdController@donut_view');

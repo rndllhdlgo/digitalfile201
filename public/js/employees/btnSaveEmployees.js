@@ -10,6 +10,7 @@ function sendFile() {
         data: formData,
         contentType : false,
         processData : false,
+        async: false,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
@@ -22,7 +23,7 @@ function sendFile() {
 
 $('#btnSave').on('click', function(){
         
-        var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
+        // var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
         var first_name = $.trim($('#first_name').val());
         var last_name = $.trim($('#last_name').val());
         var middle_name = $.trim($('#middle_name').val());
@@ -76,7 +77,7 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    employee_number:employee_number,
+                    // employee_number:employee_number,
                     employee_image:employee_image,
                     first_name:first_name,
                     last_name:last_name,
@@ -112,6 +113,7 @@ $('#btnSave').on('click', function(){
                 success: function(data){
                         if(data.result == 'true'){
                             $('#employee_id').val(data.id);
+                            var employee_number = $('#employee_number').val();
                             var employee_company = $('#employee_company').val();
                             var employee_branch = $('#employee_branch').val();
                             var employee_status = $('#employee_status').val();
@@ -137,6 +139,7 @@ $('#btnSave').on('click', function(){
                                 },
                                 data:{
                                     employee_id:data.id,
+                                    employee_number:employee_number,
                                     employee_company:employee_company,
                                     employee_branch:employee_branch,
                                     employee_status:employee_status,
@@ -315,20 +318,13 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
-                                $('#documents_form').submit();
+                                // $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
-                                $('#solo_parent_data_table').hide();
-                                $('#college_data_table').hide();
-                                $('#training_data_table').hide();
-                                $('#vocational_data_table').hide();
-                                $('#job_data_table').hide();
-                                $('#memo_data_table').hide();
-                                $('#evaluation_data_table').hide();
-                                $('#contracts_data_table').hide();
+                                setTimeout(function(){window.location.reload();}, 2000);
                         }
                         else{
                             Swal.fire("SAVE FAILED", "", "error");
-                            setTimeout(function(){$('#employeesTable').DataTable().ajax.reload();}, 2000);
+                            setTimeout(function(){window.location.reload();}, 2000);
                         }
                 },
                 error: function(data){
