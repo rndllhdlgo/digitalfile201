@@ -1,9 +1,9 @@
-var fileName;
+var employee_image;
 function sendFile() {
     var formData = new FormData();
     var file = $('#employee_image').prop('files')[0];
 
-    formData.append('file', file);
+    formData.append('employee_image', file);
     $.ajax({
         url: '/employees/insertImage',
         method: 'post',
@@ -15,13 +15,13 @@ function sendFile() {
         },
         success: function(response){
           console.log(response);
-          fileName = response;
+          employee_image = response;
         }
     });
 }
 
 $('#btnSave').on('click', function(){
-        sendFile();
+        
         var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
         var first_name = $.trim($('#first_name').val());
         var last_name = $.trim($('#last_name').val());
@@ -68,6 +68,7 @@ $('#btnSave').on('click', function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
+            sendFile();
             $.ajax({
                 url:"/employees/savePersonalInformation",
                 type:"POST",
@@ -76,7 +77,7 @@ $('#btnSave').on('click', function(){
                 },
                 data:{
                     employee_number:employee_number,
-                    fileName:fileName,
+                    employee_image:employee_image,
                     first_name:first_name,
                     last_name:last_name,
                     middle_name:middle_name,
