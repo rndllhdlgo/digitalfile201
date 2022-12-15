@@ -8,11 +8,11 @@ $('#employee_number').on('keyup',function(){
             success: function(data){
                 if(data == 'true'){
                     $('#check_duplicate').show();
-                    $('#employee_number').addClass('check_duplicate');
+                    $('#employee_number').addClass('duplicate_field');
                 }
                 else{
                     $('#check_duplicate').hide();
-                    $('#employee_number').removeClass('check_duplicate');
+                    $('#employee_number').removeClass('duplicate_field');
                 }
             }
         });
