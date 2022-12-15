@@ -42,40 +42,40 @@ function checkforblankMultiple(){
         $('#btnJobHistoryAdd').css('display','block');
     }
     
-    // if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
-    //     $('#btnAddMemoRow').prop('disabled',true);
-    // }
-    // else{
-    //     $('#btnAddMemoRow').prop('disabled',false);
-    // }
+    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
+        $('#btnAddMemoRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddMemoRow').prop('disabled',false);
+    }
 
-    // if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
-    //     $('#btnAddEvaluationRow').prop('disabled',true);
-    // }
-    // else{
-    //     $('#btnAddEvaluationRow').prop('disabled',false);
-    // }
+    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
+        $('#btnAddEvaluationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddEvaluationRow').prop('disabled',false);
+    }
 
-    // if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
-    //     $('#btnAddContractRow').prop('disabled',true);
-    // }
-    // else{
-    //     $('#btnAddContractRow').prop('disabled',false);
-    // }
+    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
+        $('#btnAddContractRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddContractRow').prop('disabled',false);
+    }
 
-    // if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
-    //     $('#btnAddResignationRow').prop('disabled',true);
-    // }
-    // else{
-    //     $('#btnAddResignationRow').prop('disabled',false);
-    // }
+    if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
+        $('#btnAddResignationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddResignationRow').prop('disabled',false);
+    }
 
-    // if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
-    //     $('#btnAddTerminationRow').prop('disabled',true);
-    // }
-    // else{
-    //     $('#btnAddTerminationRow').prop('disabled',false);
-    // }
+    if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
+        $('#btnAddTerminationRow').prop('disabled',true);
+    }
+    else{
+        $('#btnAddTerminationRow').prop('disabled',false);
+    }
 }
 
 

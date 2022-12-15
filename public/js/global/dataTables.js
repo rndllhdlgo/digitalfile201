@@ -1,91 +1,122 @@
 
 //Display Data Table Function
-var employeesTable;
-$(document).ready(function () {
-    // Setup - add a text input to each footer cell
-    $('#employeesTable thead tr')
-        .clone(true)
-        .addClass('filters')
-        .appendTo('#employeesTable thead');
+// var employeesTable;
+// $(document).ready(function () {
+//     // Setup - add a text input to each footer cell
+//     $('#employeesTable thead tr')
+//         .clone(true)
+//         .addClass('filters')
+//         .appendTo('#employeesTable thead');
 
-        employeesTable = $('#employeesTable').DataTable({
-            dom:'l<"breakspace">trip',
-            language:{
-                "info": "\"_START_ to _END_ of _TOTAL_ Employees\"",
-                "lengthMenu":"Show _MENU_ Employees",
-                "emptyTable":"No Employees Data Found!",
-                "loadingRecords": "Loading Employee Records...",
-            },
-            "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-            processing:true,
-            serverSide:false,
-            orderCellsTop: true,
-            fixedHeader: true,
-            ajax:{
-                url: '/employees/listOfEmployees',
-            },
-            order: [],
-            columns:[
-                {data: 'employee_number'},//data column name
-                {data: 'first_name'},
-                {data: 'middle_name'},
-                {data: 'last_name'},
-                {data: 'employee_position'},
-                {data: 'employee_branch'},
-                {data: 'employee_status'},
+//         employeesTable = $('#employeesTable').DataTable({
+//             dom:'l<"breakspace">trip',
+//             language:{
+//                 "info": "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
+//                 "lengthMenu":"Show _MENU_ Employees",
+//                 "emptyTable":"No Employees Data Found!",
+//                 "loadingRecords": "Loading Employee Records...",
+//             },
+//             "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+//             processing:true,
+//             serverSide:false,
+//             orderCellsTop: true,
+//             fixedHeader: true,
+//             ajax:{
+//                 url: '/employees/listOfEmployees',
+//             },
+//             order: [],
+//             columns:[
+//                 {data: 'employee_number'},//data column name
+//                 {data: 'first_name'},
+//                 {data: 'middle_name'},
+//                 {data: 'last_name'},
+//                 {data: 'employee_position'},
+//                 {data: 'employee_branch'},
+//                 {data: 'employee_status'},
                
-            ],
-            initComplete: function () {
-                var api = this.api();
+//             ],
+//             initComplete: function () {
+//                 var api = this.api();
     
-                // For each column
-                api
-                    .columns()
-                    .eq(0)
-                    .each(function (colIdx) {
-                        // Set the header cell to contain the input element
-                        var cell = $('.filters th').eq(
-                            $(api.column(colIdx).header()).index()
-                        );
-                        var title = $(cell).text();
-                        $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
+//                 // For each column
+//                 api
+//                     .columns()
+//                     .eq(0)
+//                     .each(function (colIdx) {
+//                         // Set the header cell to contain the input element
+//                         var cell = $('.filters th').eq(
+//                             $(api.column(colIdx).header()).index()
+//                         );
+//                         var title = $(cell).text();
+//                         $(cell).html('<input type="text" class="text-capitalize" style="border:none;border-radius:5px;width:100%;"/>');
     
-                        // On every keypress in this input
-                        $(
-                            'input',
-                            $('.filters th').eq($(api.column(colIdx).header()).index())
-                        )
-                            .off('keyup change')
-                            .on('change', function (e) {
-                                // Get the search value
-                                $(this).attr('title', $(this).val());
-                                var regexr = '({search})'; //$(this).parents('th').find('select').val();
+//                         // On every keypress in this input
+//                         $(
+//                             'input',
+//                             $('.filters th').eq($(api.column(colIdx).header()).index())
+//                         )
+//                             .off('keyup change')
+//                             .on('change', function (e) {
+//                                 // Get the search value
+//                                 $(this).attr('title', $(this).val());
+//                                 var regexr = '({search})'; //$(this).parents('th').find('select').val();
     
-                                var cursorPosition = this.selectionStart;
-                                // Search the column for that value
-                                api
-                                    .column(colIdx)
-                                    .search(
-                                        this.value != ''
-                                            ? regexr.replace('{search}', '(((' + this.value + ')))')
-                                            : '',
-                                        this.value != '',
-                                        this.value == ''
-                                    )
-                                    .draw();
-                            })
-                            .on('keyup', function (e) {
-                                e.stopPropagation();
+//                                 var cursorPosition = this.selectionStart;
+//                                 // Search the column for that value
+//                                 api
+//                                     .column(colIdx)
+//                                     .search(
+//                                         this.value != ''
+//                                             ? regexr.replace('{search}', '(((' + this.value + ')))')
+//                                             : '',
+//                                         this.value != '',
+//                                         this.value == ''
+//                                     )
+//                                     .draw();
+//                             })
+//                             .on('keyup', function (e) {
+//                                 e.stopPropagation();
     
-                                $(this).trigger('change');
-                                $(this)
-                                    .focus()[0]
-                                    .setSelectionRange(cursorPosition, cursorPosition);
-                            });
-                    });
-            },
-        });
-    $('div.breakspace').html('<br><br>');
+//                                 $(this).trigger('change');
+//                                 $(this)
+//                                     .focus()[0]
+//                                     .setSelectionRange(cursorPosition, cursorPosition);
+//                             });
+//                     });
+//             },
+//         });
+//     $('div.breakspace').html('<br><br>');
+// });
+var employeesTable;
+$(document).ready(function(){
+    employeesTable = $('table.employeesTable').DataTable({
+        dom:'l<"breakspace">trip',
+        language: {
+            info: "\"Showing _START_ to _END_ of _TOTAL_ Products\"",
+            lengthMenu: "Show _MENU_ Products",
+            emptyTable: "No Products Data Found!",
+        },
+        processing: true,
+        serverSide: true,
+        ajax: {
+            url: '/employees/listOfEmployees',
+        },
+        order: [],
+        columns:[
+            {data: 'employee_number'},//data column name
+            {data: 'first_name'},
+            {data: 'middle_name'},
+            {data: 'last_name'},
+            {data: 'employee_position'},
+            {data: 'employee_branch'},
+            {data: 'employee_status'},
+        ],
+    });
+});
+$('div.breakspace').html('<br><br>');
+
+$('.filter-input').on('keyup search', function(){
+    employeesTable.column($(this).data('column')).search($(this).val()).draw();
 });
 
 //Users DataTable
@@ -172,5 +203,3 @@ $(document).ready(function () {
     });
     $('div.breakspace').html('<br><br>');
 });
-
-// Company Data Tables

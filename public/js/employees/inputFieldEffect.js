@@ -1,7 +1,3 @@
-//This JS page is for the input field effects and validations
-
-//Personal Information Tab
-//Input field minimum length validation
 $('#first_name').on('keyup',function(){ 
     if($('#first_name').val().length < 2){
         $('#first_name_validation').show();

@@ -88,7 +88,7 @@ class EmployeesController extends Controller
 
         $employee_personal_information->employee_number = $employee_number_logs;//Eloquent Syntax/Form
         $employee_personal_information->first_name =  $employee_first_name_logs;
-        $employee_personal_information->employee_image = $request->fileName;
+        $employee_personal_information->employee_image = $request->employee_image;
         $employee_personal_information->last_name = $employee_last_name_logs;
         $employee_personal_information->middle_name = $employee_middle_name_logs;
 
@@ -152,19 +152,14 @@ class EmployeesController extends Controller
         $children->save();
     }
 
-    public function insertImage(Request $request){//This function is to save the image
+    public function insertImage(Request $request){
 
-        if($request->hasFile('file')){
-            $filenameWithExt = $request->file('file')->getClientOriginalName();//Get filename with the extension
-            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);//Get Just filename
-            $extension = $request->file('file')->getClientOriginalExtension();//Get just extension
-            $fileNameToStore = time().'_'.'employee_image'.'.'.$extension;// Filename to store
-            $path = $request->file('file')->storeAs('public/employee_images',$fileNameToStore);//To create folder for images under public folder
-        }
-        else{
-            $fileNameToStore = 'noimage.png';
-        }
-            return $fileNameToStore;
+        $employeeImageFile = $request->file('employee_image');
+        $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
+        $employeeImageFileName = time().rand(1,100).'_Employee_Image.'.$employeeImageExtension;
+        $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
+        
+        return $employeeImageFileName;
     }
 
     public function saveWorkInformation(Request $request){
