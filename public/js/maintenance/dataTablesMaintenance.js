@@ -1,7 +1,7 @@
 var companyTable = $('#companyTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
-        "info": "\"_START_ to _END_ of _TOTAL_ Companies\"",
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Companies\"",
         "lengthMenu":"Show _MENU_ Companies",
         "emptyTable":"No Companies Data Found!",
         "loadingRecords": "Loading Companies Records...",
@@ -22,7 +22,7 @@ $('div.breakspace').html('<br><br>');
 var branchTable = $('#branchTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
-        "info": "\"_START_ to _END_ of _TOTAL_ Branches\"",
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Branches\"",
         "lengthMenu":"Show _MENU_ Branches",
         "emptyTable":"No Branches Data Found!",
         "loadingRecords": "Loading Branches Records...",
@@ -43,7 +43,7 @@ $('div.breakspace').html('<br><br>');
 var shiftTable = $('#shiftTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
-        "info": "\"_START_ to _END_ of _TOTAL_ Shifts\"",
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
         "lengthMenu":"Show _MENU_ Shifts",
         "emptyTable":"No Shifts Data Found!",
         "loadingRecords": "Loading Shifts Records...",
@@ -66,7 +66,7 @@ $('div.breakspace').html('<br><br>');
 var supervisorTable = $('#supervisorTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
-        "info": "\"_START_ to _END_ of _TOTAL_ Supervisors\"",
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Supervisors\"",
         "lengthMenu":"Show _MENU_ Supervisors",
         "emptyTable":"No Supervisors Data Found!",
         "loadingRecords": "Loading Supervisors Records...",
@@ -87,7 +87,7 @@ $('div.breakspace').html('<br><br>');
 var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTable({
     dom:'lf<"breakspace">rtip',
     language:{
-        "info": "\"_START_ to _END_ of _TOTAL_ Job Positions\"",
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Job Positions,Descriptions,Skills\"",
         "lengthMenu":"Show _MENU_ Job Positions",
         "emptyTable":"No Job Positions Data Found!",
         "loadingRecords": "Loading Job Positions Records...",
@@ -103,6 +103,27 @@ var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTa
         {data: 'job_position_name'},
         {data: 'job_description'},
         {data: 'job_requirements'}
+    ] 
+});
+$('div.breakspace').html('<br><br>');
+
+var departmentTable = $('#departmentTable').DataTable({
+    dom:'lf<"breakspace">rtip',
+    language:{
+        "info": "\"Showing _START_ to _END_ of _TOTAL_ Departments\"",
+        "lengthMenu":"Show _MENU_ Departments",
+        "emptyTable":"No Departments Data Found!",
+        "loadingRecords": "Loading Departments Records...",
+    },
+    "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    processing:true,
+    serverSide:false,
+    ajax: {
+        url: '/maintenance/departmentData',
+    },
+    order: [],
+    columns: [
+        {data: 'department'}
     ] 
 });
 $('div.breakspace').html('<br><br>');

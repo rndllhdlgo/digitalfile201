@@ -8,6 +8,8 @@ use App\Models\Branch;
 use App\Models\Supervisor;
 use App\Models\Shift;
 use App\Models\Position;
+use App\Models\Department;
+
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -23,9 +25,9 @@ class MaintenanceController extends Controller
         $company_name_logs = ucwords($request->company_name);
 
         //To prevent add/Capital Letters
-        if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_logs))->count() > 0){
-            return 'duplicate';
-        }
+        // if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_logs))->count() > 0){
+        //     return 'duplicate';
+        // }
 
         $company = new Company;
         $company->company_name = $company_name_logs;
@@ -78,9 +80,9 @@ class MaintenanceController extends Controller
     public function branchSave(Request $request){
         $branch_name_logs = ucwords($request->branch_name);
 
-        if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_logs))->count() > 0){
-            return 'duplicate';
-        }
+        // if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_logs))->count() > 0){
+        //     return 'duplicate';
+        // }
 
         $branch = new Branch;
         $branch->branch_name = $branch_name_logs;
@@ -135,9 +137,9 @@ class MaintenanceController extends Controller
         $shift_working_hours_logs = strtoupper($request->shift_working_hours);
         $shift_break_time_logs = strtoupper($request->shift_break_time);
 
-        if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_logs))->count() > 0){
-            return 'duplicate';
-        }
+        // if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_logs))->count() > 0){
+        //     return 'duplicate';
+        // }
         
         $shift = new Shift;
         $shift->shift_code = $shift_code_logs;
@@ -221,9 +223,9 @@ class MaintenanceController extends Controller
     public function supervisorSave(Request $request){
         $supervisor_name_logs = ucwords($request->supervisor_name);
 
-        if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_logs))->count() > 0){
-            return 'duplicate';
-        }
+        // if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_logs))->count() > 0){
+        //     return 'duplicate';
+        // }
 
         $supervisor = new Supervisor;
         $supervisor->supervisor_name = $supervisor_name_logs;
@@ -276,9 +278,9 @@ class MaintenanceController extends Controller
     public function jobPositionAndDescriptionSave(Request $request){
         $job_position_name_logs = ucwords($request->job_position_name);
         
-        if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
-            return 'duplicate';
-        }
+        // if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
+        //     return 'duplicate';
+        // }
 
         $jobPositionAndDescription = new Position;
         $jobPositionAndDescription->job_position_name = $job_position_name_logs;
@@ -321,4 +323,64 @@ class MaintenanceController extends Controller
         }
     }
     
+    public function departmentData(){
+        $department = Department::all();
+        return DataTables::of($department)->make(true);
+    }
+
+    public function departmentSave(Request $request){
+        $department_logs = ucfirst($request->department);
+
+        $department = new Department;
+        $department->department = $department_logs;
+        $save = $department->save();
+
+        if($save){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "ADDED DEPARTMENT: User successfully added Department: [$department_logs]."; //Display logs in home page
+            $userlogs->save();
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+    
+    public function departmentUpdate(Request $request){
+        $department_orig = ucwords($request->department_orig);
+        $department_new = ucwords($request->department_new);
+
+        $department = Department::find($request->department_id);
+        $department->department = $department_new;
+        $save = $department->save();
+
+        if($save){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    public function checkDuplicate(Request $request){
+        if(Department::where('department',$request->department)->count() > 0){
+            return 'duplicate_department';
+        }
+        if(Company::where('company_name',$request->company_name)->count() > 0){
+            return 'duplicate_company_name';
+        }
+        if(Branch::where('branch_name',$request->branch_name)->count() > 0){
+            return 'duplicate_branch_name';
+        }
+        if(Shift::where('shift_code',$request->shift_code)->count() > 0){
+            return 'duplicate_shift_code';
+        }
+        if(Supervisor::where('supervisor_name',$request->supervisor_name)->count() > 0){
+            return 'duplicate_supervisor_name';
+        }
+        if(Position::where('job_position_name',$request->job_position_name)->count() > 0){
+            return 'duplicate_job_position_name';
+        }
+    }
 }

@@ -115,6 +115,7 @@ $('#btnSave').on('click', function(){
                             $('#employee_id').val(data.id);
                             var employee_number = $('#employee_number').val();
                             var employee_company = $('#employee_company').val();
+                            var employee_department = $('#employee_department').val();
                             var employee_branch = $('#employee_branch').val();
                             var employee_status = $('#employee_status').val();
                             var employment_origin = $('#employment_origin option:selected').text();
@@ -141,6 +142,7 @@ $('#btnSave').on('click', function(){
                                     employee_id:data.id,
                                     employee_number:employee_number,
                                     employee_company:employee_company,
+                                    employee_department:employee_department,
                                     employee_branch:employee_branch,
                                     employee_status:employee_status,
                                     employment_origin:employment_origin,

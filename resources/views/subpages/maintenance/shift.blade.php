@@ -17,11 +17,12 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Shift</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="f-outline">
                         <input class="forminput form-control required_field text-uppercase" type="search" id="shift_code" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p>
                         <label for="shift_code" class="formlabel form-label"><i class="fa-solid fa-hashtag"></i> SHIFT CODE </label>
                     </div>
                     <br>
@@ -37,6 +38,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="shiftSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>
@@ -47,12 +49,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Shift Details</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="shift_id">
                     <div class="f-outline">
                         <input class="forminput form-control required_field text-uppercase" type="search" id="shift_details_code" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p>
                         <label for="shift_details_code" class="formlabel form-label"><i class="fas fa-address-card"></i> SHIFT CODE </label>
                     </div>
                     <br>
@@ -68,6 +71,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="shiftUpdate"><i class="fas fa-edit"></i> <b>UPDATE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>

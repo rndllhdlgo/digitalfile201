@@ -15,16 +15,18 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Branch</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
                     <div class="f-outline">
                         <input class="forminput form-control required_field text-capitalize" type="search" id="branch_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Branch Already Exist!</p>
                         <label for="branch_name" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="branchSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>
@@ -35,17 +37,19 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Branch Details</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="branch_id">
                     <div class="f-outline">
                         <input class="forminput form-control required_field text-capitalize" type="search" id="branch_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Branch Already Exist!</p>
                         <label for="branch_name_new" class="formlabel form-label"><i class="fas fa-address-card"></i> BRANCH NAME </label>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="branchUpdate"><i class="fas fa-edit"></i> <b>UPDATE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>

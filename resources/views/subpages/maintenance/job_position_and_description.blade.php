@@ -18,12 +18,13 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">New Job Position and Description</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
-                        <label for="job_position_name" class="form-label text-black"><strong>JOB POSITION</strong></label>
                     <div class="f-outline mb-3">
+                        <label for="job_position_name" class="form-label text-black"><strong>JOB POSITION</strong></label>
                         <input class="forminput form-control required_field text-capitalize" type="search" id="job_position_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Job Position Already Exist!</p>
                     </div>
                     <div class="row mb-3">
                         <div class="col">
@@ -40,6 +41,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="jobPositionAndDescriptionSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>
@@ -50,13 +52,14 @@
             <div class="modal-content">
                 <div class="modal-header" style="background-color: #0d1a80;">
                     <h5 class="modal-title text-white" id="exampleModalLabel">Update Job Position and Description</h5>
-                    <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
+                    <button type="button" class="btn-close btn-close-white close"></button>
                 </div>
                 <div class="modal-body">
                     <input type="hidden" id="job_position_and_description_id">
-                        <label for="job_position_name_new" class="form-label text-black"><strong>JOB POSITION</strong></label>
                     <div class="f-outline mb-3">
+                        <label for="job_position_name_new" class="form-label text-black"><strong>JOB POSITION</strong></label>
                         <input class="forminput form-control required_field text-capitalize" type="search" id="job_position_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Job Position Already Exist!</p>
                     </div>
                     <div class="mb-3">
                         <label for="job_description_new" class="form-label text-black"><strong>JOB DESCRIPTION</strong></label>
@@ -71,6 +74,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="jobPositionAndDescriptionUpdate"><i class="fas fa-save"></i> <b>UPDATE</b></button>
+                    <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
                 </div>
             </div>
         </div>

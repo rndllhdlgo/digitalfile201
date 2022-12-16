@@ -35,11 +35,6 @@ $('#companySave').on('click',function(){
                         });
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("COMPANY NAME ALREADY EXIST","Please Enter Different Company Name","error");
-                        $('#company_name').val('');
-                        return false;
-                    }
                     else{
                         $('#saveCompanyModal').modal('hide');
                         Swal.fire({
@@ -93,11 +88,6 @@ $('#branchSave').on('click',function(){
                         });
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("BRANCH NAME ALREADY EXIST","Please Enter Different Branch Name","error");
-                        $('#branch_name').val('');
-                        return false;
-                    }
                     else{
                         $('#saveBranchModal').modal('hide');
                         Swal.fire({
@@ -150,11 +140,6 @@ $('#supervisorSave').on('click',function(){
                             timer: 1500
                         });
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
-                    }
-                    else if(data == 'duplicate'){
-                        Swal.fire("SUPERVISOR NAME ALREADY EXIST","Please Enter Different Supervisor Name","error");
-                        $('#supervisor_name').val('');
-                        return false;
                     }
                     else{
                         $('#saveSupervisorModal').modal('hide');
@@ -213,11 +198,7 @@ $('#shiftSave').on('click',function(){
                         });
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("SHIFT CODE ALREADY EXIST","Please Enter Different Shift Code","error");
-                        $('#shift_code').val('');
-                        return false;
-                    }
+                    
                     else{
                         $('#saveShiftModal').modal('hide');
                         Swal.fire({
@@ -275,11 +256,6 @@ $('#jobPositionAndDescriptionSave').on('click',function(){
                         });
                         setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("JOB POSITION NAME ALREADY EXIST","Please Enter Different Job Position Name","error");
-                        $('#job_position_name').val('');
-                        return false;
-                    }
                     else{
                         $('#saveJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire({
@@ -296,3 +272,55 @@ $('#jobPositionAndDescriptionSave').on('click',function(){
     }); 
 });
 
+$('#departmentSave').on('click',function(){
+    var department = $('#department').val();
+
+    Swal.fire({
+        title: 'Do you want to save?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $.ajax({
+                url: '/maintenance/departmentSave',
+                type: "POST",
+                headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    department:department
+                },
+                success: function(data){
+                    if(data == 'true'){
+                        $('#saveDepartmentModal').modal('hide');
+                        Swal.fire({
+                            title: 'DEPARTMENT ADDED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(function(){departmentTable.ajax.reload();}, 2000);
+                    }
+                    else{
+                        $('#saveDepartmentModal').modal('hide');
+                        Swal.fire({
+                            title: 'SAVE FAILED',
+                            icon: 'error',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(function(){departmentTable.ajax.reload();}, 2000);
+                    }
+                }
+            });
+        }
+    }); 
+});

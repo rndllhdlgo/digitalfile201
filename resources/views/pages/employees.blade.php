@@ -12,37 +12,14 @@
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                         <tr>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
-                            </td>
+                            <th><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>
+                            <th><i class="fas fa-id-card"></i> FIRST NAME</th>
+                            <th><i class="fas fa-id-card"></i> MIDDLE NAME</th>
+                            <th><i class="fas fa-id-card"></i> LAST NAME</th>
+                            <th><i class="fas fa-briefcase"></i> POSITION</th>
+                            <th><i class="fas fa-building"></i> BRANCH</th>
+                            <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th>
                         </tr>
-                            <tr>
-                                <th><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>
-                                <th><i class="fas fa-id-card"></i> FIRST NAME</th>
-                                <th><i class="fas fa-id-card"></i> MIDDLE NAME</th>
-                                <th><i class="fas fa-id-card"></i> LAST NAME</th>
-                                <th><i class="fas fa-briefcase"></i> POSITION</th>
-                                <th><i class="fas fa-building"></i> BRANCH</th>
-                                <th><i class="fas fa-info"></i> EMPLOYMENT STATUS</th>
-                            </tr>
                     </thead>
                         <tbody>
                         </tbody>

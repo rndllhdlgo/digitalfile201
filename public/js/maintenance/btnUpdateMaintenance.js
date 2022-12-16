@@ -54,6 +54,62 @@ $('#companyUpdate').on('click',function(){
     }); 
 });
 
+$('#departmentUpdate').on('click',function(){
+    var department_id = $('#department_id').val();
+    var department_orig = $('#department').val();
+    var department_new = $('#department_new').val();
+
+    Swal.fire({
+        title: 'Do you want to save changes?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $.ajax({
+                url: '/maintenance/departmentUpdate',
+                type: "POST",
+                headers:{
+                  'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    department_id:department_id,
+                    department_orig:department_orig,
+                    department_new:department_new
+                },
+                success: function(data){
+                    if(data == 'true'){
+                        $('#updateDepartmentModal').modal('hide');
+                        Swal.fire({
+                            title:'DEPARTMENT UPDATED SUCCESSFULLY',
+                            icon: 'success',
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        setTimeout(function(){departmentTable.ajax.reload();}, 2000);
+                    }
+                    else if(data == 'duplicate'){
+                        Swal.fire("DEPARTMENT ALREADY EXIST!","Please enter different Department","error");
+                        return false;
+                    }
+                    else{
+                        $('#updateDepartmentModal').modal('hide');
+                        Swal.fire("UPDATE FAILED", "", "error");
+                        setTimeout(function(){departmentTable.ajax.reload();}, 2000);
+                    }
+                }
+            });
+        }
+    }); 
+});
+
 $('#branchUpdate').on('click',function(){
     var branch_id = $('#branch_id').val();
     var branch_name_orig = $('#branch_name').val();

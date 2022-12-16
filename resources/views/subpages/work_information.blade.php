@@ -20,6 +20,18 @@
                 <label for="employee_company" class="formlabel form-label"><i class="fa-solid fa-building"></i> COMPANY <span class="span_employee_company span_all"></span></label>
             </div>
         </div>
+
+        <div class="col">
+            <div class="f-outline">
+                <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off">
+                    <option value="" disabled selected>SELECT DEPARTMENT</option>
+                    @foreach($departments as $department)
+                            <option value="{{$department->id}}">{{$department->department}}</option>
+                        @endforeach
+                </select>
+                <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT <span class="span_employee_department span_all"></span></label>
+            </div>
+        </div>
         
         <div class="col">
             <div class="f-outline">

@@ -14,6 +14,7 @@ use App\Models\Shift;
 use App\Models\JobPosition;
 use App\Models\JobDescription;
 use App\Models\Position;
+use App\Models\Department;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -36,8 +37,9 @@ class PagesController extends Controller
         $jobPositions = Position::select('id','job_position_name')->get();
         $jobDescriptions = Position::select('id','job_description')->get();
         $jobRequirements = Position::select('id','job_requirements')->get();
+        $departments = Department::select('id','department')->get();
         
-        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements'));
+        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements','departments'));
     }
 
     public function setprovince(Request $request){

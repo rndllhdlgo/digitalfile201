@@ -147,6 +147,7 @@ class EmployeesController extends Controller
         $employee_work_information->employee_id = $request->employee_id;
         $employee_work_information->employee_number = $request->employee_number;
         $employee_work_information->employee_company = $request->employee_company;
+        $employee_work_information->employee_department = $request->employee_department;
         $employee_work_information->employee_branch = $request->employee_branch;
         $employee_work_information->employee_status = $request->employee_status;
         $employee_work_information->employment_origin = $request->employment_origin;

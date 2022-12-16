@@ -141,5 +141,5 @@
 $(document).on('click','table.employeesTable tbody tr',function(){
     var data = employeesTable.row(this).data();
     var id = data.id;
-    alert(id);
+    // alert(id);
 });
