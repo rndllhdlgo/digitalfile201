@@ -4,6 +4,17 @@
     <table class="table table-striped table-hover table-bordered w-100 jobPositionAndDescriptionTable" id="jobPositionAndDescriptionTable">
         <thead class="text-white" style="background-color:#0d1a80;">
                 <tr>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
+                    </td>
+                </tr>
+                <tr>
                     <th><i class="fas fa-id-card"></i> JOB POSITION</th>
                     <th><i class="fas fa-id-card"></i> JOB DESCRIPTION</th>
                     <th><i class="fas fa-id-card"></i> JOB REQUIREMENTS/SKILLS</th>

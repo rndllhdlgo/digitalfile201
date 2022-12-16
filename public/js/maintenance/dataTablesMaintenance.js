@@ -40,28 +40,53 @@ var branchTable = $('#branchTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-var shiftTable = $('#shiftTable').DataTable({
-    dom:'lf<"breakspace">rtip',
-    language:{
-        "info": "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
-        "lengthMenu":"Show _MENU_ Shifts",
-        "emptyTable":"No Shifts Data Found!",
-        "loadingRecords": "Loading Shifts Records...",
-    },
-    "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    processing:true,
-    serverSide:false,
-    ajax: {
-        url: '/maintenance/shiftData',
-    },
-    order: [],
-    columns: [
-        {data: 'shift_code'},
-        {data: 'shift_working_hours'},
-        {data: 'shift_break_time'}
-    ] 
+// var shiftTable = $('#shiftTable').DataTable({
+//     dom:'lf<"breakspace">rtip',
+//     language:{
+//         "info": "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
+//         "lengthMenu":"Show _MENU_ Shifts",
+//         "emptyTable":"No Shifts Data Found!",
+//         "loadingRecords": "Loading Shifts Records...",
+//     },
+//     "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+//     processing:true,
+//     serverSide:false,
+//     ajax: {
+//         url: '/maintenance/shiftData',
+//     },
+//     order: [],
+//     columns: [
+//         {data: 'shift_code'},
+//         {data: 'shift_working_hours'},
+//         {data: 'shift_break_time'}
+//     ] 
+// });
+// $('div.breakspace').html('<br><br>');
+
+var shiftTable = $('table.shiftTable').DataTable({
+        dom: 'l<"breakspace">tip',
+        language: {
+            info: "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
+            lengthMenu: "Show _MENU_ Shifts",
+            emptyTable: "No Shifts Data Found!",
+        },
+        processing:true,
+        serverSide:true,
+        ajax: {
+            url: '/maintenance/shiftData',
+        },
+        order: [],
+        columns: [
+            {data: 'shift_code'},
+            {data: 'shift_working_hours'},
+            {data: 'shift_break_time'}
+        ] 
+    });
+    $('div.breakspace').html('<br><br>');
+
+$('.filter-input').on('keyup search', function(){
+    shiftTable.column($(this).data('column')).search($(this).val()).draw();
 });
-$('div.breakspace').html('<br><br>');
 
 var supervisorTable = $('#supervisorTable').DataTable({
     dom:'lf<"breakspace">rtip',
@@ -84,28 +109,53 @@ var supervisorTable = $('#supervisorTable').DataTable({
 });
 $('div.breakspace').html('<br><br>');
 
-var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTable({
-    dom:'lf<"breakspace">rtip',
-    language:{
-        "info": "\"Showing _START_ to _END_ of _TOTAL_ Job Positions,Descriptions,Skills\"",
-        "lengthMenu":"Show _MENU_ Job Positions",
-        "emptyTable":"No Job Positions Data Found!",
-        "loadingRecords": "Loading Job Positions Records...",
-    },
-    "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    processing:true,
-    serverSide:false,
-    ajax: {
-        url: '/maintenance/jobPositionAndDescriptionData',
-    },
-    order: [],
-    columns: [
-        {data: 'job_position_name'},
-        {data: 'job_description'},
-        {data: 'job_requirements'}
-    ] 
+// var jobPositionAndDescriptionTable = $('#jobPositionAndDescriptionTable').DataTable({
+//     dom:'lf<"breakspace">rtip',
+//     language:{
+//         "info": "\"Showing _START_ to _END_ of _TOTAL_ Job Positions,Descriptions,Skills\"",
+//         "lengthMenu":"Show _MENU_ Job Positions",
+//         "emptyTable":"No Job Positions Data Found!",
+//         "loadingRecords": "Loading Job Positions Records...",
+//     },
+//     "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+//     processing:true,
+//     serverSide:false,
+//     ajax: {
+//         url: '/maintenance/jobPositionAndDescriptionData',
+//     },
+//     order: [],
+//     columns: [
+//         {data: 'job_position_name'},
+//         {data: 'job_description'},
+//         {data: 'job_requirements'}
+//     ] 
+// });
+// $('div.breakspace').html('<br><br>');
+
+var jobPositionAndDescriptionTable = $('table.jobPositionAndDescriptionTable').DataTable({
+        dom: 'l<"breakspace">tip',
+        language: {
+            info: "\"Showing _START_ to _END_ of _TOTAL_ Job Positions,Descriptions,Skills\"",
+            lengthMenu: "Show _MENU_ Job Positions",
+            emptyTable: "No Job Positions Data Found!",
+        },
+        processing:true,
+        serverSide:true,
+        ajax: {
+            url: '/maintenance/jobPositionAndDescriptionData',
+        },
+        order: [],
+        columns: [
+            {data: 'job_position_name'},
+            {data: 'job_description'},
+            {data: 'job_requirements'}
+        ] 
+    });
+    $('div.breakspace').html('<br><br>');
+
+$('.filter-input').on('keyup search', function(){
+    jobPositionAndDescriptionTable.column($(this).data('column')).search($(this).val()).draw();
 });
-$('div.breakspace').html('<br><br>');
 
 var departmentTable = $('#departmentTable').DataTable({
     dom:'lf<"breakspace">rtip',
