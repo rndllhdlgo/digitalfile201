@@ -1,7 +1,7 @@
 $('#employee_number').on('keyup',function(){
     if($('#employee_number').val()){
         $.ajax({
-            url: "/employees/checkDuplicate",
+            url: "/employees/employee_number/checkDuplicate",
             data:{
                 employee_number : $('#employee_number').val(),
             },
@@ -22,7 +22,7 @@ $('#employee_number').on('keyup',function(){
 $('#email_address').on('keyup',function(){
     if($('#email_address').val()){
         $.ajax({
-            url: "/employees/checkEmailDuplicate",
+            url: "/employees/email_address/checkDuplicate",
             data:{
                 email_address : $('#email_address').val(),
             },
@@ -43,7 +43,7 @@ $('#email_address').on('keyup',function(){
 $('#telephone_number').on('keyup',function(){
     if($('#telephone_number').val()){
         $.ajax({
-            url: "/employees/checkTelephoneNumberDuplicate",
+            url: "/employees/telephone_number/checkDuplicate",
             data:{
                 telephone_number : $('#telephone_number').val(),
             },
@@ -64,7 +64,7 @@ $('#telephone_number').on('keyup',function(){
 $('#cellphone_number').on('keyup',function(){
     if($('#cellphone_number').val()){
         $.ajax({
-            url: "/employees/checkCellphoneNumberDuplicate",
+            url: "/employees/cellphone_number/checkDuplicate",
             data:{
                 cellphone_number : $('#cellphone_number').val(),
             },
@@ -85,7 +85,7 @@ $('#cellphone_number').on('keyup',function(){
 $('#father_contact_number').on('keyup',function(){
     if($('#father_contact_number').val()){
         $.ajax({
-            url: "/employees/checkFatherCellphoneNumberDuplicate",
+            url: "/employees/father_cellphone_number/checkDuplicate",
             data:{
                 father_contact_number : $('#father_contact_number').val(),
             },
@@ -106,7 +106,7 @@ $('#father_contact_number').on('keyup',function(){
 $('#mother_contact_number').on('keyup',function(){
     if($('#mother_contact_number').val()){
         $.ajax({
-            url: "/employees/checkMotherCellphoneNumberDuplicate",
+            url: "/employees/mother_cellphone_number/checkDuplicate",
             data:{
                 mother_contact_number : $('#mother_contact_number').val(),
             },
@@ -127,7 +127,7 @@ $('#mother_contact_number').on('keyup',function(){
 $('#spouse_contact_number').on('keyup',function(){
     if($('#spouse_contact_number').val()){
         $.ajax({
-            url: "/employees/checkSpouseCellphoneNumberDuplicate",
+            url: "/employees/spouse_cellphone_number/checkDuplicate",
             data:{
                 spouse_contact_number : $('#spouse_contact_number').val(),
             },
@@ -148,7 +148,7 @@ $('#spouse_contact_number').on('keyup',function(){
 $('#emergency_contact_number').on('keyup',function(){
     if($('#emergency_contact_number').val()){
         $.ajax({
-            url: "/employees/checkEmergencyContactNumberDuplicate",
+            url: "/employees/emergency_cellphone_number/checkDuplicate",
             data:{
                 emergency_contact_number : $('#emergency_contact_number').val(),
             },
@@ -169,7 +169,7 @@ $('#emergency_contact_number').on('keyup',function(){
 $('#company_email_address').on('keyup',function(){
     if($('#company_email_address').val()){
         $.ajax({
-            url: "/employees/checkEmployeeEmailAddressDuplicate",
+            url: "/employees/company_email/checkDuplicate",
             data:{
                 company_email_address : $('#company_email_address').val(),
             },
@@ -190,7 +190,7 @@ $('#company_email_address').on('keyup',function(){
 $('#company_contact_number').on('keyup',function(){
     if($('#company_contact_number').val()){
         $.ajax({
-            url: "/employees/checkEmployeeContactNumberDuplicate",
+            url: "/employees/company_cellphone_number/checkDuplicate",
             data:{
                 company_contact_number : $('#company_contact_number').val(),
             },
