@@ -10,6 +10,7 @@ $('#addEmployeeBtn').on('click',function(){
     $('#employees_list').hide();
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();
+    $('#btnUpdate').hide();
     $('#navigation').show();
     $('#tab1').addClass('tabactive');
     $('#resigned').hide();
@@ -70,18 +71,18 @@ function checkforblank(){
             $('#spouse_name').addClass('required_field');
             $('#spouse_contact_number').addClass('required_field');
             $('#spouse_profession').addClass('required_field');
-            $('#solo_parent').hide();
-            $('#solo_parent_data_table').hide();
+            $('.children_information').hide();
+            $('#children_table').hide();
         }
         else if($('#civil_status').val() == "Solo Parent"){
             $('#spouse').hide();
-            $('#solo_parent').show();
+            $('.children_information').show();
             $('#spouse_name').val("");
             $('#spouse_contact_number').val("");
             $('#spouse_profession').val("");
         }
         else{
-            $('#solo_parent').hide();
+            $('.children_information').hide();
             $('#spouse').hide();
             $('#spouse_name').removeClass('required_field');
             $('#spouse_contact_number').removeClass('required_field');

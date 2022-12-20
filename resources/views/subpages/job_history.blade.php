@@ -1,6 +1,6 @@
 <div id="job_history" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-   <strong class="table-title">JOB HISTORY</strong>
+   <h5 class="table-title">JOB HISTORY</h5>
    <table class="table table-striped table-bordered mt-1 align-middle">
         <thead class="thead-educational">
             <tr>
@@ -45,20 +45,20 @@
                     </div>
                 </td>
                 <td>
-                    <button type="button" id="btnJobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="jobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody> 
    </table>
    {{-- Job Data Table --}}
-    <table id="job_data_table" class="table table-bordered table-hover table-striped">
+    <table id="job_history_table" class="table table-bordered table-hover table-striped" style="margin-top: -17px;">
         <thead class="thead-educational">
             <tr style="display: none;">
-                <th><i class="far fa-address-card"></i> NAME OF COMPANY</th>
-                <th><i class="fas fa-briefcase"></i> JOB POSITION</th>
-                <th><i class="fas fa-map-marker-alt"></i> COMPANY ADDRESS</th>
-                <th><i class="fas fa-phone-square-alt"></i> CONTACT DETAILS</th>
-                <th><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:18%"><i class="far fa-address-card"></i> NAME OF COMPANY</th>
+                <th style="width:18%"><i class="fas fa-briefcase"></i> JOB POSITION</th>
+                <th style="width:18%"><i class="fas fa-map-marker-alt"></i> COMPANY ADDRESS</th>
+                <th style="width:18%"><i class="fas fa-phone-square-alt"></i> CONTACT DETAILS</th>
+                <th style="width:18%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
                 <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>

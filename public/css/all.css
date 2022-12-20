@@ -277,9 +277,10 @@ input[type=search]:focus{
     font-size:16px;
     background-color:#0d1a80;
     color:white !important;
-    padding:5px;
+    padding: 5px;
     border-top-left-radius:5px;
     border-top-right-radius:5px;
+    margin-bottom: -1px;
 }
 
 /* Divide into two columns */

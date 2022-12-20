@@ -35,11 +35,11 @@ function checkforblankMultiple(){
     }
 
     if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
-        $('#jobHistoryAdd').prop('disabled',true);
+        $('#btnJobHistoryAdd').prop('disabled',true);
     }
     else{
-        $('#jobHistoryAdd').prop('disabled',false);
-        $('#jobHistoryAdd').css('display','block');
+        $('#btnJobHistoryAdd').prop('disabled',false);
+        $('#btnJobHistoryAdd').css('display','block');
     }
     
     if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
@@ -87,11 +87,11 @@ $(document).ready(function(){
         var child_gender = $('#child_gender').val();
 
         var children_table = "<tr class='children_tr'>"+
-                                "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+                                "<td class='td_1' style='width:22.5%;'>" + child_name + "</td>" +
                                 "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
                                 "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
                                 "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
-                                "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                "<td style='width:10%;'> <button type='button' class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
                             "<tr>";
         $('#children_table tbody').append(children_table);
         $('#child_name').val("");
@@ -151,10 +151,10 @@ $(document).ready(function(){
         var vocational_inclusive_years = $('#vocational_inclusive_years').val();
 
         var vocational_table = "<tr class='vocational_tr'>"+
-                                    "<td class='td_1' style='width:30%'>" + vocational_name +"</td>" + 
-                                    "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
-                                    "<td class='td_3' style='width:30%'>" + vocational_inclusive_years + "</td>" + 
-                                    "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                    "<td class='td_1'>" + vocational_name +"</td>" + 
+                                    "<td class='td_2'>" + vocational_course + "</td>" + 
+                                    "<td class='td_3'>" + vocational_inclusive_years + "</td>" + 
+                                    "<td> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
         $('#vocational_table tbody').append(vocational_table);
         $('#vocational_name').val("");
@@ -165,28 +165,29 @@ $(document).ready(function(){
         });
     });
 
-    $('#jobHistoryAdd').click(function(){
+    $('#btnJobHistoryAdd').click(function(){
+        $('#job_data_table').show();
         var job_name = $('#job_name').val().trim();
         var job_position = $('#job_position').val().trim();
         var job_address = $('#job_address').val().trim();
         var job_contact_details = $('#job_contact_details').val().trim();
         var job_inclusive_years = $('#job_inclusive_years').val().trim();
 
-        var job_history_table = "<tr class='job_history_tr'>"+
-                                    "<td class='td_1' style='width:18%'>" + job_name + "</td>" + 
-                                    "<td class='td_2' style='width:18%'>" + job_position + "</td>" +
-                                    "<td class='td_3' style='width:18%'>" + job_address + "</td>" + 
-                                    "<td class='td_4' style='width:18%'>" + job_contact_details + "</td>" + 
-                                    "<td class='td_5' style='width:18%'>" + job_inclusive_years + "</td>" +
-                                    "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+        var dynamicJobHistory = "<tr>"+
+                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_name + "</td>" + 
+                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_position + "</td>" +
+                                    "<td style='width:18%' class='text-capitalize text-center pb-3 pt-3'>" + job_address + "</td>" + 
+                                    "<td style='width:18%' class='text-center pb-3 pt-3'>" + job_contact_details + "</td>" + 
+                                    "<td style='width:18%' class='text-center pb-3 pt-3'>" + job_inclusive_years + "</td>" +
+                                    "<td style='width:10%'> <button class='btn btn-danger btn-job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                 "</tr>";
-        $('#job_history_table').append(job_history_table);
+        $('#job_data_table').append(dynamicJobHistory);
         $('#job_name').val("");
         $('#job_position').val("");
         $('#job_address').val("");
         $('#job_contact_details').val("");
         $('#job_inclusive_years').val("");
-        $('.btn_job').click(function(){
+        $('.btn-job').click(function(){
             $(this).parent().parent().remove();
         });
     });

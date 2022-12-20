@@ -56,11 +56,11 @@ Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompen
 Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
 Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
 
+Route::any('/employees/saveChildren','EmployeesController@saveChildren');
 Route::any('/employees/saveCollege','EmployeesController@saveCollege');
 Route::any('/employees/saveTraining','EmployeesController@saveTraining');
 Route::any('/employees/saveVocational','EmployeesController@saveVocational');
 Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
-Route::any('/employees/saveChildren','EmployeesController@saveChildren');
 
 Route::any('/employees/employee_number/checkDuplicate', 'EmployeesController@checkDuplicate');
 Route::any('/employees/email_address/checkDuplicate', 'EmployeesController@checkDuplicate');

@@ -119,6 +119,8 @@ $('#addEmployeeBtn').on('click',function(){
     $('#employees_list').hide();
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();
+    $('#btnUpdate').hide();
+    alert('a');
     $('#navigation').show();
     $('#tab1').click();
     $('#resigned').hide();

@@ -5,53 +5,52 @@
         <table class="table table-striped table-bordered table-hover align-middle mt-1">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width: 30%;">DEGREE</th>
-                    <th style="width: 30%;">INCLUSIVE YEARS</th>
-                    <th style="width: 10%;">ACTION</th>
+                    <th>NAME OF UNIVERSITY/COLLEGE</th>
+                    <th>DEGREE</th>
+                    <th>INCLUSIVE YEARS</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td class="pb-3 pt-3">
+                    <td>
                         <div class="f-outline">
                             <input class="forminput form-control multiple_field text-capitalize" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="college_name" class="formlabel form-label"><span class="span_college_name span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td class="pb-3 pt-3">
+                    <td>
                         <div class="f-outline">
                             <input class="forminput form-control multiple_field" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="college_degree" class="formlabel form-label"><span class="span_college_degree span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td class="pb-3 pt-3">
+                    <td>
                         <div class="f-outline">
                             <input class="forminput form-control multiple_field" type="search" id="college_inclusive_years" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="college_inclusive_years" class="formlabel form-label"><span class="span_college_inclusive_years span_all">(Optional)</span></label>
                         </div>
                     </td>
-                    <td class="pb-3 pt-3">
+                    <td>
                         <button type="button" id="collegeAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
-        <table id="college_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
+        <table id="college_table" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr style="display:none;">
-                    <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
-                    <th style="width: 30%;">DEGREE</th>
-                    <th style="width: 30%;">INCLUSIVE YEARS</th>
-                    <th style="width: 10%;">ACTION</th>
+                    <th>NAME OF UNIVERSITY/COLLEGE</th>
+                    <th>DEGREE</th>
+                    <th>INCLUSIVE YEARS</th>
+                    <th>ACTION</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-    <hr class="hr-design">
-    <br>
+        
     {{-- Secondary Table --> --}}
     <h5 class="table-title">SECONDARY EDUCATION</h5>
     <table class="table table-striped table-bordered table-hover align-middle mt-1">
@@ -84,9 +83,9 @@
                 </td>
             </tr>
         </tbody>
-    </table> 
-    <hr class="hr-design">
+    </table> {{-- End of Secondary Table --}}
     <br>
+
     {{-- Primary Table --}}
     <h5 class="table-title">PRIMARY EDUCATION</h5>
     <table class="table table-striped table-bordered table-hover align-middle mt-1">
@@ -121,17 +120,16 @@
                 </tr>
             </tbody>
         </table>
-        <hr class="hr-design">
         <br>
-
+    {{-- Training Table --}}
     <h5 class="table-title">TRAININGS</h5>
     <table class="table table-striped table-bordered table-hover align-middle mt-1">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width: 30%;"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width: 30%;"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width: 30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width: 10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
+                    <th style="width:33%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -158,35 +156,34 @@
                     </td>
 
                     <td>
-                        <button type="button" id="trainingAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="btnTrainingAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
-
-        <table id="training_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
+        {{-- Training Data Table --}}
+        <table id="training_data_table" class="table table-bordered table-hover table-striped">
             <thead class="thead-educational">
                 <tr style="display: none;">
-                    <th style="width: 30%;"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width: 30%;"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width: 30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width: 10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
+                    <th style="width:33%"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
+                    <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
             <tbody>
             </tbody>
         </table>
-        <hr class="hr-design">
         <br>
     {{-- Vocational Table --}}
     <h5 class="table-title">VOCATIONAL</h5>
     <table class="table table-striped table-bordered table-hover align-middle mt-1">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                <th style="width:30%;"><i class="fas fa-certificate"></i> COURSE</th>
-                <th style="width:30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
+                <th style="width:33%"><i class="fas fa-certificate"></i> COURSE</th>
+                <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
@@ -213,23 +210,23 @@
                 </td>
 
                 <td>
-                    <button type="button" id="vocationalAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                    <button type="button" id="btnVocationalAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>
         </tbody>
     </table>
     {{-- Vocational Data Table --}}
-    <table id="vocational_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
+    <table id="vocational_data_table" class="table table-bordered table-hover table-striped ">
         <thead class="thead-educational">
             <tr style="display: none;">
-                <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                <th style="width:30%;"><i class="fas fa-certificate"></i> COURSE</th>
-                <th style="width:30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                <th style="width:33.5%"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
+                <th style="width:33%"><i class="fas fa-certificate"></i> COURSE</th>
+                <th style="width:23.5%"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
             </tr>
         </thead>
         <tbody>
         </tbody>
     </table>
-    <hr class="hr-design">
+        <hr class="hr-design">
 </div> 

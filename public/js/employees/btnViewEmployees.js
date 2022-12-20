@@ -144,12 +144,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     var data = employeesTable.row(this).data();
     var id = data.id;
     console.log(id);
-
+    
     $.ajax({
         url: '/employees/fetch',
-        headers:{
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
         dataType: 'json',
         type: 'GET',
         data:{
@@ -161,8 +158,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 return [value];
             });
             transitem.forEach(value => {
-                $('#hidden_id').val(value.id);
-                // alert(value.id);
                 $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                 $('#image_preview').show();
                 $('#image_user').hide();
@@ -266,31 +261,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employees_list').hide();
                 $('#tab1').click();
                 $('#btnClear').hide();
-                // $('#btnEnableEdit').hide();
                 $('#btnSave').hide();
                 $('#title_details').html('<i class="fas fa-info"></i> <b>EMPLOYEE INFORMATION</b>');
-            });
-
-            $(document).ready( function () { 
-                $('#college_data_table').show();
-                $('#college_data_table').dataTable().fnDestroy();//To destroy the data table
-                  $('#college_data_table').DataTable({
-                      dom:'rt',
-                      processing:true,
-                      serverSide:false,
-                      ajax: {
-                      url: '/employees/collegeDataTable', //route-name
-                      data:{
-                          employee_id: id
-                      }
-                      },
-                      //data column name
-                      columns: [
-                          {data: 'college_name'},
-                          {data: 'college_degree'},
-                          {data: 'college_inclusive_years'}
-                      ],
-                  });    
             });
         }
     });

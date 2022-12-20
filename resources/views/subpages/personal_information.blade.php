@@ -1,5 +1,4 @@
 <div id="personal_information" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
-    
     <hr class="hr-design">
     <div class="row mb-3"> <!-- Split 2 column -->
         <div class="column-1"> <!-- Container of Image -->
@@ -287,10 +286,10 @@
             </div>
 
             <hr class="hr-design">
-            <div class="row mt-2" id="solo_parent" style="display: none;">
-                <strong style="font-size:20px;color:#0d1a80;">CHILDREN INFORMATION</strong>
-                <div class="col">
-                    <table class="table table-bordered table-hover table-striped" style="margin-top:15px;" id="solo_parent_table">
+
+            <div class="row m-auto children_information" style="display: none;">
+                <h5 style="margin-left: -10px;">CHILDREN INFORMATION</h5>
+                    <table class="table table-bordered table-hover table-striped ml-2 mr-2">
                         <thead class="thead-educational">
                             <tr>
                                 <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
@@ -299,59 +298,55 @@
                                 <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
                                 <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
                             </tr>
-                        </thead>
-                        <tbody>
-                             <tr>
-                                <td class="pb-2 pt-3">
-                                    <div class="f-outline">
-                                        <input class="forminput form-control optional_field text-capitalize" type="search" id="child_name" placeholder=" " style="background-color: white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                                        <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                                        <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all">(Optional)</span></label>
-                                    </div>
-                                </td>
-                                <td class="pb-2 pt-3">
-                                    <div class="f-outline">
+                            <tbody>
+                                <tr>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <input type="search" class="forminput form-control optional_field text-capitalize" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                            <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all">(Optional)</span></label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
                                         <input class="forminput form-control optional_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
                                         <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all">(Optional)</span></label>
-                                    </div>
-                                </td>
-                                <td class="pb-2 pt-3">
-                                    <div class="f-outline">
-                                        <input class="forminput form-control optional_field" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
-                                        <label for="child_age" class="formlabel form-label"></label>
-                                    </div>
-                                </td>
-                                <td class="pb-2 pt-3">
-                                    <div class="f-outline">
-                                        <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
-                                            <option value="" disabled selected>SELECT GENDER </option>
-                                            <option value="Male">Male</option>
-                                            <option value="Female">Female</option>
-                                        </select>
-                                        <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all">(Optional)</span></label>
-                                    </div>
-                                </td>
-                                <td class="pb-2 pt-3">
-                                    <button type="button" id="btnSoloParentAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                                </td>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control optional_field" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                                            <label for="child_age" class="formlabel form-label"></label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <option value="" disabled selected>SELECT GENDER </option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                            </select>
+                                            <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all">(Optional)</span></label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <button type="button" id="childrenAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </thead>
+                    </table>
+
+                    <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
+                        <thead class="thead-educational">
+                            <tr style="display: none;" class="children_table_thead">
+                                <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
+                                <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
+                                <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
+                                <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
+                                <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
                             </tr>
+                        </thead>
+                        <tbody>
                         </tbody>
                     </table>
-                </div>
             </div>
-            {{-- Solo Parent Data Table --}}
-            <table id="solo_parent_data_table" class="table table-bordered table-hover table-striped solo_parent_data_table">
-                <thead class="thead-educational">
-                    <tr style="display: none;" id="solo_parent_tr">
-                        <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
-                        <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
-                        <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
-                        <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
-                        <th style="width:10%"><i class="fas fa-id-card"></i> ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
- 
+            
 </div>{{-- End of Personal Information Nav --}}

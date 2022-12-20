@@ -228,8 +228,8 @@ $('#btnSave').on('click', function(){
                             });
 
                             //This code is to save the data in multiple rows
-                                
-                                $('.children_tr').each(function(){
+                                var soloParent_data  = $('#solo_parent_data_table').DataTable().rows().data();
+                                $.each(soloParent_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/employees/saveChildren',
@@ -239,14 +239,15 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            child_name : $(this).children('.td_1').html(),
-                                            child_birthday: $(this).children('.td_2').html(),
-                                            child_gender  : $(this).children('.td_4').html()
+                                            child_name : value[0],
+                                            child_birthday: value[1],
+                                            child_gender  : value[3]
                                         },
                                     });
                                 });
                                 
-                                $('.college_tr').each(function(){
+                                var college_data  = $('#college_data_table').DataTable().rows().data();
+                                $.each(college_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/employees/saveCollege',
@@ -256,14 +257,15 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            college_name : $(this).children('.td_1').html(),
-                                            college_degree : $(this).children('.td_2').html(),
-                                            college_inclusive_years: $(this).children('.td_3').html()
+                                            college_name : value[0],
+                                            college_degree : value[1],
+                                            college_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                $('.training_tr').each(function(){
+                                var training_data  = $('#training_data_table').DataTable().rows().data();
+                                $.each(training_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/employees/saveTraining',
@@ -273,14 +275,15 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            training_name : $(this).children('.td_1').html(),
-                                            training_title :  $(this).children('.td_2').html(),
-                                            training_inclusive_years: $(this).children('.td_3').html()
+                                            training_name : value[0],
+                                            training_title : value[1],
+                                            training_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                $('.vocational_tr').each(function(){
+                                var vocational_data  = $('#vocational_data_table').DataTable().rows().data();
+                                $.each(vocational_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/employees/saveVocational',
@@ -290,14 +293,15 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            vocational_name : $(this).children('.td_1').html(),
-                                            vocational_course : $(this).children('.td_2').html(),
-                                            vocational_inclusive_years: $(this).children('.td_3').html()
+                                            vocational_name : value[0],
+                                            vocational_course : value[1],
+                                            vocational_inclusive_years: value[2]
                                         },
                                     });
                                 });
 
-                                $('.job_history_tr').each(function(){
+                                var job_data  = $('#job_data_table').DataTable().rows().data();
+                                $.each(job_data, function(key, value){
                                     $.ajax({
                                         type: 'POST',
                                         url: '/employees/saveJobHistory',
@@ -307,16 +311,16 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            job_name : $(this).children('.td_1').html(),
-                                            job_position : $(this).children('.td_2').html(),
-                                            job_address: $(this).children('.td_3').html(),
-                                            job_contact_details : $(this).children('.td_4').html(),
-                                            job_inclusive_years : $(this).children('.td_5').html()
+                                            job_name : value[0],
+                                            job_position : value[1],
+                                            job_address: value[2],
+                                            job_contact_details : value[3],
+                                            job_inclusive_years : value[4]
                                         },
                                     });
                                 });
 
-                                // $('#documents_form').submit();
+                                $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 setTimeout(function(){window.location.reload();}, 2000);
                         }
@@ -325,6 +329,12 @@ $('#btnSave').on('click', function(){
                             setTimeout(function(){window.location.reload();}, 2000);
                         }
                 },
+                error: function(data){
+                    if(data.status == 401){
+                        window.location.reload();
+                    }
+                    alert(data.responseText);
+                }
             });
         } 
         else if (save.isDenied) {
