@@ -288,7 +288,7 @@
             <hr class="hr-design">
 
             <div class="row m-auto children_information" style="display: none;">
-                <h5 style="margin-left: -10px;">CHILDREN INFORMATION</h5>
+                <h5 class="table-title">CHILDREN INFORMATION</h5>
                     <table class="table table-bordered table-hover table-striped ml-2 mr-2">
                         <thead class="thead-educational">
                             <tr>
@@ -303,6 +303,7 @@
                                     <td class="pb-3 pt-3">
                                         <div class="f-outline">
                                             <input type="search" class="forminput form-control optional_field text-capitalize" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                            <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                                             <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all">(Optional)</span></label>
                                         </div>
                                     </td>
@@ -336,7 +337,7 @@
 
                     <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
                         <thead class="thead-educational">
-                            <tr style="display: none;" class="children_table_thead">
+                            <tr style="display: none;">
                                 <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
                                 <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
                                 <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>

@@ -2,7 +2,7 @@
 <div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <h5 class="table-title">COLLEGE EDUCATION</h5>
-        <table class="table table-striped table-bordered table-hover align-middle mt-1">
+        <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-educational">
                 <tr>
                     <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
@@ -54,7 +54,7 @@
     <br>
     {{-- Secondary Table --> --}}
     <h5 class="table-title">SECONDARY EDUCATION</h5>
-    <table class="table table-striped table-bordered table-hover align-middle mt-1">
+    <table class="table table-striped table-bordered table-hover align-middle">
         <thead class="thead-educational">
             <tr>
                 <th style="width:30%"><i class="fas fa-school"></i> NAME OF SCHOOL</th>
@@ -89,7 +89,7 @@
     <br>
     {{-- Primary Table --}}
     <h5 class="table-title">PRIMARY EDUCATION</h5>
-    <table class="table table-striped table-bordered table-hover align-middle mt-1">
+    <table class="table table-striped table-bordered table-hover align-middle ">
             <thead class="thead-educational">
                 <tr>
                     <th><i class="fas fa-school"></i> NAME OF SCHOOL</th>
@@ -125,7 +125,7 @@
         <br>
 
     <h5 class="table-title">TRAININGS</h5>
-    <table class="table table-striped table-bordered table-hover align-middle mt-1">
+    <table class="table table-striped table-bordered table-hover align-middle ">
             <thead class="thead-educational">
                 <tr>
                     <th style="width: 30%;"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
@@ -180,7 +180,7 @@
         <br>
     {{-- Vocational Table --}}
     <h5 class="table-title">VOCATIONAL</h5>
-    <table class="table table-striped table-bordered table-hover align-middle mt-1">
+    <table class="table table-striped table-bordered table-hover align-middle ">
         <thead class="thead-educational">
             <tr>
                 <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>

@@ -52,13 +52,12 @@
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option value="Regular">Regular</option>
                     <option value="Intern">Intern</option>
-                    <option value="Resigned" id="resigned">Resigned</option>
                     <option value="Agency">Agency</option>
                     <option value="Probationary">Probationary</option>
                     <option value="Part_Time">Part Time</option>
-                    <option value="Resign">Resign</option>
-                    <option value="Terminate">Terminate</option>
-                    <option value="Retired">Retired</option>
+                    <option value="Resign" id="resign">Resign</option>
+                    <option value="Terminate" id="terminate">Terminate</option>
+                    <option value="Retired" id="retired">Retired</option>
                 </select>
                 <label for="employee_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employee_status span_all"></span></label>
             </div>

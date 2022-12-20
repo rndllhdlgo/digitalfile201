@@ -1,7 +1,7 @@
 <div id="job_history" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
    <h5 class="table-title">JOB HISTORY</h5>
-   <table class="table table-striped table-bordered mt-1 align-middle">
+   <table class="table table-striped table-bordered align-middle">
         <thead class="thead-educational">
             <tr>
                 <th style="width:18%"><i class="far fa-address-card"></i> NAME OF COMPANY</th>

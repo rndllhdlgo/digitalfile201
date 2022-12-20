@@ -21,44 +21,6 @@ $('#addEmployeeBtn').on('click',function(){
     $('#title_details').html('<i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.');
 });
 
-// Check all required field function
-setInterval(checkforblank,0);
-function checkforblank(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
-    || $('#first_name').val().length < 2
-    || $('#middle_name').val().length < 2
-    || $('#last_name').val().length < 2
-    || $('#father_name').val().length < 2
-    || $('#mother_name').val().length < 2
-    || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    && $('#father_contact_number').val().length < 11
-    && $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    && $('#company_contact_number').val().length < 11
-    || !email_address.value.match(regExp)
-    && !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('duplicate_field')
-    || $('#email_address').hasClass('duplicate_field')
-    || $('#telephone_number').hasClass('duplicate_field')
-    || $('#cellphone_number').hasClass('duplicate_field')
-    || $('#father_contact_number').hasClass('duplicate_field')
-    || $('#mother_contact_number').hasClass('duplicate_field')
-    || $('#spouse_contact_number').hasClass('duplicate_field')
-    || $('#emergency_contact_number').hasClass('duplicate_field')
-    || $('#company_email_address').hasClass('duplicate_field')
-    || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#title_details').show();
-        $('#btnSave').prop("disabled",true);    
-    }
-    else{
-        $('#title_details').hide();
-        $('#btnSave').prop("disabled",false);
-    }
-}
-
 // if($('.requiredField:visible').filter(function(){ return !!this.value; }).length < $(".requiredField:visible").length )
 
 
@@ -340,15 +302,6 @@ $('#title_details').on('click',function(){
     
 });
 
-// $('input#employee_bonus').on('blur', function() {
-//     const value = this.value.replace(/,/g, '');
-//     this.value = parseFloat(value).toLocaleString('en-PH', {
-//         style: 'decimal',
-//         maximumFractionDigits: 2,
-//         minimumFractionDigits: 2
-//     });
-// });
-
 //Currency Format
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
@@ -368,14 +321,17 @@ var formatter = new Intl.NumberFormat('en-US', {
       e.target.value = formatter.format(e.target.value);
   });
 
-// $(function(){
-//     $('#employee_salary').inputmask({
-//         alias: 'currency',
-//         digits: 0,
-//         rightAlign: 0,
-//         placeholder: '',
-//         clearMaskOnLostFocus: true
-//       });
-// });
-
 $("input[type='date']").keydown(function (event) { event.preventDefault(); });
+
+setInterval(() => {
+    if($('#btnSave').is(":visible")){
+        $('#resign').hide();
+        $('#terminate').hide();
+        $('#retired').hide();
+    }
+    else{
+        $('#resign').show();
+        $('#terminate').show();
+        $('#retired').show();
+    }
+}, 0);

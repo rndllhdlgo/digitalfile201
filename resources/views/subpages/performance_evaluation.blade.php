@@ -1,8 +1,8 @@
 <div id="performance_evaluation" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <!-- Memo -->
-        <strong class="table-title">MEMO</strong>
-        <table id="memoTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+        <h5 class="table-title">MEMO</h5>
+        <table id="memoTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> MEMO SUBJECT</th>
@@ -51,8 +51,8 @@
         </table>
     <br>
     <!-- Evaluation -->
-        <strong class="table-title">EVALUATION</strong>
-        <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+        <h5 class="table-title">EVALUATION</h5>
+        <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> EVALUATION REASON</th>
@@ -93,8 +93,8 @@
         </table>
     <br>
     <!-- Contracts -->
-        <strong class="table-title">CONTRACT</strong>
-        <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+        <h5 class="table-title">CONTRACT</h5>
+        <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:18%"><i class="fas fa-envelope-open-text"></i> CONTRACT TYPE</th>
@@ -130,8 +130,8 @@
     <div id="resignation_div" style="display: none;">
     <br>
     <!-- Resignation -->
-        <strong class="table-title">RESIGNATION</strong>
-        <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+        <h5 class="table-title">RESIGNATION</h5>
+        <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
                     <th style="width:18%"><i class="fas fa-envelope-open-text"></i> RESIGNATION REASON</th>

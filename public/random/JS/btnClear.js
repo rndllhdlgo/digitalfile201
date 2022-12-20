@@ -1,9 +1,7 @@
 //Clear Form (Current Page,All Pages)
 setInterval(checkclearform,0);
 function checkclearform(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 
-        && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1 
-        && $('.separated').filter(function(){ return !!this.value; }).length < 1) {
+    if($('.required_field').filter(function(){ return !!this.value; }).length < 1 && $('.multiple_field').filter(function(){ return !!this.value; }).length < 1 && $('.separated').filter(function(){ return !!this.value; }).length < 1) {
         $('#btnClear').prop("disabled",true);
     }
     else{
