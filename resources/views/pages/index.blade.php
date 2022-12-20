@@ -10,6 +10,23 @@
     <table class="table table-striped table-hover table-bordered w-100 user_activity_table" id="user_activity_table">
         <thead class="text-white" style="background-color:#0d1a80;">
             <tr>
+                <td class="d-none">
+                    <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
+                </td>
+                <td>
+                    <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817"/>
+                </td>
+                <td>
+                    <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
+                </td>
+                <td>
+                    <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
+                </td>
+                <td>
+                    <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
+                </td>
+            </tr>
+            <tr>
                 <th>DATE & TIME</th>
                 <th style="width:20%">DATE & TIME</th>
                 <th style="width:15%">USER NAME</th>
