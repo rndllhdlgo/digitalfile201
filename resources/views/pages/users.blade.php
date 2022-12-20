@@ -9,6 +9,20 @@
         <table class="table table-striped table-hover table-bordered w-100 usersTable" id="usersTable">
             <thead class="text-white" style="background-color:#0d1a80;">
                 <tr>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
+                    </td>
+                </tr>
+                <tr>
                     <th style="width:15%;"><i class="fas fa-user"></i> USER LEVEL</th>
                     <th><i class="fas fa-address-card"></i> NAME</th>
                     <th><i class="fas fa-envelope"></i> EMAIL</th>
