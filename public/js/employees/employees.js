@@ -187,7 +187,8 @@ $('#region').on('change', function(){
             list.forEach(value => {
                 $('#province').append($('<option>', {
                     value: value.provCode,
-                    text: value.provDesc.toUpperCase()
+                    text: value.provDesc.toUpperCase(),
+                    class:'province'
                 }));
             });
         }
@@ -211,7 +212,8 @@ $('#province').on('change', function(){
             list.forEach(value => {
                 $('#city').append($('<option>', {
                     value: value.citymunCode,
-                    text: value.citymunDesc.toUpperCase()
+                    text: value.citymunDesc.toUpperCase(),
+                    class:'city'
                 }));
             });
         }

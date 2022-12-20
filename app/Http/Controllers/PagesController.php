@@ -26,9 +26,10 @@ class PagesController extends Controller
             return redirect('/login');
         }
         
-        if(Auth::user()->user_level != 'ADMIN'){
-            return redirect('/');
-        }
+        // if(Auth::user()->user_level != 'ADMIN'){
+        //     return redirect('/');
+        // }
+        
         $regions = Region::select('regCode','regDesc')->get()->sortBy('regCode');
         $companies = Company::select('id','company_name')->get();
         $branches = Branch::select('id','branch_name')->get();

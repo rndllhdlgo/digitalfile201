@@ -48,6 +48,8 @@ Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
 
+Route::any('/employees/fetch','EmployeesController@employeeFetch');
+
 Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
 Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
 Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompensationBenefits');

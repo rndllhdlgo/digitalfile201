@@ -24,24 +24,25 @@
 
     <nav class="navbar navbar-expand-sm" style="background-color:#0d1a80;font-weight:bolder;">
         <div class="container-fluid">
-          <ul class="navbar-nav">
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
                 </li>
                 
-                @if(Auth::user()->user_level == 'ADMIN') {{--ADMIN AUTHENTICATION --}}
+                @if(Auth::user()->user_level == 'ADMIN' || Auth::user()->user_level == 'ENCODER') {{--ADMIN AUTHENTICATION --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
                     </li>
+                @endif
+                @if(Auth::user()->user_level == 'ADMIN')
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
                     </li>
-                @endif
-                
-          </ul>
+                @endif 
+            </ul>
 
     {{-- <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#0d1a80;">
         <div class="container">

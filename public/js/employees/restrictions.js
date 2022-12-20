@@ -57,27 +57,27 @@ var email_address = document.querySelector('#email_address');
 var email_validation = document.querySelector('#email_validation');
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-    function emailValidation(){
-        if(email_address.value.match(regExp)){
-            $('#email_validation').hide();
-        }
-        else{
-            $('#email_validation').show();
-        }
+$('#email_address').on('keyup',function(){
+    if(email_address.value.match(regExp)){
+        $('#email_validation').hide();
     }
-
+    else{
+        $('#email_validation').show();
+    }
+});
+    
 var company_email_address = document.querySelector('#company_email_address');
 var company_email_validation = document.querySelector('#company_email_validation');
 let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-    function companyEmailValidation(){
-        if(company_email_address.value.match(regExp)){
-            $('#company_email_validation').hide();
-        }
-        else{
-            $('#company_email_validation').show();
-        }
+$('#company_email_address').on('keyup',function(){
+    if(company_email_address.value.match(regExp)){
+        $('#company_email_validation').hide();
     }
+    else{
+        $('#company_email_validation').show();
+    }
+});
 
 //Disable future dates/ Date Hired Function
 $(function(){

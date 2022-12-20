@@ -38,6 +38,7 @@ class EmployeesController extends Controller
 
     public function listOfEmployees(Request $request){
         $employees = PersonalInformationTable::select(
+            'personal_information_tables.id',
             'work_information_tables.employee_number',
             'first_name',
             'middle_name', 
@@ -54,10 +55,88 @@ class EmployeesController extends Controller
         return DataTables::of($employees)->make(true);
     }
     
+    public function employeeFetch(Request $request){
+        $employees = PersonalInformationTable::select(
+            'personal_information_tables.id',
+            'work_information_tables.employee_number',
+            'work_information_tables.employee_company',
+            'work_information_tables.employee_department',
+            'work_information_tables.employee_branch',
+            'work_information_tables.employment_origin',
+            'work_information_tables.employee_shift',
+            'work_information_tables.employee_position',
+            'work_information_tables.employee_supervisor',
+            'work_information_tables.date_hired',
+            'work_information_tables.company_email_address',
+            'work_information_tables.company_contact_number',
+            'compensation_benefits.employee_salary',
+            'compensation_benefits.employee_incentives',
+            'compensation_benefits.employee_overtime_pay',
+            'compensation_benefits.employee_bonus',
+            'compensation_benefits.employee_insurance',
+            'educational_attainments.secondary_school_name',
+            'educational_attainments.secondary_school_address',
+            'educational_attainments.secondary_school_inclusive_years',
+            'educational_attainments.primary_school_name',
+            'educational_attainments.primary_school_address',
+            'educational_attainments.primary_school_inclusive_years',
+            'medical_histories.past_medical_condition',
+            'medical_histories.allergies',
+            'medical_histories.medication',
+            'medical_histories.psychological_history',
+            'employee_image',
+            'first_name',
+            'middle_name',
+            'last_name',
+            'suffix',
+            'nickname',
+            'birthday',
+            'gender',
+            'civil_status',
+            'street',
+            'region',
+            'province',
+            'city',
+            'height',
+            'weight',
+            'religion',
+            'email_address',
+            'telephone_number',
+            'cellphone_number',
+            'spouse_name',
+            'spouse_contact_number',
+            'spouse_profession',
+            'father_name',
+            'father_contact_number',
+            'father_profession',
+            'mother_name',
+            'mother_contact_number',
+            'mother_profession',
+            'emergency_contact_name',
+            'emergency_contact_relationship',
+            'emergency_contact_number',
+            'positions.job_position_name AS employee_position', 
+            'branches.branch_name AS employee_branch', 
+            'employee_status')
+        ->where('personal_information_tables.id',$request->id)
+        ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
+        ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')
+        ->join('positions','positions.id','work_information_tables.employee_position')
+        ->join('branches','branches.id','work_information_tables.employee_branch')
+        ->get();
+
+        return DataTables::of($employees)->toJson();
+    }
     // public function childrenDataTable(Request $request){
     //     $children = Children::where('employee_id',$request->employee_id)->get();
     //     return DataTables::of($children)->make(true);
     // }
+
+    public function collegeDataTable(Request $request){
+        return DataTables::of(CollegeTable::where('employee_id',$request->employee_id)->get())->make(true);
+    }
 
     public function savePersonalInformation(Request $request){
         $employee_personal_information = new PersonalInformationTable;
@@ -237,34 +316,34 @@ class EmployeesController extends Controller
     public function checkDuplicate(Request $request){
         // return WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
         if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
-            return 'true';
+            return 'duplicate_employee_number';
         }
         else if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
-            return 'true';
+            return 'duplicate_email_address';
         }
         else if(PersonalInformationTable::where('telephone_number',$request->telephone_number)->count() > 0){
-            return 'true';
+            return 'duplicate_telephone_number';
         }
         else if(PersonalInformationTable::where('cellphone_number',$request->cellphone_number)->count() > 0){
-            return 'true';
+            return 'duplicate_cellphone_number';
         }
         else if(PersonalInformationTable::where('father_contact_number',$request->father_contact_number)->count() > 0){
-            return 'true';
+            return 'duplicate_father_contact_number';
         }
         else if(PersonalInformationTable::where('mother_contact_number',$request->mother_contact_number)->count() > 0){
-            return 'true';
+            return 'duplicate_mother_contact_number';
         }
         else if(PersonalInformationTable::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0){
-            return 'true';
+            return 'duplicate_spouse_contact_number';
         }
         else if(PersonalInformationTable::where('emergency_contact_number',$request->spouse_contact_number)->count() > 0){
-            return 'true';
+            return 'duplicate_contact_number';
         }
         else if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
-            return 'true';
+            return 'duplicate_company_email_address';
         }
         else if(WorkInformationTable::where('company_contact_number',$request->company_contact_number)->count() > 0){
-            return 'true';
+            return 'duplicate_company_contact_number';
         }
     }
 

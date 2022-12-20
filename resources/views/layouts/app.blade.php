@@ -18,7 +18,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
 
-        
+        <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
 <body>
         @if(!Auth::guest())
@@ -38,6 +38,8 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
+        <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+
         {{-- <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> --}}
         
         <!-- Insert JS FILES -->
@@ -80,7 +82,6 @@
         @endif
 
         @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance'))
-            <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>

@@ -6,7 +6,7 @@ $('#employee_number').on('keyup',function(){
                 employee_number : $('#employee_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_employee_number'){
                     $('#check_duplicate').show();
                     $('#employee_number').addClass('duplicate_field');
                 }
@@ -27,7 +27,7 @@ $('#email_address').on('keyup',function(){
                 email_address : $('#email_address').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_email_address'){
                     $('#duplicate_email_address').show();
                     $('#email_address').addClass('duplicate_field');
                 }
@@ -48,7 +48,7 @@ $('#telephone_number').on('keyup',function(){
                 telephone_number : $('#telephone_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_telephone_number'){
                     $('#duplicate_telephone_number').show();
                     $('#telephone_number').addClass('duplicate_field');
                 }
@@ -69,7 +69,7 @@ $('#cellphone_number').on('keyup',function(){
                 cellphone_number : $('#cellphone_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_cellphone_number'){
                     $('#duplicate_cellphone_number').show();
                     $('#cellphone_number').addClass('duplicate_field');
                 }
@@ -90,7 +90,7 @@ $('#father_contact_number').on('keyup',function(){
                 father_contact_number : $('#father_contact_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_father_contact_number'){
                     $('#duplicate_father_contact_number').show();
                     $('#father_contact_number').addClass('duplicate_field');
                 }
@@ -111,7 +111,7 @@ $('#mother_contact_number').on('keyup',function(){
                 mother_contact_number : $('#mother_contact_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_mother_contact_number'){
                     $('#duplicate_mother_contact_number').show();
                     $('#mother_contact_number').addClass('duplicate_field');
                 }
@@ -132,7 +132,7 @@ $('#spouse_contact_number').on('keyup',function(){
                 spouse_contact_number : $('#spouse_contact_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_spouse_contact_number'){
                     $('#duplicate_spouse_contact_number').show();
                     $('#spouse_contact_number').addClass('duplicate_field');
                 }
@@ -153,7 +153,7 @@ $('#emergency_contact_number').on('keyup',function(){
                 emergency_contact_number : $('#emergency_contact_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_contact_number'){
                     $('#duplicate_emergency_contact_number').show();
                     $('#emergency_contact_number').addClass('duplicate_field');
                 }
@@ -174,7 +174,7 @@ $('#company_email_address').on('keyup',function(){
                 company_email_address : $('#company_email_address').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_company_email_address'){
                     $('#duplicate_employee_email').show();
                     $('#company_email_address').addClass('duplicate_field');
                 }
@@ -195,7 +195,7 @@ $('#company_contact_number').on('keyup',function(){
                 company_contact_number : $('#company_contact_number').val(),
             },
             success: function(data){
-                if(data == 'true'){
+                if(data == 'duplicate_company_contact_number'){
                     $('#duplicate_company_contact_number').show();
                     $('#company_contact_number').addClass('duplicate_field');
                 }

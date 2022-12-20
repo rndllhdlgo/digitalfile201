@@ -20,25 +20,25 @@ function checkRequiredFields(){
         });
     }
 
-    if($('#employee_information').is(":visible")){
-        $('.formlabel').each(function(){
-            var id = '#'+$(this).attr('for');
-            var icon = '.'+$(this).attr('for')+'_icon';
-            var icon_class = $(this).attr('for')+'_icon';
-            var span = '.span_'+$(this).attr('for');
-            if(!$(icon)[0] && $(id).hasClass('required_field')){
-                $(span).append('<i class="fa-solid fa-triangle-exclamation '+icon_class+'" style="zoom: 125%;" title="Required"></i>');
-            }
-            if(!$(id).val()){
-                $(icon).addClass('text-danger');
-                $(icon).removeClass('text-default');
-            }
-            else{
-                $(icon).removeClass('text-danger');
-                $(icon).addClass('text-default');
-            }
-        });
-    }
+    // if($('#employee_information').is(":visible")){
+    //     $('.formlabel').each(function(){
+    //         var id = '#'+$(this).attr('for');
+    //         var icon = '.'+$(this).attr('for')+'_icon';
+    //         var icon_class = $(this).attr('for')+'_icon';
+    //         var span = '.span_'+$(this).attr('for');
+    //         if(!$(icon)[0] && $(id).hasClass('required_field')){
+    //             $(span).append('<i class="fa-solid fa-triangle-exclamation '+icon_class+'" style="zoom: 125%;" title="Required"></i>');
+    //         }
+    //         if(!$(id).val()){
+    //             $(icon).addClass('text-danger');
+    //             $(icon).removeClass('text-default');
+    //         }
+    //         else{
+    //             $(icon).removeClass('text-danger');
+    //             $(icon).addClass('text-default');
+    //         }
+    //     });
+    // }
 }
 
 setInterval(checkJobDescription, 0);
@@ -211,3 +211,10 @@ $(".textarea_insurance").keyup(function(event){
 		document.getElementById('employee_insurance').value = txtval7.substring(0,txtval7.length - 1);
 	}
 });
+
+var app_timeout = $('#APP_TIMEOUT').val();
+
+function decodeHtml(str){
+    var map = {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#039;': "'"};
+    return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m){return map[m];});
+}
