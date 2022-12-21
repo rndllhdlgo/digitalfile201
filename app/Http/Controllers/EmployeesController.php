@@ -45,10 +45,10 @@ class EmployeesController extends Controller
             'last_name', 
             'positions.job_position_name AS employee_position', 
             'branches.branch_name AS employee_branch', 
-            'employee_status')
+            'work_information_tables.employee_status')
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
-        ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        // ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
         ->join('positions','positions.id','work_information_tables.employee_position')
         ->join('branches','branches.id','work_information_tables.employee_branch')
         ->get();
@@ -58,32 +58,6 @@ class EmployeesController extends Controller
     public function employeeFetch(Request $request){
         $employees = PersonalInformationTable::select(
             'personal_information_tables.id',
-            'work_information_tables.employee_number',
-            'work_information_tables.employee_company',
-            'work_information_tables.employee_department',
-            'work_information_tables.employee_branch',
-            'work_information_tables.employment_origin',
-            'work_information_tables.employee_shift',
-            'work_information_tables.employee_position',
-            'work_information_tables.employee_supervisor',
-            'work_information_tables.date_hired',
-            'work_information_tables.company_email_address',
-            'work_information_tables.company_contact_number',
-            'compensation_benefits.employee_salary',
-            'compensation_benefits.employee_incentives',
-            'compensation_benefits.employee_overtime_pay',
-            'compensation_benefits.employee_bonus',
-            'compensation_benefits.employee_insurance',
-            'educational_attainments.secondary_school_name',
-            'educational_attainments.secondary_school_address',
-            'educational_attainments.secondary_school_inclusive_years',
-            'educational_attainments.primary_school_name',
-            'educational_attainments.primary_school_address',
-            'educational_attainments.primary_school_inclusive_years',
-            'medical_histories.past_medical_condition',
-            'medical_histories.allergies',
-            'medical_histories.medication',
-            'medical_histories.psychological_history',
             'employee_image',
             'first_name',
             'middle_name',
@@ -115,16 +89,44 @@ class EmployeesController extends Controller
             'emergency_contact_name',
             'emergency_contact_relationship',
             'emergency_contact_number',
-            'positions.job_position_name AS employee_position', 
-            'branches.branch_name AS employee_branch', 
-            'employee_status')
+            'work_information_tables.employee_number',
+            'work_information_tables.employee_company',
+            'work_information_tables.employee_department',
+            'work_information_tables.employee_branch',
+            'work_information_tables.employee_status',
+            'work_information_tables.employment_origin',
+            'work_information_tables.employee_shift',
+            'work_information_tables.employee_supervisor',
+            'work_information_tables.employee_position',
+            'work_information_tables.date_hired',
+            'work_information_tables.company_email_address',
+            'work_information_tables.company_contact_number',
+            'work_information_tables.sss_number',
+            'work_information_tables.pag_ibig_number',
+            'work_information_tables.philhealth_number',
+            'work_information_tables.tin_number',
+            'work_information_tables.account_number',
+            'compensation_benefits.employee_salary',
+            'compensation_benefits.employee_incentives',
+            'compensation_benefits.employee_overtime_pay',
+            'compensation_benefits.employee_bonus',
+            'compensation_benefits.employee_insurance',
+            'educational_attainments.secondary_school_name',
+            'educational_attainments.secondary_school_address',
+            'educational_attainments.secondary_school_inclusive_years',
+            'educational_attainments.primary_school_name',
+            'educational_attainments.primary_school_address',
+            'educational_attainments.primary_school_inclusive_years',
+            'medical_histories.past_medical_condition',
+            'medical_histories.allergies',
+            'medical_histories.medication',
+            'medical_histories.psychological_history'
+            )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
         ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
-        ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')
-        ->join('positions','positions.id','work_information_tables.employee_position')
-        ->join('branches','branches.id','work_information_tables.employee_branch')
+        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
+        ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')        
         ->get();
 
         return DataTables::of($employees)->toJson();
@@ -141,7 +143,7 @@ class EmployeesController extends Controller
     public function savePersonalInformation(Request $request){
         $employee_personal_information = new PersonalInformationTable;
 
-        $employee_personal_information->employee_image = $request->employee_image;
+        $employee_personal_information->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee_personal_information->first_name =  ucwords($request->first_name);
         $employee_personal_information->last_name = ucwords($request->last_name); 
         $employee_personal_information->middle_name = ucwords($request->middle_name);
@@ -194,6 +196,121 @@ class EmployeesController extends Controller
         return response()->json($data);
     }
 
+    public function updatePersonalInformation(Request $request){
+        if($request->filename_delete){
+            unlink(public_path('storage/employee_images/'.$request->filename_delete));
+        }
+
+        $employee = PersonalInformationTable::find($request->get('id'));
+
+        $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
+        $employee->first_name =  ucwords($request->first_name);
+        $employee->last_name = ucwords($request->last_name); 
+        $employee->middle_name = ucwords($request->middle_name);
+        
+        $employee->suffix = ucwords($request->suffix);
+        $employee->nickname = ucwords($request->nickname);
+        $employee->birthday = $request->birthday;
+        $employee->gender = $request->gender;
+        $employee->civil_status = $request->civil_status;
+        $employee->street = ucwords($request->street);
+        $employee->region = $request->region;
+        $employee->province = $request->province;
+        $employee->city = $request->city;
+        $employee->height = $request->height;
+        $employee->weight = $request->weight;
+        $employee->religion = ucwords($request->religion);
+        $employee->email_address = strtolower($request->email_address);
+        $employee->telephone_number = $request->telephone_number;
+        $employee->cellphone_number = $request->cellphone_number;
+        $employee->spouse_name = ucwords($request->spouse_name);
+        $employee->spouse_contact_number = $request->spouse_contact_number;
+        $employee->spouse_profession = ucwords($request->spouse_profession);
+        $employee->father_name = ucwords($request->father_name);
+        $employee->father_contact_number = $request->father_contact_number;
+        $employee->father_profession = ucwords($request->father_profession);
+        $employee->mother_name = ucwords($request->mother_name);
+        $employee->mother_contact_number = $request->mother_contact_number;
+        $employee->mother_profession = ucwords($request->mother_profession);
+        $employee->emergency_contact_name = ucwords($request->emergency_contact_name);
+        $employee->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
+        $employee->emergency_contact_number = $request->emergency_contact_number;
+        $sql = $employee->save();
+
+        if($sql){
+            // $userlogs = new UserLogs;
+            // $userlogs->user_id = auth()->user()->id;
+            // $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_personal_information->first_name $employee_personal_information->middle_name $employee_personal_information->last_name]."; //Display logs in home page
+            // $userlogs->save();
+
+            $result = 'true';
+            $id = $employee->id;
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
+    }
+
+    public function updateWorkInformation(Request $request){
+        $employee = WorkInformationTable::find($request->get('id'));
+        $employee->employee_id = $request->employee_id;
+        $employee->employee_number = $request->employee_number;
+        $employee->employee_company = $request->employee_company;
+        $employee->employee_department = $request->employee_department;
+        $employee->employee_branch = $request->employee_branch;
+        $employee->employee_status = $request->employee_status;
+        $employee->employment_origin = $request->employment_origin;
+        $employee->employee_shift = $request->employee_shift;
+        $employee->employee_position = $request->employee_position;
+        $employee->employee_supervisor = $request->employee_supervisor;
+        $employee->date_hired = $request->date_hired;
+        $employee->company_email_address = $request->company_email_address;
+        $employee->company_contact_number = $request->company_contact_number;
+        $employee->sss_number = $request->sss_number;
+        $employee->pag_ibig_number = $request->pag_ibig_number;
+        $employee->philhealth_number = $request->philhealth_number;
+        $employee->tin_number = $request->tin_number;
+        $employee->account_number = $request->account_number;
+        $employee->save();
+    }
+
+    public function updateCompensationBenefits(Request $request){
+        $employee = CompensationBenefits::find($request->get('id'));
+        $employee->employee_id = $request->employee_id;
+        $employee->employee_salary = $request->employee_salary;
+        $employee->employee_incentives = $request->employee_incentives;
+        $employee->employee_overtime_pay = $request->employee_overtime_pay;
+        $employee->employee_bonus = $request->employee_bonus;
+        $employee->employee_insurance = $request->employee_insurance;
+        $employee->save();
+    }
+
+    public function updateEducationalAttainment(Request $request){
+        $employee =  EducationalAttainment::find($request->get('id'));
+        $employee->employee_id = $request->employee_id;
+        $employee->secondary_school_name = $request->secondary_school_name;
+        $employee->secondary_school_address = $request->secondary_school_address;
+        $employee->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
+        $employee->primary_school_name = $request->primary_school_name;
+        $employee->primary_school_address = $request->primary_school_address;
+        $employee->primary_school_inclusive_years = $request->primary_school_inclusive_years;
+        $employee->save();
+    }
+
+    public function updateMedicalHistory(Request $request){
+        $employee = MedicalHistory::find($request->get('id'));
+        $employee->employee_id = $request->employee_id;
+        $employee->past_medical_condition = ucwords($request->past_medical_condition);
+        $employee->allergies = ucwords($request->allergies);
+        $employee->medication = ucwords($request->medication);
+        $employee->psychological_history = ucwords($request->psychological_history);
+        $employee->save();
+    }
+    
     public function saveChildren(Request $request){
         $children = new ChildrenTable;
         $children->employee_id = $request->employee_id;
@@ -222,7 +339,6 @@ class EmployeesController extends Controller
         $employee_work_information->employee_branch = $request->employee_branch;
         $employee_work_information->employee_status = $request->employee_status;
         $employee_work_information->employment_origin = $request->employment_origin;
-        $employee_work_information->employee_salary = $request->employee_salary;
         $employee_work_information->employee_shift = $request->employee_shift;
         $employee_work_information->employee_position = $request->employee_position;
         $employee_work_information->employee_supervisor = $request->employee_supervisor;
@@ -299,7 +415,7 @@ class EmployeesController extends Controller
     }
 
     public function saveMedicalHistory(Request $request){
-        if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
+        // if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
             $employee_medicalHistory = new MedicalHistory;
             $employee_medicalHistory->employee_id = $request->employee_id;
             $employee_medicalHistory->past_medical_condition = ucwords($request->past_medical_condition);
@@ -307,7 +423,7 @@ class EmployeesController extends Controller
             $employee_medicalHistory->medication = ucwords($request->medication);
             $employee_medicalHistory->psychological_history = ucwords($request->psychological_history);
             $employee_medicalHistory->save();
-        } 
+        // } 
     }
 
     public function checkDuplicate(Request $request){

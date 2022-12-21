@@ -70,11 +70,9 @@ function checkforblank(){
     || $('#company_contact_number').hasClass('duplicate_field')
     )
     {
-        $('#title_details').show();
         $('#btnSave').prop("disabled",true);    
     }
     else{
-        $('#title_details').hide();
         $('#btnSave').prop("disabled",false);
     }
 }

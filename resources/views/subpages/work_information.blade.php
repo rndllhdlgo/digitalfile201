@@ -67,8 +67,8 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
-                    <option value="Newly_Hired">Newly Hired</option>
-                    <option value="Direct_Hired">Direct Hired</option>
+                    <option value="Newly Hired">Newly Hired</option>
+                    <option value="Direct Hired">Direct Hired</option>
                     <option value="Rehired">Rehired</option>
                 </select>
                 <label for="employment_origin" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT ORIGIN <span class="span_employment_origin span_all"></span></label>
@@ -113,11 +113,11 @@
             </div>
         </div>
 
-        <div class="col-2">
+        <div class="col">
             <button type="button" class="btn btn-sm btn-primary grow p-1 w-100 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
         </div>
 
-        <div class="col-2">
+        <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
                 <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label> 
@@ -138,7 +138,7 @@
                 <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                 {{-- <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
                 <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
-                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT NO. <span class="span_company_contact_number span_all">(Optional)</span></label>
+                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> COMPANY CONTACT <span class="span_company_contact_number span_all">(Optional)</span></label>
             </div>
         </div>
         

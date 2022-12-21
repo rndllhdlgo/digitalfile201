@@ -56,6 +56,12 @@ Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompen
 Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
 Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
 
+Route::any('/employees/updatePersonalInformation','EmployeesController@updatePersonalInformation');
+Route::any('/employees/updateWorkInformation','EmployeesController@updateWorkInformation');
+Route::any('/employees/updateCompensationBenefits','EmployeesController@updateCompensationBenefits');
+Route::any('/employees/updateEducationalAttainment','EmployeesController@updateEducationalAttainment');
+Route::any('/employees/updateMedicalHistory','EmployeesController@updateMedicalHistory');
+
 Route::any('/employees/saveChildren','EmployeesController@saveChildren');
 Route::any('/employees/saveCollege','EmployeesController@saveCollege');
 Route::any('/employees/saveTraining','EmployeesController@saveTraining');

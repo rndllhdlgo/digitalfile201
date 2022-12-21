@@ -16,9 +16,8 @@ $('#addEmployeeBtn').on('click',function(){
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
 
-    $('#title_details').removeClass('alert-info');
-    $('#title_details').addClass('alert-warning');
-    $('#title_details').html('<i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.');
+    $('#note_required').show();
+    $('#note_information').hide();
 });
 
 // if($('.requiredField:visible').filter(function(){ return !!this.value; }).length < $(".requiredField:visible").length )
@@ -53,7 +52,7 @@ $('#addEmployeeBtn').on('click',function(){
     }
 
     function changeEmploymentStatus(){
-        var employment_status = $('#employee_status');
+        var employee_status = $('#employee_status');
   
         if($('#employee_status').val() == "Regular" 
         || $('#employee_status').val() == "Intern" 
@@ -118,6 +117,8 @@ $('#image_close').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
+            $('#filename_delete').val($('#filename').val());
+            $('#filename').val('');
             $('#employee_image').val(''); //Remove the image inserted
             $('#image_preview').attr('src',''); //Remove current preview
             $('#image_preview').hide();
@@ -192,7 +193,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
         type: 'GET',
         url: '/setJobDescription',
         data:{
-            'id': $('#employee_position').val()
+            id: $('#employee_position').val()
         },
         success: function(data){
             var job_description = data[0].job_description;
@@ -216,7 +217,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
         type: 'GET',
         url: '/setJobPosition',
         data:{
-            'id': $('#employee_position').val()
+            id: $('#employee_position').val()
         },
         success: function(data){
             var list = $.map(data, function(value, index){
@@ -237,7 +238,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
 
 
 //Fill All Function
-$('#title_details').on('click',function(){
+$('#note_required').on('click',function(){
 //Required Field
     $('#first_name').val('Rendell');
     $('#middle_name').val('Mendez');

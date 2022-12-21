@@ -3,7 +3,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     var data = employeesTable.row(this).data();
     var id = data.id;
     console.log(id);
-    
+
     $.ajax({
         url: '/employees/fetch',
         headers:{
@@ -19,13 +19,23 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 return [value];
             });
             employee_data.forEach(value => {
-                
+
+                $('#hidden_id').val(value.id);
                 //Personal Information
-                $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
-                $('#image_preview').show();
-                $('#image_user').hide();
-                $('#image_button').hide();
-                $('#image_close').show();
+                if(value.employee_image){
+                    $('#filename').val(value.employee_image);
+                    $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
+                    $('#image_preview').show();
+                    $('#image_user').hide();
+                    $('#image_button').hide();
+                    $('#image_close').show();
+                }
+                else{
+                    $('#filename').val('');
+                }
+                
+                $('#filename_delete').val('');
+
                 $('#first_name').val(value.first_name);
                 $('#middle_name').val(value.middle_name);
                 $('#last_name').val(value.last_name);
@@ -87,36 +97,40 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
-                //Work Information
                 $('#employee_number').val(value.employee_number);
                 $('#employee_company').val(value.employee_company);
                 $('#employee_department').val(value.employee_department);
                 $('#employee_branch').val(value.employee_branch);
                 $('#employee_status').val(value.employee_status);
+                setInterval(() => {
+                    $('#employee_status').change();
+                }, app_timeout);
                 $('#employment_origin').val(value.employment_origin);
                 $('#employee_shift').val(value.employee_shift);
-                $('#employee_position').val(value.employee_position);
                 $('#employee_supervisor').val(value.employee_supervisor);
+                $('#employee_position').val(value.employee_position);
                 $('#date_hired').val(value.date_hired);
                 $('#company_email_address').val(value.company_email_address);
                 $('#company_contact_number').val(value.company_contact_number);
+                $('#sss_number').val(value.sss_number);
+                $('#pag_ibig_number').val(value.pag_ibig_number);
+                $('#philhealth_number').val(value.philhealth_number);
+                $('#tin_number').val(value.tin_number);
+                $('#account_number').val(value.account_number);
 
-                //Compensation and Benefits
                 $('#employee_salary').val(value.employee_salary);
                 $('#employee_incentives').val(value.employee_incentives);
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
                 $('#employee_bonus').val(value.employee_bonus);
                 $('#employee_insurance').val(value.employee_insurance);
 
-                //Education/Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
                 $('#secondary_school_address').val(value.secondary_school_address);
                 $('#secondary_school_inclusive_years').val(value.secondary_school_inclusive_years);
                 $('#primary_school_name').val(value.primary_school_name);
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years').val(value.primary_school_inclusive_years);
-                
-                //Medical History
+
                 $('#past_medical_condition').val(value.past_medical_condition);
                 $('#allergies').val(value.allergies);
                 $('#medication').val(value.medication);
@@ -128,7 +142,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#tab1').click();
                 $('#btnClear').hide();
                 $('#btnSave').hide();
-                $('#title_details').html('<i class="fas fa-info"></i> <b>EMPLOYEE INFORMATION</b>');
+                $('#note_required').hide();
+                $('#note_information').show();
             });
         }
     });

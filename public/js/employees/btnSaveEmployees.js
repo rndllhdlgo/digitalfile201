@@ -1,5 +1,5 @@
 var employee_image;
-function sendFile() {
+function employee_image_save() {
     var formData = new FormData();
     var file = $('#employee_image').prop('files')[0];
 
@@ -69,7 +69,16 @@ $('#btnSave').on('click', function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            sendFile();
+            if(!$('#filename').val() && $('#employee_image').val()){
+                employee_image_save();
+            }
+            else if(!$('#filename').val() && !$('#employee_image').val()){
+                employee_image = 'N/A';
+            }
+            else{
+                employee_image = $('#employee_image').val();
+            }
+            
             $.ajax({
                 url:"/employees/savePersonalInformation",
                 type:"POST",
@@ -77,7 +86,6 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    // employee_number:employee_number,
                     employee_image:employee_image,
                     first_name:first_name,
                     last_name:last_name,
@@ -118,19 +126,19 @@ $('#btnSave').on('click', function(){
                             var employee_department = $('#employee_department').val();
                             var employee_branch = $('#employee_branch').val();
                             var employee_status = $('#employee_status').val();
-                            var employment_origin = $('#employment_origin option:selected').text();
+                            var employment_origin = $('#employment_origin').val();
                             var employee_salary = $('#employee_salary').val();
                             var employee_shift = $('#employee_shift').val();
                             var employee_position = $('#employee_position').val();
                             var employee_supervisor = $('#employee_supervisor').val();
                             var date_hired = $('#date_hired').val();
-                            var company_email_address = $.trim($('#company_email_address').val());
-                            var company_contact_number = $.trim($('#company_contact_number').val());
-                            var sss_number = $.trim($('#sss_number').val());
-                            var pag_ibig_number = $.trim($('#pag_ibig_number').val());
-                            var philhealth_number = $.trim($('#philhealth_number').val());
-                            var tin_number = $.trim($('#tin_number').val());
-                            var account_number = $.trim($('#account_number').val());
+                            var company_email_address = $('#company_email_address').val();
+                            var company_contact_number = $('#company_contact_number').val();
+                            var sss_number = $('#sss_number').val();
+                            var pag_ibig_number = $('#pag_ibig_number').val();
+                            var philhealth_number = $('#philhealth_number').val();
+                            var tin_number = $('#tin_number').val();
+                            var account_number = $('#account_number').val();
 
                             $.ajax({
                                 url:"/employees/saveWorkInformation",
@@ -146,7 +154,6 @@ $('#btnSave').on('click', function(){
                                     employee_branch:employee_branch,
                                     employee_status:employee_status,
                                     employment_origin:employment_origin,
-                                    employee_salary:employee_salary,
                                     employee_shift:employee_shift,
                                     employee_position:employee_position,
                                     employee_supervisor:employee_supervisor,
