@@ -612,6 +612,29 @@ class EmployeesController extends Controller
     //         // return view('pages.employees');
     // }
 
+    public function viewLogs(Request $request){ //Blade
+        return view('try.logs');
+    }
+
+    public function saveLogs(Request $request){
+        $logs = new LogsInfo; //logs_sample_tables
+        $logs->fName = $request->fName;
+        $logs->mName = $request->mName;
+        $logs->lName = $request->lName;
+        $save = $logs->save();
+        if($save){
+            $result = 'true';
+            $id = $logs->id;
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
+    }
+
     public function saveSample(Request $request){
         $logs = new LogsTable;
         $logs->employee_id = $request->employee_id;
@@ -619,27 +642,5 @@ class EmployeesController extends Controller
         $logs->sample2 = $request->sample2;
         $logs->sample3 = $request->sample3;
         $logs->save();
-    }
-
-    public function logs_data(Request $request){
-        return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
-    }
-
-    public function college_data(Request $request){
-        return DataTables::of(CollegeTable::where('employee_id',$request->id)->get())->make(true);
-    }
-
-    public function logs_delete(Request $request){
-        $logs_id = explode(",", $request->id);
-        foreach($logs_id as $id){
-            LogsTable::where('id', $id)->delete();
-        }
-    }
-
-    public function college_delete(Request $request){
-        $college_id = explode(",", $request->id);
-        foreach($college_id as $id){
-            CollegeTable::where('id', $id)->delete();
-        }
     }
 }

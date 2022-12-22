@@ -254,3 +254,9 @@ function decodeHtml(str){
     var map = {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#039;': "'"};
     return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m){return map[m];});
 }
+
+$('body').on('cut paste', function(){
+    setTimeout(function(){
+        $(':focus').keyup();
+    }, app_timeout);
+});

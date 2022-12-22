@@ -104,18 +104,53 @@ $(document).ready(function(){
         });
     });
 
+    // $('#collegeAdd').click(function(){
+    //     var college_name = $('#college_name').val();
+    //     var college_degree = $('#college_degree').val();
+    //     var college_inclusive_years = $('#college_inclusive_years').val();
+
+    //     var college_table = "<tr class='college_tr'>"+
+    //                             "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
+    //                             "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
+    //                             "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
+    //                             "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+    //                         "<tr>";
+    //     $('#college_table tbody').append(college_table);
+    //     $('#college_name').val("");
+    //     $('#college_degree').val("");
+    //     $('#college_inclusive_years').val("");
+
+    //     $('.btn_college').click(function(){
+    //         $(this).parent().parent().remove();
+    //     });
+    // });
+
     $('#collegeAdd').click(function(){
         var college_name = $('#college_name').val();
         var college_degree = $('#college_degree').val();
         var college_inclusive_years = $('#college_inclusive_years').val();
 
-        var college_table = "<tr class='college_tr'>"+
-                                "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
-                                "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
-                                "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
-                                "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                            "<tr>";
-        $('#college_table tbody').append(college_table);
+        if($('#btnSave').is(":visible")){
+            var college_table = "<tr class='college_tr'>"+
+                                    "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
+                                    "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
+                                    "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
+                                    "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                "<tr>";
+            $('#college_table tbody').append(college_table);
+        }
+        else{
+            var college_table = "<tr class='college_tr'>"+
+                                    "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
+                                    "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
+                                    "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
+                                    "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                "<tr>";
+            $('.dataTables_empty').closest('tr').remove();
+            $('#college_table_orig_tbody').append(college_table);
+            $('#college_table_orig').show();
+        }
+        
         $('#college_name').val("");
         $('#college_degree').val("");
         $('#college_inclusive_years').val("");
@@ -124,6 +159,7 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     });
+
 
     $('#trainingAdd').click(function(){
         var training_name = $('#training_name').val();
@@ -191,6 +227,41 @@ $(document).ready(function(){
         });
     });
 });
+
+$('#sampleAdd').click(function(){
+    var sample1 = $('#sample1').val();
+    var sample2 = $('#sample2').val();
+    var sample3 = $('#sample3').val();
+
+    if($('#btnSave').is(":visible")){
+        var sample_table = "<tr class='sample_tr'>"+
+                                "<td class='td_1 text-capitalize' style='width:30%;'>" + sample1 + "</td>" +
+                                "<td class='td_2' style='width:30%;'>" + sample2 + "</td>" +
+                                "<td class='td_3' style='width:30%;'>" + sample3 + "</td>" +
+                                "<td style='width:10%;'> <button class='btn btn-danger btn_sample center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                            "<tr>";
+        $('#sample_table tbody').append(sample_table);
+    }
+    else{
+        var sample_table = "<tr class='sample_tr'>"+
+                                "<td class='td_1 text-capitalize' style='width:30%;'>" + sample1 + "</td>" +
+                                "<td class='td_2' style='width:30%;'>" + sample2 + "</td>" +
+                                "<td class='td_3' style='width:30%;'>" + sample3 + "</td>" +
+                                "<td style='width:10%;'> <button class='btn btn-danger btn_sample center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                            "<tr>";
+        $('#sample_table_orig_tbody').append(sample_table);
+        $('#sample_table_orig').show();
+    }
+    
+    $('#sample1').val("");
+    $('#sample2').val("");
+    $('#sample3').val("");
+
+    $('.btn_sample').click(function(){
+        $(this).parent().parent().remove();
+    });
+});
+
 
     function addMemoRow(){
     $('#memoTable').append('<tr>'+

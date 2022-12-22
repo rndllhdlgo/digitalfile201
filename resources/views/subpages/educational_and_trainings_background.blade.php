@@ -38,8 +38,8 @@
             </tbody>
         </table>
 
-        <table id="college_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
-            <thead class="thead-educational">
+        <table id="college_table" class="table table-bordered table-hover table-striped align-middle college_table" style="margin-top: -17px;">
+            <thead class="college_table_thead">
                 <tr style="display:none;">
                     <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                     <th style="width: 30%;">DEGREE</th>
@@ -50,6 +50,21 @@
             <tbody>
             </tbody>
         </table>
+
+        <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="margin-top: -17px;">
+            <thead class="college_table_orig_thead">
+                <tr style="display:none;">
+                    <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
+                    <th style="width: 30%;">DEGREE</th>
+                    <th style="width: 30%;">INCLUSIVE YEARS</th>
+                    <th style="width: 10%;">ACTION</th>
+                </tr>
+            </thead>
+            <tbody id="college_table_orig_tbody">
+            </tbody>
+        </table>
+
+
     <hr class="hr-design">
     <br>
     {{-- Secondary Table --> --}}

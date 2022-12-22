@@ -349,6 +349,20 @@
                         <tbody>
                         </tbody>
                     </table>
+
+                    <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="margin-top: -17px;">
+                        <thead class="thead-educational">
+                            <tr style="display: none;" class="children_table_orig">
+                                <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
+                                <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
+                                {{-- <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th> --}}
+                                <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
+                                <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody id="children_table_orig_tbody">
+                        </tbody>
+                    </table>
             </div>
             
 </div>{{-- End of Personal Information Nav --}}

@@ -178,182 +178,257 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_relationship = $('#emergency_contact_relationship').val();
     var emergency_contact_number = $('#emergency_contact_number').val();
 
-    if(!$('#filename').val() && $('#employee_image').val()){
-        employee_image_save();
-    }
-    else if(!$('#filename').val() && !$('#employee_image').val()){
-        employee_image = 'N/A';
-    }
-    else{
-        employee_image = $('#filename').val();
-    }
-
-    $.ajax({
-        url:"/employees/updatePersonalInformation",
-        type:"POST",
-        headers:{
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{
-            id:id,
-            employee_image:employee_image,
-            filename_delete: $('#filename_delete').val(),
-            first_name:first_name,
-            last_name:last_name,
-            middle_name:middle_name,
-            suffix:suffix,
-            nickname:nickname,
-            birthday:birthday,
-            gender:gender,
-            civil_status:civil_status,
-            street:street,
-            region:region,
-            province:province,
-            city:city,
-            height:height,
-            weight:weight,
-            religion:religion,
-            email_address:email_address,
-            telephone_number:telephone_number,
-            cellphone_number:cellphone_number,
-            spouse_name:spouse_name,
-            spouse_contact_number:spouse_contact_number,
-            spouse_profession:spouse_profession,
-            father_name:father_name,
-            father_contact_number:father_contact_number,
-            father_profession:father_profession,
-            mother_name:mother_name,
-            mother_contact_number:mother_contact_number,
-            mother_profession:mother_profession,
-            emergency_contact_name:emergency_contact_name,
-            emergency_contact_relationship:emergency_contact_relationship,
-            emergency_contact_number:emergency_contact_number
-        },
-        success:function(data){
-            if(data.result == 'true'){
-                $('#employee_id').val(data.id);
-                var employee_number = $('#employee_number').val();
-                var employee_company = $('#employee_company').val();
-                var employee_department = $('#employee_department').val();
-                var employee_branch = $('#employee_branch').val();
-                var employee_status = $('#employee_status').val();
-                var employment_origin = $('#employment_origin').val();
-                var employee_salary = $('#employee_salary').val();
-                var employee_shift = $('#employee_shift').val();
-                var employee_position = $('#employee_position').val();
-                var employee_supervisor = $('#employee_supervisor').val();
-                var date_hired = $('#date_hired').val();
-                var company_email_address = $('#company_email_address').val();
-                var company_contact_number = $('#company_contact_number').val();
-                var sss_number = $('#sss_number').val();
-                var pag_ibig_number = $('#pag_ibig_number').val();
-                var philhealth_number = $('#philhealth_number').val();
-                var tin_number = $('#tin_number').val();
-                var account_number = $('#account_number').val();
-
-                $.ajax({
-                    url:"/employees/updateWorkInformation",
-                    type:"POST",
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data:{
-                        id:id,
-                        employee_id:data.id,
-                        employee_number:employee_number,
-                        employee_company:employee_company,
-                        employee_department:employee_department,
-                        employee_branch:employee_branch,
-                        employee_status:employee_status,
-                        employment_origin:employment_origin,
-                        employee_shift:employee_shift,
-                        employee_position:employee_position,
-                        employee_supervisor:employee_supervisor,
-                        date_hired:date_hired,
-                        company_email_address:company_email_address,
-                        company_contact_number:company_contact_number,
-                        sss_number:sss_number,
-                        pag_ibig_number:pag_ibig_number,
-                        philhealth_number:philhealth_number,
-                        tin_number:tin_number,
-                        account_number:account_number
-                    },
-                });
-
-                var employee_salary = $('#employee_salary').val();
-                var employee_incentives = $('#employee_incentives').val();
-                var employee_overtime_pay = $('#employee_overtime_pay').val();
-                var employee_bonus = $('#employee_bonus').val();
-                var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
-
-                $.ajax({
-                    url:"/employees/updateCompensationBenefits",
-                    type:"POST",
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data:{
-                        id:id,
-                        employee_id:data.id,
-                        employee_salary:employee_salary,
-                        employee_incentives:employee_incentives,
-                        employee_overtime_pay:employee_overtime_pay,
-                        employee_bonus:employee_bonus,
-                        employee_insurance:employee_insurance
-                    },
-                });
-
-                var secondary_school_name = $('#secondary_school_name').val();
-                var secondary_school_address = $('#secondary_school_address').val();
-                var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
-                var primary_school_name = $('#primary_school_name').val();
-                var primary_school_address = $('#primary_school_address').val();
-                var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
-
-                $.ajax({
-                    url:"/employees/updateEducationalAttainment", 
-                    type:"POST",
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data:{
-                        id:id,
-                        employee_id:data.id,
-                        secondary_school_name:secondary_school_name,
-                        secondary_school_address:secondary_school_address,
-                        secondary_school_inclusive_years:secondary_school_inclusive_years,
-                        primary_school_name:primary_school_name,
-                        primary_school_address:primary_school_address,
-                        primary_school_inclusive_years:primary_school_inclusive_years
-                    },
-                });
-
-                var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
-                var allergies = $('#allergies').val().split("\n").join(' \n');
-                var medication = $('#medication').val().split("\n").join(' \n');
-                var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
-
-                $.ajax({
-                    url:"/employees/updateMedicalHistory",
-                    type:"POST",
-                    headers:{
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    data:{
-                        id:id,
-                        employee_id:data.id,
-                        allergies:allergies,
-                        past_medical_condition:past_medical_condition,
-                        medication:medication,
-                        psychological_history:psychological_history
-                    },
-                });
-
-                console.log('success');
+    Swal.fire({
+        title: 'Do you want to Update?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((update) => {
+        if (update.isConfirmed) {
+            if(!$('#filename').val() && $('#employee_image').val()){
+                employee_image_save();
+            }
+            else if(!$('#filename').val() && !$('#employee_image').val()){
+                employee_image = 'N/A';
             }
             else{
-                console.log('failed');
+                employee_image = $('#filename').val();
             }
+        
+            $.ajax({
+                url:"/employees/updatePersonalInformation",
+                type:"POST",
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    id:id,
+                    employee_image:employee_image,
+                    filename_delete: $('#filename_delete').val(),
+                    first_name:first_name,
+                    last_name:last_name,
+                    middle_name:middle_name,
+                    suffix:suffix,
+                    nickname:nickname,
+                    birthday:birthday,
+                    gender:gender,
+                    civil_status:civil_status,
+                    street:street,
+                    region:region,
+                    province:province,
+                    city:city,
+                    height:height,
+                    weight:weight,
+                    religion:religion,
+                    email_address:email_address,
+                    telephone_number:telephone_number,
+                    cellphone_number:cellphone_number,
+                    spouse_name:spouse_name,
+                    spouse_contact_number:spouse_contact_number,
+                    spouse_profession:spouse_profession,
+                    father_name:father_name,
+                    father_contact_number:father_contact_number,
+                    father_profession:father_profession,
+                    mother_name:mother_name,
+                    mother_contact_number:mother_contact_number,
+                    mother_profession:mother_profession,
+                    emergency_contact_name:emergency_contact_name,
+                    emergency_contact_relationship:emergency_contact_relationship,
+                    emergency_contact_number:emergency_contact_number
+                },
+                success:function(data){
+                    if(data.result == 'true'){
+                        $('#employee_id').val(data.id);
+                        var employee_number = $('#employee_number').val();
+                        var employee_company = $('#employee_company').val();
+                        var employee_department = $('#employee_department').val();
+                        var employee_branch = $('#employee_branch').val();
+                        var employee_status = $('#employee_status').val();
+                        var employment_origin = $('#employment_origin').val();
+                        var employee_salary = $('#employee_salary').val();
+                        var employee_shift = $('#employee_shift').val();
+                        var employee_position = $('#employee_position').val();
+                        var employee_supervisor = $('#employee_supervisor').val();
+                        var date_hired = $('#date_hired').val();
+                        var company_email_address = $('#company_email_address').val();
+                        var company_contact_number = $('#company_contact_number').val();
+                        var sss_number = $('#sss_number').val();
+                        var pag_ibig_number = $('#pag_ibig_number').val();
+                        var philhealth_number = $('#philhealth_number').val();
+                        var tin_number = $('#tin_number').val();
+                        var account_number = $('#account_number').val();
+        
+                        $.ajax({
+                            url:"/employees/updateWorkInformation",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                employee_number:employee_number,
+                                employee_company:employee_company,
+                                employee_department:employee_department,
+                                employee_branch:employee_branch,
+                                employee_status:employee_status,
+                                employment_origin:employment_origin,
+                                employee_shift:employee_shift,
+                                employee_position:employee_position,
+                                employee_supervisor:employee_supervisor,
+                                date_hired:date_hired,
+                                company_email_address:company_email_address,
+                                company_contact_number:company_contact_number,
+                                sss_number:sss_number,
+                                pag_ibig_number:pag_ibig_number,
+                                philhealth_number:philhealth_number,
+                                tin_number:tin_number,
+                                account_number:account_number
+                            },
+                        });
+        
+                        var employee_salary = $('#employee_salary').val();
+                        var employee_incentives = $('#employee_incentives').val();
+                        var employee_overtime_pay = $('#employee_overtime_pay').val();
+                        var employee_bonus = $('#employee_bonus').val();
+                        var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+        
+                        $.ajax({
+                            url:"/employees/updateCompensationBenefits",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                employee_salary:employee_salary,
+                                employee_incentives:employee_incentives,
+                                employee_overtime_pay:employee_overtime_pay,
+                                employee_bonus:employee_bonus,
+                                employee_insurance:employee_insurance
+                            },
+                        });
+        
+                        var secondary_school_name = $('#secondary_school_name').val();
+                        var secondary_school_address = $('#secondary_school_address').val();
+                        var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
+                        var primary_school_name = $('#primary_school_name').val();
+                        var primary_school_address = $('#primary_school_address').val();
+                        var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
+        
+                        $.ajax({
+                            url:"/employees/updateEducationalAttainment", 
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                secondary_school_name:secondary_school_name,
+                                secondary_school_address:secondary_school_address,
+                                secondary_school_inclusive_years:secondary_school_inclusive_years,
+                                primary_school_name:primary_school_name,
+                                primary_school_address:primary_school_address,
+                                primary_school_inclusive_years:primary_school_inclusive_years
+                            },
+                        });
+        
+                        var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
+                        var allergies = $('#allergies').val().split("\n").join(' \n');
+                        var medication = $('#medication').val().split("\n").join(' \n');
+                        var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
+        
+                        $.ajax({
+                            url:"/employees/updateMedicalHistory",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                allergies:allergies,
+                                past_medical_condition:past_medical_condition,
+                                medication:medication,
+                                psychological_history:psychological_history
+                            },
+                        });
+
+                        $('.sample_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveSample',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    sample1 : $(this).children('.td_1').html(),
+                                    sample2: $(this).children('.td_2').html(),
+                                    sample3  : $(this).children('.td_3').html()
+                                },
+                            });
+                        });
+                        
+                        $('.college_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveCollege',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    college_name : $(this).children('.td_1').html(),
+                                    college_degree : $(this).children('.td_2').html(),
+                                    college_inclusive_years: $(this).children('.td_3').html()
+                                },
+                            });
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/logs_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: logs_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/college_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: college_id.toString()
+                            }
+                        });
+                        console.log('success');
+                    }
+                    else{
+                        console.log('failed');
+                    }
+                }
+            });
+        }
+        else if(update.isDenied){
+            Swal.fire('UPDATE CANCELLED','','info');
         }
     });
+    
 });

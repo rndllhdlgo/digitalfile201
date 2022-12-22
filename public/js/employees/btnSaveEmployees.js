@@ -323,6 +323,23 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
+                                $('.sample_tr').each(function(){
+                                    $.ajax({
+                                        type: 'POST',
+                                        url: '/employees/saveSample',
+                                        async: false,
+                                        headers:{
+                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                        },
+                                        data:{
+                                            employee_id : data.id,
+                                            sample1 : $(this).children('.td_1').html(),
+                                            sample2: $(this).children('.td_2').html(),
+                                            sample3  : $(this).children('.td_3').html()
+                                        },
+                                    });
+                                });
+
                                 // $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 setTimeout(function(){window.location.reload();}, 2000);

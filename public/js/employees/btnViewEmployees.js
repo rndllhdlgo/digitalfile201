@@ -1,8 +1,12 @@
+var logs_id = [];
+var college_id = [];
 $(document).on('click','table.employeesTable tbody tr',function(){
+    logs_id = [];
+    college_id = [];
+    
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
     var id = data.id;
-    console.log(id);
 
     $.ajax({
         url: '/employees/fetch',
@@ -144,7 +148,114 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#btnSave').hide();
                 $('#note_required').hide();
                 $('#note_information').show();
+
+                $('.sample_table_orig').dataTable().fnDestroy();
+                $('.sample_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_sample center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/logs_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'sample1'},
+                        { data: 'sample2'},
+                        { data: 'sample3'}
+                    ],
+                });
+
+                $('.college_table_orig').dataTable().fnDestroy();
+                $('.college_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_college center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/college_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'college_name'},
+                        { data: 'college_degree'},
+                        { data: 'college_inclusive_years'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.college_table_orig').DataTable().data().any()){
+                            $('#college_table_orig').hide();
+                        }
+                        else{
+                            $('#college_table_orig').show();
+                        }
+                    }
+                });
             });
         }
     });
 });
+
+$(document).on('click','.btn_delete_sample',function(){
+    var id = $(this).attr("id");
+    var data = $('.sample_table_orig').DataTable().row(id).data();
+    logs_id.push(data.id);
+    alert(logs_id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_delete_college',function(){
+    var id = $(this).attr("id");
+    var data = $('.college_table_orig').DataTable().row(id).data();
+    college_id.push(data.id);
+    alert(college_id);
+    $(this).parent().parent().remove();
+});
+
+setInterval(() => {
+    if($('#btnUpdate').is(":visible")){
+        if(!$('.sample_table_orig').DataTable().data().any()){
+            $('#sample_table_orig').hide();
+        }
+        else{
+            $('#sample_table_orig').show();
+        }
+    }
+}, 0);

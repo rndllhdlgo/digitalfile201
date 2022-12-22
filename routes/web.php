@@ -135,4 +135,12 @@ Route::any('/maintenance/shift_details_code/checkDuplicate','MaintenanceControll
 Route::any('/maintenance/supervisor_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
 Route::any('/maintenance/job_position_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
 
+Route::any('/employees/college_data','EmployeesController@college_data');
+Route::any('/employees/college_delete','EmployeesController@college_delete');
 
+Route::any('/employees/viewLogs','EmployeesController@viewLogs');
+Route::any('/employees/saveLogs','EmployeesController@saveLogs');
+Route::any('/employees/saveSample','EmployeesController@saveSample');
+
+Route::any('/employees/logs_data','EmployeesController@logs_data');
+Route::any('/employees/logs_delete','EmployeesController@logs_delete');

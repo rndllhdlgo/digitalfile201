@@ -1,5 +1,6 @@
 //Employees
 $('#tab1').on('click',function(){
+    $(this).blur();
     $('#tab1').addClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -22,6 +23,7 @@ $('#tab1').on('click',function(){
 });
 
 $('#tab2').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').addClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -45,6 +47,7 @@ $('#tab2').on('click',function(){
 });
 
 $('#tab3').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').addClass('tabactive');
@@ -67,6 +70,7 @@ $('#tab3').on('click',function(){
 });
 
 $('#tab4').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -89,6 +93,7 @@ $('#tab4').on('click',function(){
 });
 
 $('#tab5').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -111,6 +116,7 @@ $('#tab5').on('click',function(){
 });
 
 $('#tab6').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -133,6 +139,7 @@ $('#tab6').on('click',function(){
 });
 
 $('#tab7').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -155,6 +162,7 @@ $('#tab7').on('click',function(){
 });
 
 $('#tab8').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -177,6 +185,7 @@ $('#tab8').on('click',function(){
 });
 
 $('#tab9').on('click',function(){
+    $(this).blur();
     $('#tab1').removeClass('tabactive');
     $('#tab2').removeClass('tabactive');
     $('#tab3').removeClass('tabactive');
@@ -202,6 +211,7 @@ $('#tab9').on('click',function(){
 $('#company_tab').addClass('tabactive');
 
 $('#company_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').addClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -225,6 +235,7 @@ $('#company_tab').on('click',function(){
 });
 
 $('#branch_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').addClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -248,6 +259,7 @@ $('#branch_tab').on('click',function(){
 });
 
 $('#shift_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').addClass('tabactive');
@@ -272,6 +284,7 @@ $('#shift_tab').on('click',function(){
 });
 
 $('#position_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -295,6 +308,7 @@ $('#position_tab').on('click',function(){
 });
 
 $('#supervisor_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -318,6 +332,7 @@ $('#supervisor_tab').on('click',function(){
 });
 
 $('#job_position_and_description_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -341,6 +356,7 @@ $('#job_position_and_description_tab').on('click',function(){
 });
 
 $('#department_tab').on('click',function(){
+    $(this).blur();
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
