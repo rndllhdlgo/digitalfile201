@@ -138,6 +138,10 @@ Route::any('/maintenance/job_position_name_new/checkDuplicate','MaintenanceContr
 Route::any('/employees/college_data','EmployeesController@college_data');
 Route::any('/employees/college_delete','EmployeesController@college_delete');
 
+Route::any('/employees/children_data','EmployeesController@children_data');
+Route::any('/employees/children_delete','EmployeesController@children_delete');
+
+
 Route::any('/employees/viewLogs','EmployeesController@viewLogs');
 Route::any('/employees/saveLogs','EmployeesController@saveLogs');
 Route::any('/employees/saveSample','EmployeesController@saveSample');

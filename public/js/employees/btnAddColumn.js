@@ -80,20 +80,57 @@ function checkforblankMultiple(){
 
 
 $(document).ready(function(){
+    // $('#childrenAdd').click(function(){
+    //     var child_name = $('#child_name').val().trim();
+    //     var child_birthday = $('#child_birthday').val();
+    //     var child_age = $('#child_age').val();
+    //     var child_gender = $('#child_gender').val();
+
+    //     var children_table = "<tr class='children_tr'>"+
+    //                             "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+    //                             "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
+    //                             "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
+    //                             "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
+    //                             "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+    //                         "<tr>";
+    //     $('#children_table tbody').append(children_table);
+    //     $('#child_name').val("");
+    //     $('#child_birthday').val("");
+    //     $('#child_age').val("");
+    //     $('#child_gender').val("");
+
+    //     $('.btn_children').click(function(){
+    //         $(this).parent().parent().remove();
+    //     });
+    // });
+
     $('#childrenAdd').click(function(){
         var child_name = $('#child_name').val().trim();
         var child_birthday = $('#child_birthday').val();
         var child_age = $('#child_age').val();
         var child_gender = $('#child_gender').val();
 
-        var children_table = "<tr class='children_tr'>"+
-                                "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
-                                "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
-                                "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
-                                "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
-                                "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                            "<tr>";
-        $('#children_table tbody').append(children_table);
+        if($('#btnSave').is(":visible")){
+            var children_table = "<tr class='children_tr'>"+
+                                    "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+                                    "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
+                                    "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
+                                    "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
+                                    "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                "<tr>";
+            $('#children_table tbody').append(children_table);
+        }
+        else{
+            var children_table = "<tr class='children_tr'>"+
+                                    "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+                                    "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
+                                    "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
+                                    "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
+                                    "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                "<tr>";
+            $('#children_table_orig_tbody').append(children_table);
+        }
+        
         $('#child_name').val("");
         $('#child_birthday').val("");
         $('#child_age').val("");

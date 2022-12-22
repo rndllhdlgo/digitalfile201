@@ -1,9 +1,11 @@
 var logs_id = [];
 var college_id = [];
+var children_id = [];
 $(document).on('click','table.employeesTable tbody tr',function(){
     logs_id = [];
     college_id = [];
-    
+    children_id = [];
+
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
     var id = data.id;
@@ -51,6 +53,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }, app_timeout);
                 $('#gender').val(value.gender);
                 $('#civil_status').val(value.civil_status);
+                setInterval(() => {
+                    $('#civil_status').change();
+                }, app_timeout);
                 $('#street').val(value.street);
 
                 $('.region').each(function(){
@@ -228,6 +233,51 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+
+                $('.children_table_orig').dataTable().fnDestroy();
+                $('.children_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [4],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/children_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'child_name'},
+                        { data: 'child_birthday'},
+                        { data:  null},
+                        { data: 'child_gender'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.children_table_orig').DataTable().data().any()){
+                            $('#children_table_orig').hide();
+                        }
+                        else{
+                            $('#children_table_orig').show();
+                        }
+                    }
+                });
             });
         }
     });
@@ -246,6 +296,14 @@ $(document).on('click','.btn_delete_college',function(){
     var data = $('.college_table_orig').DataTable().row(id).data();
     college_id.push(data.id);
     alert(college_id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_delete_children',function(){
+    var id = $(this).attr("id");
+    var data = $('.children_table_orig').DataTable().row(id).data();
+    children_id.push(data.id);
+    alert(children_id);
     $(this).parent().parent().remove();
 });
 

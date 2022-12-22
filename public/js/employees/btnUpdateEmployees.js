@@ -379,7 +379,7 @@ $('#btnUpdate').on('click',function(){
                                 },
                             });
                         });
-                        
+
                         $('.college_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
@@ -393,6 +393,23 @@ $('#btnUpdate').on('click',function(){
                                     college_name : $(this).children('.td_1').html(),
                                     college_degree : $(this).children('.td_2').html(),
                                     college_inclusive_years: $(this).children('.td_3').html()
+                                },
+                            });
+                        });
+
+                        $('.children_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveChildren',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    child_name : $(this).children('.td_1').html(),
+                                    child_birthday: $(this).children('.td_2').html(),
+                                    child_gender  : $(this).children('.td_4').html()
                                 },
                             });
                         });
@@ -416,6 +433,17 @@ $('#btnUpdate').on('click',function(){
                             },
                             data:{
                                 id: college_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/children_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: children_id.toString()
                             }
                         });
                         console.log('success');
