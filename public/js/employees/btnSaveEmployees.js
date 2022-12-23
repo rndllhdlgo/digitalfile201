@@ -316,7 +316,7 @@ $('#btnSave').on('click', function(){
                                             employee_id : data.id,
                                             job_name : $(this).children('.td_1').html(),
                                             job_position : $(this).children('.td_2').html(),
-                                            job_address: $(this).children('.td_3').html(),
+                                            job_address : $(this).children('.td_3').html(),
                                             job_contact_details : $(this).children('.td_4').html(),
                                             job_inclusive_years : $(this).children('.td_5').html()
                                         },
@@ -334,8 +334,8 @@ $('#btnSave').on('click', function(){
                                         data:{
                                             employee_id : data.id,
                                             sample1 : $(this).children('.td_1').html(),
-                                            sample2: $(this).children('.td_2').html(),
-                                            sample3  : $(this).children('.td_3').html()
+                                            sample2 : $(this).children('.td_2').html(),
+                                            sample3 : $(this).children('.td_3').html()
                                         },
                                     });
                                 });

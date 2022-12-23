@@ -1,8 +1,8 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
         <div class="first_table">
-            <strong class="table-title">REQUIREMENTS</strong>
-                <table class="table table-striped table-bordered table-hover mt-1 align-middle">
+            <h5 class="table-title">REQUIREMENTS</h5>
+                <table class="table table-striped table-bordered table-hover align-middle">
                     <thead class="thead-educational">
                         <tr>
                             <th style="width:35%"><i class="fas fa-file"></i> FILE TITLE</th>
@@ -18,7 +18,7 @@
                                     <label class="input-group-text barangay_clearance_label text-white" for="barangay_clearance_file">Choose File</label>
                                     <input type="file" class="form-control barangay_clearance_file input-file-text" id="barangay_clearance_file" onchange="barangayClearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
                                 </div>
-
+                                
                                 {{-- <button type="button" id="barangay_clearance_button" class="btn btn-primary bp" onclick="$('#barangay_clearance_file').click();" ><span class="fas fa-upload"></span> CHOOSE FILE</button>
                                 <input  type="file"   id="barangay_clearance_file"   class="required_field hiddenFile"     onchange="barangayclearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
                                 <span id="barangay_clearance_text">No file chosen.</span> --}}

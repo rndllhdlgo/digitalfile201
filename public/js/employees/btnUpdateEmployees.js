@@ -414,15 +414,57 @@ $('#btnUpdate').on('click',function(){
                             });
                         });
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/logs_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: logs_id.toString()
-                            }
+                        $('.training_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveTraining',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    training_name : $(this).children('.td_1').html(),
+                                    training_title :  $(this).children('.td_2').html(),
+                                    training_inclusive_years : $(this).children('.td_3').html()
+                                },
+                            });
+                        });
+
+                        $('.vocational_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveVocational',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    vocational_name : $(this).children('.td_1').html(),
+                                    vocational_course : $(this).children('.td_2').html(),
+                                    vocational_inclusive_years: $(this).children('.td_3').html()
+                                },
+                            });
+                        });
+
+                        $('.job_history_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveJobHistory',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    job_name : $(this).children('.td_1').html(),
+                                    job_position : $(this).children('.td_2').html(),
+                                    job_address : $(this).children('.td_3').html(),
+                                    job_contact_details : $(this).children('.td_4').html(),
+                                    job_inclusive_years : $(this).children('.td_5').html()
+                                },
+                            });
                         });
 
                         $.ajax({
@@ -446,6 +488,40 @@ $('#btnUpdate').on('click',function(){
                                 id: children_id.toString()
                             }
                         });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/training_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: training_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/vocational_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: vocational_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/job_history_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: job_history_id.toString()
+                            }
+                        });
+
                         console.log('success');
                     }
                     else{

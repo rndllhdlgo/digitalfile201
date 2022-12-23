@@ -141,6 +141,14 @@ Route::any('/employees/college_delete','EmployeesController@college_delete');
 Route::any('/employees/children_data','EmployeesController@children_data');
 Route::any('/employees/children_delete','EmployeesController@children_delete');
 
+Route::any('/employees/training_data','EmployeesController@training_data');
+Route::any('/employees/training_delete','EmployeesController@training_delete');
+
+Route::any('/employees/vocational_data','EmployeesController@vocational_data');
+Route::any('/employees/vocational_delete','EmployeesController@vocational_delete');
+
+Route::any('/employees/job_history_data','EmployeesController@job_history_data');
+Route::any('/employees/job_history_delete','EmployeesController@job_history_delete');
 
 Route::any('/employees/viewLogs','EmployeesController@viewLogs');
 Route::any('/employees/saveLogs','EmployeesController@saveLogs');

@@ -11,7 +11,7 @@
             <hr class="hr-design">         
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
-                        <tr>
+                        <tr style="background-color: #0d1a80;">
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
                             </td>

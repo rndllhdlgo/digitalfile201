@@ -381,7 +381,7 @@ class EmployeesController extends Controller
     public function saveCollege(Request $request){
         $employee_college = new CollegeTable;
         $employee_college->employee_id = $request->employee_id;
-        $employee_college->college_name = ucfirst($request->college_name);
+        $employee_college->college_name = ucwords($request->college_name);
         $employee_college->college_degree = ucfirst($request->college_degree);
         $employee_college->college_inclusive_years = $request->college_inclusive_years;
         $employee_college->save();  
@@ -633,6 +633,18 @@ class EmployeesController extends Controller
         return DataTables::of(ChildrenTable::where('employee_id',$request->id)->get())->make(true);
     }
 
+    public function training_data(Request $request){
+        return DataTables::of(TrainingTable::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function vocational_data(Request $request){
+        return DataTables::of(VocationalTable::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function job_history_data(Request $request){
+        return DataTables::of(JobHistoryTable::where('employee_id',$request->id)->get())->make(true);
+    }
+
     public function logs_delete(Request $request){
         $logs_id = explode(",", $request->id);
         foreach($logs_id as $id){
@@ -651,6 +663,27 @@ class EmployeesController extends Controller
         $children_id = explode(",", $request->id);
         foreach($children_id as $id){
             ChildrenTable::where('id', $id)->delete();
+        }
+    }
+
+    public function training_delete(Request $request){
+        $training_id = explode(",", $request->id);
+        foreach($training_id as $id){
+            TrainingTable::where('id', $id)->delete();
+        }
+    }
+
+    public function vocational_delete(Request $request){
+        $vocational_id = explode(",", $request->id);
+        foreach($vocational_id as $id){
+            VocationalTable::where('id', $id)->delete();
+        }
+    }
+
+    public function job_history_delete(Request $request){
+        $job_history_id = explode(",", $request->id);
+        foreach($job_history_id as $id){
+            JobHistoryTable::where('id', $id)->delete();
         }
     }
 }

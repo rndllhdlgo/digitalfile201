@@ -39,8 +39,6 @@
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
         <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-
-        {{-- <script type='text/javascript' src="https://rawgit.com/RobinHerbots/jquery.inputmask/3.x/dist/jquery.inputmask.bundle.js"></script> --}}
         
         <!-- Insert JS FILES -->
         @if(Request::is('/'))<!--Route-->

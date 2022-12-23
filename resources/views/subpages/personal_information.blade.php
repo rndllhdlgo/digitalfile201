@@ -10,10 +10,8 @@
                     <i class="fa fa-user-circle fa-4x p-2 mt-4 image_icon center" aria-hidden="true" id="image_user"></i>
                         <img id="image_preview">
 
-                    {{-- <form method="POST" id="image_form" enctype="multipart/form-data"> form for inserting image --}}
                         <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                         <input type="file" name="employee_image" id="employee_image" class="required_field hiddenFile" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
-                    {{-- </form>  --}}
                 </div>
             </div>
         </div>
@@ -95,9 +93,9 @@
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field"  id="region" placeholder=" " style="background-color:white;">
                             <option value="" disabled selected>SELECT REGION</option>
-                            @foreach($regions as $region)
-                                <option class="region" value="{{$region->regCode}}">{{$region->regDesc}}</option>
-                            @endforeach
+                                @foreach($regions as $region)
+                                    <option class="region" value="{{$region->regCode}}">{{$region->regDesc}}</option>
+                                @endforeach
                         </select>
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_region span_all"></span> </label>
                     </div>
@@ -338,8 +336,8 @@
                         </table>
 
                         <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
-                            <thead class="children_table_thead">
-                                <tr style="display: none;">
+                            <thead class="children_table_thead" style="display: none;">
+                                <tr>
                                     <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
                                     <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
                                     <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
@@ -351,14 +349,14 @@
                             </tbody>
                         </table>
 
-                        <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="margin-top: -17px;">
+                        <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-16px;">
                             <thead class="children_table_orig_thead">
-                                <tr style="display: none;">
-                                    <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
-                                    <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
-                                    <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody id="children_table_orig_tbody">
@@ -366,5 +364,4 @@
                         </table>
                 </div>
             </div>
-            
 </div>{{-- End of Personal Information Nav --}}

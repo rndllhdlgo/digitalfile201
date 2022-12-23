@@ -1,11 +1,17 @@
-var logs_id = [];
-var college_id = [];
+// var logs_id = [];
 var children_id = [];
+var college_id = [];
+var training_id = [];
+var job_history_id = [];
 $(document).on('click','table.employeesTable tbody tr',function(){
-    logs_id = [];
-    college_id = [];
+    
+    // logs_id = [];
     children_id = [];
-
+    college_id = [];
+    training_id = [];
+    vocational_id = [];
+    job_history_id = [];
+    
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
     var id = data.id;
@@ -35,6 +41,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#image_user').hide();
                     $('#image_button').hide();
                     $('#image_close').show();
+                    $('#employee_image').removeClass('required_field');
                 }
                 else{
                     $('#filename').val('');
@@ -154,85 +161,41 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#note_required').hide();
                 $('#note_information').show();
 
-                $('.sample_table_orig').dataTable().fnDestroy();
-                $('.sample_table_orig').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_delete_sample center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [3],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    ordering: false,
-                    info: false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/logs_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'sample1'},
-                        { data: 'sample2'},
-                        { data: 'sample3'}
-                    ],
-                });
-
-                $('.college_table_orig').dataTable().fnDestroy();
-                $('.college_table_orig').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_delete_college center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [3],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    ordering: false,
-                    info: false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/college_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'college_name'},
-                        { data: 'college_degree'},
-                        { data: 'college_inclusive_years'}
-                    ],
-                    initComplete: function(){
-                        if(!$('.college_table_orig').DataTable().data().any()){
-                            $('#college_table_orig').hide();
-                        }
-                        else{
-                            $('#college_table_orig').show();
-                        }
-                    }
-                });
+                // $('.sample_table_orig').dataTable().fnDestroy();
+                // $('.sample_table_orig').DataTable({
+                //     columnDefs: [
+                //         {
+                //             "render": function(data, type, row, meta){
+                //                     return '<button type="button" class="btn btn-danger btn_delete_sample center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                //             },
+                //             "defaultContent": '',
+                //             "data": null,
+                //             "targets": [3],
+                //         }
+                //     ],
+                //     searching: false,
+                //     paging: false,
+                //     ordering: false,
+                //     info: false,
+                //     autoWidth: false,
+                //     language:{
+                //         emptyTable: "No data available in table",
+                //         processing: "Loading...",
+                //     },
+                //     serverSide: true,
+                //     ajax: {
+                //         url: '/employees/logs_data',
+                //         async: false,
+                //         data:{
+                //             id: value.id,
+                //         }
+                //     },
+                //     columns: [
+                //         { data: 'sample1'},
+                //         { data: 'sample2'},
+                //         { data: 'sample3'}
+                //     ],
+                // });
 
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
@@ -264,10 +227,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     },
                     columns: [
-                        { data: 'child_name'},
-                        { data: 'child_birthday'},
-                        { data:  null},
-                        { data: 'child_gender'}
+                        { data: 'child_name', width: '22.5%'},
+                        { data: 'child_birthday', width: '22.5%'},
+                        { data:  null, defaultContent : "", width: '22.5%'},
+                        { data: 'child_gender', width: '22.5%'}
                     ],
                     initComplete: function(){
                         if(!$('.children_table_orig').DataTable().data().any()){
@@ -278,16 +241,201 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+
+                $('.college_table_orig').dataTable().fnDestroy();
+                $('.college_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_college center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/college_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'college_name',width: '30%'},
+                        { data: 'college_degree', width: '30%'},
+                        { data: 'college_inclusive_years', width: '30%'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.college_table_orig').DataTable().data().any()){
+                            $('#college_table_orig').hide();
+                        }
+                        else{
+                            $('#college_table_orig').show();
+                        }
+                    }
+                });
+
+                $('.training_table_orig').dataTable().fnDestroy();
+                $('.training_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_training center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/training_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'training_name',width: '30%'},
+                        { data: 'training_title', width: '30%'},
+                        { data: 'training_inclusive_years', width: '30%'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.training_table_orig').DataTable().data().any()){
+                            $('#training_table_orig').hide();
+                        }
+                        else{
+                            $('#training_table_orig').show();
+                        }
+                    }
+                });
+
+                $('.vocational_table_orig').dataTable().fnDestroy();
+                $('.vocational_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_vocational center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/vocational_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'vocational_name', width: '30%'},
+                        { data: 'vocational_course', width: '30%'},
+                        { data: 'vocational_inclusive_years', width: '30%'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.vocational_table_orig').DataTable().data().any()){
+                            $('#vocational_table_orig').hide();
+                        }
+                        else{
+                            $('#vocational_table_orig').show();
+                        }
+                    }
+                });
+
+                $('.job_history_table_orig').dataTable().fnDestroy();
+                $('.job_history_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_delete_job center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [5],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/job_history_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'job_name',width : '18%'},
+                        { data: 'job_position',width : '18%'},
+                        { data: 'job_address', width: '18%'},
+                        { data: 'job_contact_details', width : '18%'},
+                        { data: 'job_inclusive_years', width : '18%'}
+                    ],
+                    initComplete: function(){
+                        if(!$('.job_history_table_orig').DataTable().data().any()){
+                            $('#job_history_table_orig').hide();
+                        }
+                        else{
+                            $('#job_history_table_orig').show();
+                        }
+                    }
+                });
             });
         }
     });
+    $('th').removeClass('sorting_asc');
 });
 
-$(document).on('click','.btn_delete_sample',function(){
+// $(document).on('click','.btn_delete_sample',function(){
+//     var id = $(this).attr("id");
+//     var data = $('.sample_table_orig').DataTable().row(id).data();
+//     logs_id.push(data.id);
+//     $(this).parent().parent().remove();
+// });
+
+$(document).on('click','.btn_delete_children',function(){
     var id = $(this).attr("id");
-    var data = $('.sample_table_orig').DataTable().row(id).data();
-    logs_id.push(data.id);
-    alert(logs_id);
+    var data = $('.children_table_orig').DataTable().row(id).data();
+    children_id.push(data.id);
     $(this).parent().parent().remove();
 });
 
@@ -295,25 +443,37 @@ $(document).on('click','.btn_delete_college',function(){
     var id = $(this).attr("id");
     var data = $('.college_table_orig').DataTable().row(id).data();
     college_id.push(data.id);
-    alert(college_id);
     $(this).parent().parent().remove();
 });
 
-$(document).on('click','.btn_delete_children',function(){
+$(document).on('click','.btn_delete_training',function(){
     var id = $(this).attr("id");
-    var data = $('.children_table_orig').DataTable().row(id).data();
-    children_id.push(data.id);
-    alert(children_id);
+    var data = $('.training_table_orig').DataTable().row(id).data();
+    training_id.push(data.id);
     $(this).parent().parent().remove();
 });
 
-setInterval(() => {
-    if($('#btnUpdate').is(":visible")){
-        if(!$('.sample_table_orig').DataTable().data().any()){
-            $('#sample_table_orig').hide();
-        }
-        else{
-            $('#sample_table_orig').show();
-        }
-    }
-}, 0);
+$(document).on('click','.btn_delete_vocational',function(){
+    var id = $(this).attr("id");
+    var data = $('.vocational_table_orig').DataTable().row(id).data();
+    vocational_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_delete_job',function(){
+    var id = $(this).attr("id");
+    var data = $('.job_history_table_orig').DataTable().row(id).data();
+    job_history_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+// setInterval(() => {
+//     if($('#btnUpdate').is(":visible")){
+//         if(!$('.sample_table_orig').DataTable().data().any()){
+//             $('#sample_table_orig').hide();
+//         }
+//         else{
+//             $('#sample_table_orig').show();
+//         }
+//     }
+// }, 0);

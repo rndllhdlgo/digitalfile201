@@ -281,7 +281,8 @@ input[type=search]:focus{
     border-top-left-radius:5px;
     border-top-right-radius:5px;
     margin-bottom: -1px;
-    border-top: 2px solid black;
+    border-top: 1px solid black;
+    width: 230px !important;
 }
 
 /* Divide into two columns */
@@ -432,6 +433,12 @@ input[type=search]:focus{
     border-color: #0d1a80;
 }
 
-.asd{
-    border-color:red !important;
+tbody tr:nth-child(even),
+.even{
+    background-color: #e5e5e5 !important;
+    }
+
+tbody tr:nth-child(odd),
+.odd{
+    background-color: #ffffff !important;
 }

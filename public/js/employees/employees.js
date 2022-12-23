@@ -126,6 +126,7 @@ $('#image_close').on('click',function(){
             $('#image_user').show();
             $('#image_button').show();
             $('.column-1').css("height","250px");
+            $('#employee_image').addClass('required_field');
         }
     });
 });

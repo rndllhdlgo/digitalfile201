@@ -1,5 +1,6 @@
 <div id="logs" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
+    <!--
         <h5 class="table-title">SAMPLE TABLE</h5>
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-educational">
@@ -62,4 +63,5 @@
             <tbody id="sample_table_orig_tbody"></tbody>
         </table>
     <hr class="hr-design">
+    -->
 </div>
