@@ -104,4 +104,5 @@
             </tr>
         </tbody>
     </table>
+    <hr class="hr-design">
 </div>

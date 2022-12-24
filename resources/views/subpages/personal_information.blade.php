@@ -346,10 +346,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            </tbody>
+                            </tbody>  
                         </table>
 
-                        <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-16px;">
+                        <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-36px;">
                             <thead class="children_table_orig_thead">
                                 <tr>
                                     <th></th>
@@ -362,6 +362,8 @@
                             <tbody id="children_table_orig_tbody">
                             </tbody>
                         </table>
+                        <br>
+                        <hr class="hr-design">
                 </div>
             </div>
 </div>{{-- End of Personal Information Nav --}}

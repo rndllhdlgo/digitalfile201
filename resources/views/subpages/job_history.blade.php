@@ -66,7 +66,7 @@
             </tbody>
         </table>
 
-        <table id="job_history_table_orig" class="table table-bordered table-hover table-striped job_history_table_orig" style="display: none; margin-top:-16px;">
+        <table id="job_history_table_orig" class="table table-bordered table-hover table-striped job_history_table_orig" style="display: none; margin-top:-36px;">
             <thead class="job_history_table_orig_thead">
                 <tr>
                     <th></th>

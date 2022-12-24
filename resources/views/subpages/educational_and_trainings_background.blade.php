@@ -51,7 +51,7 @@
             </tbody>
         </table>
 
-        <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-16px;">
+        <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
             <thead class="college_table_orig_thead">
                 <tr class="college_table_orig_tr">
                     <th></th>
@@ -190,7 +190,7 @@
             </tbody>
         </table>
 
-        <table id="training_table_orig" class="table table-bordered table-hover table-striped align-middle training_table_orig" style="display: none; margin-top:-16px;">
+        <table id="training_table_orig" class="table table-bordered table-hover table-striped align-middle training_table_orig" style="display: none; margin-top:-36px;">
             <thead class="training_table_orig_thead">
                 <tr>
                     <th></th>
@@ -258,7 +258,7 @@
             </tbody>
         </table>
 
-        <table id="vocational_table_orig" class="table table-bordered table-hover table-striped align-middle vocational_table_orig" style="display: none; margin-top:-16px;">
+        <table id="vocational_table_orig" class="table table-bordered table-hover table-striped align-middle vocational_table_orig" style="display: none; margin-top:-36px;">
             <thead class="vocational_table_orig_thead">
                 <tr>
                     <th></th>

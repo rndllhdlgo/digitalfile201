@@ -119,10 +119,9 @@
                     </tbody>
                 </table>
         </div>
-   
     <div class="second_table">
         <br>
-            <table class="table table-striped table-bordered table-hover mt-1 align-middle">
+            <table class="table table-striped table-bordered table-hover align-middle" style="margin-top: 15px;">
                 <thead class="thead-educational">
                     <tr>
                         <th style="width:35%"><i class="fas fa-file"></i> FILE TITLE</th>
@@ -221,7 +220,6 @@
                 </tbody>
             </table>
     </div> 
-    
 {{-- Display Preview of File Chosen --}}
     <div class="modal fade" id="preview_document">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
@@ -237,5 +235,6 @@
         </div>
     </div>
 </div>
+
 
 

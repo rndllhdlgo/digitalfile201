@@ -161,42 +161,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#note_required').hide();
                 $('#note_information').show();
 
-                // $('.sample_table_orig').dataTable().fnDestroy();
-                // $('.sample_table_orig').DataTable({
-                //     columnDefs: [
-                //         {
-                //             "render": function(data, type, row, meta){
-                //                     return '<button type="button" class="btn btn-danger btn_delete_sample center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                //             },
-                //             "defaultContent": '',
-                //             "data": null,
-                //             "targets": [3],
-                //         }
-                //     ],
-                //     searching: false,
-                //     paging: false,
-                //     ordering: false,
-                //     info: false,
-                //     autoWidth: false,
-                //     language:{
-                //         emptyTable: "No data available in table",
-                //         processing: "Loading...",
-                //     },
-                //     serverSide: true,
-                //     ajax: {
-                //         url: '/employees/logs_data',
-                //         async: false,
-                //         data:{
-                //             id: value.id,
-                //         }
-                //     },
-                //     columns: [
-                //         { data: 'sample1'},
-                //         { data: 'sample2'},
-                //         { data: 'sample3'}
-                //     ],
-                // });
-
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
                     columnDefs: [
@@ -285,6 +249,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+                
 
                 $('.training_table_orig').dataTable().fnDestroy();
                 $('.training_table_orig').DataTable({
@@ -419,18 +384,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+                $('th').removeClass("sorting_asc");
             });
         }
     });
-    $('th').removeClass('sorting_asc');
+    
 });
-
-// $(document).on('click','.btn_delete_sample',function(){
-//     var id = $(this).attr("id");
-//     var data = $('.sample_table_orig').DataTable().row(id).data();
-//     logs_id.push(data.id);
-//     $(this).parent().parent().remove();
-// });
 
 $(document).on('click','.btn_delete_children',function(){
     var id = $(this).attr("id");
@@ -466,14 +425,3 @@ $(document).on('click','.btn_delete_job',function(){
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
 });
-
-// setInterval(() => {
-//     if($('#btnUpdate').is(":visible")){
-//         if(!$('.sample_table_orig').DataTable().data().any()){
-//             $('#sample_table_orig').hide();
-//         }
-//         else{
-//             $('#sample_table_orig').show();
-//         }
-//     }
-// }, 0);
