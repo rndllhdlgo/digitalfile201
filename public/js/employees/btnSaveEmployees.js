@@ -340,8 +340,8 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
-                                // $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
+                                $('#documents_form').submit();
                                 setTimeout(function(){window.location.reload();}, 2000);
                         }
                         else{

@@ -201,7 +201,7 @@ $('#btnUpdate').on('click',function(){
             else{
                 employee_image = $('#filename').val();
             }
-        
+            
             $.ajax({
                 url:"/employees/updatePersonalInformation",
                 type:"POST",
@@ -521,7 +521,7 @@ $('#btnUpdate').on('click',function(){
                                 id: job_history_id.toString()
                             }
                         });
-
+                        $('#documents_form').submit();
                         console.log('success');
                     }
                     else{

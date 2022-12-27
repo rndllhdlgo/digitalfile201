@@ -156,3 +156,6 @@ Route::any('/employees/saveSample','EmployeesController@saveSample');
 
 Route::any('/employees/logs_data','EmployeesController@logs_data');
 Route::any('/employees/logs_delete','EmployeesController@logs_delete');
+
+Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
+
