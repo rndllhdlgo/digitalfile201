@@ -15,7 +15,10 @@ var companyTable = $('#companyTable').DataTable({
     order: [],
     columns: [
         {data: 'company_name'}
-    ] 
+    ],
+    initComplete: function(){
+        $('#loading').hide();
+    } 
 });
 $('div.breakspace').html('<br><br>');
 
@@ -36,7 +39,10 @@ var branchTable = $('#branchTable').DataTable({
     order: [],
     columns: [
         {data: 'branch_name'}
-    ] 
+    ],
+    initComplete: function(){
+        $('#loading').hide();
+    } 
 });
 $('div.breakspace').html('<br><br>');
 
@@ -80,7 +86,10 @@ var shiftTable = $('table.shiftTable').DataTable({
             {data: 'shift_code'},
             {data: 'shift_working_hours'},
             {data: 'shift_break_time'}
-        ] 
+        ],
+        initComplete: function(){
+            $('#loading').hide();
+        } 
     });
     $('div.breakspace').html('<br><br>');
 
@@ -105,7 +114,10 @@ var supervisorTable = $('#supervisorTable').DataTable({
     order: [],
     columns: [
         {data: 'supervisor_name'}
-    ] 
+    ],
+    initComplete: function(){
+        $('#loading').hide();
+    } 
 });
 $('div.breakspace').html('<br><br>');
 
@@ -149,7 +161,10 @@ var jobPositionAndDescriptionTable = $('table.jobPositionAndDescriptionTable').D
             {data: 'job_position_name'},
             {data: 'job_description'},
             {data: 'job_requirements'}
-        ] 
+        ],
+        initComplete: function(){
+            $('#loading').hide();
+        }
     });
     $('div.breakspace').html('<br><br>');
 
@@ -174,6 +189,9 @@ var departmentTable = $('#departmentTable').DataTable({
     order: [],
     columns: [
         {data: 'department'}
-    ] 
+    ],
+    initComplete: function(){
+        $('#loading').hide();
+    }
 });
 $('div.breakspace').html('<br><br>');

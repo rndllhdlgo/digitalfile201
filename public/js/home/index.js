@@ -125,6 +125,9 @@ $(document).ready(function(){
             { data: 'role' },
             { data: 'activity' }
         ],
+        initComplete: function(){
+            $('#loading').hide();
+        }
     });
 });
 

@@ -32,8 +32,10 @@ class HomeController extends Controller
     }
 
     public function ping(){
-        $string = DB::connection()->getPdo()->getAttribute(PDO::ATTR_SERVER_INFO);
-        $needle = 'Queries per second avg: ';
-        return str_replace($needle, '', strstr($string, $needle, false));
+        $start = microtime(true);
+        $conn = DB::connection();
+        $end = microtime(true) - $start;
+        $time = substr($end, 0, -13);
+        return $time;
     }
 }

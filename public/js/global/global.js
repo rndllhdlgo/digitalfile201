@@ -1,10 +1,3 @@
-//Display current date and time
-setInterval(dateTime,0)
-function dateTime(){
-    var d = new Date().toDateString();
-    var t = new Date().toLocaleTimeString();
-    document.getElementById("date").innerHTML = d + ' ' + t;
-}
 
 //Verify that the user has filled out all required fields.
 setInterval(checkRequiredFields, 0);
@@ -40,77 +33,6 @@ function checkRequiredFields(){
     //     });
     // }
 }
-
-setInterval(() => {
-    // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
-    || $('#first_name').val().length < 2
-    || $('#middle_name').val().length < 2
-    || $('#last_name').val().length < 2
-    || $('#father_name').val().length < 2
-    || $('#mother_name').val().length < 2
-    || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    && $('#father_contact_number').val().length < 11
-    && $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    && $('#company_contact_number').val().length < 11
-    || !email_address.value.match(regExp)
-    && !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('duplicate_field')
-    || $('#email_address').hasClass('duplicate_field')
-    || $('#telephone_number').hasClass('duplicate_field')
-    || $('#cellphone_number').hasClass('duplicate_field')
-    || $('#father_contact_number').hasClass('duplicate_field')
-    || $('#mother_contact_number').hasClass('duplicate_field')
-    || $('#spouse_contact_number').hasClass('duplicate_field')
-    || $('#emergency_contact_number').hasClass('duplicate_field')
-    || $('#company_email_address').hasClass('duplicate_field')
-    || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#btnSave').prop("disabled",true);    
-    }
-    else{
-        $('#btnSave').prop("disabled",false);
-    }
-}, 0);
-
-setInterval(() => {
-    // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
-    || $('#first_name').val().length < 2
-    || $('#middle_name').val().length < 2
-    || $('#last_name').val().length < 2
-    || $('#father_name').val().length < 2
-    || $('#mother_name').val().length < 2
-    || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    && $('#father_contact_number').val().length < 11
-    && $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    && $('#company_contact_number').val().length < 11
-    || !email_address.value.match(regExp)
-    && !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('duplicate_field')
-    || $('#email_address').hasClass('duplicate_field')
-    || $('#telephone_number').hasClass('duplicate_field')
-    || $('#cellphone_number').hasClass('duplicate_field')
-    || $('#father_contact_number').hasClass('duplicate_field')
-    || $('#mother_contact_number').hasClass('duplicate_field')
-    || $('#spouse_contact_number').hasClass('duplicate_field')
-    || $('#emergency_contact_number').hasClass('duplicate_field')
-    || $('#company_email_address').hasClass('duplicate_field')
-    || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#btnUpdate').prop("disabled",true);    
-    }
-    else{
-        $('#btnUpdate').prop("disabled",false);
-    }
-}, 0);
-
 
 
 setInterval(checkJobDescription, 0);
@@ -296,3 +218,81 @@ $('body').on('cut paste', function(){
         $(':focus').keyup();
     }, app_timeout);
 });
+
+var speed, interval = 1000, standby = true;
+
+setInterval(() => {
+    if(!$('.modal:visible').length && $('#loading').is(':hidden') && standby == false){
+        $.ajax({
+            url: "/ping",
+            success: function(data){
+                speed = ' (Ping: '+data+'s)';
+                $('#current_speed').html(speed);
+                if(parseFloat(data) < parseFloat(5.000)){
+                    $('#current_speed').removeClass('text-danger');
+                    interval = 1000;
+                }
+                else{
+                    $('#current_speed').addClass('text-danger');
+                    interval = 3000;
+                }
+            }
+        });
+    }
+}, interval);
+
+$(document).ready(function(){
+    setInterval(displayClock, 0);
+    function displayClock(){
+        var today_Date = new Date();
+        var today_Month = today_Date.getMonth() + 1;
+        var today_Day = today_Date.getDate();
+        var today_Year = today_Date.getFullYear();
+        var today_Time = new Date().toLocaleTimeString();
+
+        if(today_Month < 10) today_Month = '0' + today_Month.toString();
+        if(today_Day < 10) today_Day = '0' + today_Day.toString();
+
+        var today_DateFormat = today_Year + '-' + today_Month + '-' + today_Day;
+        today_DateFormat = moment(today_DateFormat, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY');
+        current_datetime.textContent = today_DateFormat + ', ' + today_Time;
+    }
+});
+
+function idleLogout(){
+    var timer;
+    window.onload = resetTimer;
+    window.onmousedown = resetTimer;
+    window.onmousemove = resetTimer;
+    window.onclick = resetTimer;
+    window.oncontextmenu = resetTimer;
+    window.onwheel = resetTimer;
+    window.onkeydown = resetTimer;
+    function resetTimer(){
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            $('#loading').show();
+            window.location.href = '/logout';
+        }, 3600000);
+    }
+}
+idleLogout();
+
+function idleStandby(){
+    var timeout;
+    window.onmousemove = resetStandby;
+    window.onclick = resetStandby;
+    window.oncontextmenu = resetStandby;
+    window.onwheel = resetStandby;
+    window.onkeydown = resetStandby;
+    function resetStandby(){
+        standby = false;
+        clearTimeout(timeout);
+        timeout = setTimeout(function(){
+            if($('#loading').is(':hidden')){
+                standby = true;
+            }
+        }, 3000);
+    }
+}
+idleStandby();

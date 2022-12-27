@@ -25,6 +25,9 @@ $(document).ready(function(){
             {data: 'employee_branch'},
             {data: 'employee_status'},
         ],
+        initComplete: function(){
+            $('#loading').hide();
+        }
     });
 });
 
@@ -55,6 +58,9 @@ $(document).ready(function(){
             {data: 'email'},
             {data: 'status'},
         ],
+        initComplete: function(){
+            $('#loading').hide();
+        }
     });
     $('div.breakspace').html('<br><br>');
 });

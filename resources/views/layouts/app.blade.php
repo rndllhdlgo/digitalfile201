@@ -21,7 +21,17 @@
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
 <body>
+        <div id="loading">
+            <strong style="font-size: 40px; color:#0d1a80 !important;">PLEASE WAIT...</strong><br>
+            <div style="zoom: 400%;" class="spinner-border"></div><br>
+            <strong style="font-size: 25px; color:#0d1a80 !important;">
+                <i class='fa fa-exclamation-triangle'></i>
+                Please DO NOT interrupt or cancel this process.
+            </strong>
+        </div>
+
         @if(!Auth::guest())
+            <script>$('#loading').show();</script>
             @include('inc.navbar')
         @else
             @include('inc.guest')
@@ -88,11 +98,5 @@
         @if(Request::is('chartsView') || Request::is('technologyView') || Request::is('donutView') || Request::is('charactersView'))
             <script src="{{ env('APP_URL')}}js/charts/charts.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
-        
-        <script>
-            const d = new Date().toDateString();
-            const t = new Date().toLocaleTimeString();
-            document.getElementById("date").innerHTML = d + ' ' + t;
-        </script>
 </body>
 </html>

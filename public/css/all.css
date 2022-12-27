@@ -174,7 +174,8 @@ tr{
 }
 thead{
     font-size: 16px;
-    font-weight: bold !important;
+    /* font-weight: bold !important; */
+    font-weight:600;
 }
 td{
     font-size: 16px; 
@@ -437,4 +438,22 @@ tbody tr:nth-child(even),
 tbody tr:nth-child(odd),
 .odd{
     background-color: #ffffff !important;
+}
+
+#loading{
+    color: #0d1a80 !important;
+    line-height: 35vh;
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.85);
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    user-select: none;
+    cursor: wait;
 }

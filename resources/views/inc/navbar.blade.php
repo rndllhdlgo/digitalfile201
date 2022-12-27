@@ -1,15 +1,17 @@
-<div class="row">
-    <div class="col-9">
+{{-- <div class="row">
+    <div class="col-6">
         <a href="/" title="IDEASERV">
             <img src="/images/ideaserv_systems_logo.png" alt="Ideaserv Systems Inc" style="height: 100px;width:150px;">
             <p class="digital-file-201">DIGITAL 201 FILE</p>
         </a>
     </div>
-    <div class="col-3 mt-3" style="margin-left: -20px !important;">
+    <div class="col-6 mt-3 float-end" style="margin-left: -20px !important;">
         <div class="row">
             <div class="col-9" style="text-align: right;">
-                <span id="date"></span><br>
-                {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}] {{-- Display user name and level --}}
+                <span id="current_datetime"></span>
+                <span id="current_speed" class="font-weight-bold"></span>
+                <br>
+                {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}] {{-- Display user name and level 
                 <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <b><u>LOGOUT</u></b> <i class="fa fa-sign-out ml-2" aria-hidden="true"></i>
                 </a>
@@ -18,6 +20,47 @@
             <div class="col-3 p-0 m-0">
                     <a href="#"> <i class="fa fa-user-circle fa-4x p-2" aria-hidden="true" style="color:#0d1a80;"></i> </a>
             </div>
+        </div>
+    </div>
+</div> --}}
+
+<div id="htmlHeader" class="d-flex" style="height: 90px;">
+    <div class="row w-100">
+        <div class="col-6">
+            <a href="/">
+                <img src="/images/ideaserv_systems_logo.png" style="width: auto; height: 90px; line-height: 90px;">
+            </a>
+            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 25px; line-height: 90px; margin-left: 10px; text-decoration: none;">
+                DIGITAL 201 FILE
+            </a>
+        </div>
+        <div class="col-6">
+            <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">
+                <thead>
+                    <tr>
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;width: 450px !important;">
+                            <span id="current_datetime" style="margin-left: 50px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
+                            <span id="current_speed" class="font-weight-bold"> (Ping: 0.000s)</span>    
+                        </td>
+                        <td  class="m-0 p-0" rowspan="3">
+                            <i class="fa fa-user-circle fa-4x float-end" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;position:static;">
+                            {{ auth()->user()->name }}</b>&nbsp;[{{ auth()->user()->user_level }}]
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
+                            <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                <u style="color: #0d1a80; !important">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: #0d1a80; !important" aria-hidden="true"></i>
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+                        </td>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </div>
 </div>
