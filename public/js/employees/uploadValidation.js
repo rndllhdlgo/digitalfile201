@@ -364,11 +364,11 @@ function BirthCertificateValidation(birthcertificate_file) {
     }
 }
 
-function nbiValidation(nbi_file) {
-    var nbiData = document.getElementById('nbi_file');
+function nbiValidation(nbi_clearance_file) {
+    var nbiData = document.getElementById('nbi_clearance_file');
     var nbiUploadPath = nbiData.value;
     var nbiExtension = nbiUploadPath.substring(nbiUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var nbiFileSize = $("#nbi_file").get(0).files[0].size;
+    var nbiFileSize = $("#nbi_clearance_file").get(0).files[0].size;
 
     if (nbiExtension != "pdf" && nbiFileSize > 5242880 * 2) {
         Swal.fire({
@@ -378,9 +378,9 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-        $('#nbi_file').val('');
+        $('#nbi_clearance_file').val('');
         $('#nbi_preview').attr('src','');
-        $('#nbi_view').prop('disabled',true);
+        $('#nbi_clearance_view').prop('disabled',true);
         // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(nbiExtension != "pdf"){
@@ -391,9 +391,9 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-        $('#nbi_file').val('');
+        $('#nbi_clearance_file').val('');
         $('#nbi_preview').attr('src','');
-        $('#nbi_view').prop('disabled',true);
+        $('#nbi_clearance_view').prop('disabled',true);
         // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(nbiFileSize > 5242880 * 2){
@@ -404,9 +404,9 @@ function nbiValidation(nbi_file) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-        $('#nbi_file').val('');
+        $('#nbi_clearance_file').val('');
         $('#nbi_preview').attr('src','');
-        $('#nbi_view').prop('disabled',true);
+        $('#nbi_clearance_view').prop('disabled',true);
         // $('.nbi_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
@@ -416,7 +416,7 @@ function nbiValidation(nbi_file) {
                     $('#nbi_preview').attr('src', e.target.result);
                 }
                 nbiReader.readAsDataURL(nbiData.files[0]);
-                $('#nbi_view').prop('disabled',false);
+                $('#nbi_clearance_view').prop('disabled',false);
                 $('#nbi_replace').prop('disabled',false);
                 $('#nbi_button').hide();
                 // $('.nbi_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
@@ -1377,14 +1377,14 @@ $('#birthcertificate_replace').on('click',function(){
 });
 
 $('#nbi_replace').on('click',function(){
-    $('#nbi_file').val('');
+    $('#nbi_clearance_file').val('');
     $('#nbi_preview').attr('src','');
     $('#nbi_preview').hide();
     $('#nbi_text').html('No file chosen.');
     $('#nbi_button').show();
-    $('#nbi_view').prop('disabled',true);
+    $('#nbi_clearance_view').prop('disabled',true);
     $('#nbi_replace').prop('disabled',true);
-    $('#nbi_file').click();
+    $('#nbi_clearance_file').click();
 });
 
 $('#barangay_clearance_replace').on('click',function(){

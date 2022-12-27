@@ -18,6 +18,7 @@ $('#addEmployeeBtn').on('click',function(){
 
     $('#note_required').show();
     $('#note_information').hide();
+    $('.input-file-text').addClass('required_field');
 });
 
 // if($('.requiredField:visible').filter(function(){ return !!this.value; }).length < $(".requiredField:visible").length )

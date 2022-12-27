@@ -27,6 +27,7 @@ use App\Http\Controllers\SalesMonthly;
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/', 'HomeController@index');
+Route::get('/ping','HomeController@ping');
 
 // Pages Controller
 Route::any('/employees', 'PagesController@employees');

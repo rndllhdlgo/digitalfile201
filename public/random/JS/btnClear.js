@@ -101,7 +101,7 @@ $('#btnClear').on('click',function(){
                 $('#birthcertificate_view').prop('disabled',true);
                 $('#birthcertificate_replace').prop('disabled',true);
 
-                $('#nbi_file').val('');
+                $('#nbi_clearance_file').val('');
                 $('#nbi_preview').attr('src','');
                 $('#nbi_preview').hide();
                 $('#nbi_button').show();
@@ -263,7 +263,7 @@ $('#btnClear').on('click',function(){
                     $('#birthcertificate_view').prop('disabled',true);
                     $('#birthcertificate_replace').prop('disabled',true);
 
-                    $('#nbi_file').val('');
+                    $('#nbi_clearance_file').val('');
                     $('#nbi_preview').attr('src','');
                     $('#nbi_preview').hide();
                     $('#nbi_button').show();

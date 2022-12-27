@@ -62,7 +62,7 @@
                     <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
                     <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
                     {{-- <button type="button" class="btn btn-success mx-1 float-end grow" id="btnEnableEdit" title="ENABLE EDIT"><i class="fas fa-edit"></i></button> --}}
-                    <button type="button" class="btn btn-success mx-1 float-end grow" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
+                    <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
                 </div>
                 <br>
                 <br>

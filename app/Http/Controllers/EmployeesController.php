@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+
 use App\Models\UserLogs;
 use App\Models\ChildrenTable;
 use App\Models\CollegeTable;
@@ -123,12 +124,17 @@ class EmployeesController extends Controller
             'medical_histories.allergies',
             'medical_histories.medication',
             'medical_histories.psychological_history',
-            'documents.birthcertificate',
-            'documents.barangay_clearance',
-            'documents.diploma',
-            'documents.medical_certificate',
-            'documents.nbi_clearance',
-            'documents.pag_ibig_form'
+            'documents.birthcertificate_file',
+            'documents.barangay_clearance_file',
+            'documents.diploma_file',
+            'documents.medical_certificate_file',
+            'documents.nbi_clearance_file',
+            'documents.pag_ibig_file',
+            'documents.philhealth_file',
+            'documents.police_clearance_file',
+            'documents.resume_file',
+            'documents.sss_file',
+            'documents.transcript_of_records_file'
             )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
@@ -545,74 +551,74 @@ class EmployeesController extends Controller
     
             $document = new Document;
             $document->employee_id = $request->employee_id;
-            $birthcertificateFile = $request->file('birthcertificate_file');
-            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = time().rand(1,100).'_Birth_Certificate.'.$birthcertificateExtension;
-            $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
-            $document->birthcertificate = $birthcertificateFilename;
-
-            $nbiFile = $request->file('nbi_file');
-            $nbiExtension = $nbiFile->getClientOriginalExtension();
-            $nbiFilename = time().rand(1,100).'_NBI_Clearance.'.$nbiExtension;
-            $nbiFile->storeAs('public/documents_files',$nbiFilename);
-            $document->nbi_clearance = $nbiFilename;
-
             $barangayClearanceFile = $request->file('barangay_clearance_file');
             $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = time().rand(1,100).'_Barangay_Clearance.'.$barangayClearanceExtension;
+            $barangayClearanceFilename = time().rand(1,100).'_Barangay_Clearance_File.'.$barangayClearanceExtension;
             $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
-            $document->barangay_clearance = $barangayClearanceFilename;
+            $document->barangay_clearance_file = $barangayClearanceFilename;
 
-            $policeClearanceFile = $request->file('police_clearance_file');
-            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = time().rand(1,100).'_Police_Clearance.'.$policeClearanceExtension;
-            $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
-            $document->police_clearance = $policeClearanceFilename;
-
-            $sssFile = $request->file('sss_file');
-            $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = time().rand(1,100).'_SSS_Form.'.$sssExtension;
-            $sssFile->storeAs('public/documents_files',$sssFilename);
-            $document->sss_form = $sssFilename;
-
-            $philhealthFile = $request->file('philhealth_file');
-            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = time().rand(1,100).'_Philhealth_Form.'.$philhealthExtension;
-            $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
-            $document->philhealth_form = $philhealthFilename;
-
-            $pagibigFile = $request->file('pag_ibig_file');
-            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = time().rand(1,100).'_Pagibig_Form.'.$pagibigExtension;
-            $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
-            $document->pag_ibig_form = $pagibigFilename;
-
-            $medicalCertificateFile = $request->file('medical_certificate_file');
-            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = time().rand(1,100).'_Medical_Certificate.'.$medicalCertificateExtension;
-            $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
-            $document->medical_certificate = $medicalCertificateFilename;
-            
-            $resumeFile = $request->file('resume_file');
-            $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = time().rand(1,100).'_Resume.'.$resumeExtension;
-            $resumeFile->storeAs('public/documents_files',$resumeFilename);
-            $document->resume = $resumeFilename;
-            
-        if($request->hasFile('tor_file')){
-            $torFile = $request->file('tor_file');
-            $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = time().rand(1,100).'_Transcript_of_Records.'.$torExtension;
-            $torFile->storeAs('public/documents_files',$torFilename);
-            $document->transcript_of_records = $torFilename;
-        }
+            $birthcertificateFile = $request->file('birthcertificate_file');
+            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+            $birthcertificateFilename = time().rand(1,100).'_Birth_Certificate_File.'.$birthcertificateExtension;
+            $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
+            $document->birthcertificate_file = $birthcertificateFilename;
 
         if($request->hasFile('diploma_file')){
             $diplomaFile = $request->file('diploma_file');
             $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-            $diplomaFilename = time().rand(1,100).'_Diploma.'.$diplomaExtension;
+            $diplomaFilename = time().rand(1,100).'_Diploma_File.'.$diplomaExtension;
             $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
-            $document->diploma = $diplomaFilename;
+            $document->diploma_file = $diplomaFilename;
+        }
+
+            $medicalCertificateFile = $request->file('medical_certificate_file');
+            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+            $medicalCertificateFilename = time().rand(1,100).'_Medical_Certificate_File.'.$medicalCertificateExtension;
+            $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
+            $document->medical_certificate_file = $medicalCertificateFilename;
+
+            $nbiFile = $request->file('nbi_clearance_file');
+            $nbiExtension = $nbiFile->getClientOriginalExtension();
+            $nbiFilename = time().rand(1,100).'_NBI_Clearance_File.'.$nbiExtension;
+            $nbiFile->storeAs('public/documents_files',$nbiFilename);
+            $document->nbi_clearance_file = $nbiFilename;
+
+            $pagibigFile = $request->file('pag_ibig_file');
+            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+            $pagibigFilename = time().rand(1,100).'_Pag_ibig_File.'.$pagibigExtension;
+            $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
+            $document->pag_ibig_file = $pagibigFilename;
+
+            $philhealthFile = $request->file('philhealth_file');
+            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+            $philhealthFilename = time().rand(1,100).'_Philhealth_File.'.$philhealthExtension;
+            $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
+            $document->philhealth_file = $philhealthFilename;
+
+            $policeClearanceFile = $request->file('police_clearance_file');
+            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+            $policeClearanceFilename = time().rand(1,100).'_Police_Clearance_File.'.$policeClearanceExtension;
+            $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
+            $document->police_clearance_file = $policeClearanceFilename;
+
+            $resumeFile = $request->file('resume_file');
+            $resumeExtension = $resumeFile->getClientOriginalExtension();
+            $resumeFilename = time().rand(1,100).'_Resume_File.'.$resumeExtension;
+            $resumeFile->storeAs('public/documents_files',$resumeFilename);
+            $document->resume_file = $resumeFilename;
+
+            $sssFile = $request->file('sss_file');
+            $sssExtension = $sssFile->getClientOriginalExtension();
+            $sssFilename = time().rand(1,100).'_SSS_File.'.$sssExtension;
+            $sssFile->storeAs('public/documents_files',$sssFilename);
+            $document->sss_file = $sssFilename;
+            
+        if($request->hasFile('tor_file')){
+            $torFile = $request->file('tor_file');
+            $torExtension = $torFile->getClientOriginalExtension();
+            $torFilename = time().rand(1,100).'_Transcript_of_Records_File.'.$torExtension;
+            $torFile->storeAs('public/documents_files',$torFilename);
+            $document->transcript_of_records_file = $torFilename;
         }
             $document->save();
             return Redirect::to(url()->previous());
@@ -620,136 +626,198 @@ class EmployeesController extends Controller
     }
 
     public function updateDocuments(Request $request){
-
-            if($request->hasFile('birthcertificate_file')){
-
-                unlink(public_path('storage/documents_files/'.$request->filename_birthcertificate));
-
-                $birthcertificateFile = $request->file('birthcertificate_file');
-                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                $birthcertificateFilename = time().rand(1,100).'_Birth_Certificate.'.$birthcertificateExtension;
-                $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
-                $birthcertificate = $birthcertificateFilename;
-            }
-            else{
-                $birthcertificate = $request->filename_birthcertificate;
-            }
-
             if($request->hasFile('barangay_clearance_file')){
-
-                unlink(public_path('storage/documents_files/'.$request->barangay_clearance_filename));
+                if(file_exists('storage/documents_files/'.$request->barangay_clearance_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->barangay_clearance_filename));
+                }
 
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
                 $barangayClearanceFilename = time().rand(1,100).'_Barangay_Clearance.'.$barangayClearanceExtension;
                 $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
-                $barangay_clearance = $barangayClearanceFilename;
+                $barangay_clearance_file = $barangayClearanceFilename;
             }
             else{
-                $barangay_clearance = $request->barangay_clearance_filename;
+                $barangay_clearance_file = $request->barangay_clearance_filename;
+            }
+
+            if($request->hasFile('birthcertificate_file')){
+                if(file_exists('storage/documents_files/'.$request->birthcertificate_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->birthcertificate_filename));
+                }
+
+                $birthcertificateFile = $request->file('birthcertificate_file');
+                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                $birthcertificateFilename = time().rand(1,100).'_Birth_Certificate.'.$birthcertificateExtension;
+                $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
+                $birthcertificate_file = $birthcertificateFilename;
+            }
+            else{
+                $birthcertificate_file = $request->birthcertificate_filename;
             }
 
             if($request->hasFile('diploma_file')){
-
-                unlink(public_path('storage/documents_files/'.$request->diploma_filename));
+                if(file_exists('storage/documents_files/'.$request->diploma_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->diploma_filename));
+                }
 
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
                 $diplomaFilename = time().rand(1,100).'_Diploma.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
-                $diploma = $diplomaFilename;
+                $diploma_file = $diplomaFilename;
             }
             else{
-                $diploma = $request->diploma_filename;
+                $diploma_file = $request->diploma_filename;
             }
 
             if($request->hasFile('medical_certificate_file')){
-
-                unlink(public_path('storage/documents_files/'.$request->medical_certificate_filename));
+                if(file_exists('storage/documents_files/'.$request->medical_certificate_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->medical_certificate_filename));
+                }
 
                 $medicalCertificateFile = $request->file('medical_certificate_file');
                 $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
                 $medicalCertificateFilename = time().rand(1,100).'_Medical_Certificate.'.$medicalCertificateExtension;
                 $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
-                $medical_certificate = $medicalCertificateFilename;
+                $medical_certificate_file = $medicalCertificateFilename;
             }
             else{
-                $medical_certificate = $request->medical_certificate_filename;
+                $medical_certificate_file = $request->medical_certificate_filename;
             }
 
-            if($request->hasFile('nbi_file')){
+            if($request->hasFile('nbi_clearance_file')){
+                if(file_exists('storage/documents_files/'.$request->nbi_clearance_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->nbi_clearance_filename));
+                }
 
-                unlink(public_path('storage/documents_files/'.$request->nbi_clearance_filename));
-            
-                $nbiFile = $request->file('nbi_file');
+                $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
                 $nbiFilename = time().rand(1,100).'_NBI_Clearance.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents_files',$nbiFilename);
-                $nbi_clearance = $nbiFilename;
+                $nbi_clearance_file = $nbiFilename;
             }
             else{
-                $nbi_clearance = $request->nbi_clearance_filename;
+                $nbi_clearance_file = $request->nbi_clearance_filename;
             }
 
             if($request->hasFile('pag_ibig_file')){
-
-                unlink(public_path('storage/documents_files/'.$request->pag_ibig_filename));
+                if(file_exists('storage/documents_files/'.$request->pag_ibig_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->pag_ibig_filename));
+                }
 
                 $pagibigFile = $request->file('pag_ibig_file');
                 $pagibigExtension = $pagibigFile->getClientOriginalExtension();
                 $pagibigFilename = time().rand(1,100).'_Pagibig_Form.'.$pagibigExtension;
                 $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
-                $pag_ibig_form = $pagibigFilename;
+                $pag_ibig_file = $pagibigFilename;
             }
             else{
-                $pag_ibig_form = $request->pag_ibig_filename;
+                $pag_ibig_file = $request->pag_ibig_filename;
             }
 
-        //     $policeClearanceFile = $request->file('police_clearance_file');
-        //     $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-        //     $policeClearanceFilename = time().rand(1,100).'_Police_Clearance.'.$policeClearanceExtension;
-        //     $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
-        //     $document->police_clearance = $policeClearanceFilename;
+            if($request->hasFile('philhealth_file')){
+                if(file_exists('storage/documents_files/'.$request->philhealth_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->philhealth_filename));
+                }
+                $philhealthFile = $request->file('philhealth_file');
+                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                $philhealthFilename = time().rand(1,100).'_Philhealth_Form.'.$philhealthExtension;
+                $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
+                $philhealth_file = $philhealthFilename;
+            }
+            else{
+                $philhealth_file = $request->philhealth_filename;
+            }
 
-        //     $sssFile = $request->file('sss_file');
-        //     $sssExtension = $sssFile->getClientOriginalExtension();
-        //     $sssFilename = time().rand(1,100).'_SSS_Form.'.$sssExtension;
-        //     $sssFile->storeAs('public/documents_files',$sssFilename);
-        //     $document->sss_form = $sssFilename;
+            if($request->hasFile('police_clearance_file')){
+                if(file_exists('storage/documents_files/'.$request->police_clearance_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->police_clearance_filename));
+                }
 
-        //     $philhealthFile = $request->file('philhealth_file');
-        //     $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-        //     $philhealthFilename = time().rand(1,100).'_Philhealth_Form.'.$philhealthExtension;
-        //     $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
-        //     $document->philhealth_form = $philhealthFilename;
+                $policeClearanceFile = $request->file('police_clearance_file');
+                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                $policeClearanceFilename = time().rand(1,100).'_Police_Clearance.'.$policeClearanceExtension;
+                $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
+                $police_clearance_file = $policeClearanceFilename;
+            }
+            else{
+                $police_clearance_file = $request->police_clearance_filename;
+            }
 
+            if($request->hasFile('resume_file')){
+                if(file_exists('storage/documents_files/'.$request->resume_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->resume_filename));
+                }
+
+                $resumeFile = $request->file('resume_file');
+                $resumeExtension = $resumeFile->getClientOriginalExtension();
+                $resumeFilename = time().rand(1,100).'_Resume.'.$resumeExtension;
+                $resumeFile->storeAs('public/documents_files',$resumeFilename);
+                $resume_file = $resumeFilename;
+            }
+            else{
+                $resume_file = $request->resume_filename;
+            }
+
+            if($request->hasFile('sss_file')){                
+                if(file_exists('storage/documents_files/'.$request->sss_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->sss_filename));
+                }
+
+                $sssFile = $request->file('sss_file');
+                $sssExtension = $sssFile->getClientOriginalExtension();
+                $sssFilename = time().rand(1,100).'_SSS_Form.'.$sssExtension;
+                $sssFile->storeAs('public/documents_files',$sssFilename);
+                $sss_file = $sssFilename;
+            }
+            else{
+                $sss_file = $request->sss_filename;
+            }
+
+            if($request->hasFile('resume_file')){
+                if(file_exists('storage/documents_files/'.$request->sss_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->sss_filename));
+                }
+
+                $resumeFile = $request->file('resume_file');
+                $resumeExtension = $resumeFile->getClientOriginalExtension();
+                $resumeFilename = time().rand(1,100).'_Resume.'.$resumeExtension;
+                $resumeFile->storeAs('public/documents_files',$resumeFilename);
+                $resume_file = $resumeFilename;
+            }
+            else{
+                $resume_file = $request->resume_filename;
+            } 
         
-
-        
-            
-        //     $resumeFile = $request->file('resume_file');
-        //     $resumeExtension = $resumeFile->getClientOriginalExtension();
-        //     $resumeFilename = time().rand(1,100).'_Resume.'.$resumeExtension;
-        //     $resumeFile->storeAs('public/documents_files',$resumeFilename);
-        //     $document->resume = $resumeFilename;
-            
-        // if($request->hasFile('tor_file')){
-        //     $torFile = $request->file('tor_file');
-        //     $torExtension = $torFile->getClientOriginalExtension();
-        //     $torFilename = time().rand(1,100).'_Transcript_of_Records.'.$torExtension;
-        //     $torFile->storeAs('public/documents_files',$torFilename);
-        //     $document->transcript_of_records = $torFilename;
-        // }
-
+            if($request->hasFile('tor_file')){
+                if(file_exists('storage/documents_files/'.$request->transcript_of_records_filename)){
+                    unlink(public_path('storage/documents_files/'.$request->transcript_of_records_filename));
+                }
+                    
+                $torFile = $request->file('tor_file');
+                $torExtension = $torFile->getClientOriginalExtension();
+                $torFilename = time().rand(1,100).'_Transcript_of_Records.'.$torExtension;
+                $torFile->storeAs('public/documents_files',$torFilename);
+                $transcript_of_records_file = $torFilename;
+            }
+            else{
+                $transcript_of_records_file = $request->transcript_of_records_filename;
+            } 
         
         Document::where('employee_id',$request->employee_id)
             ->update([
-                'birthcertificate' => $birthcertificate,
-                'barangay_clearance' => $barangay_clearance,
-                'diploma' => $diploma,
-                'medical_certificate' => $medical_certificate,
-                'nbi_clearance' => $nbi_clearance,
-                'pag_ibig_form' => $pag_ibig_form
+                'barangay_clearance_file' => $barangay_clearance_file,
+                'birthcertificate_file' => $birthcertificate_file,
+                'diploma_file' => $diploma_file,
+                'medical_certificate_file' => $medical_certificate_file,
+                'nbi_clearance_file' => $nbi_clearance_file,
+                'pag_ibig_file' => $pag_ibig_file,
+                'philhealth_file' => $philhealth_file,
+                'police_clearance_file' => $police_clearance_file,
+                'resume_file' => $resume_file,
+                'sss_file' => $sss_file,
+                'transcript_of_records_file' => $transcript_of_records_file
             ]);
             // return Redirect::to(url()->previous());
     }

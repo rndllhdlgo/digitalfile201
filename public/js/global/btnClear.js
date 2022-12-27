@@ -103,12 +103,12 @@ $('#btnClear').on('click',function(){
                 $('#birthcertificate_view').prop('disabled',true);
                 $('#birthcertificate_replace').prop('disabled',true);
 
-                $('#nbi_file').val('');
+                $('#nbi_clearance_file').val('');
                 $('#nbi_preview').attr('src','');
                 $('#nbi_preview').hide();
                 $('#nbi_button').show();
                 $('#nbi_text').html('No file chosen.');
-                $('#nbi_view').prop('disabled',true);
+                $('#nbi_clearance_view').prop('disabled',true);
                 $('#nbi_replace').prop('disabled',true);
 
                 $('#barangay_clearance_file').val('');
@@ -265,12 +265,12 @@ $('#btnClear').on('click',function(){
                     $('#birthcertificate_view').prop('disabled',true);
                     $('#birthcertificate_replace').prop('disabled',true);
 
-                    $('#nbi_file').val('');
+                    $('#nbi_clearance_file').val('');
                     $('#nbi_preview').attr('src','');
                     $('#nbi_preview').hide();
                     $('#nbi_button').show();
                     $('#nbi_text').html('No file chosen.');
-                    $('#nbi_view').prop('disabled',true);
+                    $('#nbi_clearance_view').prop('disabled',true);
                     $('#nbi_replace').prop('disabled',true);
 
                     $('#barangay_clearance_file').val('');

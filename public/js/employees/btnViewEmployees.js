@@ -388,90 +388,108 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 
                 $('#documents_form').attr("action",'/employees/updateDocuments');
 
-                if(value.birthcertificate){
-                    $('#filename_birthcertificate').val(value.birthcertificate);
-                    $('.birthcertificate_div').hide();
-                    $('.birthcertificate_span').show();
-                    $('.birthcertificate_span').html(`<a href="/storage/documents_files/${value.birthcertificate}" target="_blank"> ${value.birthcertificate}</a>`);
-                    $('#birthcertificate_view').hide();
-                    $('#birthcertificate_delete_button').show();
-                }
-
-                if(value.barangay_clearance){
-                    $('#barangay_clearance_filename').val(value.barangay_clearance);
+                if(value.barangay_clearance_file){
+                    $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();
                     $('.barangay_clearance_span').show();
-                    $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance}" target="_blank"> ${value.barangay_clearance}</a>`);
+                    $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file}</a>`);
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
                 }
 
-                if(value.diploma){
-                    $('#diploma_filename').val(value.diploma);
+                if(value.birthcertificate_file){
+                    $('#birthcertificate_filename').val(value.birthcertificate_file);
+                    $('.birthcertificate_div').hide();
+                    $('.birthcertificate_span').show();
+                    $('.birthcertificate_span').html(`<a href="/storage/documents_files/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file}</a>`);
+                    $('#birthcertificate_view').hide();
+                    $('#birthcertificate_delete_button').show();
+                }
+
+                if(value.diploma_file){
+                    $('#diploma_filename').val(value.diploma_file);
                     $('.diploma_div').hide();
                     $('.diploma_span').show();
-                    $('.diploma_span').html(`<a href="/storage/documents_files/${value.diploma}" target="_blank"> ${value.diploma}</a>`);
+                    $('.diploma_span').html(`<a href="/storage/documents_files/${value.diploma_file}" target="_blank"> ${value.diploma_file}</a>`);
                     $('#diploma_view').hide();
                     $('#diploma_delete_button').show();
                 }
 
-                if(value.medical_certificate){
-                    $('#medical_certificate_filename').val(value.medical_certificate);
+                if(value.medical_certificate_file){
+                    $('#medical_certificate_filename').val(value.medical_certificate_file);
                     $('.medical_certificate_div').hide();
                     $('.medical_certificate_span').show();
-                    $('.medical_certificate_span').html(`<a href="/storage/documents_files/${value.medical_certificate}" target="_blank"> ${value.medical_certificate}</a>`);
+                    $('.medical_certificate_span').html(`<a href="/storage/documents_files/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file}</a>`);
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
                 }
-                if(value.nbi_clearance){
-                    $('#nbi_clearance_filename').val(value.nbi_clearance);
+                if(value.nbi_clearance_file){
+                    $('#nbi_clearance_filename').val(value.nbi_clearance_file);
                     $('.nbi_clearance_div').hide();
                     $('.nbi_clearance_span').show();
-                    $('.nbi_clearance_span').html(`<a href="/storage/documents_files/${value.nbi_clearance}" target="_blank"> ${value.nbi_clearance}</a>`);
+                    $('.nbi_clearance_span').html(`<a href="/storage/documents_files/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file}</a>`);
                     $('#nbi_clearance_view').hide();
                     $('#nbi_clearance_delete_button').show();
                 }
 
-                if(value.pag_ibig_form){
-                    $('#pag_ibig_filename').val(value.pag_ibig_form);
+                if(value.pag_ibig_file){
+                    $('#pag_ibig_filename').val(value.pag_ibig_file);
                     $('.pag_ibig_div').hide();
                     $('.pag_ibig_span').show();
-                    $('.pag_ibig_span').html(`<a href="/storage/documents_files/${value.pag_ibig_form}" target="_blank"> ${value.pag_ibig_form}</a>`);
+                    $('.pag_ibig_span').html(`<a href="/storage/documents_files/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file}</a>`);
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
+                }
+
+                if(value.philhealth_file){
+                    $('#philhealth_filename').val(value.philhealth_file);
+                    $('.philhealth_div').hide();
+                    $('.philhealth_span').show();
+                    $('.philhealth_span').html(`<a href="/storage/documents_files/${value.philhealth_file}" target="_blank"> ${value.philhealth_file}</a>`);
+                    $('#philhealth_view').hide();
+                    $('#philhealth_delete_button').show();
+                }
+
+                if(value.police_clearance_file){
+                    $('#police_clearance_filename').val(value.police_clearance_file);
+                    $('.police_clearance_div').hide();
+                    $('.police_clearance_span').show();
+                    $('.police_clearance_span').html(`<a href="/storage/documents_files/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file}</a>`);
+                    $('#police_clearance_view').hide();
+                    $('#police_clearance_delete_button').show();
+                }
+
+                if(value.resume_file){
+                    $('#resume_filename').val(value.resume_file);
+                    $('.resume_div').hide();
+                    $('.resume_span').show();
+                    $('.resume_span').html(`<a href="/storage/documents_files/${value.resume_file}" target="_blank"> ${value.resume_file}</a>`);
+                    $('#resume_view').hide();
+                    $('#resume_delete_button').show();
+                }
+
+                if(value.sss_file){
+                    $('#sss_filename').val(value.sss_file);
+                    $('.sss_div').hide();
+                    $('.sss_span').show();
+                    $('.sss_span').html(`<a href="/storage/documents_files/${value.sss_file}" target="_blank"> ${value.sss_file}</a>`);
+                    $('#sss_view').hide();
+                    $('#sss_delete_button').show();
+                }
+
+                if(value.transcript_of_records_file){
+                    $('#transcript_of_records_filename').val(value.transcript_of_records_file);
+                    $('.transcript_of_records_div').hide();
+                    $('.transcript_of_records_span').show();
+                    $('.transcript_of_records_span').html(`<a href="/storage/documents_files/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file}</a>`);
+                    $('#tor_view').hide();
+                    $('#tor_delete_button').show();
                 }
             });
         }
 
     });
     
-});
-
-$('#birthcertificate_delete_button').on('click',function(){
-    Swal.fire({
-        title: 'Do you want to remove file?',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showDenyButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No',
-        customClass: {
-        actions: 'my-actions',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
-        }
-    }).then((save) => {
-        if (save.isConfirmed) {
-            $('.birthcertificate_span').hide();
-            $('.birthcertificate_div').show();
-            $('#birthcertificate_delete_button').hide();
-            $('#birthcertificate_view').show();
-        }
-
-        else if(save.isDenied){
-
-        }
-    });
 });
 
 $('#barangay_clearance_delete_button').on('click',function(){
@@ -493,6 +511,35 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('.barangay_clearance_div').show();
             $('#barangay_clearance_delete_button').hide();
             $('#barangay_clearance_view').show();
+            $('#barangay_clearance_file').addClass('required_field');
+        }
+
+        else if(save.isDenied){
+
+        }
+    });
+});
+
+$('#birthcertificate_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.birthcertificate_span').hide();
+            $('.birthcertificate_div').show();
+            $('#birthcertificate_delete_button').hide();
+            $('#birthcertificate_view').show();
+            $('#birthcertificate_file').addClass('required_field');
         }
 
         else if(save.isDenied){
@@ -547,6 +594,7 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('.medical_certificate_div').show();
             $('#medical_certificate_delete_button').hide();
             $('#medical_certificate_view').show();
+            $('#medical_certificate_file').addClass('required_field');
         }
 
         else if(save.isDenied){
@@ -574,6 +622,7 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('.nbi_clearance_div').show();
             $('#nbi_clearance_delete_button').hide();
             $('#nbi_clearance_view').show();
+            $('#nbi_clearance_file').addClass('required_field');
         }
 
         else if(save.isDenied){
@@ -601,6 +650,146 @@ $('#pag_ibig_delete_button').on('click',function(){
             $('.pag_ibig_div').show();
             $('#pag_ibig_delete_button').hide();
             $('#pag_ibig_view').show();
+            $('#pag_ibig_file').addClass('required_field');
+        }
+
+        else if(save.isDenied){
+
+        }
+    });
+});
+
+$('#philhealth_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.philhealth_span').hide();
+            $('.philhealth_div').show();
+            $('#philhealth_delete_button').hide();
+            $('#philhealth_view').show();
+            $('#philhealth_file').addClass('required_field');
+        }
+
+        else if(save.isDenied){
+
+        }
+    });
+});
+
+$('#police_clearance_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.police_clearance_span').hide();
+            $('.police_clearance_div').show();
+            $('#police_clearance_delete_button').hide();
+            $('#police_clearance_view').show();
+            $('#police_clearance_file').addClass('required_field');
+
+        }
+
+        else if(save.isDenied){
+
+        }
+    });
+});
+
+$('#resume_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.resume_span').hide();
+            $('.resume_div').show();
+            $('#resume_delete_button').hide();
+            $('#resume_view').show();
+            $('#resume_file').addClass('required_field');
+        }
+        else if(save.isDenied){
+
+        }
+    });
+
+});
+
+$('#sss_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.sss_span').hide();
+            $('.sss_div').show();
+            $('#sss_delete_button').hide();
+            $('#sss_view').show();
+            $('#sss_file').addClass('required_field');
+        }
+        else if(save.isDenied){
+
+        }
+    });
+});
+
+$('#tor_delete_button').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to remove file?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if (save.isConfirmed) {
+            $('.transcript_of_records_span').hide();
+            $('.transcript_of_records_div').show();
+            $('#tor_delete_button').hide();
+            $('#tor_view').show();
         }
 
         else if(save.isDenied){
