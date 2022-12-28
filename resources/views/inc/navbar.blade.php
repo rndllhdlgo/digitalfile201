@@ -38,7 +38,7 @@
             <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">
                 <thead>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;width: 450px !important;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;width: 485px !important;">
                             <span id="current_datetime" style="margin-left: 50px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
                             <span id="current_speed" class="font-weight-bold"> (Ping: 0.000s)</span>    
                         </td>
@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;position:static;">
-                            {{ auth()->user()->name }}</b>&nbsp;[{{ auth()->user()->user_level }}]
+                            {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}]
                         </td>
                     </tr>
                     <tr>

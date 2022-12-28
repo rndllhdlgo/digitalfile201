@@ -35,7 +35,7 @@ class HomeController extends Controller
         $start = microtime(true);
         $conn = DB::connection();
         $end = microtime(true) - $start;
-        $time = substr($end, 0, -13);
+        $time = number_format($end * 100000, 3);
         return $time;
     }
 }
