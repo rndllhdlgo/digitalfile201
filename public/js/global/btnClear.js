@@ -192,7 +192,6 @@ $('#btnClear').on('click',function(){
                 if($('#personal_information').is(":visible")){
                     $('.children_information').hide();
                     $('.btn_children').click();
-                    $('.btn_college').click();
                     $('.btn_training').click();
                     $('.btn_vocational').click();
                     $('.btn_job').click();
@@ -201,9 +200,9 @@ $('#btnClear').on('click',function(){
                     $('#benefits').hide();
                 }
                 if($('#educational_background').is(":visible")){
-                    $('.btn-college').click();
-                    $('.btn-training').click();
-                    $('.btn-vocational').click();
+                    $('.btn_college').click();
+                    $('.btn_training').click();
+                    $('.btn_vocational').click();
                 }
                 if($('#job_history').is(":visible")){
                     $('.btn-job').click();
