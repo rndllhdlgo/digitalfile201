@@ -15,6 +15,7 @@ $('#companySave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/companySave',
                 type: "POST",
@@ -26,6 +27,7 @@ $('#companySave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveCompanyModal').modal('hide');
                         Swal.fire({
                             title: 'COMPANY ADDED SUCCESSFULLY',
@@ -36,6 +38,7 @@ $('#companySave').on('click',function(){
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').hide();
                         $('#saveCompanyModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',
@@ -68,6 +71,7 @@ $('#branchSave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/branchSave',
                 type: "POST",
@@ -79,6 +83,7 @@ $('#branchSave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveBranchModal').modal('hide');
                         Swal.fire({
                             title: 'BRANCH ADDED SUCCESSFULLY',
@@ -89,6 +94,7 @@ $('#branchSave').on('click',function(){
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').hide();
                         $('#saveBranchModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',
@@ -121,6 +127,7 @@ $('#supervisorSave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/supervisorSave',
                 type: "POST",
@@ -132,6 +139,7 @@ $('#supervisorSave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveSupervisorModal').modal('hide');
                         Swal.fire({
                             title: 'SUPERVISOR ADDED SUCCESSFULLY',
@@ -142,6 +150,7 @@ $('#supervisorSave').on('click',function(){
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').hide();
                         $('#saveSupervisorModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',
@@ -176,6 +185,7 @@ $('#shiftSave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/shiftSave',
                 type: "POST",
@@ -189,6 +199,7 @@ $('#shiftSave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveShiftModal').modal('hide');
                         Swal.fire({
                             title:'SHIFT ADDED SUCCESSFULLY',
@@ -200,6 +211,7 @@ $('#shiftSave').on('click',function(){
                     }
                     
                     else{
+                        $('#loading').hide();
                         $('#saveShiftModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',
@@ -234,6 +246,7 @@ $('#jobPositionAndDescriptionSave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/jobPositionAndDescriptionSave',
                 type: "POST",
@@ -247,6 +260,7 @@ $('#jobPositionAndDescriptionSave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire({
                             title: 'JOB POSITION ADDED SUCCESSFULLY',
@@ -257,6 +271,7 @@ $('#jobPositionAndDescriptionSave').on('click',function(){
                         setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').hide();
                         $('#saveJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',
@@ -289,6 +304,7 @@ $('#departmentSave').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/departmentSave',
                 type: "POST",
@@ -300,6 +316,7 @@ $('#departmentSave').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#saveDepartmentModal').modal('hide');
                         Swal.fire({
                             title: 'DEPARTMENT ADDED SUCCESSFULLY',
@@ -310,6 +327,7 @@ $('#departmentSave').on('click',function(){
                         setTimeout(function(){departmentTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').hide();
                         $('#saveDepartmentModal').modal('hide');
                         Swal.fire({
                             title: 'SAVE FAILED',

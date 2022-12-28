@@ -192,6 +192,8 @@ $('#btnUpdate').on('click',function(){
         }
     }).then((update) => {
         if (update.isConfirmed) {
+            $('#loading').show();
+
             if(!$('#filename').val() && $('#employee_image').val()){
                 employee_image_save();
             }
@@ -521,10 +523,13 @@ $('#btnUpdate').on('click',function(){
                                 id: job_history_id.toString()
                             }
                         });
+                        Swal.fire('UPDATE SUCCESS','','success');
+                        $('#loading').hide();
                         $('#documents_form').submit();
-                        console.log('success');
                     }
                     else{
+                        $('#loading').hide();
+                        Swal.fire('UPDATE FAILED','','success');
                         console.log('failed');
                     }
                 }

@@ -50,24 +50,17 @@
             <hr class="hr-design">
         </div>
 
-        <div id="employee_information" style="display: none;">
-            <div class="row">
-                <div class="col">
-                    <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
-                    <span class="alert class alert-warning" id="note_information"><i class="fas fa-info"></i> <b>EMPLOYEE INFORMATION</b> </span>
-                </div>
-                <div class="col-7">
-                    <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
-                    {{-- <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancelEdit" title="CANCEL EDIT" style="font-weight: bold;display:none;"><i class="fas fa-times"></i></button> --}}
-                    <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
-                    <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
-                    {{-- <button type="button" class="btn btn-success mx-1 float-end grow" id="btnEnableEdit" title="ENABLE EDIT"><i class="fas fa-edit"></i></button> --}}
-                    <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
-                </div>
-                <br>
-                <br>
-                <hr>
-            </div>
+        <div id="employee_information" style="display: none; margin-top:10px;">
+            <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info"></i> <b>EMPLOYEE INFORMATION</b> </span>
+            <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
+        
+            <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
+            <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
+            <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
+            <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
+        <br>
+        <br>
+        <hr>
 
             <div class="toast-container position-fixed top-0 end-0 p-3">
                 <div id="clearAll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">

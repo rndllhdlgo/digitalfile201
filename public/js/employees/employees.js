@@ -16,8 +16,6 @@ $('#addEmployeeBtn').on('click',function(){
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
 
-    $('#note_required').show();
-    $('#note_information').hide();
     $('.input-file-text').addClass('required_field');
 });
 
@@ -204,12 +202,13 @@ $('#viewJobDescriptionBtn').on('click',function(){
             var job_requirements_details = job_requirements.split('•');
             for(var i=0; i < job_description_details.length; i++){
                 if(job_description_details[i]){
-                    $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
+                    // $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
+                    $('.job_description_div').append('<li>' + job_description_details[i] + '</li>');
                 }
             }
             for(var j=0; j < job_requirements_details.length; j++){
                 if(job_requirements_details[j]){
-                    $('.job_requirements_div').append('<li>' + job_requirements_details[j].replace(/\"/g,'') + '</li>');
+                    $('.job_requirements_div').append('<li>' + job_requirements_details[j] + '</li>');
                 }
             }
         }

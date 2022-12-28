@@ -621,8 +621,8 @@ class EmployeesController extends Controller
             $document->transcript_of_records_file = $torFilename;
         }
             $document->save();
+            sleep(2);
             return Redirect::to(url()->previous());
-            // return view('pages.employees');
     }
 
     public function updateDocuments(Request $request){
@@ -819,7 +819,8 @@ class EmployeesController extends Controller
                 'sss_file' => $sss_file,
                 'transcript_of_records_file' => $transcript_of_records_file
             ]);
-            // return Redirect::to(url()->previous());
+            sleep(2);
+            return Redirect::to(url()->previous());
     }
 
     public function saveSample(Request $request){

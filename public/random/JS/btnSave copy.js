@@ -241,12 +241,6 @@ $('#btnUserSave').on('click',function(){
                             setTimeout(function(){window.location.reload()}, 2000);
                         }
                     },
-                    error: function(data){
-                      if(data.status == 401){
-                          window.location.reload();
-                      }
-                      alert(data.responseText);
-                    }
                 });
             }
         });   

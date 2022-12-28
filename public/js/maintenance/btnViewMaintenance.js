@@ -1,4 +1,5 @@
 $('#companyTable').on('dblclick','tbody tr',function(){
+    
     var data = companyTable.row(this).data();
 
     $('#company_id').val(data.id);
@@ -7,6 +8,7 @@ $('#companyTable').on('dblclick','tbody tr',function(){
     $('.validation').hide();
 
     $('#updateCompanyModal').modal('show');
+    
 });
 
 $('#departmentTable').on('dblclick','tbody tr',function(){

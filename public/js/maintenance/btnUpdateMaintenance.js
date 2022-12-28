@@ -17,6 +17,7 @@ $('#companyUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/companyUpdate',
                 type: "POST",
@@ -30,6 +31,7 @@ $('#companyUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateCompanyModal').modal('hide');
                         Swal.fire({
                             title:'COMPANY NAME UPDATED SUCCESSFULLY',
@@ -39,11 +41,8 @@ $('#companyUpdate').on('click',function(){
                         });
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("COMPANY NAME ALREADY EXIST!","Please enter different Company Name","error");
-                        return false;
-                    }
                     else{
+                        $('#loading').hide();
                         $('#updateCompanyModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){companyTable.ajax.reload();}, 2000);
@@ -73,6 +72,7 @@ $('#departmentUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/departmentUpdate',
                 type: "POST",
@@ -86,6 +86,7 @@ $('#departmentUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateDepartmentModal').modal('hide');
                         Swal.fire({
                             title:'DEPARTMENT UPDATED SUCCESSFULLY',
@@ -95,11 +96,8 @@ $('#departmentUpdate').on('click',function(){
                         });
                         setTimeout(function(){departmentTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("DEPARTMENT ALREADY EXIST!","Please enter different Department","error");
-                        return false;
-                    }
                     else{
+                        $('#loading').hide();
                         $('#updateDepartmentModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){departmentTable.ajax.reload();}, 2000);
@@ -129,6 +127,7 @@ $('#branchUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/branchUpdate',
                 type: "POST",
@@ -142,6 +141,7 @@ $('#branchUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateBranchModal').modal('hide');
                         Swal.fire({
                             title:'BRANCH NAME UPDATED SUCCESSFULLY',
@@ -151,11 +151,8 @@ $('#branchUpdate').on('click',function(){
                         });
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("BRANCH NAME ALREADY EXIST!","Please enter different Branch Name","error");
-                        return false;
-                    }
                     else{
+                        $('#loading').hide();
                         $('#updateBranchModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){branchTable.ajax.reload();}, 2000);
@@ -186,6 +183,7 @@ $('#supervisorUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/supervisorUpdate',
                 type: "POST",
@@ -199,6 +197,7 @@ $('#supervisorUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateSupervisorModal').modal('hide');
                         Swal.fire({
                             title:'SUPERVISOR NAME UPDATED SUCCESSFULLY',
@@ -208,11 +207,8 @@ $('#supervisorUpdate').on('click',function(){
                         });
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("SUPERVISOR NAME ALREADY EXIST!","Please enter different Supervisor Name","error");
-                        return false;
-                    }
                     else{
+                        $('#loading').hide();
                         $('#updateSupervisorModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){supervisorTable.ajax.reload();}, 2000);
@@ -248,6 +244,7 @@ $('#shiftUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/shiftUpdate',
                 type: "POST",
@@ -265,6 +262,7 @@ $('#shiftUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateShiftModal').modal('hide');
                         Swal.fire({
                             title:'SHIFT UPDATED SUCCESSFULLY',
@@ -274,11 +272,8 @@ $('#shiftUpdate').on('click',function(){
                         });
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
                     }
-                    else if(data == 'duplicate'){
-                        Swal.fire("SHIFT CODE ALREADY EXIST!","Please enter different Shift Code","error");
-                        return false;
-                    }
                     else{
+                        $('#loading').hide();
                         $('#updateShiftModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){shiftTable.ajax.reload();}, 2000);
@@ -312,6 +307,7 @@ $('#jobPositionAndDescriptionUpdate').on('click',function(){
         }
     }).then((save) => {
         if(save.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: '/maintenance/jobPositionAndDescriptionUpdate',
                 type: "POST",
@@ -329,6 +325,7 @@ $('#jobPositionAndDescriptionUpdate').on('click',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
+                        $('#loading').hide();
                         $('#updateJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire({
                             title:'JOB DESCRIPTION UPDATED SUCCESSFULLY',
@@ -339,6 +336,7 @@ $('#jobPositionAndDescriptionUpdate').on('click',function(){
                         setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);
                     }
                     else{
+                        $('#loading').show();
                         $('#updateJobPositionAndDescriptionModal').modal('hide');
                         Swal.fire("UPDATE FAILED", "", "error");
                         setTimeout(function(){jobPositionAndDescriptionTable.ajax.reload();}, 2000);

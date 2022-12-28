@@ -3,7 +3,7 @@ var children_id = [];
 var college_id = [];
 var training_id = [];
 var job_history_id = [];
-$(document).on('click','table.employeesTable tbody tr',function(){
+$(document).on('dblclick','table.employeesTable tbody tr',function(){
     
     // logs_id = [];
     children_id = [];
@@ -16,6 +16,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     var data = employeesTable.row(this).data();
     var id = data.id;
 
+    $('#loading').show();
     $.ajax({
         url: '/employees/fetch',
         headers:{
@@ -158,8 +159,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#tab1').click();
                 $('#btnClear').hide();
                 $('#btnSave').hide();
-                $('#note_required').hide();
-                $('#note_information').show();
 
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
@@ -485,6 +484,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
+            $('#loading').hide();
             });
         }
 
@@ -563,12 +563,12 @@ $('#diploma_delete_button').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
+            $('#diploma_filename').val('');
             $('.diploma_span').hide();
             $('.diploma_div').show();
             $('#diploma_delete_button').hide();
             $('#diploma_view').show();
         }
-
         else if(save.isDenied){
 
         }
@@ -596,7 +596,6 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_view').show();
             $('#medical_certificate_file').addClass('required_field');
         }
-
         else if(save.isDenied){
 
         }
@@ -786,12 +785,12 @@ $('#tor_delete_button').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
+            $('#transcript_of_records_filename').val('');
             $('.transcript_of_records_span').hide();
             $('.transcript_of_records_div').show();
             $('#tor_delete_button').hide();
             $('#tor_view').show();
         }
-
         else if(save.isDenied){
 
         }
