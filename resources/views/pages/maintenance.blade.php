@@ -11,12 +11,12 @@
     <button type="button" class="btn btn-success float-end grow" id="addJobPositionAndDescriptionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD JOB POSITION</button>
     <button type="button" class="btn btn-success float-end grow" id="addDepartmentBtn" title="ADD DEPARTMENT" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD DEPARTMENT</button>
 
-    <button type="button" class="btn btn-success float-end grow" id="exportCompanyBtn" style="font-weight: bold; margin-right:10px;"><i class="fas fa-file-export"></i> EXPORT</button>
-    <button type="button" class="btn btn-success float-end grow btnExport" id="exportDepartmentBtn"><i class="fas fa-file-export"></i> EXPORT</button>
-    <button type="button" class="btn btn-success float-end grow btnExport" id="exportBranchBtn"><i class="fas fa-file-export"></i> EXPORT</button>
-    <button type="button" class="btn btn-success float-end grow btnExport" id="exportShiftBtn"><i class="fas fa-file-export"></i> EXPORT</button>
-    <button type="button" class="btn btn-success float-end grow btnExport" id="exportSupervisorBtn"><i class="fas fa-file-export"></i> EXPORT</button>
-    <button type="button" class="btn btn-success float-end grow btnExport" id="exportJobPositionAndDescriptionBtn"><i class="fas fa-file-export"></i> EXPORT</button>
+    {{-- <button type="button" class="btn btn-success float-end grow" id="exportCompanyBtn" style="font-weight: bold; margin-right:10px;"><i class="fas fa-file-export"></i> EXPORT</button> --}}
+    {{-- <button type="button" class="btn btn-success float-end grow btnExport" id="exportDepartmentBtn"><i class="fas fa-file-export"></i> EXPORT</button> --}}
+    {{-- <button type="button" class="btn btn-success float-end grow btnExport" id="exportBranchBtn"><i class="fas fa-file-export"></i> EXPORT</button> --}}
+    {{-- <button type="button" class="btn btn-success float-end grow btnExport" id="exportShiftBtn"><i class="fas fa-file-export"></i> EXPORT</button> --}}
+    {{-- <button type="button" class="btn btn-success float-end grow btnExport" id="exportSupervisorBtn"><i class="fas fa-file-export"></i> EXPORT</button> --}}
+    {{-- <button type="button" class="btn btn-success float-end grow btnExport" id="exportJobPositionAndDescriptionBtn"><i class="fas fa-file-export"></i> EXPORT</button> --}}
     
 <br>
 <hr class="hr-design">

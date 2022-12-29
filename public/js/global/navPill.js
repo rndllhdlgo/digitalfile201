@@ -209,7 +209,6 @@ $('#tab9').on('click',function(){
 
 //Maintenance
 $('#company_tab').addClass('tabactive');
-$('.buttons-excel').attr('id','exportCompany');
 
 $('#company_tab').on('click',function(){
     $(this).blur();
@@ -240,7 +239,6 @@ $('#company_tab').on('click',function(){
     $('#exportShiftBtn').hide();
     $('#exportSupervisorBtn').hide();
     $('#exportJobPositionAndDescriptionBtn').hide();
-    $('.buttons-excel').attr('id','exportCompany');
 });
 
 $('#department_tab').on('click',function(){
@@ -272,7 +270,6 @@ $('#department_tab').on('click',function(){
     $('#exportShiftBtn').hide();
     $('#exportSupervisorBtn').hide();
     $('#exportJobPositionAndDescriptionBtn').hide();
-    $('.buttons-excel').attr('id', 'exportDepartment');
 });
 
 $('#branch_tab').on('click',function(){
@@ -304,7 +301,6 @@ $('#branch_tab').on('click',function(){
     $('#exportShiftBtn').hide();
     $('#exportSupervisorBtn').hide();
     $('#exportJobPositionAndDescriptionBtn').hide();
-    $('.buttons-excel').attr('id', 'exportBranch');
 });
 
 $('#shift_tab').on('click',function(){
@@ -336,7 +332,6 @@ $('#shift_tab').on('click',function(){
     $('#exportShiftBtn').show();
     $('#exportSupervisorBtn').hide();
     $('#exportJobPositionAndDescriptionBtn').hide();
-    $('.buttons-excel').attr('id', 'exportShift');
 
 });
 
@@ -369,7 +364,6 @@ $('#supervisor_tab').on('click',function(){
     $('#exportShiftBtn').hide();
     $('#exportSupervisorBtn').show();
     $('#exportJobPositionAndDescriptionBtn').hide();
-    $('.buttons-excel').attr('id', 'exportSupervisor');
 
 });
 
@@ -402,8 +396,6 @@ $('#job_position_and_description_tab').on('click',function(){
     $('#exportShiftBtn').hide();
     $('#exportSupervisorBtn').hide();
     $('#exportJobPositionAndDescriptionBtn').show();
-    $('.buttons-excel').attr('id', 'exportJobPosition');
-
 });
 
 // $('#position_tab').on('click',function(){
