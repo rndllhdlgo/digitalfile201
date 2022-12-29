@@ -209,6 +209,7 @@ $('#tab9').on('click',function(){
 
 //Maintenance
 $('#company_tab').addClass('tabactive');
+$('.buttons-excel').attr('id','exportCompany');
 
 $('#company_tab').on('click',function(){
     $(this).blur();
@@ -232,6 +233,46 @@ $('#company_tab').on('click',function(){
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
     $('#addDepartmentBtn').hide();
+
+    $('#exportCompanyBtn').show();
+    $('#exportDepartmentBtn').hide();
+    $('#exportBranchBtn').hide();
+    $('#exportShiftBtn').hide();
+    $('#exportSupervisorBtn').hide();
+    $('#exportJobPositionAndDescriptionBtn').hide();
+    $('.buttons-excel').attr('id','exportCompany');
+});
+
+$('#department_tab').on('click',function(){
+    $(this).blur();
+    $('#company_tab').removeClass('tabactive');
+    $('#branch_tab').removeClass('tabactive');
+    $('#shift_tab').removeClass('tabactive');
+    $('#supervisor_tab').removeClass('tabactive');
+    $('#job_position_and_description_tab').removeClass('tabactive');
+    $('#department_tab').addClass('tabactive');
+
+    $('#company_div').hide();
+    $('#branch_div').hide();
+    $('#shift_div').hide();
+    $('#supervisor_div').hide();
+    $('#job_position_and_description_div').hide();
+    $('#department_div').show();
+
+    $('#addCompanyBtn').hide();
+    $('#addBranchBtn').hide();
+    $('#addShiftBtn').hide();
+    $('#addSupervisorBtn').hide();
+    $('#addJobPositionAndDescriptionBtn').hide();
+    $('#addDepartmentBtn').show();
+
+    $('#exportCompanyBtn').hide();
+    $('#exportDepartmentBtn').show();
+    $('#exportBranchBtn').hide();
+    $('#exportShiftBtn').hide();
+    $('#exportSupervisorBtn').hide();
+    $('#exportJobPositionAndDescriptionBtn').hide();
+    $('.buttons-excel').attr('id', 'exportDepartment');
 });
 
 $('#branch_tab').on('click',function(){
@@ -256,6 +297,14 @@ $('#branch_tab').on('click',function(){
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').hide();
     $('#addDepartmentBtn').hide();
+
+    $('#exportCompanyBtn').hide();
+    $('#exportDepartmentBtn').hide();
+    $('#exportBranchBtn').show();
+    $('#exportShiftBtn').hide();
+    $('#exportSupervisorBtn').hide();
+    $('#exportJobPositionAndDescriptionBtn').hide();
+    $('.buttons-excel').attr('id', 'exportBranch');
 });
 
 $('#shift_tab').on('click',function(){
@@ -281,30 +330,14 @@ $('#shift_tab').on('click',function(){
     $('#addJobPositionAndDescriptionBtn').hide();
     $('#addDepartmentBtn').hide();
 
-});
+    $('#exportCompanyBtn').hide();
+    $('#exportDepartmentBtn').hide();
+    $('#exportBranchBtn').hide();
+    $('#exportShiftBtn').show();
+    $('#exportSupervisorBtn').hide();
+    $('#exportJobPositionAndDescriptionBtn').hide();
+    $('.buttons-excel').attr('id', 'exportShift');
 
-$('#position_tab').on('click',function(){
-    $(this).blur();
-    $('#company_tab').removeClass('tabactive');
-    $('#branch_tab').removeClass('tabactive');
-    $('#shift_tab').removeClass('tabactive');
-    $('#supervisor_tab').removeClass('tabactive');
-    $('#job_position_and_description_tab').removeClass('tabactive');
-    $('#department_tab').removeClass('tabactive');
-
-    $('#company_div').hide();
-    $('#branch_div').hide();
-    $('#shift_div').hide();
-    $('#supervisor_div').hide();
-    $('#job_position_and_description_div').hide();
-    $('#department_div').hide();
-
-    $('#addCompanyBtn').hide();
-    $('#addBranchBtn').hide();
-    $('#addShiftBtn').hide();
-    $('#addSupervisorBtn').hide();
-    $('#addJobPositionAndDescriptionBtn').hide();
-    $('#addDepartmentBtn').hide();
 });
 
 $('#supervisor_tab').on('click',function(){
@@ -329,6 +362,15 @@ $('#supervisor_tab').on('click',function(){
     $('#addSupervisorBtn').show();
     $('#addJobPositionAndDescriptionBtn').hide();
     $('#addDepartmentBtn').hide();
+
+    $('#exportCompanyBtn').hide();
+    $('#exportDepartmentBtn').hide();
+    $('#exportBranchBtn').hide();
+    $('#exportShiftBtn').hide();
+    $('#exportSupervisorBtn').show();
+    $('#exportJobPositionAndDescriptionBtn').hide();
+    $('.buttons-excel').attr('id', 'exportSupervisor');
+
 });
 
 $('#job_position_and_description_tab').on('click',function(){
@@ -353,28 +395,37 @@ $('#job_position_and_description_tab').on('click',function(){
     $('#addSupervisorBtn').hide();
     $('#addJobPositionAndDescriptionBtn').show();
     $('#addDepartmentBtn').hide();
+
+    $('#exportCompanyBtn').hide();
+    $('#exportDepartmentBtn').hide();
+    $('#exportBranchBtn').hide();
+    $('#exportShiftBtn').hide();
+    $('#exportSupervisorBtn').hide();
+    $('#exportJobPositionAndDescriptionBtn').show();
+    $('.buttons-excel').attr('id', 'exportJobPosition');
+
 });
 
-$('#department_tab').on('click',function(){
-    $(this).blur();
-    $('#company_tab').removeClass('tabactive');
-    $('#branch_tab').removeClass('tabactive');
-    $('#shift_tab').removeClass('tabactive');
-    $('#supervisor_tab').removeClass('tabactive');
-    $('#job_position_and_description_tab').removeClass('tabactive');
-    $('#department_tab').addClass('tabactive');
+// $('#position_tab').on('click',function(){
+//     $(this).blur();
+//     $('#company_tab').removeClass('tabactive');
+//     $('#branch_tab').removeClass('tabactive');
+//     $('#shift_tab').removeClass('tabactive');
+//     $('#supervisor_tab').removeClass('tabactive');
+//     $('#job_position_and_description_tab').removeClass('tabactive');
+//     $('#department_tab').removeClass('tabactive');
 
-    $('#company_div').hide();
-    $('#branch_div').hide();
-    $('#shift_div').hide();
-    $('#supervisor_div').hide();
-    $('#job_position_and_description_div').hide();
-    $('#department_div').show();
+//     $('#company_div').hide();
+//     $('#branch_div').hide();
+//     $('#shift_div').hide();
+//     $('#supervisor_div').hide();
+//     $('#job_position_and_description_div').hide();
+//     $('#department_div').hide();
 
-    $('#addCompanyBtn').hide();
-    $('#addBranchBtn').hide();
-    $('#addShiftBtn').hide();
-    $('#addSupervisorBtn').hide();
-    $('#addJobPositionAndDescriptionBtn').hide();
-    $('#addDepartmentBtn').show();
-});
+//     $('#addCompanyBtn').hide();
+//     $('#addBranchBtn').hide();
+//     $('#addShiftBtn').hide();
+//     $('#addSupervisorBtn').hide();
+//     $('#addJobPositionAndDescriptionBtn').hide();
+//     $('#addDepartmentBtn').hide();
+// });

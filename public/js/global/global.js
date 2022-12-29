@@ -296,3 +296,23 @@ function idleStandby(){
     }
 }
 idleStandby();
+
+$(document).on('click','#exportCompanyBtn', function(){
+    $('#exportCompany').click();
+});
+$(document).on('click','#exportDepartmentBtn', function(){
+    $('#exportDepartment').trigger('click');
+});
+$(document).on('click','#exportBranchBtn', function(){
+    $('#exportBranch').click();
+});
+$(document).on('click','#exportShiftBtn', function(){
+    $('#exportShift').click();
+});
+$(document).on('click','#exportSupervisorBtn', function(){
+    $('#exportSupervisor').click();
+});
+$(document).on('click','#exportJobPositionAndDescriptionBtn', function(){
+    $('#exportJobPosition').click();
+});
+

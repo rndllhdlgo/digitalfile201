@@ -457,3 +457,13 @@ tbody tr:nth-child(odd),
     user-select: none;
     cursor: wait;
 }
+
+/* .dt-buttons{
+    display: none;
+} */
+
+.btnExport{
+    font-weight: bold;
+    display: none;
+    margin-right: 10px;
+}

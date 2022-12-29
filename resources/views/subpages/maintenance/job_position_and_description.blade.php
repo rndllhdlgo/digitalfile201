@@ -1,6 +1,5 @@
 <div id="job_position_and_description_div" class="tab-pane fade" style="border-radius:0px;">
-    <hr class="hr-design">
-
+    <br>
     <table class="table table-striped table-hover table-bordered w-100 jobPositionAndDescriptionTable" id="jobPositionAndDescriptionTable">
         <thead class="text-white" style="background-color:#0d1a80;">
                 <tr>

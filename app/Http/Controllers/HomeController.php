@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use DB;
 use PDO;
+use App\Models\UserLogs;
+use App\Models\Ping;
 use Illuminate\Http\Request;
 use App\Models\PersonalInformationTable;
 
@@ -40,7 +42,7 @@ class HomeController extends Controller
 
         $start = microtime(true);
         // $conn = DB::connection();
-        $conn = UserLogs::all();
+        $conn = Ping::limit(50000)->get();
         $end = microtime(true) - $start;
         $time = number_format($end, 3);
         return $time;
