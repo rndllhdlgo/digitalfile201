@@ -32,10 +32,17 @@ class HomeController extends Controller
     }
 
     public function ping(){
+        // $start = microtime(true);
+        // $conn = DB::connection();
+        // $end = microtime(true) - $start;
+        // $time = number_format($end * 100000, 3);
+        // return $time;
+
         $start = microtime(true);
-        $conn = DB::connection();
+        // $conn = DB::connection();
+        $conn = UserLogs::all();
         $end = microtime(true) - $start;
-        $time = number_format($end * 100000, 3);
+        $time = number_format($end, 3);
         return $time;
     }
 }

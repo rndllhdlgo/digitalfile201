@@ -228,7 +228,7 @@ setInterval(() => {
             success: function(data){
                 speed = ' (Ping: '+data+'s)';
                 $('#current_speed').html(speed);
-                if(parseFloat(data) < parseFloat(5.000)){
+                if(parseFloat(data) < parseFloat(1.000)){
                     $('#current_speed').removeClass('text-danger');
                     interval = 1000;
                 }

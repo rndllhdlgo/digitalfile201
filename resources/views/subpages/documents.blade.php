@@ -54,7 +54,7 @@
                                 <span class="diploma_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button diploma_div">
                                     <label class="input-group-text diploma_label text-white" for="diploma_file">Choose File</label>
-                                    <input type="file" class="form-control diploma_file input-file-text" id="diploma_file" onchange="diplomaValidation(diploma_file)" accept=".pdf" name="diploma_file">
+                                    <input type="file" class="form-control diploma_file" id="diploma_file" onchange="diplomaValidation(diploma_file)" accept=".pdf" name="diploma_file" style="border-color:#0d1a80 !important;">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -208,7 +208,7 @@
                             <span class="transcript_of_records_span" style="display: none;"></span>
                             <div class="input-group custom-file-button transcript_of_records_div">
                                 <label class="input-group-text tor_label text-white" for="tor_file">Choose File</label>
-                                <input type="file" class="form-control tor_file input-file-text" id="tor_file" onchange="torValidation(tor_file)" accept=".pdf" name="tor_file">
+                                <input type="file" class="form-control tor_file" id="tor_file" onchange="torValidation(tor_file)" accept=".pdf" name="tor_file" style="border-color: #0d1a80 !important;">
                             </div>
                         </td>
                         <td class="text-center">
