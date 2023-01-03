@@ -93,28 +93,28 @@
             {{-- Nav Pills --}}
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_information"> PERSONAL INFO</a>
+                        <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_info"> PERSONAL INFO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_information"> WORK INFO</a>
+                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_info"> WORK INFO</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#compensation_and_benefits"> COMPENSATION/BENEFITS</a>
+                        <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#education_trainings"> EDUCATION/TRAININGS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#educational_background"> EDUCATION/TRAININGS</a>
+                        <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
+                        <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
+                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#documents"> DOCUMENTS</a>
+                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#performance_evaluation">EVALUATION</a>
+                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">COMPENSATION/BENEFITS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>

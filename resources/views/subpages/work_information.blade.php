@@ -1,4 +1,4 @@
-<div id="work_information" class="tab-pane fade" style="border-radius:0px;">
+<div id="work_info" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <div class="row mb-3">
         <div class="col">

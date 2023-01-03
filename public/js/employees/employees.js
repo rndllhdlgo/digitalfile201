@@ -409,3 +409,12 @@ setInterval(() => {
         $('#btnUpdate').prop("disabled",false);
     }
 }, 0);
+
+setInterval(() => {
+    if($('#btnSave').is(":visible")){
+        $('#tab9').hide();
+    }
+    else{
+        $('#tab9').show();
+    }
+}, 0);

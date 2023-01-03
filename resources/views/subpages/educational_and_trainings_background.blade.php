@@ -1,5 +1,5 @@
 
-<div id="educational_background" class="tab-pane fade" style="border-radius:0px;">
+<div id="education_trainings" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
         <h5 class="table-title">COLLEGE EDUCATION</h5>
             <table class="table table-striped table-bordered table-hover align-middle">
