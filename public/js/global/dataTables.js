@@ -23,7 +23,7 @@ $(document).ready(function(){
             {data: 'last_name'},
             {data: 'employee_position'},
             {data: 'employee_branch'},
-            {data: 'employee_status'},
+            {data: 'employment_status'},
         ],
         initComplete: function(){
             $('#loading').hide();

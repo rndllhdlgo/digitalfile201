@@ -252,7 +252,7 @@ $('#btnUpdate').on('click',function(){
                         var employee_company = $('#employee_company').val();
                         var employee_department = $('#employee_department').val();
                         var employee_branch = $('#employee_branch').val();
-                        var employee_status = $('#employee_status').val();
+                        var employment_status = $('#employment_status').val();
                         var employment_origin = $('#employment_origin').val();
                         var employee_salary = $('#employee_salary').val();
                         var employee_shift = $('#employee_shift').val();
@@ -280,7 +280,7 @@ $('#btnUpdate').on('click',function(){
                                 employee_company:employee_company,
                                 employee_department:employee_department,
                                 employee_branch:employee_branch,
-                                employee_status:employee_status,
+                                employment_status:employment_status,
                                 employment_origin:employment_origin,
                                 employee_shift:employee_shift,
                                 employee_position:employee_position,

@@ -51,24 +51,24 @@ $('#addEmployeeBtn').on('click',function(){
     }
 
     function changeEmploymentStatus(){
-        var employee_status = $('#employee_status');
+        var employment_status = $('#employment_status');
   
-        if($('#employee_status').val() == "Regular" 
-        || $('#employee_status').val() == "Intern" 
-        || $('#employee_status').val() == 'Probationary'
-        || $('#employee_status').val() == 'Part Time'
-        || $('#employee_status').val() == 'Retired'
+        if($('#employment_status').val() == "Regular" 
+        || $('#employment_status').val() == "Intern" 
+        || $('#employment_status').val() == 'Probationary'
+        || $('#employment_status').val() == 'Part_Time'
+        || $('#employment_status').val() == 'Retired'
         ){
             $('#benefits').show();
             $('#resignation_div').hide();
             $('#termination_div').hide();
         }
-        else if($('#employee_status').val() == 'Resign'){
+        else if($('#employment_status').val() == 'Resign'){
                 $('#resignation_div').show();
                 $('#termination_div').hide();
                 $('#benefits').hide();
         }
-        else if($('#employee_status').val() == 'Terminate'){
+        else if($('#employment_status').val() == 'Terminate'){
                 $('#termination_div').show();
                 $('#resignation_div').hide();
                 $('#benefits').hide();

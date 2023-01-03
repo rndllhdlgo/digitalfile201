@@ -118,9 +118,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#employee_company').val(value.employee_company);
                 $('#employee_department').val(value.employee_department);
                 $('#employee_branch').val(value.employee_branch);
-                $('#employee_status').val(value.employee_status);
+                $('#employment_status').val(value.employment_status);
                 setInterval(() => {
-                    $('#employee_status').change();
+                    $('#employment_status').change();
                 }, app_timeout);
                 $('#employment_origin').val(value.employment_origin);
                 $('#employee_shift').val(value.employee_shift);

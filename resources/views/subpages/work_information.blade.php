@@ -48,7 +48,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
+                <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option value="Regular">Regular</option>
                     <option value="Intern">Intern</option>
@@ -59,7 +59,7 @@
                     <option value="Terminate" id="terminate">Terminate</option>
                     <option value="Retired" id="retired">Retired</option>
                 </select>
-                <label for="employee_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employee_status span_all"></span></label>
+                <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employment_status span_all"></span></label>
             </div>
         </div>
 

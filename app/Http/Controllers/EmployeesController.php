@@ -48,7 +48,7 @@ class EmployeesController extends Controller
             'last_name', 
             'positions.job_position_name AS employee_position', 
             'branches.branch_name AS employee_branch', 
-            'work_information_tables.employee_status')
+            'work_information_tables.employment_status')
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
         // ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
@@ -96,7 +96,7 @@ class EmployeesController extends Controller
             'work_information_tables.employee_company',
             'work_information_tables.employee_department',
             'work_information_tables.employee_branch',
-            'work_information_tables.employee_status',
+            'work_information_tables.employment_status',
             'work_information_tables.employment_origin',
             'work_information_tables.employee_shift',
             'work_information_tables.employee_supervisor',
@@ -279,7 +279,7 @@ class EmployeesController extends Controller
         $employee->employee_company = $request->employee_company;
         $employee->employee_department = $request->employee_department;
         $employee->employee_branch = $request->employee_branch;
-        $employee->employee_status = $request->employee_status;
+        $employee->employment_status = $request->employment_status;
         $employee->employment_origin = $request->employment_origin;
         $employee->employee_shift = $request->employee_shift;
         $employee->employee_position = $request->employee_position;
@@ -354,7 +354,7 @@ class EmployeesController extends Controller
         $employee_work_information->employee_company = $request->employee_company;
         $employee_work_information->employee_department = $request->employee_department;
         $employee_work_information->employee_branch = $request->employee_branch;
-        $employee_work_information->employee_status = $request->employee_status;
+        $employee_work_information->employment_status = $request->employment_status;
         $employee_work_information->employment_origin = $request->employment_origin;
         $employee_work_information->employee_shift = $request->employee_shift;
         $employee_work_information->employee_position = $request->employee_position;
