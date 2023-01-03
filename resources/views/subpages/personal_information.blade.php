@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="text-center mt-2" id="image_instruction">
-                    <span>File Size: max (10MB)</span><br>
+                    <span>File Size: Maximum (10MB)</span><br>
                     <span>File Extensions: .jpg, .jpeg, .png</span> 
                 </div>
         </div>

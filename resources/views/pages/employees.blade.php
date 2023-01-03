@@ -51,8 +51,8 @@
         </div>
 
         <div id="employee_information" style="display: none; margin-top:10px;">
-            <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info"></i> <b>EMPLOYEE INFORMATION</b> </span>
-            <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
+            <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info-circle fa-lg"></i> <b>EMPLOYEE INFORMATION</b> </span>
+            <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
         
             <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
             <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>

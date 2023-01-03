@@ -82,19 +82,19 @@ $('#company_email_address').on('keyup',function(){
 //Disable future dates/ Date Hired Function
 $(function(){
     var dtToday = new Date();
+
     var month = dtToday.getMonth() + 1;
     var day = dtToday.getDate();
     var year = dtToday.getFullYear();
-    if(month < 0){
+
+    if(month < 10)
         month = '0' + month.toString();
-    }
-    if(day < 10){
+    if(day < 10)
         day = '0' + day.toString();
-    }
-    var maxDate = year + '-' + month + '-' + day;
-    $('#date_hired').attr('max', maxDate);
+
+    var maxDate = year + '-' + month + '-' + day;    
     $('#child_birthday').attr('max', maxDate);
-    $('#memo_date').attr('max', maxDate);
+    $('#date_hired').attr('max', maxDate);
     $('#evaluation_date').attr('max', maxDate);
     $('#contracts_date').attr('max', maxDate);
     $('#resignation_date').attr('max', maxDate);
