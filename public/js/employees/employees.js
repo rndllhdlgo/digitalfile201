@@ -418,3 +418,15 @@ setInterval(() => {
         $('#tab9').show();
     }
 }, 0);
+
+setInterval(() => {
+    if($('#job_company_name').val() || $('#job_description').val() || $('#job_position').val() || $('#job_contact_number').val() || $('#job_inclusive_years').val()){
+        $('.job_field').addClass('required_field');
+        $('.span_job').hide();
+    }
+    else{
+        $('.span_job').show();
+        $('.job_field').removeClass('required_field');
+        $('.job_field').removeClass('border border-danger');
+    }
+}, 0);

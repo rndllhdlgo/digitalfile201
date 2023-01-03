@@ -314,11 +314,12 @@ $('#btnSave').on('click', function(){
                                         },
                                         data:{
                                             employee_id : data.id,
-                                            job_name : $(this).children('.td_1').html(),
-                                            job_position : $(this).children('.td_2').html(),
-                                            job_address : $(this).children('.td_3').html(),
-                                            job_contact_details : $(this).children('.td_4').html(),
-                                            job_inclusive_years : $(this).children('.td_5').html()
+                                            job_company_name : $(this).children('.td_1').html(),
+                                            job_description : $(this).children('.td_2').html(),
+                                            job_position : $(this).children('.td_3').html(),
+                                            job_contact_number : $(this).children('.td_4').html(),
+                                            job_inclusive_years_from : $(this).children('.td_5').html(),
+                                            job_inclusive_years_to : $(this).children('.td_6').html()
                                         },
                                     });
                                 });

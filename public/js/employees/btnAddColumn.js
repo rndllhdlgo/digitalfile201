@@ -34,7 +34,7 @@ function checkforblankMultiple(){
         $('#vocationalAdd').css('display','block');
     }
 
-    if(!$('#job_name').val() || !$('#job_position').val() || !$('#job_address').val() || !$('#job_contact_details').val() || !$('#job_inclusive_years').val()){
+    if(!$('#job_company_name').val() || !$('#job_description').val() || !$('#job_position').val() || !$('#job_contact_number').val() || !$('#job_inclusive_years_from').val() || !$('#job_inclusive_years_to').val()){
         $('#jobHistoryAdd').prop('disabled',true);
     }
     else{
@@ -226,82 +226,51 @@ $(document).ready(function(){
     });
 
     $('#jobHistoryAdd').click(function(){
-        var job_name = $('#job_name').val().trim();
+        var job_company_name = $('#job_company_name').val().trim();
+        var job_description = $('#job_description').val().trim();
         var job_position = $('#job_position').val().trim();
-        var job_address = $('#job_address').val().trim();
-        var job_contact_details = $('#job_contact_details').val().trim();
-        var job_inclusive_years = $('#job_inclusive_years').val().trim();
+        var job_contact_number = $('#job_contact_number').val().trim();
+        var job_inclusive_years_from = $('#job_inclusive_years_from').val().trim();
+        var job_inclusive_years_to = $('#job_inclusive_years_to').val().trim();
 
         if($('#btnSave').is(":visible")){
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:18%'>" + job_name + "</td>" + 
-                                        "<td class='td_2' style='width:18%'>" + job_position + "</td>" +
-                                        "<td class='td_3' style='width:18%'>" + job_address + "</td>" + 
-                                        "<td class='td_4' style='width:18%'>" + job_contact_details + "</td>" + 
-                                        "<td class='td_5' style='width:18%'>" + job_inclusive_years + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                        "<td class='td_1 text-capitalize' style='width:15.7%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_2' style='width:16.1%'>" + job_description + "</td>" +
+                                        "<td class='td_3' style='width:15.6%'>" + job_position + "</td>" + 
+                                        "<td class='td_4' style='width:15.6%'>" + job_contact_number + "</td>" + 
+                                        "<td class='td_5' style='width:14%'>" + job_inclusive_years_from + "</td>" +
+                                        "<td class='td_6' style='width:13.9%'>" + job_inclusive_years_to + "</td>" +
+                                        "<td style='width:9.1%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('#job_history_table').append(job_history_table);
         }
         else{
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:18%'>" + job_name + "</td>" + 
-                                        "<td class='td_2' style='width:18%'>" + job_position + "</td>" +
-                                        "<td class='td_3' style='width:18%'>" + job_address + "</td>" + 
-                                        "<td class='td_4' style='width:18%'>" + job_contact_details + "</td>" + 
-                                        "<td class='td_5' style='width:18%'>" + job_inclusive_years + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                        "<td class='td_1 text-capitalize' style='width:15.7%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_2' style='width:16.1%'>" + job_description + "</td>" +
+                                        "<td class='td_3' style='width:15.6%'>" + job_position + "</td>" + 
+                                        "<td class='td_4' style='width:15.6%'>" + job_contact_number + "</td>" + 
+                                        "<td class='td_5' style='width:14%'>" + job_inclusive_years_from + "</td>" +
+                                        "<td class='td_6' style='width:13.9%'>" + job_inclusive_years_to + "</td>" +
+                                        "<td style='width:9.1%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('.dataTables_empty').closest('tr').remove();
             $('#job_history_table_tbody').append(job_history_table);
             $('#job_history_table_orig').show();
         }
         
-        $('#job_name').val("");
+        $('#job_company_name').val("");
+        $('#job_description').val("");
         $('#job_position').val("");
-        $('#job_address').val("");
-        $('#job_contact_details').val("");
-        $('#job_inclusive_years').val("");
+        $('#job_contact_number').val("");
+        $('#job_inclusive_years_from').val("");
+        $('#job_inclusive_years_to').val("");
         $('.btn_job').click(function(){
             $(this).parent().parent().remove();
         });
     });
 });
-
-// $('#sampleAdd').click(function(){
-//     var sample1 = $('#sample1').val();
-//     var sample2 = $('#sample2').val();
-//     var sample3 = $('#sample3').val();
-
-//     if($('#btnSave').is(":visible")){
-//         var sample_table = "<tr class='sample_tr'>"+
-//                                 "<td class='td_1 text-capitalize' style='width:30%;'>" + sample1 + "</td>" +
-//                                 "<td class='td_2' style='width:30%;'>" + sample2 + "</td>" +
-//                                 "<td class='td_3' style='width:30%;'>" + sample3 + "</td>" +
-//                                 "<td style='width:10%;'> <button class='btn btn-danger btn_sample center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-//                             "<tr>";
-//         $('#sample_table tbody').append(sample_table);
-//     }
-//     else{
-//         var sample_table = "<tr class='sample_tr'>"+
-//                                 "<td class='td_1 text-capitalize' style='width:30%;'>" + sample1 + "</td>" +
-//                                 "<td class='td_2' style='width:30%;'>" + sample2 + "</td>" +
-//                                 "<td class='td_3' style='width:30%;'>" + sample3 + "</td>" +
-//                                 "<td style='width:10%;'> <button class='btn btn-danger btn_sample center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-//                             "<tr>";
-//         $('#sample_table_orig_tbody').append(sample_table);
-//         $('#sample_table_orig').show();
-//     }
-    
-//     $('#sample1').val("");
-//     $('#sample2').val("");
-//     $('#sample3').val("");
-
-//     $('.btn_sample').click(function(){
-//         $(this).parent().parent().remove();
-//     });
-// });
-
 
     function addMemoRow(){
         $('#memoTable').find('tbody').prepend('<tr>'+

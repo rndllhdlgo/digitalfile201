@@ -347,7 +347,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             },
                             "defaultContent": '',
                             "data": null,
-                            "targets": [5],
+                            "targets": [6],
                         }
                     ],
                     searching: false,
@@ -368,11 +368,12 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         }
                     },
                     columns: [
-                        { data: 'job_name',width : '18%'},
-                        { data: 'job_position',width : '18%'},
-                        { data: 'job_address', width: '18%'},
-                        { data: 'job_contact_details', width : '18%'},
-                        { data: 'job_inclusive_years', width : '18%'}
+                        { data: 'job_company_name',width : '15.7%'},
+                        { data: 'job_description',width : '16.1%'},
+                        { data: 'job_position', width: '15.6%'},
+                        { data: 'job_contact_number', width : '15.6%'},
+                        { data: 'job_inclusive_years_from', width : '14%'},
+                        { data: 'job_inclusive_years_to', width : '13.9%'}
                     ],
                     initComplete: function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){

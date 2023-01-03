@@ -423,11 +423,12 @@ class EmployeesController extends Controller
     public function saveJobHistory(Request $request){
         $employee_job = new JobHistoryTable;
         $employee_job->employee_id = $request->employee_id;
-        $employee_job->job_name = ucfirst($request->job_name);
+        $employee_job->job_company_name = ucfirst($request->job_company_name);
+        $employee_job->job_description = ucfirst($request->job_description);
         $employee_job->job_position = ucfirst($request->job_position);
-        $employee_job->job_address = ucwords($request->job_address);
-        $employee_job->job_contact_details = $request->job_contact_details;
-        $employee_job->job_inclusive_years = $request->job_inclusive_years;
+        $employee_job->job_contact_number = $request->job_contact_number;
+        $employee_job->job_inclusive_years_from = $request->job_inclusive_years_from;
+        $employee_job->job_inclusive_years_to = $request->job_inclusive_years_to;
         $employee_job->save();
     }
 
