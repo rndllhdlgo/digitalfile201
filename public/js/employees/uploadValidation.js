@@ -7,11 +7,11 @@ function ImageValidation(employee_image) {
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
     var imageFileSize = $("#employee_image").get(0).files[0].size;
 
-    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880) {
+    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880 * 2) {
         Swal.fire({
-            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 5MB.',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 10MB.',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
@@ -27,11 +27,11 @@ function ImageValidation(employee_image) {
         });
         
     }
-    else if(imageFileSize > 5242880){
+    else if(imageFileSize > 5242880 * 2){
         Swal.fire({
-            title: 'EXCEEDED MAXIMUM FILE SIZE (5MB)!',
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload valid file with size not greater than 5MB.',
+            text: 'Please upload valid file with size not greater than 10MB.',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
@@ -45,6 +45,7 @@ function ImageValidation(employee_image) {
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
                 $('#image_button').hide();
+                $('#image_instruction').hide();
                 $('#image_close').show();
                 $('#image_preview').show();
                 $('.column-1').addClass('blue');
@@ -1047,53 +1048,6 @@ $('#resume_preview').on('click',function(){
     $('.modal-title').html('RESUME');
 });
 
-
-function ImageDonutValidation(donut_image) {
-    var donutImageData = document.getElementById('donut_image');
-    var donutImageUploadPath = donutImageData.value;
-    var donutImageExtension = donutImageUploadPath.substring(donutImageUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var donutImageFileSize = $("#donut_image").get(0).files[0].size;
-
-    if ((donutImageExtension != "jpg" && donutImageExtension != "jpeg" && donutImageExtension != "png" && donutImageExtension != "gif") && donutImageFileSize > 5242880) {
-        Swal.fire({
-            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (5MB)!',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 5MB.',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-
-    } 
-    else if(donutImageExtension != "jpg" && donutImageExtension != "jpeg" && donutImageExtension != "png" && donutImageExtension != "gif"){
-        Swal.fire({
-            title: 'UNSUPPORTED FILE TYPE',
-            icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif).',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-        
-    }
-    else if(donutImageFileSize > 5242880){
-        Swal.fire({
-            title: 'EXCEEDED MAXIMUM FILE SIZE (5MB)!',
-            icon: 'error',
-            text: 'Please upload valid file with size not greater than 5MB.',
-            allowOutsideClick: false,
-            allowEscapeKey: false
-        });
-    }   
-    else {
-        if (donutImageData.files && donutImageData.files[0]) {
-            var donutImageReader = new FileReader();
-                donutImageReader.onload = function(e) {
-                    $('#donut_image_preview').attr('src', e.target.result);
-                }
-                donutImageReader.readAsDataURL(donutImageData.files[0]);
-                $('#donut_image').hide();
-        }
-    }
-}
 
 //Display file name function
 //Performance Evaluation Tab

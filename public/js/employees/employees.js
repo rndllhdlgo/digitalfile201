@@ -118,12 +118,13 @@ $('#image_close').on('click',function(){
         if (save.isConfirmed) {
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
-            $('#employee_image').val(''); //Remove the image inserted
-            $('#image_preview').attr('src',''); //Remove current preview
+            $('#employee_image').val('');
+            $('#image_preview').attr('src','');
             $('#image_preview').hide();
             $('#image_close').hide();
             $('#image_user').show();
             $('#image_button').show();
+            $('#image_instruction').show();
             $('.column-1').css("height","250px");
             $('#employee_image').addClass('required_field');
         }

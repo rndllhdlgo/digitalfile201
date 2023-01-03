@@ -1,19 +1,27 @@
 <div id="personal_information" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
     <hr class="hr-design">
-    <div class="row mb-3"> <!-- Split 2 column -->
-        <div class="column-1"> <!-- Container of Image -->
-            <div class="row mb-3">
-                <div class="col">
-                    <input type="hidden" id="filename">
-                    <input type="hidden" id="filename_delete">
-                    <i class="fas fa-times float-end grow" style="zoom:150%;cursor:pointer;display:none;margin-top:3px;margin-bottom:3px;" id="image_close"></i>
-                    <i class="fa fa-user-circle fa-4x p-2 mt-4 image_icon center" aria-hidden="true" id="image_user"></i>
-                        <img id="image_preview">
-
-                        <button type="button" class="btn btn-primary bp center" style="margin-top: 180px;" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
-                        <input type="file" name="employee_image" id="employee_image" class="required_field hiddenFile" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
+    <div class="row mb-3">
+        <div class="column-1">
+            <input type="hidden" id="filename">
+            <input type="hidden" id="filename_delete">
+            
+                <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
+                
+                <div class="text-center mt-4">
+                    <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
                 </div>
-            </div>
+
+                    <img id="image_preview">
+
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary bp" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                    <input type="file" name="employee_image" class="required_field hiddenFile" id="employee_image" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
+                </div>
+
+                <div class="text-center mt-2" id="image_instruction">
+                    <span>File Size: max (10MB)</span><br>
+                    <span>File Extensions: .jpg, .jpeg, .png</span> 
+                </div>
         </div>
         
         <div class="column-2">

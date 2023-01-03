@@ -120,6 +120,7 @@ html::-webkit-scrollbar-track:hover {
     margin-left: auto;
     margin-right: auto;
 }
+
 /* Digital 201 File text */
 .digital-file-201{
     display: inline;
@@ -330,11 +331,11 @@ input[type=search]:focus{
     margin-right: auto;
 }
 
-.image_icon{
+/* .image_icon{
     position: absolute;
     zoom: 150%;
     margin-left: 26%;
-}
+} */
 
 .first_table{
     float: left;
