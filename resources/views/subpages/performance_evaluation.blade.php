@@ -12,7 +12,7 @@
                     <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="memo_tbody">
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
@@ -47,6 +47,20 @@
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped table-hover memo_table_data" id="memo_table_data" style="display: none;">
+            <thead class="thead-educational">
+                <tr>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
             </tbody>
         </table>
     <br>

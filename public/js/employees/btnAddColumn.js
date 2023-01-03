@@ -304,40 +304,42 @@ $(document).ready(function(){
 
 
     function addMemoRow(){
-    $('#memoTable').append('<tr>'+
-                            '<td class="pb-3 pt-3">'+ 
-                                '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
-                                    '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">'+
-                                    '<input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                                    '<label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
+        $('#memoTable').find('tbody').prepend('<tr>'+
+                    '<td class="pb-3 pt-3">'+ 
+                        '<div class="f-outline">' + 
+                            '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                            '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
+                        '</div>'+
+                    '</td>'+
+                    '<td class="pb-3 pt-3">'+
+                        '<div class="f-outline">'+
+                            '<input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                            '<label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>'+
+                        '</div>'+
+                    '</td>'+
 
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">'+
-                                    '<select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">'+
-                                        '<option value="" disabled selected>SELECT PENALTY</option>'+
-                                        '<option value="Verbal">Verbal</option>'+
-                                        '<option value="Written">Written</option>'+
-                                        '<option value="2nd Offense">2nd Offense</option>'+
-                                        '<option value="3rd Offense">3rd Offense</option>'+
-                                        '<option value="Final">Final</option>'+
-                                    '</select>'+
-                                    '<label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td>'+
-                                '<input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
-                            '</td>'+
-                            '<td>'+
-                                '<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
-                            '</td>'+
-                        '</tr>');
+                    '<td class="pb-3 pt-3">'+
+                        '<div class="f-outline">'+
+                            '<select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">'+
+                                '<option value="" disabled selected>SELECT PENALTY</option>'+
+                                '<option value="Verbal">Verbal</option>'+
+                                '<option value="Written">Written</option>'+
+                                '<option value="2nd Offense">2nd Offense</option>'+
+                                '<option value="3rd Offense">3rd Offense</option>'+
+                                '<option value="Final">Final</option>'+
+                            '</select>'+
+                            '<label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>'+
+                        '</div>'+
+                    '</td>'+
+                    '<td>'+
+                        '<input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
+                    '</td>'+
+                    '<td>'+
+                        '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
+                    '</td>'+
+                '</tr>');
+                 $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+        
         $(".btn-memo").click(function(){
             $(this).parent().parent().remove();
         });

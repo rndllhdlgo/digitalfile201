@@ -383,9 +383,60 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
-                $('th').removeClass("sorting_asc");
                 
                 $('#documents_form').attr("action",'/employees/updateDocuments');
+
+                $('.memo_table_data').dataTable().fnDestroy();
+                $('.memo_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [4],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/memo_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'memo_subject',width: '22.5%'},
+                        { data: 'memo_date', width: '22.5%'},
+                        { data: 'memo_penalty', width: '22.5%'},
+                        { 
+                            data: 'memo_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
+                            },
+                            width: '22.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.memo_table_data').DataTable().data().any()){
+                            $('#memo_table_data').hide();
+                        }
+                        else{
+                            $('#memo_table_data').show();
+                        }
+                    }
+                });
+                $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);

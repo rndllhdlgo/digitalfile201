@@ -1,29 +1,3 @@
-{{-- <div class="row">
-    <div class="col-6">
-        <a href="/" title="IDEASERV">
-            <img src="/images/ideaserv_systems_logo.png" alt="Ideaserv Systems Inc" style="height: 100px;width:150px;">
-            <p class="digital-file-201">DIGITAL 201 FILE</p>
-        </a>
-    </div>
-    <div class="col-6 mt-3 float-end" style="margin-left: -20px !important;">
-        <div class="row">
-            <div class="col-9" style="text-align: right;">
-                <span id="current_datetime"></span>
-                <span id="current_speed" class="font-weight-bold"></span>
-                <br>
-                {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}] {{-- Display user name and level 
-                <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    <b><u>LOGOUT</u></b> <i class="fa fa-sign-out ml-2" aria-hidden="true"></i>
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
-            </div>
-            <div class="col-3 p-0 m-0">
-                    <a href="#"> <i class="fa fa-user-circle fa-4x p-2" aria-hidden="true" style="color:#0d1a80;"></i> </a>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
 <div id="htmlHeader" class="d-flex" style="height: 90px;">
     <div class="row w-100">
         <div class="col-6">
@@ -38,9 +12,9 @@
             <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">
                 <thead>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;width: 485px !important;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
                             <span id="current_datetime" style="margin-left: 50px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
-                            <span id="current_speed" class="font-weight-bold"> (Ping: 0.000s)</span>    
+                            {{-- <span id="current_speed" class="font-weight-bold"> (Ping: 0.000s)</span> --}}
                         </td>
                         <td  class="m-0 p-0" rowspan="3">
                             <i class="fa fa-user-circle fa-4x float-end" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
@@ -71,7 +45,7 @@
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
                 </li>
-                
+
                 @if(Auth::user()->user_level == 'ADMIN' || Auth::user()->user_level == 'ENCODER') {{--ADMIN AUTHENTICATION --}}
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
@@ -84,7 +58,7 @@
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
                     </li>
-                @endif 
+                @endif
             </ul>
 
     {{-- <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#0d1a80;">

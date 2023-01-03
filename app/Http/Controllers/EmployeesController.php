@@ -134,7 +134,8 @@ class EmployeesController extends Controller
             'documents.police_clearance_file',
             'documents.resume_file',
             'documents.sss_file',
-            'documents.transcript_of_records_file'
+            'documents.transcript_of_records_file',
+            'memo_tables.memo_subject'
             )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
@@ -142,6 +143,7 @@ class EmployeesController extends Controller
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
         ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
         ->join('documents','documents.employee_id','personal_information_tables.id') 
+        ->join('memo_tables','memo_tables.employee_id','personal_information_tables.id') 
         ->get();
 
         return DataTables::of($employees)->toJson();
@@ -854,6 +856,10 @@ class EmployeesController extends Controller
 
     public function job_history_data(Request $request){
         return DataTables::of(JobHistoryTable::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function memo_data(Request $request){
+        return DataTables::of(MemoTable::where('employee_id',$request->id)->get())->make(true);
     }
 
     public function logs_delete(Request $request){
