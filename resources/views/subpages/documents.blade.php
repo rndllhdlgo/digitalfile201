@@ -82,14 +82,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td><p class="file_title"><b>NBI CLEARANCE</b></p></td>
+                            <td><p class="file_title"><b>NBI CLEARANCE (Optional)</b></p></td>
                             <td>
                                 <input type="hidden" id="nbi_clearance_filename" name="nbi_clearance_filename">
 
                                 <span class="nbi_clearance_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button nbi_clearance_div">
                                     <label class="input-group-text nbi_label text-white" for="nbi_clearance_file">Choose File</label>
-                                    <input type="file" id="nbi_clearance_file" class="form-control nbi_clearance_file input-file-text" name="nbi_clearance_file" onchange="nbiValidation(nbi_clearance_file)" accept=".pdf" name="nbi_clearance_file">
+                                    <input type="file" id="nbi_clearance_file" class="form-control nbi_clearance_file" name="nbi_clearance_file" onchange="nbiValidation(nbi_clearance_file)" accept=".pdf" name="nbi_clearance_file" style="border-color: #0d1a80 !important;">
                                 </div>
                             </td>
                             <td class="text-center">

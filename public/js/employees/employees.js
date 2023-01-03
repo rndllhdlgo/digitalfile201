@@ -54,7 +54,6 @@ $('#addEmployeeBtn').on('click',function(){
         var employment_status = $('#employment_status');
   
         if($('#employment_status').val() == "Regular" 
-        || $('#employment_status').val() == "Intern" 
         || $('#employment_status').val() == 'Probationary'
         || $('#employment_status').val() == 'Part_Time'
         || $('#employment_status').val() == 'Retired'
