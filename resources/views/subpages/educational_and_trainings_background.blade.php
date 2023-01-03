@@ -76,9 +76,9 @@
     <table class="table table-striped table-bordered table-hover align-middle">
         <thead class="thead-educational">
             <tr>
-                <th style="width:30%"><i class="fas fa-school"></i> NAME OF SCHOOL</th>
-                <th style="width:30%"><i class="fas fa-map-marker-alt"></i> SCHOOL ADDRESS</th>
-                <th style="width:30%" colspan="2" class="text-center"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                <th style="width:30%"> NAME OF SCHOOL</th>
+                <th style="width:30%"> SCHOOL ADDRESS</th>
+                <th style="width:30%" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
             </tr>
         </thead>
         <tbody>
@@ -116,9 +116,9 @@
     <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:30%"><i class="fas fa-school"></i> NAME OF SCHOOL</th>
-                    <th style="width:30%"><i class="fas fa-map-marker-alt"></i> SCHOOL ADDRESS</th>
-                    <th style="width:30%" colspan="2"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
+                    <th style="width:30%"> NAME OF SCHOOL</th>
+                    <th style="width:30%"> SCHOOL ADDRESS</th>
+                    <th style="width:30%" colspan="2"> INCLUSIVE YEARS</th>
                 </tr>
             </thead>
             <tbody>
@@ -157,10 +157,10 @@
         <table class="table table-striped table-bordered table-hover align-middle ">
                 <thead class="thead-educational">
                     <tr>
-                        <th style="width: 30%;"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                        <th style="width: 30%;"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                        <th style="width: 30%;" colspan="2" class="text-center"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                        <th style="width: 10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                        <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
+                        <th style="width: 30%;"> TRAINING TITLE</th>
+                        <th style="width: 30%;" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
+                        <th style="width: 10%;"> ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -229,10 +229,10 @@
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                    <th style="width:30%;"><i class="fas fa-certificate"></i> COURSE</th>
-                    <th style="width:30%;" colspan="2" class="text-center"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:30%;"> NAME OF VOCATIONAL SCHOOL</th>
+                    <th style="width:30%;"> COURSE</th>
+                    <th style="width:30%;" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
+                    <th style="width:10%;"> ACTION</th>
                 </tr>
             </thead>
             <tbody>

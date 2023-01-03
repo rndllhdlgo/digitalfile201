@@ -5,9 +5,9 @@
                 <table class="table table-striped table-bordered table-hover align-middle">
                     <thead class="thead-educational">
                         <tr>
-                            <th style="width:35%"><i class="fas fa-file"></i> FILE TITLE</th>
-                            <th style="width:45%"><i class="fas fa-upload"></i> ATTACH FILE</th>
-                            <th style="width:20%"><i class="fas fa-user-cog"></i> ACTION</th>
+                            <th style="width:35%"> FILE TITLE</th>
+                            <th style="width:45%"> ATTACH FILE</th>
+                            <th style="width:20%"> ACTION</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,9 +123,9 @@
             <table class="table table-striped table-bordered table-hover align-middle" style="margin-top: 15px;">
                 <thead class="thead-educational">
                     <tr>
-                        <th style="width:35%"><i class="fas fa-file"></i> FILE TITLE</th>
-                        <th style="width:45%"><i class="fas fa-upload"></i> ATTACH FILE</th>
-                        <th style="width:20%"><i class="fas fa-user-cog"></i> ACTION</th>
+                        <th style="width:35%"> FILE TITLE</th>
+                        <th style="width:45%"> ATTACH FILE</th>
+                        <th style="width:20%"> ACTION</th>
                     </tr>
                 </thead>
                 <tbody>

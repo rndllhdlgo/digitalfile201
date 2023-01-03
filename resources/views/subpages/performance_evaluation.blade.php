@@ -5,11 +5,11 @@
         <table id="memoTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> MEMO SUBJECT</th>
-                    <th style="width:22.5%"><i class="fas fa-calendar-week"></i> MEMO DATE</th>
-                    <th style="width:22.5%"><i class="fas fa-cogs"></i> MEMO PENALTY</th>
-                    <th style="width:22.5%"><i class="fas fa-folder"></i> MEMO FILE</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:22.5%"> MEMO SUBJECT</th>
+                    <th style="width:22.5%"> MEMO DATE</th>
+                    <th style="width:22.5%"> MEMO PENALTY</th>
+                    <th style="width:22.5%"> MEMO FILE</th>
+                    <th style="width:10%"> ACTION</th>
                 </tr>
             </thead>
             <tbody id="memo_tbody">
@@ -69,11 +69,11 @@
         <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:22.5%"><i class="fas fa-envelope-open-text"></i> EVALUATION REASON</th>
-                    <th style="width:22.5%"><i class="fas fa-calendar-week"></i> EVALUATION DATE</th>
-                    <th style="width:22.5%"><i class="fas fa-address-card"></i> EVALUATED BY</th>
-                    <th style="width:22.5%"><i class="fas fa-folder"></i> EVALUATION FILE</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:22.5%"> EVALUATION REASON</th>
+                    <th style="width:22.5%"> EVALUATION DATE</th>
+                    <th style="width:22.5%"> EVALUATED BY</th>
+                    <th style="width:22.5%"> EVALUATION FILE</th>
+                    <th style="width:10%"> ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,10 +111,10 @@
         <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:18%"><i class="fas fa-envelope-open-text"></i> CONTRACT TYPE</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> CONTRACT DATE</th>
-                    <th style="width:32%"><i class="fas fa-folder"></i> CONTRACT FILE</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:18%"> CONTRACT TYPE</th>
+                    <th style="width:30%"> CONTRACT DATE</th>
+                    <th style="width:32%"> CONTRACT FILE</th>
+                    <th style="width:10%"> ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -148,10 +148,10 @@
         <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:18%"><i class="fas fa-envelope-open-text"></i> RESIGNATION REASON</th>
-                    <th style="width:30%"><i class="fas fa-calendar-week"></i> RESIGNATION DATE</th>
-                    <th style="width:32%"><i class="fas fa-folder"></i> RESIGNATION FILE</th>
-                    <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:18%"> RESIGNATION REASON</th>
+                    <th style="width:30%"> RESIGNATION DATE</th>
+                    <th style="width:32%"> RESIGNATION FILE</th>
+                    <th style="width:10%"> ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -186,10 +186,10 @@
             <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
                 <thead class="thead-educational">
                     <tr>
-                        <th style="width:18%"><i class="fas fa-envelope-open-text"></i> TERMINATION REASON</th>
-                        <th style="width:30%"><i class="fas fa-calendar-week"></i> TERMINATION DATE</th>
-                        <th style="width:32%"><i class="fas fa-folder"></i> TERMINATION FILE</th>
-                        <th style="width:10%"><i class="fas fa-user-cog"></i> ACTION</th>
+                        <th style="width:18%"> TERMINATION REASON</th>
+                        <th style="width:30%"> TERMINATION DATE</th>
+                        <th style="width:32%"> TERMINATION FILE</th>
+                        <th style="width:10%"> ACTION</th>
                     </tr>
                 </thead>
                 <tbody>
