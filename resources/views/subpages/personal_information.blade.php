@@ -98,8 +98,8 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="radio" name="house" class="house" value="Owned" style="margin-left: 30px;" checked> Owned
                         <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent
-                        <input type="radio" name="house" class="house" value="Owned" style="margin-left: 30px;"> Owned
                     </div>
                 </div>
             </div>

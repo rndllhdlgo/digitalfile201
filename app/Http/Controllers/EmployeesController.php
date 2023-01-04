@@ -161,43 +161,42 @@ class EmployeesController extends Controller
     // }
 
     public function savePersonalInformation(Request $request){
-        $employee_personal_information = new PersonalInformationTable;
+        $employee = new PersonalInformationTable;
 
-        $employee_personal_information->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
-        $employee_personal_information->first_name =  ucwords($request->first_name);
-        $employee_personal_information->last_name = ucwords($request->last_name); 
-        $employee_personal_information->middle_name = ucwords($request->middle_name);
+        $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
+        $employee->first_name =  ucwords($request->first_name);
+        $employee->last_name = ucwords($request->last_name); 
+        $employee->middle_name = ucwords($request->middle_name);
         
-        $employee_personal_information->suffix = ucwords($request->suffix);
-        $employee_personal_information->nickname = ucwords($request->nickname);
-        $employee_personal_information->birthday = $request->birthday;
-        $employee_personal_information->gender = $request->gender;
-        $employee_personal_information->civil_status = $request->civil_status;
-        $employee_personal_information->street = ucwords($request->street);
-        $employee_personal_information->house = $request->house;
-        $employee_personal_information->province = $request->province;
-        $employee_personal_information->city = $request->city;
-        $employee_personal_information->region = $request->region;
-        $employee_personal_information->height = $request->height;
-        $employee_personal_information->weight = $request->weight;
-        $employee_personal_information->religion = ucwords($request->religion);
-        $employee_personal_information->email_address = strtolower($request->email_address);
-        $employee_personal_information->telephone_number = $request->telephone_number;
-        $employee_personal_information->cellphone_number = $request->cellphone_number;
-        $employee_personal_information->spouse_name = ucwords($request->spouse_name);
-        $employee_personal_information->spouse_contact_number = $request->spouse_contact_number;
-        $employee_personal_information->spouse_profession = ucwords($request->spouse_profession);
-        $employee_personal_information->father_name = ucwords($request->father_name);
-        $employee_personal_information->father_contact_number = $request->father_contact_number;
-        $employee_personal_information->father_profession = ucwords($request->father_profession);
-        $employee_personal_information->mother_name = ucwords($request->mother_name);
-        $employee_personal_information->mother_contact_number = $request->mother_contact_number;
-        $employee_personal_information->mother_profession = ucwords($request->mother_profession);
-        $employee_personal_information->emergency_contact_name = ucwords($request->emergency_contact_name);
-        $employee_personal_information->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
-        $employee_personal_information->emergency_contact_number = $request->emergency_contact_number;
-        $sql = $employee_personal_information->save();
-        
+        $employee->suffix = ucwords($request->suffix);
+        $employee->nickname = ucwords($request->nickname);
+        $employee->birthday = $request->birthday;
+        $employee->gender = $request->gender;
+        $employee->civil_status = $request->civil_status;
+        $employee->street = ucwords($request->street);
+        $employee->house = $request->house;
+        $employee->province = $request->province;
+        $employee->city = $request->city;
+        $employee->region = $request->region;
+        $employee->height = $request->height;
+        $employee->weight = $request->weight;
+        $employee->religion = ucwords($request->religion);
+        $employee->email_address = strtolower($request->email_address);
+        $employee->telephone_number = $request->telephone_number;
+        $employee->cellphone_number = $request->cellphone_number;
+        $employee->spouse_name = ucwords($request->spouse_name);
+        $employee->spouse_contact_number = $request->spouse_contact_number;
+        $employee->spouse_profession = ucwords($request->spouse_profession);
+        $employee->father_name = ucwords($request->father_name);
+        $employee->father_contact_number = $request->father_contact_number;
+        $employee->father_profession = ucwords($request->father_profession);
+        $employee->mother_name = ucwords($request->mother_name);
+        $employee->mother_contact_number = $request->mother_contact_number;
+        $employee->mother_profession = ucwords($request->mother_profession);
+        $employee->emergency_contact_name = ucwords($request->emergency_contact_name);
+        $employee->emergency_contact_relationship = ucwords($request->emergency_contact_relationship);
+        $employee->emergency_contact_number = $request->emergency_contact_number;
+        $sql = $employee->save();
         
         if($sql){
             // $userlogs = new UserLogs;
@@ -206,7 +205,7 @@ class EmployeesController extends Controller
             // $userlogs->save();
 
             $result = 'true';
-            $id = $employee_personal_information->id;
+            $id = $employee->id;
         }
         else{
             $result = 'false';
@@ -316,10 +315,12 @@ class EmployeesController extends Controller
         $employee->employee_id = $request->employee_id;
         $employee->secondary_school_name = $request->secondary_school_name;
         $employee->secondary_school_address = $request->secondary_school_address;
-        $employee->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
+        $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
+        $employee->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
         $employee->primary_school_name = $request->primary_school_name;
         $employee->primary_school_address = $request->primary_school_address;
-        $employee->primary_school_inclusive_years = $request->primary_school_inclusive_years;
+        $employee->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
+        $employee->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
         $employee->save();
     }
 

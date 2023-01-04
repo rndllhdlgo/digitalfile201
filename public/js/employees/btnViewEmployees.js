@@ -67,10 +67,10 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 }, app_timeout);
                 $('#street').val(value.street);
 
+                $('.house').removeAttr('checked');
                 $("input[name='house']").each(function() {
                     if ($(this).val() == value.house) {
                         $(this).prop('checked', true);
-                        console.log('d');
                     }
                 });
 
