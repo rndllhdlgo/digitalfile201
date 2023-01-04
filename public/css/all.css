@@ -71,18 +71,18 @@ input, select{
     transition: 0.1s;
 }
 
-.grow {
+/* .grow {
     display: inline-block;
     transition-duration: 0.3s;
     transition-property: transform;
     -webkit-tap-highlight-color: transparent;
     transform: translateZ(0);
     box-shadow: 0 0 1px transparent;
-}
+} */
 
-.grow:hover {
+/* .grow:hover {
     transform: scale(1.1);
-}
+} */
 
 a{
     text-decoration: none;
@@ -468,3 +468,7 @@ tbody tr:nth-child(odd),
     display: none;
     margin-right: 10px;
 }
+
+/* table td {
+    border: 1px solid black !important;
+} */

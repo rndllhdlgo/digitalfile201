@@ -192,10 +192,12 @@ $('#btnSave').on('click', function(){
 
                             var secondary_school_name = $('#secondary_school_name').val();
                             var secondary_school_address = $('#secondary_school_address').val();
-                            var secondary_school_inclusive_years = $('#secondary_school_inclusive_years').val();
+                            var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
+                            var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
                             var primary_school_name = $('#primary_school_name').val();
                             var primary_school_address = $('#primary_school_address').val();
-                            var primary_school_inclusive_years = $('#primary_school_inclusive_years').val();
+                            var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
+                            var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
 
                             $.ajax({
                                 url:"/employees/saveEducationalAttainment", 
@@ -207,10 +209,12 @@ $('#btnSave').on('click', function(){
                                     employee_id:data.id,
                                     secondary_school_name:secondary_school_name,
                                     secondary_school_address:secondary_school_address,
-                                    secondary_school_inclusive_years:secondary_school_inclusive_years,
+                                    secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
+                                    secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
                                     primary_school_name:primary_school_name,
                                     primary_school_address:primary_school_address,
-                                    primary_school_inclusive_years:primary_school_inclusive_years
+                                    primary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                                    primary_school_inclusive_years_to:primary_school_inclusive_years_to
                                 },
                             });
 
@@ -265,7 +269,8 @@ $('#btnSave').on('click', function(){
                                             employee_id : data.id,
                                             college_name : $(this).children('.td_1').html(),
                                             college_degree : $(this).children('.td_2').html(),
-                                            college_inclusive_years: $(this).children('.td_3').html()
+                                            college_inclusive_years_from: $(this).children('.td_3').html(),
+                                            college_inclusive_years_to: $(this).children('.td_4').html()
                                         },
                                     });
                                 });
@@ -282,7 +287,8 @@ $('#btnSave').on('click', function(){
                                             employee_id : data.id,
                                             training_name : $(this).children('.td_1').html(),
                                             training_title :  $(this).children('.td_2').html(),
-                                            training_inclusive_years: $(this).children('.td_3').html()
+                                            training_inclusive_years_from: $(this).children('.td_3').html(),
+                                            training_inclusive_years_to: $(this).children('.td_4').html()
                                         },
                                     });
                                 });
@@ -299,7 +305,8 @@ $('#btnSave').on('click', function(){
                                             employee_id : data.id,
                                             vocational_name : $(this).children('.td_1').html(),
                                             vocational_course : $(this).children('.td_2').html(),
-                                            vocational_inclusive_years: $(this).children('.td_3').html()
+                                            vocational_inclusive_years_from: $(this).children('.td_3').html(),
+                                            vocational_inclusive_years_to: $(this).children('.td_4').html()
                                         },
                                     });
                                 });

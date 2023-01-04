@@ -49,7 +49,7 @@
                 <tr>
                     <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                     <th style="width: 30%;">DEGREE</th>
-                    <th style="width: 30%;">INCLUSIVE YEARS</th>
+                    <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
                     <th style="width: 10%;">ACTION</th>
                 </tr>
             </thead>
@@ -60,6 +60,7 @@
         <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
             <thead class="college_table_orig_thead">
                 <tr class="college_table_orig_tr">
+                    <th style="border: none;"></th>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
@@ -98,12 +99,12 @@
 
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field" id="secondary_inclusive_years_from">
+                        <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_from">
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field" id="secondary_inclusive_years_to">
+                        <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_to">
                     </div>
                 </td>
             </tr>
@@ -118,7 +119,7 @@
                 <tr>
                     <th style="width:30%"> NAME OF SCHOOL</th>
                     <th style="width:30%"> SCHOOL ADDRESS</th>
-                    <th style="width:30%" colspan="2"> INCLUSIVE YEARS</th>
+                    <th style="width:30%" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
                 </tr>
             </thead>
             <tbody>
@@ -139,12 +140,12 @@
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field" id="primary_inclusive_years_from">
+                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field" id="primary_inclusive_years_to">
+                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_to">
                         </div>
                     </td>
                 </tr>
@@ -200,10 +201,10 @@
         <table id="training_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
             <thead class="training_table_thead"  style="display: none;">
                 <tr>
-                    <th style="width: 30%;"><i class="fas fa-school"></i> NAME OF TRAINING SCHOOL</th>
-                    <th style="width: 30%;"><i class="fas fa-certificate"></i> TRAINING TITLE</th>
-                    <th style="width: 30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width: 10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
+                    <th style="width: 30%;"> TRAINING TITLE</th>
+                    <th style="width: 30%;" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
+                    <th style="width: 10%;"> ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -213,6 +214,7 @@
         <table id="training_table_orig" class="table table-bordered table-hover table-striped align-middle training_table_orig" style="display: none; margin-top:-36px;">
             <thead class="training_table_orig_thead">
                 <tr>
+                    <th style="border: none;"></th>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>

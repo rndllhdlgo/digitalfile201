@@ -143,10 +143,12 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
 
                 $('#secondary_school_name').val(value.secondary_school_name);
                 $('#secondary_school_address').val(value.secondary_school_address);
-                $('#secondary_school_inclusive_years').val(value.secondary_school_inclusive_years);
+                $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
+                $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
                 $('#primary_school_name').val(value.primary_school_name);
                 $('#primary_school_address').val(value.primary_school_address);
-                $('#primary_school_inclusive_years').val(value.primary_school_inclusive_years);
+                $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
+                $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
 
                 $('#past_medical_condition').val(value.past_medical_condition);
                 $('#allergies').val(value.allergies);
@@ -214,7 +216,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             },
                             "defaultContent": '',
                             "data": null,
-                            "targets": [3],
+                            "targets": [4],
                         }
                     ],
                     searching: false,
@@ -237,7 +239,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'college_name',width: '30%'},
                         { data: 'college_degree', width: '30%'},
-                        { data: 'college_inclusive_years', width: '30%'}
+                        { data: 'college_inclusive_years_from', width: '15%'},
+                        { data: 'college_inclusive_years_to', width: '15%'}
                     ],
                     initComplete: function(){
                         if(!$('.college_table_orig').DataTable().data().any()){
@@ -259,7 +262,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             },
                             "defaultContent": '',
                             "data": null,
-                            "targets": [3],
+                            "targets": [4],
                         }
                     ],
                     searching: false,
@@ -282,7 +285,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'training_name',width: '30%'},
                         { data: 'training_title', width: '30%'},
-                        { data: 'training_inclusive_years', width: '30%'}
+                        { data: 'training_inclusive_years_from', width: '15%'},
+                        { data: 'training_inclusive_years_to', width: '15%'}
                     ],
                     initComplete: function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
@@ -303,7 +307,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             },
                             "defaultContent": '',
                             "data": null,
-                            "targets": [3],
+                            "targets": [4],
                         }
                     ],
                     searching: false,
@@ -326,7 +330,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'vocational_name', width: '30%'},
                         { data: 'vocational_course', width: '30%'},
-                        { data: 'vocational_inclusive_years', width: '30%'}
+                        { data: 'vocational_inclusive_years_from', width: '15%'},
+                        { data: 'vocational_inclusive_years_to', width: '15%'}
                     ],
                     initComplete: function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
@@ -387,56 +392,56 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 
                 $('#documents_form').attr("action",'/employees/updateDocuments');
 
-                $('.memo_table_data').dataTable().fnDestroy();
-                $('.memo_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [4],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/memo_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'memo_subject',width: '22.5%'},
-                        { data: 'memo_date', width: '22.5%'},
-                        { data: 'memo_penalty', width: '22.5%'},
-                        { 
-                            data: 'memo_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
-                            },
-                            width: '22.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.memo_table_data').DataTable().data().any()){
-                            $('#memo_table_data').hide();
-                        }
-                        else{
-                            $('#memo_table_data').show();
-                        }
-                    }
-                });
+                // $('.memo_table_data').dataTable().fnDestroy();
+                // $('.memo_table_data').DataTable({
+                //     columnDefs: [
+                //         {
+                //             "render": function(data, type, row, meta){
+                //                     return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                //             },
+                //             "defaultContent": '',
+                //             "data": null,
+                //             "targets": [4],
+                //         }
+                //     ],
+                //     searching: false,
+                //     paging: false,
+                //     info: false,
+                //     ordering:false,
+                //     autoWidth: false,
+                //     language:{
+                //         emptyTable: "No data available in table",
+                //         processing: "Loading...",
+                //     },
+                //     serverSide: true,
+                //     ajax: {
+                //         url: '/employees/memo_data',
+                //         async: false,
+                //         data:{
+                //             id: value.id,
+                //         }
+                //     },
+                //     columns: [
+                //         { data: 'memo_subject',width: '22.5%'},
+                //         { data: 'memo_date', width: '22.5%'},
+                //         { data: 'memo_penalty', width: '22.5%'},
+                //         { 
+                //             data: 'memo_file', 
+                //             "render": function(data, type, row){
+                //                 return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
+                //             },
+                //             width: '22.5%'
+                //         }
+                //     ],
+                //     initComplete: function(){
+                //         if(!$('.memo_table_data').DataTable().data().any()){
+                //             $('#memo_table_data').hide();
+                //         }
+                //         else{
+                //             $('#memo_table_data').show();
+                //         }
+                //     }
+                // });
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){

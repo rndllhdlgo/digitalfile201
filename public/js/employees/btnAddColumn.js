@@ -10,7 +10,7 @@ function checkforblankMultiple(){
         $('#childrenAdd').css('display','block');
     }
 
-    if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years').val()){
+    if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years_from').val() || !$('#college_inclusive_years_to').val()){
         $('#collegeAdd').prop('disabled',true);
     }
     else{
@@ -18,7 +18,7 @@ function checkforblankMultiple(){
         $('#collegeAdd').css('display','block');
     }
 
-    if(!$('#training_name').val() || !$('#training_title').val() || !$('#training_inclusive_years').val()){
+    if(!$('#training_name').val() || !$('#training_title').val() || !$('#training_inclusive_years_from').val() || !$('#training_inclusive_years_to').val()){
         $('#trainingAdd').prop('disabled',true);
     }
     else{
@@ -26,7 +26,7 @@ function checkforblankMultiple(){
         $('#trainingAdd').css('display','block');
     }
 
-    if(!$('#vocational_name').val() || !$('#vocational_course').val() || !$('#vocational_inclusive_years').val()){
+    if(!$('#vocational_name').val() || !$('#vocational_course').val() || !$('#vocational_inclusive_years_from').val() || !$('#vocational_inclusive_years_to').val()){
         $('#vocationalAdd').prop('disabled',true);
     }
     else{
@@ -123,24 +123,27 @@ $(document).ready(function(){
     $('#collegeAdd').click(function(){  
         var college_name = $('#college_name').val();
         var college_degree = $('#college_degree').val();
-        var college_inclusive_years = $('#college_inclusive_years').val();
+        var college_inclusive_years_from = $('#college_inclusive_years_from').val();
+        var college_inclusive_years_to = $('#college_inclusive_years_to').val();
 
         if($('#btnSave').is(":visible")){
             var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
-                                    "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
-                                    "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
-                                    "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                    "<td class='td_1 text-capitalize' style='width: 30%;'>" + college_name + "</td>" +
+                                    "<td class='td_2' style='width: 30%;'>" + college_degree + "</td>" +
+                                    "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
+                                    "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
+                                    "<td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
                                 "<tr>";
             $('#college_table tbody').append(college_table);
             $('#college_table tr:last').remove();
         }
         else{
             var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width:30%;'>" + college_name + "</td>" +
-                                    "<td class='td_2' style='width:30%;'>" + college_degree + "</td>" +
-                                    "<td class='td_3' style='width:30%;'>" + college_inclusive_years + "</td>" +
-                                    "<td style='width:10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
+                                    "<td class='td_1 text-capitalize' style='width: 30%;'>" + college_name + "</td>" +
+                                    "<td class='td_2' style='width: 30%;'>" + college_degree + "</td>" +
+                                    "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
+                                    "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
+                                    "<td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
                                 "<tr>";
             $('.dataTables_empty').closest('tr').remove();
             $('#college_table_orig_tbody').append(college_table);
@@ -150,7 +153,8 @@ $(document).ready(function(){
         
         $('#college_name').val("");
         $('#college_degree').val("");
-        $('#college_inclusive_years').val("");
+        $('#college_inclusive_years_from').val("");
+        $('#college_inclusive_years_to').val("");
 
         $('.btn_college').click(function(){
             $(this).parent().parent().remove();
@@ -160,13 +164,15 @@ $(document).ready(function(){
     $('#trainingAdd').click(function(){
         var training_name = $('#training_name').val();
         var training_title = $('#training_title').val();
-        var training_inclusive_years = $('#training_inclusive_years').val();
+        var training_inclusive_years_from = $('#training_inclusive_years_from').val();
+        var training_inclusive_years_to = $('#training_inclusive_years_to').val();
 
         if($('#btnSave').is(":visible")){
             var training_table =   "<tr class='training_tr'>" +
                                         "<td class='td_1 text-capitalize' style='width:30%;'>" + training_name + "</td>" + 
                                         "<td class='td_2' style='width:30%;'>" + training_title + "</td>" + 
-                                        "<td class='td_3' style='width:30%;'>" + training_inclusive_years + "</td>"+ 
+                                        "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+ 
+                                        "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+ 
                                         "<td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('#training_table tbody').append(training_table);
@@ -175,7 +181,8 @@ $(document).ready(function(){
             var training_table =   "<tr class='training_tr'>" +
                                         "<td class='td_1 text-capitalize' style='width:30%;'>" + training_name + "</td>" + 
                                         "<td class='td_2' style='width:30%;'>" + training_title + "</td>" + 
-                                        "<td class='td_3' style='width:30%;'>" + training_inclusive_years + "</td>"+ 
+                                        "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+ 
+                                        "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+ 
                                         "<td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('.dataTables_empty').closest('tr').remove();
@@ -185,7 +192,8 @@ $(document).ready(function(){
         
         $('#training_name').val("");
         $('#training_title').val("");
-        $('#training_inclusive_years').val("");
+        $('#training_inclusive_years_from').val("");
+        $('#training_inclusive_years_to').val("");
         $('.btn_training').click(function(){
             $(this).parent().parent().remove();
         });
@@ -194,13 +202,15 @@ $(document).ready(function(){
     $('#vocationalAdd').click(function(){
         var vocational_name = $('#vocational_name').val();
         var vocational_course = $('#vocational_course').val();
-        var vocational_inclusive_years = $('#vocational_inclusive_years').val();
+        var vocational_inclusive_years_from = $('#vocational_inclusive_years_from').val();
+        var vocational_inclusive_years_to = $('#vocational_inclusive_years_to').val();
 
         if($('#btnSave').is(":visible")){
             var vocational_table = "<tr class='vocational_tr'>"+
                                         "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
-                                        "<td class='td_3' style='width:30%'>" + vocational_inclusive_years + "</td>" + 
+                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
+                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('#vocational_table tbody').append(vocational_table);
@@ -209,7 +219,8 @@ $(document).ready(function(){
             var vocational_table = "<tr class='vocational_tr'>"+
                                         "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
-                                        "<td class='td_3' style='width:30%'>" + vocational_inclusive_years + "</td>" + 
+                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
+                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('.dataTables_empty').closest('tr').remove();
@@ -219,7 +230,9 @@ $(document).ready(function(){
 
         $('#vocational_name').val("");
         $('#vocational_course').val("");
-        $('#vocational_inclusive_years').val("");
+        $('#vocational_inclusive_years_from').val("");
+        $('#vocational_inclusive_years_to').val("");
+        
         $('.btn_vocational').click(function(){
             $(this).parent().parent().remove();
         });
@@ -423,19 +436,3 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     }
-
-// setInterval(() => {
-//     if($('#btnSave').is(":visible")){
-//         $('.top-secondary').css('margin-top','110px');
-//         $('.top-primary').css('margin-top','50px');
-//         $('.top-training').css('margin-top','50px');
-//         $('.top-vocational').css('margin-top','110px');
-//         $('#vocational_table_orig_div').css('margin-bottom','50px');
-//     }
-//     else{
-//         $('.top-secondary').css('margin-top','40px');
-//         $('.top-primary').css('margin-top','40px');
-//         $('.top-training').css('margin-top','40px');
-//         $('.top-vocational').css('margin-top','40px');
-//     }
-// }, 0);

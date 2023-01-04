@@ -116,10 +116,12 @@ class EmployeesController extends Controller
             'compensation_benefits.employee_insurance',
             'educational_attainments.secondary_school_name',
             'educational_attainments.secondary_school_address',
-            'educational_attainments.secondary_school_inclusive_years',
+            'educational_attainments.secondary_school_inclusive_years_from',
+            'educational_attainments.secondary_school_inclusive_years_to',
             'educational_attainments.primary_school_name',
             'educational_attainments.primary_school_address',
-            'educational_attainments.primary_school_inclusive_years',
+            'educational_attainments.primary_school_inclusive_years_from',
+            'educational_attainments.primary_school_inclusive_years_to',
             'medical_histories.past_medical_condition',
             'medical_histories.allergies',
             'medical_histories.medication',
@@ -134,8 +136,8 @@ class EmployeesController extends Controller
             'documents.police_clearance_file',
             'documents.resume_file',
             'documents.sss_file',
-            'documents.transcript_of_records_file',
-            'memo_tables.memo_subject'
+            'documents.transcript_of_records_file'
+            // 'memo_tables.memo_subject'
             )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
@@ -143,7 +145,7 @@ class EmployeesController extends Controller
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
         ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
         ->join('documents','documents.employee_id','personal_information_tables.id') 
-        ->join('memo_tables','memo_tables.employee_id','personal_information_tables.id') 
+        // ->join('memo_tables','memo_tables.employee_id','personal_information_tables.id') 
         ->get();
 
         return DataTables::of($employees)->toJson();
@@ -386,10 +388,12 @@ class EmployeesController extends Controller
         $employee_educational_attainment->employee_id = $request->employee_id;
         $employee_educational_attainment->secondary_school_name = $request->secondary_school_name;
         $employee_educational_attainment->secondary_school_address = $request->secondary_school_address;
-        $employee_educational_attainment->secondary_school_inclusive_years = $request->secondary_school_inclusive_years;
+        $employee_educational_attainment->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
+        $employee_educational_attainment->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
         $employee_educational_attainment->primary_school_name = $request->primary_school_name;
         $employee_educational_attainment->primary_school_address = $request->primary_school_address;
-        $employee_educational_attainment->primary_school_inclusive_years = $request->primary_school_inclusive_years;
+        $employee_educational_attainment->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
+        $employee_educational_attainment->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
         $employee_educational_attainment->save();
     }
 
@@ -398,7 +402,8 @@ class EmployeesController extends Controller
         $employee_college->employee_id = $request->employee_id;
         $employee_college->college_name = ucwords($request->college_name);
         $employee_college->college_degree = ucfirst($request->college_degree);
-        $employee_college->college_inclusive_years = $request->college_inclusive_years;
+        $employee_college->college_inclusive_years_from = $request->college_inclusive_years_from;
+        $employee_college->college_inclusive_years_to = $request->college_inclusive_years_to;
         $employee_college->save();  
     }
 
@@ -407,7 +412,8 @@ class EmployeesController extends Controller
         $employee_training->employee_id = $request->employee_id;
         $employee_training->training_name = ucfirst($request->training_name);
         $employee_training->training_title = ucfirst($request->training_title);
-        $employee_training->training_inclusive_years = $request->training_inclusive_years;
+        $employee_training->training_inclusive_years_from = $request->training_inclusive_years_from;
+        $employee_training->training_inclusive_years_to = $request->training_inclusive_years_to;
         $employee_training->save();
     }
 
@@ -416,7 +422,8 @@ class EmployeesController extends Controller
         $employee_vocational->employee_id = $request->employee_id;
         $employee_vocational->vocational_name = ucfirst($request->vocational_name);
         $employee_vocational->vocational_course = ucfirst($request->vocational_course);
-        $employee_vocational->vocational_inclusive_years = $request->vocational_inclusive_years;
+        $employee_vocational->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
+        $employee_vocational->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
         $employee_vocational->save();
     }
 
