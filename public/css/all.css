@@ -231,7 +231,9 @@ strong{
 }
 
 select,
-input[type="date"]{
+input[type="date"],
+input[type="month"]
+{
     cursor: pointer;
 }
 
@@ -475,3 +477,4 @@ tbody tr:nth-child(odd),
 /* table td {
     border: 1px solid black !important;
 } */
+

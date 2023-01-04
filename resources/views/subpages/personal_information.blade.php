@@ -99,7 +99,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/ HOUSE #, STREET NAME <span class="span_lot span_all"></span> </label>
+                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET NAME <span class="span_lot span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">

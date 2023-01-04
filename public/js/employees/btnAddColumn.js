@@ -248,25 +248,25 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:15.7%;'>" + job_company_name + "</td>" + 
-                                        "<td class='td_2' style='width:16.1%'>" + job_description + "</td>" +
-                                        "<td class='td_3' style='width:15.6%'>" + job_position + "</td>" + 
-                                        "<td class='td_4' style='width:15.6%'>" + job_contact_number + "</td>" + 
-                                        "<td class='td_5' style='width:14%'>" + job_inclusive_years_from + "</td>" +
-                                        "<td class='td_6' style='width:13.9%'>" + job_inclusive_years_to + "</td>" +
-                                        "<td style='width:9.1%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                        "<td class='td_1 text-capitalize' style='width:15%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
+                                        "<td class='td_3' style='width:15%'>" + job_position + "</td>" + 
+                                        "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" + 
+                                        "<td class='td_5' style='width:15%'>" + job_inclusive_years_from + "</td>" +
+                                        "<td class='td_6' style='width:15%'>" + job_inclusive_years_to + "</td>" +
+                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('#job_history_table').append(job_history_table);
         }
         else{
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:15.7%;'>" + job_company_name + "</td>" + 
-                                        "<td class='td_2' style='width:16.1%'>" + job_description + "</td>" +
-                                        "<td class='td_3' style='width:15.6%'>" + job_position + "</td>" + 
-                                        "<td class='td_4' style='width:15.6%'>" + job_contact_number + "</td>" + 
-                                        "<td class='td_5' style='width:14%'>" + job_inclusive_years_from + "</td>" +
-                                        "<td class='td_6' style='width:13.9%'>" + job_inclusive_years_to + "</td>" +
-                                        "<td style='width:9.1%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
+                                        "<td class='td_1 text-capitalize' style='width:15%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
+                                        "<td class='td_3' style='width:15%'>" + job_position + "</td>" + 
+                                        "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" + 
+                                        "<td class='td_5' style='width:15%'>" + job_inclusive_years_from + "</td>" +
+                                        "<td class='td_6' style='width:15%'>" + job_inclusive_years_to + "</td>" +
+                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('.dataTables_empty').closest('tr').remove();
             $('#job_history_table_tbody').append(job_history_table);

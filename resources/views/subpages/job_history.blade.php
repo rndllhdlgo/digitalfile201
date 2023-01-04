@@ -4,11 +4,11 @@
         <table class="table table-striped table-bordered align-middle">
             <thead class="thead-educational">
                 <tr>
-                    <th style="width:18%; "> COMPANY NAME</th>
-                    <th style="width:18%; "> JOB DESCRIPTION</th>
-                    <th style="width:18%; "> JOB POSITION</th>
-                    <th style="width:18%; "> CONTACT NUMBER</th>
-                    <th style="width:18%; " class="text-center" colspan="2"> INCLUSIVE YEARS</th>
+                    <th style="width:15%; "> COMPANY NAME</th>
+                    <th style="width:15%; "> JOB DESCRIPTION</th>
+                    <th style="width:15%; "> JOB POSITION</th>
+                    <th style="width:15%; "> CONTACT NUMBER</th>
+                    <th style="width:30%; " class="text-center" colspan="2"> INCLUSIVE YEARS</th>
                     <th style="width:10%; " class="text-center"> ACTION</th>
                 </tr>
             </thead>

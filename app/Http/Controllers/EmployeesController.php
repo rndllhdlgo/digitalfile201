@@ -164,17 +164,14 @@ class EmployeesController extends Controller
 
     public function savePersonalInformation(Request $request){
         $employee = new PersonalInformationTable;
-
         $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee->first_name =  ucwords($request->first_name);
         $employee->last_name = ucwords($request->last_name); 
         $employee->middle_name = ucwords($request->middle_name);
-        
         $employee->suffix = ucwords($request->suffix);
         $employee->nickname = ucwords($request->nickname);
         $employee->birthday = $request->birthday;
         $employee->gender = $request->gender;
-        $employee->civil_status = $request->civil_status;
         $employee->unit = ucwords($request->unit);
         $employee->lot = ucwords($request->lot);
         $employee->barangay = ucwords($request->barangay);
@@ -185,6 +182,7 @@ class EmployeesController extends Controller
         $employee->height = $request->height;
         $employee->weight = $request->weight;
         $employee->religion = ucwords($request->religion);
+        $employee->civil_status = $request->civil_status;
         $employee->email_address = strtolower($request->email_address);
         $employee->telephone_number = $request->telephone_number;
         $employee->cellphone_number = $request->cellphone_number;
