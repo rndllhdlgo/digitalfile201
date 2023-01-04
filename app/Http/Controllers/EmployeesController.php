@@ -235,9 +235,10 @@ class EmployeesController extends Controller
         $employee->gender = $request->gender;
         $employee->civil_status = $request->civil_status;
         $employee->street = ucwords($request->street);
-        $employee->region = $request->region;
+        $employee->house = $request->house;
         $employee->province = $request->province;
         $employee->city = $request->city;
+        $employee->region = $request->region;
         $employee->height = $request->height;
         $employee->weight = $request->weight;
         $employee->religion = ucwords($request->religion);

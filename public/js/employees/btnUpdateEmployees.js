@@ -156,6 +156,7 @@ $('#btnUpdate').on('click',function(){
     var gender = $('#gender').val();
     var civil_status = $('#civil_status').val();
     var street = $('#street').val();
+    var house = $('input[name=house]:checked').val();
     var region = $("#region option:selected").text();
     var province = $("#province option:selected").text();
     var city = $("#city option:selected").text();
@@ -223,6 +224,7 @@ $('#btnUpdate').on('click',function(){
                     gender:gender,
                     civil_status:civil_status,
                     street:street,
+                    house:house,
                     region:region,
                     province:province,
                     city:city,
@@ -365,23 +367,6 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
-                        $('.sample_tr').each(function(){
-                            $.ajax({
-                                type: 'POST',
-                                url: '/employees/saveSample',
-                                async: false,
-                                headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data:{
-                                    employee_id : data.id,
-                                    sample1 : $(this).children('.td_1').html(),
-                                    sample2: $(this).children('.td_2').html(),
-                                    sample3  : $(this).children('.td_3').html()
-                                },
-                            });
-                        });
-
                         $('.college_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
@@ -394,7 +379,8 @@ $('#btnUpdate').on('click',function(){
                                     employee_id : data.id,
                                     college_name : $(this).children('.td_1').html(),
                                     college_degree : $(this).children('.td_2').html(),
-                                    college_inclusive_years: $(this).children('.td_3').html()
+                                    college_inclusive_years_from: $(this).children('.td_3').html(),
+                                    college_inclusive_years_to: $(this).children('.td_4').html()
                                 },
                             });
                         });
@@ -428,7 +414,8 @@ $('#btnUpdate').on('click',function(){
                                     employee_id : data.id,
                                     training_name : $(this).children('.td_1').html(),
                                     training_title :  $(this).children('.td_2').html(),
-                                    training_inclusive_years : $(this).children('.td_3').html()
+                                    training_inclusive_years_from : $(this).children('.td_3').html(),
+                                    training_inclusive_years_to : $(this).children('.td_4').html()
                                 },
                             });
                         });
@@ -445,7 +432,8 @@ $('#btnUpdate').on('click',function(){
                                     employee_id : data.id,
                                     vocational_name : $(this).children('.td_1').html(),
                                     vocational_course : $(this).children('.td_2').html(),
-                                    vocational_inclusive_years: $(this).children('.td_3').html()
+                                    vocational_inclusive_years_from: $(this).children('.td_3').html(),
+                                    vocational_inclusive_years_to: $(this).children('.td_4').html()
                                 },
                             });
                         });
@@ -472,23 +460,23 @@ $('#btnUpdate').on('click',function(){
 
                         $.ajax({
                             type: 'POST',
-                            url: '/employees/college_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: college_id.toString()
-                            }
-                        });
-
-                        $.ajax({
-                            type: 'POST',
                             url: '/employees/children_delete',
                             headers:{
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             data:{
                                 id: children_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/college_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: college_id.toString()
                             }
                         });
 
@@ -524,9 +512,9 @@ $('#btnUpdate').on('click',function(){
                                 id: job_history_id.toString()
                             }
                         });
+                        $('#documents_form').submit();
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();
-                        $('#documents_form').submit();
                     }
                     else{
                         $('#loading').hide();

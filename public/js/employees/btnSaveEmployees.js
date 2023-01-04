@@ -33,6 +33,7 @@ $('#btnSave').on('click', function(){
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
         var street = $('#street').val();
+        var house = $('input[name=house]:checked').val();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
         var region = $("#region option:selected").text();
@@ -96,7 +97,7 @@ $('#btnSave').on('click', function(){
                     gender:gender,
                     civil_status:civil_status,
                     street:street,
-                    house:$('input[name=house]:checked').val(),
+                    house:house,
                     province:province,
                     city:city,
                     region:region,
@@ -332,24 +333,8 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
-                                $('.sample_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveSample',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            sample1 : $(this).children('.td_1').html(),
-                                            sample2 : $(this).children('.td_2').html(),
-                                            sample3 : $(this).children('.td_3').html()
-                                        },
-                                    });
-                                });
-
                                 $('#documents_form').submit();
+                                $('#employee_information').hide();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 setTimeout(function(){window.location.reload();}, 2000);
                         }

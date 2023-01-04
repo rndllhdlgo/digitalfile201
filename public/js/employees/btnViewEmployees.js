@@ -67,11 +67,19 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 }, app_timeout);
                 $('#street').val(value.street);
 
+                $("input[name='house']").each(function() {
+                    if ($(this).val() == value.house) {
+                        $(this).prop('checked', true);
+                        console.log('d');
+                    }
+                });
+
                 $('.region').each(function(){
                     if($(this).html() == value.region){
                         $(this).prop('selected', true);
                     }
                 });
+
                 setTimeout(() => {
                     $('#region').change();
                     setTimeout(() => {
