@@ -141,6 +141,9 @@ html::-webkit-scrollbar-track:hover {
     transition: 0.2s;
     border-radius: 5px;
 }
+.space{
+    margin-right: 10px;
+}
 .active{
     background-color: white;
     color:#0d1a80 !important;
@@ -291,7 +294,7 @@ input[type=search]:focus{
 .column-1 {
     float: left;
     width: 280px;
-    height: 245px; 
+    height: 280px;
     border:1px solid gray;
     margin-left: 1%;
     background-color: #f2f4f5;
@@ -309,7 +312,7 @@ input[type=search]:focus{
 }
 
 #image_preview{
-    height: 205px;
+    height: 240px;
     width: 276px;
     margin-left: -12px;
     cursor:pointer;

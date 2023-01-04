@@ -33,9 +33,9 @@ $('#btnSave').on('click', function(){
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
         var street = $('#street').val();
-        var region = $("#region option:selected").text();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
+        var region = $("#region option:selected").text();
         var height = $("#height").val();
         var weight = $("#weight").val();
         var religion = $("#religion").val();
@@ -96,9 +96,10 @@ $('#btnSave').on('click', function(){
                     gender:gender,
                     civil_status:civil_status,
                     street:street,
-                    region:region,
+                    house:$('input[name=house]:checked').val(),
                     province:province,
                     city:city,
+                    region:region,
                     height:height,
                     weight:weight,
                     religion:religion,

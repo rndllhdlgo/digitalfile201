@@ -71,9 +71,10 @@ class EmployeesController extends Controller
             'gender',
             'civil_status',
             'street',
-            'region',
+            'house',
             'province',
             'city',
+            'region',
             'height',
             'weight',
             'religion',
@@ -173,9 +174,10 @@ class EmployeesController extends Controller
         $employee_personal_information->gender = $request->gender;
         $employee_personal_information->civil_status = $request->civil_status;
         $employee_personal_information->street = ucwords($request->street);
-        $employee_personal_information->region = $request->region;
+        $employee_personal_information->house = $request->house;
         $employee_personal_information->province = $request->province;
         $employee_personal_information->city = $request->city;
+        $employee_personal_information->region = $request->region;
         $employee_personal_information->height = $request->height;
         $employee_personal_information->weight = $request->weight;
         $employee_personal_information->religion = ucwords($request->religion);

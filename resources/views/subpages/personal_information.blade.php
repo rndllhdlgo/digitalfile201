@@ -13,12 +13,12 @@
 
                     <img id="image_preview">
 
-                <div class="text-center mt-4">
+                <div class="text-center mt-5">
                     <button type="button" class="btn btn-primary bp" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                     <input type="file" name="employee_image" class="required_field hiddenFile" id="employee_image" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
                 </div>
 
-                <div class="text-center mt-2" id="image_instruction">
+                <div class="text-center mt-3" id="image_instruction">
                     <span>File Size: Maximum (10MB)</span><br>
                     <span>File Extensions: .jpg, .jpeg, .png</span> 
                 </div>
@@ -90,14 +90,21 @@
             </div>
 
             <div class="row mb-3 mt-3">
-                <div class="col">
+                <div class="col-9">
                     <div class="f-outline">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="street" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> STREET <span class="span_street span_all"></span> </label>
+                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> HOUSE #, STREET, BRGY. <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
-
-                <div class="col">
+                <div class="col-3">
+                    <div class="f-outline">
+                        <input type="radio" name="house" value="Rent"> Rent
+                        <input type="radio" name="house" value="Owned" style="margin-left: 30px;"> Owned
+                    </div>
+                </div>
+            </div>
+            
+                {{-- <div class="col">
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field"  id="region" placeholder=" " style="background-color:white;">
                             <option value="" disabled selected>SELECT REGION</option>
@@ -124,6 +131,36 @@
                             <option value="" disabled selected>SELECT CITY</option>
                         </select>
                         <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
+                    </div>
+                </div> --}}
+            
+            <div class="row mb-3">
+                <div class="col">
+                    <div class="f-outline">
+                        <select class="form-select forminput form-control required_field" name="province" id="province">
+                            <option value="" selected disabled>SELECT PROVINCE</option>
+                            @foreach ($provinces as $province)
+                                <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
+                            @endforeach
+                        </select>
+                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="f-outline">
+                        <select class="form-select forminput form-control required_field" name="city" id="city">
+                            <option value="" selected disabled>SELECT CITY</option>
+                            
+                        </select>
+                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="f-outline">
+                        <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
+                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
             </div>

@@ -37,8 +37,8 @@ Route::any('/contracts', 'PagesController@contracts');
 Route::any('/users', 'PagesController@users');
 Route::any('/maintenance', 'PagesController@maintenance');
 
-Route::get('/setcity','PagesController@setcity');
-Route::get('/setprovince','PagesController@setprovince');
+Route::get('/getCities','PagesController@getCities');
+Route::get('/getRegion','PagesController@getRegion');
 
 Route::get('/index/data','PagesController@index_data');
 

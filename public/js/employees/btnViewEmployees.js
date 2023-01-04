@@ -39,9 +39,10 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                     $('#image_preview').show();
+                    $('#image_close').show();
                     $('#image_user').hide();
                     $('#image_button').hide();
-                    $('#image_close').show();
+                    $('#image_instruction').hide();
                     $('#employee_image').removeClass('required_field');
                 }
                 else{

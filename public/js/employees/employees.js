@@ -15,7 +15,7 @@ $('#addEmployeeBtn').on('click',function(){
     $('#tab1').addClass('tabactive');
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
-
+    $('#region').val('AUTOFILL');
     $('.input-file-text').addClass('required_field');
 });
 
@@ -124,62 +124,105 @@ $('#image_close').on('click',function(){
             $('#image_user').show();
             $('#image_button').show();
             $('#image_instruction').show();
-            $('.column-1').css("height","250px");
+            $('.column-1').css("height","280px");
             $('#employee_image').addClass('required_field');
         }
     });
 });
 
 //Region,Province,City DropDown Function
-$('#region').on('change', function(){
-    $('#province').val('');
-    $('#city').val('');
-    $('#city').find('option').remove().end()
-    $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+// $('#region').on('change', function(){
+//     $('#province').val('');
+//     $('#city').val('');
+//     $('#city').find('option').remove().end()
+//     $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setprovince',
+//         data:{
+//             'regCode': $('#region').val()
+//         },
+//         success: function(data){
+//             $('#province').find('option').remove().end()
+//             $('#province').append($('<option value="" selected disabled>SELECT PROVINCE</option>'));
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 $('#province').append($('<option>', {
+//                     value: value.provCode,
+//                     text: value.provDesc.toUpperCase(),
+//                     class:'province'
+//                 }));
+//             });
+//         }
+//     });
+// });
+
+// $('#province').on('change', function(){
+//     $('#city').val('');
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setcity',
+//         data:{
+//             'provCode': $('#province').val()
+//         },
+//         success: function(data){
+//             $('#city').find('option').remove().end()
+//             $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 $('#city').append($('<option>', {
+//                     value: value.citymunCode,
+//                     text: value.citymunDesc.toUpperCase(),
+//                     class:'city'
+//                 }));
+//             });
+//         }
+//     });
+// });
+
+$(document).on('change', '#province', function(){
+    var citiesOption = " ";
+    $('#region').val('AUTOFILL');
     $.ajax({
-        type: 'GET',
-        url: '/setprovince',
-        data:{
-            'regCode': $('#region').val()
+        url:"/getCities",
+        type:"get",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        success: function(data){
-            $('#province').find('option').remove().end()
-            $('#province').append($('<option value="" selected disabled>SELECT PROVINCE</option>'));
-            var list = $.map(data, function(value, index){
+        data:{
+            provCode:$(this).val(),
+        },
+        success:function(data){
+            var cities = $.map(data, function(value, index) {
                 return [value];
             });
-            list.forEach(value => {
-                $('#province').append($('<option>', {
-                    value: value.provCode,
-                    text: value.provDesc.toUpperCase(),
-                    class:'province'
-                }));
+            citiesOption+='<option selected disabled>SELECT CITY/MUNICIPALITY</option>';
+            cities.forEach(value => {
+                citiesOption+='<option class="city" value="'+value.citymunCode+'">'+value.citymunDesc+'</option>';
             });
+            $("#city").find('option').remove().end().append(citiesOption);
         }
     });
+    $("#city").prop('disabled', false);
 });
 
-$('#province').on('change', function(){
-    $('#city').val('');
+$(document).on('change', '#city', function(){
+    var RegionOption = " ";
     $.ajax({
-        type: 'GET',
-        url: '/setcity',
-        data:{
-            'provCode': $('#province').val()
+        url:"/getRegion",
+        type:"get",
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
-        success: function(data){
-            $('#city').find('option').remove().end()
-            $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
-            var list = $.map(data, function(value, index){
-                return [value];
-            });
-            list.forEach(value => {
-                $('#city').append($('<option>', {
-                    value: value.citymunCode,
-                    text: value.citymunDesc.toUpperCase(),
-                    class:'city'
-                }));
-            });
+        data:{
+            citymunCode:$(this).val(),
+        },
+        success:function(data){
+            $('#region').val(data[0].regDesc);
         }
     });
 });

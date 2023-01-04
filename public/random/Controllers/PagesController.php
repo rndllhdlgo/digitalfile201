@@ -30,6 +30,7 @@ class PagesController extends Controller
         //     return redirect('/');
         // }
         
+        $regions = Region::select('regCode','regDesc')->get()->sortBy('regCode');
         $companies = Company::select('id','company_name')->get();
         $branches = Branch::select('id','branch_name')->get();
         $supervisors = Supervisor::select('id','supervisor_name')->get();
@@ -39,24 +40,19 @@ class PagesController extends Controller
         $jobRequirements = Position::select('id','job_requirements')->get();
         $departments = Department::select('id','department')->get();
         
-        $provinces = Province::orderBy('provDesc', 'asc')->get();
-        return view('pages.employees', compact('provinces','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements','departments'));
+        return view('pages.employees', compact('regions','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements','departments'));
     }
 
-
-    public function getCities(Request $request)
-    {
-        $cities = City::query()->where('provCode', $request->provCode)->orderBy('citymunDesc', 'asc')->get();
-        return response()->json($cities);
+    public function setprovince(Request $request){
+        $list = Province::where('regCode',$request->regCode)->get()->sortBy('provDesc');
+        return response()->json($list);
     }
 
-    public function getRegion(Request $request)
-    {
-        $cities = City::query()->where('citymunCode', $request->citymunCode)->first();
-        $region = Region::query()->where('regCode', $cities->regCode)->get();
-        return response()->json($region);
+    public function setcity(Request $request){
+        $list = City::where('provCode',$request->provCode)->get()->sortBy('citymunDesc');
+        return response()->json($list);
     }
-    
+
     public function setJobPosition(Request $request){
         $list = Position::where('id',$request->id)->get()->sortBy('job_position_name');
         return response()->json($list);
