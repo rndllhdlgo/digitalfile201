@@ -90,13 +90,25 @@
             </div>
 
             <div class="row mb-3 mt-3">
-                <div class="col-9">
+                <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="street" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> HOUSE #, STREET, BRGY. <span class="span_street span_all"></span> </label>
+                        <input class="forminput form-control text-capitalize" type="search" id="unit" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
-                <div class="col-3">
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/ HOUSE #, STREET NAME <span class="span_street span_all"></span> </label>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="f-outline">
+                        <input class="forminput form-control text-capitalize required_field" type="search" id="street" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY <span class="span_street span_all"></span> </label>
+                    </div>
+                </div>
+                <div class="col">
                     <div class="f-outline">
                         <input type="radio" name="house" class="house" value="Owned" style="margin-left: 30px;" checked> Owned
                         <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent

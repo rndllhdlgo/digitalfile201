@@ -32,6 +32,8 @@ $('#btnSave').on('click', function(){
         var birthday = $('#birthday').val();
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
+        var unit = $('#unit').val();
+        var lot = $('#lot').val();
         var street = $('#street').val();
         var house = $('input[name=house]:checked').val();
         var province = $("#province option:selected").text();
@@ -96,6 +98,8 @@ $('#btnSave').on('click', function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
+                    unit:unit,
+                    lot:lot,
                     street:street,
                     house:house,
                     province:province,
@@ -334,7 +338,6 @@ $('#btnSave').on('click', function(){
                                 });
 
                                 $('#documents_form').submit();
-                                $('#employee_information').hide();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 setTimeout(function(){window.location.reload();}, 2000);
                         }

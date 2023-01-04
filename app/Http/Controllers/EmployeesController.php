@@ -70,6 +70,8 @@ class EmployeesController extends Controller
             'birthday',
             'gender',
             'civil_status',
+            'unit',
+            'lot',
             'street',
             'house',
             'province',
@@ -233,7 +235,9 @@ class EmployeesController extends Controller
         $employee->birthday = $request->birthday;
         $employee->gender = $request->gender;
         $employee->civil_status = $request->civil_status;
-        $employee->street = ucwords($request->street);
+        $employee->unit = $request->unit;
+        $employee->lot = $request->lot;
+        $employee->street = $request->street;
         $employee->house = $request->house;
         $employee->province = $request->province;
         $employee->city = $request->city;

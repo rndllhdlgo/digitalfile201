@@ -284,6 +284,7 @@ $('#viewJobDescriptionBtn').on('click',function(){
 //Fill All Function
 $('#note_required').on('click',function(){
 //Required Field
+
     $('#first_name').val('Rendell');
     $('#middle_name').val('Mendez');
     $('#last_name').val('Hidalgo');
@@ -513,3 +514,22 @@ setInterval(() => {
     }
     
 }, 0);
+
+$(document).ready(function() {
+    // Get current date
+    var currentDate = new Date();
+    
+    // Set the maximum value for the month to the current month
+    $('#college_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#college_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#secondary_school_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#secondary_school_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#primary_school_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#primary_school_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#training_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#training_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#vocational_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#vocational_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#job_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
+    $('#job_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
+});

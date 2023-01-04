@@ -66,6 +66,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     $('#civil_status').change();
                 }, app_timeout);
                 $('#street').val(value.street);
+                $('#unit').val(value.unit);
+                $('#lot').val(value.lot);
 
                 $('.house').removeAttr('checked');
                 $("input[name='house']").each(function() {

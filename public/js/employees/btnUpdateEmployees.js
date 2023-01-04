@@ -155,6 +155,8 @@ $('#btnUpdate').on('click',function(){
     var birthday = $('#birthday').val();
     var gender = $('#gender').val();
     var civil_status = $('#civil_status').val();
+    var unit = $('#unit').val();
+    var lot = $('#lot').val();
     var street = $('#street').val();
     var house = $('input[name=house]:checked').val();
     var region = $("#region option:selected").text();
@@ -223,6 +225,8 @@ $('#btnUpdate').on('click',function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
+                    unit:unit,
+                    lot:lot,
                     street:street,
                     house:house,
                     region:region,
@@ -516,6 +520,7 @@ $('#btnUpdate').on('click',function(){
                                 id: job_history_id.toString()
                             }
                         });
+
                         $('#documents_form').submit();
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();
