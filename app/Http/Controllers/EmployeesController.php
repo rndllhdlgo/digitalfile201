@@ -23,7 +23,6 @@ use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
 use App\Models\MedicalHistory;
 use App\Models\Document;
-use App\Models\LogsInfo;
 use App\Models\LogsTable;
 use DataTables;
 
@@ -918,5 +917,10 @@ class EmployeesController extends Controller
         foreach($job_history_id as $id){
             JobHistoryTable::where('id', $id)->delete();
         }
+    }
+
+    public function employee_logs(){
+        $employee = LogsTable::all();
+        return DataTables::of($employee)->make(true);
     }
 }

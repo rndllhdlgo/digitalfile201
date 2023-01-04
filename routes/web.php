@@ -161,3 +161,6 @@ Route::any('/employees/logs_delete','EmployeesController@logs_delete');
 Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
 
 Route::any('/employees/memo_data','EmployeesController@memo_data');
+
+Route::any('/employees/employee_logs','EmployeesController@employee_logs');
+
