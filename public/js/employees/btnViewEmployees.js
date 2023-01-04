@@ -65,7 +65,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 setInterval(() => {
                     $('#civil_status').change();
                 }, app_timeout);
-                $('#street').val(value.street);
+                $('#barangay').val(value.barangay);
                 $('#unit').val(value.unit);
                 $('#lot').val(value.lot);
 

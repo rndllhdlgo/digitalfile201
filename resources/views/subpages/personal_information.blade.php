@@ -93,19 +93,19 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-capitalize" type="search" id="unit" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR <span class="span_street span_all"></span> </label>
+                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR <span class="span_unit span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/ HOUSE #, STREET NAME <span class="span_street span_all"></span> </label>
+                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/ HOUSE #, STREET NAME <span class="span_lot span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="street" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="street" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY <span class="span_street span_all"></span> </label>
+                        <input class="forminput form-control text-capitalize required_field" type="search" id="barangay" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <label for="barangay" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY <span class="span_barangay span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">

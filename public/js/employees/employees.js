@@ -289,7 +289,7 @@ $('#note_required').on('click',function(){
     $('#middle_name').val('Mendez');
     $('#last_name').val('Hidalgo');
     $('#nickname').val('Dell');
-    $('#street').val('West Antipolo Street');
+    $('#barangay').val('West Antipolo Street');
     $('#gender').val('Male');
     $('#height').val('5"3');
     $('#weight').val('55kgs');

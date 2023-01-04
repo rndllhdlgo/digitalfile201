@@ -157,7 +157,7 @@ $('#btnUpdate').on('click',function(){
     var civil_status = $('#civil_status').val();
     var unit = $('#unit').val();
     var lot = $('#lot').val();
-    var street = $('#street').val();
+    var barangay = $('#barangay').val();
     var house = $('input[name=house]:checked').val();
     var region = $("#region option:selected").text();
     var province = $("#province option:selected").text();
@@ -227,7 +227,7 @@ $('#btnUpdate').on('click',function(){
                     civil_status:civil_status,
                     unit:unit,
                     lot:lot,
-                    street:street,
+                    barangay:barangay,
                     house:house,
                     region:region,
                     province:province,
