@@ -293,6 +293,7 @@ $(document).ready(function(){
                             '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
                         '</div>'+
                     '</td>'+
+
                     '<td class="pb-3 pt-3">'+
                         '<div class="f-outline">'+
                             '<input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
@@ -313,14 +314,16 @@ $(document).ready(function(){
                             '<label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>'+
                         '</div>'+
                     '</td>'+
+
                     '<td>'+
                         '<input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
                     '</td>'+
+                    
                     '<td>'+
                         '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                     '</td>'+
                 '</tr>');
-                 $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         
         $(".btn-memo").click(function(){
             $(this).parent().parent().remove();
@@ -328,7 +331,7 @@ $(document).ready(function(){
     }
 
     function addEvaluationRow(){
-    $('#evaluationTable').append('<tr>'+
+        $('#evaluationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
                                     '<input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
@@ -351,16 +354,18 @@ $(document).ready(function(){
                                 '<input  type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
-                                '<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
+                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+
         $(".btn-evaluation").click(function(){
             $(this).parent().parent().remove();
         });
     }
 
     function addContractsRow(){
-    $('#contractsTable').append('<tr>'+
+        $('#contractsTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
                                     '<input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
@@ -377,16 +382,18 @@ $(document).ready(function(){
                                 '<input  type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+ 
-                                '<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
+                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+
         $(".btn-contracts").click(function(){
             $(this).parent().parent().remove();
         });
     }
 
     function addResignationRow(){
-    $('#resignationTable').append('<tr>'+
+        $('#resignationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
                                     '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
@@ -403,16 +410,17 @@ $(document).ready(function(){
                                 '<input  type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
-                                '<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
+                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn-resignation").click(function(){
             $(this).parent().parent().remove();
         });
     }
 
     function addTerminationRow(){
-    $('#terminationTable').append('<tr>'+
+        $('#terminationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
                                     '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
@@ -429,9 +437,10 @@ $(document).ready(function(){
                                 '<input  type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
                             '</td>'+
                             '<td>'+
-                                '<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>'+
+                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
+                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn-termination").click(function(){
             $(this).parent().parent().remove();
         });

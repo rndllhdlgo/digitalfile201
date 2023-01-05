@@ -12,7 +12,7 @@
                     <th style="width:10%"> ACTION</th>
                 </tr>
             </thead>
-            <tbody id="memo_tbody">
+            <tbody>
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
@@ -144,7 +144,7 @@
     <div id="resignation_div" style="display: none;">
     <br>
     <!-- Resignation -->
-        <h5 class="table-title">RESIGNATION</h5>
+    <h5 class="table-title">RESIGNATION</h5>
         <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-educational">
                 <tr>
@@ -182,8 +182,8 @@
     <div id="termination_div" style="display: none;">
         <br>
         <!-- Termination -->
-        <strong class="table-title">TERMINATION</strong>
-            <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle" style="margin-top: 5px;">
+        <h5 class="table-title">TERMINATION</h5>
+            <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle">
                 <thead class="thead-educational">
                     <tr>
                         <th style="width:18%"> TERMINATION REASON</th>
