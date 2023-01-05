@@ -521,6 +521,17 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/memo_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: memo_id.toString()
+                            }
+                        });
+
                         $('#documents_form').submit();
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();

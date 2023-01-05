@@ -51,7 +51,7 @@
         </table>
 
         <table class="table table-bordered table-striped table-hover memo_table_data" id="memo_table_data" style="display: none;">
-            <thead class="thead-educational">
+            <thead>
                 <tr>
                     <th> </th>
                     <th> </th>

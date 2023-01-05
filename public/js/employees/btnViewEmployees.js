@@ -3,6 +3,7 @@ var children_id = [];
 var college_id = [];
 var training_id = [];
 var job_history_id = [];
+var memo_id = [];
 $(document).on('dblclick','table.employeesTable tbody tr',function(){
     
     // logs_id = [];
@@ -11,6 +12,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
     training_id = [];
     vocational_id = [];
     job_history_id = [];
+    memo_id = [];
     
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
@@ -184,14 +186,6 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             "data": null,
                             "targets": [4],
                         },
-                        // {
-                        //     "render": function(data, type, row, meta){
-                        //             return '';
-                        //     },
-                        //     "defaultContent": '',
-                        //     "data": null,
-                        //     "targets": [2],
-                        // }
                     ],
                     searching: false,
                     paging: false,
@@ -412,56 +406,56 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 
                 $('#documents_form').attr("action",'/employees/updateDocuments');
 
-                // $('.memo_table_data').dataTable().fnDestroy();
-                // $('.memo_table_data').DataTable({
-                //     columnDefs: [
-                //         {
-                //             "render": function(data, type, row, meta){
-                //                     return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                //             },
-                //             "defaultContent": '',
-                //             "data": null,
-                //             "targets": [4],
-                //         }
-                //     ],
-                //     searching: false,
-                //     paging: false,
-                //     info: false,
-                //     ordering:false,
-                //     autoWidth: false,
-                //     language:{
-                //         emptyTable: "No data available in table",
-                //         processing: "Loading...",
-                //     },
-                //     serverSide: true,
-                //     ajax: {
-                //         url: '/employees/memo_data',
-                //         async: false,
-                //         data:{
-                //             id: value.id,
-                //         }
-                //     },
-                //     columns: [
-                //         { data: 'memo_subject',width: '22.5%'},
-                //         { data: 'memo_date', width: '22.5%'},
-                //         { data: 'memo_penalty', width: '22.5%'},
-                //         { 
-                //             data: 'memo_file', 
-                //             "render": function(data, type, row){
-                //                 return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
-                //             },
-                //             width: '22.5%'
-                //         }
-                //     ],
-                //     initComplete: function(){
-                //         if(!$('.memo_table_data').DataTable().data().any()){
-                //             $('#memo_table_data').hide();
-                //         }
-                //         else{
-                //             $('#memo_table_data').show();
-                //         }
-                //     }
-                // });
+                $('.memo_table_data').dataTable().fnDestroy();
+                $('.memo_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [4],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/memo_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'memo_subject',width: '22.5%'},
+                        { data: 'memo_date', width: '22.5%'},
+                        { data: 'memo_penalty', width: '22.5%'},
+                        { 
+                            data: 'memo_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
+                            },
+                            width: '22.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.memo_table_data').DataTable().data().any()){
+                            $('#memo_table_data').hide();
+                        }
+                        else{
+                            $('#memo_table_data').show();
+                        }
+                    }
+                });
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
@@ -909,3 +903,11 @@ $(document).on('click','.btn_delete_job',function(){
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
 });
+
+// $(document).on('click','.btn_memo_delete',function(){
+//     var id = $(this).attr("id");
+//     var data = $('.memo_table_data').DataTable().row(id).data();
+//     memo_id.push(data.id);
+//     $(this).parent().parent().remove();
+//     console.log(memo_id);
+// });

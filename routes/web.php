@@ -151,6 +151,7 @@ Route::any('/employees/vocational_delete','EmployeesController@vocational_delete
 Route::any('/employees/job_history_data','EmployeesController@job_history_data');
 Route::any('/employees/job_history_delete','EmployeesController@job_history_delete');
 
+
 Route::any('/employees/viewLogs','EmployeesController@viewLogs');
 Route::any('/employees/saveLogs','EmployeesController@saveLogs');
 Route::any('/employees/saveSample','EmployeesController@saveSample');
@@ -161,6 +162,7 @@ Route::any('/employees/logs_delete','EmployeesController@logs_delete');
 Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
 
 Route::any('/employees/memo_data','EmployeesController@memo_data');
+Route::any('/employees/memo_delete','EmployeesController@memo_delete');
 
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 
