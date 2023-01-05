@@ -210,7 +210,7 @@ $(document).ready(function(){
                                         "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
-                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
+                                        "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('#vocational_table tbody').append(vocational_table);
@@ -220,7 +220,7 @@ $(document).ready(function(){
                                         "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
-                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
+                                        "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" + 
                                     "</tr>";
             $('.dataTables_empty').closest('tr').remove();
@@ -477,7 +477,7 @@ $(document).ready(function(){
             $('.training_field').removeClass('border border-danger');
         }
     
-        if($('#vocational_name').val() || $('#vocational_course').val() || $('#vocational_inclusive_years').val()){
+        if($('#vocational_name').val() || $('#vocational_course').val() || $('#vocational_inclusive_years_from').val() || $('#vocational_inclusive_years_to').val()){
             $('.vocational_field').addClass('required_field');
             $('.span_vocational').hide();
         }

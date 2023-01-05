@@ -146,6 +146,7 @@
 // });
 
 $('#btnUpdate').on('click',function(){
+    $('#personal_info').css('zoom','95%');
     var id = $('#hidden_id').val();
     var first_name = $('#first_name').val();
     var last_name = $('#last_name').val();
@@ -195,6 +196,7 @@ $('#btnUpdate').on('click',function(){
         }
     }).then((update) => {
         if (update.isConfirmed) {
+            $('#personal_info').css('zoom','100%');
             $('#loading').show();
 
             if(!$('#filename').val() && $('#employee_image').val()){
@@ -545,6 +547,7 @@ $('#btnUpdate').on('click',function(){
             });
         }
         else if(update.isDenied){
+            $('#personal_info').css('zoom','100%');
             Swal.fire('UPDATE CANCELLED','','info');
         }
     });
