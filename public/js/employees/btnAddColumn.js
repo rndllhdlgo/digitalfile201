@@ -323,9 +323,9 @@ $(document).ready(function(){
                         '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                     '</td>'+
                 '</tr>');
-                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         
-        $(".btn-memo").click(function(){
+        $(".btn_memo").click(function(){
             $(this).parent().parent().remove();
         });
     }
@@ -357,9 +357,9 @@ $(document).ready(function(){
                                 '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
-                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn-evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
-        $(".btn-evaluation").click(function(){
+        $(".btn_evaluation").click(function(){
             $(this).parent().parent().remove();
         });
     }
@@ -385,9 +385,9 @@ $(document).ready(function(){
                                 '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
-                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-contracts center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
-        $(".btn-contracts").click(function(){
+        $(".btn_evaluation").click(function(){
             $(this).parent().parent().remove();
         });
     }
@@ -413,8 +413,8 @@ $(document).ready(function(){
                                 '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
-                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-        $(".btn-resignation").click(function(){
+                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+        $(".btn_resignation").click(function(){
             $(this).parent().parent().remove();
         });
     }
@@ -440,8 +440,8 @@ $(document).ready(function(){
                                 '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
                             '</td>'+
                         '</tr>');
-                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn-termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-        $(".btn-termination").click(function(){
+                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+        $(".btn_termination").click(function(){
             $(this).parent().parent().remove();
         });
     }

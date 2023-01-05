@@ -249,9 +249,6 @@ input[type=search]:focus{
 .requiredInput{
     border:1.5px solid red !important;
 }
-.blue{
-    border:1.5px solid #0d1a80;
-}
 
 .hiddenFile,
 .hiddenDocumentPreview{
