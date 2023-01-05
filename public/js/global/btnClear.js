@@ -40,6 +40,7 @@ $('#btnClear').on('click',function(){
                 $('.required_field').val('');
                 $('.optional_field').val('');
                 $('.multiple_field').val('');
+                $('#default').prop('checked',true);
                 $('.span_all').show();
                 $('.children_information').hide();
                 $('#spouse').hide();
@@ -147,6 +148,7 @@ $('#btnClear').on('click',function(){
             else if (clear.isConfirmed) {
                 //Clear Current Page
                 new bootstrap.Toast(document.querySelector('#clearCurrent')).show();
+                
                 $('.separated').val('');
                 $('#termination_div').hide();
                 $('#resignation_div').hide();
@@ -166,6 +168,7 @@ $('#btnClear').on('click',function(){
                     $('#image_user').show();
                     $('#image_button').show();
                     $('#image_instruction').show();
+                    $('#default').prop('checked',true);
 
                     $('.children_information').hide();
                     $('.btn_children').click();
@@ -173,7 +176,7 @@ $('#btnClear').on('click',function(){
                     $('.btn_vocational').click();
                     $('.btn_job').click();
                 }
-                
+
                 if($('#work_info').is(":visible")){
                     $('#benefits').hide();
                 }

@@ -101,6 +101,7 @@ $('#child_birthday').on('change',function(){
 });
 
 $('#image_close').on('click',function(){
+    $('#personal_info').css('zoom','95%');
     Swal.fire({
         title: 'Do you want to remove image?',
         allowOutsideClick: false,
@@ -115,6 +116,7 @@ $('#image_close').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
+            $('#personal_info').css('zoom','100%');
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
             $('#employee_image').val('');

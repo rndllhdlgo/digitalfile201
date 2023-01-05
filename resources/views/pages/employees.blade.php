@@ -35,13 +35,13 @@
                             </td>
                         </tr>
                         <tr>
-                            <th><i class="fas fa-id-card"></i> EMPLOYEE NO.</th>
-                            <th><i class="fas fa-id-card"></i> FIRST NAME</th>
-                            <th><i class="fas fa-id-card"></i> MIDDLE NAME</th>
-                            <th><i class="fas fa-id-card"></i> LAST NAME</th>
-                            <th><i class="fas fa-briefcase"></i> POSITION</th>
-                            <th><i class="fas fa-building"></i> BRANCH</th>
-                            <th><i class="fas fa-info"></i>  STATUS</th>
+                            <th> EMPLOYEE NO.</th>
+                            <th> FIRST NAME</th>
+                            <th> MIDDLE NAME</th>
+                            <th> LAST NAME</th>
+                            <th> POSITION</th>
+                            <th> BRANCH</th>
+                            <th> STATUS</th>
                         </tr>
                     </thead>
                         <tbody>
