@@ -183,7 +183,15 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                             "defaultContent": '',
                             "data": null,
                             "targets": [4],
-                        }
+                        },
+                        // {
+                        //     "render": function(data, type, row, meta){
+                        //             return '';
+                        //     },
+                        //     "defaultContent": '',
+                        //     "data": null,
+                        //     "targets": [2],
+                        // }
                     ],
                     searching: false,
                     paging: false,
@@ -206,6 +214,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         { data: 'child_name', width: '22.5%'},
                         { data: 'child_birthday', width: '22.5%'},
                         { data:  null, defaultContent : "", width: '22.5%'},
+                        // { data:  '', width: '22.5%'},
                         { data: 'child_gender', width: '22.5%'}
                     ],
                     initComplete: function(){
