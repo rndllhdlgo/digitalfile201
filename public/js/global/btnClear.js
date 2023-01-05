@@ -186,8 +186,8 @@ $('#btnClear').on('click',function(){
                     $('#image_close').hide();
                     $('#image_user').show();
                     $('#image_button').show();
-                    $('.column-1').css("height","250px");
                     $('.column-1').removeClass('blue');
+                    $('.children_information').hide();
                 }
                 if($('#personal_information').is(":visible")){
                     $('.children_information').hide();

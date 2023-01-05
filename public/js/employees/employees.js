@@ -512,7 +512,15 @@ setInterval(() => {
         $('.job_field').removeClass('required_field');
         $('.job_field').removeClass('border border-danger');
     }
-    
+    if($('#child_name').val() || $('#child_birthday').val() || $('#child_gender').val()){
+        $('.child_field').addClass('required_field');
+        $('.span_child').hide();
+    }
+    else{
+        $('.span_child').show();
+        $('.child_field').removeClass('required_field');
+        $('.child_field').removeClass('border border-danger');
+    }
 }, 0);
 
 $(document).ready(function() {

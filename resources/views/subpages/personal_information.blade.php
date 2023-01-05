@@ -348,14 +348,14 @@
                                     <tr>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
-                                                <input type="search" class="forminput form-control optional_field text-capitalize" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <input type="search" class="forminput form-control optional_field child_field text-capitalize" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
                                                 <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                                                <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all">(Optional)</span></label>
+                                                <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all span_child">(Optional)</span></label>
                                             </div>
                                         </td>
                                         <td class="pb-3 pt-3">
-                                            <input class="forminput form-control optional_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                                            <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all">(Optional)</span></label>
+                                            <input class="forminput form-control optional_field child_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
+                                            <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all span_child">(Optional)</span></label>
                                         </td>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
@@ -365,12 +365,12 @@
                                         </td>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
-                                                <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <select class="form-select forminput form-control optional_field child_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
                                                     <option value="" disabled selected>SELECT GENDER </option>
                                                     <option value="Male">Male</option>
                                                     <option value="Female">Female</option>
                                                 </select>
-                                                <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all">(Optional)</span></label>
+                                                <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all span_child">(Optional)</span></label>
                                             </div>
                                         </td>
                                         <td class="pb-3 pt-3">
