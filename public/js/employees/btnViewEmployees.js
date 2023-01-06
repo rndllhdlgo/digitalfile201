@@ -557,6 +557,106 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+
+                $('.resignation_table_data').dataTable().fnDestroy();
+                $('.resignation_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_resignation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/resignation_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'resignation_reason',width: '20%'},
+                        { data: 'resignation_date', width: '33.4%'},
+                        { 
+                            data: 'resignation_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.resignation_file}" target="_blank">${row.resignation_file}</a>` ;
+                            },
+                            width: '35.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.resignation_table_data').DataTable().data().any()){
+                            $('#resignation_table_data').hide();
+                        }
+                        else{
+                            $('#resignation_table_data').show();
+                        }
+                    }
+                });
+
+                $('.termination_table_data').dataTable().fnDestroy();
+                $('.termination_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_termination_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/termination_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'termination_reason',width: '20%'},
+                        { data: 'termination_date', width: '33.4%'},
+                        { 
+                            data: 'termination_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.termination_file}" target="_blank">${row.termination_file}</a>` ;
+                            },
+                            width: '35.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.termination_table_data').DataTable().data().any()){
+                            $('#termination_table_data').hide();
+                        }
+                        else{
+                            $('#termination_table_data').show();
+                        }
+                    }
+                });
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){

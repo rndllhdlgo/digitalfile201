@@ -50,14 +50,14 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered table-striped table-hover memo_table_data" id="memo_table_data" style="display: none;">
+        <table class="table table-bordered table-striped table-hover memo_table_data" id="memo_table_data" style="display: none; margin-top:-36px;">
             <thead>
                 <tr>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border-left: none;"> </th>
                 </tr>
             </thead>
             <tbody>
@@ -106,14 +106,14 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered table-striped table-hover evaluation_table_data" id="evaluation_table_data" style="display: none;">
+        <table class="table table-bordered table-striped table-hover evaluation_table_data" id="evaluation_table_data" style="display: none; margin-top:-36px;">
             <thead>
                 <tr>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border-left: none;"> </th>
                 </tr>
             </thead>
             <tbody>
@@ -155,13 +155,13 @@
             </tbody>
         </table>
 
-        <table class="table table-bordered table-striped table-hover contracts_table_data" id="contracts_table_data" style="display: none;">
+        <table class="table table-bordered table-striped table-hover contracts_table_data" id="contracts_table_data" style="display: none; margin-top:-36px;">
             <thead>
                 <tr>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
-                    <th> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border-left: none;"> </th>
                 </tr>
             </thead>
             <tbody>
@@ -204,6 +204,19 @@
                 </tr>
             </tbody>
         </table>
+
+        <table class="table table-bordered table-striped table-hover resignation_table_data" id="resignation_table_data" style="display: none; margin-top:-36px;">
+            <thead>
+                <tr>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border:none;"> </th>
+                    <th style="border-left: none;"> </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     </div>
 
     <div id="termination_div" style="display: none;">
@@ -240,6 +253,19 @@
                             <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
+                </tbody>
+            </table>
+            
+            <table class="table table-bordered table-striped table-hover termination_table_data" id="termination_table_data" style="display: none; margin-top:-36px;">
+                <thead>
+                    <tr>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border-left: none;"> </th>
+                    </tr>
+                </thead>
+                <tbody>
                 </tbody>
             </table>
     </div>

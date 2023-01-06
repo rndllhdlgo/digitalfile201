@@ -603,34 +603,6 @@ class EmployeesController extends Controller
                 $contracts->save();
             }
         }
-
-        if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-            foreach($request->file('resignation_file') as $key => $value){
-                $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
-                $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
-                
-                $resignation = new ResignationTable;
-                $resignation->employee_id = $request->employee_id;
-                $resignation->resignation_reason = $request->resignation_reason[$key];
-                $resignation->resignation_date = $request->resignation_date[$key];
-                $resignation->resignation_file = $resignationFileName;
-                $resignation->save();
-            }
-        }
-
-        if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-            foreach($request->file('termination_file') as $key => $value){
-                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
-                $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
-
-                $termination = new TerminationTable;
-                $termination->employee_id = $request->employee_id;
-                $termination->termination_reason = $request->termination_reason[$key];
-                $termination->termination_date = $request->termination_date[$key];
-                $termination->termination_file = $terminationFileName;
-                $termination->save();
-            }
-        }
     
             $document = new Document;
             $document->employee_id = $request->employee_id;
@@ -709,6 +681,35 @@ class EmployeesController extends Controller
     }
 
     public function updateDocuments(Request $request){
+
+        if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+            foreach($request->file('resignation_file') as $key => $value){
+                $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
+                $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
+                
+                $resignation = new ResignationTable;
+                $resignation->employee_id = $request->employee_id;
+                $resignation->resignation_reason = $request->resignation_reason[$key];
+                $resignation->resignation_date = $request->resignation_date[$key];
+                $resignation->resignation_file = $resignationFileName;
+                $resignation->save();
+            }
+        }
+
+        if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+            foreach($request->file('termination_file') as $key => $value){
+                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+                $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+
+                $termination = new TerminationTable;
+                $termination->employee_id = $request->employee_id;
+                $termination->termination_reason = $request->termination_reason[$key];
+                $termination->termination_date = $request->termination_date[$key];
+                $termination->termination_file = $terminationFileName;
+                $termination->save();
+            }
+        }
+
             if($request->hasFile('barangay_clearance_file')){
                 if(file_exists('storage/documents_files/'.$request->barangay_clearance_filename)){
                     unlink(public_path('storage/documents_files/'.$request->barangay_clearance_filename));
@@ -947,6 +948,12 @@ class EmployeesController extends Controller
     }
     public function contracts_data(Request $request){
         return DataTables::of(ContractTable::where('employee_id',$request->id)->get())->make(true);
+    }
+    public function resignation_data(Request $request){
+        return DataTables::of(ResignationTable::where('employee_id',$request->id)->get())->make(true);
+    }
+    public function termination_data(Request $request){
+        return DataTables::of(TerminationTable::where('employee_id',$request->id)->get())->make(true);
     }
 
     public function logs_delete(Request $request){
