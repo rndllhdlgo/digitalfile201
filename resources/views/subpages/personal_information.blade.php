@@ -36,6 +36,7 @@
 
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="middle_name_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <p id="middle_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME <span class="span_middle_name span_all"></span></label>
@@ -44,6 +45,7 @@
 
                  <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="last_name_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="last_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <p id="last_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME <span class="span_last_name span_all"></span> </label>
@@ -92,18 +94,21 @@
             <div class="row mb-3 mt-3">
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="unit_orig">
                         <input class="forminput form-control text-capitalize optional_field" type="search" id="unit" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR <span class="span_unit span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="lot_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET NAME <span class="span_lot span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="barangay_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="barangay" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="barangay" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY <span class="span_barangay span_all"></span> </label>
                     </div>
@@ -229,6 +234,7 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="hidden" id="cellphone_number_orig">
                         <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Cellphone Number Already Exist! </p>
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE #. <span class="span_cellphone_number span_all"></span> </label>

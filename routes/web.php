@@ -173,6 +173,7 @@ Route::any('/employees/evaluation_data','EmployeesController@evaluation_data');
 Route::any('/employees/contracts_data','EmployeesController@contracts_data');
 Route::any('/employees/resignation_data','EmployeesController@resignation_data');
 Route::any('/employees/termination_data','EmployeesController@termination_data');
+Route::any('/employees/logs_data','EmployeesController@logs_data');
 
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 

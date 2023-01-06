@@ -69,36 +69,36 @@ $('.filter-input').on('keyup search', function(){
     usersTable.column($(this).data('column')).search($(this).val()).draw();
 });
 
-var employee_logs_table;
-$(document).ready(function(){
-    employee_logs_table = $('table.employee_logs_table').DataTable({
-        dom:'l<"breakspace">trip',
-        language:{
-            "info": "\"_START_ to _END_ of _TOTAL_ Employee Logs\"",
-            "lengthMenu":"Show _MENU_ Employee Logs",
-            "emptyTable":"No Employee Logs Data Found!",
-            "loadingRecords": "Loading Employee Logs Records...",
-        },
-        "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        processing:true,
-        serverSide:false,
-        ajax:{
-            url: '/employees/employee_logs',
-        },
-        order: [],
-        columns:[
-            {data: 'logs'},
-        ],
-        initComplete: function(){
-            $('#loading').hide();
-        }
-    });
-    $('div.breakspace').html('<br><br>');
-});
+// var employee_logs_table;
+// $(document).ready(function(){
+//     employee_logs_table = $('table.employee_logs_table').DataTable({
+//         dom:'l<"breakspace">trip',
+//         language:{
+//             "info": "\"_START_ to _END_ of _TOTAL_ Employee Logs\"",
+//             "lengthMenu":"Show _MENU_ Employee Logs",
+//             "emptyTable":"No Employee Logs Data Found!",
+//             "loadingRecords": "Loading Employee Logs Records...",
+//         },
+//         "aLengthMenu": [[10, 25, 50, -1], [10, 25, 50, "All"]],
+//         processing:true,
+//         serverSide:false,
+//         ajax:{
+//             url: '/employees/employee_logs',
+//         },
+//         order: [],
+//         columns:[
+//             {data: 'logs'},
+//         ],
+//         initComplete: function(){
+//             $('#loading').hide();
+//         }
+//     });
+//     $('div.breakspace').html('<br><br>');
+// });
 
-$('.filter-input').on('keyup search', function(){
-    employee_logs_table.column($(this).data('column')).search($(this).val()).draw();
-});
+// $('.filter-input').on('keyup search', function(){
+//     employee_logs_table.column($(this).data('column')).search($(this).val()).draw();
+// });
 
 // //Display Data Table Function
 // var employeesTable;

@@ -142,10 +142,11 @@ class EmployeesController extends Controller
             )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-        ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
-        ->join('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
+        ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
         ->join('documents','documents.employee_id','personal_information_tables.id') 
+        ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        ->leftJoin('logs_tables','logs_tables.employee_id','personal_information_tables.id')
         ->get();
 
         return DataTables::of($employees)->toJson();
@@ -219,22 +220,26 @@ class EmployeesController extends Controller
         if($request->filename_delete){
             unlink(public_path('storage/employee_images/'.$request->filename_delete));
         }
+        $cellphone_number_orig = $request->cellphone_number_orig;
+        $middle_name_orig = $request->middle_name_orig;
+        $last_name_orig = $request->last_name_orig;
+        $unit_orig = $request->unit_orig;
+        $lot_orig = $request->lot_orig;
+        $barangay_orig = $request->barangay_orig;
 
         $employee = PersonalInformationTable::find($request->get('id'));
-
         $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee->first_name =  ucwords($request->first_name);
-        $employee->last_name = ucwords($request->last_name); 
-        $employee->middle_name = ucwords($request->middle_name);
-        
+        $employee->last_name = ucwords($request->last_name_new); 
+        $employee->middle_name = ucwords($request->middle_name_new);
         $employee->suffix = ucwords($request->suffix);
         $employee->nickname = ucwords($request->nickname);
         $employee->birthday = $request->birthday;
         $employee->gender = $request->gender;
         $employee->civil_status = $request->civil_status;
-        $employee->unit = $request->unit;
-        $employee->lot = ucwords($request->lot);
-        $employee->barangay = ucwords($request->barangay);
+        $employee->unit = $request->unit_new;
+        $employee->lot = ucwords($request->lot_new);
+        $employee->barangay = ucwords($request->barangay_new);
         $employee->house = ucwords($request->house);
         $employee->province = $request->province;
         $employee->city = $request->city;
@@ -244,7 +249,7 @@ class EmployeesController extends Controller
         $employee->religion = ucwords($request->religion);
         $employee->email_address = strtolower($request->email_address);
         $employee->telephone_number = $request->telephone_number;
-        $employee->cellphone_number = $request->cellphone_number;
+        $employee->cellphone_number = $request->cellphone_number_new;
         $employee->spouse_name = ucwords($request->spouse_name);
         $employee->spouse_contact_number = $request->spouse_contact_number;
         $employee->spouse_profession = ucwords($request->spouse_profession);
@@ -264,9 +269,56 @@ class EmployeesController extends Controller
             // $userlogs->user_id = auth()->user()->id;
             // $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_personal_information->first_name $employee_personal_information->middle_name $employee_personal_information->last_name]."; //Display logs in home page
             // $userlogs->save();
+           
+            if($cellphone_number_orig != $request->cellphone_number_new){
+                $cellphone_number_change = "[Cellphone Number] FROM '$cellphone_number_orig 'TO' $employee->cellphone_number";
+            }
+            else{
+                $cellphone_number_change = NULL;
+            }
+
+            if($middle_name_orig != $request->middle_name_new){
+                $middle_name_change = "[Middle Name] FROM '$middle_name_orig 'TO' $employee->middle_name";
+            }
+            else{
+                $middle_name_change = NULL;
+            }
+
+            if($last_name_orig != $request->last_name_new){
+                $last_name_change = "[Last Name] FROM '$last_name_orig 'TO' $employee->last_name";
+            }
+            else{
+                $last_name_change = NULL;
+            }
+
+            if($unit_orig != $request->unit_new){
+                $unit_change = "[Unit] FROM '$unit_orig 'TO' $employee->unit";
+            }
+            else{
+                $unit_change = NULL;
+            }
+
+            if($lot_orig != $request->lot_new){
+                $lot_change = "[Lot] FROM '$lot_orig 'TO' $employee->lot";
+            }
+            else{
+                $lot_change = NULL;
+            }
+
+            if($barangay_orig != $request->barangay_new){
+                $barangay_change = "[Barangay] FROM '$barangay_orig 'TO' $employee->barangay";
+            }
+            else{
+                $barangay_change = NULL;
+            }
 
             $result = 'true';
             $id = $employee->id;
+
+            $employee_logs = new LogsTable;
+            $employee_logs->employee_id = $request->id;
+            $employee_logs->logs = "UPDATED: successfully made the following CHANGES to this employee's information: $cellphone_number_change $middle_name_change $last_name_change $unit_change $lot_change $barangay_change.";
+            $employee_logs->save();
         }
         else{
             $result = 'false';
@@ -916,9 +968,9 @@ class EmployeesController extends Controller
         $logs->save();
     }
 
-    public function logs_data(Request $request){
-        return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
-    }
+    // public function logs_data(Request $request){
+    //     return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
+    // }
 
     public function college_data(Request $request){
         return DataTables::of(CollegeTable::where('employee_id',$request->id)->get())->make(true);
@@ -1005,8 +1057,9 @@ class EmployeesController extends Controller
         }
     }
 
-    public function employee_logs(){
-        $employee = LogsTable::all();
-        return DataTables::of($employee)->make(true);
+    public function logs_data(Request $request){
+        // $employee = LogsTable::all();
+        // return DataTables::of($employee)->make(true);
+        return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
     }
 }

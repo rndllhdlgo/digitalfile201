@@ -149,16 +149,21 @@ $('#btnUpdate').on('click',function(){
     $('#personal_info').css('zoom','95%');
     var id = $('#hidden_id').val();
     var first_name = $('#first_name').val();
-    var last_name = $('#last_name').val();
-    var middle_name = $('#middle_name').val();
+    var last_name_orig = $('#last_name_orig').val();
+    var last_name_new = $('#last_name').val();
+    var middle_name_orig = $('#middle_name_orig').val();
+    var middle_name_new = $('#middle_name').val();
     var suffix = $('#suffix').val();
     var nickname = $('#nickname').val();
     var birthday = $('#birthday').val();
     var gender = $('#gender').val();
     var civil_status = $('#civil_status').val();
-    var unit = $('#unit').val();
-    var lot = $('#lot').val();
-    var barangay = $('#barangay').val();
+    var unit_orig = $('#unit_orig').val();
+    var unit_new = $('#unit').val();
+    var lot_orig = $('#lot_orig').val();
+    var lot_new = $('#lot').val();
+    var barangay_orig = $('#barangay_orig').val();
+    var barangay_new = $('#barangay').val();
     var house = $('input[name=house]:checked').val();
     var region = $("#region option:selected").text();
     var province = $("#province option:selected").text();
@@ -168,7 +173,8 @@ $('#btnUpdate').on('click',function(){
     var religion = $("#religion").val();
     var email_address = $('#email_address').val();
     var telephone_number = $('#telephone_number').val();
-    var cellphone_number = $('#cellphone_number').val();
+    var cellphone_number_orig = $('#cellphone_number_orig').val();
+    var cellphone_number_new = $('#cellphone_number').val();
     var spouse_name = $('#spouse_name').val();
     var spouse_contact_number = $('#spouse_contact_number').val();
     var spouse_profession = $('#spouse_profession').val();
@@ -220,16 +226,21 @@ $('#btnUpdate').on('click',function(){
                     employee_image:employee_image,
                     filename_delete: $('#filename_delete').val(),
                     first_name:first_name,
-                    last_name:last_name,
-                    middle_name:middle_name,
+                    last_name_orig:last_name_orig,
+                    last_name_new:last_name_new,
+                    middle_name_orig:middle_name_orig,
+                    middle_name_new:middle_name_new,
                     suffix:suffix,
                     nickname:nickname,
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
-                    unit:unit,
-                    lot:lot,
-                    barangay:barangay,
+                    unit_orig:unit_orig,
+                    unit_new:unit_new,
+                    lot_orig:lot_orig,
+                    lot_new:lot_new,
+                    barangay_orig:barangay_orig,
+                    barangay_new:barangay_new,
                     house:house,
                     region:region,
                     province:province,
@@ -239,7 +250,8 @@ $('#btnUpdate').on('click',function(){
                     religion:religion,
                     email_address:email_address,
                     telephone_number:telephone_number,
-                    cellphone_number:cellphone_number,
+                    cellphone_number_orig:cellphone_number_orig,
+                    cellphone_number_new:cellphone_number_new,
                     spouse_name:spouse_name,
                     spouse_contact_number:spouse_contact_number,
                     spouse_profession:spouse_profession,

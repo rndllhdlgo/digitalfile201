@@ -54,7 +54,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#filename_delete').val('');
 
                 $('#first_name').val(value.first_name);
+                $('#middle_name_orig').val(value.middle_name);
                 $('#middle_name').val(value.middle_name);
+                $('#last_name_orig').val(value.last_name);
                 $('#last_name').val(value.last_name);
                 $('#suffix').val(value.suffix);
                 $('#nickname').val(value.nickname);
@@ -63,12 +65,11 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     $('#birthday').change();
                 }, app_timeout);
                 $('#gender').val(value.gender);
-                $('#civil_status').val(value.civil_status);
-                setInterval(() => {
-                    $('#civil_status').change();
-                }, app_timeout);
+                $('#barangay_orig').val(value.barangay);
                 $('#barangay').val(value.barangay);
+                $('#unit_orig').val(value.unit);
                 $('#unit').val(value.unit);
+                $('#lot_orig').val(value.lot);
                 $('#lot').val(value.lot);
 
                 $('.house').removeAttr('checked');
@@ -78,41 +79,67 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     }
                 });
 
-                $('.region').each(function(){
-                    if($(this).html() == value.region){
+                // $('.region').each(function(){
+                //     if($(this).html() == value.region){
+                //         $(this).prop('selected', true);
+                //     }
+                // });
+
+                // setTimeout(() => {
+                //     $('#region').change();
+                //     setTimeout(() => {
+                //         $('.province').each(function(){
+                //             if($(this).html() == value.province){
+                //                 $(this).prop('selected', true);
+                //             }
+                //         });
+                //         setTimeout(() => {
+                //             $('#province').change();  
+                //             setTimeout(() => {
+                //                 $('.city').each(function(){
+                //                     if($(this).html() == value.city){
+                //                         $(this).prop('selected', true);
+                //                     }
+                //                 });
+                //                 setTimeout(() => {
+                //                     $('#city').change();
+                //                 }, app_timeout);
+                //             }, app_timeout);
+                //         }, app_timeout);
+                //     }, app_timeout);
+                // }, app_timeout);
+
+                $('.province').each(function(){
+                    if($(this).html() == value.province){
                         $(this).prop('selected', true);
                     }
                 });
-
                 setTimeout(() => {
-                    $('#region').change();
+                    $('#province').change();
                     setTimeout(() => {
-                        $('.province').each(function(){
-                            if($(this).html() == value.province){
+                        $('.city').each(function(){
+                            if($(this).html() == value.city){
                                 $(this).prop('selected', true);
                             }
                         });
                         setTimeout(() => {
-                            $('#province').change();  
-                            setTimeout(() => {
-                                $('.city').each(function(){
-                                    if($(this).html() == value.city){
-                                        $(this).prop('selected', true);
-                                    }
-                                });
-                                setTimeout(() => {
-                                    $('#city').change();
-                                }, app_timeout);
-                            }, app_timeout);
+                            $('#city').change();
                         }, app_timeout);
                     }, app_timeout);
                 }, app_timeout);
 
+                $('#region').val(value.region);
+
                 $('#height').val(decodeHtml(value.height));
                 $('#weight').val(value.weight);
                 $('#religion').val(value.religion);
+                $('#civil_status').val(value.civil_status);
+                setInterval(() => {
+                    $('#civil_status').change();
+                }, app_timeout);
                 $('#email_address').val(value.email_address);
                 $('#telephone_number').val(value.telephone_number);
+                $('#cellphone_number_orig').val(value.cellphone_number);
                 $('#cellphone_number').val(value.cellphone_number);
                 $('#spouse_name').val(value.spouse_name);
                 $('#spouse_contact_number').val(value.spouse_contact_number);
@@ -654,6 +681,39 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         }
                         else{
                             $('#termination_table_data').show();
+                        }
+                    }
+                });
+
+                $('.logs_table_data').dataTable().fnDestroy();
+                $('.logs_table_data').DataTable({
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/logs_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'logs'},
+                    
+                    ],
+                    initComplete: function(){
+                        if(!$('.logs_table_data').DataTable().data().any()){
+                            $('#logs_table_data').hide();
+                        }
+                        else{
+                            $('#logs_table_data').show();
                         }
                     }
                 });
