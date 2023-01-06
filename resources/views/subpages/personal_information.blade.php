@@ -212,7 +212,7 @@
             </div>
 
             <div class="row mb-3 mt-3">
-                <div class="col-3">
+                <div class="col-6">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>

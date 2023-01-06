@@ -456,37 +456,105 @@ class EmployeesController extends Controller
         // } 
     }
 
-    public function checkDuplicate(Request $request){
-        // return WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
-        if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
-            return 'duplicate_employee_number';
-        }
-        else if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
+    // public function checkDuplicate(Request $request){
+    //     // return WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
+    //     if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
+    //         return 'duplicate_employee_number';
+    //     }
+    //     if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
+    //         return 'duplicate_email_address';
+    //     }
+    //     if(PersonalInformationTable::where('telephone_number',$request->telephone_number)->count() > 0){
+    //         return 'duplicate_telephone_number';
+    //     }
+    //     if(PersonalInformationTable::where('cellphone_number',$request->cellphone_number)->count() > 0){
+    //         return 'duplicate_cellphone_number';
+    //     }
+    //     if(PersonalInformationTable::where('father_contact_number',$request->father_contact_number)->count() > 0){
+    //         return 'duplicate_father_contact_number';
+    //     }
+    //     if(PersonalInformationTable::where('mother_contact_number',$request->mother_contact_number)->count() > 0){
+    //         return 'duplicate_mother_contact_number';
+    //     }
+    //     if(PersonalInformationTable::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0){
+    //         return 'duplicate_spouse_contact_number';
+    //     }
+    //     if(PersonalInformationTable::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0){
+    //         return 'duplicate_contact_number';
+    //     }
+    //     if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
+    //         return 'duplicate_company_email_address';
+    //     }
+    //     if(WorkInformationTable::where('company_contact_number',$request->company_contact_number)->count() > 0){
+    //         return 'duplicate_company_contact_number';
+    //     }
+    // }
+
+    // public function checkDuplicateWorkInfo(Request $request){
+    //     if(WorkInformationTable::where('sss_number',$request->sss_number)->count() > 0){
+    //         return 'duplicate_sss_number';
+    //     }
+    // }
+
+    public function duplicate_personal_info(Request $request){
+        if(PersonalInformationTable::where('email_address', '=', $request->email_address)->exists()){
             return 'duplicate_email_address';
         }
-        else if(PersonalInformationTable::where('telephone_number',$request->telephone_number)->count() > 0){
+        
+        if(PersonalInformationTable::where('telephone_number', '=', $request->telephone_number)->exists()){
             return 'duplicate_telephone_number';
         }
-        else if(PersonalInformationTable::where('cellphone_number',$request->cellphone_number)->count() > 0){
+
+        if(PersonalInformationTable::where('cellphone_number', '=', $request->cellphone_number)->exists()){
             return 'duplicate_cellphone_number';
         }
-        else if(PersonalInformationTable::where('father_contact_number',$request->father_contact_number)->count() > 0){
+
+        if(PersonalInformationTable::where('father_contact_number', '=', $request->father_contact_number)->exists()){
             return 'duplicate_father_contact_number';
         }
-        else if(PersonalInformationTable::where('mother_contact_number',$request->mother_contact_number)->count() > 0){
+
+        if(PersonalInformationTable::where('mother_contact_number', '=', $request->mother_contact_number)->exists()){
             return 'duplicate_mother_contact_number';
         }
-        else if(PersonalInformationTable::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0){
-            return 'duplicate_spouse_contact_number';
+
+        if(PersonalInformationTable::where('emergency_contact_number', '=', $request->emergency_contact_number)->exists()){
+            return 'duplicate_emergency_contact_number';
         }
-        else if(PersonalInformationTable::where('emergency_contact_number',$request->spouse_contact_number)->count() > 0){
-            return 'duplicate_contact_number';
+    }
+
+    public function duplicate_work_info(Request $request){
+        if(WorkInformationTable::where('employee_number', '=', $request->employee_number)->exists()) {
+            return 'duplicate_employee_number';
         }
-        else if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
+
+        if(WorkInformationTable::where('company_email_address', '=', $request->company_email_address)->exists()) {
             return 'duplicate_company_email_address';
         }
-        else if(WorkInformationTable::where('company_contact_number',$request->company_contact_number)->count() > 0){
+
+        if(WorkInformationTable::where('company_contact_number', '=', $request->company_contact_number)->exists()) {
             return 'duplicate_company_contact_number';
+        }
+
+        if(WorkInformationTable::where('company_contact_number', '=', $request->company_contact_number)->exists()) {
+            return 'duplicate_company_contact_number';
+        }
+        
+        if(WorkInformationTable::where('sss_number', '=', $request->sss_number)->exists()) {
+            return 'duplicate_sss_number';
+        }
+
+        if(WorkInformationTable::where('pag_ibig_number', '=', $request->pag_ibig_number)->exists()) {
+            return 'duplicate_pag_ibig_number';
+        }
+
+        if(WorkInformationTable::where('philhealth_number', '=', $request->philhealth_number)->exists()) {
+            return 'duplicate_philhealth_number';
+        }
+        if(WorkInformationTable::where('tin_number', '=', $request->tin_number)->exists()) {
+            return 'duplicate_tin_number';
+        }
+        if(WorkInformationTable::where('account_number', '=', $request->account_number)->exists()) {
+            return 'duplicate_account_number';
         }
     }
 

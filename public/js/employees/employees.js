@@ -286,12 +286,14 @@ $('#viewJobDescriptionBtn').on('click',function(){
 //Fill All Function
 $('#note_required').on('click',function(){
 //Required Field
-
+    //Personal Info
     $('#first_name').val('Rendell');
     $('#middle_name').val('Mendez');
     $('#last_name').val('Hidalgo');
     $('#nickname').val('Dell');
-    $('#barangay').val('West Antipolo Street');
+    $('#unit').val('1');
+    $('#lot').val('519 West Antipolo Street Gagalangin Tondo Manila');
+    $('#barangay').val('169');
     $('#gender').val('Male');
     $('#height').val('5"3');
     $('#weight').val('55kgs');
@@ -300,54 +302,77 @@ $('#note_required').on('click',function(){
     $('#email_address').val('rendellhidalgo11@gmail.com');
     $('#cellphone_number').val('09322003718');
     $('#father_name').val('Reynaldo Hidalgo');
+    $('#father_contact_number').val('09322003718');
     $('#father_profession').val('Utility Worker');
     $('#mother_name').val('Marlyn Hidalgo');
+    $('#mother_contact_number').val('09324207239');
     $('#mother_profession').val('House Wife');
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
     $('#emergency_contact_number').val('09322003718');
-    // $('#employee_number').val('50006');
-    // $('#employee_company').val('Phillogix Systems, Inc.');
-    // $('#employee_branch').val('San Juan');
-    // $('#employee_position').val('Web Developer');
-    // $('#employee_supervisor').val('Gerard Mallari');
-    // $('#employee_shift').val('A9 08:30AM-17:30PM WITH BREAK 11:30AM-12:30PM');
-    // $('#company_email_address').val('rendellhidalgo11@gmail.com');
-    // $('#company_contact_number').val('09322003718');
-    // $('#employee_salary').val('15,000');
-    // $('#employee_incentives').val('1');
-    // $('#employee_overtime_pay').val('1');
-    // $('#employee_bonus').val('1');
-    // $('#sss_number').val('1');
-    // $('#pag_ibig_number').val('2');
-    // $('#philhealth_number').val('3');
-    // $('#tin_number').val('4');
-    // $('#account_number').val('5');
-    // $('#primary_school_name').val('Lakandula Elementary School');
-    // $('#primary_school_address').val('Lakandula');
-    // $('#primary_school_inclusive_years').val('2006-2012');
-//Optional Field
-    // $('#telephone_number').val('1231243');
-    $('#father_contact_number').val('09322003718');
-    $('#mother_contact_number').val('09322003718');
+
+    //Work Info
+    $('#employee_number').val('50006');
+    $('#employee_company').val('4');
+    $('#employee_department').val('1');
+    $('#employee_branch').val('3');
+    $('#employment_status').val('Probationary');
+    $('#employment_origin').val('Newly Hired');
+    $('#employee_shift').val('1');
+    $('#employee_supervisor').val('1');
+    $('#employee_position').val('2');
+    $('#company_email_address').val('rendellhidalgo11@gmail.com');
+    $('#company_contact_number').val('09322003718');
+    $('#sss_number').val('1');
+    $('#pag_ibig_number').val('2');
+    $('#philhealth_number').val('3');
+    $('#tin_number').val('4');
+    $('#account_number').val('5');
+
+    //Education/Trainings
     $('#college_name').val('Universidad De Manila');
     $('#college_degree').val('BTVTE Major in CPT');
-    $('#college_inclusive_years').val('2018-2022');
+    $('#college_inclusive_years_from').val('2018-06');
+    $('#college_inclusive_years_to').val('2022-07');
+    $('#collegeAdd').click();
     $('#secondary_school_name').val('Florentino Torres High School');
     $('#secondary_school_address').val('Torres');
-    $('#secondary_school_inclusive_years').val('2012-2016');
-    // $('#training_name').val('Sample');
-    // $('#training_title').val('Sample');
-    // $('#training_inclusive_years').val('1');
-    // $('#vocational_name').val('Sample');
-    // $('#vocational_course').val('Sample');
-    // $('#vocational_inclusive_years').val('1');
-    // $('#job_name').val('Sample');
-    // $('#job_position').val('Sample');
-    // $('#job_address').val('Sample');
-    // $('#job_contact_details').val('1');
-    // $('#job_inclusive_years').val('1');
-    
+    $('#secondary_school_inclusive_years_from').val('2012-06');
+    $('#secondary_school_inclusive_years_to').val('2016-04');
+    $('#primary_school_name').val('Lakandula Elementary School');
+    $('#primary_school_address').val('Lakandula');
+    $('#primary_school_inclusive_years_from').val('2006-06');
+    $('#primary_school_inclusive_years_to').val('2012-04');
+    $('#training_name').val('A');
+    $('#training_title').val('A');
+    $('#training_inclusive_years_from').val('2020-01');
+    $('#training_inclusive_years_to').val('2020-02');
+    $('#trainingAdd').click();
+    $('#vocational_name').val('A');
+    $('#vocational_course').val('A');
+    $('#vocational_inclusive_years_from').val('2020-01');
+    $('#vocational_inclusive_years_to').val('2020-02'); 
+    $('#vocationalAdd').click();
+
+    //Job History
+    $('#job_company_name').val('A');
+    $('#job_description').val('A');
+    $('#job_position').val('A');
+    $('#job_contact_number').val('1');
+    $('#job_inclusive_years_from').val('2022-01');
+    $('#job_inclusive_years_to').val('2023-01');
+    $('#jobHistoryAdd').click();
+    // Medical History
+    $('#past_medical_condition').val('• A');
+    $('#allergies').val('• A');
+    $('#medication').val('• A');
+    $('#psychological_history').val('• A');
+    // Compensation/Benefits
+    $('#employee_salary').val('₱15,000');
+    $('#employee_incentives').val('₱1.00');
+    $('#employee_overtime_pay').val('₱1.00');
+    $('#employee_bonus').val('₱1.00');
+    $('#employee_insurance').val('• A');
 });
 
 //Currency Format

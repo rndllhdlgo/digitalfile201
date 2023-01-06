@@ -69,16 +69,21 @@ Route::any('/employees/saveTraining','EmployeesController@saveTraining');
 Route::any('/employees/saveVocational','EmployeesController@saveVocational');
 Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
 
-Route::any('/employees/employee_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/email_address/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/telephone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/father_cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/mother_cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/spouse_cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/emergency_cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/company_email/checkDuplicate', 'EmployeesController@checkDuplicate');
-Route::any('/employees/company_cellphone_number/checkDuplicate', 'EmployeesController@checkDuplicate');
+Route::any('/employees/email_address/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+Route::any('/employees/telephone_number/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+Route::any('/employees/cellphone_number/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+Route::any('/employees/father_contact_number/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+Route::any('/employees/mother_contact_number/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+Route::any('/employees/emergency_contact_number/checkDuplicate', 'EmployeesController@duplicate_personal_info');
+
+Route::any('/employees/employee_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/company_email_address/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/company_contact_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/sss_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/pag_ibig_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/philhealth_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/tin_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
+Route::any('/employees/account_number/checkDuplicate', 'EmployeesController@duplicate_work_info');
 
 Route::any('/employees/childrenDataTable','EmployeesController@childrenDataTable');
 Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');
