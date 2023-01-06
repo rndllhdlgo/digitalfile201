@@ -169,5 +169,12 @@ Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
 Route::any('/employees/memo_data','EmployeesController@memo_data');
 Route::any('/employees/memo_delete','EmployeesController@memo_delete');
 
+Route::any('/employees/evaluation_data','EmployeesController@evaluation_data');
+
+Route::any('/employees/contracts_data','EmployeesController@contracts_data');
+
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 
+
+Route::any('/evaluation','TryController@evaluation_blade');
+Route::any('/evaluationSave','TryController@evaluation_save');

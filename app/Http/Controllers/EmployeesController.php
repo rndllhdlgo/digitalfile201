@@ -942,6 +942,12 @@ class EmployeesController extends Controller
     public function memo_data(Request $request){
         return DataTables::of(MemoTable::where('employee_id',$request->id)->get())->make(true);
     }
+    public function evaluation_data(Request $request){
+        return DataTables::of(EvaluationTable::where('employee_id',$request->id)->get())->make(true);
+    }
+    public function contracts_data(Request $request){
+        return DataTables::of(ContractTable::where('employee_id',$request->id)->get())->make(true);
+    }
 
     public function logs_delete(Request $request){
         $logs_id = explode(",", $request->id);

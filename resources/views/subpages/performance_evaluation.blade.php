@@ -105,6 +105,20 @@
                 </tr>
             </tbody>
         </table>
+
+        <table class="table table-bordered table-striped table-hover evaluation_table_data" id="evaluation_table_data" style="display: none;">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
     <br>
     <!-- Contracts -->
         <h5 class="table-title">CONTRACT</h5>
@@ -138,6 +152,19 @@
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
+            </tbody>
+        </table>
+
+        <table class="table table-bordered table-striped table-hover contracts_table_data" id="contracts_table_data" style="display: none;">
+            <thead>
+                <tr>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                    <th> </th>
+                </tr>
+            </thead>
+            <tbody>
             </tbody>
         </table>
 

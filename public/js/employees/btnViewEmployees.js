@@ -442,7 +442,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         { 
                             data: 'memo_file', 
                             "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.memo_file}">${row.memo_file}</a>` ;
+                                return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file}</a>` ;
                             },
                             width: '22.5%'
                         }
@@ -453,6 +453,107 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         }
                         else{
                             $('#memo_table_data').show();
+                        }
+                    }
+                });
+
+                $('.evaluation_table_data').dataTable().fnDestroy();
+                $('.evaluation_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_evaluation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [4],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/evaluation_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'evaluation_reason',width: '22.5%'},
+                        { data: 'evaluation_date', width: '22.5%'},
+                        { data: 'evaluation_evaluated_by', width: '22.5%'},
+                        { 
+                            data: 'evaluation_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file}</a>` ;
+                            },
+                            width: '22.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.evaluation_table_data').DataTable().data().any()){
+                            $('#evaluation_table_data').hide();
+                        }
+                        else{
+                            $('#evaluation_table_data').show();
+                        }
+                    }
+                });
+
+                $('.contracts_table_data').dataTable().fnDestroy();
+                $('.contracts_table_data').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                    return '<button type="button" class="btn btn-danger btn_contracts_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [3],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/contracts_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'contracts_type',width: '20%'},
+                        { data: 'contracts_date', width: '33.4%'},
+                        { 
+                            data: 'contracts_file', 
+                            "render": function(data, type, row){
+                                return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file}</a>` ;
+                            },
+                            width: '35.5%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.contracts_table_data').DataTable().data().any()){
+                            $('#contracts_table_data').hide();
+                        }
+                        else{
+                            $('#contracts_table_data').show();
                         }
                     }
                 });
