@@ -58,6 +58,7 @@
             <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
             <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
             <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
+            <button type="button" class="btn btn-success mx-1 float-end grow" id="btnSummary" title="VIEW SUMMARY" style="font-weight: bold;"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
         <br>
         <br>
         <hr>
@@ -138,5 +139,253 @@
                         </div>{{--  End of Tab Content  --}}
                 </form>
         </div> {{-- End of Employee Form --}}
-{{-- <button type="button"><a href="https://hrms.ideaservph.tech/storage/evaluation_files/167054703838_Memo_File.pdf">asd</a></button> --}}
+
+        <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-fullscreen-xxl-down">
+                <div class="modal-content">
+                    <div class="modal-header" style="background-color: #0d1a80;">
+                        <h5 class="modal-title text-white" id="exampleModalLabel">Employee Summary Details</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <h5>PERSONAL INFORMATION</h5>
+                        <div class="clear">
+                            <div class="column_1_summary">
+                                <img id="image_preview_summary">
+                            </div>
+
+                            <div class="column_2_summary">
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize first_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize middle_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME </label>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize last_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME </label>
+                                        </div>
+                                    </div>
+                                        
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize suffix" type="search" placeholder=" " style="background-color:white;">
+                                            <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX </label>
+                                        </div>
+                                    </div>
+                                </div>
+        
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize nickname" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control birthday" type="date" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control age" type="text" placeholder=" " disabled style="background-color:white;">
+                                            <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> AGE </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control gender" type="text" placeholder=" " disabled style="background-color:white;">
+                                            <label for="gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize unit" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize lot" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET NAME </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize barangay" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="barangay" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left: 30px;" disabled> Owned
+                                            <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;" disabled> Rent
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize" id="province_summary" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize" id="city_summary" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize" id="region_summary" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize height" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="height" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> HEIGHT </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize weight" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="weight" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> WEIGHT </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize religion" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="religion" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> RELIGION </label>
+                                        </div>
+                                    </div>
+                                    <div class="col">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control text-capitalize civil_status" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="civil_status" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CIVIL STATUS </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-6">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control email_address" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="email_address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> EMAIL ADDRESS </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control telephone_number" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="telephone_number" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> TELEPHONE NUMBER </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control cellphone_number" type="search" placeholder=" " style="background-color:white;" disabled>
+                                            <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CELLPHONE NUMBER </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control father_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="father_name" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> FATHER'S NAME </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control father_contact_number" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> FATHER'S CONTACT NO. </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control father_profession" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="father_profession" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROFESSION </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control mother_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="mother_name" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> MOTHER'S MAIDEN NAME </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control mother_contact_number" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> MOTHER'S CONTACT NO. </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control mother_profession" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="mother_profession" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROFESSION </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control emergency_contact_name" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="emergency_contact_name" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> INCASE OF EMERGENCY NAME </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control emergency_contact_relationship" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> RELATIONSHIP </label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="f-outline">
+                                    <input class="forminput form-control emergency_contact_number" type="search" placeholder=" " style="background-color:white;" disabled>
+                                    <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CONTACT NO. </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="hr-design">
+                        <h5>WORK INFORMATION</h5>
+
+                    </div>
+                    <div class="modal-footer">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
 @endsection

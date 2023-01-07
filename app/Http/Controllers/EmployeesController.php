@@ -420,7 +420,7 @@ class EmployeesController extends Controller
                 $mother_contact_number_change = NULL;
             }
 
-            if($mother_profession_orig != $request->mother_contact_number_new){
+            if($mother_profession_orig != $request->mother_profession_new){
                 $mother_profession_change = "[Mother Profession] FROM '$mother_profession_orig 'TO' $employee->mother_profession";
             }
             else{
@@ -1220,4 +1220,6 @@ class EmployeesController extends Controller
         // return DataTables::of($employee)->make(true);
         return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
     }
+
+    
 }

@@ -41,6 +41,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                     $('#image_preview').show();
+                    $('#image_preview_summary').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                     $('#image_close').show();
                     $('#image_user').hide();
                     $('#image_button').hide();
@@ -54,23 +55,38 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#filename_delete').val('');
 
                 $('#first_name').val(value.first_name);
+                $('.first_name').val(value.first_name);
+
                 $('#middle_name_orig').val(value.middle_name);
                 $('#middle_name').val(value.middle_name);
+                $('.middle_name').val(value.middle_name);
+
                 $('#last_name_orig').val(value.last_name);
                 $('#last_name').val(value.last_name);
+                $('.last_name').val(value.last_name);
+
                 $('#suffix').val(value.suffix);
+                $('.suffix').val(value.suffix);
+
                 $('#nickname').val(value.nickname);
+                $('.nickname').val(value.nickname);
                 $('#birthday').val(value.birthday);
+                $('.birthday').val(value.birthday);
                 setInterval(() => {
                     $('#birthday').change();
+                    $('.birthday').change();
                 }, app_timeout);
                 $('#gender').val(value.gender);
+                $('.gender').val(value.gender);
                 $('#barangay_orig').val(value.barangay);
                 $('#barangay').val(value.barangay);
+                $('.barangay').val(value.barangay);
                 $('#unit_orig').val(value.unit);
                 $('#unit').val(value.unit);
+                $('.unit').val(value.unit);
                 $('#lot_orig').val(value.lot);
                 $('#lot').val(value.lot);
+                $('.lot').val(value.lot);
 
                 $('#house_orig').val(value.house);
                 // $('.house').removeAttr('checked');
@@ -111,7 +127,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 // }, app_timeout);
                 
                 $('#province_orig').val(value.province);
+                $('#province_summary').val(value.province);
                 $('#city_orig').val(value.city);
+                $('#city_summary').val(value.city);
 
                 $('.province').each(function(){
                     if($(this).html() == value.province){
@@ -134,43 +152,70 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
 
                 $('#region_orig').val(value.region);
                 $('#region').val(value.region);
+                $('#region_summary').val(value.region);
                 
                 $('#height_orig').val(decodeHtml(value.height));
                 $('#height').val(decodeHtml(value.height));
+                $('.height').val(decodeHtml(value.height));
+
                 $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);
+                $('.weight').val(value.weight);
+
                 $('#religion_orig').val(value.religion);
                 $('#religion').val(value.religion);
-                $('#civil_status').val(value.civil_status);
+                $('.religion').val(value.religion);
+
                 $('#civil_status_orig').val(value.civil_status);
+                $('#civil_status').val(value.civil_status);
+                $('.civil_status').val(value.civil_status);
                 setInterval(() => {
                     $('#civil_status').change();
                 }, app_timeout);
+
                 $('#email_address_orig').val(value.email_address);
                 $('#email_address').val(value.email_address);
+                $('.email_address').val(value.email_address);
+
                 $('#telephone_number_orig').val(value.telephone_number);
                 $('#telephone_number').val(value.telephone_number);
+                $('.telephone_number').val(value.telephone_number);
+
                 $('#cellphone_number_orig').val(value.cellphone_number);
                 $('#cellphone_number').val(value.cellphone_number);
+                $('.cellphone_number').val(value.cellphone_number);
+
                 $('#spouse_name').val(value.spouse_name);
                 $('#spouse_contact_number').val(value.spouse_contact_number);
                 $('#spouse_profession').val(value.spouse_profession);
+
                 $('#father_name').val(value.father_name);
+                $('.father_name').val(value.father_name);
                 $('#father_contact_number_orig').val(value.father_contact_number);
                 $('#father_contact_number').val(value.father_contact_number);
+                $('.father_contact_number').val(value.father_contact_number);
                 $('#father_profession_orig').val(value.father_profession);
                 $('#father_profession').val(value.father_profession);
+                $('.father_profession').val(value.father_profession);
+
                 $('#mother_name').val(value.mother_name);
+                $('.mother_name').val(value.mother_name);
                 $('#mother_contact_number_orig').val(value.mother_contact_number);
                 $('#mother_contact_number').val(value.mother_contact_number);
+                $('.mother_contact_number').val(value.mother_contact_number);
                 $('#mother_profession_orig').val(value.mother_profession);
                 $('#mother_profession').val(value.mother_profession);
+                $('.mother_profession').val(value.mother_profession);
+
                 $('#emergency_contact_name_orig').val(value.emergency_contact_name);
                 $('#emergency_contact_name').val(value.emergency_contact_name);
+                $('.emergency_contact_name').val(value.emergency_contact_name);
                 $('#emergency_contact_relationship_orig').val(value.emergency_contact_relationship);
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
+                $('.emergency_contact_relationship').val(value.emergency_contact_relationship);
                 $('#emergency_contact_number_orig').val(value.emergency_contact_number);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
+                $('.emergency_contact_number').val(value.emergency_contact_number);
 
                 $('#employee_number').val(value.employee_number);
                 $('#employee_company').val(value.employee_company);
@@ -708,7 +753,6 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     searching: false,
                     paging: false,
                     info: false,
-                    ordering:false,
                     autoWidth: false,
                     language:{
                         emptyTable: "No data available in table",
@@ -826,7 +870,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
-            $('#loading').hide();
+                $('#loading').hide();
             });
         }
 

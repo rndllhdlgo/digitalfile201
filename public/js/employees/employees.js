@@ -11,6 +11,7 @@ $('#addEmployeeBtn').on('click',function(){
     $('#addEmployeeBtn').hide();
     $('#btnEnableEdit').hide();
     $('#btnUpdate').hide();
+    $('#btnSummary').hide();
     $('#navigation').show();
     $('#tab1').addClass('tabactive');
     $('#resigned').hide();
@@ -87,6 +88,17 @@ $('#birthday').on('change',function(){
             age--;
         }
     return $('#age').val(age);
+});
+
+$('.birthday').on('change',function(){
+    var today = new Date();
+    var birthDate = new Date($('.birthday').val());
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+    return $('.age').val(age);
 });
 
 $('#child_birthday').on('change',function(){

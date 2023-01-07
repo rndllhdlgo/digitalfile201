@@ -1,5 +1,6 @@
 <div id="personal_info" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
     <hr class="hr-design">
+    
     <div class="row mb-3">
         <div class="column-1">
             <input type="hidden" id="filename">

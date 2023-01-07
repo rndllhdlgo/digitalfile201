@@ -297,14 +297,31 @@ input[type=search]:focus{
     border:1px solid gray;
     margin-left: 1%;
     background-color: #f2f4f5;
-    position: relative;   
 }
 .column-2{
     float: left;
     width: 77%;
 }
 
-.row:after {
+.column_1_summary{
+    float: left;
+    width: 250px;
+    height: 290px;
+    padding: 10px;
+    border:1px solid gray;
+}
+.column_2_summary{
+    float: left;
+    width: 995px;
+    padding: 10px;
+}
+
+#image_preview_summary{
+    height: 260px;
+    width: 230px;
+}
+
+.clear:after {
     content: "";
     display: table;
     clear: both;
@@ -317,6 +334,7 @@ input[type=search]:focus{
     cursor:pointer;
     display: none;
 }
+
 
 #donut_image_preview{
     height: 100px;

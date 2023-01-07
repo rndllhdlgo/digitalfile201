@@ -77,6 +77,8 @@
             <script src="{{ env('APP_URL')}}js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/checkDuplicate.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="{{ env('APP_URL')}}js/employees/logs.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="{{ env('APP_URL')}}js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
         @if(Request::is('users'))
