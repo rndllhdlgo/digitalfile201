@@ -38,7 +38,7 @@ $('#btnSave').on('click', function(){
         var house = $('input[name=house]:checked').val();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
-        var region = $("#region option:selected").text();
+        var region = $("#region").val();
         var height = $("#height").val();
         var weight = $("#weight").val();
         var religion = $("#religion").val();

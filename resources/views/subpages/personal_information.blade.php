@@ -115,6 +115,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="house_orig">
                         <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left: 30px;" checked> Owned
                         <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent
                     </div>
@@ -154,6 +155,7 @@
             <div class="row mb-3">
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="hidden" id="province_orig">
                         <select class="form-select forminput form-control required_field" name="province" id="province">
                             <option value="" selected disabled>SELECT PROVINCE</option>
                             @foreach ($provinces as $province)
@@ -166,6 +168,7 @@
 
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="hidden" id="city_orig">
                         <select class="form-select forminput form-control required_field" name="city" id="city">
                             <option value="" selected disabled>SELECT CITY</option>
                             
@@ -176,6 +179,7 @@
                 
                 <div class="col-6">
                     <div class="f-outline">
+                        <input type="hidden" id="region_orig">
                         <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
@@ -185,24 +189,28 @@
             <div class="row mb-3 mt-3">
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="height_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT <span class="span_height span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="weight_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT <span class="span_weight span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="religion_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="religion" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="religion" class="formlabel form-label"><i class="fas fa-address-card"></i> RELIGION <span class="span_religion span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="civil_status_orig">
                         <select class="form-select forminput form-control required_field"  id="civil_status" placeholder=" " onchange="changeCivilStatus()" style="background-color:white;">
                             <option value="" disabled selected>SELECT CIVIL STATUS</option>
                             <option value="Single">Single</option>
@@ -219,6 +227,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-6">
                     <div class="f-outline">
+                        <input type="hidden" id="email_address_orig">
                         <input class="forminput form-control required_field" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>
                         <p id="duplicate_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
@@ -227,6 +236,7 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="hidden" id="telephone_number_orig">
                         <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="12" onkeyup="telephoneNumberField(this)" ondrop="return false;" onpaste="return false;">
                         <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Telephone Number Already Exist!</p>
                         <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE #. <span class="span_telephone_number span_all">(Optional)</span> </label>
@@ -277,6 +287,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="father_contact_number_orig">
                         <input class="forminput form-control required_field" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist! </p>
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. <span class="span_father_contact_number span_all"></span> </label>
@@ -284,6 +295,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="father_profession_orig">
                         <input class="forminput form-control text-capitalize optional_field" type="search" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_father_profession span_all"></span> </label>
                     </div>
@@ -300,6 +312,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="mother_contact_number_orig">
                         <input class="forminput form-control required_field" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. <span class="span_mother_contact_number span_all"></span></label>
@@ -307,6 +320,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="mother_profession_orig">
                         <input class="forminput form-control text-capitalize optional_field" type="search" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_mother_profession span_all"></span></label>
                     </div>
@@ -316,6 +330,7 @@
             <div class="row mb-3">
                 <div class="col">
                         <div class="f-outline">
+                            <input type="hidden" id="emergency_contact_name_orig">
                             <input class="forminput form-control text-capitalize required_field" type="search" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <p id="emergency_contact_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                             <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> INCASE OF EMERGENCY NAME <span class="span_emergency_contact_name span_all"></span> </label>
@@ -323,12 +338,14 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="emergency_contact_relationship_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> RELATIONSHIP <span class="span_emergency_contact_relationship span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="emergency_contact_number_orig">
                         <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all"></span> </label>

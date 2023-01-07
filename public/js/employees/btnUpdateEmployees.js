@@ -157,36 +157,53 @@ $('#btnUpdate').on('click',function(){
     var nickname = $('#nickname').val();
     var birthday = $('#birthday').val();
     var gender = $('#gender').val();
-    var civil_status = $('#civil_status').val();
+    var civil_status_orig = $('#civil_status_orig').val();
+    var civil_status_new = $('#civil_status').val();
     var unit_orig = $('#unit_orig').val();
     var unit_new = $('#unit').val();
     var lot_orig = $('#lot_orig').val();
     var lot_new = $('#lot').val();
     var barangay_orig = $('#barangay_orig').val();
     var barangay_new = $('#barangay').val();
-    var house = $('input[name=house]:checked').val();
-    var region = $("#region option:selected").text();
-    var province = $("#province option:selected").text();
-    var city = $("#city option:selected").text();
-    var height = $("#height").val();
-    var weight = $("#weight").val();
-    var religion = $("#religion").val();
-    var email_address = $('#email_address').val();
-    var telephone_number = $('#telephone_number').val();
+    var house_orig = $('#house_orig').val();
+    var house_new = $('input[name=house]:checked').val();
+    var province_orig = $("#province_orig").val();
+    var province_new = $("#province option:selected").text();
+    var city_orig = $("#city_orig").val();
+    var city_new = $("#city option:selected").text();
+    var region_orig = $("#region_orig").val();
+    var region_new = $("#region").val();
+    var height_orig = $("#height_orig").val();
+    var height_new = $("#height").val();
+    var weight_orig = $("#weight_orig").val();
+    var weight_new = $("#weight").val();
+    var religion_orig = $("#religion_orig").val();
+    var religion_new = $("#religion").val();
+    var email_address_orig = $('#email_address_orig').val();
+    var email_address_new = $('#email_address').val();
+    var telephone_number_orig = $('#telephone_number_orig').val();
+    var telephone_number_new = $('#telephone_number').val();
     var cellphone_number_orig = $('#cellphone_number_orig').val();
     var cellphone_number_new = $('#cellphone_number').val();
     var spouse_name = $('#spouse_name').val();
     var spouse_contact_number = $('#spouse_contact_number').val();
     var spouse_profession = $('#spouse_profession').val();
     var father_name = $('#father_name').val();
-    var father_contact_number = $('#father_contact_number').val();
-    var father_profession = $('#father_profession').val();
+    var father_contact_number_orig = $('#father_contact_number_orig').val();
+    var father_contact_number_new = $('#father_contact_number').val();
+    var father_profession_orig = $('#father_profession_orig').val();
+    var father_profession_new = $('#father_profession').val();
     var mother_name = $('#mother_name').val();
-    var mother_contact_number = $('#mother_contact_number').val();
-    var mother_profession = $('#mother_profession').val();
-    var emergency_contact_name = $('#emergency_contact_name').val();
-    var emergency_contact_relationship = $('#emergency_contact_relationship').val();
-    var emergency_contact_number = $('#emergency_contact_number').val();
+    var mother_contact_number_orig = $('#mother_contact_number_orig').val();
+    var mother_contact_number_new = $('#mother_contact_number').val();
+    var mother_profession_orig = $('#mother_profession_orig').val();
+    var mother_profession_new = $('#mother_profession').val();
+    var emergency_contact_name_orig = $('#emergency_contact_name_orig').val();
+    var emergency_contact_name_new = $('#emergency_contact_name').val();
+    var emergency_contact_relationship_orig = $('#emergency_contact_relationship_orig').val();
+    var emergency_contact_relationship_new = $('#emergency_contact_relationship').val();
+    var emergency_contact_number_orig = $('#emergency_contact_number_orig').val();
+    var emergency_contact_number_new = $('#emergency_contact_number').val();
 
     Swal.fire({
         title: 'Do you want to Update?',
@@ -234,36 +251,53 @@ $('#btnUpdate').on('click',function(){
                     nickname:nickname,
                     birthday:birthday,
                     gender:gender,
-                    civil_status:civil_status,
+                    civil_status_orig:civil_status_orig,
+                    civil_status_new:civil_status_new,
                     unit_orig:unit_orig,
                     unit_new:unit_new,
                     lot_orig:lot_orig,
                     lot_new:lot_new,
                     barangay_orig:barangay_orig,
                     barangay_new:barangay_new,
-                    house:house,
-                    region:region,
-                    province:province,
-                    city:city,
-                    height:height,
-                    weight:weight,
-                    religion:religion,
-                    email_address:email_address,
-                    telephone_number:telephone_number,
+                    house_orig:house_orig,
+                    house_new:house_new,
+                    region_orig:region_orig,
+                    region_new:region_new,
+                    province_orig:province_orig,
+                    province_new:province_new,
+                    city_orig:city_orig,
+                    city_new:city_new,
+                    height_orig:height_orig,
+                    height_new:height_new,
+                    weight_orig:weight_orig,
+                    weight_new:weight_new,
+                    religion_orig:religion_orig,
+                    religion_new:religion_new,
+                    email_address_orig:email_address_orig,
+                    email_address_new:email_address_new,
+                    telephone_number_orig:telephone_number_orig,
+                    telephone_number_new:telephone_number_new,
                     cellphone_number_orig:cellphone_number_orig,
                     cellphone_number_new:cellphone_number_new,
                     spouse_name:spouse_name,
                     spouse_contact_number:spouse_contact_number,
                     spouse_profession:spouse_profession,
                     father_name:father_name,
-                    father_contact_number:father_contact_number,
-                    father_profession:father_profession,
+                    father_contact_number_orig:father_contact_number_orig,
+                    father_contact_number_new:father_contact_number_new,
+                    father_profession_orig:father_profession_orig,
+                    father_profession_new:father_profession_new,
                     mother_name:mother_name,
-                    mother_contact_number:mother_contact_number,
-                    mother_profession:mother_profession,
-                    emergency_contact_name:emergency_contact_name,
-                    emergency_contact_relationship:emergency_contact_relationship,
-                    emergency_contact_number:emergency_contact_number
+                    mother_contact_number_orig:mother_contact_number_orig,
+                    mother_contact_number_new:mother_contact_number_new,
+                    mother_profession_orig:mother_profession_orig,
+                    mother_profession_new:mother_profession_new,
+                    emergency_contact_name_orig:emergency_contact_name_orig,
+                    emergency_contact_name_new:emergency_contact_name_new,
+                    emergency_contact_relationship_orig:emergency_contact_relationship_orig,
+                    emergency_contact_relationship_new:emergency_contact_relationship_new,
+                    emergency_contact_number_orig:emergency_contact_number_orig,
+                    emergency_contact_number_new:emergency_contact_number_new
                 },
                 success:function(data){
                     if(data.result == 'true'){

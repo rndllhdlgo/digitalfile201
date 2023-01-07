@@ -72,7 +72,8 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#lot_orig').val(value.lot);
                 $('#lot').val(value.lot);
 
-                $('.house').removeAttr('checked');
+                $('#house_orig').val(value.house);
+                // $('.house').removeAttr('checked');
                 $("input[name='house']").each(function() {
                     if ($(this).val() == value.house) {
                         $(this).prop('checked', true);
@@ -108,6 +109,9 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 //         }, app_timeout);
                 //     }, app_timeout);
                 // }, app_timeout);
+                
+                $('#province_orig').val(value.province);
+                $('#city_orig').val(value.city);
 
                 $('.province').each(function(){
                     if($(this).html() == value.province){
@@ -128,16 +132,23 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     }, app_timeout);
                 }, app_timeout);
 
+                $('#region_orig').val(value.region);
                 $('#region').val(value.region);
-
+                
+                $('#height_orig').val(decodeHtml(value.height));
                 $('#height').val(decodeHtml(value.height));
+                $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);
+                $('#religion_orig').val(value.religion);
                 $('#religion').val(value.religion);
                 $('#civil_status').val(value.civil_status);
+                $('#civil_status_orig').val(value.civil_status);
                 setInterval(() => {
                     $('#civil_status').change();
                 }, app_timeout);
+                $('#email_address_orig').val(value.email_address);
                 $('#email_address').val(value.email_address);
+                $('#telephone_number_orig').val(value.telephone_number);
                 $('#telephone_number').val(value.telephone_number);
                 $('#cellphone_number_orig').val(value.cellphone_number);
                 $('#cellphone_number').val(value.cellphone_number);
@@ -145,13 +156,20 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#spouse_contact_number').val(value.spouse_contact_number);
                 $('#spouse_profession').val(value.spouse_profession);
                 $('#father_name').val(value.father_name);
+                $('#father_contact_number_orig').val(value.father_contact_number);
                 $('#father_contact_number').val(value.father_contact_number);
+                $('#father_profession_orig').val(value.father_profession);
                 $('#father_profession').val(value.father_profession);
                 $('#mother_name').val(value.mother_name);
+                $('#mother_contact_number_orig').val(value.mother_contact_number);
                 $('#mother_contact_number').val(value.mother_contact_number);
+                $('#mother_profession_orig').val(value.mother_profession);
                 $('#mother_profession').val(value.mother_profession);
+                $('#emergency_contact_name_orig').val(value.emergency_contact_name);
                 $('#emergency_contact_name').val(value.emergency_contact_name);
+                $('#emergency_contact_relationship_orig').val(value.emergency_contact_relationship);
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
+                $('#emergency_contact_number_orig').val(value.emergency_contact_number);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
                 $('#employee_number').val(value.employee_number);
@@ -708,14 +726,6 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         { data: 'logs'},
                     
                     ],
-                    initComplete: function(){
-                        if(!$('.logs_table_data').DataTable().data().any()){
-                            $('#logs_table_data').hide();
-                        }
-                        else{
-                            $('#logs_table_data').show();
-                        }
-                    }
                 });
                 $('th').removeClass("sorting_asc");
 
