@@ -272,11 +272,25 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#account_number').val(value.account_number);
                 $('.account_number').val(value.account_number);
 
-                $('#employee_salary').val(value.employee_salary);
+                if(value.employee_salary || value.employee_incentives || value.employee_overtime_pay || value.employee_insurance){
+                    $('#compensation_benefits_section').show();
+                }
+                    $('#employee_salary').val(value.employee_salary);
+                    if(value.employee_salary){
+                        $('.employee_salary').val(value.employee_salary);
+                    }
+                    
                 $('#employee_incentives').val(value.employee_incentives);
+                $('.employee_incentives').val(value.employee_incentives);
+
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
+                $('.employee_overtime_pay').val(value.employee_overtime_pay);
+
                 $('#employee_bonus').val(value.employee_bonus);
+                $('.employee_bonus').val(value.employee_bonus);
+
                 $('#employee_insurance').val(value.employee_insurance);
+                $('.employee_insurance').val(value.employee_insurance);
 
                 $('#secondary_school_name').val(value.secondary_school_name);
                 $('#secondary_school_address').val(value.secondary_school_address);
@@ -287,11 +301,31 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
 
-                $('#past_medical_condition').val(value.past_medical_condition);
-                $('#allergies').val(value.allergies);
-                $('#medication').val(value.medication);
-                $('#psychological_history').val(value.psychological_history);
                 
+                if(value.past_medical_condition || value.allergies || value.medication || value.psychological_history){
+                    $('#medical_history_section').show();
+                }
+                $('#past_medical_condition').val(value.past_medical_condition);
+                    if(value.past_medical_condition){
+                        $('#past_medical_history_div').show();
+                        $('.past_medical_condition').val(value.past_medical_condition);
+                    }
+                $('#allergies').val(value.allergies);
+                    if(value.allergies){
+                        $('#allergies_div').show();
+                        $('.allergies').val(value.allergies);
+                    }
+                $('#medication').val(value.medication);
+                    if(value.medication){
+                        $('#medication_div').show();
+                        $('.medication').val(value.medication);
+                    }
+                $('#psychological_history').val(value.psychological_history);
+                    if(value.psychological_history){
+                        $('#psychological_history_div').show();
+                        $('.psychological_history').val(value.psychological_history);
+                    }
+
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();
                 $('#employees_list').hide();

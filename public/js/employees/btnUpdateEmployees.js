@@ -301,7 +301,7 @@ $('#btnUpdate').on('click',function(){
                 },
                 success:function(data){
                     if(data.result == 'true'){
-                        $('#employee_id').val(data.id);
+                        var employee_id = $('#employee_id').val(data.id);
                         var employee_number = $('#employee_number').val();
                         var employee_company = $('#employee_company').val();
                         var employee_department = $('#employee_department').val();

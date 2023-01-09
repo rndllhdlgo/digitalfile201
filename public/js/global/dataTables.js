@@ -60,6 +60,7 @@ $(document).ready(function(){
         ],
         initComplete: function(){
             $('#loading').hide();
+            $('#status_filter').val('');
         }
     });
     $('div.breakspace').html('<br><br>');

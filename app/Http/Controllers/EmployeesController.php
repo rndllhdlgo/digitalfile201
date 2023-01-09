@@ -511,14 +511,16 @@ class EmployeesController extends Controller
     }
 
     public function updateCompensationBenefits(Request $request){
-        $employee = CompensationBenefits::find($request->get('id'));
-        $employee->employee_id = $request->employee_id;
-        $employee->employee_salary = $request->employee_salary;
-        $employee->employee_incentives = $request->employee_incentives;
-        $employee->employee_overtime_pay = $request->employee_overtime_pay;
-        $employee->employee_bonus = $request->employee_bonus;
-        $employee->employee_insurance = $request->employee_insurance;
-        $employee->save();
+        if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
+            $employee = CompensationBenefits::find($request->get('id'));
+            $employee->employee_id = $request->employee_id;
+            $employee->employee_salary = $request->employee_salary;
+            $employee->employee_incentives = $request->employee_incentives;
+            $employee->employee_overtime_pay = $request->employee_overtime_pay;
+            $employee->employee_bonus = $request->employee_bonus;
+            $employee->employee_insurance = $request->employee_insurance;
+            $employee->save();
+        }
     }
 
     public function updateEducationalAttainment(Request $request){
@@ -536,13 +538,13 @@ class EmployeesController extends Controller
     }
 
     public function updateMedicalHistory(Request $request){
-        $employee = MedicalHistory::find($request->get('id'));
-        $employee->employee_id = $request->employee_id;
-        $employee->past_medical_condition = ucwords($request->past_medical_condition);
-        $employee->allergies = ucwords($request->allergies);
-        $employee->medication = ucwords($request->medication);
-        $employee->psychological_history = ucwords($request->psychological_history);
-        $employee->save();
+            $employee = MedicalHistory::find($request->get('id'));
+            $employee->employee_id = $request->employee_id;
+            $employee->past_medical_condition = ucwords($request->past_medical_condition);
+            $employee->allergies = ucwords($request->allergies);
+            $employee->medication = ucwords($request->medication);
+            $employee->psychological_history = ucwords($request->psychological_history);
+            $employee->save();
     }
     
     public function saveChildren(Request $request){
@@ -1115,15 +1117,6 @@ class EmployeesController extends Controller
             ]);
             sleep(2);
             return Redirect::to(url()->previous());
-    }
-
-    public function saveSample(Request $request){
-        $logs = new LogsTable;
-        $logs->employee_id = $request->employee_id;
-        $logs->sample1 = $request->sample1;
-        $logs->sample2 = $request->sample2;
-        $logs->sample3 = $request->sample3;
-        $logs->save();
     }
 
     // public function logs_data(Request $request){

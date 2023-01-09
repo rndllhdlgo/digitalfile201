@@ -19,7 +19,7 @@
                         <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
                     </td>
                     <td>
-                        <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
+                        <input type="search" class="form-control filter-input" id="status_filter" data-column="3" style="border:1px solid #683817"/>
                     </td>
                 </tr>
                 <tr>
