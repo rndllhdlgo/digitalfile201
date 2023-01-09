@@ -218,25 +218,59 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('.emergency_contact_number').val(value.emergency_contact_number);
 
                 $('#employee_number').val(value.employee_number);
+                $('.employee_number').val(value.employee_number);
+
                 $('#employee_company').val(value.employee_company);
+                $('.employee_company').val(value.employee_company);
+
                 $('#employee_department').val(value.employee_department);
+                $('.employee_department').val(value.employee_department);
+
                 $('#employee_branch').val(value.employee_branch);
+                $('.employee_branch').val(value.employee_branch);
+
                 $('#employment_status').val(value.employment_status);
+                $('#employment_status_summary').val(value.employment_status);
                 setInterval(() => {
                     $('#employment_status').change();
+                    $('#employment_status_summary').change();
                 }, app_timeout);
+
                 $('#employment_origin').val(value.employment_origin);
+                $('.employment_origin').val(value.employment_origin);
+
                 $('#employee_shift').val(value.employee_shift);
+                $('.employee_shift').val(value.employee_shift);
+
                 $('#employee_supervisor').val(value.employee_supervisor);
+                $('.employee_supervisor').val(value.employee_supervisor);
+
                 $('#employee_position').val(value.employee_position);
+                $('.employee_position').val(value.employee_position);
+
                 $('#date_hired').val(value.date_hired);
+                $('.date_hired').val(value.date_hired);
+
                 $('#company_email_address').val(value.company_email_address);
+                $('.company_email_address').val(value.company_email_address);
+
                 $('#company_contact_number').val(value.company_contact_number);
+                $('.company_contact_number').val(value.company_contact_number);
+
                 $('#sss_number').val(value.sss_number);
+                $('.sss_number').val(value.sss_number);
+
                 $('#pag_ibig_number').val(value.pag_ibig_number);
+                $('.pag_ibig_number').val(value.pag_ibig_number);
+
                 $('#philhealth_number').val(value.philhealth_number);
+                $('.philhealth_number').val(value.philhealth_number);
+
                 $('#tin_number').val(value.tin_number);
+                $('.tin_number').val(value.tin_number);
+
                 $('#account_number').val(value.account_number);
+                $('.account_number').val(value.account_number);
 
                 $('#employee_salary').val(value.employee_salary);
                 $('#employee_incentives').val(value.employee_incentives);

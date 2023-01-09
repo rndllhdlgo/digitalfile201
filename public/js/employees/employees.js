@@ -74,7 +74,37 @@ $('#addEmployeeBtn').on('click',function(){
                 $('#benefits').hide();
         }
         else{
+            $('#sss_number').val('');
+            $('#pag_ibig_number').val('');
+            $('#philhealth_number').val('');
+            $('#tin_number').val('');
+            $('#account_number').val('');
             $('#benefits').hide();
+        }
+
+        var employment_status_summary = $('#employment_status_summary');
+  
+        if($('#employment_status_summary').val() == "Regular" 
+        || $('#employment_status_summary').val() == 'Probationary'
+        || $('#employment_status_summary').val() == 'Part_Time'
+        || $('#employment_status_summary').val() == 'Retired'
+        ){
+            $('#benefits_summary').show();
+            $('#resignation_div').hide();
+            $('#termination_div').hide();
+        }
+        else if($('#employment_status_summary').val() == 'Resign'){
+                $('#resignation_div').show();
+                $('#termination_div').hide();
+                $('#benefits_summary').hide();
+        }
+        else if($('#employment_status_summary').val() == 'Terminate'){
+                $('#termination_div').show();
+                $('#resignation_div').hide();
+                $('#benefits_summary').hide();
+        }
+        else{
+            $('#benefits_summary').hide();
         }
     }
 

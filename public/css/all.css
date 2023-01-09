@@ -307,18 +307,19 @@ input[type=search]:focus{
     float: left;
     width: 250px;
     height: 290px;
-    padding: 10px;
     border:1px solid gray;
+    padding: 10px;
 }
 .column_2_summary{
     float: left;
     width: 995px;
     padding: 10px;
+
 }
 
 #image_preview_summary{
-    height: 260px;
-    width: 230px;
+    height: 270px;
+    width: 235px;
 }
 
 .clear:after {
