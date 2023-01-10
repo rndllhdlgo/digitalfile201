@@ -598,6 +598,13 @@ class EmployeesController extends Controller
         $employee->employee_bonus = $request->employee_bonus;
         $employee->employee_insurance = $request->employee_insurance;
         $employee->save();
+
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('id', $request->employee_id)->first()->employee_number;
+        $userlogs = new UserLogs;
+        $userlogs->user_id = auth()->user()->id;
+        $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number]. Employee Name: [$employee_details->first_name $employee_details->middle_name $employee_details->last_name]."; //Display logs in home page
+        $userlogs->save();
     }
 
     public function saveEducationalAttainment(Request $request){
@@ -844,11 +851,13 @@ class EmployeesController extends Controller
             $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
             $document->medical_certificate_file = $medicalCertificateFilename;
 
+        if($request->hasFile('nbi_clearance_file')){
             $nbiFile = $request->file('nbi_clearance_file');
             $nbiExtension = $nbiFile->getClientOriginalExtension();
             $nbiFilename = time().rand(1,100).'_NBI_Clearance_File.'.$nbiExtension;
             $nbiFile->storeAs('public/documents_files',$nbiFilename);
             $document->nbi_clearance_file = $nbiFilename;
+        }
 
             $pagibigFile = $request->file('pag_ibig_file');
             $pagibigExtension = $pagibigFile->getClientOriginalExtension();
