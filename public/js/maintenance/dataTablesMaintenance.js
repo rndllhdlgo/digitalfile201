@@ -1,16 +1,16 @@
     var companyTable = $('#companyTable').DataTable({
-        dom: 'Blf<"breakspace">trip',
-        buttons: [{
-            extend: 'excelHtml5',
-            title: 'Export - Companies',
-            exportOptions: {
-                modifier : {
-                    order : 'index',
-                    page : 'all',
-                    search : 'none'
-                },
-            },
-        }],
+        dom: 'lf<"breakspace">trip',
+        // buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Export - Companies',
+        //     exportOptions: {
+        //         modifier : {
+        //             order : 'index',
+        //             page : 'all',
+        //             search : 'none'
+        //         },
+        //     },
+        // }],
         language:{
             "info": "\"Showing _START_ to _END_ of _TOTAL_ Companies\"",
             "lengthMenu":"Show _MENU_ Companies",
@@ -35,18 +35,18 @@
     $('div.breakspace').html('<br><br>');
 
     var departmentTable = $('#departmentTable').DataTable({
-        dom: 'Blf<"breakspace">trip',
-        buttons: [{
-            extend: 'excelHtml5',
-            title: 'Export - Departments',
-            exportOptions: {
-                modifier : {
-                    order : 'index',
-                    page : 'all',
-                    search : 'none'
-                },
-            },
-        }],
+        dom: 'lf<"breakspace">trip',
+        // buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Export - Departments',
+        //     exportOptions: {
+        //         modifier : {
+        //             order : 'index',
+        //             page : 'all',
+        //             search : 'none'
+        //         },
+        //     },
+        // }],
         language:{
             "info": "\"Showing _START_ to _END_ of _TOTAL_ Departments\"",
             "lengthMenu":"Show _MENU_ Departments",
@@ -70,18 +70,18 @@
     $('div.breakspace').html('<br><br>');
 
     var branchTable = $('#branchTable').DataTable({
-        dom: 'Blf<"breakspace">trip',
-        buttons: [{
-            extend: 'excelHtml5',
-            title: 'Export - Branches',
-            exportOptions: {
-                modifier : {
-                    order : 'index',
-                    page : 'all',
-                    search : 'none'
-                },
-            },
-        }],
+        dom: 'lf<"breakspace">trip',
+        // buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Export - Branches',
+        //     exportOptions: {
+        //         modifier : {
+        //             order : 'index',
+        //             page : 'all',
+        //             search : 'none'
+        //         },
+        //     },
+        // }],
         language:{
             "info": "\"Showing _START_ to _END_ of _TOTAL_ Branches\"",
             "lengthMenu":"Show _MENU_ Branches",
@@ -105,18 +105,18 @@
     $('div.breakspace').html('<br><br>');
 
     var shiftTable = $('table.shiftTable').DataTable({
-            dom: 'Blf<"breakspace">trip',
-            buttons: [{
-                extend: 'excelHtml5',
-                title: 'Export - Shifts',
-                exportOptions: {
-                    modifier : {
-                        order : 'index',
-                        page : 'all',
-                        search : 'none'
-                    },
-                },
-            }],
+            dom: 'lf<"breakspace">trip',
+            // buttons: [{
+            //     extend: 'excelHtml5',
+            //     title: 'Export - Shifts',
+            //     exportOptions: {
+            //         modifier : {
+            //             order : 'index',
+            //             page : 'all',
+            //             search : 'none'
+            //         },
+            //     },
+            // }],
             language: {
                 info: "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
                 lengthMenu: "Show _MENU_ Shifts",
@@ -144,18 +144,18 @@
     });
 
     var supervisorTable = $('#supervisorTable').DataTable({
-        dom: 'Blf<"breakspace">trip',
-        buttons: [{
-            extend: 'excelHtml5',
-            title: 'Export - Supervisors',
-            exportOptions: {
-                modifier : {
-                    order : 'index',
-                    page : 'all',
-                    search : 'none'
-                },
-            },
-        }],
+        dom: 'lf<"breakspace">trip',
+        // buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Export - Supervisors',
+        //     exportOptions: {
+        //         modifier : {
+        //             order : 'index',
+        //             page : 'all',
+        //             search : 'none'
+        //         },
+        //     },
+        // }],
         language:{
             "info": "\"Showing _START_ to _END_ of _TOTAL_ Supervisors\"",
             "lengthMenu":"Show _MENU_ Supervisors",
@@ -179,18 +179,18 @@
     $('div.breakspace').html('<br><br>');
 
     var jobPositionAndDescriptionTable = $('table.jobPositionAndDescriptionTable').DataTable({
-        dom: 'Blf<"breakspace">trip',
-        buttons: [{
-            extend: 'excelHtml5',
-            title: 'Export - Job Positions',
-            exportOptions: {
-                modifier : {
-                    order : 'index',
-                    page : 'all',
-                    search : 'none'
-                },
-            },
-        }],
+        dom: 'lf<"breakspace">trip',
+        // buttons: [{
+        //     extend: 'excelHtml5',
+        //     title: 'Export - Job Positions',
+        //     exportOptions: {
+        //         modifier : {
+        //             order : 'index',
+        //             page : 'all',
+        //             search : 'none'
+        //         },
+        //     },
+        // }],
             language: {
                 info: "\"Showing _START_ to _END_ of _TOTAL_ Job Positions,Descriptions,Skills\"",
                 lengthMenu: "Show _MENU_ Job Positions",

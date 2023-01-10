@@ -39,13 +39,13 @@
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col">
+                                        <b>BIRTHDAY:</b> <input type="date" class="birthday font_weight d-none" style="border:none; width:106px;" disabled> <span id="birthday_summary"> </span>
+                                    </div>
+                                    <div class="col">
+                                        <b>AGE:</b> <span class="age font_weight"></span>
+                                    </div>
+                                    <div class="col">
                                         <b>GENDER:</b> <span class="gender font_weight"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>BIRTHDAY:</b> <input type="date" class="birthday font_weight" style="border:none; width:58%;" disabled>
-                                    </div>
-                                    <div class="col">
-                                        <b>AGE:</b> <input type="text" class="age font_weight" style="border:none; width:40px;" disabled>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
@@ -63,7 +63,7 @@
                                     </div>
                                     
                                     <div class="col">
-                                        <b>CIVIL STATUS:</b> <input type="text" class="civil_status font_weight" style="border:none;" disabled>
+                                        <b>CIVIL STATUS:</b> <input type="hidden" class="civil_status font_weight" style="border:none;" disabled> <span id="civil_status_content"></span>
                                     </div>
                                 </div>
                                 
@@ -85,25 +85,20 @@
                                         <b>SUBDIVISION, BARANGAY:</b> <span class="barangay font_weight"></span>
                                     </div>
                                 </div>
+                                
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <input type="radio" id="default" name="house" class="house font_weight" value="Owned"> Owned
-                                        <input type="radio" name="house" class="house font_weight" value="Rent" style="margin-left: 30px;"> Rent
+                                        <b>PROVINCE:</b> <input type="hidden" id="province_summary" class="font_weight" style="border:none;" disabled> <span id="province_content"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <b>PROVINCE:</b> <input type="text" id="province_summary" class="font_weight" style="border:none;" disabled>
+                                        <b>CITY:</b> <input type="hidden" id="city_summary" class="font_weight" style="border:none;" disabled> <span id="city_content"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <b>CITY:</b> <input type="text" id="city_summary" class="font_weight" style="border:none;" disabled>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <b>REGION:</b> <input type="text" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled>
+                                        <b>REGION:</b> <input type="hidden" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled> <span id="region_content"></span>
                                     </div>
                                 </div>
                             </div> <!-- Column 1 -->
@@ -115,17 +110,7 @@
 
                             <div class="column_three">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
-                                <div class="row mb-2" id="spouse_summary_div" style="display:none;">
-                                    <div class="col">
-                                        <b>SPOUSE NAME:</b> <span class="spouse_name"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>SPOUSE CONTACT #:</b> <span class="spouse_contact_number"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>SPOUSE PROFESSION:</b> <span class="spouse_profession"></span>
-                                    </div>
-                                </div>
+                                
                                 <div class="row mb-2">
                                     <div class="col">
                                         <b>EMAIL ADDRESS:</b> <span class="email_address font_weight"></span>
@@ -137,6 +122,19 @@
                                         <b>CELLPHONE #:</b> <span class="cellphone_number font_weight"></span>
                                     </div>
                                 </div>
+
+                                <div class="row mb-2" id="spouse_summary_div" style="display:none;">
+                                    <div class="col">
+                                        <b>SPOUSE NAME:</b> <span class="spouse_name"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>SPOUSE CONTACT #:</b> <span class="spouse_contact_number"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>SPOUSE PROFESSION:</b> <span class="spouse_profession"></span>
+                                    </div>
+                                </div>
+
                                 <div class="row mb-2">
                                     <div class="col">
                                         <b>FATHER'S NAME:</b> <span class="father_name font_weight"></span>
@@ -173,6 +171,7 @@
                             </div> <!-- Column 3-->
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
+                <hr class="hr-design">
             </div> <!-- Modal Body Div -->
         </div> <!-- Modal Content -->
     </div> <!-- Modal Dialogue -->

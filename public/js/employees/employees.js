@@ -131,7 +131,7 @@ $('.birthday').on('change',function(){
         if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
             age--;
         }
-    return $('.age').val(age);
+    return $('.age').html(age);
 });
 
 $('#child_birthday').on('change',function(){
@@ -553,15 +553,15 @@ $(document).ready(function() {
     $('#job_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
 });
 
-// $(document).on('click', '#btnPrint', function(){
-//     var printContents=document.getElementById('print_summary').innerHTML;
-//     var originalContents=document.body.innerHTML;
-//     document.body.innerHTML=printContents;
-//     window.print();
-//     document.body.innerHTML=originalContents;
-// });
-
 $(document).on('click', '#btnPdf', function(){
+    var printContents=document.getElementById('print_file').innerHTML;
+    var originalContents=document.body.innerHTML;
+    document.body.innerHTML=printContents;
+    window.print();
+    document.body.innerHTML=originalContents;
+});
+
+// $(document).on('click', '#btnPdf', function(){
     // $('#image_preview_summary').css('height','200px');
     // $('#image_preview_summary').css('width','200px');
     // Swal.fire({
@@ -576,16 +576,16 @@ $(document).on('click', '#btnPdf', function(){
     // })
     // .then((result) => {
     //     if(result.isConfirmed){
-            var content = document.getElementById('print_file');
-            var options = {
-                margin:       [0, 0],
-                filename:     $('#first_name').val()+'.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-            html2pdf(content, options);
+            // var content = document.getElementById('print_file');
+            // var options = {
+            //     margin:       [0.1, 0.1],
+            //     filename:     $('#employee_number').val() + " " + $('#first_name').val() + " " + $('#middle_name').val() + " " + $('#last_name').val()+ '.pdf',
+            //     image:        { type: 'jpeg', quality: 0.98 },
+            //     html2canvas:  { scale: 1.75 },
+            //     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            // };
+            // html2pdf(content, options);
         // }
     // });
-});
+// });
 

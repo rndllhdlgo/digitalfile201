@@ -10,6 +10,7 @@ $('#btnSummary').on('click',function(){
     $('.suffix').html($('#suffix').val());
     $('.nickname').html($('#nickname').val());
     $('.birthday').val($('#birthday').val());
+    $('#birthday_summary').html(moment($('#birthday').val()).format('MMM. DD, YYYY'));
     setInterval(() => {
         $('.birthday').change();
     }, app_timeout);
@@ -20,11 +21,7 @@ $('#btnSummary').on('click',function(){
     $('.height').html($('#height').val());
     $('.weight').html($('#weight').val());
     $('.religion').html($('#religion').val());
-    $('.civil_status').val($('#civil_status').val());
-    setInterval(() => {
-        $('.civil_status').change();
-    }, app_timeout);
-
+    $('#civil_status_content').html($('#civil_status').val());
     $('.email_address').html($('#email_address').val());
     $('.telephone_number').html($('#telephone_number').val());
     $('.cellphone_number').html($('#cellphone_number').val());

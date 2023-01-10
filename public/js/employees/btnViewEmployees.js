@@ -80,7 +80,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#lot').val(value.lot);
 
                 $('#house_orig').val(value.house);
-                // $('.house').removeAttr('checked');
+
                 $("input[name='house']").each(function() {
                     if ($(this).val() == value.house) {
                         $(this).prop('checked', true);
@@ -89,8 +89,10 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 
                 $('#province_orig').val(value.province);
                 $('#province_summary').val(value.province);
+                $('#province_content').html(value.province);
                 $('#city_orig').val(value.city);
                 $('#city_summary').val(value.city);
+                $('#city_content').html(value.city);
 
                 $('.province').each(function(){
                     if($(this).html() == value.province){
@@ -114,6 +116,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#region_orig').val(value.region);
                 $('#region').val(value.region);
                 $('#region_summary').val(value.region);
+                $('#region_content').html(value.region);
                 
                 $('#height_orig').val(decodeHtml(value.height));
                 $('#height').val(decodeHtml(value.height));
@@ -162,6 +165,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#emergency_contact_number_orig').val(value.emergency_contact_number);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
+                //Work Information
                 $('#employee_number').val(value.employee_number);
                 $('.employee_number').val(value.employee_number);
 
@@ -237,6 +241,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#employee_insurance').val(value.employee_insurance);
                 $('.employee_insurance').val(value.employee_insurance);
 
+                //Education/Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
                 $('#secondary_school_address').val(value.secondary_school_address);
                 $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
@@ -246,30 +251,29 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
 
-                
-                if(value.past_medical_condition || value.allergies || value.medication || value.psychological_history){
-                    $('#medical_history_section').show();
-                }
-                $('#past_medical_condition').val(value.past_medical_condition);
-                    if(value.past_medical_condition){
-                        $('#past_medical_history_div').show();
-                        $('.past_medical_condition').val(value.past_medical_condition);
-                    }
-                $('#allergies').val(value.allergies);
-                    if(value.allergies){
-                        $('#allergies_div').show();
-                        $('.allergies').val(value.allergies);
-                    }
-                $('#medication').val(value.medication);
-                    if(value.medication){
-                        $('#medication_div').show();
-                        $('.medication').val(value.medication);
-                    }
-                $('#psychological_history').val(value.psychological_history);
-                    if(value.psychological_history){
-                        $('#psychological_history_div').show();
-                        $('.psychological_history').val(value.psychological_history);
-                    }
+                // if(value.past_medical_condition || value.allergies || value.medication || value.psychological_history){
+                //     $('#medical_history_section').show();
+                // }
+                // $('#past_medical_condition').val(value.past_medical_condition);
+                //     if(value.past_medical_condition){
+                //         $('#past_medical_history_div').show();
+                //         $('.past_medical_condition').val(value.past_medical_condition);
+                //     }
+                // $('#allergies').val(value.allergies);
+                //     if(value.allergies){
+                //         $('#allergies_div').show();
+                //         $('.allergies').val(value.allergies);
+                //     }
+                // $('#medication').val(value.medication);
+                //     if(value.medication){
+                //         $('#medication_div').show();
+                //         $('.medication').val(value.medication);
+                //     }
+                // $('#psychological_history').val(value.psychological_history);
+                //     if(value.psychological_history){
+                //         $('#psychological_history_div').show();
+                //         $('.psychological_history').val(value.psychological_history);
+                //     }
 
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();
