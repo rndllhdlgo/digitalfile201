@@ -286,6 +286,10 @@ $(document).ready(function(){
 });
 
     function addMemoRow(){
+        $('#memo_subject').attr('id','');
+        $('#memo_date').attr('id','');
+        $('#memo_penalty').attr('id','');
+        $('#memo_file').attr('id','');
         $('#memoTable').find('tbody').prepend('<tr>'+
                     '<td class="pb-3 pt-3">'+ 
                         '<div class="f-outline">' + 
@@ -331,6 +335,10 @@ $(document).ready(function(){
     }
 
     function addEvaluationRow(){
+        $('#evaluation_reason').attr('id','');
+        $('#evaluation_date').attr('id','');
+        $('#evaluation_evaluated_by').attr('id','');
+        $('#evaluation_file').attr('id','');
         $('#evaluationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
@@ -365,6 +373,9 @@ $(document).ready(function(){
     }
 
     function addContractsRow(){
+        $('#contracts_type').attr('id','');
+        $('#contracts_date').attr('id','');
+        $('#contracts_file').attr('id','');
         $('#contractsTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
@@ -393,6 +404,9 @@ $(document).ready(function(){
     }
 
     function addResignationRow(){
+        $('#resignation_reason').attr('id','');
+        $('#resignation_date').attr('id','');
+        $('#resignation_file').attr('id','');
         $('#resignationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
@@ -420,6 +434,9 @@ $(document).ready(function(){
     }
 
     function addTerminationRow(){
+        $('#termination_reason').attr('id','');
+        $('#termination_date').attr('id','');
+        $('#termination_file').attr('id','');
         $('#terminationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 

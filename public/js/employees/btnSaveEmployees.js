@@ -337,6 +337,23 @@ $('#btnSave').on('click', function(){
                                     });
                                 });
 
+                                $('#memo_subject').attr('name','');
+                                $('#memo_date').attr('name','');
+                                $('#memo_penalty').attr('name','');
+                                $('#memo_file').attr('name','');
+                                $('#evaluation_reason').attr('name','');
+                                $('#evaluation_date').attr('name','');
+                                $('#evaluation_evaluated_by').attr('name','');
+                                $('#evaluation_file').attr('name','');
+                                $('#contracts_type').attr('name','');
+                                $('#contracts_date').attr('name','');
+                                $('#contracts_file').attr('name','');
+                                $('#resignation_reason').attr('name','');
+                                $('#resignation_date').attr('name','');
+                                $('#resignation_file').attr('name','');
+                                $('#termination_reason').attr('name','');
+                                $('#termination_date').attr('name','');
+                                $('#termination_file').attr('name','');
                                 $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 setTimeout(function(){window.location.reload();}, 2000);
