@@ -549,3 +549,40 @@ $(document).ready(function() {
     $('#job_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
     $('#job_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
 });
+
+// $(document).on('click', '#btnPrint', function(){
+//     var printContents=document.getElementById('print_summary').innerHTML;
+//     var originalContents=document.body.innerHTML;
+//     document.body.innerHTML=printContents;
+//     window.print();
+//     document.body.innerHTML=originalContents;
+// });
+
+$(document).on('click', '#btnPdf', function(){
+    // $('#image_preview_summary').css('height','200px');
+    // $('#image_preview_summary').css('width','200px');
+    // Swal.fire({
+    //     title: "SAVE AS PDF?",
+    //     html: "You are about to SAVE this Stock Transfer as PDF!",
+    //     icon: "warning",
+    //     showCancelButton: true,
+    //     cancelButtonColor: '#3085d6',
+    //     confirmButtonColor: '#d33',
+    //     confirmButtonText: 'Confirm',
+    //     allowOutsideClick: false
+    // })
+    // .then((result) => {
+    //     if(result.isConfirmed){
+            var content = document.getElementById('print_file');
+            var options = {
+                margin:       [0, 0],
+                filename:     $('#first_name').val()+'.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+            html2pdf(content, options);
+        // }
+    // });
+});
+
