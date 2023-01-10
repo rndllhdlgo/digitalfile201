@@ -360,8 +360,18 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'college_name',width: '30%'},
                         { data: 'college_degree', width: '30%'},
-                        { data: 'college_inclusive_years_from', width: '15%'},
-                        { data: 'college_inclusive_years_to', width: '15%'}
+                        { 
+                            data: 'college_inclusive_years_from', 
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+moment(row.college_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width: '15%'},
+                        { 
+                            data: 'college_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+moment(row.college_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width: '15%'}
                     ],
                     initComplete: function(){
                         if(!$('.college_table_orig').DataTable().data().any()){
@@ -406,8 +416,18 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'training_name',width: '30%'},
                         { data: 'training_title', width: '30%'},
-                        { data: 'training_inclusive_years_from', width: '15%'},
-                        { data: 'training_inclusive_years_to', width: '15%'}
+                        { 
+                            data: 'training_inclusive_years_from',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+moment(row.training_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width: '15%'},
+                        { 
+                            data: 'training_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+moment(row.training_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width: '15%'}
                     ],
                     initComplete: function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
@@ -451,8 +471,20 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'vocational_name', width: '30%'},
                         { data: 'vocational_course', width: '30%'},
-                        { data: 'vocational_inclusive_years_from', width: '15%'},
-                        { data: 'vocational_inclusive_years_to', width: '15%'}
+                        { 
+                            data: 'vocational_inclusive_years_from',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width: '15%'
+                        },
+                        { 
+                            data: 'vocational_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width: '15%'
+                        }
                     ],
                     initComplete: function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
@@ -498,8 +530,20 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
                         { data: 'job_description',width : '15%'},
                         { data: 'job_position', width: '15%'},
                         { data: 'job_contact_number', width : '15%'},
-                        { data: 'job_inclusive_years_from', width : '15%'},
-                        { data: 'job_inclusive_years_to', width : '15%'}
+                        { 
+                            data: 'job_inclusive_years_from',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        },
+                        { 
+                            data: 'job_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        }
                     ],
                     initComplete: function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){
