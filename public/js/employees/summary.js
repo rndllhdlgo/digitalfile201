@@ -39,6 +39,9 @@ $('#btnSummary').on('click',function(){
     $('.emergency_contact_number').html($('#emergency_contact_number').val());
 
     $('#summaryModal').modal('show');
+});
+
+$(document).on('click','#close_summary',function(){
     
-    
+    window.location.href = "/employees?employee_number="+$('#current_employee').val();
 });

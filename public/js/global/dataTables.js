@@ -17,7 +17,12 @@ $(document).ready(function(){
         },
         order: [],
         columns:[
-            {data: 'employee_number'},//data column name
+            {
+                data: 'employee_number',
+                "render": function(data, type, row){
+                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
+                }
+            },
             {data: 'first_name'},
             {data: 'middle_name'},
             {data: 'last_name'},
@@ -26,6 +31,11 @@ $(document).ready(function(){
             {data: 'employment_status'},
         ],
         initComplete: function(){
+            if(window.location.search.includes('employee_number') == true){
+                var url = new URL(window.location.href);
+                var employee_number = url.searchParams.get("employee_number");
+                $('.'+employee_number).closest('tr').click();
+            }
             $('#loading').hide();
         }
     });

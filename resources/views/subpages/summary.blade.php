@@ -1,9 +1,9 @@
 <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-fullscreen-xxl-down">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #0d1a80;">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Employee Summary Details</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="close_summary"></button>
             </div>
         
             <div class="modal-body p-2" style="overflow-x: hidden;">
@@ -108,67 +108,73 @@
                             </div> <!-- Column 2 -->
                         </div><!-- Clear Float -->
 
-                            <div class="column_three">
+                            <div class="column_three" style="padding: 5px;">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
                                 
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <b>EMAIL ADDRESS:</b> <span class="email_address font_weight"></span>
+                                        <b>EMAIL ADDRESS:</b><br> <span class="email_address font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>TELEPHONE #:</b> <span class="telephone_number font_weight"></span>
+                                        <b>TELEPHONE #:</b><br> <span class="telephone_number font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>CELLPHONE #:</b> <span class="cellphone_number font_weight"></span>
+                                        <b>CELLPHONE #:</b><br> <span class="cellphone_number font_weight"></span>
                                     </div>
                                 </div>
 
                                 <div class="row mb-2" id="spouse_summary_div" style="display:none;">
                                     <div class="col">
-                                        <b>SPOUSE NAME:</b> <span class="spouse_name"></span>
+                                        <b>SPOUSE NAME:</b><br> <span class="spouse_name"></span>
                                     </div>
                                     <div class="col">
-                                        <b>SPOUSE CONTACT #:</b> <span class="spouse_contact_number"></span>
+                                        <b>SPOUSE CONTACT #:</b><br> <span class="spouse_contact_number"></span>
                                     </div>
                                     <div class="col">
-                                        <b>SPOUSE PROFESSION:</b> <span class="spouse_profession"></span>
+                                        <b>SPOUSE PROFESSION:</b><br> <span class="spouse_profession"></span>
                                     </div>
                                 </div>
 
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <b>FATHER'S NAME:</b> <span class="father_name font_weight"></span>
+                                        <b>FATHER'S NAME:</b><br> <span class="father_name font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>FATHER'S CONTACT #:</b> <span class="father_contact_number font_weight"></span>
+                                        <b>CONTACT #:</b><br> <span class="father_contact_number font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>FATHERS'S PROFESSION #:</b> <span class="father_profession font_weight"></span>
-                                    </div>
-                                </div>
-                                <div class="row mb-2">
-                                    <div class="col">
-                                        <b>MOTHER'S MAIDEN NAME:</b> <span class="mother_name font_weight"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>MOTHER'S CONTACT #:</b> <span class="mother_contact_number font_weight"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>MOTHER'S PROFESSION #:</b> <span class="mother_profession font_weight"></span>
+                                        <b>PROFESSION #:</b><br> <span class="father_profession font_weight"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-2">
                                     <div class="col">
-                                        <b>EMERGENCY CONTACT NAME:</b> <span class="emergency_contact_name font_weight"></span>
+                                        <b>MOTHER'S MAIDEN NAME:</b><br> <span class="mother_name font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>EMERGENCY CONTACT RELATIONSHIP:</b> <span class="emergency_contact_relationship font_weight"></span>
+                                        <b>CONTACT #:</b><br> <span class="mother_contact_number font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>EMERGENCY CONTACT #:</b> <span class="emergency_contact_number font_weight"></span>
+                                        <b>PROFESSION #:</b><br> <span class="mother_profession font_weight"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <b>EMERGENCY CONTACT NAME:</b><br> <span class="emergency_contact_name font_weight"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>RELATIONSHIP:</b><br> <span class="emergency_contact_relationship font_weight"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>CONTACT #:</b><br> <span class="emergency_contact_number font_weight"></span>
                                     </div>
                                 </div>
                             </div> <!-- Column 3-->
+
+                            <div class="column_four" style="padding:5px;">
+                                <div class="row mb-2">
+                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
+                                </div>
+                            </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">

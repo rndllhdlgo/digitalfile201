@@ -20,6 +20,7 @@
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
+        <input type="hidden" id="current_employee">
     </head>
 <body>
         <div id="loading">

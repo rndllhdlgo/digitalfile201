@@ -4,7 +4,7 @@ var college_id = [];
 var training_id = [];
 var job_history_id = [];
 var memo_id = [];
-$(document).on('dblclick','table.employeesTable tbody tr',function(){
+$(document).on('click','table.employeesTable tbody tr',function(){
     
     // logs_id = [];
     children_id = [];
@@ -36,6 +36,7 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
             employee_data.forEach(value => {
 
                 $('#hidden_id').val(value.id);
+                $('#current_employee').val(value.employee_number);
                 //Personal Information
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
