@@ -111,10 +111,21 @@
                             <div class="column_two">
                                 <img id="image_preview_summary">
                             </div> <!-- Column 2 -->
-
                         </div><!-- Clear Float -->
+
                             <div class="column_three">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
+                                <div class="row mb-2" id="spouse_summary_div" style="display:none;">
+                                    <div class="col">
+                                        <b>SPOUSE NAME:</b> <span class="spouse_name"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>SPOUSE CONTACT #:</b> <span class="spouse_contact_number"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>SPOUSE PROFESSION:</b> <span class="spouse_profession"></span>
+                                    </div>
+                                </div>
                                 <div class="row mb-2">
                                     <div class="col">
                                         <b>EMAIL ADDRESS:</b> <span class="email_address font_weight"></span>
@@ -160,7 +171,6 @@
                                     </div>
                                 </div>
                             </div> <!-- Column 3-->
-                         
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
             </div> <!-- Modal Body Div -->

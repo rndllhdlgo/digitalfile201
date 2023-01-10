@@ -126,7 +126,6 @@ $(document).on('dblclick','table.employeesTable tbody tr',function(){
 
                 $('#civil_status_orig').val(value.civil_status);
                 $('#civil_status').val(value.civil_status);
-                $('.civil_status').val(value.civil_status);
                 setInterval(() => {
                     $('#civil_status').change();
                 }, app_timeout);

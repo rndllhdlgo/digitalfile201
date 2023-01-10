@@ -28,6 +28,9 @@ $('#btnSummary').on('click',function(){
     $('.email_address').html($('#email_address').val());
     $('.telephone_number').html($('#telephone_number').val());
     $('.cellphone_number').html($('#cellphone_number').val());
+    $('.spouse_name').html($('#spouse_name').val());
+    $('.spouse_contact_number').html($('#spouse_contact_number').val());
+    $('.spouse_profession').html($('#spouse_profession').val());
     $('.father_name').html($('#father_name').val());
     $('.father_contact_number').html($('#father_contact_number').val());
     $('.father_profession').html($('#father_profession').val());
