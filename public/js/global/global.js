@@ -302,8 +302,8 @@ $('#changePasswordSpan').on('click',function(){
 });
 
 var checkRequired = true, checkChanges = true, checkInvalid = true, checkDuplicate = true;
-setInterval(checkRequiredFields, 0);
-function checkRequiredFields(){
+setInterval(checkReqFields, 0);
+function checkReqFields(){
     if($('#loading').is(':hidden')){
         if($(".req_field:visible").length > 0){
             $('.req_field').each(function(){
@@ -345,7 +345,7 @@ function checkRequiredFields(){
             $('.duplicateNote').hide();
             checkDuplicate = true;
         }
-        if(checkRequired == true && checkChanges == true && checkInvalid == true && checkDuplicate == true){
+         if(checkRequired == true && checkChanges == true && checkInvalid == true && checkDuplicate == true){
             $('.btnRequired').prop('disabled', false);
         }
         else{

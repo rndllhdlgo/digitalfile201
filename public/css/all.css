@@ -585,3 +585,16 @@ input:checked + .slider .off{
 .slider.round:before{
     border-radius: 50%;
 }
+
+.card{
+    border-color: #0d1a80;
+    border-radius: 0px;
+}
+.card-header{
+    background-color: #0d1a80;
+    border-color: #0d1a80;
+    border-radius: 0px !important;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
