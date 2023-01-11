@@ -305,8 +305,8 @@ var checkRequired = true, checkChanges = true, checkInvalid = true, checkDuplica
 setInterval(checkRequiredFields, 0);
 function checkRequiredFields(){
     if($('#loading').is(':hidden')){
-        if($(".required_field:visible").length > 0){
-            $('.required_field').each(function(){
+        if($(".req_field:visible").length > 0){
+            $('.req_field').each(function(){
                 if(!$.trim($(this).val())){
                     $(this).addClass('requiredInput');
                 }

@@ -13,19 +13,19 @@
             <form id="form_changepassword">
                 <div class="mb-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="password" id="pass1" name="pass1" minlength="8" maxlength="30" placeholder=" " required autofocus>
+                        <input class="forminput form-control req_field" type="password" id="pass1" name="pass1" minlength="8" maxlength="30" placeholder=" " required autofocus>
                         <label class="formlabel form-label" for="pass1">Enter Current Password</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="password" id="pass2" name="pass2" minlength="8" maxlength="30" placeholder=" " required>
+                        <input class="forminput form-control req_field" type="password" id="pass2" name="pass2" minlength="8" maxlength="30" placeholder=" " required>
                         <label class="formlabel form-label" for="pass2">Enter New Password</label>
                     </div>
                 </div>
                 <div class="mb-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="password" id="pass3" name="pass3" minlength="8" maxlength="30" placeholder=" " required>
+                        <input class="forminput form-control req_field" type="password" id="pass3" name="pass3" minlength="8" maxlength="30" placeholder=" " required>
                         <label class="formlabel form-label" for="pass3">Re-Enter New Password</label>
                     </div>
                 </div>
