@@ -168,44 +168,31 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
-                $('.employee_number').val(value.employee_number);
 
                 $('#employee_company').val(value.employee_company);
-                $('.employee_company').val(value.employee_company);
-
+                
                 $('#employee_department').val(value.employee_department);
-                $('.employee_department').val(value.employee_department);
 
                 $('#employee_branch').val(value.employee_branch);
-                $('.employee_branch').val(value.employee_branch);
 
                 $('#employment_status').val(value.employment_status);
-                $('#employment_status_summary').val(value.employment_status);
                 setInterval(() => {
                     $('#employment_status').change();
-                    $('#employment_status_summary').change();
                 }, app_timeout);
 
                 $('#employment_origin').val(value.employment_origin);
-                $('.employment_origin').val(value.employment_origin);
 
                 $('#employee_shift').val(value.employee_shift);
-                $('.employee_shift').val(value.employee_shift);
 
                 $('#employee_supervisor').val(value.employee_supervisor);
-                $('.employee_supervisor').val(value.employee_supervisor);
 
                 $('#employee_position').val(value.employee_position);
-                $('.employee_position').val(value.employee_position);
 
                 $('#date_hired').val(value.date_hired);
-                $('.date_hired').val(value.date_hired);
 
                 $('#company_email_address').val(value.company_email_address);
-                $('.company_email_address').val(value.company_email_address);
-
+                
                 $('#company_contact_number').val(value.company_contact_number);
-                $('.company_contact_number').val(value.company_contact_number);
 
                 $('#sss_number').val(value.sss_number);
                 $('.sss_number').val(value.sss_number);
@@ -589,7 +576,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'memo_subject',width: '22.5%'},
-                        { data: 'memo_date', width: '22.5%'},
+                        { 
+                            data: 'memo_date',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('MMM. YYYY');
+                            },
+                            width: '22.5%'},
                         { data: 'memo_penalty', width: '22.5%'},
                         { 
                             data: 'memo_file', 
@@ -640,7 +632,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'evaluation_reason',width: '22.5%'},
-                        { data: 'evaluation_date', width: '22.5%'},
+                        { 
+                            data: 'evaluation_date', 
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('MMM. YYYY');
+                            },
+                            width: '22.5%'},
                         { data: 'evaluation_evaluated_by', width: '22.5%'},
                         { 
                             data: 'evaluation_file', 
@@ -691,7 +688,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'contracts_type',width: '20%'},
-                        { data: 'contracts_date', width: '33.4%'},
+                        { 
+                            data: 'contracts_date',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('MMM. YYYY');
+                            },
+                            width: '33.4%'},
                         { 
                             data: 'contracts_file', 
                             "render": function(data, type, row){

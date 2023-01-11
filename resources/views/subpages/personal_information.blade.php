@@ -97,7 +97,7 @@
                     <div class="f-outline">
                         <input type="hidden" id="unit_orig">
                         <input class="forminput form-control text-capitalize optional_field" type="search" id="unit" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> UNIT/ ROOM #/ FLOOR <span class="span_unit span_all"></span> </label>
+                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR (Optional) <span class="span_unit span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
@@ -240,7 +240,7 @@
                         <input type="hidden" id="telephone_number_orig">
                         <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="12" onkeyup="telephoneNumberField(this)" ondrop="return false;" onpaste="return false;">
                         <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Telephone Number Already Exist!</p>
-                        <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE #. <span class="span_telephone_number span_all">(Optional)</span> </label>
+                        <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. <span class="span_telephone_number span_all">(Optional)</span> </label>
                     </div>
                 </div>
                 <div class="col-3">
@@ -248,7 +248,7 @@
                         <input type="hidden" id="cellphone_number_orig">
                         <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Cellphone Number Already Exist! </p>
-                        <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE #. <span class="span_cellphone_number span_all"></span> </label>
+                        <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO. <span class="span_cellphone_number span_all"></span> </label>
                     </div>
                 </div>
             </div>

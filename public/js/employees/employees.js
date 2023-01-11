@@ -519,6 +519,7 @@ setInterval(() => {
     )
     {
         $('#btnUpdate').prop("disabled",true);    
+       
     }
     else{
         $('#btnUpdate').prop("disabled",false);
@@ -561,9 +562,14 @@ $(document).on('click', '#btnPdf', function(){
     document.body.innerHTML=originalContents;
 });
 
+// $(document).ready(function(){
+//     var divContent = $("#print_file").html();
+//     var pdf = new jsPDF();
+//     pdf.text(divContent, 10, 10);
+//     pdf.save("Sample.pdf");
+// });
+
 // $(document).on('click', '#btnPdf', function(){
-    // $('#image_preview_summary').css('height','200px');
-    // $('#image_preview_summary').css('width','200px');
     // Swal.fire({
     //     title: "SAVE AS PDF?",
     //     html: "You are about to SAVE this Stock Transfer as PDF!",
