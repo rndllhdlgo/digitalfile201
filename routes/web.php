@@ -184,3 +184,6 @@ Route::any('/evaluationSave','TryController@evaluation_save');
 Route::any('/users_page','PagesController@users_page');
 
 Route::any('/saveUser','UsersController@saveUser');
+
+Route::get('/change/validate','UsersController@change_validate');
+Route::any('/change/password','UsersController@change_password');

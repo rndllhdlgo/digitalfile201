@@ -4,7 +4,6 @@ $('#btnUserUpdate').on('click',function(){
     var user_level = $('#user_level').val();
     var name = $('#name').val();
     var email = $('#email').val();
-    var status = $('#status').val();
 
     Swal.fire({
         title:'Do you want to update details?',
@@ -20,6 +19,7 @@ $('#btnUserUpdate').on('click',function(){
         }
     }).then((update) =>{
         if(update.isConfirmed){
+            $('#loading').show();
             $.ajax({
                 url: "/users/updateUser",
                 type:"POST",
@@ -30,10 +30,10 @@ $('#btnUserUpdate').on('click',function(){
                     id:id,
                     user_level:user_level,
                     name:name,
-                    email:email,
-                    status:status
+                    email:email
                 },
                 success: function(data){
+                    $('#loading').hide();
                     if(data == 'true'){
                         $('#usersModal').modal('hide');
                         Swal.fire("EDIT SUCCESS","","success");
@@ -44,12 +44,6 @@ $('#btnUserUpdate').on('click',function(){
                         Swal.fire("EDIT FAILED","","error");
                         setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 2000);
                     }  
-                },
-                error: function(data){
-                    if(data.status == 401){
-                        window.location.reload();
-                    }
-                    alert(data.responseText);
                 }
             });
         }

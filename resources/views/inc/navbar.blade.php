@@ -37,7 +37,7 @@
                     </tr>
                     <tr>
                         <td class="m-0 p-0 float-end" style="margin-bottom:5x !important;">
-                            <span id="changePasswordSpan" style="text-decoration:underline; cursor:pointer;">Change Password</span>
+                            <span id="lblChangePassword" style="text-decoration:underline; cursor:pointer;">Change Password</span>
                         </td>
                     </tr>
                 </thead>

@@ -85,4 +85,38 @@ class UsersController extends Controller
         return response($result);
     }
     
+    public function change_validate(Request $request){
+        if(Hash::check($request->current, auth()->user()->password)){
+            $result = 'true';
+        }
+        else{
+            $result = 'false';
+        }
+
+        return response($result);
+    }
+
+    public function change_password(Request $request){
+        do{
+            $users = User::find(auth()->user()->id);
+            $users->password = Hash::make($request->new);
+            $sql = $users->save();
+        }
+        while(!$sql);
+
+        if(!$sql){
+            $result = 'false';
+        }
+        else{
+            $result = 'true';
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "CHANGE PASSWORD: User successfully changed own account password.";
+            $userlogs->save();
+        }
+
+        return response($result);
+    }
+    
 }
