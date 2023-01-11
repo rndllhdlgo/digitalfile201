@@ -297,3 +297,59 @@ function idleStandby(){
 }
 idleStandby();
 
+$('#changePasswordSpan').on('click',function(){
+    $('#changePasswordModal').modal('show');
+});
+
+var checkRequired = true, checkChanges = true, checkInvalid = true, checkDuplicate = true;
+setInterval(checkRequiredFields, 0);
+function checkRequiredFields(){
+    if($('#loading').is(':hidden')){
+        if($(".required_field:visible").length > 0){
+            $('.required_field').each(function(){
+                if(!$.trim($(this).val())){
+                    $(this).addClass('requiredInput');
+                }
+                else{
+                    $(this).removeClass('requiredInput');
+                }
+            });
+        }
+        if($(".requiredInput:visible").length > 0 || $(".requiredAlert:visible").length > 0){
+            checkRequired = false;
+            $('.requiredNote').show();
+        }
+        else{
+            checkRequired = true;
+            $('.requiredNote').hide();
+        }
+        if($(".changesNote:visible").length > 0){
+            checkChanges = false;
+        }
+        else{
+            checkChanges = true;
+        }
+        if($(".invalidInput:visible").length > 0){
+            $('.invalidNote').show();
+            checkInvalid = false;
+        }
+        else{
+            $('.invalidNote').hide();
+            checkInvalid = true;
+        }
+        if($(".duplicateInput:visible").length > 0){
+            $('.duplicateNote').show();
+            checkDuplicate = false;
+        }
+        else{
+            $('.duplicateNote').hide();
+            checkDuplicate = true;
+        }
+        if(checkRequired == true && checkChanges == true && checkInvalid == true && checkDuplicate == true){
+            $('.btnRequired').prop('disabled', false);
+        }
+        else{
+            $('.btnRequired').prop('disabled', true);
+        }
+    }
+}

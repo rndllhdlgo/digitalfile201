@@ -93,15 +93,15 @@ function emailValidation(){
 }
 
 //Required Fields
-setInterval(checkforblank,0);
-function checkforblank(){
-    if($('.required_field').filter(function(){ return !!this.value; }).length != 6 || $('#email_validation').is(":visible")){
-        $('#btnUserSave').prop("disabled",true);
-    }
-    else{
-        $('#btnUserSave').prop("disabled",false);
-    }
-}
+// setInterval(checkforblank,0);
+// function checkforblank(){
+//     if($('.required_field').filter(function(){ return !!this.value; }).length != 6 || $('#email_validation').is(":visible")){
+//         $('#btnUserSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#btnUserSave').prop("disabled",false);
+//     }
+// }
 //Clear Field
 setInterval(checkclearform,0);
 function checkclearform(){

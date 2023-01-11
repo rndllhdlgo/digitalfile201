@@ -43,7 +43,7 @@
                         </div>
                     </div>
 
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                         <div class="col">
                             <div class="f-outline">
                                 <select class="form-select forminput form-control required_field"  id="status" placeholder=" " style="background-color:white;" autocomplete="off">
@@ -54,9 +54,9 @@
                                 <label for="status" class="formlabel form-label"><i class="fas fa-user-cog"></i> STATUS <span class="span_status"></span></label>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 
-                    <div class="row mb-3 password-container">
+                    {{-- <div class="row mb-3 password-container">
                         <div class="col">
                             <div class="f-outline">
                                 <input class="forminput form-control required_field" type="password" id="password" name="password" placeholder=" " autocomplete="off" onkeyup="passwordValidation()">
@@ -81,10 +81,10 @@
                                 <input type="checkbox" id="showPassword" onclick="togglePassword()"> <span class="showPassword-text">Show Password</span> 
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                         <button type="button" class="btn btn-warning mx-1 grow btnDisabled" id="btnUserClear" title="CLEAR"><i class="fas fa-eraser"></i></button>
-                        <button type="button" class="btn btn-success mx-1 grow float-end btnDisabled" id="btnUserSave" title="SAVE"><i class="fas fa-save"></i></button>
-                        <button type="button" class="btn btn-success mx-1 grow float-end" id="btnUserUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
+                        <button type="button" class="btn btn-success mx-1 grow float-end btnRequired btnDisabled" id="btnUserSave" title="SAVE"><i class="fas fa-save"></i></button>
+                        <button type="button" class="btn btn-success mx-1 grow float-end btnRequired" id="btnUserUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
             </div>
         </div>
     </div>

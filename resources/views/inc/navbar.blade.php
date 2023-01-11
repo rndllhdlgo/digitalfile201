@@ -26,11 +26,18 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
-                            <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                <u style="color: #0d1a80; !important">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: #0d1a80; !important" aria-hidden="true"></i>
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+                        <!--
+                            <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
+                                <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                    <u style="color: #0d1a80; !important">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: #0d1a80; !important" aria-hidden="true"></i>
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+                            </td>
+                        -->
+                    </tr>
+                    <tr>
+                        <td class="m-0 p-0 float-end" style="margin-bottom:5x !important;">
+                            <span id="changePasswordSpan" style="text-decoration:underline; cursor:pointer;">Change Password</span>
                         </td>
                     </tr>
                 </thead>
@@ -39,7 +46,7 @@
     </div>
 </div>
 
-    <nav class="navbar navbar-expand-sm" style="background-color:#0d1a80;font-weight:bolder;">
+    <nav class="navbar navbar-expand-sm mt-3" style="background-color:#0d1a80;font-weight:bolder;">
         <div class="container-fluid">
             <ul class="navbar-nav">
                 <li class="nav-item space">
@@ -57,6 +64,12 @@
                     </li>
                     <li class="nav-item space">
                         <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
+                    </li>
+                    <li class="nav-item space" style="margin-left: 530px;">
+                        <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <u style="color: white !important;">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: white; !important" aria-hidden="true"></i>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
                     </li>
                 @endif
             </ul>

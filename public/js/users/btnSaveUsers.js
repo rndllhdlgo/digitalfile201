@@ -3,15 +3,9 @@ $('#btnUserSave').on('click',function(){
     var user_level = $('#user_level').val();
     var name = $('#name').val();
     var email = $('#email').val();
-    var status = $('#status').val();
-    var password = $('#password').val();
-    var confirm = $('#confirm').val();
+    
 
-    if(user_level && name && email && status && password && confirm){
-        if(password != confirm){
-            Swal.fire("ERROR","Password does not match!","error");
-            return false;
-        }
+    if(user_level && name && email){
         Swal.fire({
             title: 'Do you want to save?',
             allowOutsideClick: false,
@@ -26,6 +20,7 @@ $('#btnUserSave').on('click',function(){
             }
         }).then((save) => {
             if(save.isConfirmed){
+                $('#loading').show();
                 $.ajax({
                     url: '/users/saveUser',
                     type: "POST",
@@ -35,17 +30,16 @@ $('#btnUserSave').on('click',function(){
                     data:{
                         user_level:user_level,
                         name:name,
-                        email:email,
-                        status:status,
-                        password:password
+                        email:email
                     },
                     success: function(data){
+                        $('#loading').hide();
                         if(data == 'true'){
                             $('#usersModal').modal('hide');
                             Swal.fire("USER ADD SUCCESSFULLY","","success");
                             setTimeout(function(){window.location.reload()}, 2000);
                         }
-                        else if(data == 'duplicate'){
+                        else if(data == 'duplicate'){ 
                             Swal.fire("DUPLICATE EMAIL", "Email address already exists!", "error");
                             return false;
                         }
@@ -55,7 +49,6 @@ $('#btnUserSave').on('click',function(){
                             setTimeout(function(){window.location.reload()}, 2000);
                         }
                     },
-                    
                 });
             }
         });   
