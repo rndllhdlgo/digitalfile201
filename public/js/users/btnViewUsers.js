@@ -1,5 +1,5 @@
 //Fetch User Data
-$('#usersTable tbody').on('click','tr',function(){
+$('#userTable tbody').on('click', 'tr td:not(:nth-child(4))', function(){
     var table = $('table.usersTable').DataTable();
     var data = table.row(this).data();
     var id = data.id;
