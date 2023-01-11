@@ -2,7 +2,7 @@
     <div class="row w-100">
         <div class="col-6">
             <a href="/">
-                <img src="/images/ideaserv_systems_logo.png" style="width: auto; height: 90px; line-height: 90px;">
+                <img src="/images/ideaserv_systems_logo.png" style="width: auto; height: 90px; line-height: 90px; margin-top: -5px;">
             </a>
             <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 25px; line-height: 90px; margin-left: 10px; text-decoration: none;">
                 DIGITAL 201 FILE
@@ -26,16 +26,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <!--
-                            <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
-                                <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                    <u style="color: #0d1a80; !important">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: #0d1a80; !important" aria-hidden="true"></i>
-                                </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
-                            </td>
-                        -->
-                    </tr>
-                    <tr>
                         <td class="m-0 p-0 float-end" style="margin-bottom:5x !important;">
                             <span id="lblChangePassword" style="text-decoration:underline; cursor:pointer;">Change Password</span>
                         </td>
@@ -45,81 +35,32 @@
         </div>
     </div>
 </div>
+<nav class="navbar navbar-expand-sm mt-1" style="background-color:#0d1a80;font-weight:bolder;">
+    <div class="container-fluid">
+        <ul class="navbar-nav">
+            <li class="nav-item space">
+                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
+            </li>
 
-    <nav class="navbar navbar-expand-sm mt-3" style="background-color:#0d1a80;font-weight:bolder;">
-        <div class="container-fluid">
-            <ul class="navbar-nav">
+            @if(Auth::user()->user_level == 'ADMIN' || Auth::user()->user_level == 'ENCODER') {{--ADMIN AUTHENTICATION --}}
                 <li class="nav-item space">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
+                    <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
                 </li>
-
-                @if(Auth::user()->user_level == 'ADMIN' || Auth::user()->user_level == 'ENCODER') {{--ADMIN AUTHENTICATION --}}
-                    <li class="nav-item space">
-                        <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
-                    </li>
-                @endif
-                @if(Auth::user()->user_level == 'ADMIN')
-                    <li class="nav-item space">
-                        <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
-                    </li>
-                    <li class="nav-item space">
-                        <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
-                    </li>
-                    <li class="nav-item space" style="margin-left: 530px;">
-                        <a class="nav-link logout-text" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <u style="color: white !important;">LOGOUT</u> <i class="fa fa-sign-out ml-2" style="color: white; !important" aria-hidden="true"></i>
-                        </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
-                    </li>
-                @endif
-            </ul>
-
-    {{-- <nav class="navbar navbar-expand-md navbar-light shadow-sm" style="background-color:#0d1a80;">
-        <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('app.name', 'Laravel') }}
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <!-- Left Side Of Navbar -->
-                <ul class="navbar-nav mr-auto">
-
-                </ul> --}}
-
-                <!-- Right Side Of Navbar -->
-                {{-- <ul class="navbar-nav mr-right"> --}}
-                    <!-- Authentication Links -->
-                    {{-- @guest --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                        </li> --}}
-                        {{-- @if (Route::has('register'))
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
-                        @endif --}}
-                    {{-- @else --}}
-                        {{-- <li class="nav-item">
-                            {{-- <a id="navbarDropdown" class="nav-link" href="/home" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
-                            </a>
-                        </li> --}}
-                        {{-- <li class="nav-item"><a href="/home" class="nav-link"></a></li> --}}
-                        {{-- <li class="nav-item">
-                        {{-- <a class="nav-link" href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                    document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                @csrf
-                            </form>
-                        </li> --}}
-                    {{-- @endguest --}}
-                {{-- </ul> --}}
-            </div>
-        </div>
-    </nav>
+            @endif
+            @if(Auth::user()->user_level == 'ADMIN')
+                <li class="nav-item space">
+                    <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
+                </li>
+                <li class="nav-item space">
+                    <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
+                </li>
+            @endif
+        </ul>
+        <ul class="navbar-nav mr-right">
+			<a href="/logout" style="color: white; font-size: 16px;" onclick="$('#loading').show(); event.preventDefault(); document.getElementById('logout-form').submit();">
+				LOGOUT<i class="fa fa-sign-out mx-2"></i>
+			</a>
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none"> @csrf </form>
+		</ul>
+    </div>
+</nav>

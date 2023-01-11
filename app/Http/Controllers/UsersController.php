@@ -118,5 +118,36 @@ class UsersController extends Controller
 
         return response($result);
     }
+
+    public function users_status(Request $request){
+        if($request->status == 'ACTIVE'){
+            $status1 = 'ACTIVE';
+            $status2 = 'INACTIVE';
+        }
+        else{
+            $status1 = 'INACTIVE';
+            $status2 = 'ACTIVE';
+        }
+        $name = ucwords($request->name);
+
+        $users = User::find($request->id);
+        $users->status = $request->status;
+        $sql = $users->save();
+
+        if(!$sql){
+            $result = 'false';
+        }
+        else{
+            $result = 'true';
+
+            $status = "[Status: FROM '$status2' TO '$status1']";
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED: User successfully updated details of $name with UserID#$request->id with the following CHANGES: $status.";
+            $userlogs->save();
+        }
+        return response($result);
+    }
     
 }

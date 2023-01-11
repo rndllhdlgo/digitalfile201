@@ -17,6 +17,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> --}}
+
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
@@ -35,6 +37,7 @@
         @if(!Auth::guest())
             <script>$('#loading').show();</script>
             @include('inc.navbar')
+            @include('pages.users_changePassword')
         @else
             @include('inc.guest')
         @endif
@@ -82,11 +85,12 @@
             <script src="{{ env('APP_URL')}}js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
-        @if(Request::is('users'))
+        @if(Request::is('users') || Request::is('users_page'))
             <script src="{{ env('APP_URL')}}js/users/users.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnSaveUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnUpdateUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnViewUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="{{ env('APP_URL')}}js/users/users_page.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('maintenance'))

@@ -66,7 +66,18 @@ $(document).ready(function(){
             {data: 'user_level'},//data column name
             {data: 'name'},
             {data: 'email'},
-            {data: 'status'},
+            {
+                data: 'status',
+                "render": function(data, type, row, meta){
+                    if(row.status == 'ACTIVE'){
+                        return '<label class="switch" style="zoom: 80%; margin-top: -5px; margin-bottom: -10px;"><input type="checkbox" class="togBtn" id="'+ meta.row +'" checked><div class="slider round"><span style="font-size: 110%;" class="on">ACTIVE</span><span style="font-size: 15px;" class="off">INACTIVE</span></div></label>';
+                    }
+                    if(row.status == 'INACTIVE'){
+                        return '<label class="switch" style="zoom: 80%; margin-top: -5px; margin-bottom: -10px;"><input type="checkbox" class="togBtn" id="'+ meta.row +'"><div class="slider round"><span style="font-size: 110%;" class="on">ACTIVE</span><span style="font-size: 15px;" class="off">INACTIVE</span></div></label>';
+                    }
+                },
+                width: '70px'
+            }
         ],
         initComplete: function(){
             $('#loading').hide();
@@ -74,11 +85,35 @@ $(document).ready(function(){
         }
     });
     $('div.breakspace').html('<br><br>');
+
+    $(document).on('change', '.togBtn', function(){
+        var id = $(this).attr("id");
+        var data = usersTable.row(id).data();
+            if($(this).is(':checked')){
+                var status = 'ACTIVE';
+            }
+            else{
+                var status = 'INACTIVE';
+            }
+            $.ajax({
+                url: '/users/status',
+                data:{
+                    id: data.id,
+                    name: data.name,
+                    status: status
+                },
+                success: function(data){
+                    setTimeout(function(){usersTable.ajax.reload(null, false)}, 1000);
+                }
+            });
+    });
 });
 
 $('.filter-input').on('keyup search', function(){
     usersTable.column($(this).data('column')).search($(this).val()).draw();
 });
+
+
 
 // var employee_logs_table;
 // $(document).ready(function(){

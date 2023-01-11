@@ -187,3 +187,5 @@ Route::any('/saveUser','UsersController@saveUser');
 
 Route::get('/change/validate','UsersController@change_validate');
 Route::any('/change/password','UsersController@change_password');
+
+Route::any('/users/status', 'UsersController@users_status');
