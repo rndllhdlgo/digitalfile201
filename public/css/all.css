@@ -598,3 +598,7 @@ input:checked + .slider .off{
     font-weight: bold;
     text-align: center;
 }
+
+h5{
+    font-weight: bold;
+}

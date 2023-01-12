@@ -181,7 +181,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#employment_status').val(value.employment_status);
                 $('#employment_status_orig').val(value.employment_status);
-                setInterval(() => {
+                setTimeout(() => {
                     $('#employment_status').change();
                 }, app_timeout);
 

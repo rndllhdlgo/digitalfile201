@@ -13,8 +13,9 @@
 
                 <div id="print_file">
                     <div class="summary_container">
+                        <br>
                         <div class="clear_float">
-                            <div class="column_one">
+                            <div class="column_one mb-3">
                                 <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
                                 </div>
@@ -72,9 +73,11 @@
                                 <img id="image_preview_summary">
                             </div> <!-- Column 2 -->
                         </div><!-- Clear Float -->
-                        
-                            <div class="column_three" style="padding:5px;">
-                                <div class="row mb-1 mt-5">
+
+                        <hr style="border:0.5px solid black; opacity:100%;">
+
+                            <div class="column_three mb-3" style="padding:5px;">
+                                <div class="row mb-1 mt-4">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
                                 </div>
 
@@ -111,8 +114,10 @@
                                 </div>
                             </div>
 
-                            <div class="column_three" style="padding: 5px;">
-                                <div class="row mb-1 mt-5">
+                            <hr style="border:0.5px solid black; opacity:100%;">
+
+                            <div class="column_four mb-3" style="padding: 5px;">
+                                <div class="row mb-1 mt-3">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
                                 </div>
                                 
@@ -175,8 +180,12 @@
                                 </div>
                             </div> <!-- Column 3-->
 
-                            <div class="column_four" style="padding:5px;">
-                                <div class="row mb-1 mt-5">
+                            <hr style="border:0.5px solid black; opacity:100%;">
+                            <br>
+                            <br>
+
+                            <div class="column_five mb-3" style="padding:5px;">
+                                <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
                                 </div>
 
@@ -249,8 +258,10 @@
                                 </div>
                             </div>
 
-                            <div class="column_five" id="benefits_summary" style="padding:5px;">
-                                <div class="row mb-1 mt-5">
+                            <hr style="border:0.5px solid black; opacity:100%;">
+
+                            <div class="column_six mb-3" id="benefits_summary" style="padding:5px;">
+                                <div class="row mb-1 mt-3">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL ACCOUNTS</u></h5>
                                 </div>
 
@@ -279,6 +290,8 @@
                                     </div>
                                 </div>
                             </div>
+                        <hr style="border:0.5px solid black; opacity:100%;">
+
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">

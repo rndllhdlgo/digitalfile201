@@ -103,18 +103,18 @@ function changeEmploymentStatus(){
         $('#termination_div').hide();
         
     }
-    else if($('#employment_status').val() == 'Resign'){
-            $('#resignation_div').show();
-            $('#termination_div').hide();
-            $('#benefits').hide();
-            $('#benefits_summary').hide();
-    }
-    else if($('#employment_status').val() == 'Terminate'){
-            $('#termination_div').show();
-            $('#resignation_div').hide();
-            $('#benefits').hide();
-            $('#benefits_summary').hide();
-    }
+    // else if($('#employment_status').val() == 'Resign'){
+    //         $('#resignation_div').show();
+    //         $('#termination_div').hide();
+    //         $('#benefits').hide();
+    //         $('#benefits_summary').addClass();
+    // }
+    // else if($('#employment_status').val() == 'Terminate'){
+    //         $('#termination_div').show();
+    //         $('#resignation_div').hide();
+    //         $('#benefits').hide();
+    //         $('#benefits_summary').hide();
+    // }
     else{
         $('#sss_number').val('');
         $('#pag_ibig_number').val('');
