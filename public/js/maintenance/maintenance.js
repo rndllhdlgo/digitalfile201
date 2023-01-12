@@ -358,24 +358,5 @@ $('#job_position_name_new').on('keyup',function(){
 });
 
 $('.btnCancel, .close').on('click',function(){
-    Swal.fire({
-        title: 'Do you want to cancel?',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showDenyButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No',
-        customClass: {
-        actions: 'my-actions',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
-        }
-    }).then((cancel) => {
-        if(cancel.isConfirmed){
-            $('.modal').modal('hide');
-        }
-        else if(cancel.isDenied){
-
-        }
-    });
+    $('.modal').modal('hide');
 });

@@ -60,6 +60,7 @@ $(document).ready(function(){
                 }
             });
     });
+    $('div.breakspace').html('<br><br>');
 });
 
 $('.filter-input').on('keyup search', function(){

@@ -38,6 +38,7 @@ $(document).ready(function(){
             $('#loading').hide();
         }
     });
+    $('div.breakspace').html('<br><br>');
 });
 
 $('.filter-input').on('keyup search', function(){

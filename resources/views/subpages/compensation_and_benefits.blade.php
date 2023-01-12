@@ -15,25 +15,25 @@
                 <tr>
                     <td>
                         <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder="(Optional)" style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_salary" class="formlabel form-label"><span class="span_employee_salary span_all"></span></label>
                         </div>
                     </td>
                     <td>
                         <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder="(Optional)" style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_incentives" class="formlabel form-label"> <span class="span_employee_incentives span_all"></span></label>
                         </div>
                     </td>
                     <td>
                         <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder="(Optional)" style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_overtime_pay" class="formlabel form-label"> <span class="span_employee_overtime_pay span_all"></span></label>
                         </div>
                     </td>
                     <td>
                         <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder=" " style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" onkeyup="salaryField(this)" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="employee_bonus" class="formlabel form-label"><span class="span_employee_bonus span_all"></span></label>        
                         </div>
                     </td>
