@@ -3,7 +3,7 @@
         <div class="modal-content">
 
             <div class="modal-header" style="background-color:#0d1a80">
-                <h5 class="modal-title text-white"></h5>
+                <h5 class="modal-title text-white w-100"></h5>
                 <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal"></button>
             </div>
 

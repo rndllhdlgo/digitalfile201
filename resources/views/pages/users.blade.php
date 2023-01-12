@@ -33,6 +33,6 @@
             </tbody>
         </table>
         <hr class="hr-design">
-@include('pages.usersModal')
+@include('modals.addUser')
 
 @endsection

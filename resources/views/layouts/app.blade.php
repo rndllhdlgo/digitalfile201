@@ -39,7 +39,7 @@
         @if(!Auth::guest())
             <script>$('#loading').show();</script>
             @include('inc.navbar')
-            @include('pages.changeUserPassword')
+            @include('modals.changeUserPassword')
         @else
             @include('inc.guest')
         @endif
@@ -73,9 +73,7 @@
         @if(Request::is('employees')) 
             <script src="{{ env('APP_URL')}}js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnCancelEdit.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/btnClose.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnEnableEdit.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/btnSaveEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
@@ -105,11 +103,6 @@
         @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance'))
             <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/global/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-        
-        @if(Request::is('chartsView') || Request::is('technologyView') || Request::is('donutView') || Request::is('charactersView'))
-            <script src="{{ env('APP_URL')}}js/charts/charts.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 </body>
 </html>

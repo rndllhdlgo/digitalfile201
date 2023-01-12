@@ -1,10 +1,49 @@
+var employeesTable;
+$(document).ready(function(){
+    employeesTable = $('table.employeesTable').DataTable({
+        dom:'l<"breakspace">trip',
+        language:{
+            info: "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
+            lengthMenu:"Show _MENU_ Employees",
+            emptyTable:"No Employees Data Found!",
+            loadingRecords: "Loading Employee Records...",
+        },
+        aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        processing:true,
+        serverSide:false,
+        ajax:{
+            url: '/employees/listOfEmployees',
+        },
+        order: [],
+        columns:[
+            {
+                data: 'employee_number',
+                "render": function(data, type, row){
+                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
+                }
+            },
+            {data: 'first_name'},
+            {data: 'middle_name'},
+            {data: 'last_name'},
+            {data: 'employee_position'},
+            {data: 'employee_branch'},
+            {data: 'employment_status'},
+        ],
+        initComplete: function(){
+            if(window.location.search.includes('employee_number') == true){
+                var url = new URL(window.location.href);
+                var employee_number = url.searchParams.get("employee_number");
+                $('.'+employee_number).closest('tr').click();
+            }
+            $('#loading').hide();
+        }
+    });
+});
 
-// var go = true, $lvl = $('.lvl');
-// $(window).bind("beforeunload",function(event) {
-//     if(go) return "You have unsaved changes";
-// });
+$('.filter-input').on('keyup search', function(){
+    employeesTable.column($(this).data('column')).search($(this).val()).draw();
+});
 
-//Create New Employee Function
 $('#addEmployeeBtn').on('click',function(){
     $('#employee_information').fadeIn();
     $('#employees_list').hide();
@@ -20,76 +59,72 @@ $('#addEmployeeBtn').on('click',function(){
     $('.input-file-text').addClass('required_field');
 });
 
-// if($('.requiredField:visible').filter(function(){ return !!this.value; }).length < $(".requiredField:visible").length )
+function changeCivilStatus(){
+    var status = $('#civil_status');
 
-
-//Hide/Show (Civil Status, Solo Parent) Section Function
-    function changeCivilStatus(){
-        var status = $('#civil_status');
-
-        if($('#civil_status').val() == "Married"){
-            $('#spouse').show();
-            $('#spouse_name').addClass('required_field');
-            $('#spouse_contact_number').addClass('required_field');
-            $('.children_information').hide();
-            $('#children_table').hide();
-            
-            $('#spouse_summary_div').show();
-        }
-        else if($('#civil_status').val() == "Solo Parent"){
-            $('#spouse').hide();
-            $('.children_information').show();
-            $('#spouse_name').val("");
-            $('#spouse_contact_number').val("");
-            $('#spouse_profession').val("");
-
-            $('#spouse_summary_div').hide();
-        }
-        else{
-            $('.children_information').hide();
-            $('#spouse').hide();
-            $('#spouse_name').removeClass('required_field');
-            $('#spouse_contact_number').removeClass('required_field');
-            $('#spouse_profession').removeClass('required_field');
-        }
+    if($('#civil_status').val() == "Married"){
+        $('#spouse').show();
+        $('#spouse_name').addClass('required_field');
+        $('#spouse_contact_number').addClass('required_field');
+        $('.children_information').hide();
+        $('#children_table').hide();
+        
+        $('#spouse_summary_div').show();
     }
+    else if($('#civil_status').val() == "Solo Parent"){
+        $('#spouse').hide();
+        $('.children_information').show();
+        $('#spouse_name').val("");
+        $('#spouse_contact_number').val("");
+        $('#spouse_profession').val("");
 
-    function changeEmploymentStatus(){
-        var employment_status = $('#employment_status');
-  
-        if($('#employment_status').val() == "Regular" 
-        || $('#employment_status').val() == 'Probationary'
-        || $('#employment_status').val() == 'Part_Time'
-        || $('#employment_status').val() == 'Retired'
-        ){
-            $('#benefits').show();
-            $('#benefits_summary').show();
-            $('#resignation_div').hide();
+        $('#spouse_summary_div').hide();
+    }
+    else{
+        $('.children_information').hide();
+        $('#spouse').hide();
+        $('#spouse_name').removeClass('required_field');
+        $('#spouse_contact_number').removeClass('required_field');
+        $('#spouse_profession').removeClass('required_field');
+    }
+}
+
+function changeEmploymentStatus(){
+    var employment_status = $('#employment_status');
+
+    if($('#employment_status').val() == "Regular" 
+    || $('#employment_status').val() == 'Probationary'
+    || $('#employment_status').val() == 'Part_Time'
+    || $('#employment_status').val() == 'Retired'
+    ){
+        $('#benefits').show();
+        $('#benefits_summary').show();
+        $('#resignation_div').hide();
+        $('#termination_div').hide();
+        
+    }
+    else if($('#employment_status').val() == 'Resign'){
+            $('#resignation_div').show();
             $('#termination_div').hide();
-            
-        }
-        else if($('#employment_status').val() == 'Resign'){
-                $('#resignation_div').show();
-                $('#termination_div').hide();
-                $('#benefits').hide();
-                $('#benefits_summary').hide();
-        }
-        else if($('#employment_status').val() == 'Terminate'){
-                $('#termination_div').show();
-                $('#resignation_div').hide();
-                $('#benefits').hide();
-                $('#benefits_summary').hide();
-        }
-        else{
-            $('#sss_number').val('');
-            $('#pag_ibig_number').val('');
-            $('#philhealth_number').val('');
-            $('#tin_number').val('');
-            $('#account_number').val('');
             $('#benefits').hide();
             $('#benefits_summary').hide();
-        }
     }
+    else if($('#employment_status').val() == 'Terminate'){
+            $('#termination_div').show();
+            $('#resignation_div').hide();
+            $('#benefits').hide();
+            $('#benefits_summary').hide();
+    }
+    else{
+        $('#sss_number').val('');
+        $('#pag_ibig_number').val('');
+        $('#philhealth_number').val('');
+        $('#tin_number').val('');
+        $('#account_number').val('');
+        $('#benefits').hide();
+        $('#benefits_summary').hide();
+    }
+}
 
 //Calculate Age Function
 $('#birthday').on('change',function(){
