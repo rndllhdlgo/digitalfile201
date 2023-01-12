@@ -6,7 +6,9 @@ $('#usersTable tbody').on('click','tr td:not(:nth-child(4))',function(){
     $('#user_id').val(data.id);
     $('#user_level').val(data.user_level);
     $('#user_level_orig').val(data.user_level);
+    $('#name_orig').val(data.name);
     $('#name').val(data.name);
+    $('#email_orig').val(data.email);
     $('#email').val(data.email);
     $('#status').val(data.status);
 

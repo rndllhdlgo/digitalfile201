@@ -3,8 +3,10 @@ $('#btnUserUpdate').on('click',function(){
     var id = $('#user_id').val();
     var user_level_orig = $('#user_level_orig').val();
     var user_level_new = $('#user_level').val();
-    var name = $('#name').val();
-    var email = $('#email').val();
+    var name_orig = $('#name_orig').val();
+    var name_new = $('#name').val();
+    var email_orig = $('#email_orig').val();
+    var email_new = $('#email').val();
 
     Swal.fire({
         title:'Do you want to update details?',
@@ -31,8 +33,10 @@ $('#btnUserUpdate').on('click',function(){
                     id:id,
                     user_level_orig:user_level_orig,
                     user_level_new:user_level_new,
-                    name:name,
-                    email:email
+                    name_orig:name_orig,
+                    name_new:name_new,
+                    email_orig:email_orig,
+                    email_new:email_new
                 },
                 success: function(data){
                     $('#loading').hide();

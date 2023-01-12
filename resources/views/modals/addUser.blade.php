@@ -26,6 +26,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <div class="f-outline">
+                                <input type="hidden" id="name_orig">
                                 <input class="forminput form-control required_field" type="text" id="name" name="name" placeholder=" " autocomplete="off" onkeyup="lettersOnly(this)">
                                 <label for="name" class="formlabel form-label"><i class="fas fa-address-card"></i> FULL NAME <span class="span_name"></span></label>
                             </div>
@@ -35,6 +36,7 @@
                     <div class="row mb-3">
                         <div class="col">
                             <div class="f-outline">
+                                <input type="hidden" id="email_orig">
                                 <input class="forminput form-control required_field" type="email" id="email" name="email" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="emailValidation()">
                                 <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address</p>
                                 <label for="email" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email"></span></label>

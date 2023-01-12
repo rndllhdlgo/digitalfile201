@@ -81,24 +81,38 @@ class UsersController extends Controller
 
     public function updateUser(Request $request){
         $user_level_orig = $request->user_level_orig;
+        $name_orig = $request->name_orig;
+        $email_orig = $request->email_orig;
         
         $users = User::find($request->id);
         $users->user_level = $request->user_level_new;
-        $users->name = ucwords($request->name);
-        $users->email = $request->email;
+        $users->name = ucwords($request->name_new);
+        $users->email = $request->email_new;
         $sql = $users->save();
 
         if($user_level_orig != $request->user_level_new){
-            $users_level_change = "FROM: [$user_level_orig] TO: [$users->user_level]";
+            $users_level_change = "User Level FROM: [$user_level_orig] TO: [$users->user_level]";
         }
         else{
             $users_level_change = NULL;
+        }
+        if($name_orig != $request->name_new){
+            $name_change = "Name FROM: [$name_orig] TO: [$users->name]";
+        }
+        else{
+            $name_change = NULL;
+        }
+        if($email_orig != $request->email_new){
+            $email_change = "Email Address FROM: [$email_orig] TO: [$users->email]";
+        }
+        else{
+            $email_change = NULL;
         }
 
         if($sql){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER UPDATED: User successfully updated user level of [$users->name] $users_level_change.";
+            $userlogs->activity = "USER UPDATED: User successfully updated details of [$users->name] with the following CHANGES: $email_change $name_change $users_level_change.";
             $userlogs->save();
         }
 
