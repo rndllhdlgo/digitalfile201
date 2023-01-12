@@ -195,19 +195,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#company_contact_number').val(value.company_contact_number);
 
                 $('#sss_number').val(value.sss_number);
-                $('.sss_number').val(value.sss_number);
 
                 $('#pag_ibig_number').val(value.pag_ibig_number);
-                $('.pag_ibig_number').val(value.pag_ibig_number);
 
                 $('#philhealth_number').val(value.philhealth_number);
-                $('.philhealth_number').val(value.philhealth_number);
 
                 $('#tin_number').val(value.tin_number);
-                $('.tin_number').val(value.tin_number);
 
                 $('#account_number').val(value.account_number);
-                $('.account_number').val(value.account_number);
 
                 if(value.employee_salary || value.employee_incentives || value.employee_overtime_pay || value.employee_insurance){
                     $('#compensation_benefits_section').show();

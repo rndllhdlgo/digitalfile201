@@ -53,6 +53,12 @@ $('#btnSummary').on('click',function(){
     $('.company_email_address').html($('#company_email_address').val() ? $('#company_email_address').val() : 'N/A');
     $('.company_contact_number').html($('#company_contact_number').val() ? $('#company_contact_number').val() : 'N/A');
 
+    $('.sss_number').html($('#sss_number').val());
+    $('.pag_ibig_number').html($('#pag_ibig_number').val());
+    $('.philhealth_number').html($('#philhealth_number').val());
+    $('.tin_number').html($('#tin_number').val());
+    $('.account_number').html($('#account_number').val());
+
     $('#summaryModal').modal('show');
 });
 

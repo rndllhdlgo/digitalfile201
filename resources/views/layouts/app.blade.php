@@ -87,12 +87,11 @@
             <script src="{{ env('APP_URL')}}js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
-        @if(Request::is('users') || Request::is('users_page'))
+        @if(Request::is('users'))
             <script src="{{ env('APP_URL')}}js/users/users.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnSaveUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnUpdateUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/users/btnViewUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/users/users_page.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('maintenance'))

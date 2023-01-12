@@ -242,7 +242,33 @@
                                         <span class="employee_shift"></span>
                                     </div>
                                 </div>
+                            </div>
 
+                            <div class="column_five" id="benefits_summary" style="padding:5px;">
+                                <div class="row mb-2">
+                                    <div class="col">
+                                        <b>SSS NO. :</b><br>
+                                        <span class="sss_number"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>PAG-IBIG NO. :</b><br>
+                                        <span class="pag_ibig_number"></span>
+                                    </div>
+                                    <div class="col">
+                                        <b>PHILHEALTH NO. :</b><br>
+                                        <span class="philhealth_number"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <div class="col-4">
+                                        <b>TIN NO. :</b><br>
+                                        <span class="tin_number"></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <b>BANK ACCOUNT NO. :</b><br>
+                                        <span class="account_number"></span>
+                                    </div>
+                                </div>
                             </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
