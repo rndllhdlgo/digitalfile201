@@ -3,6 +3,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_number_orig">
                 <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
@@ -10,6 +11,7 @@
         </div>
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_company_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT COMPANY</option>
                         @foreach($companies as $company)
@@ -22,6 +24,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_department_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT DEPARTMENT</option>
                     @foreach($departments as $department)
@@ -34,6 +37,7 @@
         
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_branch_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT BRANCH</option>
                         @foreach($branches as $branch)
@@ -48,6 +52,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employment_status_orig">
                 <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option value="Regular">Regular</option>
@@ -65,6 +70,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employment_origin_orig">
                 <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
                     <option value="Newly Hired">Newly Hired</option>
@@ -77,6 +83,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_shift_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
                         @foreach($shifts as $shift)
@@ -89,6 +96,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_supervisor_orig">
                 <select class="forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SUPERVISOR </option>
                         @foreach($supervisors as $supervisor)
@@ -103,6 +111,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="employee_position_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT POSITION </option>
                         @foreach($jobPositions as $jobPosition)
@@ -119,6 +128,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="date_hired_orig">
                 <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
                 <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label> 
             </div>
@@ -126,6 +136,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="company_email_address_orig">
                 <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <p id="duplicate_company_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
@@ -135,6 +146,7 @@
 
         <div class="col">
             <div class="f-outline">
+                <input type="hidden" id="company_contact_number_orig">
                 <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                 {{-- <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
                 <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>

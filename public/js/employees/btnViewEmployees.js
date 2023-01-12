@@ -168,31 +168,43 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
+                $('#employee_number_orig').val(value.employee_number);
 
                 $('#employee_company').val(value.employee_company);
+                $('#employee_company_orig').val(value.employee_company);
                 
                 $('#employee_department').val(value.employee_department);
+                $('#employee_department_orig').val(value.employee_department);
 
                 $('#employee_branch').val(value.employee_branch);
+                $('#employee_branch_orig').val(value.employee_branch);
 
                 $('#employment_status').val(value.employment_status);
+                $('#employment_status_orig').val(value.employment_status);
                 setInterval(() => {
                     $('#employment_status').change();
                 }, app_timeout);
 
                 $('#employment_origin').val(value.employment_origin);
+                $('#employment_origin_orig').val(value.employment_origin);
 
                 $('#employee_shift').val(value.employee_shift);
+                $('#employee_shift_orig').val(value.employee_shift);
 
                 $('#employee_supervisor').val(value.employee_supervisor);
+                $('#employee_supervisor_orig').val(value.employee_supervisor);
 
                 $('#employee_position').val(value.employee_position);
+                $('#employee_position_orig').val(value.employee_position);
 
                 $('#date_hired').val(value.date_hired);
+                $('#date_hired_orig').val(value.date_hired);
 
                 $('#company_email_address').val(value.company_email_address);
+                $('#company_email_address_orig').val(value.company_email_address);
                 
                 $('#company_contact_number').val(value.company_contact_number);
+                $('#company_contact_number_orig').val(value.company_contact_number);
 
                 $('#sss_number').val(value.sss_number);
 

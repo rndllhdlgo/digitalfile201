@@ -318,13 +318,6 @@ class EmployeesController extends Controller
                 $barangay_change = NULL;
             }
 
-            // if($house_orig != $request->house_new){
-            //     $house_change = "[House] FROM '$house_orig 'TO' $employee->house";
-            // }
-            // else{
-            //     $house_change = NULL;
-            // }
-
             if($province_orig != $request->province_new){
                 $province_change = "[Province] FROM: [$province_orig] TO: [$employee->province].";
             }
@@ -474,7 +467,7 @@ class EmployeesController extends Controller
                 $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
-                $employee_logs->logs = "UPDATED: User successfully updated details of employee number [$employee_number] with the following CHANGES: 
+                $employee_logs->logs = "UPDATED: User successfully updated details of employee number $employee_number_new [$employee_number] with the following CHANGES: 
                                                  $middle_name_change 
                                                  $last_name_change 
                                                  $unit_change
@@ -500,8 +493,8 @@ class EmployeesController extends Controller
                                                  .";
                 $employee_logs->save();
             }
-            
         }
+
         else{
             $result = 'false';
             $id = '';
@@ -512,7 +505,8 @@ class EmployeesController extends Controller
     }
 
     public function updateWorkInformation(Request $request){
-        $employee = WorkInformationTable::find($request->get('id'));
+
+        $employee = WorkInformationTable::find($request->id);
         $employee->employee_id = $request->employee_id;
         $employee->employee_number = $request->employee_number;
         $employee->employee_company = $request->employee_company;
