@@ -11,7 +11,7 @@ $('#btnSummary').on('click',function(){
     $('.nickname').html($('#nickname').val());
     $('.birthday').val($('#birthday').val());
     $('#birthday_summary').html(moment($('#birthday').val()).format('MMM. DD, YYYY'));
-    setInterval(() => {
+    setTimeout(() => {
         $('.birthday').change();
     }, app_timeout);
     $('.gender').html($('#gender').val());
@@ -64,5 +64,5 @@ $('#btnSummary').on('click',function(){
 
 $(document).on('click','#close_summary',function(){
     
-    // window.location.href = "/employees?employee_number="+$('#current_employee').val();
+    window.location.href = "/employees?employee_number="+$('#current_employee').val();
 });
