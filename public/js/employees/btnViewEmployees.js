@@ -212,6 +212,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         $('.employee_salary').val(value.employee_salary);
                     }
 
+                // Compensation/Benefits
                 $('#employee_incentives').val(value.employee_incentives);
                 $('.employee_incentives').val(value.employee_incentives);
 

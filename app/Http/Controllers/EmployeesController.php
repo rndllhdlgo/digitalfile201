@@ -282,167 +282,163 @@ class EmployeesController extends Controller
         $sql = $employee->save();
 
         if($sql){
-            // $userlogs = new UserLogs;
-            // $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_personal_information->first_name $employee_personal_information->middle_name $employee_personal_information->last_name]."; //Display logs in home page
-            // $userlogs->save();
 
             if($middle_name_orig != $request->middle_name_new){
-                $middle_name_change = "[Middle Name] FROM '$middle_name_orig 'TO' $employee->middle_name";
+                $middle_name_change = "[Middle Name] FROM: [$middle_name_orig] TO: [$employee->middle_name].";
             }
             else{
                 $middle_name_change = NULL;
             }
 
             if($last_name_orig != $request->last_name_new){
-                $last_name_change = "[Last Name] FROM '$last_name_orig 'TO' $employee->last_name";
+                $last_name_change = "[Last Name] FROM: [$last_name_orig] TO: [$employee->last_name].";
             }
             else{
                 $last_name_change = NULL;
             }
 
             if($unit_orig != $request->unit_new){
-                $unit_change = "[Unit] FROM '$unit_orig 'TO' $employee->unit";
+                $unit_change = "[Unit] FROM: [$unit_orig] TO: [$employee->unit].";
             }
             else{
                 $unit_change = NULL;
             }
 
             if($lot_orig != $request->lot_new){
-                $lot_change = "[Lot] FROM '$lot_orig 'TO' $employee->lot";
+                $lot_change = "[Lot] FROM: [$lot_orig] TO: [$employee->lot].";
             }
             else{
                 $lot_change = NULL;
             }
 
             if($barangay_orig != $request->barangay_new){
-                $barangay_change = "[Barangay] FROM '$barangay_orig 'TO' $employee->barangay";
+                $barangay_change = "[Barangay] FROM: [$barangay_orig] TO: [$employee->barangay].";
             }
             else{
                 $barangay_change = NULL;
             }
 
-            if($house_orig != $request->house_new){
-                $house_change = "[House] FROM '$house_orig 'TO' $employee->house";
-            }
-            else{
-                $house_change = NULL;
-            }
+            // if($house_orig != $request->house_new){
+            //     $house_change = "[House] FROM '$house_orig 'TO' $employee->house";
+            // }
+            // else{
+            //     $house_change = NULL;
+            // }
 
             if($province_orig != $request->province_new){
-                $province_change = "[Province] FROM '$province_orig 'TO' $employee->province";
+                $province_change = "[Province] FROM: [$province_orig] TO: [$employee->province].";
             }
             else{
                 $province_change = NULL;
             }
 
             if($city_orig != $request->city_new){
-                $city_change = "[City] FROM '$city_orig 'TO' $employee->city";
+                $city_change = "[City] FROM [$city_orig] TO: [$employee->city].";
             }
             else{
                 $city_change = NULL;
             }
 
             if($region_orig != $request->region_new){
-                $region_change = "[Region] FROM '$region_orig 'TO' $employee->region";
+                $region_change = "[Region] FROM: [$region_orig] TO: [$employee->region].";
             }
             else{
                 $region_change = NULL;
             }
 
             if($height_orig != $request->height_new){
-                $height_change = "[Height] FROM '$height_orig 'TO' $employee->height";
+                $height_change = "[Height] FROM: [$height_orig] TO: [$employee->height].";
             }
             else{
                 $height_change = NULL;
             }
 
             if($weight_orig != $request->weight_new){
-                $weight_change = "[Weight] FROM '$weight_orig 'TO' $employee->weight";
+                $weight_change = "[Weight] FROM: [$weight_orig] TO: [$employee->weight].";
             }
             else{
                 $weight_change = NULL;
             }
 
             if($religion_orig != $request->religion_new){
-                $religion_change = "[Religion] FROM '$religion_orig 'TO' $employee->religion";
+                $religion_change = "[Religion] FROM: [$religion_orig] TO: [$employee->religion].";
             }
             else{
                 $religion_change = NULL;
             }
 
             if($civil_status_orig != $request->civil_status_new){
-                $civil_status_change = "[Civil Status] FROM '$civil_status_orig 'TO' $employee->civil_status";
+                $civil_status_change = "[Civil Status] FROM: [$civil_status_orig] TO: [$employee->civil_status].";
             }
             else{
                 $civil_status_change = NULL;
             }
 
             if($email_address_orig != $request->email_address_new){
-                $email_address_change = "[Email Address] FROM '$email_address_orig 'TO' $employee->email_address";
+                $email_address_change = "[Email Address] FROM: [$email_address_orig] TO: [$employee->email_address].";
             }
             else{
                 $email_address_change = NULL;
             }
             
             if($telephone_number_orig != $request->telephone_number_new){
-                $telephone_number_change = "[Telephone Number] FROM '$telephone_number_orig 'TO' $employee->telephone_number";
+                $telephone_number_change = "[Telephone Number] FROM: [$telephone_number_orig] TO: [$employee->telephone_number].";
             }
             else{
                 $telephone_number_change = NULL;
             }
 
             if($cellphone_number_orig != $request->cellphone_number_new){
-                $cellphone_number_change = "[Cellphone Number] FROM '$cellphone_number_orig 'TO' $employee->cellphone_number";
+                $cellphone_number_change = "[Cellphone Number] FROM: [$cellphone_number_orig] TO: [$employee->cellphone_number].";
             }
             else{
                 $cellphone_number_change = NULL;
             }
 
             if($father_contact_number_orig != $request->father_contact_number_new){
-                $father_contact_number_change = "[Father Contact Number] FROM '$father_contact_number_orig 'TO' $employee->father_contact_number";
+                $father_contact_number_change = "[Father Contact Number] FROM: [$father_contact_number_orig] TO: [$employee->father_contact_number].";
             }
             else{
                 $father_contact_number_change = NULL;
             }
 
             if($father_profession_orig != $request->father_profession_new){
-                $father_profession_change = "[Father Profession] FROM '$father_profession_orig 'TO' $employee->father_profession";
+                $father_profession_change = "[Father Profession] FROM: [$father_profession_orig] TO: [$employee->father_profession].";
             }
             else{
                 $father_profession_change = NULL;
             }
 
             if($mother_contact_number_orig != $request->mother_contact_number_new){
-                $mother_contact_number_change = "[Mother Contact Number] FROM '$mother_contact_number_orig 'TO' $employee->mother_contact_number";
+                $mother_contact_number_change = "[Mother Contact Number] FROM: [$mother_contact_number_orig] TO: [$employee->mother_contact_number].";
             }
             else{
                 $mother_contact_number_change = NULL;
             }
 
             if($mother_profession_orig != $request->mother_profession_new){
-                $mother_profession_change = "[Mother Profession] FROM '$mother_profession_orig 'TO' $employee->mother_profession";
+                $mother_profession_change = "[Mother Profession] FROM: [$mother_profession_orig] TO: [$employee->mother_profession].";
             }
             else{
                 $mother_profession_change = NULL;
             }
 
             if($emergency_contact_name_orig != $request->emergency_contact_name_new){
-                $emergency_contact_name_change = "[Emergency Contact Name] FROM '$emergency_contact_name_orig 'TO' $employee->emergency_contact_name";
+                $emergency_contact_name_change = "[Emergency Contact Name] FROM: [$emergency_contact_name_orig] TO: [$employee->emergency_contact_name].";
             }
             else{
                 $emergency_contact_name_change = NULL;
             }
 
             if($emergency_contact_relationship_orig != $request->emergency_contact_relationship_new){
-                $emergency_contact_relationship_change = "[Emergency Contact Relationship] FROM '$emergency_contact_relationship_orig 'TO' $employee->emergency_contact_relationship";
+                $emergency_contact_relationship_change = "[Emergency Contact Relationship] FROM: [$emergency_contact_relationship_orig] TO: [$employee->emergency_contact_relationship].";
             }
             else{
                 $emergency_contact_relationship_change = NULL;
             }
 
             if($emergency_contact_number_orig != $request->emergency_contact_number_new){
-                $emergency_contact_number_change = "[Emergency Contact Number] FROM '$emergency_contact_number_orig 'TO' $employee->emergency_contact_number";
+                $emergency_contact_number_change = "[Emergency Contact Number] FROM: [$emergency_contact_number_orig] TO: [$employee->emergency_contact_number].";
             }
             else{
                 $emergency_contact_number_change = NULL;
@@ -451,32 +447,60 @@ class EmployeesController extends Controller
             $result = 'true';
             $id = $employee->id;
 
-            $employee_logs = new LogsTable;
-            $employee_logs->employee_id = $request->id;
-            $employee_logs->logs = "UPDATED: $cellphone_number_change
-                                             $middle_name_change 
-                                             $last_name_change 
-                                             $unit_change 
-                                             $lot_change 
-                                             $barangay_change 
-                                             $height_change 
-                                             $weight_change 
-                                             $religion_change 
-                                             $civil_status_change 
-                                             $province_change 
-                                             $city_change 
-                                             $region_change 
-                                             $house_change 
-                                             $email_address_change 
-                                             $telephone_number_change 
-                                             $father_contact_number_change 
-                                             $father_profession_change 
-                                             $mother_contact_number_change 
-                                             $mother_profession_change
-                                             $emergency_contact_name_change
-                                             $emergency_contact_relationship_change
-                                             $emergency_contact_number_change.";
-            $employee_logs->save();
+            if($middle_name_orig != $request->middle_name_new 
+            || $last_name_orig != $request->last_name_new
+            || $unit_orig != $request->unit_new
+            || $lot_orig != $request->lot_new
+            || $barangay_orig != $request->barangay_new
+            || $province_orig != $request->province_new
+            || $city_orig != $request->city_new
+            || $region_orig != $request->region_new
+            || $height_orig != $request->height_new
+            || $weight_orig != $request->weight_new
+            || $religion_orig != $request->religion_new
+            || $civil_status_orig != $request->civil_status_new
+            || $email_address_orig != $request->email_address_new
+            || $telephone_number_orig != $request->telephone_number_new
+            || $cellphone_number_orig != $request->cellphone_number_new
+            || $father_contact_number_orig != $request->father_contact_number_new
+            || $father_profession_orig != $request->father_profession_new
+            || $mother_contact_number_orig != $request->mother_contact_number_new
+            || $mother_profession_orig != $request->mother_profession_new
+            || $emergency_contact_name_orig != $request->emergency_contact_name_new
+            || $emergency_contact_relationship_orig != $request->emergency_contact_relationship_new
+            || $emergency_contact_number_orig != $request->emergency_contact_number_new
+            ){
+
+                $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->id;
+                $employee_logs->logs = "UPDATED: User successfully updated details of employee number [$employee_number] with the following CHANGES: 
+                                                 $middle_name_change 
+                                                 $last_name_change 
+                                                 $unit_change
+                                                 $lot_change
+                                                 $barangay_change
+                                                 $province_change
+                                                 $city_change
+                                                 $region_change
+                                                 $height_change
+                                                 $weight_change
+                                                 $religion_change
+                                                 $civil_status_change
+                                                 $email_address_change
+                                                 $telephone_number_change
+                                                 $cellphone_number_change
+                                                 $father_contact_number_change
+                                                 $father_profession_change
+                                                 $mother_contact_number_change
+                                                 $mother_profession_change
+                                                 $emergency_contact_name_change
+                                                 $emergency_contact_relationship_change
+                                                 $emergency_contact_number_change
+                                                 .";
+                $employee_logs->save();
+            }
+            
         }
         else{
             $result = 'false';
