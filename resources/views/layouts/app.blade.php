@@ -39,7 +39,7 @@
         @if(!Auth::guest())
             <script>$('#loading').show();</script>
             @include('inc.navbar')
-            @include('pages.users_changePassword')
+            @include('pages.changeUserPassword')
         @else
             @include('inc.guest')
         @endif

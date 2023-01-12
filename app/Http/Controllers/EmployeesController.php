@@ -50,7 +50,6 @@ class EmployeesController extends Controller
             'work_information_tables.employment_status')
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
-        // ->join('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
         ->join('positions','positions.id','work_information_tables.employee_position')
         ->join('branches','branches.id','work_information_tables.employee_branch')
         ->get();
@@ -199,11 +198,6 @@ class EmployeesController extends Controller
         $sql = $employee->save();
         
         if($sql){
-            // $userlogs = new UserLogs;
-            // $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number_logs]. Employee Name: [$employee_personal_information->first_name $employee_personal_information->middle_name $employee_personal_information->last_name]."; //Display logs in home page
-            // $userlogs->save();
-
             $result = 'true';
             $id = $employee->id;
         }
@@ -464,10 +458,10 @@ class EmployeesController extends Controller
             || $emergency_contact_number_orig != $request->emergency_contact_number_new
             ){
 
-                $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
+                // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
-                $employee_logs->logs = "UPDATED: User successfully updated details of employee number $employee_number_new [$employee_number] with the following CHANGES: 
+                $employee_logs->logs = "UPDATED: 
                                                  $middle_name_change 
                                                  $last_name_change 
                                                  $unit_change
@@ -489,8 +483,7 @@ class EmployeesController extends Controller
                                                  $mother_profession_change
                                                  $emergency_contact_name_change
                                                  $emergency_contact_relationship_change
-                                                 $emergency_contact_number_change
-                                                 .";
+                                                 $emergency_contact_number_change";
                 $employee_logs->save();
             }
         }
@@ -530,7 +523,7 @@ class EmployeesController extends Controller
 
     public function updateCompensationBenefits(Request $request){
         if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
-            $employee = CompensationBenefits::find($request->get('id'));
+            $employee = CompensationBenefits::find($request->id);
             $employee->employee_id = $request->employee_id;
             $employee->employee_salary = $request->employee_salary;
             $employee->employee_incentives = $request->employee_incentives;

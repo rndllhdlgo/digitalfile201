@@ -1,7 +1,8 @@
 //Update User Data
 $('#btnUserUpdate').on('click',function(){
     var id = $('#user_id').val();
-    var user_level = $('#user_level').val();
+    var user_level_orig = $('#user_level_orig').val();
+    var user_level_new = $('#user_level').val();
     var name = $('#name').val();
     var email = $('#email').val();
 
@@ -28,7 +29,8 @@ $('#btnUserUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
-                    user_level:user_level,
+                    user_level_orig:user_level_orig,
+                    user_level_new:user_level_new,
                     name:name,
                     email:email
                 },
@@ -36,12 +38,12 @@ $('#btnUserUpdate').on('click',function(){
                     $('#loading').hide();
                     if(data == 'true'){
                         $('#usersModal').modal('hide');
-                        Swal.fire("EDIT SUCCESS","","success");
+                        Swal.fire("UPDATE SUCCESS","","success");
                         setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 2000);
                     }
                     else{
                         $('#usersModal').modal('hide');
-                        Swal.fire("EDIT FAILED","","error");
+                        Swal.fire("UPDATE FAILED","","error");
                         setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 2000);
                     }  
                 }

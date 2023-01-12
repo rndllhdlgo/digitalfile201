@@ -36,28 +36,22 @@ class UsersController extends Controller
     //     return $sql ? 'true' : 'false';
     // }
 
-    public function updateUser(Request $request){
-        
-        $users = User::find($request->id);
-        $users->user_level = $request->user_level;
-        $users->name = ucwords($request->name);
-        $users->email = $request->email;
-        $sql = $users->save();
-
-        return $sql ? 'true':'false';
-    }
-
     public function saveUser(Request $request){
+
         $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
         $pass = array();
         $charLength = strlen($char) - 1;
-        for($i = 0; $i < 8; $i++){
-            $n = rand(0, $charLength);
-            $pass[] = $char[$n];
-        }
+            for($i = 0; $i < 8; $i++){
+                $n = rand(0, $charLength);
+                $pass[] = $char[$n];
+            }
         $password = implode($pass);
 
         $name = ucwords($request->name);
+
+        if(User::where('email',$request->email)->count() > 0){
+            return response('duplicate_email');
+        }
 
         $users = new User;
         $users->name = $name;
@@ -78,11 +72,37 @@ class UsersController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER ADDED: User successfully saved details of $name with UserID#$id.";
+            $userlogs->activity = "USER ADDED: User successfully added a new user with the following details NAME:[$name] USER LEVEL: [$users->user_level].";
             $userlogs->save();
         }
 
         return response($result);
+    }
+
+    public function updateUser(Request $request){
+        $user_level_orig = $request->user_level_orig;
+        
+        $users = User::find($request->id);
+        $users->user_level = $request->user_level_new;
+        $users->name = ucwords($request->name);
+        $users->email = $request->email;
+        $sql = $users->save();
+
+        if($user_level_orig != $request->user_level_new){
+            $users_level_change = "FROM: [$user_level_orig] TO: [$users->user_level]";
+        }
+        else{
+            $users_level_change = NULL;
+        }
+
+        if($sql){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED: User successfully updated user level of [$users->name] $users_level_change.";
+            $userlogs->save();
+        }
+
+        return $sql ? 'true':'false';
     }
     
     public function change_validate(Request $request){
@@ -140,14 +160,14 @@ class UsersController extends Controller
         else{
             $result = 'true';
 
-            $status = "[Status: FROM '$status2' TO '$status1']";
+            $status = "FROM: [$status2] TO [$status1]";
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER UPDATED: User successfully updated details of $name with UserID#$request->id with the following CHANGES: $status.";
+            // $userlogs->activity = "USER UPDATED: User successfully updated details of $name with UserID#$request->id with the following CHANGES: $status.";
+            $userlogs->activity = "USER UPDATED: User successfully updated status of [$name] $status.";
             $userlogs->save();
         }
         return response($result);
     }
-    
 }

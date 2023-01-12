@@ -18,7 +18,7 @@
                                 <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>FIRST NAME:</b> <span class="first_name font_weight"></span>
                                     </div>
@@ -29,7 +29,7 @@
                                         <b>LAST NAME:</b> <span class="last_name font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col-4">
                                         <b>SUFFIX:</b> <span class="suffix font_weight"></span>
                                     </div>
@@ -37,7 +37,7 @@
                                         <b>NICKNAME:</b> <span class="nickname font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>BIRTHDAY:</b> <input type="date" class="birthday font_weight d-none" style="border:none; width:106px;" disabled> <span id="birthday_summary"> </span>
                                     </div>
@@ -48,7 +48,7 @@
                                         <b>GENDER:</b> <span class="gender font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col-4">
                                         <b>HEIGHT:</b> <span class="height font_weight"></span>
                                     </div>
@@ -70,33 +70,33 @@
                                 <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>UNIT/ROOM #/FLOOR:</b> <span class="unit font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>LOT/HOUSE #, STREET NAME:</b> <span class="lot font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>SUBDIVISION, BARANGAY:</b> <span class="barangay font_weight"></span>
                                     </div>
                                 </div>
                                 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>PROVINCE:</b> <input type="hidden" id="province_summary" class="font_weight" style="border:none;" disabled> <span id="province_content"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>CITY:</b> <input type="hidden" id="city_summary" class="font_weight" style="border:none;" disabled> <span id="city_content"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>REGION:</b> <input type="hidden" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled> <span id="region_content"></span>
                                     </div>
@@ -111,7 +111,7 @@
                             <div class="column_three" style="padding: 5px;">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
                                 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>EMAIL ADDRESS:</b><br> <span class="email_address font_weight"></span>
                                     </div>
@@ -123,18 +123,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2">
-                                    <div class="col-4">
-                                        <b>WORK EMAIL ADDRESS:</b><br> 
-                                        <span class="company_email_address font_weight"></span>
-                                    </div>
-                                    <div class="col-4">
-                                        <b>WORK CONTACT NO.:</b><br> 
-                                        <span class="company_contact_number font_weight"></span>
-                                    </div>
-                                </div>
-
-                                <div class="row mb-2" id="spouse_summary_div" style="display:none;">
+                                <div class="row mb-3" id="spouse_summary_div" style="display:none;">
                                     <div class="col">
                                         <b>SPOUSE NAME:</b><br> <span class="spouse_name"></span>
                                     </div>
@@ -146,7 +135,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>FATHER'S NAME:</b><br> <span class="father_name font_weight"></span>
                                     </div>
@@ -157,7 +146,7 @@
                                         <b>PROFESSION:</b><br> <span class="father_profession font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>MOTHER'S MAIDEN NAME:</b><br> <span class="mother_name font_weight"></span>
                                     </div>
@@ -168,7 +157,7 @@
                                         <b>PROFESSION:</b><br> <span class="mother_profession font_weight"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>EMERGENCY CONTACT NAME:</b><br> <span class="emergency_contact_name font_weight"></span>
                                     </div>
@@ -182,13 +171,13 @@
                             </div> <!-- Column 3-->
 
                             <div class="column_four" style="padding:5px;">
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
                                 </div>
 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
-                                        <b>EMPLOYEE NUMBER:</b><br> <span class="employee_number"></span>
+                                        <b>EMPLOYEE NO.:</b><br> <span class="employee_number"></span>
                                     </div>
 
                                     <div class="col">
@@ -202,7 +191,7 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>COMPANY:</b><br>
                                         <span class="employee_company"></span>
@@ -219,7 +208,7 @@
                                     </div> 
                                 </div>
 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>POSITION:</b><br>
                                         <span class="employee_position"></span>
@@ -236,16 +225,27 @@
                                     </div>
                                 </div>
 
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col-8">
                                         <b>SHIFT:</b><br>
                                         <span class="employee_shift"></span>
                                     </div>
                                 </div>
+
+                                <div class="row mb-3">
+                                    <div class="col-4">
+                                        <b>WORK EMAIL ADDRESS:</b><br> 
+                                        <span class="company_email_address font_weight"></span>
+                                    </div>
+                                    <div class="col-4">
+                                        <b>WORK CONTACT NO.:</b><br> 
+                                        <span class="company_contact_number font_weight"></span>
+                                    </div>
+                                </div>
                             </div>
 
-                            <div class="column_five" id="benefits_summary" style="padding:5px;">
-                                <div class="row mb-2">
+                            {{-- <div class="column_five" id="benefits_summary" style="padding:5px;">
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>SSS NO. :</b><br>
                                         <span class="sss_number"></span>
@@ -259,7 +259,7 @@
                                         <span class="philhealth_number"></span>
                                     </div>
                                 </div>
-                                <div class="row mb-2">
+                                <div class="row mb-3">
                                     <div class="col-4">
                                         <b>TIN NO. :</b><br>
                                         <span class="tin_number"></span>
@@ -269,7 +269,7 @@
                                         <span class="account_number"></span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">

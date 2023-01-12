@@ -1,10 +1,8 @@
-//Save User Form
 $('#btnUserSave').on('click',function(){
     var user_level = $('#user_level').val();
     var name = $('#name').val();
     var email = $('#email').val();
     
-
     if(user_level && name && email){
         Swal.fire({
             title: 'Do you want to save?',
@@ -37,16 +35,16 @@ $('#btnUserSave').on('click',function(){
                         if(data == 'true'){
                             $('#usersModal').modal('hide');
                             Swal.fire("USER ADD SUCCESSFULLY","","success");
-                            setTimeout(function(){window.location.reload()}, 2000);
+                            setTimeout(function(){$('#usersTable').DataTable().reload()}, 2000);
                         }
-                        else if(data == 'duplicate'){ 
+                        else if(data == 'duplicate_email'){ 
                             Swal.fire("DUPLICATE EMAIL", "Email address already exists!", "error");
                             return false;
                         }
                         else{
                             $('#usersModal').modal('hide');
                             Swal.fire("SAVE FAILED", "New user save failed!", "error");
-                            setTimeout(function(){window.location.reload()}, 2000);
+                            setTimeout(function(){$('#usersTable').DataTable().reload()}, 2000);
                         }
                     },
                 });

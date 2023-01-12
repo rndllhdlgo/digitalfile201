@@ -1,8 +1,9 @@
 <div class="modal fade" id="addUserModal" tabindex="-1">
-    <div class="modal-dialog modal-sm modal-dialog-centered">
+    <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
+
             <div class="modal-header" style="background-color: #0d1a80 !important;">
-                <h5 class="modal-title text-white w-100">ADD NEW USER</h5>
+                <h5 class="modal-title text-white w-100"></h5>
                 <button type="button" class="btn-close btn-close-white close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
 
