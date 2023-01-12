@@ -66,10 +66,18 @@
                                         <b>CIVIL STATUS:</b> <input type="hidden" class="civil_status font_weight" style="border:none;" disabled> <span id="civil_status_content"></span>
                                     </div>
                                 </div>
-                                
-                                <div class="row mb-1">
+                            </div> <!-- Column 1 -->
+
+                            <div class="column_two">
+                                <img id="image_preview_summary">
+                            </div> <!-- Column 2 -->
+                        </div><!-- Clear Float -->
+                        
+                            <div class="column_three" style="padding:5px;">
+                                <div class="row mb-1 mt-5">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
                                 </div>
+
                                 <div class="row mb-3">
                                     <div class="col">
                                         <b>UNIT/ROOM #/FLOOR:</b> <span class="unit font_weight"></span>
@@ -101,15 +109,12 @@
                                         <b>REGION:</b> <input type="hidden" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled> <span id="region_content"></span>
                                     </div>
                                 </div>
-                            </div> <!-- Column 1 -->
-
-                            <div class="column_two">
-                                <img id="image_preview_summary">
-                            </div> <!-- Column 2 -->
-                        </div><!-- Clear Float -->
+                            </div>
 
                             <div class="column_three" style="padding: 5px;">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
+                                <div class="row mb-1 mt-5">
+                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
+                                </div>
                                 
                                 <div class="row mb-3">
                                     <div class="col">
@@ -171,7 +176,7 @@
                             </div> <!-- Column 3-->
 
                             <div class="column_four" style="padding:5px;">
-                                <div class="row mb-3">
+                                <div class="row mb-1 mt-5">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
                                 </div>
 
@@ -244,7 +249,11 @@
                                 </div>
                             </div>
 
-                            {{-- <div class="column_five" id="benefits_summary" style="padding:5px;">
+                            <div class="column_five" id="benefits_summary" style="padding:5px;">
+                                <div class="row mb-1 mt-5">
+                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL ACCOUNTS</u></h5>
+                                </div>
+
                                 <div class="row mb-3">
                                     <div class="col">
                                         <b>SSS NO. :</b><br>
@@ -269,7 +278,7 @@
                                         <span class="account_number"></span>
                                     </div>
                                 </div>
-                            </div> --}}
+                            </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">
