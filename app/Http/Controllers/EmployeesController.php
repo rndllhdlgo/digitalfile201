@@ -472,30 +472,30 @@ class EmployeesController extends Controller
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->logs = "INFORMATION UPDATED: 
-                                                 $middle_name_change 
-                                                 $last_name_change 
-                                                 $unit_change
-                                                 $lot_change
-                                                 $barangay_change
-                                                 $province_change
-                                                 $city_change
-                                                 $region_change
-                                                 $height_change
-                                                 $weight_change
-                                                 $religion_change
-                                                 $civil_status_change
-                                                 $email_address_change
-                                                 $telephone_number_change
-                                                 $cellphone_number_change
-                                                 $spouse_contact_number_change
-                                                 $spouse_profession_change
-                                                 $father_contact_number_change
-                                                 $father_profession_change
-                                                 $mother_contact_number_change
-                                                 $mother_profession_change
-                                                 $emergency_contact_name_change
-                                                 $emergency_contact_relationship_change
-                                                 $emergency_contact_number_change";
+                                        $middle_name_change 
+                                        $last_name_change 
+                                        $unit_change
+                                        $lot_change
+                                        $barangay_change
+                                        $province_change
+                                        $city_change
+                                        $region_change
+                                        $height_change
+                                        $weight_change
+                                        $religion_change
+                                        $civil_status_change
+                                        $email_address_change
+                                        $telephone_number_change
+                                        $cellphone_number_change
+                                        $spouse_contact_number_change
+                                        $spouse_profession_change
+                                        $father_contact_number_change
+                                        $father_profession_change
+                                        $mother_contact_number_change
+                                        $mother_profession_change
+                                        $emergency_contact_name_change
+                                        $emergency_contact_relationship_change
+                                        $emergency_contact_number_change";
                 $employee_logs->save();
             }
         }
