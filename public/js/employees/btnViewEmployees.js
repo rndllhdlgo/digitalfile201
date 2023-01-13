@@ -130,7 +130,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#civil_status_orig').val(value.civil_status);
                 $('#civil_status').val(value.civil_status);
-                setInterval(() => {
+                setTimeout(() => {
                     $('#civil_status').change();
                 }, app_timeout);
 
@@ -145,7 +145,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#spouse_name').val(value.spouse_name);
                 $('#spouse_contact_number').val(value.spouse_contact_number);
+                $('#spouse_contact_number_orig').val(value.spouse_contact_number);
                 $('#spouse_profession').val(value.spouse_profession);
+                $('#spouse_profession_orig').val(value.spouse_profession);
 
                 $('#father_name').val(value.father_name);
                 $('#father_contact_number_orig').val(value.father_contact_number);

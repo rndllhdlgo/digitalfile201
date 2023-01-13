@@ -39,8 +39,10 @@ $('#btnUpdate').on('click',function(){
     var cellphone_number_orig = $('#cellphone_number_orig').val();
     var cellphone_number_new = $('#cellphone_number').val();
     var spouse_name = $('#spouse_name').val();
-    var spouse_contact_number = $('#spouse_contact_number').val();
-    var spouse_profession = $('#spouse_profession').val();
+    var spouse_contact_number_orig = $('#spouse_contact_number_orig').val();
+    var spouse_contact_number_new = $('#spouse_contact_number').val();
+    var spouse_profession_orig = $('#spouse_profession_orig').val();
+    var spouse_profession_new = $('#spouse_profession').val();
     var father_name = $('#father_name').val();
     var father_contact_number_orig = $('#father_contact_number_orig').val();
     var father_contact_number_new = $('#father_contact_number').val();
@@ -133,8 +135,10 @@ $('#btnUpdate').on('click',function(){
                     cellphone_number_orig:cellphone_number_orig,
                     cellphone_number_new:cellphone_number_new,
                     spouse_name:spouse_name,
-                    spouse_contact_number:spouse_contact_number,
-                    spouse_profession:spouse_profession,
+                    spouse_contact_number_orig:spouse_contact_number_orig,
+                    spouse_contact_number_new:spouse_contact_number_new,
+                    spouse_profession_orig:spouse_profession_orig,
+                    spouse_profession_new:spouse_profession_new,
                     father_name:father_name,
                     father_contact_number_orig:father_contact_number_orig,
                     father_contact_number_new:father_contact_number_new,
@@ -451,6 +455,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
                         $('#documents_form').submit();
+                        $('#personal_info').css('zoom','98%');
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();
                     }
@@ -463,7 +468,7 @@ $('#btnUpdate').on('click',function(){
             });
         }
         else if(update.isDenied){
-            $('#personal_info').css('zoom','100%');
+            $('#personal_info').css('zoom','98%');
             Swal.fire('UPDATE CANCELLED','','info');
         }
     });

@@ -222,6 +222,8 @@ class EmployeesController extends Controller
         $house_orig = $request->house_orig;
         $email_address_orig = $request->email_address_orig;
         $telephone_number_orig = $request->telephone_number_orig;
+        $spouse_contact_number_orig = $request->spouse_contact_number_orig;
+        $spouse_profession_orig = $request->spouse_profession_orig;
         $father_contact_number_orig = $request->father_contact_number_orig;
         $father_profession_orig = $request->father_profession_orig;
         $mother_contact_number_orig = $request->mother_contact_number_orig;
@@ -254,8 +256,8 @@ class EmployeesController extends Controller
         $employee->telephone_number = $request->telephone_number_new;
         $employee->cellphone_number = $request->cellphone_number_new;
         $employee->spouse_name = ucwords($request->spouse_name);
-        $employee->spouse_contact_number = $request->spouse_contact_number;
-        $employee->spouse_profession = ucwords($request->spouse_profession);
+        $employee->spouse_contact_number = $request->spouse_contact_number_new;
+        $employee->spouse_profession = ucwords($request->spouse_profession_new);
         $employee->father_name = ucwords($request->father_name);
         $employee->father_contact_number = $request->father_contact_number_new;
         $employee->father_profession = ucwords($request->father_profession_new);
@@ -374,6 +376,20 @@ class EmployeesController extends Controller
                 $cellphone_number_change = NULL;
             }
 
+            if($spouse_contact_number_orig != $request->spouse_contact_number_new){
+                $spouse_contact_number_change = "[Spouse Contact Number] FROM: [$spouse_contact_number_orig] TO: [$employee->spouse_contact_number].";
+            }
+            else{
+                $spouse_contact_number_change = NULL;
+            }
+
+            if($spouse_profession_orig != $request->spouse_profession_new){
+                $spouse_profession_change = "[Spouse Profession] FROM: [$spouse_profession_orig] TO: [$employee->spouse_profession].";
+            }
+            else{
+                $spouse_profession_change = NULL;
+            }
+
             if($father_contact_number_orig != $request->father_contact_number_new){
                 $father_contact_number_change = "[Father Contact Number] FROM: [$father_contact_number_orig] TO: [$employee->father_contact_number].";
             }
@@ -441,6 +457,8 @@ class EmployeesController extends Controller
             || $email_address_orig != $request->email_address_new
             || $telephone_number_orig != $request->telephone_number_new
             || $cellphone_number_orig != $request->cellphone_number_new
+            || $spouse_contact_number_orig != $request->spouse_contact_number_new
+            || $spouse_profession_orig != $request->spouse_profession_new
             || $father_contact_number_orig != $request->father_contact_number_new
             || $father_profession_orig != $request->father_profession_new
             || $mother_contact_number_orig != $request->mother_contact_number_new
@@ -453,7 +471,7 @@ class EmployeesController extends Controller
                 // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
-                $employee_logs->logs = "UPDATED: 
+                $employee_logs->logs = "INFORMATION UPDATED: 
                                                  $middle_name_change 
                                                  $last_name_change 
                                                  $unit_change
@@ -469,6 +487,8 @@ class EmployeesController extends Controller
                                                  $email_address_change
                                                  $telephone_number_change
                                                  $cellphone_number_change
+                                                 $spouse_contact_number_change
+                                                 $spouse_profession_change
                                                  $father_contact_number_change
                                                  $father_profession_change
                                                  $mother_contact_number_change
