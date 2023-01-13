@@ -547,7 +547,7 @@ class EmployeesController extends Controller
     }
 
     public function updateEducationalAttainment(Request $request){
-        $employee =  EducationalAttainment::find($request->get('id'));
+        $employee = EducationalAttainment::find($request->get('id'));
         $employee->employee_id = $request->employee_id;
         $employee->secondary_school_name = $request->secondary_school_name;
         $employee->secondary_school_address = $request->secondary_school_address;
@@ -561,13 +561,13 @@ class EmployeesController extends Controller
     }
 
     public function updateMedicalHistory(Request $request){
-            $employee = MedicalHistory::find($request->get('id'));
-            $employee->employee_id = $request->employee_id;
-            $employee->past_medical_condition = ucwords($request->past_medical_condition);
-            $employee->allergies = ucwords($request->allergies);
-            $employee->medication = ucwords($request->medication);
-            $employee->psychological_history = ucwords($request->psychological_history);
-            $employee->save();
+        $employee = MedicalHistory::find($request->get('id'));
+        $employee->employee_id = $request->employee_id;
+        $employee->past_medical_condition = ucwords($request->past_medical_condition);
+        $employee->allergies = ucwords($request->allergies);
+        $employee->medication = ucwords($request->medication);
+        $employee->psychological_history = ucwords($request->psychological_history);
+        $employee->save();
     }
     
     public function saveChildren(Request $request){
@@ -626,7 +626,7 @@ class EmployeesController extends Controller
         $employee_number = WorkInformationTable::where('id', $request->employee_id)->first()->employee_number;
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Number: [$employee_number]. Employee Name: [$employee_details->first_name $employee_details->middle_name $employee_details->last_name]."; //Display logs in home page
+        $userlogs->activity = "ADDED EMPLOYEE: User successfully added new employee with Employee Number: [$employee_number]. Employee Name: [$employee_details->first_name $employee_details->middle_name $employee_details->last_name]."; //Display logs in home page
         $userlogs->save();
     }
 
