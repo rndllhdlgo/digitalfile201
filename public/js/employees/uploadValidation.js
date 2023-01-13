@@ -7,17 +7,17 @@ function ImageValidation(employee_image) {
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
     var imageFileSize = $("#employee_image").get(0).files[0].size;
 
-    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif") && imageFileSize > 5242880 * 2) {
+    if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png") && imageFileSize > 5242880 * 2) {
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
             icon: 'error',
-            text: 'Please upload file with an extension of (.jpg, .jpeg, .png, .gif) and with size not greater than 10MB.',
+            text: 'Please upload file with an extension of (.jpg, .jpeg, .png) and with size not greater than 10MB.',
             allowOutsideClick: false,
             allowEscapeKey: false
         });
 
     } 
-    else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png" && imageExtension != "gif"){
+    else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
             icon: 'error',

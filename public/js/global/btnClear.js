@@ -172,9 +172,6 @@ $('#btnClear').on('click',function(){
 
                     $('.children_information').hide();
                     $('.btn_children').click();
-                    $('.btn_training').click();
-                    $('.btn_vocational').click();
-                    $('.btn_job').click();
                 }
 
                 if($('#work_info').is(":visible")){
