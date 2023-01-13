@@ -1,8 +1,8 @@
 $('#btnSummary').on('click',function(){
-    $('#summaryModal').modal({
-        backdrop: 'static',
-        keyboard: false
-    });
+    // $('#summaryModal').modal({
+    //     backdrop: 'static',
+    //     // keyboard: false
+    // });
 
     $('.first_name').html($('#first_name').val());
     $('.middle_name').html($('#middle_name').val());

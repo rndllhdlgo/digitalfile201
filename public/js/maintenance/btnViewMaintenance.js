@@ -1,4 +1,4 @@
-$('#companyTable').on('dblclick','tbody tr',function(){
+$('#companyTable').on('click','tbody tr',function(){
     
     var data = companyTable.row(this).data();
 
@@ -11,7 +11,7 @@ $('#companyTable').on('dblclick','tbody tr',function(){
     
 });
 
-$('#departmentTable').on('dblclick','tbody tr',function(){
+$('#departmentTable').on('click','tbody tr',function(){
     var data = departmentTable.row(this).data();
 
     $('#department_id').val(data.id);
@@ -22,7 +22,7 @@ $('#departmentTable').on('dblclick','tbody tr',function(){
     $('#updateDepartmentModal').modal('show');
 });
 
-$('#branchTable').on('dblclick','tbody tr',function(){
+$('#branchTable').on('click','tbody tr',function(){
     var data = branchTable.row(this).data();
 
     $('#branch_id').val(data.id);
@@ -33,7 +33,7 @@ $('#branchTable').on('dblclick','tbody tr',function(){
     $('#updateBranchModal').modal('show');
 });
 
-$('#supervisorTable').on('dblclick','tbody tr',function(){
+$('#supervisorTable').on('click','tbody tr',function(){
     var data = supervisorTable.row(this).data();
 
     $('#supervisor_id').val(data.id);
@@ -44,7 +44,7 @@ $('#supervisorTable').on('dblclick','tbody tr',function(){
     $('#updateSupervisorModal').modal('show');
 });
 
-$('#shiftTable').on('dblclick','tbody tr',function(){
+$('#shiftTable').on('click','tbody tr',function(){
     var data = shiftTable.row(this).data();
 
     $('#shift_id').val(data.id);
@@ -59,7 +59,7 @@ $('#shiftTable').on('dblclick','tbody tr',function(){
     $('#updateShiftModal').modal('show');
 });
 
-$('#jobPositionAndDescriptionTable').on('dblclick','tbody tr',function(){
+$('#jobPositionAndDescriptionTable').on('click','tbody tr',function(){
     var data = jobPositionAndDescriptionTable.row(this).data();
 
     $('#job_position_and_description_id').val(data.id);

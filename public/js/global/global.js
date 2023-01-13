@@ -219,28 +219,6 @@ $('body').on('cut paste', function(){
     }, app_timeout);
 });
 
-var speed, interval = 1000, standby = true;
-
-// setInterval(() => {
-//     if(!$('.modal:visible').length && $('#loading').is(':hidden') && standby == false){
-//         $.ajax({
-//             url: "/ping",
-//             success: function(data){
-//                 speed = ' (Ping: '+data+'s)';
-//                 $('#current_speed').html(speed);
-//                 if(parseFloat(data) < parseFloat(1.000)){
-//                     $('#current_speed').removeClass('text-danger');
-//                     interval = 1000;
-//                 }
-//                 else{
-//                     $('#current_speed').addClass('text-danger');
-//                     interval = 3000;
-//                 }
-//             }
-//         });
-//     }
-// }, interval);
-
 $(document).ready(function(){
     setInterval(displayClock, 0);
     function displayClock(){
