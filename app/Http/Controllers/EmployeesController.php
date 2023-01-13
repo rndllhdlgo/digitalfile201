@@ -30,7 +30,7 @@ class EmployeesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');//For Authentication
+        $this->middleware('auth');
     }
     
     // public function listOfEmployees(){
@@ -40,14 +40,14 @@ class EmployeesController extends Controller
 
     public function listOfEmployees(Request $request){
         $employees = PersonalInformationTable::select(
-            'personal_information_tables.id',
-            'work_information_tables.employee_number',
-            'first_name',
-            'middle_name', 
-            'last_name', 
-            'positions.job_position_name AS employee_position', 
-            'branches.branch_name AS employee_branch', 
-            'work_information_tables.employment_status')
+               'personal_information_tables.id',
+               'work_information_tables.employee_number',
+               'first_name',
+               'middle_name', 
+               'last_name', 
+               'positions.job_position_name AS employee_position', 
+               'branches.branch_name AS employee_branch', 
+               'work_information_tables.employment_status')
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
         ->join('positions','positions.id','work_information_tables.employee_position')
@@ -150,14 +150,6 @@ class EmployeesController extends Controller
 
         return DataTables::of($employees)->toJson();
     }
-    // public function childrenDataTable(Request $request){
-    //     $children = Children::where('employee_id',$request->employee_id)->get();
-    //     return DataTables::of($children)->make(true);
-    // }
-
-    // public function collegeDataTable(Request $request){
-    //     return DataTables::of(CollegeTable::where('employee_id',$request->employee_id)->get())->make(true);
-    // }
 
     public function savePersonalInformation(Request $request){
         $employee = new PersonalInformationTable;
@@ -675,7 +667,7 @@ class EmployeesController extends Controller
     }
 
     public function saveMedicalHistory(Request $request){
-        // if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
+        if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
             $employee = new MedicalHistory;
             $employee->employee_id = $request->employee_id;
             $employee->past_medical_condition = ucwords($request->past_medical_condition);
@@ -683,48 +675,8 @@ class EmployeesController extends Controller
             $employee->medication = ucwords($request->medication);
             $employee->psychological_history = ucwords($request->psychological_history);
             $employee->save();
-        // } 
+        } 
     }
-
-    // public function checkDuplicate(Request $request){
-    //     // return WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0 ? 'true': 'false';
-    //     if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
-    //         return 'duplicate_employee_number';
-    //     }
-    //     if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
-    //         return 'duplicate_email_address';
-    //     }
-    //     if(PersonalInformationTable::where('telephone_number',$request->telephone_number)->count() > 0){
-    //         return 'duplicate_telephone_number';
-    //     }
-    //     if(PersonalInformationTable::where('cellphone_number',$request->cellphone_number)->count() > 0){
-    //         return 'duplicate_cellphone_number';
-    //     }
-    //     if(PersonalInformationTable::where('father_contact_number',$request->father_contact_number)->count() > 0){
-    //         return 'duplicate_father_contact_number';
-    //     }
-    //     if(PersonalInformationTable::where('mother_contact_number',$request->mother_contact_number)->count() > 0){
-    //         return 'duplicate_mother_contact_number';
-    //     }
-    //     if(PersonalInformationTable::where('spouse_contact_number',$request->spouse_contact_number)->count() > 0){
-    //         return 'duplicate_spouse_contact_number';
-    //     }
-    //     if(PersonalInformationTable::where('emergency_contact_number',$request->emergency_contact_number)->count() > 0){
-    //         return 'duplicate_contact_number';
-    //     }
-    //     if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
-    //         return 'duplicate_company_email_address';
-    //     }
-    //     if(WorkInformationTable::where('company_contact_number',$request->company_contact_number)->count() > 0){
-    //         return 'duplicate_company_contact_number';
-    //     }
-    // }
-
-    // public function checkDuplicateWorkInfo(Request $request){
-    //     if(WorkInformationTable::where('sss_number',$request->sss_number)->count() > 0){
-    //         return 'duplicate_sss_number';
-    //     }
-    // }
 
     public function duplicate_personal_info(Request $request){
         if(PersonalInformationTable::where('email_address', '=', $request->email_address)->exists()){

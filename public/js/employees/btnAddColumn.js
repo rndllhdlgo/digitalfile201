@@ -1,5 +1,3 @@
-//This JS page is to add column on multiple field
-//Verify that the user has filled out all field on multiple field.
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){

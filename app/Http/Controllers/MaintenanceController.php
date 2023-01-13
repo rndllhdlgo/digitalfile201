@@ -15,7 +15,6 @@ use DataTables;
 
 class MaintenanceController extends Controller
 {
-    // Company
     public function companyData(){
         $company = Company::all();
         return DataTables::of($company)->make(true);

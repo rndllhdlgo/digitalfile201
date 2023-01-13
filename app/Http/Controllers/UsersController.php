@@ -90,33 +90,37 @@ class UsersController extends Controller
         $users->email = $request->email_new;
         $sql = $users->save();
 
-        if($user_level_orig != $request->user_level_new){
-            $users_level_change = "User Level FROM: [$user_level_orig] TO: [$users->user_level]";
-        }
-        else{
-            $users_level_change = NULL;
-        }
-        if($name_orig != $request->name_new){
-            $name_change = "Name FROM: [$name_orig] TO: [$users->name]";
-        }
-        else{
-            $name_change = NULL;
-        }
-        if($email_orig != $request->email_new){
-            $email_change = "Email Address FROM: [$email_orig] TO: [$users->email]";
-        }
-        else{
-            $email_change = NULL;
-        }
-
         if($sql){
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER UPDATED: User successfully updated details of [$users->name] with the following CHANGES: $email_change $name_change $users_level_change.";
-            $userlogs->save();
-        }
+            if($user_level_orig != $request->user_level_new){
+                $users_level_change = "User Level FROM: [$user_level_orig] TO: [$users->user_level]";
+            }
+            else{
+                $users_level_change = NULL;
+            }
+            if($name_orig != $request->name_new){
+                $name_change = "Name FROM: [$name_orig] TO: [$users->name]";
+            }
+            else{
+                $name_change = NULL;
+            }
+            if($email_orig != $request->email_new){
+                $email_change = "Email Address FROM: [$email_orig] TO: [$users->email]";
+            }
+            else{
+                $email_change = NULL;
+            }
 
-        return $sql ? 'true':'false';
+            if($user_level_orig != $request->user_level_new || $name_orig != $request->name_new || $email_orig != $request->email_new){
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER UPDATED: User successfully updated details of [$users->name] with the following CHANGES: $email_change $name_change $users_level_change.";
+                $userlogs->save();
+            
+                return $sql ? 'true':'false';
+            }
+        }
+            
     }
     
     public function change_validate(Request $request){
