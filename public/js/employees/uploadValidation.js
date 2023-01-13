@@ -48,7 +48,7 @@ function ImageValidation(employee_image) {
                 $('#image_instruction').hide();
                 $('#image_close').show();
                 $('#image_preview').show();
-                $('.column-1').addClass('blue');
+                // $('.column-1').addClass('blue');
         }
     }
 }

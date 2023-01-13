@@ -1,5 +1,5 @@
 <div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-fullscreen-xxl-down">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #0d1a80;">
                 <h5 class="modal-title text-white" id="exampleModalLabel">Employee Summary Details</h5>

@@ -13,7 +13,7 @@ function checkclearform(){
 
 //This JS page is to clear form (current page, all pages)
 $('#btnClear').on('click',function(){
-    $('#personal_info').css('zoom','95%');
+    // $('#personal_info').css('zoom','95%');
         Swal.fire({
             title: 'Do you want to clear the form?',
             allowOutsideClick: false,
@@ -33,7 +33,7 @@ $('#btnClear').on('click',function(){
             if (clear.isDenied) { 
                 //Clear All Pages
                 new bootstrap.Toast(document.querySelector('#clearAll')).show();
-                $('#personal_info').css('zoom','100%');
+                // $('#personal_info').css('zoom','100%');
                 $('#termination_div').hide();
                 $('#resignation_div').hide();
                 $('.separated').val('');
@@ -152,7 +152,7 @@ $('#btnClear').on('click',function(){
                 $('.separated').val('');
                 $('#termination_div').hide();
                 $('#resignation_div').hide();
-                $('#personal_info').css('zoom','100%');
+                // $('#personal_info').css('zoom','100%');
                 $('.required_field:visible').val('');
                 $('.optional_field:visible').val('');
                 $('.multiple_field:visible').val('');
@@ -281,7 +281,7 @@ $('#btnClear').on('click',function(){
                     $('#tor_view').prop('disabled',true);
                 }
             }
-            $('#personal_info').css('zoom','100%');
+            // $('#personal_info').css('zoom','100%');
             $('.nav-tabs').css('zoom','100%');
         });
 });

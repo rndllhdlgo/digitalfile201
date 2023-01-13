@@ -2,7 +2,7 @@
     <hr class="hr-design">
     
     <div class="row mb-3">
-        <div class="column-1">
+        <div class="column1">
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
             
@@ -25,7 +25,7 @@
                 </div>
         </div>
         
-        <div class="column-2">
+        <div class="column2">
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
@@ -104,7 +104,7 @@
                     <div class="f-outline">
                         <input type="hidden" id="lot_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET NAME <span class="span_lot span_all"></span> </label>
+                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET <span class="span_lot span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">

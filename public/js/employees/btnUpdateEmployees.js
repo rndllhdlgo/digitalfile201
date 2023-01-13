@@ -1,5 +1,5 @@
 $('#btnUpdate').on('click',function(){
-    $('#personal_info').css('zoom','95%');
+    // $('#personal_info').css('zoom','95%');
     var id = $('#hidden_id').val();
     var first_name = $('#first_name').val();
     var last_name_orig = $('#last_name_orig').val();
@@ -74,7 +74,7 @@ $('#btnUpdate').on('click',function(){
         }
     }).then((update) => {
         if (update.isConfirmed) {
-            $('#personal_info').css('zoom','100%');
+            // $('#personal_info').css('zoom','100%');
             $('#loading').show();
 
             if(!$('#filename').val() && $('#employee_image').val()){
@@ -455,7 +455,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
                         $('#documents_form').submit();
-                        $('#personal_info').css('zoom','98%');
+                        // $('#personal_info').css('zoom','98%');
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();
                     }
@@ -468,7 +468,7 @@ $('#btnUpdate').on('click',function(){
             });
         }
         else if(update.isDenied){
-            $('#personal_info').css('zoom','98%');
+            // $('#personal_info').css('zoom','98%');
             Swal.fire('UPDATE CANCELLED','','info');
         }
     });

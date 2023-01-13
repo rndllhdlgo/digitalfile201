@@ -162,7 +162,7 @@ $('#child_birthday').on('change',function(){
 });
 
 $('#image_close').on('click',function(){
-    $('#personal_info').css('zoom','95%');
+    // $('#personal_info').css('zoom','95%');
     Swal.fire({
         title: 'Do you want to remove image?',
         allowOutsideClick: false,
@@ -177,7 +177,7 @@ $('#image_close').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            $('#personal_info').css('zoom','100%');
+            // $('#personal_info').css('zoom','100%');
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
             $('#employee_image').val('');
@@ -187,7 +187,7 @@ $('#image_close').on('click',function(){
             $('#image_user').show();
             $('#image_button').show();
             $('#image_instruction').show();
-            $('.column-1').css("height","280px");
+            // $('.column-1').css("height","280px");
             $('#employee_image').addClass('required_field');
         }
     });

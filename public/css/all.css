@@ -291,7 +291,7 @@ input[type=search]:focus{
 }
 
 /* Divide into two columns */
-.column-1 {
+/* .column-1 {
     float: left;
     width: 280px;
     height: 280px;
@@ -302,6 +302,18 @@ input[type=search]:focus{
 .column-2{
     float: left;
     width: 77%;
+} */
+
+.column1 {
+    float: left;
+    width: 25%;
+    height: 290px;
+    border:1px solid gray;
+    margin-left: 1%;
+}
+.column2{
+    float: left;
+    width: 74%;
 }
 
 .summary_container{
@@ -325,9 +337,7 @@ input[type=search]:focus{
     display: table;
     clear: both;
 }
-/* .font_weight{
-    font-weight: 500;
-} */
+
 .row:after {
     content: "";
     display: table;
@@ -346,9 +356,11 @@ input[type=search]:focus{
 }
 
 #image_preview{
-    height: 240px;
+    /* height: 240px;
     width: 276px;
-    margin-left: -12px;
+    margin-left: -12px; */
+    height: 250px;
+    width:100%;
     cursor:pointer;
     display: none;
 }

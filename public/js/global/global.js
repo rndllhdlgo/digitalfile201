@@ -190,6 +190,22 @@ $(".textarea_hmo_benefits").keyup(function(event){
 	}
 });
 
+$(".textarea_hmo_benefits").keypress(function() {
+    if(document.getElementById('hmo_benefits').value === ''){
+        document.getElementById('hmo_benefits').value +='• ';
+	}
+});
+$(".textarea_hmo_benefits").keyup(function(event){
+	var keycode6 = (event.keyCode ? event.keyCode : event.which);
+    if(keycode6 == '13'){
+        document.getElementById('hmo_benefits').value +='• ';
+	}
+	var txtval6 = document.getElementById('hmo_benefits').value;
+	if(txtval6.substr(txtval6.length - 1) == '\n'){
+		document.getElementById('hmo_benefits').value = txtval6.substring(0,txtval6.length - 1);
+	}
+});
+
 $(".textarea_insurance").keypress(function() {
     if(document.getElementById('employee_insurance').value === ''){
         document.getElementById('employee_insurance').value +='• ';
@@ -205,6 +221,8 @@ $(".textarea_insurance").keyup(function(event){
 		document.getElementById('employee_insurance').value = txtval7.substring(0,txtval7.length - 1);
 	}
 });
+
+
 
 var app_timeout = $('#APP_TIMEOUT').val();
 
