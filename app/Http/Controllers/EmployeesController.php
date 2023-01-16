@@ -33,28 +33,41 @@ class EmployeesController extends Controller
         $this->middleware('auth');
     }
     
-    // public function listOfEmployees(){
-    //     $employees = PersonalInformationTable::all();
-    //     return DataTables::of($employees)->make(true);
-    // }
-
-    public function listOfEmployees(Request $request){
+    public function listOfEmployees(){
         $employees = PersonalInformationTable::select(
-               'personal_information_tables.id',
-               'work_information_tables.employee_number',
-               'first_name',
-               'middle_name', 
-               'last_name', 
-               'positions.job_position_name AS employee_position', 
-               'branches.branch_name AS employee_branch', 
-               'work_information_tables.employment_status')
-        ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
-        ->join('positions','positions.id','work_information_tables.employee_position')
-        ->join('branches','branches.id','work_information_tables.employee_branch')
-        ->get();
+            'personal_information_tables.id',
+            'work_information_tables.employee_number',
+            'first_name',
+            'middle_name',
+            'last_name',
+            'positions.job_position_name AS employee_position',
+            'branches.branch_name AS employee_branch',
+            'work_information_tables.employment_status'
+            )
+            ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+            ->join('positions','positions.id','work_information_tables.employee_position')
+            ->join('branches','branches.id','work_information_tables.employee_branch')
+            ->get();
         return DataTables::of($employees)->make(true);
     }
+
+    // public function listOfEmployees(Request $request){
+    //     $employees = PersonalInformationTable::select(
+    //            'personal_information_tables.id',
+    //            'work_information_tables.employee_number',
+    //            'first_name',
+    //            'middle_name', 
+    //            'last_name', 
+    //            'positions.job_position_name AS employee_position', 
+    //            'branches.branch_name AS employee_branch', 
+    //            'work_information_tables.employment_status')
+    //     ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+    //     ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
+    //     ->join('positions','positions.id','work_information_tables.employee_position')
+    //     ->join('branches','branches.id','work_information_tables.employee_branch')
+    //     ->get();
+    //     return DataTables::of($employees)->make(true);
+    // }
     
     public function employeeFetch(Request $request){
         $employees = PersonalInformationTable::select(
@@ -68,9 +81,7 @@ class EmployeesController extends Controller
             'birthday',
             'gender',
             'civil_status',
-            'unit',
-            'lot',
-            'barangay',
+            'address',
             'house',
             'province',
             'city',
@@ -141,7 +152,7 @@ class EmployeesController extends Controller
             )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
+        ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
         ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
         ->join('documents','documents.employee_id','personal_information_tables.id') 
         ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
@@ -161,9 +172,6 @@ class EmployeesController extends Controller
         $employee->nickname = ucwords($request->nickname);
         $employee->birthday = $request->birthday;
         $employee->gender = $request->gender;
-        $employee->unit = ucwords($request->unit);
-        $employee->lot = ucwords($request->lot);
-        $employee->barangay = ucwords($request->barangay);
         $employee->house = $request->house;
         $employee->province = $request->province;
         $employee->city = $request->city;

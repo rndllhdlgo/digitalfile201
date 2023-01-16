@@ -75,10 +75,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#gender').val(value.gender);
                 $('#barangay_orig').val(value.barangay);
                 $('#barangay').val(value.barangay);
-                $('#unit_orig').val(value.unit);
-                $('#unit').val(value.unit);
-                $('#lot_orig').val(value.lot);
-                $('#lot').val(value.lot);
+                $('#address_orig').val(value.address);
+                $('#address').val(value.address);
 
                 $('#house_orig').val(value.house);
 
@@ -119,8 +117,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#region_summary').val(value.region);
                 $('#region_content').html(value.region);
                 
-                $('#height_orig').val(decodeHtml(value.height));
-                $('#height').val(decodeHtml(value.height));
+                // $('#height_orig').val(decodeHtml(value.height));
+                // $('#height').val(decodeHtml(value.height));
 
                 $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);

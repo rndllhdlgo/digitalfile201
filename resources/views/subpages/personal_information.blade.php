@@ -38,9 +38,9 @@
                 <div class="col">
                     <div class="f-outline">
                         <input type="hidden" id="middle_name_orig">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control text-capitalize" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <p id="middle_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME <span class="span_middle_name span_all"></span></label>
+                        <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME (Optional) <span class="span_middle_name span_all"></span></label>
                     </div>
                 </div>
 
@@ -84,8 +84,8 @@
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field"  id="gender" placeholder=" " style="background-color:white;" autocomplete="off">
                             <option value="" disabled selected>SELECT GENDER </option>
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
+                            <option value="M">Male</option>
+                            <option value="F">Female</option>
                         </select>
                         <label for="gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_gender span_all"></span> </label>
                     </div>
@@ -95,30 +95,9 @@
             <div class="row mb-3 mt-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input type="hidden" id="unit_orig">
-                        <input class="forminput form-control text-capitalize optional_field" type="search" id="unit" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="unit" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR (Optional) <span class="span_unit span_all"></span> </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="f-outline">
-                        <input type="hidden" id="lot_orig">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="lot" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="lot" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> LOT/HOUSE #, STREET <span class="span_lot span_all"></span> </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="f-outline">
-                        <input type="hidden" id="barangay_orig">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="barangay" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="barangay" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> SUBDIVISION, BARANGAY <span class="span_barangay span_all"></span> </label>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="f-outline">
-                        <input type="hidden" id="house_orig">
-                        <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left: 30px;" checked> Owned
-                        <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent
+                        <input type="hidden" id="address_orig">
+                        <input class="forminput form-control text-capitalize required_field" type="search" id="address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <label for="address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR, LOT/HOUSE #, STREET, SUBDIVISION, BARANGAY  <span class="span_unit span_all"></span> </label>
                     </div>
                 </div>
             </div>
@@ -157,7 +136,7 @@
                 <div class="col-3">
                     <div class="f-outline">
                         <input type="hidden" id="province_orig">
-                        <select class="form-select forminput form-control required_field" name="province" id="province">
+                        <select class="form-select forminput form-control" name="province" id="province">
                             <option value="" selected disabled>SELECT PROVINCE</option>
                             @foreach ($provinces as $province)
                                 <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
@@ -170,7 +149,7 @@
                 <div class="col-3">
                     <div class="f-outline">
                         <input type="hidden" id="city_orig">
-                        <select class="form-select forminput form-control required_field" name="city" id="city">
+                        <select class="form-select forminput form-control" name="city" id="city">
                             <option value="" selected disabled>SELECT CITY</option>
                             
                         </select>
@@ -181,7 +160,7 @@
                 <div class="col-6">
                     <div class="f-outline">
                         <input type="hidden" id="region_orig">
-                        <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
+                        <input type="text" class="forminput form-control" name="region" id="region" style="background-color: white !important;" disabled>
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
@@ -214,11 +193,11 @@
                         <input type="hidden" id="civil_status_orig">
                         <select class="form-select forminput form-control required_field"  id="civil_status" placeholder=" " onchange="changeCivilStatus()" style="background-color:white;">
                             <option value="" disabled selected>SELECT CIVIL STATUS</option>
-                            <option value="Single">Single</option>
-                            <option value="Married">Married</option>
-                            <option value="Solo Parent">Solo Parent</option>
-                            <option value="Widowed">Widowed</option>
-                            <option value="Separated">Separated</option>
+                            <option value="S">Single</option>
+                            <option value="M">Married</option>
+                            <option value="SP">Solo Parent</option>
+                            <option value="W">Widowed</option>
+                            <option value="SD">Separated</option>
                         </select>
                         <label for="civil_status" class="formlabel form-label"><i class="fas fa-user-friends" ></i> CIVIL STATUS <span class="span_civil_status span_all"></span> </label>
                     </div>
@@ -393,8 +372,8 @@
                                             <div class="f-outline">
                                                 <select class="form-select forminput form-control optional_field child_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
                                                     <option value="" disabled selected>SELECT GENDER </option>
-                                                    <option value="Male">Male</option>
-                                                    <option value="Female">Female</option>
+                                                    <option value="M">Male</option>
+                                                    <option value="F">Female</option>
                                                 </select>
                                                 <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all span_child">(Optional)</span></label>
                                             </div>

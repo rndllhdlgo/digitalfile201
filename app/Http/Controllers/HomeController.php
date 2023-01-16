@@ -33,6 +33,15 @@ class HomeController extends Controller
         return view('pages.index', compact('employees'));
     }
 
+    public function org()
+    {
+        $employees = PersonalInformationTable::selectraw('empno, CONCAT(first_name, " ", last_name) as fname, employee_supervisor')
+                    ->join('work_information_tables', 'employee_id', 'personal_information_tables.id')
+                    ->where('employee_supervisor', '!=', '')
+                    ->get();
+        return view('pages.org', compact('employees'));
+    }
+
     public function ping(){
         // $start = microtime(true);
         // $conn = DB::connection();

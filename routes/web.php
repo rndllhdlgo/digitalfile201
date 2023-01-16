@@ -28,6 +28,8 @@ Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/', 'HomeController@index');
 Route::get('/ping','HomeController@ping');
+Route::get('/org', 'HomeController@org');
+
 
 // Pages Controller
 Route::any('/employees', 'PagesController@employees');
