@@ -2,7 +2,7 @@
     <hr class="hr-design">
     
     <div class="row mb-3">
-        <div class="column1">
+        <div class="column1 mt-3">
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
             
@@ -14,7 +14,7 @@
 
                     <img id="image_preview">
 
-                <div class="text-center mt-5">
+                <div class="text-center mt-4">
                     <button type="button" class="btn btn-primary bp" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                     <input type="file" name="employee_image" class="required_field hiddenFile" id="employee_image" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
                 </div>

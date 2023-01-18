@@ -117,6 +117,8 @@ class EmployeesController extends Controller
             'work_information_tables.philhealth_number',
             'work_information_tables.tin_number',
             'work_information_tables.account_number',
+            'work_information_tables.company_email_address',
+            'work_information_tables.company_contact_number',
             'educational_attainments.secondary_school_name',
             'educational_attainments.secondary_school_address',
             'educational_attainments.secondary_school_inclusive_years_from',

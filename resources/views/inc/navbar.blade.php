@@ -49,10 +49,10 @@
             @endif
             @if(Auth::user()->user_level == 'ADMIN')
                 <li class="nav-item space">
-                    <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
+                    <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-sliders-h"></i> MAINTENANCE</a>
                 </li>
                 <li class="nav-item space">
-                    <a class="nav-link {{ Request::is('maintenance') ? 'active' : '' }}" href="/maintenance"><i class="fas fa-users"></i> MAINTENANCE</a>
+                    <a class="nav-link {{ Request::is('users') ? 'active' : '' }}" href="/users"><i class="fas fa-users"></i> USERS</a>
                 </li>
             @endif
         </ul>

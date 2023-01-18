@@ -306,14 +306,14 @@ input[type=search]:focus{
 
 .column1 {
     float: left;
-    width: 25%;
-    height: 290px;
+    width: 20%;
+    height: 250px;
     border:1px solid gray;
     margin-left: 1%;
 }
 .column2{
     float: left;
-    width: 74%;
+    width: 79%;
 }
 
 .summary_container{
@@ -359,7 +359,7 @@ input[type=search]:focus{
     /* height: 240px;
     width: 276px;
     margin-left: -12px; */
-    height: 250px;
+    height: 210px;
     width:100%;
     cursor:pointer;
     display: none;
