@@ -168,6 +168,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
+                $('#employee_number').attr('readonly',true);
                 $('#employee_number_orig').val(value.employee_number);
 
                 $('#employee_company').val(value.employee_company);

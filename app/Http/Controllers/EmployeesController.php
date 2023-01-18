@@ -104,19 +104,36 @@ class EmployeesController extends Controller
             'emergency_contact_relationship',
             'emergency_contact_number',
             'work_information_tables.employee_number',
+            'work_information_tables.date_hired',
+            'work_information_tables.employee_shift',
             'work_information_tables.employee_company',
             'work_information_tables.employee_branch',
+            'work_information_tables.employee_department',
             'work_information_tables.employee_position',
             'work_information_tables.employment_status',
-            'work_information_tables.date_hired',
+            'work_information_tables.employment_origin',
             'work_information_tables.sss_number',
             'work_information_tables.pag_ibig_number',
             'work_information_tables.philhealth_number',
             'work_information_tables.tin_number',
-            'work_information_tables.account_number'
+            'work_information_tables.account_number',
+            'educational_attainments.secondary_school_name',
+            'educational_attainments.secondary_school_address',
+            'educational_attainments.secondary_school_inclusive_years_from',
+            'educational_attainments.secondary_school_inclusive_years_to',
+            'educational_attainments.primary_school_name',
+            'educational_attainments.primary_school_address',
+            'educational_attainments.primary_school_inclusive_years_from',
+            'educational_attainments.primary_school_inclusive_years_to',
+            'medical_histories.past_medical_condition',
+            'medical_histories.allergies',
+            'medical_histories.medication',
+            'medical_histories.psychological_history'
         )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        ->join('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
+        ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
         ->get();
         return DataTables::of($employees)->toJson();
     }
@@ -292,7 +309,7 @@ class EmployeesController extends Controller
         $emergency_contact_relationship_orig = $request->emergency_contact_relationship_orig;
         $emergency_contact_number_orig = $request->emergency_contact_number_orig;
 
-        $employee = PersonalInformationTable::find($request->get('id'));
+        $employee = PersonalInformationTable::find($request->id);
         $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee->first_name =  ucwords($request->first_name);
         $employee->last_name = ucwords($request->last_name_new); 

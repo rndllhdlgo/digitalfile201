@@ -103,7 +103,7 @@
 
                 <div class="col-3">
                     <div class="f-outline">
-                        <input type="radio" id="default" name="house" class="house" value="Owned"> Owned
+                        <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left:30px;"> Owned
                         <input type="radio" name="house" class="house" value="Rent"> Rent
                     </div>
                 </div>
