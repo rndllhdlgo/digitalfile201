@@ -68,7 +68,6 @@ class EmployeesController extends Controller
     //     ->get();
     //     return DataTables::of($employees)->make(true);
     // }
-    
     public function employeeFetch(Request $request){
         $employees = PersonalInformationTable::select(
             'personal_information_tables.id',
@@ -106,61 +105,114 @@ class EmployeesController extends Controller
             'emergency_contact_number',
             'work_information_tables.employee_number',
             'work_information_tables.employee_company',
-            'work_information_tables.employee_department',
             'work_information_tables.employee_branch',
-            'work_information_tables.employment_status',
-            'work_information_tables.employment_origin',
-            'work_information_tables.employee_shift',
-            'work_information_tables.employee_supervisor',
             'work_information_tables.employee_position',
+            'work_information_tables.employment_status',
             'work_information_tables.date_hired',
-            'work_information_tables.company_email_address',
-            'work_information_tables.company_contact_number',
             'work_information_tables.sss_number',
             'work_information_tables.pag_ibig_number',
             'work_information_tables.philhealth_number',
             'work_information_tables.tin_number',
-            'work_information_tables.account_number',
-            'compensation_benefits.employee_salary',
-            'compensation_benefits.employee_incentives',
-            'compensation_benefits.employee_overtime_pay',
-            'compensation_benefits.employee_bonus',
-            'compensation_benefits.employee_insurance',
-            'educational_attainments.secondary_school_name',
-            'educational_attainments.secondary_school_address',
-            'educational_attainments.secondary_school_inclusive_years_from',
-            'educational_attainments.secondary_school_inclusive_years_to',
-            'educational_attainments.primary_school_name',
-            'educational_attainments.primary_school_address',
-            'educational_attainments.primary_school_inclusive_years_from',
-            'educational_attainments.primary_school_inclusive_years_to',
-            'medical_histories.past_medical_condition',
-            'medical_histories.allergies',
-            'medical_histories.medication',
-            'medical_histories.psychological_history',
-            'documents.birthcertificate_file',
-            'documents.barangay_clearance_file',
-            'documents.diploma_file',
-            'documents.medical_certificate_file',
-            'documents.nbi_clearance_file',
-            'documents.pag_ibig_file',
-            'documents.philhealth_file',
-            'documents.police_clearance_file',
-            'documents.resume_file',
-            'documents.sss_file',
-            'documents.transcript_of_records_file'
-            )
+            'work_information_tables.account_number'
+        )
         ->where('personal_information_tables.id',$request->id)
         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-        ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
-        ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
-        ->join('documents','documents.employee_id','personal_information_tables.id') 
-        ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
-        ->leftJoin('logs_tables','logs_tables.employee_id','personal_information_tables.id')
         ->get();
-
         return DataTables::of($employees)->toJson();
     }
+
+    // public function employeeFetch(Request $request){
+    //     $employees = PersonalInformationTable::select(
+    //         'personal_information_tables.id',
+    //         'employee_image',
+    //         'first_name',
+    //         'middle_name',
+    //         'last_name',
+    //         'suffix',
+    //         'nickname',
+    //         'birthday',
+    //         'gender',
+    //         'civil_status',
+    //         'address',
+    //         'house',
+    //         'province',
+    //         'city',
+    //         'region',
+    //         'height',
+    //         'weight',
+    //         'religion',
+    //         'email_address',
+    //         'telephone_number',
+    //         'cellphone_number',
+    //         'spouse_name',
+    //         'spouse_contact_number',
+    //         'spouse_profession',
+    //         'father_name',
+    //         'father_contact_number',
+    //         'father_profession',
+    //         'mother_name',
+    //         'mother_contact_number',
+    //         'mother_profession',
+    //         'emergency_contact_name',
+    //         'emergency_contact_relationship',
+    //         'emergency_contact_number',
+    //         'work_information_tables.employee_number',
+    //         'work_information_tables.employee_company',
+    //         'work_information_tables.employee_department',
+    //         'work_information_tables.employee_branch',
+    //         'work_information_tables.employment_status',
+    //         'work_information_tables.employment_origin',
+    //         'work_information_tables.employee_shift',
+    //         'work_information_tables.employee_supervisor',
+    //         'work_information_tables.employee_position',
+    //         'work_information_tables.date_hired',
+    //         'work_information_tables.company_email_address',
+    //         'work_information_tables.company_contact_number',
+    //         'work_information_tables.sss_number',
+    //         'work_information_tables.pag_ibig_number',
+    //         'work_information_tables.philhealth_number',
+    //         'work_information_tables.tin_number',
+    //         'work_information_tables.account_number',
+    //         'compensation_benefits.employee_salary',
+    //         'compensation_benefits.employee_incentives',
+    //         'compensation_benefits.employee_overtime_pay',
+    //         'compensation_benefits.employee_bonus',
+    //         'compensation_benefits.employee_insurance',
+    //         'educational_attainments.secondary_school_name',
+    //         'educational_attainments.secondary_school_address',
+    //         'educational_attainments.secondary_school_inclusive_years_from',
+    //         'educational_attainments.secondary_school_inclusive_years_to',
+    //         'educational_attainments.primary_school_name',
+    //         'educational_attainments.primary_school_address',
+    //         'educational_attainments.primary_school_inclusive_years_from',
+    //         'educational_attainments.primary_school_inclusive_years_to',
+    //         'medical_histories.past_medical_condition',
+    //         'medical_histories.allergies',
+    //         'medical_histories.medication',
+    //         'medical_histories.psychological_history',
+    //         'documents.birthcertificate_file',
+    //         'documents.barangay_clearance_file',
+    //         'documents.diploma_file',
+    //         'documents.medical_certificate_file',
+    //         'documents.nbi_clearance_file',
+    //         'documents.pag_ibig_file',
+    //         'documents.philhealth_file',
+    //         'documents.police_clearance_file',
+    //         'documents.resume_file',
+    //         'documents.sss_file',
+    //         'documents.transcript_of_records_file'
+    //         )
+    //     ->where('personal_information_tables.id',$request->id)
+    //     ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+    //     ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')        
+    //     ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')     
+    //     ->join('documents','documents.employee_id','personal_information_tables.id') 
+    //     ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+    //     ->leftJoin('logs_tables','logs_tables.employee_id','personal_information_tables.id')
+    //     ->get();
+
+    //     return DataTables::of($employees)->toJson();
+    // }
 
     public function savePersonalInformation(Request $request){
         $employee = new PersonalInformationTable;

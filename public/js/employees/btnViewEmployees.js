@@ -117,8 +117,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#region_summary').val(value.region);
                 $('#region_content').html(value.region);
                 
-                // $('#height_orig').val(decodeHtml(value.height));
-                // $('#height').val(decodeHtml(value.height));
+                $('#height_orig').val(decodeHtml(value.height));
+                $('#height').val(decodeHtml(value.height));
 
                 $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);
@@ -184,7 +184,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 setTimeout(() => {
                     $('#employment_status').change();
                 }, app_timeout);
-
                 $('#employment_origin').val(value.employment_origin);
                 $('#employment_origin_orig').val(value.employment_origin);
 

@@ -21,13 +21,16 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <b>FIRST NAME:</b> <span class="first_name font_weight"></span>
+                                        <b>FIRST NAME:</b><br>
+                                        <span class="first_name font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>MIDDLE NAME:</b> <span class="middle_name font_weight"></span>
+                                        <b>MIDDLE NAME:</b><br>
+                                        <span class="middle_name font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>LAST NAME:</b> <span class="last_name font_weight"></span>
+                                        <b>LAST NAME:</b><br>
+                                        <span class="last_name font_weight"></span>
                                     </div>
                                 </div>
                                 <div class="row mb-3">

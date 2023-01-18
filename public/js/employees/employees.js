@@ -16,13 +16,13 @@ $(document).ready(function(){
         },
         order: [],
         columns:[
-            // {
-            //     data: 'employee_number',
-            //     // "render": function(data, type, row){
-            //     //     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-            //     // }
-            // },
-            {data: 'employee_number'},
+            {
+                data: 'employee_number',
+                "render": function(data, type, row){
+                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
+                }
+            },
+            // {data: 'employee_number'},
             {data: 'first_name'},
             {data: 'middle_name'},
             {data: 'last_name'},
@@ -31,12 +31,12 @@ $(document).ready(function(){
             {data: 'employment_status'}
         ],
         initComplete: function(){
-            // if(window.location.search.includes('employee_number') == true){
-            //     var url = new URL(window.location.href);
-            //     var employee_number = url.searchParams.get("employee_number");
-            //     $('.'+employee_number).closest('tr').click();
-            //     // $('#loading').show();
-            // }
+            if(window.location.search.includes('employee_number') == true){
+                var url = new URL(window.location.href);
+                var employee_number = url.searchParams.get("employee_number");
+                $('.'+employee_number).closest('tr').click();
+                // $('#loading').show();
+            }
             $('#loading').hide();
         }
     });
@@ -119,11 +119,11 @@ function changeEmploymentStatus(){
     //         $('#benefits_summary').hide();
     // }
     else{
-        $('#sss_number').val('');
-        $('#pag_ibig_number').val('');
-        $('#philhealth_number').val('');
-        $('#tin_number').val('');
-        $('#account_number').val('');
+        // $('#sss_number').val('');
+        // $('#pag_ibig_number').val('');
+        // $('#philhealth_number').val('');
+        // $('#tin_number').val('');
+        // $('#account_number').val('');
         $('#benefits').hide();
         $('#benefits_summary').hide();
     }

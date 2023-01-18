@@ -43,7 +43,7 @@
                             <th> LAST NAME</th>
                             <th> POSITION</th>
                             <th> BRANCH</th>
-                            <th> STATUS</th> 
+                            <th> EMP. STATUS</th> 
                         </tr>
                     </thead>
                         <tbody>

@@ -291,7 +291,7 @@ $(document).ready(function(){
         $('#memoTable').find('tbody').prepend('<tr>'+
                     '<td class="pb-3 pt-3">'+ 
                         '<div class="f-outline">' + 
-                            '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                            '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">'+
                             '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
                         '</div>'+
                     '</td>'+
@@ -340,7 +340,7 @@ $(document).ready(function(){
         $('#evaluationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -352,7 +352,7 @@ $(document).ready(function(){
                             '</td>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -377,7 +377,7 @@ $(document).ready(function(){
         $('#contractsTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -408,7 +408,7 @@ $(document).ready(function(){
         $('#resignationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -438,7 +438,7 @@ $(document).ready(function(){
         $('#terminationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">'+
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+

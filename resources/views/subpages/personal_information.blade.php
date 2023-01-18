@@ -64,8 +64,8 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME <span class="span_nickname span_all"></span></label>
+                        <input class="forminput form-control text-capitalize" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME (Optional) <span class="span_nickname span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
@@ -93,11 +93,18 @@
             </div>
 
             <div class="row mb-3 mt-3">
-                <div class="col">
+                <div class="col-9">
                     <div class="f-outline">
                         <input type="hidden" id="address_orig">
                         <input class="forminput form-control text-capitalize required_field" type="search" id="address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR, LOT/HOUSE #, STREET, SUBDIVISION, BARANGAY  <span class="span_unit span_all"></span> </label>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="f-outline">
+                        <input type="radio" id="default" name="house" class="house" value="Owned"> Owned
+                        <input type="radio" name="house" class="house" value="Rent"> Rent
                     </div>
                 </div>
             </div>
@@ -142,7 +149,7 @@
                                 <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
                             @endforeach
                         </select>
-                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
+                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE (Optional) <span class="span_province span_all"></span> </label>
                     </div>
                 </div>
 
@@ -153,7 +160,7 @@
                             <option value="" selected disabled>SELECT CITY</option>
                             
                         </select>
-                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
+                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY (Optional) <span class="span_city span_all"></span> </label>
                     </div>
                 </div>
                 
@@ -161,7 +168,7 @@
                     <div class="f-outline">
                         <input type="hidden" id="region_orig">
                         <input type="text" class="forminput form-control" name="region" id="region" style="background-color: white !important;" disabled>
-                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
+                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION (Optional) <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
             </div>

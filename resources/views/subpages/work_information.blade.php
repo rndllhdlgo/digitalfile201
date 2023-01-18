@@ -97,7 +97,7 @@
         <div class="col">
             <div class="f-outline">
                 <input type="hidden" id="employee_supervisor_orig">
-                <select class="forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
+                <select class="form-select forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SUPERVISOR </option>
                         @foreach($supervisors as $supervisor)
                             <option value="{{$supervisor->id}}">{{$supervisor->supervisor_name}}</option>
