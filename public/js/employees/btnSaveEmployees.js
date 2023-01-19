@@ -22,19 +22,16 @@ function employee_image_save() {
 }
 
 $('#btnSave').on('click', function(){
-        
-        // var employee_number = $.trim($('#employee_number').val());//.trim()function removes all newlines, spaces (including non-breaking spaces)
-        var first_name = $.trim($('#first_name').val());
-        var last_name = $.trim($('#last_name').val());
-        var middle_name = $.trim($('#middle_name').val());
-        var suffix = $.trim($('#suffix').val());
-        var nickname = $.trim($('#nickname').val());
+        // Personal Info
+        var first_name = $('#first_name').val();
+        var last_name = $('#last_name').val();
+        var middle_name = $('#middle_name').val();
+        var suffix = $('#suffix').val();
+        var nickname = $('#nickname').val();
         var birthday = $('#birthday').val();
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
-        var unit = $('#unit').val();
-        var lot = $('#lot').val();
-        var barangay = $('#barangay').val();
+        var address = $('#address').val();
         var house = $('input[name=house]:checked').val();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
@@ -46,17 +43,17 @@ $('#btnSave').on('click', function(){
         var telephone_number = $('#telephone_number').val();
         var cellphone_number = $('#cellphone_number').val();
         var spouse_name = $('#spouse_name').val();
-        var spouse_contact_number = $.trim($('#spouse_contact_number').val());
-        var spouse_profession = $.trim($('#spouse_profession').val());
-        var father_name = $.trim($('#father_name').val());
-        var father_contact_number = $.trim($('#father_contact_number').val());
-        var father_profession = $.trim($('#father_profession').val());
-        var mother_name = $.trim($('#mother_name').val());
-        var mother_contact_number = $.trim($('#mother_contact_number').val());
-        var mother_profession = $.trim($('#mother_profession').val());
-        var emergency_contact_name = $.trim($('#emergency_contact_name').val());
-        var emergency_contact_relationship = $.trim($('#emergency_contact_relationship').val());
-        var emergency_contact_number = $.trim($('#emergency_contact_number').val());
+        var spouse_contact_number = $('#spouse_contact_number').val();
+        var spouse_profession = $('#spouse_profession').val();
+        var father_name = $('#father_name').val();
+        var father_contact_number = $('#father_contact_number').val();
+        var father_profession = $('#father_profession').val();
+        var mother_name = $('#mother_name').val();
+        var mother_contact_number = $('#mother_contact_number').val();
+        var mother_profession = $('#mother_profession').val();
+        var emergency_contact_name = $('#emergency_contact_name').val();
+        var emergency_contact_relationship = $('#emergency_contact_relationship').val();
+        var emergency_contact_number = $('#emergency_contact_number').val();
         
         Swal.fire({
         title: 'Do you want to save?',
@@ -98,9 +95,7 @@ $('#btnSave').on('click', function(){
                     birthday:birthday,
                     gender:gender,
                     civil_status:civil_status,
-                    unit:unit,
-                    lot:lot,
-                    barangay:barangay,
+                    address:address,
                     house:house,
                     province:province,
                     city:city,
@@ -126,6 +121,7 @@ $('#btnSave').on('click', function(){
                 },
                 success: function(data){
                         if(data.result == 'true'){
+                            //Work Info
                             $('#employee_id').val(data.id);
                             var employee_number = $('#employee_number').val();
                             var employee_company = $('#employee_company').val();
@@ -136,10 +132,11 @@ $('#btnSave').on('click', function(){
                             var employee_salary = $('#employee_salary').val();
                             var employee_shift = $('#employee_shift').val();
                             var employee_position = $('#employee_position').val();
-                            var employee_supervisor = $('#employee_supervisor').val();
+                            // var employee_supervisor = $('#employee_supervisor').val();
                             var date_hired = $('#date_hired').val();
                             var company_email_address = $('#company_email_address').val();
                             var company_contact_number = $('#company_contact_number').val();
+                            var hmo_number = $('#hmo_number').val();
                             var sss_number = $('#sss_number').val();
                             var pag_ibig_number = $('#pag_ibig_number').val();
                             var philhealth_number = $('#philhealth_number').val();
@@ -162,10 +159,11 @@ $('#btnSave').on('click', function(){
                                     employment_origin:employment_origin,
                                     employee_shift:employee_shift,
                                     employee_position:employee_position,
-                                    employee_supervisor:employee_supervisor,
+                                    // employee_supervisor:employee_supervisor,
                                     date_hired:date_hired,
                                     company_email_address:company_email_address,
                                     company_contact_number:company_contact_number,
+                                    hmo_number:hmo_number,
                                     sss_number:sss_number,
                                     pag_ibig_number:pag_ibig_number,
                                     philhealth_number:philhealth_number,
@@ -173,29 +171,7 @@ $('#btnSave').on('click', function(){
                                     account_number:account_number
                                 },
                             });
-
-                            var employee_salary = $('#employee_salary').val();
-                            var employee_incentives = $('#employee_incentives').val();
-                            var employee_overtime_pay = $('#employee_overtime_pay').val();
-                            var employee_bonus = $('#employee_bonus').val();
-                            var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
-
-                            $.ajax({
-                                url:"/employees/saveCompensationBenefits",
-                                type:"POST",
-                                headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data:{
-                                    employee_id:data.id,
-                                    employee_salary:employee_salary,
-                                    employee_incentives:employee_incentives,
-                                    employee_overtime_pay:employee_overtime_pay,
-                                    employee_bonus:employee_bonus,
-                                    employee_insurance:employee_insurance
-                                },
-                            });
-
+                            // Educational Training
                             var secondary_school_name = $('#secondary_school_name').val();
                             var secondary_school_address = $('#secondary_school_address').val();
                             var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -223,7 +199,7 @@ $('#btnSave').on('click', function(){
                                     primary_school_inclusive_years_to:primary_school_inclusive_years_to
                                 },
                             });
-
+                            // Medical History
                             var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
                             var allergies = $('#allergies').val().split("\n").join(' \n');
                             var medication = $('#medication').val().split("\n").join(' \n');
@@ -244,8 +220,30 @@ $('#btnSave').on('click', function(){
                                 },
                             });
 
+                            // Compensation Benefits
+                            var employee_salary = $('#employee_salary').val();
+                            var employee_incentives = $('#employee_incentives').val();
+                            var employee_overtime_pay = $('#employee_overtime_pay').val();
+                            var employee_bonus = $('#employee_bonus').val();
+                            var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+
+                            $.ajax({
+                                url:"/employees/saveCompensationBenefits",
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id:data.id,
+                                    employee_salary:employee_salary,
+                                    employee_incentives:employee_incentives,
+                                    employee_overtime_pay:employee_overtime_pay,
+                                    employee_bonus:employee_bonus,
+                                    employee_insurance:employee_insurance
+                                },
+                            });
+
                             //This code is to save the data in multiple rows
-                                
                                 $('.children_tr').each(function(){
                                     $.ajax({
                                         type: 'POST',
