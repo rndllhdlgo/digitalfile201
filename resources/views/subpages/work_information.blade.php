@@ -211,6 +211,19 @@
     </div>
     <hr class="hr-design">
     
+    <div id="employee_history_div">
+        <table class="table table-striped table-hover w-100 employee_history_table" id="employee_history_table">
+            <thead class="thead-educational">
+                <tr>
+                    <th>History</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    
     <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">

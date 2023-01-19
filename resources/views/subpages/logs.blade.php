@@ -3,7 +3,7 @@
     <table class="table table-striped table-bordered table-hover w-100 logs_table_data" id="logs_table_data">
         <thead class="thead-educational">
             <tr>
-                <th>Employee Logs</th>
+                <th>Logs</th>
             </tr>
         </thead>
         <tbody>

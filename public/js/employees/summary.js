@@ -15,9 +15,7 @@ $('#btnSummary').on('click',function(){
         $('.birthday').change();
     }, app_timeout);
     $('.gender').html($('#gender').val());
-    $('.barangay').html($('#barangay').val());
-    $('.unit').html($('#unit').val() ? $('#unit').val() : 'N/A' );
-    $('.lot').html($('#lot').val());
+    $('.address').html($('#address').val());
     $('.height').html($('#height').val());
     $('.weight').html($('#weight').val());
     $('.religion').html($('#religion').val());
@@ -53,6 +51,7 @@ $('#btnSummary').on('click',function(){
     $('.company_email_address').html($('#company_email_address').val() ? $('#company_email_address').val() : 'N/A');
     $('.company_contact_number').html($('#company_contact_number').val() ? $('#company_contact_number').val() : 'N/A');
 
+    $('.hmo_number').html($('#hmo_number').val() ? $('#hmo_number').val() : 'N/A');
     $('.sss_number').html($('#sss_number').val());
     $('.pag_ibig_number').html($('#pag_ibig_number').val());
     $('.philhealth_number').html($('#philhealth_number').val());
@@ -63,6 +62,5 @@ $('#btnSummary').on('click',function(){
 });
 
 $(document).on('click','#close_summary',function(){
-    
     window.location.href = "/employees?employee_number="+$('#current_employee').val();
 });

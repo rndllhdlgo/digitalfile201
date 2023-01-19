@@ -129,7 +129,6 @@ $('#btnSave').on('click', function(){
                             var employee_branch = $('#employee_branch').val();
                             var employment_status = $('#employment_status').val();
                             var employment_origin = $('#employment_origin').val();
-                            var employee_salary = $('#employee_salary').val();
                             var employee_shift = $('#employee_shift').val();
                             var employee_position = $('#employee_position').val();
                             // var employee_supervisor = $('#employee_supervisor').val();

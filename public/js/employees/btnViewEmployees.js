@@ -56,7 +56,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#filename_delete').val('');
 
                 $('#first_name').val(value.first_name);
-
+                $('#first_name_orig').val(value.first_name);
+                
                 $('#middle_name_orig').val(value.middle_name);
                 $('#middle_name').val(value.middle_name);
 
@@ -64,22 +65,26 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#last_name').val(value.last_name);
 
                 $('#suffix').val(value.suffix);
+                $('#suffix_orig').val(value.suffix);
 
                 $('#nickname').val(value.nickname);
+                $('#nickname_orig').val(value.nickname);
 
                 $('#birthday').val(value.birthday);
-                setInterval(() => {
+                $('#birthday_orig').val(value.birthday);
+                setTimeout(() => {
                     $('#birthday').change();
                 }, app_timeout);
 
                 $('#gender').val(value.gender);
+                $('#gender_orig').val(value.gender);
+
                 $('#barangay_orig').val(value.barangay);
                 $('#barangay').val(value.barangay);
                 $('#address_orig').val(value.address);
                 $('#address').val(value.address);
 
                 $('#house_orig').val(value.house);
-
                 $("input[name='house']").each(function() {
                     if ($(this).val() == value.house) {
                         $(this).prop('checked', true);
@@ -148,12 +153,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#spouse_profession_orig').val(value.spouse_profession);
 
                 $('#father_name').val(value.father_name);
+                $('#father_name_orig').val(value.father_name);
                 $('#father_contact_number_orig').val(value.father_contact_number);
                 $('#father_contact_number').val(value.father_contact_number);
                 $('#father_profession_orig').val(value.father_profession);
                 $('#father_profession').val(value.father_profession);
 
                 $('#mother_name').val(value.mother_name);
+                $('#mother_name_orig').val(value.mother_name);
                 $('#mother_contact_number_orig').val(value.mother_contact_number);
                 $('#mother_contact_number').val(value.mother_contact_number);
                 $('#mother_profession_orig').val(value.mother_profession);
@@ -206,38 +213,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#company_contact_number').val(value.company_contact_number);
                 $('#company_contact_number_orig').val(value.company_contact_number);
 
+                $('#hmo_number').val(value.hmo_number);
                 $('#sss_number').val(value.sss_number);
-
                 $('#pag_ibig_number').val(value.pag_ibig_number);
-
                 $('#philhealth_number').val(value.philhealth_number);
-
                 $('#tin_number').val(value.tin_number);
-
                 $('#account_number').val(value.account_number);
 
-                if(value.employee_salary || value.employee_incentives || value.employee_overtime_pay || value.employee_insurance){
-                    $('#compensation_benefits_section').show();
-                }
-                    $('#employee_salary').val(value.employee_salary);
-                    if(value.employee_salary){
-                        $('.employee_salary').val(value.employee_salary);
-                    }
-
-                // Compensation/Benefits
-                $('#employee_incentives').val(value.employee_incentives);
-                $('.employee_incentives').val(value.employee_incentives);
-
-                $('#employee_overtime_pay').val(value.employee_overtime_pay);
-                $('.employee_overtime_pay').val(value.employee_overtime_pay);
-
-                $('#employee_bonus').val(value.employee_bonus);
-                $('.employee_bonus').val(value.employee_bonus);
-
-                $('#employee_insurance').val(value.employee_insurance);
-                $('.employee_insurance').val(value.employee_insurance);
-
-                //Education/Trainings
+                //Education Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
                 $('#secondary_school_address').val(value.secondary_school_address);
                 $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
@@ -246,30 +229,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
-
-                // if(value.past_medical_condition || value.allergies || value.medication || value.psychological_history){
-                //     $('#medical_history_section').show();
-                // }
-                // $('#past_medical_condition').val(value.past_medical_condition);
-                //     if(value.past_medical_condition){
-                //         $('#past_medical_history_div').show();
-                //         $('.past_medical_condition').val(value.past_medical_condition);
-                //     }
-                // $('#allergies').val(value.allergies);
-                //     if(value.allergies){
-                //         $('#allergies_div').show();
-                //         $('.allergies').val(value.allergies);
-                //     }
-                // $('#medication').val(value.medication);
-                //     if(value.medication){
-                //         $('#medication_div').show();
-                //         $('.medication').val(value.medication);
-                //     }
-                // $('#psychological_history').val(value.psychological_history);
-                //     if(value.psychological_history){
-                //         $('#psychological_history_div').show();
-                //         $('.psychological_history').val(value.psychological_history);
-                //     }
 
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();
@@ -838,11 +797,51 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         }
                     },
+                    order:[],
                     columns: [
                         { data: 'logs'},
-                    
                     ],
+                    initComplete: function(){
+                        if(!$('.logs_table_data').DataTable().data().any()){
+                            $('#logs_table_data').hide();
+                        }
+                        else{
+                            $('#logs_table_data').show();
+                        }
+                    }
                 });
+
+                $('.employee_history_table').dataTable().fnDestroy();
+                $('.employee_history_table').DataTable({
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/history_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'history'},
+                    ],
+                    initComplete: function(){
+                        if(!$('.employee_history_table').DataTable().data().any()){
+                            $('#employee_history_table').hide();
+                        }
+                        else{
+                            $('#employee_history_table').show();
+                        }
+                    }
+                });
+
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){

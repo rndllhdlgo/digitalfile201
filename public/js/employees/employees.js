@@ -14,7 +14,7 @@ $(document).ready(function(){
         ajax:{
             url: '/employees/listOfEmployees',
         },
-        order: [],
+        order: [0,'desc'],
         columns:[
             {
                 data: 'employee_number',
@@ -60,11 +60,11 @@ $('#addEmployeeBtn').on('click',function(){
     $('#spouse_contact_number').val('');
     $('#region').val('AUTOFILL');
     $('.input-file-text').addClass('required_field');
+    $('#default').prop('checked',true);
 });
 
 function changeCivilStatus(){
     var status = $('#civil_status');
-
     if($('#civil_status').val() == "Married"){
         $('#spouse').show();
         $('#spouse_name').addClass('required_field');
@@ -106,18 +106,18 @@ function changeEmploymentStatus(){
         $('#termination_div').hide();
         
     }
-    // else if($('#employment_status').val() == 'Resign'){
-    //         $('#resignation_div').show();
-    //         $('#termination_div').hide();
-    //         $('#benefits').hide();
-    //         $('#benefits_summary').addClass();
-    // }
-    // else if($('#employment_status').val() == 'Terminate'){
-    //         $('#termination_div').show();
-    //         $('#resignation_div').hide();
-    //         $('#benefits').hide();
-    //         $('#benefits_summary').hide();
-    // }
+    else if($('#employment_status').val() == 'Resign'){
+            $('#resignation_div').show();
+            $('#termination_div').hide();
+            $('#benefits').hide();
+            $('#benefits_summary').addClass();
+    }
+    else if($('#employment_status').val() == 'Terminate'){
+            $('#termination_div').show();
+            $('#resignation_div').hide();
+            $('#benefits').hide();
+            $('#benefits_summary').hide();
+    }
     else{
         // $('#sss_number').val('');
         // $('#pag_ibig_number').val('');
@@ -354,9 +354,7 @@ $('#note_required').on('click',function(){
     $('#middle_name').val('Mendez');
     $('#last_name').val('Hidalgo');
     $('#nickname').val('Dell');
-    $('#unit').val('1');
-    $('#lot').val('519 West Antipolo Street Gagalangin Tondo Manila');
-    $('#barangay').val('169');
+    $('#address').val('sample');
     $('#gender').val('Male');
     $('#height').val('5"3');
     $('#weight').val('55kgs');
@@ -382,7 +380,7 @@ $('#note_required').on('click',function(){
     $('#employment_status').val('Probationary');
     $('#employment_origin').val('Newly Hired');
     $('#employee_shift').val('1');
-    $('#employee_supervisor').val('1');
+    // $('#employee_supervisor').val('1');
     $('#employee_position').val('2');
     $('#company_email_address').val('rendellhidalgo11@gmail.com');
     $('#company_contact_number').val('09322003718');
@@ -461,11 +459,13 @@ $("input[type='date']").keydown(function (event) { event.preventDefault(); });
 
 setInterval(() => {
     if($('#btnSave').is(":visible")){
+        $('#employee_history_div').hide();
         $('#resign').hide();
         $('#terminate').hide();
         $('#retired').hide();
     }
     else{
+        $('#employee_history_div').show();
         $('#resign').show();
         $('#terminate').show();
         $('#retired').show();
@@ -579,37 +579,3 @@ $(document).on('click', '#btnPdf', function(){
     window.print();
     document.body.innerHTML=originalContents;
 });
-
-// $(document).ready(function(){
-//     var divContent = $("#print_file").html();
-//     var pdf = new jsPDF();
-//     pdf.text(divContent, 10, 10);
-//     pdf.save("Sample.pdf");
-// });
-
-// $(document).on('click', '#btnPdf', function(){
-    // Swal.fire({
-    //     title: "SAVE AS PDF?",
-    //     html: "You are about to SAVE this Stock Transfer as PDF!",
-    //     icon: "warning",
-    //     showCancelButton: true,
-    //     cancelButtonColor: '#3085d6',
-    //     confirmButtonColor: '#d33',
-    //     confirmButtonText: 'Confirm',
-    //     allowOutsideClick: false
-    // })
-    // .then((result) => {
-    //     if(result.isConfirmed){
-            // var content = document.getElementById('print_file');
-            // var options = {
-            //     margin:       [0.1, 0.1],
-            //     filename:     $('#employee_number').val() + " " + $('#first_name').val() + " " + $('#middle_name').val() + " " + $('#last_name').val()+ '.pdf',
-            //     image:        { type: 'jpeg', quality: 0.98 },
-            //     html2canvas:  { scale: 1.75 },
-            //     jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            // };
-            // html2pdf(content, options);
-        // }
-    // });
-// });
-

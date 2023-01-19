@@ -1,4 +1,4 @@
-
+var current_location = $(location).attr('pathname')+window.location.search;
 //Verify that the user has filled out all required fields.
 setInterval(checkRequiredFields, 0);
 function checkRequiredFields(){
@@ -12,6 +12,9 @@ function checkRequiredFields(){
             }
         });
     }
+// $('#locs').on('click',function(){
+//     current_location = 
+// });
 
     // if($('#employee_information').is(":visible")){
     //     $('.formlabel').each(function(){

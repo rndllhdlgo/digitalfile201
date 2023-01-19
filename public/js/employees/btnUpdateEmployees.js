@@ -1,23 +1,23 @@
 $('#btnUpdate').on('click',function(){
-    // $('#personal_info').css('zoom','95%');
     var id = $('#hidden_id').val();
-    var first_name = $('#first_name').val();
+    var first_name_orig = $('#first_name_orig').val();
+    var first_name_new = $('#first_name').val();
     var last_name_orig = $('#last_name_orig').val();
     var last_name_new = $('#last_name').val();
     var middle_name_orig = $('#middle_name_orig').val();
     var middle_name_new = $('#middle_name').val();
-    var suffix = $('#suffix').val();
-    var nickname = $('#nickname').val();
-    var birthday = $('#birthday').val();
-    var gender = $('#gender').val();
+    var suffix_orig = $('#suffix_orig').val();
+    var suffix_new = $('#suffix').val();
+    var nickname_orig = $('#nickname_orig').val();
+    var nickname_new = $('#nickname').val();
+    var birthday_orig = $('#birthday_orig').val();
+    var birthday_new = $('#birthday').val();
+    var gender_orig = $('#gender_orig').val();
+    var gender_new = $('#gender').val();
     var civil_status_orig = $('#civil_status_orig').val();
     var civil_status_new = $('#civil_status').val();
-    var unit_orig = $('#unit_orig').val();
-    var unit_new = $('#unit').val();
-    var lot_orig = $('#lot_orig').val();
-    var lot_new = $('#lot').val();
-    var barangay_orig = $('#barangay_orig').val();
-    var barangay_new = $('#barangay').val();
+    var address_orig = $('#address_orig').val();
+    var address_new = $('#address').val();
     var house_orig = $('#house_orig').val();
     var house_new = $('input[name=house]:checked').val();
     var province_orig = $("#province_orig").val();
@@ -43,12 +43,14 @@ $('#btnUpdate').on('click',function(){
     var spouse_contact_number_new = $('#spouse_contact_number').val();
     var spouse_profession_orig = $('#spouse_profession_orig').val();
     var spouse_profession_new = $('#spouse_profession').val();
-    var father_name = $('#father_name').val();
+    var father_name_orig = $('#father_name_orig').val();
+    var father_name_new = $('#father_name').val();
     var father_contact_number_orig = $('#father_contact_number_orig').val();
     var father_contact_number_new = $('#father_contact_number').val();
     var father_profession_orig = $('#father_profession_orig').val();
     var father_profession_new = $('#father_profession').val();
-    var mother_name = $('#mother_name').val();
+    var mother_name_orig = $('#mother_name_orig').val();
+    var mother_name_new = $('#mother_name').val();
     var mother_contact_number_orig = $('#mother_contact_number_orig').val();
     var mother_contact_number_new = $('#mother_contact_number').val();
     var mother_profession_orig = $('#mother_profession_orig').val();
@@ -74,7 +76,6 @@ $('#btnUpdate').on('click',function(){
         }
     }).then((update) => {
         if (update.isConfirmed) {
-            // $('#personal_info').css('zoom','100%');
             $('#loading').show();
 
             if(!$('#filename').val() && $('#employee_image').val()){
@@ -97,23 +98,24 @@ $('#btnUpdate').on('click',function(){
                     id:id,
                     employee_image:employee_image,
                     filename_delete: $('#filename_delete').val(),
-                    first_name:first_name,
+                    first_name_orig:first_name_orig,
+                    first_name_new:first_name_new,
                     last_name_orig:last_name_orig,
                     last_name_new:last_name_new,
                     middle_name_orig:middle_name_orig,
                     middle_name_new:middle_name_new,
-                    suffix:suffix,
-                    nickname:nickname,
-                    birthday:birthday,
-                    gender:gender,
+                    suffix_orig:suffix_orig,
+                    suffix_new:suffix_new,
+                    nickname_orig:nickname_orig,
+                    nickname_new:nickname_new,
+                    birthday_orig:birthday_orig,
+                    birthday_new:birthday_new,
+                    gender_orig:gender_orig,
+                    gender_new:gender_new,
                     civil_status_orig:civil_status_orig,
                     civil_status_new:civil_status_new,
-                    unit_orig:unit_orig,
-                    unit_new:unit_new,
-                    lot_orig:lot_orig,
-                    lot_new:lot_new,
-                    barangay_orig:barangay_orig,
-                    barangay_new:barangay_new,
+                    address_orig:address_orig,
+                    address_new:address_new,
                     house_orig:house_orig,
                     house_new:house_new,
                     region_orig:region_orig,
@@ -139,12 +141,14 @@ $('#btnUpdate').on('click',function(){
                     spouse_contact_number_new:spouse_contact_number_new,
                     spouse_profession_orig:spouse_profession_orig,
                     spouse_profession_new:spouse_profession_new,
-                    father_name:father_name,
+                    father_name_orig:father_name_orig,
+                    father_name_new:father_name_new,
                     father_contact_number_orig:father_contact_number_orig,
                     father_contact_number_new:father_contact_number_new,
                     father_profession_orig:father_profession_orig,
                     father_profession_new:father_profession_new,
-                    mother_name:mother_name,
+                    mother_name_orig:mother_name_orig,
+                    mother_name_new:mother_name_new,
                     mother_contact_number_orig:mother_contact_number_orig,
                     mother_contact_number_new:mother_contact_number_new,
                     mother_profession_orig:mother_profession_orig,
@@ -165,13 +169,13 @@ $('#btnUpdate').on('click',function(){
                         var employee_branch = $('#employee_branch').val();
                         var employment_status = $('#employment_status').val();
                         var employment_origin = $('#employment_origin').val();
-                        var employee_salary = $('#employee_salary').val();
                         var employee_shift = $('#employee_shift').val();
                         var employee_position = $('#employee_position').val();
-                        var employee_supervisor = $('#employee_supervisor').val();
+                        // var employee_supervisor = $('#employee_supervisor').val();
                         var date_hired = $('#date_hired').val();
                         var company_email_address = $('#company_email_address').val();
                         var company_contact_number = $('#company_contact_number').val();
+                        var hmo_number = $('#hmo_number').val();
                         var sss_number = $('#sss_number').val();
                         var pag_ibig_number = $('#pag_ibig_number').val();
                         var philhealth_number = $('#philhealth_number').val();
@@ -195,10 +199,11 @@ $('#btnUpdate').on('click',function(){
                                 employment_origin:employment_origin,
                                 employee_shift:employee_shift,
                                 employee_position:employee_position,
-                                employee_supervisor:employee_supervisor,
+                                // employee_supervisor:employee_supervisor,
                                 date_hired:date_hired,
                                 company_email_address:company_email_address,
                                 company_contact_number:company_contact_number,
+                                hmo_number:hmo_number,
                                 sss_number:sss_number,
                                 pag_ibig_number:pag_ibig_number,
                                 philhealth_number:philhealth_number,
@@ -454,8 +459,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        $('#documents_form').submit();
-                        // $('#personal_info').css('zoom','98%');
+                        // $('#documents_form').submit();
                         Swal.fire('UPDATE SUCCESS','','success');
                         $('#loading').hide();
                     }

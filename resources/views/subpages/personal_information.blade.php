@@ -29,6 +29,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="first_name_orig">
                         <input class="forminput form-control text-uppercase required_field" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="firstNameField(this)" ondrop="return false;" onpaste="return false;">
                         <p id="first_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME <span class="span_first_name span_all"></span> </label>
@@ -55,6 +56,7 @@
                 
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="suffix_orig">
                         <input class="forminput form-control optional_field text-uppercase" type="search" id="suffix" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX <span class="span_suffix span_all">(Optional)</span></label>
                     </div>
@@ -64,12 +66,14 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="nickname_orig">
                         <input class="forminput form-control text-uppercase" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME (Optional) <span class="span_nickname span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="birthday_orig">
                         <input class="forminput form-control required_field" type="date" id="birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
                         <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY <span class="span_birthday span_all"></span> </label>
                     </div>
@@ -82,10 +86,11 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="gender_orig">
                         <select class="form-select forminput form-control required_field"  id="gender" placeholder=" " style="background-color:white;" autocomplete="off">
                             <option value="" disabled selected>SELECT GENDER </option>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
+                            <option value="M">MALE</option>
+                            <option value="F">FEMALE</option>
                         </select>
                         <label for="gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_gender span_all"></span> </label>
                     </div>
@@ -103,6 +108,7 @@
 
                 <div class="col-3">
                     <div class="f-outline">
+                        <input type="hidden" id="house_orig">
                         <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left:30px;"> Owned
                         <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent
                     </div>
@@ -269,6 +275,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-4">
                         <div class="f-outline">
+                            <input type="hidden" id="father_name_orig">
                             <input class="forminput form-control text-uppercase required_field" type="search" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <p id="father_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                             <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> FATHER'S NAME <span class="span_father_name span_all"></span> </label>
@@ -294,6 +301,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
+                        <input type="hidden" id="mother_name_orig">
                         <input class="forminput form-control text-uppercase required_field" type="search" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <p id="mother_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> MOTHER'S MAIDEN NAME <span class="span_mother_name span_all"></span> </label>

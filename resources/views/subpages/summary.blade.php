@@ -86,17 +86,7 @@
 
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <b>UNIT/ROOM #/FLOOR:</b> <span class="unit font_weight"></span>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <b>LOT/HOUSE #, STREET NAME:</b> <span class="lot font_weight"></span>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <b>SUBDIVISION, BARANGAY:</b> <span class="barangay font_weight"></span>
+                                        <b>ADDRESS:</b> <span class="address font_weight"></span>
                                     </div>
                                 </div>
                                 
@@ -268,8 +258,8 @@
 
                                 <div class="row mb-3">
                                     <div class="col">
-                                        <b>SSS NO. :</b><br>
-                                        <span class="sss_number"></span>
+                                        <b>HMO NO. :</b><br>
+                                        <span class="hmo_number"></span>
                                     </div>
                                     <div class="col">
                                         <b>PAG-IBIG NO. :</b><br>
@@ -281,12 +271,16 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-4">
+                                    <div class="col">
+                                        <b>SSS NO. :</b><br>
+                                        <span class="sss_number"></span>
+                                    </div>
+                                    <div class="col">
                                         <b>TIN NO. :</b><br>
                                         <span class="tin_number"></span>
                                     </div>
-                                    <div class="col-4">
-                                        <b>BANK ACCOUNT NO. :</b><br>
+                                    <div class="col">
+                                        <b>ACCOUNT NO. :</b><br>
                                         <span class="account_number"></span>
                                     </div>
                                 </div>
