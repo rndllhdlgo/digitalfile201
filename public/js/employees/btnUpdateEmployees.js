@@ -163,7 +163,8 @@ $('#btnUpdate').on('click',function(){
                 success:function(data){
                     if(data.result == 'true'){
                         var employee_id = $('#employee_id').val(data.id);
-                        var employee_number = $('#employee_number').val();
+                        var employee_number_orig = $('#employee_number_orig').val();
+                        var employee_number_new = $('#employee_number').val();
                         var employee_company = $('#employee_company').val();
                         var employee_department = $('#employee_department').val();
                         var employee_branch = $('#employee_branch').val();
@@ -172,7 +173,8 @@ $('#btnUpdate').on('click',function(){
                         var employee_shift = $('#employee_shift').val();
                         var employee_position = $('#employee_position').val();
                         // var employee_supervisor = $('#employee_supervisor').val();
-                        var date_hired = $('#date_hired').val();
+                        var date_hired_orig = $('#date_hired_orig').val();
+                        var date_hired_new = $('#date_hired').val();
                         var company_email_address = $('#company_email_address').val();
                         var company_contact_number = $('#company_contact_number').val();
                         var hmo_number = $('#hmo_number').val();
@@ -191,7 +193,8 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                employee_number:employee_number,
+                                employee_number_orig:employee_number_orig,
+                                employee_number_new:employee_number_new,
                                 employee_company:employee_company,
                                 employee_department:employee_department,
                                 employee_branch:employee_branch,
@@ -200,7 +203,8 @@ $('#btnUpdate').on('click',function(){
                                 employee_shift:employee_shift,
                                 employee_position:employee_position,
                                 // employee_supervisor:employee_supervisor,
-                                date_hired:date_hired,
+                                date_hired_orig:date_hired_orig,
+                                date_hired_new:date_hired_new,
                                 company_email_address:company_email_address,
                                 company_contact_number:company_contact_number,
                                 hmo_number:hmo_number,

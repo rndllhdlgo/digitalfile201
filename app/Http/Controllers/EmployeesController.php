@@ -620,7 +620,7 @@ class EmployeesController extends Controller
             ){
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
-                $employee_logs->logs = "INFORMATION UPDATED: 
+                $employee_logs->logs = "INFORMATION UPDATED PERSONAL INFO: 
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -665,9 +665,12 @@ class EmployeesController extends Controller
     }
 
     public function updateWorkInformation(Request $request){
+        $employee_number_orig = $request->employee_number_orig;
+        $date_hired_orig = $request->date_hired_orig;
+
         $employee = WorkInformationTable::find($request->id);
         $employee->employee_id = $request->employee_id;
-        $employee->employee_number = $request->employee_number;
+        $employee->employee_number = $request->employee_number_new;
         $employee->employee_company = $request->employee_company;
         $employee->employee_department = $request->employee_department;
         $employee->employee_branch = $request->employee_branch;
@@ -676,7 +679,7 @@ class EmployeesController extends Controller
         $employee->employee_shift = $request->employee_shift;
         $employee->employee_position = $request->employee_position;
         // $employee->employee_supervisor = $request->employee_supervisor;
-        $employee->date_hired = $request->date_hired;
+        $employee->date_hired = $request->date_hired_new;
         $employee->company_email_address = $request->company_email_address;
         $employee->company_contact_number = $request->company_contact_number;
         $employee->sss_number = $request->sss_number;
@@ -684,7 +687,44 @@ class EmployeesController extends Controller
         $employee->philhealth_number = $request->philhealth_number;
         $employee->tin_number = $request->tin_number;
         $employee->account_number = $request->account_number;
-        $employee->save();
+        $sql = $employee->save();
+
+        if($sql){
+            if($employee_number_orig != $request->employee_number_new){
+                $employee_number_change = "[Employee Number] FROM: [$employee_number_orig] TO: [$employee->employee_number].";
+            }
+            else{
+                $employee_number_change = NULL;
+            }
+            if($date_hired_orig != $request->date_hired_new){
+                $date_hired_change = "[Date Hired] FROM: [$date_hired_orig] TO: [$employee->date_hired].";
+            }
+            else{
+                $date_hired_change = NULL;
+            }
+
+            $result = 'true';
+            $id = $employee->id;
+
+            if($employee_number_orig != $request->employee_number_new
+            || $date_hired_orig != $request->date_hired_new
+            ){
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->id;
+                $employee_logs->logs = "INFORMATION UPDATED WORK INFO:
+                                        $employee_number_change
+                                        $date_hired_change";
+                $employee_logs->save();
+            }
+
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
     }
 
     public function updateCompensationBenefits(Request $request){
