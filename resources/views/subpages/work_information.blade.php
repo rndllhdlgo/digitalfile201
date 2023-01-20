@@ -169,6 +169,7 @@
             </div>
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="sss_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p>
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)<span class="span_sss_number span_all"></span></label>
@@ -176,6 +177,7 @@
             </div>
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="pag_ibig_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_pag_ibig_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Pag-ibig Number Already Exist!</p>
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)<span class="span_pag-ibig_number span_all"></span></label>
@@ -186,6 +188,7 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="philhealth_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_philhealth_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Philhealth Number Already Exist!</p>
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)<span class="span_philhealth_number span_all"></span></label>
@@ -194,6 +197,7 @@
 
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="tin_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_tin_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)<span class="span_tin_number span_all"></span></label>
@@ -202,6 +206,7 @@
 
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="account_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_account_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)<span class="span_account_number span_all"></span></label>

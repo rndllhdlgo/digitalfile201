@@ -184,14 +184,14 @@
                     <div class="f-outline">
                         <input type="hidden" id="height_orig">
                         <input class="forminput form-control required_field" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT <span class="span_height span_all"></span></label>
+                        <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT (in cm.) <span class="span_height span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input type="hidden" id="weight_orig">
                         <input class="forminput form-control required_field" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                        <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT <span class="span_weight span_all"></span></label>
+                        <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT (in kg.)<span class="span_weight span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">

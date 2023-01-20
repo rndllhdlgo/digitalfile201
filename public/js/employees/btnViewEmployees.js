@@ -1,4 +1,3 @@
-// var logs_id = [];
 var children_id = [];
 var college_id = [];
 var training_id = [];
@@ -6,14 +5,13 @@ var job_history_id = [];
 var memo_id = [];
 $(document).on('click','table.employeesTable tbody tr',function(){
     
-    // logs_id = [];
     children_id = [];
     college_id = [];
     training_id = [];
     vocational_id = [];
     job_history_id = [];
     memo_id = [];
-    
+
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
     var id = data.id;
@@ -122,8 +120,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#region_summary').val(value.region);
                 $('#region_content').html(value.region);
                 
-                $('#height_orig').val(decodeHtml(value.height));
-                $('#height').val(decodeHtml(value.height));
+                $('#height_orig').val(value.height);
+                $('#height').val(value.height);
 
                 $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);
@@ -214,11 +212,21 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#company_contact_number_orig').val(value.company_contact_number);
 
                 $('#hmo_number').val(value.hmo_number);
+
                 $('#sss_number').val(value.sss_number);
+                $('#sss_number_orig').val(value.sss_number);
+
                 $('#pag_ibig_number').val(value.pag_ibig_number);
+                $('#pag_ibig_number_orig').val(value.pag_ibig_number);
+
                 $('#philhealth_number').val(value.philhealth_number);
+                $('#philhealth_number_orig').val(value.philhealth_number);
+
                 $('#tin_number').val(value.tin_number);
+                $('#tin_number_orig').val(value.tin_number);
+
                 $('#account_number').val(value.account_number);
+                $('#account_number_orig').val(value.account_number);
 
                 //Education Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
@@ -799,7 +807,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     order:[],
                     columns: [
-                        { data: 'logs'},
+                        { data: 'username',width:'20%'},
+                        { data: 'user_level',width:'20%'},
+                        { data: 'logs',width:'60%'},
                     ],
                     initComplete: function(){
                         if(!$('.logs_table_data').DataTable().data().any()){
