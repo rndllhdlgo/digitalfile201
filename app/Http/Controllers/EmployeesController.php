@@ -873,17 +873,28 @@ class EmployeesController extends Controller
     }
 
     public function updateEducationalAttainment(Request $request){
-        $employee = EducationalAttainment::find($request->id);
-        $employee->employee_id = $request->employee_id;
-        $employee->secondary_school_name = $request->secondary_school_name;
-        $employee->secondary_school_address = $request->secondary_school_address;
-        $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
-        $employee->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
-        $employee->primary_school_name = $request->primary_school_name;
-        $employee->primary_school_address = $request->primary_school_address;
-        $employee->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
-        $employee->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
-        $employee->save();
+        if($request->secondary_school_name && 
+           $request->secondary_school_address && 
+           $request->secondary_school_inclusive_years_from &&
+           $request->secondary_school_inclusive_years_to &&
+           $request->primary_school_name && 
+           $request->primary_school_address && 
+           $request->primary_school_inclusive_years_from &&
+           $request->primary_school_inclusive_years_to
+           ){
+
+            $employee = EducationalAttainment::find($request->id);
+            $employee->employee_id = $request->employee_id;
+            $employee->secondary_school_name = $request->secondary_school_name;
+            $employee->secondary_school_address = $request->secondary_school_address;
+            $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
+            $employee->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
+            $employee->primary_school_name = $request->primary_school_name;
+            $employee->primary_school_address = $request->primary_school_address;
+            $employee->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
+            $employee->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
+            $employee->save();
+        }
     }
 
     public function updateMedicalHistory(Request $request){

@@ -243,30 +243,7 @@ $('#btnUpdate').on('click',function(){
                                 account_number_new:account_number_new
                             },
                         });
-        
-                        var employee_salary = $('#employee_salary').val();
-                        var employee_incentives = $('#employee_incentives').val();
-                        var employee_overtime_pay = $('#employee_overtime_pay').val();
-                        var employee_bonus = $('#employee_bonus').val();
-                        var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
-        
-                        $.ajax({
-                            url:"/employees/updateCompensationBenefits",
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                employee_salary:employee_salary,
-                                employee_incentives:employee_incentives,
-                                employee_overtime_pay:employee_overtime_pay,
-                                employee_bonus:employee_bonus,
-                                employee_insurance:employee_insurance
-                            },
-                        });
-        
+
                         var secondary_school_name = $('#secondary_school_name').val();
                         var secondary_school_address = $('#secondary_school_address').val();
                         var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -293,7 +270,7 @@ $('#btnUpdate').on('click',function(){
                                 primary_school_address:primary_school_address,
                                 primary_school_inclusive_years_from:primary_school_inclusive_years_from,
                                 primary_school_inclusive_years_to:primary_school_inclusive_years_to
-                            },
+                            }
                         });
         
                         var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
@@ -314,7 +291,30 @@ $('#btnUpdate').on('click',function(){
                                 past_medical_condition:past_medical_condition,
                                 medication:medication,
                                 psychological_history:psychological_history
+                            }
+                        });
+
+                        var employee_salary = $('#employee_salary').val();
+                        var employee_incentives = $('#employee_incentives').val();
+                        var employee_overtime_pay = $('#employee_overtime_pay').val();
+                        var employee_bonus = $('#employee_bonus').val();
+                        var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+        
+                        $.ajax({
+                            url:"/employees/updateCompensationBenefits",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                employee_salary:employee_salary,
+                                employee_incentives:employee_incentives,
+                                employee_overtime_pay:employee_overtime_pay,
+                                employee_bonus:employee_bonus,
+                                employee_insurance:employee_insurance
+                            }
                         });
 
                         $('.college_tr').each(function(){
