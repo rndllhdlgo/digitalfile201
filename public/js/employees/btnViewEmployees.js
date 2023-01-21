@@ -809,7 +809,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'username',width:'20%'},
                         { data: 'user_level',width:'20%'},
-                        { data: 'logs',width:'60%'},
+                        { 
+                            data: 'logs', 
+                            "render":function(data,type,row){
+                                logs = row.logs.replaceAll(" [", "<br>[");
+                                return logs;
+                            },
+                            width: '60%'
+                        },
                     ],
                     initComplete: function(){
                         if(!$('.logs_table_data').DataTable().data().any()){

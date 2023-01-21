@@ -379,206 +379,207 @@ class EmployeesController extends Controller
 
         if($sql){
             if($first_name_orig != $request->first_name_new){
-                $first_name_change = "[First Name] FROM: [$first_name_orig] TO: [$employee->first_name].";
+                $first_name_change = "[First Name: FROM '$first_name_orig' TO '$employee->first_name']";
             }
             else{
                 $first_name_change = NULL;
             }
+            
             if($middle_name_orig != $request->middle_name_new){
-                $middle_name_change = "[Middle Name] FROM: [$middle_name_orig] TO: [$employee->middle_name].";
+                $middle_name_change = "[Middle Name: FROM '$middle_name_orig' TO '$employee->middle_name]";
             }
             else{
                 $middle_name_change = NULL;
             }
 
             if($last_name_orig != $request->last_name_new){
-                $last_name_change = "[Last Name] FROM: [$last_name_orig] TO: [$employee->last_name].";
+                $last_name_change = "[Last Name: FROM '$last_name_orig' TO '$employee->last_name']";
             }
             else{
                 $last_name_change = NULL;
             }
 
             if($suffix_orig != $request->suffix_new){
-                $suffix_change = "[Suffix] FROM: [$suffix_orig] TO: [$employee->suffix].";
+                $suffix_change = "[Suffix: FROM '$suffix_orig' TO '$employee->suffix']";
             }
             else{
                 $suffix_change = NULL;
             }
 
             if($nickname_orig != $request->nickname_new){
-                $nickname_change = "[Nickname] FROM: [$nickname_orig] TO: [$employee->nickname].";
+                $nickname_change = "[Nickname: FROM '$nickname_orig' TO '$employee->nickname']";
             }
             else{
                 $nickname_change = NULL;
             }
 
             if($birthday_orig != $request->birthday_new){
-                $birthday_change = "[Birthday] FROM: [$birthday_orig] TO: [$employee->birthday].";
+                $birthday_change = "[Birthday: FROM '$birthday_orig' TO '$employee->birthday']";
             }
             else{
                 $birthday_change = NULL;
             }
             if($gender_orig != $request->gender_new){
-                $gender_change = "[Gender] FROM: [$gender_orig] TO: [$employee->gender].";
+                $gender_change = "[Gender: FROM '$gender_orig' TO '$employee->gender']";
             }
             else{
                 $gender_change = NULL;
             }
 
             if($address_orig != $request->address_new){
-                $address_change = "[Address] FROM: [$address_orig] TO: [$employee->address].";
+                $address_change = "[Address: FROM '$address_orig' TO '$employee->address']";
             }
             else{
                 $address_change = NULL;
             }
 
             if($house_orig != $request->house_new){
-                $house_change = "[House] FROM: [$house_orig] TO: [$employee->house].";
+                $house_change = "[Ownership: FROM '$house_orig' TO '$employee->house']";
             }
             else{
                 $house_change = NULL;
             }
 
             if($province_orig != $request->province_new){
-                $province_change = "[Province] FROM: [$province_orig] TO: [$employee->province].";
+                $province_change = "[Province: FROM '$province_orig' TO '$employee->province']";
             }
             else{
                 $province_change = NULL;
             }
 
             if($city_orig != $request->city_new){
-                $city_change = "[City] FROM [$city_orig] TO: [$employee->city].";
+                $city_change = "[City: FROM '$city_orig' TO '$employee->city']";
             }
             else{
                 $city_change = NULL;
             }
 
             if($region_orig != $request->region_new){
-                $region_change = "[Region] FROM: [$region_orig] TO: [$employee->region].";
+                $region_change = "[Region: FROM '$region_orig' TO '$employee->region']";
             }
             else{
                 $region_change = NULL;
             }
 
             if($height_orig != $request->height_new){
-                $height_change = "[Height] FROM: [$height_orig] TO: [$employee->height].";
+                $height_change = "[Height: FROM '$height_orig' TO '$employee->height]";
             }
             else{
                 $height_change = NULL;
             }
 
             if($weight_orig != $request->weight_new){
-                $weight_change = "[Weight] FROM: [$weight_orig] TO: [$employee->weight].";
+                $weight_change = "[Weight: FROM '$weight_orig' TO $employee->weight]";
             }
             else{
                 $weight_change = NULL;
             }
 
             if($religion_orig != $request->religion_new){
-                $religion_change = "[Religion] FROM: [$religion_orig] TO: [$employee->religion].";
+                $religion_change = "[Religion: FROM '$religion_orig' TO '$employee->religion'].";
             }
             else{
                 $religion_change = NULL;
             }
 
             if($civil_status_orig != $request->civil_status_new){
-                $civil_status_change = "[Civil Status] FROM: [$civil_status_orig] TO: [$employee->civil_status].";
+                $civil_status_change = "[Civil Status: FROM '$civil_status_orig' TO '$employee->civil_status']";
             }
             else{
                 $civil_status_change = NULL;
             }
 
             if($email_address_orig != $request->email_address_new){
-                $email_address_change = "[Email Address] FROM: [$email_address_orig] TO: [$employee->email_address].";
+                $email_address_change = "[Email Address: FROM '$email_address_orig' TO '$employee->email_address']";
             }
             else{
                 $email_address_change = NULL;
             }
             
             if($telephone_number_orig != $request->telephone_number_new){
-                $telephone_number_change = "[Telephone Number] FROM: [$telephone_number_orig] TO: [$employee->telephone_number].";
+                $telephone_number_change = "[Telephone Number: FROM '$telephone_number_orig' TO '$employee->telephone_number']";
             }
             else{
                 $telephone_number_change = NULL;
             }
 
             if($cellphone_number_orig != $request->cellphone_number_new){
-                $cellphone_number_change = "[Cellphone Number] FROM: [$cellphone_number_orig] TO: [$employee->cellphone_number].";
+                $cellphone_number_change = "[Cellphone Number: FROM '$cellphone_number_orig' TO '$employee->cellphone_number']";
             }
             else{
                 $cellphone_number_change = NULL;
             }
 
             if($spouse_contact_number_orig != $request->spouse_contact_number_new){
-                $spouse_contact_number_change = "[Spouse Contact Number] FROM: [$spouse_contact_number_orig] TO: [$employee->spouse_contact_number].";
+                $spouse_contact_number_change = "[Spouse Contact Number: FROM '$spouse_contact_number_orig' TO '$employee->spouse_contact_number']";
             }
             else{
                 $spouse_contact_number_change = NULL;
             }
 
             if($spouse_profession_orig != $request->spouse_profession_new){
-                $spouse_profession_change = "[Spouse Profession] FROM: [$spouse_profession_orig] TO: [$employee->spouse_profession].";
+                $spouse_profession_change = "[Spouse Profession: FROM '$spouse_profession_orig' TO '$employee->spouse_profession']";
             }
             else{
                 $spouse_profession_change = NULL;
             }
 
             if($father_name_orig != $request->father_name_new){
-                $father_name_change = "[Father Name] FROM: [$father_name_orig] TO: [$employee->father_name].";
+                $father_name_change = "[Father Name: FROM '$father_name_orig' TO '$employee->father_name']";
             }
             else{
                 $father_name_change = NULL;
             }
             if($father_contact_number_orig != $request->father_contact_number_new){
-                $father_contact_number_change = "[Father Contact Number] FROM: [$father_contact_number_orig] TO: [$employee->father_contact_number].";
+                $father_contact_number_change = "[Father Contact Number: FROM '$father_contact_number_orig' TO '$employee->father_contact_number']";
             }
             else{
                 $father_contact_number_change = NULL;
             }
 
             if($father_profession_orig != $request->father_profession_new){
-                $father_profession_change = "[Father Profession] FROM: [$father_profession_orig] TO: [$employee->father_profession].";
+                $father_profession_change = "[Father Profession: FROM '$father_profession_orig' TO '$employee->father_profession']";
             }
             else{
                 $father_profession_change = NULL;
             }
 
             if($mother_name_orig != $request->mother_name_new){
-                $mother_name_change = "[Mother Name] FROM: [$mother_name_orig] TO: [$employee->mother_name].";
+                $mother_name_change = "[Mother Name: FROM '$mother_name_orig' TO '$employee->mother_name']";
             }
             else{
                 $mother_name_change = NULL;
             }
             if($mother_contact_number_orig != $request->mother_contact_number_new){
-                $mother_contact_number_change = "[Mother Contact Number] FROM: [$mother_contact_number_orig] TO: [$employee->mother_contact_number].";
+                $mother_contact_number_change = "[Mother Contact Number: FROM '$mother_contact_number_orig' TO '$employee->mother_contact_number']";
             }
             else{
                 $mother_contact_number_change = NULL;
             }
 
             if($mother_profession_orig != $request->mother_profession_new){
-                $mother_profession_change = "[Mother Profession] FROM: [$mother_profession_orig] TO: [$employee->mother_profession].";
+                $mother_profession_change = "[Mother Profession: FROM '$mother_profession_orig' TO '$employee->mother_profession']";
             }
             else{
                 $mother_profession_change = NULL;
             }
 
             if($emergency_contact_name_orig != $request->emergency_contact_name_new){
-                $emergency_contact_name_change = "[Emergency Contact Name] FROM: [$emergency_contact_name_orig] TO: [$employee->emergency_contact_name].";
+                $emergency_contact_name_change = "[Emergency Contact Name: FROM '$emergency_contact_name_orig' TO '$employee->emergency_contact_name']";
             }
             else{
                 $emergency_contact_name_change = NULL;
             }
 
             if($emergency_contact_relationship_orig != $request->emergency_contact_relationship_new){
-                $emergency_contact_relationship_change = "[Emergency Contact Relationship] FROM: [$emergency_contact_relationship_orig] TO: [$employee->emergency_contact_relationship].";
+                $emergency_contact_relationship_change = "[Emergency Contact Relationship: FROM '$emergency_contact_relationship_orig' TO '$employee->emergency_contact_relationship']";
             }
             else{
                 $emergency_contact_relationship_change = NULL;
             }
 
             if($emergency_contact_number_orig != $request->emergency_contact_number_new){
-                $emergency_contact_number_change = "[Emergency Contact Number] FROM: [$emergency_contact_number_orig] TO: [$employee->emergency_contact_number].";
+                $emergency_contact_number_change = "[Emergency Contact Number: FROM '$emergency_contact_number_orig' TO '$employee->emergency_contact_number']";
             }
             else{
                 $emergency_contact_number_change = NULL;
@@ -707,97 +708,97 @@ class EmployeesController extends Controller
 
         if($sql){
             if($employee_number_orig != $request->employee_number_new){
-                $employee_number_change = "[Employee Number] FROM: [$employee_number_orig] TO: [$employee->employee_number].";
+                $employee_number_change = "[Employee Number: FROM '$employee_number_orig' TO '$employee->employee_number']";
             }
             else{
                 $employee_number_change = NULL;
             }
             if($date_hired_orig != $request->date_hired_new){
-                $date_hired_change = "[Date Hired] FROM: [$date_hired_orig] TO: [$employee->date_hired].";
+                $date_hired_change = "[Date Hired: FROM '$date_hired_orig' TO $employee->date_hired']";
             }
             else{
                 $date_hired_change = NULL;
             }
             if($employee_shift_orig != $request->employee_shift_new){
-                $employee_shift_change = "[Shift] FROM: [$employee_shift_orig] TO: [$employee->employee_shift].";
+                $employee_shift_change = "[Shift: FROM '$employee_shift_orig 'TO '$employee->employee_shift]'";
             }
             else{
                 $employee_shift_change = NULL;
             }
             if($employee_company_orig != $request->employee_company_new){
-                $employee_company_change = "[Company] FROM: [$employee_company_orig] TO: [$employee->employee_company].";
+                $employee_company_change = "[Company: FROM '$employee_company_orig' TO '$employee->employee_company']";
             }
             else{
                 $employee_company_change = NULL;
             }
             if($employee_branch_orig != $request->employee_branch_new){
-                $employee_branch_change = "[Branch] FROM: [$employee_branch_orig] TO: [$employee->employee_branch].";
+                $employee_branch_change = "[Branch: FROM '$employee_branch_orig' TO: '$employee->employee_branch']";
             }
             else{
                 $employee_branch_change = NULL;
             }
             if($employee_department_orig != $request->employee_department_new){
-                $employee_department_change = "[Department] FROM: [$employee_department_orig] TO: [$employee->employee_department].";
+                $employee_department_change = "[Department: FROM '$employee_department_orig' TO '$employee->employee_department']";
             }
             else{
                 $employee_department_change = NULL;
             }
             if($employee_position_orig != $request->employee_position_new){
-                $employee_position_change = "[Position] FROM: [$employee_position_orig] TO: [$employee->employee_position].";
+                $employee_position_change = "[Position: FROM '$employee_position_orig' TO '$employee->employee_position']";
             }
             else{
                 $employee_position_change = NULL;
             }
             if($employment_status_orig != $request->employment_status_new){
-                $employment_status_change = "[Employment Status] FROM: [$employment_status_orig] TO: [$employee->employment_status].";
+                $employment_status_change = "[Employment Status: FROM '$employment_status_orig' TO '$employee->employment_status']";
             }
             else{
                 $employment_status_change = NULL;
             }
             if($employment_origin_orig != $request->employment_origin_new){
-                $employment_origin_change = "[Employment Origin] FROM: [$employment_origin_orig] TO: [$employee->employment_origin].";
+                $employment_origin_change = "[Employment Origin: FROM '$employment_origin_orig' TO '$employee->employment_origin'].";
             }
             else{
                 $employment_origin_change = NULL;
             }
             if($company_email_address_orig != $request->company_email_address_new){
-                $company_email_address_change = "[Work Email Address] FROM: [$company_email_address_orig] TO: [$employee->company_email_address].";
+                $company_email_address_change = "[Work Email Address: FROM '$company_email_address_orig' TO '$employee->company_email_address']";
             }
             else{
                 $company_email_address_change = NULL;
             }
             if($company_contact_number_orig != $request->company_contact_number_new){
-                $company_contact_number_change = "[Work Contact No.] FROM: [$company_contact_number_orig] TO: [$employee->company_contact_number].";
+                $company_contact_number_change = "[Work Contact No.: FROM '$company_contact_number_orig' TO '$employee->company_contact_number']";
             }
             else{
                 $company_contact_number_change = NULL;
             }
             if($sss_number_orig != $request->sss_number_new){
-                $sss_number_change = "[SSS No.] FROM: [$sss_number_orig] TO: [$employee->sss_number].";
+                $sss_number_change = "[SSS No.: FROM '$sss_number_orig' TO '$employee->sss_number']";
             }
             else{
                 $sss_number_change = NULL;
             }
             if($pag_ibig_number_orig != $request->pag_ibig_number_new){
-                $pag_ibig_number_change = "[Pag-Ibig No.] FROM: [$pag_ibig_number_orig] TO: [$employee->pag_ibig_number].";
+                $pag_ibig_number_change = "[Pag-Ibig No.: FROM '$pag_ibig_number_orig' TO '$employee->pag_ibig_number']";
             }
             else{
                 $pag_ibig_number_change = NULL;
             }
             if($philhealth_number_orig != $request->philhealth_number_new){
-                $philhealth_number_change = "[Philhealth No.] FROM: [$philhealth_number_orig] TO: [$employee->philhealth_number].";
+                $philhealth_number_change = "[Philhealth No.: FROM '$philhealth_number_orig' TO '$employee->philhealth_number']";
             }
             else{
                 $philhealth_number_change = NULL;
             }
             if($tin_number_orig != $request->tin_number_new){
-                $tin_number_change = "[Tin No.] FROM: [$tin_number_orig] TO: [$employee->tin_number].";
+                $tin_number_change = "[Tin No.: FROM '$tin_number_orig' TO '$employee->tin_number']";
             }
             else{
                 $tin_number_change = NULL;
             }
             if($account_number_orig != $request->account_number_new){
-                $account_number_change = "[Account No.] FROM: [$account_number_orig] TO: [$employee->account_number].";
+                $account_number_change = "[Account No.: FROM '$account_number_orig' TO '$employee->account_number']";
             }
             else{
                 $account_number_change = NULL;

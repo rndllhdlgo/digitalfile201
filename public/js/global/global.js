@@ -243,18 +243,20 @@ $('body').on('cut paste', function(){
 $(document).ready(function(){
     setInterval(displayClock, 0);
     function displayClock(){
-        var today_Date = new Date();
-        var today_Month = today_Date.getMonth() + 1;
-        var today_Day = today_Date.getDate();
-        var today_Year = today_Date.getFullYear();
-        var today_Time = new Date().toLocaleTimeString();
-
-        if(today_Month < 10) today_Month = '0' + today_Month.toString();
-        if(today_Day < 10) today_Day = '0' + today_Day.toString();
-
-        var today_DateFormat = today_Year + '-' + today_Month + '-' + today_Day;
-        today_DateFormat = moment(today_DateFormat, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY');
-        current_datetime.textContent = today_DateFormat + ', ' + today_Time;
+        if($('#current_datetime').is(":visible")){
+            var today_Date = new Date();
+            var today_Month = today_Date.getMonth() + 1;
+            var today_Day = today_Date.getDate();
+            var today_Year = today_Date.getFullYear();
+            var today_Time = new Date().toLocaleTimeString();
+    
+            if(today_Month < 10) today_Month = '0' + today_Month.toString();
+            if(today_Day < 10) today_Day = '0' + today_Day.toString();
+    
+            var today_DateFormat = today_Year + '-' + today_Month + '-' + today_Day;
+            today_DateFormat = moment(today_DateFormat, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY');
+            current_datetime.textContent = today_DateFormat + ', ' + today_Time;
+        }
     }
 });
 
