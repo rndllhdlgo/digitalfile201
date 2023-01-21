@@ -15,6 +15,7 @@ $(document).ready(function(){
             url: '/employees/listOfEmployees',
         },
         order: [0,'desc'],
+        // order:[],
         columns:[
             {
                 data: 'employee_number',
@@ -253,7 +254,7 @@ $('#image_close').on('click',function(){
 
 $(document).on('change', '#province', function(){
     var citiesOption = " ";
-    $('#region').attr('placeholder','AUTOFILL');
+    // $('#region').attr('placeholder','AUTOFILL');
     $.ajax({
         url:"/getCities",
         type:"get",
@@ -350,47 +351,46 @@ $('#viewJobDescriptionBtn').on('click',function(){
 
 //Fill All Function
 $('#note_required').on('click',function(){
-//Required Field
     //Personal Info
-    // $('#first_name').val('Rendell');
-    // $('#middle_name').val('Mendez');
-    // $('#last_name').val('Hidalgo');
-    // $('#nickname').val('Dell');
-    // $('#address').val('sample');
-    // $('#gender').val('Male');
-    // $('#height').val('5"3');
-    // $('#weight').val('55kgs');
-    // $('#religion').val('Catholic');
-    // $('#civil_status').val('Single');
-    // $('#email_address').val('rendellhidalgo11@gmail.com');
-    // $('#cellphone_number').val('09322003718');
-    // $('#father_name').val('Reynaldo Hidalgo');
-    // $('#father_contact_number').val('09322003718');
-    // $('#father_profession').val('Utility Worker');
-    // $('#mother_name').val('Marlyn Hidalgo');
-    // $('#mother_contact_number').val('09324207239');
-    // $('#mother_profession').val('House Wife');
-    // $('#emergency_contact_name').val('Marlyn Hidalgo');
-    // $('#emergency_contact_relationship').val('Mother');
-    // $('#emergency_contact_number').val('09322003718');
+    $('#first_name').val('Rendell');
+    $('#middle_name').val('Mendez');
+    $('#last_name').val('Hidalgo');
+    $('#nickname').val('Dell');
+    $('#address').val('sample');
+    $('#gender').val('Male');
+    $('#height').val('5"3');
+    $('#weight').val('55kgs');
+    $('#religion').val('Catholic');
+    $('#civil_status').val('Single');
+    $('#email_address').val('rendellhidalgo11@gmail.com');
+    $('#cellphone_number').val('09322003718');
+    $('#father_name').val('Reynaldo Hidalgo');
+    $('#father_contact_number').val('09322003718');
+    $('#father_profession').val('Utility Worker');
+    $('#mother_name').val('Marlyn Hidalgo');
+    $('#mother_contact_number').val('09324207239');
+    $('#mother_profession').val('House Wife');
+    $('#emergency_contact_name').val('Marlyn Hidalgo');
+    $('#emergency_contact_relationship').val('Mother');
+    $('#emergency_contact_number').val('09322003718');
 
     //Work Info
-    // $('#employee_number').val('50006');
-    // $('#employee_company').val('4');
-    // $('#employee_department').val('1');
-    // $('#employee_branch').val('3');
-    // $('#employment_status').val('Probationary');
-    // $('#employment_origin').val('Newly Hired');
-    // $('#employee_shift').val('1');
-    // // $('#employee_supervisor').val('1');
-    // $('#employee_position').val('2');
-    // $('#company_email_address').val('rendellhidalgo11@gmail.com');
-    // $('#company_contact_number').val('09322003718');
-    // $('#sss_number').val('1');
-    // $('#pag_ibig_number').val('2');
-    // $('#philhealth_number').val('3');
-    // $('#tin_number').val('4');
-    // $('#account_number').val('5');
+    $('#employee_number').val('50006');
+    $('#employee_company').val('4');
+    $('#employee_department').val('1');
+    $('#employee_branch').val('3');
+    $('#employment_status').val('Probationary');
+    $('#employment_origin').val('Newly Hired');
+    $('#employee_shift').val('1');
+    // $('#employee_supervisor').val('1');
+    $('#employee_position').val('2');
+    $('#company_email_address').val('rdhidalgo@ideaserv.com.ph');
+    $('#company_contact_number').val('09322003718');
+    $('#sss_number').val('35-2192659-2');
+    $('#pag_ibig_number').val('121305024402');
+    $('#philhealth_number').val('022005294391');
+    $('#tin_number').val('398-758-866');
+    $('#account_number').val('5');
 
     // //Education/Trainings
     // $('#college_name').val('Universidad De Manila');

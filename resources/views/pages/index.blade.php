@@ -4,9 +4,20 @@
 <br>
 <strong style="color: #0d1a80;font-size:20px;">USER ACTIVITY LOGS</strong>
     <hr>
-    {{-- <div style="width: 100px;height:20px;" class="border border-primary mb-2">
-        {{number_format($employees)}}
-    </div> --}}
+    <div class="row">
+        <div class="col-4">
+            <div style="width: 100px;height:20px;" class="border border-primary mb-2">
+                {{($employees)}}
+            </div>
+        </div>
+        <div class="col-4">
+            <div style="width: 100px;height:20px;" class="border border-primary mb-2">
+                {{($employment_status)}}
+            </div>
+        </div>
+    </div>
+    
+    
     <table class="table table-striped table-hover table-bordered w-100 user_activity_table" id="user_activity_table">
         <thead class="text-white" style="background-color:#0d1a80;">
             <tr>

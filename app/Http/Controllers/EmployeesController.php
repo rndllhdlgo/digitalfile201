@@ -142,7 +142,12 @@ class EmployeesController extends Controller
         $employee->last_name = strtoupper($request->last_name); 
         $employee->middle_name = strtoupper($request->middle_name);
         $employee->suffix = strtoupper($request->suffix);
-        $employee->nickname = strtoupper($request->nickname);
+        if(!$request->nickname){
+            $employee->nickname = strtoupper($request->first_name);
+        }
+        else{
+            $employee->nickname = strtoupper($request->nickname);
+        }
         $employee->birthday = $request->birthday;
         $employee->address = ucwords($request->address);
         $employee->gender = $request->gender;
@@ -633,7 +638,7 @@ class EmployeesController extends Controller
                                         $birthday_change
                                         $gender_change
                                         $address_change
-                                        $_change
+                                        $ownership_change
                                         $province_change
                                         $city_change
                                         $region_change

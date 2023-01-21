@@ -8,6 +8,7 @@ use App\Models\UserLogs;
 use App\Models\Ping;
 use Illuminate\Http\Request;
 use App\Models\PersonalInformationTable;
+use App\Models\WorkInformationTable;
 
 
 class HomeController extends Controller
@@ -30,7 +31,8 @@ class HomeController extends Controller
     public function index()
     {
         $employees = PersonalInformationTable::count();
-        return view('pages.index', compact('employees'));
+        $employment_status = WorkInformationTable::where('employment_status','Probationary')->count();
+        return view('pages.index', compact('employees','employment_status'));
     }
 
     public function org()
