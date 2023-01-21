@@ -108,9 +108,17 @@
 
                 <div class="col-3">
                     <div class="f-outline">
-                        <input type="hidden" id="house_orig">
+                        <input type="hidden" id="ownership_orig">
+                        <select class="form-select forminput form-control required_field"  id="ownership" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <option value="" disabled selected>SELECT OWNERSHIP </option>
+                            <option value="OWNED">OWNED</option>
+                            <option value="RENT">RENT</option>
+                            <option value="STAY IN">STAY IN</option>
+                        </select>
+                        <label for="ownership" class="formlabel form-label"><i class="fa-solid fa-house"></i> OWNERSHIP <span class="span_ownership span_all"></span> </label>
+                        {{-- <input type="hidden" id="house_orig">
                         <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left:30px;"> Owned
-                        <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent
+                        <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent --}}
                     </div>
                 </div>
             </div>
@@ -149,32 +157,32 @@
                 <div class="col-3">
                     <div class="f-outline">
                         <input type="hidden" id="province_orig">
-                        <select class="form-select forminput form-control" name="province" id="province">
+                        <select class="form-select forminput form-control required_field" name="province" id="province">
                             <option value="" selected disabled>SELECT PROVINCE</option>
                             @foreach ($provinces as $province)
                                 <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
                             @endforeach
                         </select>
-                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE (Optional) <span class="span_province span_all"></span> </label>
+                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="f-outline">
                         <input type="hidden" id="city_orig">
-                        <select class="form-select forminput form-control" name="city" id="city">
+                        <select class="form-select forminput form-control required_field" name="city" id="city">
                             <option value="" selected disabled>SELECT CITY</option>
                             
                         </select>
-                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY (Optional) <span class="span_city span_all"></span> </label>
+                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
                     </div>
                 </div>
                 
                 <div class="col-6">
                     <div class="f-outline">
                         <input type="hidden" id="region_orig">
-                        <input type="text" class="forminput form-control" name="region" id="region" style="background-color: white !important;" disabled>
-                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION (Optional) <span class="span_street span_all"></span> </label>
+                        <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
+                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
             </div>

@@ -82,12 +82,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#address_orig').val(value.address);
                 $('#address').val(value.address);
 
-                $('#house_orig').val(value.house);
-                $("input[name='house']").each(function() {
-                    if ($(this).val() == value.house) {
-                        $(this).prop('checked', true);
-                    }
-                });
+                // $('#house_orig').val(value.house);
+                // $("input[name='house']").each(function() {
+                //     if ($(this).val() == value.house) {
+                //         $(this).prop('checked', true);
+                //     }
+                // });
+                $('#ownership').val(value.ownership);
+                $('#ownership_orig').val(value.ownership);
                 
                 $('#province_orig').val(value.province);
                 $('#province_summary').val(value.province);

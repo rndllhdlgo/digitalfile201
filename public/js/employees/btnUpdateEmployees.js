@@ -18,8 +18,9 @@ $('#btnUpdate').on('click',function(){
     var civil_status_new = $('#civil_status').val();
     var address_orig = $('#address_orig').val();
     var address_new = $('#address').val();
-    var house_orig = $('#house_orig').val();
-    var house_new = $('input[name=house]:checked').val();
+    var ownership_orig = $('#ownership_orig').val();
+    var ownership_new = $('#ownership').val();
+    // var ownership_new = $('input[name=house]:checked').val();
     var province_orig = $("#province_orig").val();
     var province_new = $("#province option:selected").text();
     var city_orig = $("#city_orig").val();
@@ -116,8 +117,8 @@ $('#btnUpdate').on('click',function(){
                     civil_status_new:civil_status_new,
                     address_orig:address_orig,
                     address_new:address_new,
-                    house_orig:house_orig,
-                    house_new:house_new,
+                    ownership_orig:ownership_orig,
+                    ownership_new:ownership_new,
                     region_orig:region_orig,
                     region_new:region_new,
                     province_orig:province_orig,

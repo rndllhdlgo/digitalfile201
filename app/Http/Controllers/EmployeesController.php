@@ -65,7 +65,7 @@ class EmployeesController extends Controller
             'gender',
             'civil_status',
             'address',
-            'house',
+            'ownership',
             'province',
             'city',
             'region',
@@ -146,7 +146,7 @@ class EmployeesController extends Controller
         $employee->birthday = $request->birthday;
         $employee->address = ucwords($request->address);
         $employee->gender = $request->gender;
-        $employee->house = $request->house;
+        $employee->ownership = $request->ownership;
         $employee->province = $request->province;
         $employee->city = $request->city;
         $employee->region = $request->region;
@@ -326,7 +326,7 @@ class EmployeesController extends Controller
         $province_orig = $request->province_orig;
         $city_orig = $request->city_orig;
         $region_orig = $request->region_orig;
-        $house_orig = $request->house_orig;
+        $ownership_orig = $request->ownership_orig;
         $email_address_orig = $request->email_address_orig;
         $telephone_number_orig = $request->telephone_number_orig;
         $cellphone_number_orig = $request->cellphone_number_orig;
@@ -353,7 +353,7 @@ class EmployeesController extends Controller
         $employee->gender = $request->gender_new;
         $employee->civil_status = $request->civil_status_new;
         $employee->address = ucwords($request->address_new);
-        $employee->house = ucwords($request->house_new);
+        $employee->ownership = ucwords($request->ownership_new);
         $employee->province = $request->province_new;
         $employee->city = $request->city_new;
         $employee->region = $request->region_new;
@@ -433,11 +433,11 @@ class EmployeesController extends Controller
                 $address_change = NULL;
             }
 
-            if($house_orig != $request->house_new){
-                $house_change = "[Ownership: FROM '$house_orig' TO '$employee->house']";
+            if($ownership_orig != $request->ownership_new){
+                $ownership_change = "[Ownership: FROM '$ownership_orig' TO '$employee->ownership']";
             }
             else{
-                $house_change = NULL;
+                $ownership_change = NULL;
             }
 
             if($province_orig != $request->province_new){
@@ -597,7 +597,7 @@ class EmployeesController extends Controller
             || $birthday_orig != $request->birthday_new
             || $gender_orig != $request->gender_new
             || $address_orig != $request->address_new
-            || $house_orig != $request->house_new
+            || $ownership_orig != $request->ownership_new
             || $province_orig != $request->province_new
             || $city_orig != $request->city_new
             || $region_orig != $request->region_new
@@ -633,7 +633,7 @@ class EmployeesController extends Controller
                                         $birthday_change
                                         $gender_change
                                         $address_change
-                                        $house_change
+                                        $ownership_change
                                         $province_change
                                         $city_change
                                         $region_change

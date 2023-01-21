@@ -23,9 +23,9 @@ $(document).ready(function(){
                 }
             },
             // {data: 'employee_number'},
-            {data: 'first_name'},
-            {data: 'middle_name'},
             {data: 'last_name'},
+            {data: 'middle_name'},
+            {data: 'first_name'},
             {data: 'employee_position'},
             {data: 'employee_branch'},
             {data: 'employment_status'}
@@ -58,7 +58,9 @@ $('#addEmployeeBtn').on('click',function(){
     $('#tab1').addClass('tabactive');
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
-    $('#region').val('AUTOFILL');
+    // $('#region').attr('placeholder','AUTOFILL');
+
+    // $('#region').val(' ');
     // $('.input-file-text').addClass('required_field');
     $('#default').prop('checked',true);
 });
@@ -251,7 +253,7 @@ $('#image_close').on('click',function(){
 
 $(document).on('change', '#province', function(){
     var citiesOption = " ";
-    $('#region').val('AUTOFILL');
+    $('#region').attr('placeholder','AUTOFILL');
     $.ajax({
         url:"/getCities",
         type:"get",

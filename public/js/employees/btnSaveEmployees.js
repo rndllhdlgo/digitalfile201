@@ -32,7 +32,8 @@ $('#btnSave').on('click', function(){
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
         var address = $('#address').val();
-        var house = $('input[name=house]:checked').val();
+        // var house = $('input[name=house]:checked').val();
+        var ownership = $('#ownership').val();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
         var region = $("#region").val();
@@ -96,7 +97,7 @@ $('#btnSave').on('click', function(){
                     gender:gender,
                     civil_status:civil_status,
                     address:address,
-                    house:house,
+                    ownership:ownership,
                     province:province,
                     city:city,
                     region:region,
