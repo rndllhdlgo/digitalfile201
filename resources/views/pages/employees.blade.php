@@ -4,10 +4,17 @@
 <br>
     <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list">
-            <strong style="font-size:20px;color:#0d1a80;">EMPLOYEES MASTER FILE</strong>
-            @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
-                <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
-            @endif
+            <div class="row">
+                <div class="col">
+                    <h4 style="color: #0d1a80;">EMPLOYEE MASTER FILE</h4>
+                </div>
+                <div class="col">
+                    @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
+                        <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
+                    @endif
+                </div>
+            </div>
+           
             <hr class="hr-design">         
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">

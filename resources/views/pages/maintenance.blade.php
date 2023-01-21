@@ -3,13 +3,20 @@
 @section('content')
 
 <br>
-<strong style="font-size:20px;color:#0d1a80;">MAINTENANCE</strong>
-    <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-plus"></i> ADD COMPANY</button>
-    <button type="button" class="btn btn-success float-end grow" id="addBranchBtn" title="ADD BRANCH" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD BRANCH</button>
-    <button type="button" class="btn btn-success float-end grow" id="addShiftBtn" title="ADD SHIFT" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD SHIFT</button>
-    <button type="button" class="btn btn-success float-end grow" id="addSupervisorBtn" title="ADD SUPERVISOR" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD SUPERVISOR</button>
-    <button type="button" class="btn btn-success float-end grow" id="addJobPositionAndDescriptionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD JOB POSITION</button>
-    <button type="button" class="btn btn-success float-end grow" id="addDepartmentBtn" title="ADD DEPARTMENT" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD DEPARTMENT</button>
+<div class="row">
+    <div class="col">
+        <h4 style="color: #0d1a80;">MAINTENANCE</h4>
+    </div>
+    <div class="col">
+        <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-plus"></i> ADD COMPANY</button>
+        <button type="button" class="btn btn-success float-end grow" id="addBranchBtn" title="ADD BRANCH" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD BRANCH</button>
+        <button type="button" class="btn btn-success float-end grow" id="addShiftBtn" title="ADD SHIFT" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD SHIFT</button>
+        <button type="button" class="btn btn-success float-end grow" id="addSupervisorBtn" title="ADD SUPERVISOR" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD SUPERVISOR</button>
+        <button type="button" class="btn btn-success float-end grow" id="addJobPositionAndDescriptionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD JOB POSITION</button>
+        <button type="button" class="btn btn-success float-end grow" id="addDepartmentBtn" title="ADD DEPARTMENT" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD DEPARTMENT</button>
+    </div>
+</div>
+    
 <br>
 <hr class="hr-design">
     <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">

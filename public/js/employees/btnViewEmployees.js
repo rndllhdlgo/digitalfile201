@@ -809,15 +809,31 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     order:[],
                     columns: [
-                        { data: 'username',width:'20%'},
-                        { data: 'user_level',width:'20%'},
+                        // { data: 'username',width:'20%'},
+                        // { data: 'user_level',width:'20%'},
+                        // { 
+                        //     data: 'logs', 
+                        //     "render":function(data,type,row){
+                        //         logs = row.logs.replaceAll(" [", "<br>[");
+                        //         return logs;
+                        //     },
+                        //     width: '60%'
+                        // },
+                        // { data: 'datetime' },
+                        {
+                            data: 'date',
+                            "render": function(data, type, row){
+                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                            }
+                        },
+                        { data: 'username' },
+                        { data: 'user_level'},
                         { 
                             data: 'logs', 
                             "render":function(data,type,row){
                                 logs = row.logs.replaceAll(" [", "<br>[");
                                 return logs;
-                            },
-                            width: '60%'
+                            }
                         },
                     ],
                     initComplete: function(){

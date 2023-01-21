@@ -633,7 +633,7 @@ class EmployeesController extends Controller
                                         $birthday_change
                                         $gender_change
                                         $address_change
-                                        $ownership_change
+                                        $_change
                                         $province_change
                                         $city_change
                                         $region_change
@@ -1361,12 +1361,14 @@ class EmployeesController extends Controller
     }
     public function logs_data(Request $request){
         // return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
-        $logs = LogsTable::select(
-                        'users.id AS user_id',
-                        'logs_tables.id',
-                        'users.name AS username',
-                        'users.user_level',
-                        'logs'
+        $logs = LogsTable::selectRaw(
+                        'users.id AS user_id,
+                        logs_tables.id,
+                        users.name AS username,
+                        users.user_level,
+                        logs_tables.created_at AS date,
+                        DATE_FORMAT(logs_tables.created_at, "%b. %d, %Y, %h:%i %p") AS datetime, 
+                        logs'
                         )
             ->where('employee_id',$request->id)
             ->join('users', 'users.id','user_id')
