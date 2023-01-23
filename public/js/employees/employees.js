@@ -20,9 +20,6 @@ $(document).ready(function(){
         $('#head_title').html('- INTERN');
         var filter = 'intern';
     }
-    else{
-        console.log('d');
-    }
      
     employeesTable = $('table.employeesTable').DataTable({
         dom:'l<"breakspace">trip',
