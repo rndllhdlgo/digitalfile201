@@ -9,7 +9,16 @@ $(document).ready(function(){
         var filter = 'regular';
     }
     else if(current_location == '/employees?employment_status=part_time'){
+        $('#head_title').html('- PART TIME');
         var filter = 'part_time';
+    }
+    else if(current_location == '/employees?employment_status=agency'){
+        $('#head_title').html('- AGENCY');
+        var filter = 'agency';
+    }
+    else if(current_location == '/employees?employment_status=intern'){
+        $('#head_title').html('- INTERN');
+        var filter = 'intern';
     }
     else{
         console.log('d');

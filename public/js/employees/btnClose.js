@@ -14,6 +14,7 @@ $('#btnCancel').on('click',function(){
     }).then((cancel) => {
       if (cancel.isConfirmed) {
         setTimeout(function(){location.href= "/employees";}, 1000);
+        $('#loading').show();
       } else if (cancel.isDenied) {
       }
     });

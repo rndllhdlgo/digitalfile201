@@ -59,7 +59,7 @@
             <hr class="hr-design">
         </div>
 
-        <div id="employee_information" style="display: none; margin-top:10px;">
+        <div id="employee_information" style="display: none;">
             <h4 style="color: #0d1a80;">EMPLOYEE INFORMATION</h4>
             <br>
             {{-- <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info-circle fa-lg"></i> <b>EMPLOYEE INFORMATION</b> </span> --}}

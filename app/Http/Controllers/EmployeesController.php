@@ -69,6 +69,57 @@ class EmployeesController extends Controller
                 ->join('branches','branches.id','work_information_tables.employee_branch')
                 ->get();
         }
+        else if($request->filter == 'part_time'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->where('work_information_tables.employment_status','Part_Time')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+        }
+        else if($request->filter == 'agency'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->where('work_information_tables.employment_status','Agency')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+        }
+        else if($request->filter == 'intern'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->where('work_information_tables.employment_status','Intern')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+        }
         else{
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
@@ -761,7 +812,7 @@ class EmployeesController extends Controller
                 $date_hired_change = NULL;
             }
             if($employee_shift_orig != $request->employee_shift_new){
-                $employee_shift_change = "[Shift: FROM '$employee_shift_orig 'TO '$employee->employee_shift]'";
+                $employee_shift_change = "[Shift: FROM '$employee_shift_orig' TO '$employee->employee_shift']";
             }
             else{
                 $employee_shift_change = NULL;
@@ -890,6 +941,18 @@ class EmployeesController extends Controller
                                         $account_number_change
                                         ";
                 $employee_logs->save();
+
+                $employee_history_logs = new History;
+                $employee_history_logs->employee_id = $request->id;
+                $employee_history_logs->history = "$employee_shift_change
+                                                  $employee_position_change
+                                                  $employee_company_change
+                                                  $employee_branch_change
+                                                  $employment_status_change
+                                                  $employment_origin_change
+                                                  ";
+                $employee_history_logs->save();
+                
             }
 
         }
