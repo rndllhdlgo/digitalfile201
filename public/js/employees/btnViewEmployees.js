@@ -232,9 +232,17 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Education Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
+                $('#secondary_school_name_orig').val(value.secondary_school_name);
+
                 $('#secondary_school_address').val(value.secondary_school_address);
+                $('#secondary_school_address_orig').val(value.secondary_school_address);
+
                 $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
+                $('#secondary_school_inclusive_years_from_orig').val(value.secondary_school_inclusive_years_from);
+
                 $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
+                $('#secondary_school_inclusive_years_to_orig').val(value.secondary_school_inclusive_years_to);
+
                 $('#primary_school_name').val(value.primary_school_name);
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
@@ -822,14 +830,16 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         // { data: 'datetime' },
                         {
                             data: 'date',
+                            width: '15%',
                             "render": function(data, type, row){
                                 return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
                             }
                         },
-                        { data: 'username' },
-                        { data: 'user_level'},
+                        { data: 'username', width: '15%'},
+                        { data: 'user_level', width: '15%'},
                         { 
-                            data: 'logs', 
+                            data: 'logs',
+                            width: '55%',
                             "render":function(data,type,row){
                                 logs = row.logs.replaceAll(" [", "<br>[");
                                 return logs;

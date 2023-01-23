@@ -980,17 +980,78 @@ class EmployeesController extends Controller
             $employee->save();
         }
         else{
-            EducationalAttainment::where('employee_id',$request->employee_id)
+            $secondary_school_name_orig = $request->secondary_school_name_orig;
+            $secondary_school_address_orig = $request->secondary_school_address_orig;
+            $secondary_school_inclusive_years_from_orig = $request->secondary_school_inclusive_years_from_orig;
+            $secondary_school_inclusive_years_to_orig = $request->secondary_school_inclusive_years_to_orig;
+
+            $sql = EducationalAttainment::where('employee_id',$request->employee_id)
             ->update([
-                'secondary_school_name' => $request->secondary_school_name,
-                'secondary_school_address' => $request->secondary_school_address,
-                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                'primary_school_name' => $request->primary_school_name,
-                'primary_school_address' => $request->primary_school_address,
-                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
+                'secondary_school_name' => $request->secondary_school_name_new,
+                'secondary_school_address' => $request->secondary_school_address_new,
+                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from_new,
+                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to_new
+                // 'primary_school_name' => $request->primary_school_name,
+                // 'primary_school_address' => $request->primary_school_address,
+                // 'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                // 'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
             ]);
+
+            if($sql){
+                if($secondary_school_name_orig != $request->secondary_school_name_new){
+                    $secondary_school_name_change = "[Name: FROM '$secondary_school_name_orig' TO '$request->secondary_school_name_new']";
+                }
+                else{
+                    $secondary_school_name_change = NULL;
+                }
+                if($secondary_school_address_orig != $request->secondary_school_address_new){
+                    $secondary_school_address_change = "[Address: FROM '$secondary_school_address_orig' TO '$request->secondary_school_address_new']";
+                }
+                else{
+                    $secondary_school_address_change = NULL;
+                }
+                if($secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new){
+                    $secondary_school_inclusive_years_from_change = "[Inclusive Start Year/Month: FROM '$secondary_school_inclusive_years_from_orig' TO '$request->secondary_school_inclusive_years_from_new']";
+                }
+                else{
+                    $secondary_school_inclusive_years_from_change = NULL;
+                }
+                if($secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new){
+                    $secondary_school_inclusive_years_to_change = "[Inclusive End Year/Month: FROM '$secondary_school_inclusive_years_to_orig' TO '$request->secondary_school_inclusive_years_to_new']";
+                }
+                else{
+                    $secondary_school_inclusive_years_to_change = NULL;
+                }
+
+                $result = 'true';
+                $id = $employee->id;
+
+                if($secondary_school_name_orig != $request->secondary_school_name_new 
+                    || $secondary_school_address_orig != $request->secondary_school_address_new
+                    || $secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new
+                    || $secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new
+                ){
+
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                            [Secondary Education]
+                                            $secondary_school_name_change
+                                            $secondary_school_address_change
+                                            $secondary_school_inclusive_years_from_change
+                                            $secondary_school_inclusive_years_to_change
+                                            ";
+                    $employee_logs->save();
+                }
+            }
+
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
 
         // else{
@@ -1045,15 +1106,38 @@ class EmployeesController extends Controller
     }
 
     public function updateCompensationBenefits(Request $request){
-        if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
-            $employee = CompensationBenefits::find($request->id);
-            $employee->employee_id = $request->employee_id;
-            $employee->employee_salary = $request->employee_salary;
-            $employee->employee_incentives = $request->employee_incentives;
-            $employee->employee_overtime_pay = $request->employee_overtime_pay;
-            $employee->employee_bonus = $request->employee_bonus;
-            $employee->employee_insurance = $request->employee_insurance;
-            $employee->save();
+        $employee = CompensationBenefits::first();
+        if(is_null($employee)){
+            if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
+                $employee = new CompensationBenefits;
+                $employee->employee_id = $request->employee_id;
+                $employee->employee_salary = $request->employee_salary;
+                $employee->employee_incentives = $request->employee_incentives;
+                $employee->employee_overtime_pay = $request->employee_overtime_pay;
+                $employee->employee_bonus = $request->employee_bonus;
+                $employee->employee_insurance = $request->employee_insurance;
+                $employee->save();
+            }
+        }
+        else{
+            CompensationBenefits::where('employee_id',$request->employee_id)
+            ->update([
+                'employee_salary' =>$request->employee_salary,
+                'employee_incentives' => $request->employee_incentives,
+                'employee_overtime_pay' => $request->employee_overtime_pay,
+                'employee_bonus' => $request->employee_bonus,
+                'employee_insurance' => $request->employee_insurance
+            ]);
+            // if($request->employee_salary && $request->employee_incentives && $request->employee_overtime_pay && $request->employee_bonus && $request->employee_insurance){
+            //     $employee = CompensationBenefits::find($request->id);
+            //     $employee->employee_id = $request->employee_id;
+            //     $employee->employee_salary = $request->employee_salary;
+            //     $employee->employee_incentives = $request->employee_incentives;
+            //     $employee->employee_overtime_pay = $request->employee_overtime_pay;
+            //     $employee->employee_bonus = $request->employee_bonus;
+            //     $employee->employee_insurance = $request->employee_insurance;
+            //     $employee->save();
+            // }
         }
     }
 
