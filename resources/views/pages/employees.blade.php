@@ -6,7 +6,7 @@
         <div id="employees_list">
             <div class="row">
                 <div class="col">
-                    <h4 style="color: #0d1a80;">EMPLOYEE MASTER FILE</h4>
+                    <h4 style="color: #0d1a80;">EMPLOYEE MASTER FILE <span id="head_title"></span></h4>
                 </div>
                 <div class="col">
                     @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}

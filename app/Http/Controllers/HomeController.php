@@ -30,9 +30,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $employees = PersonalInformationTable::count();
-        $employment_status = WorkInformationTable::where('employment_status','Probationary')->count();
-        return view('pages.index', compact('employees','employment_status'));
+        $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
+        $regular = WorkInformationTable::where('employment_status','Regular')->count();
+        $probationary = WorkInformationTable::where('employment_status','Probationary')->count();
+        $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
+        $agency = WorkInformationTable::where('employment_status','Agency')->count();
+        $intern = WorkInformationTable::where('employment_status','Intern')->count();
+        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern'));
     }
 
     public function org()

@@ -614,3 +614,10 @@ input:checked + .slider .off{
 h5{
     font-weight: bold;
 }
+
+.dashbox:hover{
+    background-color: white !important;
+    color:#0d1a80 !important;
+    border:1px solid #0d1a80;
+    transition: 0.2s;
+}

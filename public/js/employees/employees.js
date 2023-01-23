@@ -1,5 +1,20 @@
 var employeesTable;
 $(document).ready(function(){
+    if(current_location == '/employees?employment_status=probationary'){
+        $('#head_title').html('- PROBATIONARY');
+        var filter = 'probationary';
+    }
+    else if(current_location == '/employees?employment_status=regular'){
+        $('#head_title').html('- REGULAR');
+        var filter = 'regular';
+    }
+    else if(current_location == '/employees?employment_status=part_time'){
+        var filter = 'part_time';
+    }
+    else{
+        console.log('d');
+    }
+     
     employeesTable = $('table.employeesTable').DataTable({
         dom:'l<"breakspace">trip',
         language:{
@@ -11,33 +26,36 @@ $(document).ready(function(){
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         processing:true,
         serverSide:false,
-        ajax:{
+        ajax: {
             url: '/employees/listOfEmployees',
-        },
-        order: [0,'desc'],
-        // order:[],
-        columns:[
-            {
-                data: 'employee_number',
-                "render": function(data, type, row){
-                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-                }
+            data:{
+                filter:filter
             },
-            // {data: 'employee_number'},
+        },
+        // order: [0,'desc'],
+        order:[],
+        columns:[
+            // {
+            //     data: 'employee_number',
+            //     "render": function(data, type, row){
+            //         return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
+            //     }
+            // },
+            {data: 'employee_number'},
             {data: 'last_name'},
-            {data: 'middle_name'},
             {data: 'first_name'},
+            {data: 'middle_name'},
             {data: 'employee_position'},
             {data: 'employee_branch'},
             {data: 'employment_status'}
         ],
         initComplete: function(){
-            if(window.location.search.includes('employee_number') == true){
-                var url = new URL(window.location.href);
-                var employee_number = url.searchParams.get("employee_number");
-                $('.'+employee_number).closest('tr').click();
-                // $('#loading').show();
-            }
+            // if(window.location.search.includes('employee_number') == true){
+            //     var url = new URL(window.location.href);
+            //     var employee_number = url.searchParams.get("employee_number");
+            //     $('.'+employee_number).closest('tr').click();
+            //     // $('#loading').show();
+            // }
             $('#loading').hide();
         }
     });

@@ -110,13 +110,13 @@
                 <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option value="Regular">Regular</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Agency">Agency</option>
                     <option value="Probationary">Probationary</option>
                     <option value="Part_Time">Part Time</option>
+                    <option value="Agency">Agency</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Retired" id="retired">Retired</option>
                     <option value="Resign" id="resign">Resign</option>
                     <option value="Terminate" id="terminate">Terminate</option>
-                    <option value="Retired" id="retired">Retired</option>
                 </select>
                 <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employment_status span_all"></span></label>
             </div>

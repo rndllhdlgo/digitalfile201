@@ -34,21 +34,57 @@ class EmployeesController extends Controller
         $this->middleware('auth');
     }
     
-    public function listOfEmployees(){
-        $employees = PersonalInformationTable::select(
-            'personal_information_tables.id',
-            'work_information_tables.employee_number',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'positions.job_position_name AS employee_position',
-            'branches.branch_name AS employee_branch',
-            'work_information_tables.employment_status'
-            )
-            ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-            ->join('positions','positions.id','work_information_tables.employee_position')
-            ->join('branches','branches.id','work_information_tables.employee_branch')
-            ->get();
+    public function listOfEmployees(Request $request){
+        if($request->filter == 'probationary'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->where('work_information_tables.employment_status','Probationary')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+        }
+        else if($request->filter == 'regular'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->where('work_information_tables.employment_status','Regular')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+        }
+        else{
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status'
+                )
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->get();
+            }
         return DataTables::of($employees)->make(true);
     }
 
