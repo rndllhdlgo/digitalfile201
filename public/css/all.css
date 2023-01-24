@@ -621,3 +621,7 @@ h5{
     border:1px solid #0d1a80;
     transition: 0.2s;
 }
+
+th{
+    text-align: center !important;
+}

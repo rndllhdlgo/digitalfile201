@@ -253,10 +253,11 @@ $('#btnUpdate').on('click',function(){
                         var secondary_school_inclusive_years_from_new = $('#secondary_school_inclusive_years_from').val();
                         var secondary_school_inclusive_years_to_orig = $('#secondary_school_inclusive_years_to_orig').val();
                         var secondary_school_inclusive_years_to_new = $('#secondary_school_inclusive_years_to').val();
-                        // var primary_school_name = $('#primary_school_name').val();
-                        // var primary_school_address = $('#primary_school_address').val();
-                        // var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
-                        // var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
+                        
+                        var primary_school_name = $('#primary_school_name').val();
+                        var primary_school_address = $('#primary_school_address').val();
+                        var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
+                        var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
         
                         $.ajax({
                             url:"/employees/updateEducationalAttainment", 
@@ -274,11 +275,12 @@ $('#btnUpdate').on('click',function(){
                                 secondary_school_inclusive_years_from_orig:secondary_school_inclusive_years_from_orig,
                                 secondary_school_inclusive_years_from_new:secondary_school_inclusive_years_from_new,
                                 secondary_school_inclusive_years_to_orig:secondary_school_inclusive_years_to_orig,
-                                secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new
-                                // primary_school_name:primary_school_name,
-                                // primary_school_address:primary_school_address,
-                                // primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                // primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                                secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new,
+
+                                primary_school_name:primary_school_name,
+                                primary_school_address:primary_school_address,
+                                primary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
                             }
                         });
         

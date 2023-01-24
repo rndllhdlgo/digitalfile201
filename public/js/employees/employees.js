@@ -38,8 +38,8 @@ $(document).ready(function(){
                 filter:filter
             },
         },
-        // order: [0,'desc'],
-        order:[],
+        order: [0,'desc'],
+        // order:[],
         columns:[
             // {
             //     data: 'employee_number',

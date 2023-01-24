@@ -220,13 +220,14 @@
         <table class="table table-striped table-hover w-100 employee_history_table" id="employee_history_table">
             <thead class="thead-educational">
                 <tr>
-                    <th>History</th>
+                    <th>HISTORY</th>
                 </tr>
             </thead>
             <tbody>
 
             </tbody>
         </table>
+        <hr class="hr-design">
     </div>
     
     <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
