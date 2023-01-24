@@ -187,7 +187,8 @@ $('#btnUpdate').on('click',function(){
                         var company_email_address_new = $('#company_email_address').val();
                         var company_contact_number_orig = $('#company_contact_number_orig').val();
                         var company_contact_number_new = $('#company_contact_number').val();
-                        var hmo_number = $('#hmo_number').val();
+                        var hmo_number_orig = $('#hmo_number_orig').val();
+                        var hmo_number_new = $('#hmo_number').val();
                         var sss_number_orig = $('#sss_number_orig').val();
                         var sss_number_new = $('#sss_number').val();
                         var pag_ibig_number_orig = $('#pag_ibig_number_orig').val();
@@ -231,7 +232,8 @@ $('#btnUpdate').on('click',function(){
                                 company_email_address_new:company_email_address_new,
                                 company_contact_number_orig:company_contact_number_orig,
                                 company_contact_number_new:company_contact_number_new,
-                                hmo_number:hmo_number,
+                                hmo_number_orig:hmo_number_orig,
+                                hmo_number_new:hmo_number_new,
                                 sss_number_orig:sss_number_orig,
                                 sss_number_new:sss_number_new,
                                 pag_ibig_number_orig:pag_ibig_number_orig,
@@ -245,15 +247,49 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
-                        var secondary_school_name_orig = $('#secondary_school_name_orig').val();
-                        var secondary_school_name_new = $('#secondary_school_name').val();
-                        var secondary_school_address_orig = $('#secondary_school_address_orig').val();
-                        var secondary_school_address_new = $('#secondary_school_address').val();
-                        var secondary_school_inclusive_years_from_orig = $('#secondary_school_inclusive_years_from_orig').val();
-                        var secondary_school_inclusive_years_from_new = $('#secondary_school_inclusive_years_from').val();
-                        var secondary_school_inclusive_years_to_orig = $('#secondary_school_inclusive_years_to_orig').val();
-                        var secondary_school_inclusive_years_to_new = $('#secondary_school_inclusive_years_to').val();
+                        // var secondary_school_name_orig = $('#secondary_school_name_orig').val();
+                        // var secondary_school_name_new = $('#secondary_school_name').val();
+                        // var secondary_school_address_orig = $('#secondary_school_address_orig').val();
+                        // var secondary_school_address_new = $('#secondary_school_address').val();
+                        // var secondary_school_inclusive_years_from_orig = $('#secondary_school_inclusive_years_from_orig').val();
+                        // var secondary_school_inclusive_years_from_new = $('#secondary_school_inclusive_years_from').val();
+                        // var secondary_school_inclusive_years_to_orig = $('#secondary_school_inclusive_years_to_orig').val();
+                        // var secondary_school_inclusive_years_to_new = $('#secondary_school_inclusive_years_to').val();
                         
+                        // var primary_school_name = $('#primary_school_name').val();
+                        // var primary_school_address = $('#primary_school_address').val();
+                        // var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
+                        // var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
+        
+                        // $.ajax({
+                        //     url:"/employees/updateEducationalAttainment", 
+                        //     type:"POST",
+                        //     headers:{
+                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //     },
+                        //     data:{
+                        //         id:id,
+                        //         employee_id:data.id,
+                        //         secondary_school_name_orig:secondary_school_name_orig,
+                        //         secondary_school_name_new:secondary_school_name_new,
+                        //         secondary_school_address_orig:secondary_school_address_orig,
+                        //         secondary_school_address_new:secondary_school_address_new,
+                        //         secondary_school_inclusive_years_from_orig:secondary_school_inclusive_years_from_orig,
+                        //         secondary_school_inclusive_years_from_new:secondary_school_inclusive_years_from_new,
+                        //         secondary_school_inclusive_years_to_orig:secondary_school_inclusive_years_to_orig,
+                        //         secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new,
+
+                        //         primary_school_name:primary_school_name,
+                        //         primary_school_address:primary_school_address,
+                        //         primary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                        //         primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                        //     }
+                        // });
+
+                        var secondary_school_name = $('#secondary_school_name').val();
+                        var secondary_school_address = $('#secondary_school_address').val();
+                        var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
+                        var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
                         var primary_school_name = $('#primary_school_name').val();
                         var primary_school_address = $('#primary_school_address').val();
                         var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
@@ -268,21 +304,17 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                secondary_school_name_orig:secondary_school_name_orig,
-                                secondary_school_name_new:secondary_school_name_new,
-                                secondary_school_address_orig:secondary_school_address_orig,
-                                secondary_school_address_new:secondary_school_address_new,
-                                secondary_school_inclusive_years_from_orig:secondary_school_inclusive_years_from_orig,
-                                secondary_school_inclusive_years_from_new:secondary_school_inclusive_years_from_new,
-                                secondary_school_inclusive_years_to_orig:secondary_school_inclusive_years_to_orig,
-                                secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new,
-
+                                secondary_school_name:primary_school_name,
+                                secondary_school_address:primary_school_address,
+                                secondary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                                secondary_school_inclusive_years_to:primary_school_inclusive_years_to,
                                 primary_school_name:primary_school_name,
                                 primary_school_address:primary_school_address,
                                 primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                                primary_school_inclusive_years_to:primary_school_inclusive_years_to,
                             }
                         });
+        
         
                         var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
                         var allergies = $('#allergies').val().split("\n").join(' \n');

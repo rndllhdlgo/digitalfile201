@@ -162,6 +162,7 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
+                    <input type="hidden" id="hmo_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     {{-- <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p> --}}
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)<span class="span_hmo_number span_all"></span></label>

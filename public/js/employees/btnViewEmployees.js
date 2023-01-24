@@ -214,6 +214,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#company_contact_number_orig').val(value.company_contact_number);
 
                 $('#hmo_number').val(value.hmo_number);
+                $('#hmo_number_orig').val(value.hmo_number);
 
                 $('#sss_number').val(value.sss_number);
                 $('#sss_number_orig').val(value.sss_number);
@@ -247,6 +248,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
+
+                // Medical History
+                $('#past_medical_condition').val(value.past_medical_condition);
+                $('#allergies').val(value.allergies);
+                $('#medication').val(value.medication);
+                $('#psychological_history').val(value.psychological_history);
+
+                // Compensation Benefits
+                $('#employee_salary').val(value.employee_salary);
+                $('#employee_incentives').val(value.employee_incentives);
+                $('#employee_overtime_pay').val(value.employee_overtime_pay);
+                $('#employee_bonus').val(value.employee_bonus);
+                $('#employee_insurance').val(value.employee_insurance);
 
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();
