@@ -176,6 +176,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 //Work Information
                 $('#employee_number').val(value.employee_number);
                 $('#employee_number').attr('readonly',true);
+                $('#employee_number').css('cursor','not-allowed');
                 $('#employee_number_orig').val(value.employee_number);
 
                 $('#employee_company').val(value.employee_company);
@@ -245,22 +246,45 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#secondary_school_inclusive_years_to_orig').val(value.secondary_school_inclusive_years_to);
 
                 $('#primary_school_name').val(value.primary_school_name);
+                $('#primary_school_name_orig').val(value.primary_school_name);
+
                 $('#primary_school_address').val(value.primary_school_address);
+                $('#primary_school_address_orig').val(value.primary_school_address);
+
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
+                $('#primary_school_inclusive_years_from_orig').val(value.primary_school_inclusive_years_from);
+
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
+                $('#primary_school_inclusive_years_to_orig').val(value.primary_school_inclusive_years_to);
 
                 // Medical History
                 $('#past_medical_condition').val(value.past_medical_condition);
+                $('#past_medical_condition_orig').val(value.past_medical_condition);
+
                 $('#allergies').val(value.allergies);
+                $('#allergies_orig').val(value.allergies);
+
                 $('#medication').val(value.medication);
+                $('#medication_orig').val(value.medication);
+
                 $('#psychological_history').val(value.psychological_history);
+                $('#psychological_history_orig').val(value.psychological_history);
 
                 // Compensation Benefits
                 $('#employee_salary').val(value.employee_salary);
+                $('#employee_salary_orig').val(value.employee_salary);
+
                 $('#employee_incentives').val(value.employee_incentives);
+                $('#employee_incentives_orig').val(value.employee_incentives);
+
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
+                $('#employee_overtime_pay_orig').val(value.employee_overtime_pay);
+
                 $('#employee_bonus').val(value.employee_bonus);
+                $('#employee_bonus_orig').val(value.employee_bonus);
+
                 $('#employee_insurance').val(value.employee_insurance);
+                $('#employee_insurance_orig').val(value.employee_insurance);
 
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();

@@ -247,45 +247,6 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
-                        // var secondary_school_name_orig = $('#secondary_school_name_orig').val();
-                        // var secondary_school_name_new = $('#secondary_school_name').val();
-                        // var secondary_school_address_orig = $('#secondary_school_address_orig').val();
-                        // var secondary_school_address_new = $('#secondary_school_address').val();
-                        // var secondary_school_inclusive_years_from_orig = $('#secondary_school_inclusive_years_from_orig').val();
-                        // var secondary_school_inclusive_years_from_new = $('#secondary_school_inclusive_years_from').val();
-                        // var secondary_school_inclusive_years_to_orig = $('#secondary_school_inclusive_years_to_orig').val();
-                        // var secondary_school_inclusive_years_to_new = $('#secondary_school_inclusive_years_to').val();
-                        
-                        // var primary_school_name = $('#primary_school_name').val();
-                        // var primary_school_address = $('#primary_school_address').val();
-                        // var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
-                        // var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
-        
-                        // $.ajax({
-                        //     url:"/employees/updateEducationalAttainment", 
-                        //     type:"POST",
-                        //     headers:{
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     },
-                        //     data:{
-                        //         id:id,
-                        //         employee_id:data.id,
-                        //         secondary_school_name_orig:secondary_school_name_orig,
-                        //         secondary_school_name_new:secondary_school_name_new,
-                        //         secondary_school_address_orig:secondary_school_address_orig,
-                        //         secondary_school_address_new:secondary_school_address_new,
-                        //         secondary_school_inclusive_years_from_orig:secondary_school_inclusive_years_from_orig,
-                        //         secondary_school_inclusive_years_from_new:secondary_school_inclusive_years_from_new,
-                        //         secondary_school_inclusive_years_to_orig:secondary_school_inclusive_years_to_orig,
-                        //         secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new,
-
-                        //         primary_school_name:primary_school_name,
-                        //         primary_school_address:primary_school_address,
-                        //         primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                        //         primary_school_inclusive_years_to:primary_school_inclusive_years_to
-                        //     }
-                        // });
-
                         var secondary_school_name = $('#secondary_school_name').val();
                         var secondary_school_address = $('#secondary_school_address').val();
                         var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -304,10 +265,10 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                secondary_school_name:primary_school_name,
-                                secondary_school_address:primary_school_address,
-                                secondary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                secondary_school_inclusive_years_to:primary_school_inclusive_years_to,
+                                secondary_school_name:secondary_school_name,
+                                secondary_school_address:secondary_school_address,
+                                secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
+                                secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
                                 primary_school_name:primary_school_name,
                                 primary_school_address:primary_school_address,
                                 primary_school_inclusive_years_from:primary_school_inclusive_years_from,
@@ -315,11 +276,14 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
         
-        
-                        var past_medical_condition = $('#past_medical_condition').val().split("\n").join(' \n');
-                        var allergies = $('#allergies').val().split("\n").join(' \n');
-                        var medication = $('#medication').val().split("\n").join(' \n');
-                        var psychological_history = $('#psychological_history').val().split("\n").join(' \n');
+                        var past_medical_condition_orig = $('#past_medical_condition_orig').val(),
+                        past_medical_condition_new = $('#past_medical_condition').val(),
+                        allergies_orig = $('#allergies_orig').val(),
+                        allergies_new = $('#allergies').val(),
+                        medication_orig = $('#medication_orig').val(),
+                        medication_new = $('#medication').val(),
+                        psychological_history_orig = $('#psychological_history_orig').val(),
+                        psychological_history_new = $('#psychological_history').val();
         
                         $.ajax({
                             url:"/employees/updateMedicalHistory",
@@ -330,18 +294,27 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                allergies:allergies,
-                                past_medical_condition:past_medical_condition,
-                                medication:medication,
-                                psychological_history:psychological_history
+                                past_medical_condition_orig:past_medical_condition_orig,
+                                past_medical_condition_new:past_medical_condition_new,
+                                allergies_orig:allergies_orig,
+                                allergies_new:allergies_new,
+                                medication_orig:medication_orig,
+                                medication_new:medication_new,
+                                psychological_history_orig:psychological_history_orig,
+                                psychological_history_new:psychological_history_new
                             }
                         });
 
-                        var employee_salary = $('#employee_salary').val();
-                        var employee_incentives = $('#employee_incentives').val();
-                        var employee_overtime_pay = $('#employee_overtime_pay').val();
-                        var employee_bonus = $('#employee_bonus').val();
-                        var employee_insurance = $('#employee_insurance').val().split("\n").join(' \n');
+                        var employee_salary_orig = $('#employee_salary_orig').val(),
+                        employee_salary_new = $('#employee_salary').val(),
+                        employee_incentives_orig = $('#employee_incentives_orig').val(),
+                        employee_incentives_new = $('#employee_incentives').val(),
+                        employee_overtime_pay_orig = $('#employee_overtime_pay_orig').val(),
+                        employee_overtime_pay_new = $('#employee_overtime_pay').val(),
+                        employee_bonus_orig = $('#employee_bonus_orig').val(),
+                        employee_bonus_new = $('#employee_bonus').val(),
+                        employee_insurance_orig = $('#employee_insurance_orig').val();
+                        employee_insurance_new = $('#employee_insurance').val();
         
                         $.ajax({
                             url:"/employees/updateCompensationBenefits",
@@ -352,11 +325,16 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                employee_salary:employee_salary,
-                                employee_incentives:employee_incentives,
-                                employee_overtime_pay:employee_overtime_pay,
-                                employee_bonus:employee_bonus,
-                                employee_insurance:employee_insurance
+                                employee_salary_orig:employee_salary_orig,
+                                employee_salary_new:employee_salary_new,
+                                employee_incentives_orig:employee_incentives_orig,
+                                employee_incentives_new:employee_incentives_new,
+                                employee_overtime_pay_orig:employee_overtime_pay_orig,
+                                employee_overtime_pay_new:employee_overtime_pay_new,
+                                employee_bonus_orig:employee_bonus_orig,
+                                employee_bonus_new:employee_bonus_new,
+                                employee_insurance_orig:employee_insurance_orig,
+                                employee_insurance_new:employee_insurance_new
                             }
                         });
 

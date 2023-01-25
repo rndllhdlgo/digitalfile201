@@ -5,6 +5,7 @@
         <tbody>
             <tr>
                 <td>
+                    <input type="hidden" id="past_medical_condition_orig">
                     <span class="text-black">Have you ever had a medical issue? If so, kindly list each one. (Optional)</span>
                     <textarea class="form-control text-capitalize separated textarea_medical_condition" id="past_medical_condition" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                 </td>
@@ -17,6 +18,7 @@
         <tbody>
             <tr>
                 <td>
+                    <input type="hidden" id="allergies_orig">
                     <span class="text-black">Do you suffer from any allergies? If so, kindly list each one. (Optional)</span>
                     <textarea class="form-control text-capitalize separated textarea_allergies" id="allergies" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                 </td>
@@ -29,6 +31,7 @@
         <tbody>
             <tr>
                 <td>
+                    <input type="hidden" id="medication_orig">
                     <span class="text-black">Do you take any prescription drugs? If so, list the drug along with the daily dosage. (Optional)</span>
                     <textarea class="form-control text-capitalize separated textarea_medication" id="medication" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                 </td>
@@ -41,6 +44,7 @@
         <tbody>
             <tr>
                 <td>
+                    <input type="hidden" id="psychological_history_orig">
                     <span class="text-black">Have you ever had a psychological issue? If so, kindly list each one. (Optional)</span>
                     <textarea class="form-control text-capitalize separated textarea_psychological_history" id="psychological_history" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                 </td>
