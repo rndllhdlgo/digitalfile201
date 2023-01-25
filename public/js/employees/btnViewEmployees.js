@@ -1103,7 +1103,11 @@ $('#diploma_delete_button').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            $('#diploma_filename').val('');
+            // $('#diploma_filename').val('');
+            // $('.diploma_span').hide();
+            // $('.diploma_div').show();
+            // $('#diploma_delete_button').hide();
+            // $('#diploma_view').show();
             $('.diploma_span').hide();
             $('.diploma_div').show();
             $('#diploma_delete_button').hide();
@@ -1325,7 +1329,6 @@ $('#tor_delete_button').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            $('#transcript_of_records_filename').val('');
             $('.transcript_of_records_span').hide();
             $('.transcript_of_records_div').show();
             $('#tor_delete_button').hide();

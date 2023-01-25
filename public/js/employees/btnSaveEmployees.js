@@ -352,7 +352,7 @@ $('#btnSave').on('click', function(){
                                 $('#termination_reason').attr('name','');
                                 $('#termination_date').attr('name','');
                                 $('#termination_file').attr('name','');
-                                // $('#documents_form').submit();
+                                $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 // setTimeout(function(){window.location.reload();}, 2000);
                         }

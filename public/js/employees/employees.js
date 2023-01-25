@@ -417,11 +417,11 @@ $('#note_required').on('click',function(){
     $('#account_number').val('5');
 
     // //Education/Trainings
-    // $('#college_name').val('Universidad De Manila');
-    // $('#college_degree').val('BTVTE Major in CPT');
-    // $('#college_inclusive_years_from').val('2018-06');
-    // $('#college_inclusive_years_to').val('2022-07');
-    // $('#collegeAdd').click();
+    $('#college_name').val('Universidad De Manila');
+    $('#college_degree').val('BTVTE Major in CPT');
+    $('#college_inclusive_years_from').val('2018-06');
+    $('#college_inclusive_years_to').val('2022-07');
+    $('#collegeAdd').click();
     $('#secondary_school_name').val('Florentino Torres High School');
     $('#secondary_school_address').val('Torres');
     $('#secondary_school_inclusive_years_from').val('2012-06');
@@ -430,36 +430,36 @@ $('#note_required').on('click',function(){
     $('#primary_school_address').val('Lakandula');
     $('#primary_school_inclusive_years_from').val('2006-06');
     $('#primary_school_inclusive_years_to').val('2012-04');
-    // $('#training_name').val('A');
-    // $('#training_title').val('A');
-    // $('#training_inclusive_years_from').val('2020-01');
-    // $('#training_inclusive_years_to').val('2020-02');
-    // $('#trainingAdd').click();
-    // $('#vocational_name').val('A');
-    // $('#vocational_course').val('A');
-    // $('#vocational_inclusive_years_from').val('2020-01');
-    // $('#vocational_inclusive_years_to').val('2020-02'); 
-    // $('#vocationalAdd').click();
+    $('#training_name').val('A');
+    $('#training_title').val('A');
+    $('#training_inclusive_years_from').val('2020-01');
+    $('#training_inclusive_years_to').val('2020-02');
+    $('#trainingAdd').click();
+    $('#vocational_name').val('A');
+    $('#vocational_course').val('A');
+    $('#vocational_inclusive_years_from').val('2020-01');
+    $('#vocational_inclusive_years_to').val('2020-02'); 
+    $('#vocationalAdd').click();
 
-    //Job History
-    // $('#job_company_name').val('A');
-    // $('#job_description').val('A');
-    // $('#job_position').val('A');
-    // $('#job_contact_number').val('1');
-    // $('#job_inclusive_years_from').val('2022-01');
-    // $('#job_inclusive_years_to').val('2023-01');
-    // $('#jobHistoryAdd').click();
-    // // Medical History
-    // $('#past_medical_condition').val('• A');
-    // $('#allergies').val('• A');
-    // $('#medication').val('• A');
-    // $('#psychological_history').val('• A');
-    // // Compensation/Benefits
-    // $('#employee_salary').val('₱15,000');
-    // $('#employee_incentives').val('₱1.00');
-    // $('#employee_overtime_pay').val('₱1.00');
-    // $('#employee_bonus').val('₱1.00');
-    // $('#employee_insurance').val('• A');
+    // Job History
+    $('#job_company_name').val('A');
+    $('#job_description').val('A');
+    $('#job_position').val('A');
+    $('#job_contact_number').val('1');
+    $('#job_inclusive_years_from').val('2022-01');
+    $('#job_inclusive_years_to').val('2023-01');
+    $('#jobHistoryAdd').click();
+    // Medical History
+    $('#past_medical_condition').val('• A');
+    $('#allergies').val('• A');
+    $('#medication').val('• A');
+    $('#psychological_history').val('• A');
+    // Compensation/Benefits
+    $('#employee_salary').val('₱15,000');
+    $('#employee_incentives').val('₱1.00');
+    $('#employee_overtime_pay').val('₱1.00');
+    $('#employee_bonus').val('₱1.00');
+    $('#employee_insurance').val('• A');
 });
 
 //Currency Format

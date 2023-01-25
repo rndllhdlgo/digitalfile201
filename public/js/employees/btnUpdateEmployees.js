@@ -512,7 +512,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        // $('#documents_form').submit();
+                        $('#documents_form').submit();
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);
