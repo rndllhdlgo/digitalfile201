@@ -1415,6 +1415,36 @@ class EmployeesController extends Controller
 
     public function updateDocuments(Request $request){
 
+        if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+            foreach($request->file('memo_file') as $key => $value){
+                $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
+                $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
+                
+                $memo = new MemoTable;
+                $memo->employee_id = $request->employee_id;
+                $memo->memo_subject = $request->memo_subject[$key];
+                $memo->memo_date = $request->memo_date[$key];
+                $memo->memo_penalty = $request->memo_penalty[$key];
+                $memo->memo_file = $memoFileName;
+                $memo->save();
+            }
+        }
+
+        if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+            foreach($request->file('evaluation_file') as $key => $value){
+                $evaluationFileName = time().rand(1,100).'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
+                $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
+                
+                $evaluation = new EvaluationTable;
+                $evaluation->employee_id = $request->employee_id;
+                $evaluation->evaluation_reason = $request->evaluation_reason[$key];
+                $evaluation->evaluation_date = $request->evaluation_date[$key];
+                $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
+                $evaluation->evaluation_file = $evaluationFileName;
+                $evaluation->save();
+            }
+        }
+        
     //     if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
     //         foreach($request->file('resignation_file') as $key => $value){
     //             $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
@@ -1717,6 +1747,13 @@ class EmployeesController extends Controller
         $memo_id = explode(",", $request->id);
         foreach($memo_id as $id){
             MemoTable::where('id', $id)->delete();
+        }
+    }
+
+    public function evaluation_delete(Request $request){
+        $evaluation_id = explode(",", $request->id);
+        foreach($evaluation_id as $id){
+            EvaluationTable::where('id', $id)->delete();
         }
     }
 }

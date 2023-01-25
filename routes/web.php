@@ -174,6 +174,8 @@ Route::any('/employees/memo_data','EmployeesController@memo_data');
 Route::any('/employees/memo_delete','EmployeesController@memo_delete');
 
 Route::any('/employees/evaluation_data','EmployeesController@evaluation_data');
+Route::any('/employees/evaluation_delete','EmployeesController@evaluation_delete');
+
 Route::any('/employees/contracts_data','EmployeesController@contracts_data');
 Route::any('/employees/resignation_data','EmployeesController@resignation_data');
 Route::any('/employees/termination_data','EmployeesController@termination_data');

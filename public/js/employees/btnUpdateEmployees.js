@@ -495,6 +495,17 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/evaluation_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: evaluation_id.toString()
+                            }
+                        });
+
                         $('#memo_subject').attr('name','');
                         $('#memo_date').attr('name','');
                         $('#memo_penalty').attr('name','');

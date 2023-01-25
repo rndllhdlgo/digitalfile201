@@ -3,6 +3,8 @@ var college_id = [];
 var training_id = [];
 var job_history_id = [];
 var memo_id = [];
+var evaluation_id = [];
+
 $(document).on('click','table.employeesTable tbody tr',function(){
     
     children_id = [];
@@ -11,6 +13,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     vocational_id = [];
     job_history_id = [];
     memo_id = [];
+    evaluation_id = [];
 
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
@@ -1376,13 +1379,19 @@ $(document).on('click','.btn_delete_job',function(){
     $(this).parent().parent().remove();
 });
 
-// $(document).on('click','.btn_memo_delete',function(){
-//     var id = $(this).attr("id");
-//     var data = $('.memo_table_data').DataTable().row(id).data();
-//     memo_id.push(data.id);
-//     $(this).parent().parent().remove();
-//     console.log(memo_id);
-// });
+$(document).on('click','.btn_memo_delete',function(){
+    var id = $(this).attr("id");
+    var data = $('.memo_table_data').DataTable().row(id).data();
+    memo_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_evaluation_delete',function(){
+    var id = $(this).attr("id");
+    var data = $('.evaluation_table_data').DataTable().row(id).data();
+    evaluation_id.push(data.id);
+    $(this).parent().parent().remove();
+});
 
 // $('.region').each(function(){
                 //     if($(this).html() == value.region){
