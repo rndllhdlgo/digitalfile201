@@ -408,7 +408,7 @@ $(document).ready(function(){
         $('#resignationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -438,13 +438,13 @@ $(document).ready(function(){
         $('#terminationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="resignation_letter" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
+                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
+                                    '<input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
                                     '<label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -552,24 +552,23 @@ $(document).ready(function(){
             $('.contracts_field').removeClass('border border-danger');
         }
 
-        if($('#resignation_reason').val() || $('#resignation_date').val() || $('#resignation_file').val()){
-            $('.resignation_field').addClass('required_field');
-            $('.span_resignation').hide();
-        }
-        else{
-            $('.span_resignation').show();
-            $('.resignation_field').removeClass('required_field');
-            $('.resignation_field').removeClass('border border-danger');
-        }
+        // if($('#resignation_reason').val() || $('#resignation_date').val() || $('#resignation_file').val()){
+        //     $('.resignation_field').addClass('required_field');
+        //     $('.span_resignation').hide();
+        // }
+        // else{
+        //     $('.span_resignation').show();
+        //     $('.resignation_field').removeClass('required_field');
+        //     $('.resignation_field').removeClass('border border-danger');
+        // }
         
-        if($('#termination_reason').val() || $('#termination_date').val() || $('#termination_file').val()){
-            $('.termination_field').addClass('required_field');
-            $('.span_termination').hide();
-        }
-        else{
-            $('.span_termination').show();
-            $('.termination_field').removeClass('required_field');
-            $('.termination_field').removeClass('border border-danger');
-        }
-
+        // if($('#termination_reason').val() || $('#termination_date').val() || $('#termination_file').val()){
+        //     $('.termination_field').addClass('required_field');
+        //     $('.span_termination').hide();
+        // }
+        // else{
+        //     $('.span_termination').show();
+        //     $('.termination_field').removeClass('required_field');
+        //     $('.termination_field').removeClass('border border-danger');
+        // }
 }, 0);

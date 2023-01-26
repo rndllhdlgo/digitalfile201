@@ -1,9 +1,12 @@
-var children_id = [];
-var college_id = [];
-var training_id = [];
-var job_history_id = [];
-var memo_id = [];
-var evaluation_id = [];
+var children_id, 
+    college_id, 
+    training_id, 
+    job_history_id, 
+    memo_id, 
+    evaluation_id, 
+    contracts_id,
+    resignation_id,
+    termination_id = [];
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -14,6 +17,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     job_history_id = [];
     memo_id = [];
     evaluation_id = [];
+    contracts_id = [];
+    resignation_id = [];
+    termination_id = [];
 
     if(!employeesTable.data().any()){ return false; }
     var data = employeesTable.row(this).data();
@@ -921,9 +927,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.employee_history_table').DataTable().data().any()){
                             $('#employee_history_table').hide();
+                            $('.hr-history').hide();
                         }
                         else{
                             $('#employee_history_table').show();
+                            $('.hr-history').show();
                         }
                     }
                 });
@@ -1390,6 +1398,27 @@ $(document).on('click','.btn_evaluation_delete',function(){
     var id = $(this).attr("id");
     var data = $('.evaluation_table_data').DataTable().row(id).data();
     evaluation_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_contracts_delete',function(){
+    var id = $(this).attr("id");
+    var data = $('.contracts_table_data').DataTable().row(id).data();
+    contracts_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_resignation_delete',function(){
+    var id = $(this).attr("id");
+    var data = $('.resignation_table_data').DataTable().row(id).data();
+    resignation_id.push(data.id);
+    $(this).parent().parent().remove();
+});
+
+$(document).on('click','.btn_termination_delete',function(){
+    var id = $(this).attr("id");
+    var data = $('.termination_table_data').DataTable().row(id).data();
+    termination_id.push(data.id);
     $(this).parent().parent().remove();
 });
 

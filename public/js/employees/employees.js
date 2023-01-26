@@ -135,12 +135,15 @@ function changeEmploymentStatus(){
     }
     else if($('#employment_status').val() == 'Resign'){
             $('#resignation_div').show();
+            $('.hr-resignation').show();
             $('#termination_div').hide();
             $('#benefits').hide();
-            $('#benefits_summary').addClass();
+            $('#benefits_summary').hide();
+
     }
     else if($('#employment_status').val() == 'Terminate'){
             $('#termination_div').show();
+            $('.hr-termination').show();
             $('#resignation_div').hide();
             $('#benefits').hide();
             $('#benefits_summary').hide();
@@ -151,6 +154,9 @@ function changeEmploymentStatus(){
         // $('#philhealth_number').val('');
         // $('#tin_number').val('');
         // $('#account_number').val('');
+        $('#resignation_div').hide();
+        $('#termination_div').hide();
+
         $('#benefits').hide();
         $('#benefits_summary').hide();
     }

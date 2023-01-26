@@ -228,7 +228,113 @@
 
             </tbody>
         </table>
-        <hr class="hr-design">
+        <hr class="hr-design hr-history">
+    </div>
+
+    <div id="resignation_div" style="display: none;">
+        <!-- Resignation -->
+            <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle">
+                <thead class="thead-educational">
+                    <tr>
+                        <th colspan="4">RESIGNATION</th>
+                    </tr>
+                    <tr>
+                        <th style="width:18%"> RESIGNATION REASON</th>
+                        <th style="width:30%"> RESIGNATION DATE</th>
+                        <th style="width:32%"> RESIGNATION FILE</th>
+                        <th style="width:10%"> ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field resignation_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all span_resignation"></span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field resignation_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all span_resignation"></span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <input type="file" class="form-control form_file resignation_field" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+    
+            <table class="table table-bordered table-striped table-hover resignation_table_data" id="resignation_table_data" style="display: none; margin-top:-36px;">
+                <thead>
+                    <tr>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border-left: none;"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <hr class="hr-design hr-resignation" style="display: none;">
+        </div>
+
+    <div id="termination_div" style="display: none;">
+        <!-- Termination -->
+            <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle">
+                <thead class="thead-educational">
+                    <tr>
+                        <th colspan="4">TERMINATION</th>
+                    </tr>
+                    <tr>
+                        <th style="width:18%"> TERMINATION REASON</th>
+                        <th style="width:30%"> TERMINATION DATE</th>
+                        <th style="width:32%"> TERMINATION FILE</th>
+                        <th style="width:10%"> ACTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field termination_field text-capitalize" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all span_termination"></span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field termination_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all span_termination"></span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <input type="file" class="form-control form_file termination_field" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <table class="table table-bordered table-striped table-hover termination_table_data" id="termination_table_data" style="display: none; margin-top:-36px;">
+                <thead>
+                    <tr>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border:none;"> </th>
+                        <th style="border-left: none;"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+            <hr class="hr-design hr-termination" style="display: none;">
     </div>
     
     <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">

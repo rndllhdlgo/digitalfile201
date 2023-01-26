@@ -506,6 +506,39 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/contracts_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: contracts_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/resignation_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: resignation_id.toString()
+                            }
+                        });
+
+                        $.ajax({
+                            type: 'POST',
+                            url: '/employees/termination_delete',
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id: termination_id.toString()
+                            }
+                        });
+
                         $('#memo_subject').attr('name','');
                         $('#memo_date').attr('name','');
                         $('#memo_penalty').attr('name','');
