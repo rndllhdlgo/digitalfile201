@@ -383,13 +383,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'college_inclusive_years_from', 
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+moment(row.college_inclusive_years_from).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+moment(row.college_inclusive_years_from).format('MMM.YYYY');
                             },
                             width: '15%'},
                         { 
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+moment(row.college_inclusive_years_to).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+moment(row.college_inclusive_years_to).format('MMM.YYYY');
                             },
                             width: '15%'}
                     ],
@@ -1176,7 +1176,6 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('.nbi_clearance_div').show();
             $('#nbi_clearance_delete_button').hide();
             $('#nbi_clearance_view').show();
-            $('#nbi_clearance_file').addClass('required_field');
         }
 
         else if(save.isDenied){
