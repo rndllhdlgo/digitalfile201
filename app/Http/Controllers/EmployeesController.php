@@ -231,12 +231,11 @@ class EmployeesController extends Controller
     }
 
     public function insertImage(Request $request){
-
+        
         $employeeImageFile = $request->file('employee_image');
         $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-        $employeeImageFileName = time().rand(1,100).'_Employee_Image.'.$employeeImageExtension;
+        $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
         $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
-        
         return $employeeImageFileName;
     }
 
@@ -305,7 +304,6 @@ class EmployeesController extends Controller
         $employee->employment_origin = $request->employment_origin;
         $employee->employee_shift = $request->employee_shift;
         $employee->employee_position = $request->employee_position;
-        // $employee->employee_supervisor = $request->employee_supervisor;
         $employee->date_hired = $request->date_hired;
         $employee->company_email_address = $request->company_email_address;
         $employee->company_contact_number = $request->company_contact_number;
@@ -409,11 +407,11 @@ class EmployeesController extends Controller
         }
 
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = "ADDED USER: User successfully added new employee with Employee Name: [$employee_details->first_name $employee_details->middle_name $employee_details->last_name].";
+        $userlogs->activity = "ADDED USER: User successfully added new employee: [Employee Number: $employee_number] [Employee Name: $employee_details->first_name $employee_details->middle_name $employee_details->last_name]";
         $userlogs->save();
     }
 
@@ -731,7 +729,6 @@ class EmployeesController extends Controller
             || $emergency_contact_relationship_orig != $request->emergency_contact_relationship_new
             || $emergency_contact_number_orig != $request->emergency_contact_number_new
             ){
-                // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->user_id = auth()->user()->id;
@@ -1021,17 +1018,115 @@ class EmployeesController extends Controller
             }
         }
         else{
-            EducationalAttainment::where('employee_id',$request->employee_id)
+            $secondary_school_name_orig = $request->secondary_school_name_orig;
+            $secondary_school_address_orig = $request->secondary_school_address_orig;
+            $secondary_school_inclusive_years_from_orig = $request->secondary_school_inclusive_years_from_orig;
+            $secondary_school_inclusive_years_to_orig = $request->secondary_school_inclusive_years_to_orig;
+
+            $primary_school_name_orig = $request->primary_school_name_orig;
+            $primary_school_address_orig = $request->primary_school_address_orig;
+            $primary_school_inclusive_years_from_orig = $request->primary_school_inclusive_years_from_orig;
+            $primary_school_inclusive_years_to_orig = $request->primary_school_inclusive_years_to_orig;
+
+            $sql = EducationalAttainment::where('employee_id',$request->employee_id)
             ->update([
-                'secondary_school_name' => $request->secondary_school_name,
-                'secondary_school_address' => $request->secondary_school_address,
-                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                'primary_school_name' => $request->primary_school_name,
-                'primary_school_address' => $request->primary_school_address,
-                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+                'secondary_school_name' => $request->secondary_school_name_new,
+                'secondary_school_address' => $request->secondary_school_address_new,
+                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from_new,
+                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to_new,
+                'primary_school_name' => $request->primary_school_name_new,
+                'primary_school_address' => $request->primary_school_address_new,
+                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from_new,
+                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to_new,
             ]);
+
+            if($sql){
+                $education_trainings_title = "[EDUCATION/TRAININGS]";
+                if($secondary_school_name_orig != $request->secondary_school_name_new){
+                    $secondary_school_name_change = "[Secondary School Name: FROM '$secondary_school_name_orig' TO '$request->secondary_school_name_new']";
+                }
+                else{
+                    $secondary_school_name_change = NULL;
+                }
+                if($secondary_school_address_orig != $request->secondary_school_address_new){
+                    $secondary_school_address_change = "[Secondary School Address: FROM '$secondary_school_address_orig' TO '$request->secondary_school_address_new']";
+                }
+                else{
+                    $secondary_school_address_change = NULL;
+                }
+                if($secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new){
+                    $secondary_school_inclusive_years_from_change = "[Secondary School Start Year: FROM '$secondary_school_inclusive_years_from_orig' TO '$request->secondary_school_inclusive_years_from_new']";
+                }
+                else{
+                    $secondary_school_inclusive_years_from_change = NULL;
+                }
+                if($secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new){
+                    $secondary_school_inclusive_years_to_change = "[Secondary School End Year: FROM '$secondary_school_inclusive_years_to_orig' TO '$request->secondary_school_inclusive_years_to_new']";
+                }
+                else{
+                    $secondary_school_inclusive_years_to_change = NULL;
+                }
+                if($primary_school_name_orig != $request->primary_school_name_new){
+                    $primary_school_name_change = "[Primary School Name: FROM '$primary_school_name_orig' TO '$request->primary_school_name_new']";
+                }
+                else{
+                    $primary_school_name_change = NULL;
+                }
+                if($primary_school_address_orig != $request->primary_school_address_new){
+                    $primary_school_address_change = "[Primary School Address: FROM '$primary_school_address_orig' TO '$request->primary_school_address_new']";
+                }
+                else{
+                    $primary_school_address_change = NULL;
+                }
+                if($primary_school_inclusive_years_from_orig != $request->primary_school_inclusive_years_from_new){
+                    $primary_school_inclusive_years_from_change = "[Primary School Start Year: FROM '$primary_school_inclusive_years_from_orig' TO '$request->primary_school_inclusive_years_from_new']";
+                }
+                else{
+                    $primary_school_inclusive_years_from_change = NULL;
+                }
+                if($primary_school_inclusive_years_to_orig != $request->primary_school_inclusive_years_to_new){
+                    $primary_school_inclusive_years_to_change = "[Primary School End Year: FROM '$primary_school_inclusive_years_to_orig' TO '$request->primary_school_inclusive_years_to_new']";
+                }
+                else{
+                    $primary_school_inclusive_years_to_change = NULL;
+                }
+
+                $result = 'true';
+                $id = $employee->id;
+
+                if($secondary_school_name_orig != $request->secondary_school_name_new
+                || $secondary_school_address_orig != $request->secondary_school_address_new
+                || $secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new
+                || $secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new
+                || $primary_school_name_orig != $request->primary_school_name_new
+                || $primary_school_address_orig != $request->primary_school_address_new
+                || $primary_school_inclusive_years_from_orig != $request->primary_school_inclusive_years_from_new
+                || $primary_school_inclusive_years_to_orig != $request->primary_school_inclusive_years_to_new
+                ){
+
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                            $education_trainings_title
+                                            $secondary_school_name_change
+                                            $secondary_school_address_change
+                                            $secondary_school_inclusive_years_from_change
+                                            $secondary_school_inclusive_years_to_change
+                                            $primary_school_name_change
+                                            $primary_school_address_change
+                                            $primary_school_inclusive_years_from_change
+                                            $primary_school_inclusive_years_to_change
+                                            ";
+                    $employee_logs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
     }
 
@@ -1494,72 +1589,72 @@ class EmployeesController extends Controller
             $document->employee_id = $request->employee_id;
             $barangayClearanceFile = $request->file('barangay_clearance_file');
             $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = $employee_number.'_'.time().rand(1,100).'_Barangay_Clearance_File.'.$barangayClearanceExtension;
+            $barangayClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Barangay_Clearance_File.'.$barangayClearanceExtension;
             $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
             $document->barangay_clearance_file = $barangayClearanceFilename;
 
             $birthcertificateFile = $request->file('birthcertificate_file');
             $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = $employee_number.'_'.time().rand(1,100).'_Birth_Certificate_File.'.$birthcertificateExtension;
+            $birthcertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Birth_Certificate_File.'.$birthcertificateExtension;
             $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
             $document->birthcertificate_file = $birthcertificateFilename;
 
             if($request->hasFile('diploma_file')){
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_'.time().rand(1,100).'_Diploma_File.'.$diplomaExtension;
+                $diplomaFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Diploma_File.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
                 $document->diploma_file = $diplomaFilename;
             }
 
             $medicalCertificateFile = $request->file('medical_certificate_file');
             $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = $employee_number.'_'.time().rand(1,100).'_Medical_Certificate_File.'.$medicalCertificateExtension;
+            $medicalCertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Medical_Certificate_File.'.$medicalCertificateExtension;
             $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
             $document->medical_certificate_file = $medicalCertificateFilename;
 
             if($request->hasFile('nbi_clearance_file')){
                 $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_'.time().rand(1,100).'_NBI_Clearance_File.'.$nbiExtension;
+                $nbiFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_NBI_Clearance_File.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents_files',$nbiFilename);
                 $document->nbi_clearance_file = $nbiFilename;
             }
 
             $pagibigFile = $request->file('pag_ibig_file');
             $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = $employee_number.'_'.time().rand(1,100).'_Pag_ibig_File.'.$pagibigExtension;
+            $pagibigFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Pag_ibig_File.'.$pagibigExtension;
             $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
             $document->pag_ibig_file = $pagibigFilename;
 
             $philhealthFile = $request->file('philhealth_file');
             $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = $employee_number.'_'.time().rand(1,100).'_Philhealth_File.'.$philhealthExtension;
+            $philhealthFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Philhealth_File.'.$philhealthExtension;
             $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
             $document->philhealth_file = $philhealthFilename;
 
             $policeClearanceFile = $request->file('police_clearance_file');
             $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = $employee_number.'_'.time().rand(1,100).'_Police_Clearance_File.'.$policeClearanceExtension;
+            $policeClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Police_Clearance_File.'.$policeClearanceExtension;
             $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
             $document->police_clearance_file = $policeClearanceFilename;
 
             $resumeFile = $request->file('resume_file');
             $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = $employee_number.'_'.time().rand(1,100).'_Resume_File.'.$resumeExtension;
+            $resumeFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Resume_File.'.$resumeExtension;
             $resumeFile->storeAs('public/documents_files',$resumeFilename);
             $document->resume_file = $resumeFilename;
 
             $sssFile = $request->file('sss_file');
             $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = $employee_number.'_'.time().rand(1,100).'_SSS_File.'.$sssExtension;
+            $sssFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_SSS_File.'.$sssExtension;
             $sssFile->storeAs('public/documents_files',$sssFilename);
             $document->sss_file = $sssFilename;
             
         if($request->hasFile('tor_file')){
             $torFile = $request->file('tor_file');
             $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = $employee_number.'_'.time().rand(1,100).'_Transcript_of_Records_File.'.$torExtension;
+            $torFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Transcript_of_Records_File.'.$torExtension;
             $torFile->storeAs('public/documents_files',$torFilename);
             $document->transcript_of_records_file = $torFilename;
         }
@@ -1576,7 +1671,7 @@ class EmployeesController extends Controller
 
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-                $barangayClearanceFilename = $employee_number.'_'.time().rand(1,100).'_Barangay_Clearance.'.$barangayClearanceExtension;
+                $barangayClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Barangay_Clearance.'.$barangayClearanceExtension;
                 $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
                 $barangay_clearance_file = $barangayClearanceFilename;
             }
@@ -1591,7 +1686,7 @@ class EmployeesController extends Controller
 
                 $birthcertificateFile = $request->file('birthcertificate_file');
                 $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                $birthcertificateFilename = $employee_number.'_'.time().rand(1,100).'_Birth_Certificate.'.$birthcertificateExtension;
+                $birthcertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Birth_Certificate.'.$birthcertificateExtension;
                 $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
                 $birthcertificate_file = $birthcertificateFilename;
             }
@@ -1606,7 +1701,7 @@ class EmployeesController extends Controller
 
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_'.time().rand(1,100).'_Diploma.'.$diplomaExtension;
+                $diplomaFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Diploma.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
                 $diploma_file = $diplomaFilename;
             }
@@ -1621,7 +1716,7 @@ class EmployeesController extends Controller
 
                 $medicalCertificateFile = $request->file('medical_certificate_file');
                 $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                $medicalCertificateFilename = $employee_number.'_'.time().rand(1,100).'_Medical_Certificate.'.$medicalCertificateExtension;
+                $medicalCertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Medical_Certificate.'.$medicalCertificateExtension;
                 $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
                 $medical_certificate_file = $medicalCertificateFilename;
             }
@@ -1636,7 +1731,7 @@ class EmployeesController extends Controller
 
                 $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_'.time().rand(1,100).'_NBI_Clearance.'.$nbiExtension;
+                $nbiFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_NBI_Clearance.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents_files',$nbiFilename);
                 $nbi_clearance_file = $nbiFilename;
             }
@@ -1651,7 +1746,7 @@ class EmployeesController extends Controller
 
                 $pagibigFile = $request->file('pag_ibig_file');
                 $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                $pagibigFilename = $employee_number.'_'.time().rand(1,100).'_Pagibig_Form.'.$pagibigExtension;
+                $pagibigFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Pagibig_Form.'.$pagibigExtension;
                 $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
                 $pag_ibig_file = $pagibigFilename;
             }
@@ -1665,7 +1760,7 @@ class EmployeesController extends Controller
                 }
                 $philhealthFile = $request->file('philhealth_file');
                 $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                $philhealthFilename = $employee_number.'_'.time().rand(1,100).'_Philhealth_Form.'.$philhealthExtension;
+                $philhealthFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Philhealth_Form.'.$philhealthExtension;
                 $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
                 $philhealth_file = $philhealthFilename;
             }
@@ -1680,7 +1775,7 @@ class EmployeesController extends Controller
 
                 $policeClearanceFile = $request->file('police_clearance_file');
                 $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                $policeClearanceFilename = $employee_number.'_'.time().rand(1,100).'_Police_Clearance.'.$policeClearanceExtension;
+                $policeClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Police_Clearance.'.$policeClearanceExtension;
                 $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
                 $police_clearance_file = $policeClearanceFilename;
             }
@@ -1695,7 +1790,7 @@ class EmployeesController extends Controller
 
                 $resumeFile = $request->file('resume_file');
                 $resumeExtension = $resumeFile->getClientOriginalExtension();
-                $resumeFilename = $employee_number.'_'.time().rand(1,100).'_Resume.'.$resumeExtension;
+                $resumeFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Resume.'.$resumeExtension;
                 $resumeFile->storeAs('public/documents_files',$resumeFilename);
                 $resume_file = $resumeFilename;
             }
@@ -1710,7 +1805,7 @@ class EmployeesController extends Controller
 
                 $sssFile = $request->file('sss_file');
                 $sssExtension = $sssFile->getClientOriginalExtension();
-                $sssFilename = $employee_number.'_'.time().rand(1,100).'_SSS_Form.'.$sssExtension;
+                $sssFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_SSS_Form.'.$sssExtension;
                 $sssFile->storeAs('public/documents_files',$sssFilename);
                 $sss_file = $sssFilename;
             }
@@ -1725,7 +1820,7 @@ class EmployeesController extends Controller
                     
                 $torFile = $request->file('tor_file');
                 $torExtension = $torFile->getClientOriginalExtension();
-                $torFilename = $employee_number.'_'.time().rand(1,100).'_Transcript_of_Records.'.$torExtension;
+                $torFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Transcript_of_Records.'.$torExtension;
                 $torFile->storeAs('public/documents_files',$torFilename);
                 $transcript_of_records_file = $torFilename;
             }

@@ -62,9 +62,11 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_relationship_new = $('#emergency_contact_relationship').val();
     var emergency_contact_number_orig = $('#emergency_contact_number_orig').val();
     var emergency_contact_number_new = $('#emergency_contact_number').val();
+    // var college_change = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
     Swal.fire({
         title: 'Do you want to Update?',
+        // html:college_warning,
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -247,14 +249,22 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
-                        var secondary_school_name = $('#secondary_school_name').val();
-                        var secondary_school_address = $('#secondary_school_address').val();
-                        var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
-                        var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
-                        var primary_school_name = $('#primary_school_name').val();
-                        var primary_school_address = $('#primary_school_address').val();
-                        var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
-                        var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
+                        var secondary_school_name_orig = $('#secondary_school_name_orig').val();
+                        var secondary_school_name_new = $('#secondary_school_name').val();
+                        var secondary_school_address_orig = $('#secondary_school_address_orig').val();
+                        var secondary_school_address_new = $('#secondary_school_address').val();
+                        var secondary_school_inclusive_years_from_orig = $('#secondary_school_inclusive_years_from_orig').val();
+                        var secondary_school_inclusive_years_from_new = $('#secondary_school_inclusive_years_from').val();
+                        var secondary_school_inclusive_years_to_orig = $('#secondary_school_inclusive_years_to_orig').val();
+                        var secondary_school_inclusive_years_to_new = $('#secondary_school_inclusive_years_to').val();
+                        var primary_school_name_orig = $('#primary_school_name_orig').val();
+                        var primary_school_name_new = $('#primary_school_name').val();
+                        var primary_school_address_orig = $('#primary_school_address_orig').val();
+                        var primary_school_address_new = $('#primary_school_address').val();
+                        var primary_school_inclusive_years_from_orig = $('#primary_school_inclusive_years_from_orig').val();
+                        var primary_school_inclusive_years_from_new = $('#primary_school_inclusive_years_from').val();
+                        var primary_school_inclusive_years_to_orig = $('#primary_school_inclusive_years_to_orig').val();
+                        var primary_school_inclusive_years_to_new = $('#primary_school_inclusive_years_to').val();
         
                         $.ajax({
                             url:"/employees/updateEducationalAttainment", 
@@ -265,14 +275,22 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                secondary_school_name:secondary_school_name,
-                                secondary_school_address:secondary_school_address,
-                                secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
-                                secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
-                                primary_school_name:primary_school_name,
-                                primary_school_address:primary_school_address,
-                                primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                primary_school_inclusive_years_to:primary_school_inclusive_years_to,
+                                secondary_school_name_orig:secondary_school_name_orig,
+                                secondary_school_name_new:secondary_school_name_new,
+                                secondary_school_address_orig:secondary_school_address_orig,
+                                secondary_school_address_new:secondary_school_address_new,
+                                secondary_school_inclusive_years_from_orig:secondary_school_inclusive_years_from_orig,
+                                secondary_school_inclusive_years_from_new:secondary_school_inclusive_years_from_new,
+                                secondary_school_inclusive_years_to_orig:secondary_school_inclusive_years_to_orig,
+                                secondary_school_inclusive_years_to_new:secondary_school_inclusive_years_to_new,
+                                primary_school_name_orig:primary_school_name_orig,
+                                primary_school_name_new:primary_school_name_new,
+                                primary_school_address_orig:primary_school_address_orig,
+                                primary_school_address_new:primary_school_address_new,
+                                primary_school_inclusive_years_from_orig:primary_school_inclusive_years_from_orig,
+                                primary_school_inclusive_years_from_new:primary_school_inclusive_years_from_new,
+                                primary_school_inclusive_years_to_orig:primary_school_inclusive_years_to_orig,
+                                primary_school_inclusive_years_to_new:primary_school_inclusive_years_to_new,
                             }
                         });
         
