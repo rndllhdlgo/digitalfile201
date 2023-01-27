@@ -123,15 +123,44 @@ $(document).ready(function(){
             },
             { data: 'username' },
             { data: 'role' },
-            { data: 'activity' }
+            { 
+                data: 'activity',
+                "render":function(data,type,row){
+                    activity = row.activity.replaceAll(" [","<br>[");
+                    return activity;
+                },
+            }
         ],
         initComplete: function(){
             $('#loading').hide();
         }
     });
     $('div.breakspace').html('<br><br>');
-});
 
-$('.filter-input').on('keyup search', function(){
-    user_activity_table.column($(this).data('column')).search($(this).val()).draw();
+    $('.filter-input').on('keyup search', function(){
+        user_activity_table.column($(this).data('column')).search($(this).val()).draw();
+    });
+
+    $('#user_activity_table tbody').on('click', 'tr', function(){
+        var data = user_activity_table.row(this).data();
+        Swal.fire({
+            title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+            html: `<h4>` + data.username + `[`+ data.role +`]` + `</h4>` + `<br>` + `<b>` +  data.activity.replaceAll(" [","<br>[") + `</b>`,
+        })
+        // Swal.fire({
+        //     title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+        //     html: `<h4>` + data.username + ` [` + data.role + `]` + `</h4>` + `<br>` + `<b>` +  data.activity.replaceAll(" [","<br>[") + `</br>`,
+        //     icon: 'info',
+        //     customClass: 'swal-wide',
+        //     showCancelButton: true,
+        //     confirmButtonText: 'VIEW DETAILS',
+        //     cancelButtonText: 'BACK'
+        // })
+        // .then((result) => {
+        //     if(result.isConfirmed){
+        //         // var transaction_number = activity.substr(-15,14);
+        //         window.location.href = '/employees?employee_number=';
+        //     }
+        // });
+    });
 });

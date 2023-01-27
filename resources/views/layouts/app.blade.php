@@ -60,7 +60,8 @@
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
         <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
         <!-- Insert JS FILES -->
         @if(Request::is('/'))<!--Route-->
             <script src="{{ env('APP_URL')}}js/home/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>

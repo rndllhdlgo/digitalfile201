@@ -92,7 +92,8 @@ class PagesController extends Controller
     }
 
     public function index_data(){
-        $list = UserLogs::selectRaw('users.id AS user_id, 
+        $list = UserLogs::selectRaw('user_logs.id,
+                                     users.id AS user_id, 
                                      users.name AS username, 
                                      users.email AS email, 
                                      users.user_level AS role, 
