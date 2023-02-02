@@ -20,7 +20,10 @@
         {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script> --}}
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.5.3/jspdf.min.js"></script>
-
+        <link href="{{asset('css/inc/chosen.css')}}" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
+        
         <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
@@ -59,6 +62,7 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
+        <script src="{{asset('js/inc/chosen.jquery.js')}}"></script>
         <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 

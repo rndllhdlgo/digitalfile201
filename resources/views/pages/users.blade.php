@@ -2,7 +2,6 @@
 
 @section('content')
 <br>
-{{-- Toggle column: <a class="toggle-vis" data-column="0">User Level</a> - <a class="toggle-vis" data-column="1">Name</a> - <a class="toggle-vis" data-column="2">Email</a> - <a class="toggle-vis" data-column="3">Status</a> --}}
 <div class="row">
     <div class="col">
         <h4 style="color: #0d1a80;">USERS TABLE</h4>

@@ -193,6 +193,9 @@ Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 Route::any('/evaluation','TryController@evaluation_blade');
 Route::any('/evaluationSave','TryController@evaluation_save');
 
+Route::any('/chosen','TryController@chosen_blade');
+Route::any('/saveChosen','TryController@chosen_save');
+
 Route::any('/users_page','PagesController@users_page');
 
 Route::any('/saveUser','UsersController@saveUser');

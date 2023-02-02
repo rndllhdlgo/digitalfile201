@@ -204,7 +204,7 @@ class MaintenanceController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of [$shift_code_orig] with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
+            $userlogs->activity = "UPDATED SHIFT: User successfully updated details of '$shift_code_orig' with the following CHANGES: $shift_code_change $shift_working_hours_change $shift_break_time_change.";
             $userlogs->save();
             return 'true';
         }
@@ -337,7 +337,7 @@ class MaintenanceController extends Controller
         if($save){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED DEPARTMENT: User successfully added Department: [$department_logs]."; //Display logs in home page
+            $userlogs->activity = "ADDED DEPARTMENT: User successfully added Department: '$department_logs'."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
