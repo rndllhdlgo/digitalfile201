@@ -186,15 +186,16 @@ Route::any('/employees/termination_data','EmployeesController@termination_data')
 Route::any('/employees/termination_delete','EmployeesController@termination_delete');
 
 Route::any('/employees/logs_data','EmployeesController@logs_data');
-
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
-
 
 Route::any('/evaluation','TryController@evaluation_blade');
 Route::any('/evaluationSave','TryController@evaluation_save');
 
 Route::any('/chosen','TryController@chosen_blade');
 Route::any('/saveChosen','TryController@chosen_save');
+
+Route::any('/import','TryController@import_blade');
+Route::any('/test/import','TryController@test_import');
 
 Route::any('/users_page','PagesController@users_page');
 
