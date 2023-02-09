@@ -145,9 +145,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
-                $('#employee_number').attr('readonly',true);
-                $('#employee_number').css('cursor','not-allowed');
-                $('#employee_number_orig').val(value.employee_number);
+                // $('#employee_number').attr('readonly',true);
+                // $('#employee_number').css('cursor','not-allowed');
 
                 $('#employee_company').val(value.employee_company);
                 $('#employee_company_orig').val(value.employee_company);

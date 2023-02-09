@@ -46,10 +46,10 @@ setInterval(() => {
             }
             $('#validation1').removeClass('text-success');
 
-            if(!$('#validicon1').hasClass('fa-xmark')){
-                $('#validicon1').addClass('fa-xmark');
+            if(!$('#validicon1').hasClass('fa-times-circle')){
+                $('#validicon1').addClass('fa-times-circle');
             }
-            $('#validicon1').removeClass('fa-check');
+            $('#validicon1').removeClass('fa-check-circle');
         }
         else{
             if(!$('#validation1').hasClass('text-success')){
@@ -57,10 +57,10 @@ setInterval(() => {
             }
             $('#validation1').removeClass('text-danger');
 
-            if(!$('#validicon1').hasClass('fa-check')){
-                $('#validicon1').addClass('fa-check');
+            if(!$('#validicon1').hasClass('fa-check-circle')){
+                $('#validicon1').addClass('fa-check-circle');
             }
-            $('#validicon1').removeClass('fa-xmark');
+            $('#validicon1').removeClass('fa-times-circle');
         }
 
         if(/\d/.test($('#pass2').val()) != true){
@@ -69,10 +69,10 @@ setInterval(() => {
             }
             $('#validation2').removeClass('text-success');
 
-            if(!$('#validicon2').hasClass('fa-xmark')){
-                $('#validicon2').addClass('fa-xmark');
+            if(!$('#validicon2').hasClass('fa-times-circle')){
+                $('#validicon2').addClass('fa-times-circle');
             }
-            $('#validicon2').removeClass('fa-check');
+            $('#validicon2').removeClass('fa-check-circle');
         }
         else{
             if(!$('#validation2').hasClass('text-success')){
@@ -80,10 +80,10 @@ setInterval(() => {
             }
             $('#validation2').removeClass('text-danger');
 
-            if(!$('#validicon2').hasClass('fa-check')){
-                $('#validicon2').addClass('fa-check');
+            if(!$('#validicon2').hasClass('fa-check-circle')){
+                $('#validicon2').addClass('fa-check-circle');
             }
-            $('#validicon2').removeClass('fa-xmark');
+            $('#validicon2').removeClass('fa-times-circle');
         }
 
         if(/[A-Z]/.test($('#pass2').val()) != true){
@@ -92,10 +92,10 @@ setInterval(() => {
             }
             $('#validation3').removeClass('text-success');
 
-            if(!$('#validicon3').hasClass('fa-xmark')){
-                $('#validicon3').addClass('fa-xmark');
+            if(!$('#validicon3').hasClass('fa-times-circle')){
+                $('#validicon3').addClass('fa-times-circle');
             }
-            $('#validicon3').removeClass('fa-check');
+            $('#validicon3').removeClass('fa-check-circle');
         }
         else{
             if(!$('#validation3').hasClass('text-success')){
@@ -103,10 +103,10 @@ setInterval(() => {
             }
             $('#validation3').removeClass('text-danger');
 
-            if(!$('#validicon3').hasClass('fa-check')){
-                $('#validicon3').addClass('fa-check');
+            if(!$('#validicon3').hasClass('fa-check-circle')){
+                $('#validicon3').addClass('fa-check-circle');
             }
-            $('#validicon3').removeClass('fa-xmark');
+            $('#validicon3').removeClass('fa-times-circle');
         }
 
         if(/[a-z]/.test($('#pass2').val()) != true){
@@ -115,10 +115,10 @@ setInterval(() => {
             }
             $('#validation4').removeClass('text-success');
 
-            if(!$('#validicon4').hasClass('fa-xmark')){
-                $('#validicon4').addClass('fa-xmark');
+            if(!$('#validicon4').hasClass('fa-times-circle')){
+                $('#validicon4').addClass('fa-times-circle');
             }
-            $('#validicon4').removeClass('fa-check');
+            $('#validicon4').removeClass('fa-check-circle');
         }
         else{
             if(!$('#validation4').hasClass('text-success')){
@@ -126,10 +126,10 @@ setInterval(() => {
             }
             $('#validation4').removeClass('text-danger');
 
-            if(!$('#validicon4').hasClass('fa-check')){
-                $('#validicon4').addClass('fa-check');
+            if(!$('#validicon4').hasClass('fa-check-circle')){
+                $('#validicon4').addClass('fa-check-circle');
             }
-            $('#validicon4').removeClass('fa-xmark');
+            $('#validicon4').removeClass('fa-times-circle');
         }
 
         if(/[!@#$%^&*(),.?":{}|<>]/.test($('#pass2').val()) != true){
@@ -138,10 +138,10 @@ setInterval(() => {
             }
             $('#validation5').removeClass('text-success');
 
-            if(!$('#validicon5').hasClass('fa-xmark')){
-                $('#validicon5').addClass('fa-xmark');
+            if(!$('#validicon5').hasClass('fa-times-circle')){
+                $('#validicon5').addClass('fa-times-circle');
             }
-            $('#validicon5').removeClass('fa-check');
+            $('#validicon5').removeClass('fa-check-circle');
         }
         else{
             if(!$('#validation5').hasClass('text-success')){
@@ -149,13 +149,13 @@ setInterval(() => {
             }
             $('#validation5').removeClass('text-danger');
 
-            if(!$('#validicon5').hasClass('fa-check')){
-                $('#validicon5').addClass('fa-check');
+            if(!$('#validicon5').hasClass('fa-check-circle')){
+                $('#validicon5').addClass('fa-check-circle');
             }
-            $('#validicon5').removeClass('fa-xmark');
+            $('#validicon5').removeClass('fa-times-circle');
         }
 
-        if($('.fa-xmark').is(':visible')){
+        if($('.fa-times-circle').is(':visible')){
             if(!$('#pass2').hasClass('invalidInput')){
                 $('#pass2').addClass('invalidInput');
             }

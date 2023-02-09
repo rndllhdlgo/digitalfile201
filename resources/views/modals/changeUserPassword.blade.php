@@ -28,12 +28,29 @@
                     <div class="mb-3">
                         <div class="f-outline">
                             <input class="forminput form-control req_field" type="password" id="pass3" name="pass3" minlength="8" maxlength="30" placeholder=" " required>
+                            <p id="password_match" class="validation"><i class="fas fa-exclamation-triangle"></i> Password does not match!</p>
                             <label class="formlabel form-label" for="pass3">Re-Enter New Password</label>
                         </div>
                     </div>
+
+                    <div class="mb-3 ml-3 text-default" style="cursor:pointer;">
+                        <input type="checkbox" id="show_password" style="display:none">
+                        <i class="fa-solid fa-eye fa-lg" id="show_password_eye"></i>
+                        <b id="show_password_text" style="font-size:14px;">SHOW PASSWORD</b>
+                    </div>
+                    
+                    <div class="mb-4 ml-3">
+                        <b>Example format: 1De@s3rV </b><br>
+                        <b><span id="validation1" class="text-danger"><i id="validicon1" class="fas fa-times-circle"></i> Must be atleast 8 characters!<br></span></b>
+                        <b><span id="validation2" class="text-danger"><i id="validicon2" class="fas fa-times-circle"></i> Must contain atleast 1 number!<br></span></b>
+                        <b><span id="validation3" class="text-danger"><i id="validicon3" class="fas fa-times-circle"></i> Must contain atleast 1 uppercase letter!<br></span></b>
+                        <b><span id="validation4" class="text-danger"><i id="validicon4" class="fas fa-times-circle"></i> Must contain atleast 1 lowercase letter!<br></span></b>
+                        <b><span id="validation5" class="text-danger"><i id="validicon5" class="fas fa-times-circle"></i> Must contain atleast 1 special character!<br></span></b>
+                    </div>
+
                     <div style="zoom: 85%;">
                         <button type="reset" id="btnResetChange" class="btn btn-primary bp" onclick="$('#pass1').focus();">CLEAR</button>
-                        <button type="button" id="btnChangePassword" class="btn btn-primary float-end bp btnRequired">UPDATE</button>
+                        <button type="button" id="btnChangePassword" class="btn btn-primary float-end bp btnRequired btnDisabled">UPDATE</button>
                     </div>
                 </form>
             </div>

@@ -3,7 +3,6 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_number_orig">
                 <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
@@ -12,7 +11,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="date_hired_orig">
                 <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
                 <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label> 
             </div>
@@ -20,7 +18,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_shift_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
                         @foreach($shifts as $shift)
@@ -35,7 +32,6 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_company_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT COMPANY</option>
                         @foreach($companies as $company)
@@ -48,7 +44,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_branch_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT BRANCH</option>
                         @foreach($branches as $branch)
@@ -61,7 +56,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_department_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT DEPARTMENT</option>
                     @foreach($departments as $department)
@@ -89,7 +83,6 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employee_position_orig">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT POSITION </option>
                         @foreach($jobPositions as $jobPosition)
@@ -106,7 +99,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employment_status_orig">
                 <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option value="Regular">Regular</option>
@@ -126,7 +118,6 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="employment_origin_orig">
                 <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
                     <option value="Newly Hired">Newly Hired</option>
@@ -139,7 +130,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="company_email_address_orig">
                 <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <p id="duplicate_company_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
@@ -149,7 +139,6 @@
 
         <div class="col">
             <div class="f-outline">
-                <input type="hidden" id="company_contact_number_orig">
                 <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                 {{-- <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
                 <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
@@ -162,7 +151,6 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="hmo_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     {{-- <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p> --}}
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)<span class="span_hmo_number span_all"></span></label>
@@ -170,7 +158,6 @@
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="sss_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p>
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)<span class="span_sss_number span_all"></span></label>
@@ -178,7 +165,6 @@
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="pag_ibig_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_pag_ibig_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Pag-ibig Number Already Exist!</p>
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)<span class="span_pag-ibig_number span_all"></span></label>
@@ -189,7 +175,6 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="philhealth_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_philhealth_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Philhealth Number Already Exist!</p>
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)<span class="span_philhealth_number span_all"></span></label>
@@ -198,7 +183,6 @@
 
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="tin_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_tin_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)<span class="span_tin_number span_all"></span></label>
@@ -207,7 +191,6 @@
 
             <div class="col">
                 <div class="f-outline">
-                    <input type="hidden" id="account_number_orig">
                     <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
                     <p id="duplicate_account_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)<span class="span_account_number span_all"></span></label>

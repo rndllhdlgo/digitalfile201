@@ -453,9 +453,41 @@ class EmployeesController extends Controller
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
 
+        if(
+            $first_name_orig == $request->first_name &&
+            $middle_name_orig == $request->middle_name &&
+            $last_name_orig == $request->last_name &&
+            $suffix_orig == $request->suffix &&
+            $nickname_orig == $request->nickname &&
+            $birthday_orig == $request->birthday &&
+            $gender_orig == $request->gender &&
+            $address_orig == $request->address &&
+            $ownership_orig == $request->ownership &&
+            $province_orig == $request->province &&
+            $city_orig == $request->city &&
+            $region_orig == $request->region &&
+            $height_orig == $request->height &&
+            $weight_orig == $request->weight &&
+            $religion_orig == $request->religion &&
+            $civil_status_orig == $request->civil_status &&
+            $email_address_orig == $request->email_address &&
+            $telephone_number_orig == $request->telephone_number &&
+            $cellphone_number_orig == $request->cellphone_number &&
+            $father_name_orig == $request->father_name &&
+            $father_contact_number_orig == $request->father_contact_number &&
+            $father_profession_orig == $request->father_profession &&
+            $mother_name_orig == $request->mother_name &&
+            $mother_contact_number_orig == $request->mother_contact_number &&
+            $mother_profession_orig == $request->mother_profession &&
+            $emergency_contact_name_orig == $request->emergency_contact_name &&
+            $emergency_contact_relationship_orig == $request->emergency_contact_relationship &&
+            $emergency_contact_number_orig == $request->emergency_contact_number
+            ){
+            return 'nochanges';
+        }
         if(strtoupper($request->first_name) != $first_name_orig){
             $first_name_new = strtoupper($request->first_name);
-            $first_name_change = "[First Name: FROM '$first_name_orig' TO '$first_name_new']";
+            $first_name_change = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
         }
         else{
             $first_name_change = NULL;
@@ -463,7 +495,7 @@ class EmployeesController extends Controller
 
         if(strtoupper($request->middle_name) != $middle_name_orig){
             $middle_name_new = strtoupper($request->middle_name);
-            $middle_name_change = "[Middle Name: FROM '$middle_name_orig' TO '$middle_name_new']";
+            $middle_name_change = "[MIDDLE NAME: FROM '$middle_name_orig' TO '$middle_name_new']";
         }
         else{
             $middle_name_change = NULL;
@@ -471,7 +503,7 @@ class EmployeesController extends Controller
 
         if(strtoupper($request->last_name) != $last_name_orig){
             $last_name_new = strtoupper($request->last_name);
-            $last_name_change = "[Last Name: FROM '$last_name_orig' TO '$last_name_new']";
+            $last_name_change = "[LAST NAME: FROM '$last_name_orig' TO '$last_name_new']";
         }
         else{
             $last_name_change = NULL;
@@ -479,7 +511,7 @@ class EmployeesController extends Controller
         
         if(strtoupper($request->suffix) != $suffix_orig){
             $suffix_new = strtoupper($request->suffix);
-            $suffix_change = "[Suffix: FROM '$suffix_orig' TO '$suffix_new']";
+            $suffix_change = "[SUFFIX: FROM '$suffix_orig' TO '$suffix_new']";
         }
         else{
             $suffix_change = NULL;
@@ -487,7 +519,7 @@ class EmployeesController extends Controller
 
         if(strtoupper($request->nickname) != $nickname_orig){
             $nickname_new = strtoupper($request->nickname);
-            $nickname_change = "[Nickname: FROM '$nickname_orig' TO '$nickname_new']";
+            $nickname_change = "[NICKNAME: FROM '$nickname_orig' TO '$nickname_new']";
         }
         else{
             $nickname_change = NULL;
@@ -495,7 +527,7 @@ class EmployeesController extends Controller
         
         if($request->birthday != $birthday_orig){
             $birthday_new = $request->birthday;
-            $birthday_change = "[Birthday: FROM '$birthday_orig' TO '$birthday_new']";
+            $birthday_change = "[BIRTHDAY: FROM '$birthday_orig' TO '$birthday_new']";
         }
         else{
             $birthday_change = NULL;
@@ -503,7 +535,7 @@ class EmployeesController extends Controller
 
         if($request->gender != $gender_orig){
             $gender_new = $request->gender;
-            $gender_change = "[Gender: FROM '$gender_orig' TO '$gender_new']";
+            $gender_change = "[GENDER: FROM '$gender_orig' TO '$gender_new']";
         }
         else{
             $gender_change = NULL;
@@ -511,7 +543,7 @@ class EmployeesController extends Controller
 
         if($request->address != $address_orig){
             $address_new = $request->address;
-            $address_change = "[Address: FROM '$address_orig' TO '$address_new']";
+            $address_change = "[ADDRESS: FROM '$address_orig' TO '$address_new']";
         }
         else{
             $address_change = NULL;
@@ -519,7 +551,7 @@ class EmployeesController extends Controller
 
         if($request->ownership != $ownership_orig){
             $ownership_new = $request->ownership;
-            $ownership_change = "[Ownership: FROM '$ownership_orig' TO '$ownership_new']";
+            $ownership_change = "[OWNERSHIP: FROM '$ownership_orig' TO '$ownership_new']";
         }
         else{
             $ownership_change = NULL;
@@ -527,7 +559,7 @@ class EmployeesController extends Controller
 
         if($request->province != $province_orig){
             $province_new = $request->province;
-            $province_change = "[Province: FROM '$province_orig' TO '$province_new']";
+            $province_change = "[PROVINCE: FROM '$province_orig' TO '$province_new']";
         }
         else{
             $province_change = NULL;
@@ -535,7 +567,7 @@ class EmployeesController extends Controller
 
         if($request->city != $city_orig){
             $city_new = $request->city;
-            $city_change = "[City: FROM '$city_orig' TO '$city_new']";
+            $city_change = "[CITY: FROM '$city_orig' TO '$city_new']";
         }
         else{
             $city_change = NULL;
@@ -543,7 +575,7 @@ class EmployeesController extends Controller
 
         if($request->region != $region_orig){
             $region_new = $request->region;
-            $region_change = "[Region: FROM '$region_orig' TO '$region_new']";
+            $region_change = "[REGION: FROM '$region_orig' TO '$region_new']";
         }
         else{
             $region_change = NULL;
@@ -551,7 +583,7 @@ class EmployeesController extends Controller
 
         if($request->height != $height_orig){
             $height_new = $request->height;
-            $height_change = "[Height: FROM '$height_orig' TO '$height_new']";
+            $height_change = "[HEIGHT: FROM '$height_orig' TO '$height_new']";
         }
         else{
             $height_change = NULL;
@@ -559,15 +591,15 @@ class EmployeesController extends Controller
 
         if($request->weight != $weight_orig){
             $weight_new = $request->weight;
-            $weight_change = "[Weight: FROM '$weight_orig' TO '$weight_new']";
+            $weight_change = "[WEIGHT: FROM '$weight_orig' TO '$weight_new']";
         }
         else{
             $weight_change = NULL;
         }
 
-        if($request->religion != $religion_orig){
-            $religion_new = $request->religion;
-            $religion_change = "[Religion: FROM '$religion_orig' TO '$religion_new']";
+        if(strtoupper($request->religion) != $religion_orig){
+            $religion_new = strtoupper($request->religion);
+            $religion_change = "[RELIGION: FROM '$religion_orig' TO '$religion_new']";
         }
         else{
             $religion_change = NULL;
@@ -575,7 +607,7 @@ class EmployeesController extends Controller
 
         if($request->civil_status != $civil_status_orig){
             $civil_status_new = $request->civil_status;
-            $civil_status_change = "[Civil Status: FROM '$civil_status_orig' TO '$civil_status_new']";
+            $civil_status_change = "[CIVIL STATUS: FROM '$civil_status_orig' TO '$civil_status_new']";
         }
         else{
             $civil_status_change = NULL;
@@ -583,7 +615,7 @@ class EmployeesController extends Controller
 
         if($request->email_address != $email_address_orig){
             $email_address_new = $request->email_address;
-            $email_address_change = "[Email Address: FROM '$email_address_orig' TO '$email_address_new']";
+            $email_address_change = "[EMAIL ADDRESS: FROM '$email_address_orig' TO '$email_address_new']";
         }
         else{
             $email_address_change = NULL;
@@ -591,7 +623,7 @@ class EmployeesController extends Controller
 
         if($request->telephone_number != $telephone_number_orig){
             $telephone_number_new = $request->telephone_number;
-            $telephone_number_change = "[Telephone Number: FROM '$telephone_number_orig' TO '$telephone_number_new']";
+            $telephone_number_change = "[TELEPHONE NUMBER: FROM '$telephone_number_orig' TO '$telephone_number_new']";
         }
         else{
             $telephone_number_change = NULL;
@@ -599,15 +631,15 @@ class EmployeesController extends Controller
 
         if($request->cellphone_number != $cellphone_number_orig){
             $cellphone_number_new = $request->cellphone_number;
-            $cellphone_number_change = "[Cellphone Number: FROM '$cellphone_number_orig' TO '$cellphone_number_new']";
+            $cellphone_number_change = "[CELLPHONE NUMBER: FROM '$cellphone_number_orig' TO '$cellphone_number_new']";
         }
         else{
             $cellphone_number_change = NULL;
         }
 
-        if($request->father_name != $father_name_orig){
-            $father_name_new = $request->father_name;
-            $father_name_change = "[Father's Name: FROM '$father_name_orig' TO '$father_name_new']";
+        if(strtoupper($request->father_name) != $father_name_orig){
+            $father_name_new = strtoupper($request->father_name);
+            $father_name_change = "[FATHER'S NAME: FROM '$father_name_orig' TO '$father_name_new']";
         }
         else{
             $father_name_change = NULL;
@@ -615,23 +647,23 @@ class EmployeesController extends Controller
 
         if($request->father_contact_number != $father_contact_number_orig){
             $father_contact_number_new = $request->father_contact_number;
-            $father_contact_number_change = "[Father's Contact Number: FROM '$father_contact_number_orig' TO '$father_contact_number_new']";
+            $father_contact_number_change = "[FATHER'S CONTACT NUMBER: FROM '$father_contact_number_orig' TO '$father_contact_number_new']";
         }
         else{
             $father_contact_number_change = NULL;
         }
 
-        if($request->father_profession != $father_profession_orig){
-            $father_profession_new = $request->father_profession;
-            $father_profession_change = "[Father's Profession: FROM '$father_profession_orig' TO '$father_profession_new']";
+        if(strtoupper($request->father_profession) != $father_profession_orig){
+            $father_profession_new = strtoupper($request->father_profession);
+            $father_profession_change = "[FATHER'S PROFESSION: FROM '$father_profession_orig' TO '$father_profession_new']";
         }
         else{
             $father_profession_change = NULL;
         }
 
-        if($request->mother_name != $mother_name_orig){
-            $mother_name_new = $request->mother_name;
-            $mother_name_change = "[Mother's Maiden Name: FROM '$mother_name_orig' TO '$mother_name_new']";
+        if(strtoupper($request->mother_name) != $mother_name_orig){
+            $mother_name_new = strtoupper($request->mother_name);
+            $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$mother_name_orig' TO '$mother_name_new']";
         }
         else{
             $mother_name_change = NULL;
@@ -639,31 +671,31 @@ class EmployeesController extends Controller
 
         if($request->mother_contact_number != $mother_contact_number_orig){
             $mother_contact_number_new = $request->mother_contact_number;
-            $mother_contact_number_change = "[Mother's Contact Number: FROM '$mother_contact_number_orig' TO '$mother_contact_number_new']";
+            $mother_contact_number_change = "[MOTHER'S CONTACT NUMBER: FROM '$mother_contact_number_orig' TO '$mother_contact_number_new']";
         }
         else{
             $mother_contact_number_change = NULL;
         }
 
-        if($request->mother_profession != $mother_profession_orig){
-            $mother_profession_new = $request->mother_profession;
-            $mother_profession_change = "[Mother's Profession: FROM '$mother_profession_orig' TO '$mother_profession_new']";
+        if(strtoupper($request->mother_profession) != $mother_profession_orig){
+            $mother_profession_new = strtoupper($request->mother_profession);
+            $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$mother_profession_orig' TO '$mother_profession_new']";
         }
         else{
             $mother_profession_change = NULL;
         }
 
-        if($request->emergency_contact_name != $emergency_contact_name_orig){
-            $emergency_contact_name_new = $request->emergency_contact_name;
-            $emergency_contact_name_change = "[Emergency Contact Name: FROM '$emergency_contact_name_orig' TO '$emergency_contact_name_new']";
+        if(strtoupper($request->emergency_contact_name) != $emergency_contact_name_orig){
+            $emergency_contact_name_new = strtoupper($request->emergency_contact_name);
+            $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$emergency_contact_name_orig' TO '$emergency_contact_name_new']";
         }
         else{
             $emergency_contact_name_change = NULL;
         }
 
-        if($request->emergency_contact_relationship != $emergency_contact_relationship_orig){
-            $emergency_contact_relationship_new = $request->emergency_contact_relationship;
-            $emergency_contact_relationship_change = "[Emergency Contact Relationship: FROM '$emergency_contact_relationship_orig' TO '$emergency_contact_relationship_new']";
+        if(strtoupper($request->emergency_contact_relationship) != $emergency_contact_relationship_orig){
+            $emergency_contact_relationship_new = strtoupper($request->emergency_contact_relationship);
+            $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$emergency_contact_relationship_orig' TO '$emergency_contact_relationship_new']";
         }
         else{
             $emergency_contact_relationship_change = NULL;
@@ -671,7 +703,7 @@ class EmployeesController extends Controller
 
         if($request->emergency_contact_number != $emergency_contact_number_orig){
             $emergency_contact_number_new = $request->emergency_contact_number;
-            $emergency_contact_number_change = "[Emergency Contact Number: FROM '$emergency_contact_number_orig' TO '$emergency_contact_number_new']";
+            $emergency_contact_number_change = "[EMERGENCY CONTACT NUMBER: FROM '$emergency_contact_number_orig' TO '$emergency_contact_number_new']";
         }
         else{
             $emergency_contact_number_change = NULL;
@@ -692,19 +724,19 @@ class EmployeesController extends Controller
         $employee->region = $request->region;
         $employee->height = $request->height;
         $employee->weight = $request->weight;
-        $employee->religion = $request->religion;
+        $employee->religion = strtoupper($request->religion);
         $employee->civil_status = $request->civil_status;
         $employee->email_address = $request->email_address;
         $employee->telephone_number = $request->telephone_number;
         $employee->cellphone_number = $request->cellphone_number;
-        $employee->father_name = $request->father_name;
+        $employee->father_name = strtoupper($request->father_name);
         $employee->father_contact_number = $request->father_contact_number;
-        $employee->father_profession = $request->father_profession;
-        $employee->mother_name = $request->mother_name;
+        $employee->father_profession = strtoupper($request->father_profession);
+        $employee->mother_name = strtoupper($request->mother_name);
         $employee->mother_contact_number = $request->mother_contact_number;
-        $employee->mother_profession = $request->mother_profession;
-        $employee->emergency_contact_name = $request->emergency_contact_name;
-        $employee->emergency_contact_relationship = $request->emergency_contact_relationship;
+        $employee->mother_profession = strtoupper($request->mother_profession);
+        $employee->emergency_contact_name = strtoupper($request->emergency_contact_name);
+        $employee->emergency_contact_relationship = strtoupper($request->emergency_contact_relationship);
         $employee->emergency_contact_number = $request->emergency_contact_number;
         
         $sql = $employee->save();
@@ -729,222 +761,48 @@ class EmployeesController extends Controller
         return response()->json($data);
     }
 
-    public function updateWorkInformation(Request $request){
-        $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
+    // public function updateWorkInformation(Request $request){
+    //     $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
+    //     $employee_number_orig = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
-        $employee_number_orig = $request->employee_number_orig;
-        $date_hired_orig = $request->date_hired_orig;
-        $employee_shift_orig = $request->employee_shift_orig;
-        $employee_company_orig = $request->employee_company_orig;
-        $employee_branch_orig = $request->employee_branch_orig;
-        $employee_department_orig = $request->employee_department_orig;
-        $employee_position_orig = $request->employee_position_orig;
-        $employment_status_orig = $request->employment_status_orig;
-        $employment_origin_orig = $request->employment_origin_orig;
-        $company_email_address_orig = $request->company_email_address_orig;
-        $company_contact_number_orig = $request->company_contact_number_orig;
-        $hmo_number_orig = $request->hmo_number_orig;
-        $sss_number_orig = $request->sss_number_orig;
-        $pag_ibig_number_orig = $request->pag_ibig_number_orig;
-        $philhealth_number_orig = $request->philhealth_number_orig;
-        $tin_number_orig = $request->tin_number_orig;
-        $account_number_orig = $request->account_number_orig;
+    //     if($request->employee_number != $employee_number_orig){
+    //         $employee_number_new = $request->employee_number;
+    //         $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
+    //     }
+    //     else{
+    //         $employee_number_change = NULL;
+    //     }
 
-        $sql = WorkInformationTable::where('employee_id',$request->employee_id)
-            ->update([
-                'employee_number' => $request->employee_number_new,
-                'date_hired' => $request->date_hired_new,
-                'employee_shift' => $request->employee_shift_new,
-                'employee_company' => $request->employee_company_new,
-                'employee_branch' => $request->employee_branch_new,
-                'employee_department' => $request->employee_department_new,
-                'employment_status' => $request->employment_status_new,
-                'employment_origin' => $request->employment_origin_new,
-                'employee_position' => $request->employee_position_new,
-                'company_email_address' => $request->company_email_address_new,
-                'company_contact_number' => $request->company_contact_number_new,
-                'hmo_number' => $request->hmo_number_new,
-                'sss_number' => $request->sss_number_new,
-                'pag_ibig_number' => $request->pag_ibig_number_new,
-                'philhealth_number' => $request->philhealth_number_new,
-                'tin_number' => $request->tin_number_new,
-                'account_number' => $request->account_number_new
-            ]);
+    //     $sql = WorkInformationTable::where('employee_id',$request->employee_id)
+    //         ->update([
+    //             'employee_number' => $request->employee_number,
+    //         ]);
 
-        if($sql){
-            $work_info_title = "[WORK INFO]";
-            if($employee_number_orig != $request->employee_number_new){
-                $employee_number_change = "[Employee Number: FROM '$employee_number_orig' TO '$request->employee_number_new']";
-            }
-            else{
-                $employee_number_change = NULL;
-            }
-            if($date_hired_orig != $request->date_hired_new){
-                $date_hired_change = "[Date Hired: FROM '$date_hired_orig' TO $request->date_hired']";
-            }
-            else{
-                $date_hired_change = NULL;
-            }
-            if($employee_shift_orig != $request->employee_shift_new){
-                $employee_shift_change = "[Shift: FROM '$employee_shift_orig' TO '$request->employee_shift_new']";
-            }
-            else{
-                $employee_shift_change = NULL;
-            }
-            if($employee_company_orig != $request->employee_company_new){
-                $employee_company_change = "[Company: FROM '$employee_company_orig' TO '$request->employee_company_new']";
-            }
-            else{
-                $employee_company_change = NULL;
-            }
-            if($employee_branch_orig != $request->employee_branch_new){
-                $employee_branch_change = "[Branch: FROM '$employee_branch_orig' TO: '$request->employee_branch_new']";
-            }
-            else{
-                $employee_branch_change = NULL;
-            }
-            if($employee_department_orig != $request->employee_department_new){
-                $employee_department_change = "[Department: FROM '$employee_department_orig' TO '$request->employee_department_new']";
-            }
-            else{
-                $employee_department_change = NULL;
-            }
-            if($employee_position_orig != $request->employee_position_new){
-                $employee_position_change = "[Position: FROM '$employee_position_orig' TO '$request->employee_position_new']";
-            }
-            else{
-                $employee_position_change = NULL;
-            }
-            if($employment_status_orig != $request->employment_status_new){
-                $employment_status_change = "[Employment Status: FROM '$employment_status_orig' TO '$request->employment_status_new']";
-            }
-            else{
-                $employment_status_change = NULL;
-            }
-            if($employment_origin_orig != $request->employment_origin_new){
-                $employment_origin_change = "[Employment Origin: FROM '$employment_origin_orig' TO '$request->employment_origin_new'].";
-            }
-            else{
-                $employment_origin_change = NULL;
-            }
-            if($company_email_address_orig != $request->company_email_address_new){
-                $company_email_address_change = "[Work Email Address: FROM '$company_email_address_orig' TO '$request->company_email_address_new']";
-            }
-            else{
-                $company_email_address_change = NULL;
-            }
-            if($company_contact_number_orig != $request->company_contact_number_new){
-                $company_contact_number_change = "[Work Contact No.: FROM '$company_contact_number_orig' TO '$request->company_contact_number_new']";
-            }
-            else{
-                $company_contact_number_change = NULL;
-            }
-            if($hmo_number_orig != $request->hmo_number_new){
-                $hmo_number_change = "[HMO No.: FROM '$hmo_number_orig' TO '$request->hmo_number_new']";
-            }
-            else{
-                $hmo_number_change = NULL;
-            }
-            if($sss_number_orig != $request->sss_number_new){
-                $sss_number_change = "[SSS No.: FROM '$sss_number_orig' TO '$request->sss_number_new']";
-            }
-            else{
-                $sss_number_change = NULL;
-            }
-            if($pag_ibig_number_orig != $request->pag_ibig_number_new){
-                $pag_ibig_number_change = "[Pag-Ibig No.: FROM '$pag_ibig_number_orig' TO '$request->pag_ibig_number_new']";
-            }
-            else{
-                $pag_ibig_number_change = NULL;
-            }
-            if($philhealth_number_orig != $request->philhealth_number_new){
-                $philhealth_number_change = "[Philhealth No.: FROM '$philhealth_number_orig' TO '$request->philhealth_number_new']";
-            }
-            else{
-                $philhealth_number_change = NULL;
-            }
-            if($tin_number_orig != $request->tin_number_new){
-                $tin_number_change = "[Tin No.: FROM '$tin_number_orig' TO '$request->tin_number_new']";
-            }
-            else{
-                $tin_number_change = NULL;
-            }
-            if($account_number_orig != $request->account_number_new){
-                $account_number_change = "[Account No.: FROM '$account_number_orig' TO '$request->account_number_new']";
-            }
-            else{
-                $account_number_change = NULL;
-            }
+    //     if($sql){
+    //         $work_info_title = "[WORK INFO]";
+    //         $result = 'true';
+    //         $id = $employee->id;
 
-            $result = 'true';
-            $id = $employee->id;
+    //     // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
+    //     // $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+    //         $employee_logs = new LogsTable;
+    //         $employee_logs->employee_id = $request->id;
+    //         $employee_logs->user_id = auth()->user()->id;
+    //         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $work_info_title $employee_number_change";
+    //         $employee_logs->save();
 
-            if($employee_number_orig != $request->employee_number_new
-            || $date_hired_orig != $request->date_hired_new
-            || $employee_shift_orig != $request->employee_shift_new
-            || $employee_company_orig != $request->employee_company_new
-            || $employee_branch_orig != $request->employee_branch_new
-            || $employee_department_orig != $request->employee_department_new
-            || $employee_position_orig != $request->employee_position_new
-            || $employment_status_orig != $request->employment_status_new
-            || $employment_origin_orig != $request->employment_origin_new
-            || $company_email_address_orig != $request->company_email_address_new
-            || $company_contact_number_orig != $request->company_contact_number_new
-            || $hmo_number_orig != $request->hmo_number_new
-            || $sss_number_orig != $request->sss_number_new
-            || $pag_ibig_number_orig != $request->pag_ibig_number_new
-            || $philhealth_number_orig != $request->philhealth_number_new
-            || $tin_number_orig != $request->tin_number_new
-            || $account_number_orig != $request->account_number_new
-            ){
-
-                // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
-                // $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $request->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                        $work_info_title
-                                        $employee_number_change
-                                        $date_hired_change
-                                        $employee_shift_change
-                                        $employee_company_change
-                                        $employee_branch_change
-                                        $employee_department_change
-                                        $employee_position_change
-                                        $employment_status_change
-                                        $employment_origin_change
-                                        $company_email_address_change
-                                        $company_contact_number_change
-                                        $hmo_number_change
-                                        $sss_number_change
-                                        $pag_ibig_number_change
-                                        $philhealth_number_change
-                                        $tin_number_change
-                                        $account_number_change
-                                        ";
-                $employee_logs->save();
-
-                $employee_history_logs = new History;
-                $employee_history_logs->employee_id = $request->id;
-                $employee_history_logs->history = "$employee_shift_change
-                                                  $employee_position_change
-                                                  $employee_company_change
-                                                  $employee_branch_change
-                                                  $employment_status_change
-                                                  $employment_origin_change
-                                                  ";
-                $employee_history_logs->save();
-            }
-
-        }
-        else{
-            $result = 'false';
-            $id = '';
-        }
-        $data = array('result' => $result, 'id' => $id);
-        return response()->json($data);
-    }
+    //     // $employee_history_logs = new History;
+    //     // $employee_history_logs->employee_id = $request->id;
+    //     // $employee_history_logs->history = "$employee_shift_change $employee_position_change $employee_company_change $employee_branch_change $employment_status_change $employment_origin_change";
+    //     // $employee_history_logs->save();
+    //     }
+    //     else{
+    //         $result = 'false';
+    //         $id = '';
+    //     }
+    //     $data = array('result' => $result, 'id' => $id);
+    //     return response()->json($data);
+    // }
 
     public function updateEducationalAttainment(Request $request){
         $employee = EducationalAttainment::where('employee_id',$request->employee_id)->first();
