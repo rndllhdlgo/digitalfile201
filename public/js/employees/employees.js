@@ -92,7 +92,7 @@ $('#addEmployeeBtn').on('click',function(){
 
 function changeCivilStatus(){
     var status = $('#civil_status');
-    if($('#civil_status').val() == "Married"){
+    if($('#civil_status').val() == "MARRIED"){
         $('#spouse').show();
         $('#spouse_name').addClass('required_field');
         $('#spouse_contact_number').addClass('required_field');
@@ -101,7 +101,7 @@ function changeCivilStatus(){
         
         $('#spouse_summary_div').show();
     }
-    else if($('#civil_status').val() == "Solo Parent"){
+    else if($('#civil_status').val() == "SOLO PARENT"){
         $('#spouse').hide();
         $('.children_information').show();
         $('#spouse_name').val("");
@@ -472,18 +472,18 @@ $('#note_required').on('click',function(){
 var formatter = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'PHP',
-  });
+});
   
-  $('#employee_salary').on('change', (e)=>{
+  $('#employee_salary').on('focusout', (e)=>{
       e.target.value = formatter.format(e.target.value);
   });
-  $('#employee_incentives').on('change', (e)=>{
+  $('#employee_incentives').on('focusout', (e)=>{
       e.target.value = formatter.format(e.target.value);
   });
-  $('#employee_overtime_pay').on('change', (e)=>{
+  $('#employee_overtime_pay').on('focusout', (e)=>{
       e.target.value = formatter.format(e.target.value);
   });
-  $('#employee_bonus').on('change', (e)=>{
+  $('#employee_bonus').on('focusout', (e)=>{
       e.target.value = formatter.format(e.target.value);
   });
 

@@ -1,4 +1,5 @@
 var current_location = $(location).attr('pathname')+window.location.search;
+var data_update, standby = true;
 //Verify that the user has filled out all required fields.
 setInterval(checkRequiredFields, 0);
 function checkRequiredFields(){
@@ -37,6 +38,177 @@ function checkRequiredFields(){
     // }
 }
 
+setInterval(() => {
+    if($('#changePassword').is(':visible')){
+        if($('#pass2').val().length < 8){
+            if(!$('#validation1').hasClass('text-danger')){
+                $('#validation1').addClass('text-danger');
+            }
+            $('#validation1').removeClass('text-success');
+
+            if(!$('#validicon1').hasClass('fa-xmark')){
+                $('#validicon1').addClass('fa-xmark');
+            }
+            $('#validicon1').removeClass('fa-check');
+        }
+        else{
+            if(!$('#validation1').hasClass('text-success')){
+                $('#validation1').addClass('text-success');
+            }
+            $('#validation1').removeClass('text-danger');
+
+            if(!$('#validicon1').hasClass('fa-check')){
+                $('#validicon1').addClass('fa-check');
+            }
+            $('#validicon1').removeClass('fa-xmark');
+        }
+
+        if(/\d/.test($('#pass2').val()) != true){
+            if(!$('#validation2').hasClass('text-danger')){
+                $('#validation2').addClass('text-danger');
+            }
+            $('#validation2').removeClass('text-success');
+
+            if(!$('#validicon2').hasClass('fa-xmark')){
+                $('#validicon2').addClass('fa-xmark');
+            }
+            $('#validicon2').removeClass('fa-check');
+        }
+        else{
+            if(!$('#validation2').hasClass('text-success')){
+                $('#validation2').addClass('text-success');
+            }
+            $('#validation2').removeClass('text-danger');
+
+            if(!$('#validicon2').hasClass('fa-check')){
+                $('#validicon2').addClass('fa-check');
+            }
+            $('#validicon2').removeClass('fa-xmark');
+        }
+
+        if(/[A-Z]/.test($('#pass2').val()) != true){
+            if(!$('#validation3').hasClass('text-danger')){
+                $('#validation3').addClass('text-danger');
+            }
+            $('#validation3').removeClass('text-success');
+
+            if(!$('#validicon3').hasClass('fa-xmark')){
+                $('#validicon3').addClass('fa-xmark');
+            }
+            $('#validicon3').removeClass('fa-check');
+        }
+        else{
+            if(!$('#validation3').hasClass('text-success')){
+                $('#validation3').addClass('text-success');
+            }
+            $('#validation3').removeClass('text-danger');
+
+            if(!$('#validicon3').hasClass('fa-check')){
+                $('#validicon3').addClass('fa-check');
+            }
+            $('#validicon3').removeClass('fa-xmark');
+        }
+
+        if(/[a-z]/.test($('#pass2').val()) != true){
+            if(!$('#validation4').hasClass('text-danger')){
+                $('#validation4').addClass('text-danger');
+            }
+            $('#validation4').removeClass('text-success');
+
+            if(!$('#validicon4').hasClass('fa-xmark')){
+                $('#validicon4').addClass('fa-xmark');
+            }
+            $('#validicon4').removeClass('fa-check');
+        }
+        else{
+            if(!$('#validation4').hasClass('text-success')){
+                $('#validation4').addClass('text-success');
+            }
+            $('#validation4').removeClass('text-danger');
+
+            if(!$('#validicon4').hasClass('fa-check')){
+                $('#validicon4').addClass('fa-check');
+            }
+            $('#validicon4').removeClass('fa-xmark');
+        }
+
+        if(/[!@#$%^&*(),.?":{}|<>]/.test($('#pass2').val()) != true){
+            if(!$('#validation5').hasClass('text-danger')){
+                $('#validation5').addClass('text-danger');
+            }
+            $('#validation5').removeClass('text-success');
+
+            if(!$('#validicon5').hasClass('fa-xmark')){
+                $('#validicon5').addClass('fa-xmark');
+            }
+            $('#validicon5').removeClass('fa-check');
+        }
+        else{
+            if(!$('#validation5').hasClass('text-success')){
+                $('#validation5').addClass('text-success');
+            }
+            $('#validation5').removeClass('text-danger');
+
+            if(!$('#validicon5').hasClass('fa-check')){
+                $('#validicon5').addClass('fa-check');
+            }
+            $('#validicon5').removeClass('fa-xmark');
+        }
+
+        if($('.fa-xmark').is(':visible')){
+            if(!$('#pass2').hasClass('invalidInput')){
+                $('#pass2').addClass('invalidInput');
+            }
+            $('#pass2').removeClass('defaultInput');
+        }
+        else{
+            if(!$('#pass2').hasClass('defaultInput')){
+                $('#pass2').addClass('defaultInput');
+            }
+            $('#pass2').removeClass('invalidInput');
+        }
+    }
+}, 0);
+
+$('#pass3').on('keyup',function(){
+    if($('#pass2').val() != $('#pass3').val()){
+        $('#password_match').show();
+        if(!$('#pass3').hasClass('invalidInput')){
+            $('#pass3').addClass('invalidInput');
+        }
+        $('#pass3').removeClass('defaultInput');
+    }
+    else{
+        $('#password_match').hide();
+        if(!$('#pass3').hasClass('defaultInput')){
+            $('#pass3').addClass('defaultInput');
+        }
+        $('#pass3').removeClass('invalidInput');
+    }
+});
+
+$(document).ready(function(){
+    $('#show_password_eye').click(function(){
+        $('#show_password').click();
+        if($('#show_password').is(':checked')){
+            $('#show_password_text').text('HIDE PASSWORD');
+            $('#show_password_eye').removeClass('fa-eye').addClass('fa-eye-slash');
+            $('#pass1').attr('type','text');
+            $('#pass2').attr('type', 'text');
+            $('#pass3').attr('type', 'text');
+        } 
+        else{
+            $('#show_password_text').text('SHOW PASSWORD');
+            $('#show_password_eye').addClass('fa-eye').removeClass('fa-eye-slash');
+            $('#pass1').attr('type','password');
+            $('#pass2').attr('type', 'password');
+            $('#pass3').attr('type', 'password');
+        }
+    });
+    $('#show_password_text').click(function(){
+        $('#show_password_eye').click();
+    });
+});
 
 setInterval(checkJobDescription, 0);
 function checkJobDescription(){

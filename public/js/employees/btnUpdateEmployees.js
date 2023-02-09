@@ -1,67 +1,34 @@
 $('#btnUpdate').on('click',function(){
     var id = $('#hidden_id').val();
-    var first_name_orig = $('#first_name_orig').val();
-    var first_name_new = $('#first_name').val();
-    var last_name_orig = $('#last_name_orig').val();
-    var last_name_new = $('#last_name').val();
-    var middle_name_orig = $('#middle_name_orig').val();
-    var middle_name_new = $('#middle_name').val();
-    var suffix_orig = $('#suffix_orig').val();
-    var suffix_new = $('#suffix').val();
-    var nickname_orig = $('#nickname_orig').val();
-    var nickname_new = $('#nickname').val();
-    var birthday_orig = $('#birthday_orig').val();
-    var birthday_new = $('#birthday').val();
-    var gender_orig = $('#gender_orig').val();
-    var gender_new = $('#gender').val();
-    var civil_status_orig = $('#civil_status_orig').val();
-    var civil_status_new = $('#civil_status').val();
-    var address_orig = $('#address_orig').val();
-    var address_new = $('#address').val();
-    var ownership_orig = $('#ownership_orig').val();
-    var ownership_new = $('#ownership').val();
-    // var ownership_new = $('input[name=house]:checked').val();
-    var province_orig = $("#province_orig").val();
-    var province_new = $("#province option:selected").text();
-    var city_orig = $("#city_orig").val();
-    var city_new = $("#city option:selected").text();
-    var region_orig = $("#region_orig").val();
-    var region_new = $("#region").val();
-    var height_orig = $("#height_orig").val();
-    var height_new = $("#height").val();
-    var weight_orig = $("#weight_orig").val();
-    var weight_new = $("#weight").val();
-    var religion_orig = $("#religion_orig").val();
-    var religion_new = $("#religion").val();
-    var email_address_orig = $('#email_address_orig').val();
-    var email_address_new = $('#email_address').val();
-    var telephone_number_orig = $('#telephone_number_orig').val();
-    var telephone_number_new = $('#telephone_number').val();
-    var cellphone_number_orig = $('#cellphone_number_orig').val();
-    var cellphone_number_new = $('#cellphone_number').val();
-    var spouse_name = $('#spouse_name').val();
-    var spouse_contact_number_orig = $('#spouse_contact_number_orig').val();
-    var spouse_contact_number_new = $('#spouse_contact_number').val();
-    var spouse_profession_orig = $('#spouse_profession_orig').val();
-    var spouse_profession_new = $('#spouse_profession').val();
-    var father_name_orig = $('#father_name_orig').val();
-    var father_name_new = $('#father_name').val();
-    var father_contact_number_orig = $('#father_contact_number_orig').val();
-    var father_contact_number_new = $('#father_contact_number').val();
-    var father_profession_orig = $('#father_profession_orig').val();
-    var father_profession_new = $('#father_profession').val();
-    var mother_name_orig = $('#mother_name_orig').val();
-    var mother_name_new = $('#mother_name').val();
-    var mother_contact_number_orig = $('#mother_contact_number_orig').val();
-    var mother_contact_number_new = $('#mother_contact_number').val();
-    var mother_profession_orig = $('#mother_profession_orig').val();
-    var mother_profession_new = $('#mother_profession').val();
-    var emergency_contact_name_orig = $('#emergency_contact_name_orig').val();
-    var emergency_contact_name_new = $('#emergency_contact_name').val();
-    var emergency_contact_relationship_orig = $('#emergency_contact_relationship_orig').val();
-    var emergency_contact_relationship_new = $('#emergency_contact_relationship').val();
-    var emergency_contact_number_orig = $('#emergency_contact_number_orig').val();
-    var emergency_contact_number_new = $('#emergency_contact_number').val();
+    var first_name = $('#first_name').val();
+    var middle_name = $('#middle_name').val();
+    var last_name = $('#last_name').val();
+    var suffix = $('#suffix').val();
+    var nickname = $('#nickname').val();
+    var birthday = $('#birthday').val();
+    var gender = $('#gender').val();
+    var address = $('#address').val();
+    var ownership = $('#ownership').val();
+    var province = $('#province option:selected').text();
+    var city = $('#city option:selected').text();
+    var region = $('#region').val();
+    var height = $('#height').val();
+    var weight = $('#weight').val();
+    var religion = $('#religion').val();
+    var civil_status = $('#civil_status').val();
+    var email_address = $('#email_address').val();
+    var telephone_number = $('#telephone_number').val();
+    var cellphone_number = $('#cellphone_number').val();
+    var father_name = $('#father_name').val();
+    var father_contact_number = $('#father_contact_number').val();
+    var father_profession = $('#father_profession').val();
+    var mother_name = $('#mother_name').val();
+    var mother_contact_number = $('#mother_contact_number').val();
+    var mother_profession = $('#mother_profession').val();
+    var emergency_contact_name = $('#emergency_contact_name').val();
+    var emergency_contact_relationship = $('#emergency_contact_relationship').val();
+    var emergency_contact_number = $('#emergency_contact_number').val();
+    
     // var college_change = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
     Swal.fire({
@@ -81,16 +48,6 @@ $('#btnUpdate').on('click',function(){
         if (update.isConfirmed) {
             $('#loading').show();
 
-            if(!$('#filename').val() && $('#employee_image').val()){
-                employee_image_save();
-            }
-            else if(!$('#filename').val() && !$('#employee_image').val()){
-                employee_image = 'N/A';
-            }
-            else{
-                employee_image = $('#filename').val();
-            }
-            
             $.ajax({
                 url:"/employees/updatePersonalInformation",
                 type:"POST",
@@ -99,69 +56,34 @@ $('#btnUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
-                    employee_image:employee_image,
-                    filename_delete: $('#filename_delete').val(),
-                    first_name_orig:first_name_orig,
-                    first_name_new:first_name_new,
-                    last_name_orig:last_name_orig,
-                    last_name_new:last_name_new,
-                    middle_name_orig:middle_name_orig,
-                    middle_name_new:middle_name_new,
-                    suffix_orig:suffix_orig,
-                    suffix_new:suffix_new,
-                    nickname_orig:nickname_orig,
-                    nickname_new:nickname_new,
-                    birthday_orig:birthday_orig,
-                    birthday_new:birthday_new,
-                    gender_orig:gender_orig,
-                    gender_new:gender_new,
-                    civil_status_orig:civil_status_orig,
-                    civil_status_new:civil_status_new,
-                    address_orig:address_orig,
-                    address_new:address_new,
-                    ownership_orig:ownership_orig,
-                    ownership_new:ownership_new,
-                    region_orig:region_orig,
-                    region_new:region_new,
-                    province_orig:province_orig,
-                    province_new:province_new,
-                    city_orig:city_orig,
-                    city_new:city_new,
-                    height_orig:height_orig,
-                    height_new:height_new,
-                    weight_orig:weight_orig,
-                    weight_new:weight_new,
-                    religion_orig:religion_orig,
-                    religion_new:religion_new,
-                    email_address_orig:email_address_orig,
-                    email_address_new:email_address_new,
-                    telephone_number_orig:telephone_number_orig,
-                    telephone_number_new:telephone_number_new,
-                    cellphone_number_orig:cellphone_number_orig,
-                    cellphone_number_new:cellphone_number_new,
-                    spouse_name:spouse_name,
-                    spouse_contact_number_orig:spouse_contact_number_orig,
-                    spouse_contact_number_new:spouse_contact_number_new,
-                    spouse_profession_orig:spouse_profession_orig,
-                    spouse_profession_new:spouse_profession_new,
-                    father_name_orig:father_name_orig,
-                    father_name_new:father_name_new,
-                    father_contact_number_orig:father_contact_number_orig,
-                    father_contact_number_new:father_contact_number_new,
-                    father_profession_orig:father_profession_orig,
-                    father_profession_new:father_profession_new,
-                    mother_name_orig:mother_name_orig,
-                    mother_name_new:mother_name_new,
-                    mother_contact_number_orig:mother_contact_number_orig,
-                    mother_contact_number_new:mother_contact_number_new,
-                    mother_profession_orig:mother_profession_orig,
-                    mother_profession_new:mother_profession_new,
-                    emergency_contact_name_orig:emergency_contact_name_orig,
-                    emergency_contact_name_new:emergency_contact_name_new,
-                    emergency_contact_relationship_orig:emergency_contact_relationship_orig,
-                    emergency_contact_relationship_new:emergency_contact_relationship_new,
-                    emergency_contact_number_orig:emergency_contact_number_orig,
-                    emergency_contact_number_new:emergency_contact_number_new
+                    first_name:first_name,
+                    middle_name:middle_name,
+                    last_name:last_name,
+                    suffix:suffix,
+                    nickname:nickname,
+                    birthday:birthday,
+                    gender:gender,
+                    address:address,
+                    ownership:ownership,
+                    province:province,
+                    city:city,
+                    region:region,
+                    height:height,
+                    weight:weight,
+                    religion:religion,
+                    civil_status:civil_status,
+                    email_address:email_address,
+                    telephone_number:telephone_number,
+                    cellphone_number:cellphone_number,
+                    father_name:father_name,
+                    father_contact_number:father_contact_number,
+                    father_profession:father_profession,
+                    mother_name:mother_name,
+                    mother_contact_number:mother_contact_number,
+                    mother_profession:mother_profession,
+                    emergency_contact_name:emergency_contact_name,
+                    emergency_contact_relationship:emergency_contact_relationship,
+                    emergency_contact_number:emergency_contact_number,
                 },
                 success:function(data){
                     if(data.result == 'true'){
@@ -574,7 +496,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        $('#documents_form').submit();
+                        // $('#documents_form').submit();
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);

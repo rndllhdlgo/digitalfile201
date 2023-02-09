@@ -197,6 +197,8 @@ Route::any('/saveChosen','TryController@chosen_save');
 Route::any('/import','TryController@import_blade');
 Route::any('/test/import','TryController@test_import');
 
+Route::any('/passwordValidation','TryController@passwordValidation_blade');
+
 Route::any('/users_page','PagesController@users_page');
 
 Route::any('/saveUser','UsersController@saveUser');
@@ -205,3 +207,5 @@ Route::get('/change/validate','UsersController@change_validate');
 Route::any('/change/password','UsersController@change_password');
 
 Route::any('/users/status', 'UsersController@users_status');
+
+Route::get('/logs_reload', 'EmployeesController@logs_reload');

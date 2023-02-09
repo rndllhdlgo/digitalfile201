@@ -63,32 +63,17 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#filename_delete').val('');
 
                 $('#first_name').val(value.first_name);
-                $('#first_name_orig').val(value.first_name);
-                
-                $('#middle_name_orig').val(value.middle_name);
                 $('#middle_name').val(value.middle_name);
-
-                $('#last_name_orig').val(value.last_name);
                 $('#last_name').val(value.last_name);
-
                 $('#suffix').val(value.suffix);
-                $('#suffix_orig').val(value.suffix);
-
                 $('#nickname').val(value.nickname);
-                $('#nickname_orig').val(value.nickname);
 
                 $('#birthday').val(value.birthday);
-                $('#birthday_orig').val(value.birthday);
                 setTimeout(() => {
                     $('#birthday').change();
                 }, app_timeout);
 
                 $('#gender').val(value.gender);
-                $('#gender_orig').val(value.gender);
-
-                $('#barangay_orig').val(value.barangay);
-                $('#barangay').val(value.barangay);
-                $('#address_orig').val(value.address);
                 $('#address').val(value.address);
 
                 // $('#house_orig').val(value.house);
@@ -98,12 +83,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 //     }
                 // });
                 $('#ownership').val(value.ownership);
-                $('#ownership_orig').val(value.ownership);
                 
-                $('#province_orig').val(value.province);
                 $('#province_summary').val(value.province);
                 $('#province_content').html(value.province);
-                $('#city_orig').val(value.city);
                 $('#city_summary').val(value.city);
                 $('#city_content').html(value.city);
 
@@ -126,33 +108,21 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }, app_timeout);
                 }, app_timeout);
 
-                $('#region_orig').val(value.region);
                 $('#region').val(value.region);
                 $('#region_summary').val(value.region);
                 $('#region_content').html(value.region);
-                
-                $('#height_orig').val(value.height);
+
                 $('#height').val(value.height);
-
-                $('#weight_orig').val(value.weight);
                 $('#weight').val(value.weight);
-
-                $('#religion_orig').val(value.religion);
                 $('#religion').val(value.religion);
 
-                $('#civil_status_orig').val(value.civil_status);
                 $('#civil_status').val(value.civil_status);
                 setTimeout(() => {
                     $('#civil_status').change();
                 }, app_timeout);
 
-                $('#email_address_orig').val(value.email_address);
                 $('#email_address').val(value.email_address);
-
-                $('#telephone_number_orig').val(value.telephone_number);
                 $('#telephone_number').val(value.telephone_number);
-
-                $('#cellphone_number_orig').val(value.cellphone_number);
                 $('#cellphone_number').val(value.cellphone_number);
 
                 $('#spouse_name').val(value.spouse_name);
@@ -162,24 +132,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#spouse_profession_orig').val(value.spouse_profession);
 
                 $('#father_name').val(value.father_name);
-                $('#father_name_orig').val(value.father_name);
-                $('#father_contact_number_orig').val(value.father_contact_number);
                 $('#father_contact_number').val(value.father_contact_number);
-                $('#father_profession_orig').val(value.father_profession);
                 $('#father_profession').val(value.father_profession);
 
                 $('#mother_name').val(value.mother_name);
-                $('#mother_name_orig').val(value.mother_name);
-                $('#mother_contact_number_orig').val(value.mother_contact_number);
                 $('#mother_contact_number').val(value.mother_contact_number);
-                $('#mother_profession_orig').val(value.mother_profession);
                 $('#mother_profession').val(value.mother_profession);
 
-                $('#emergency_contact_name_orig').val(value.emergency_contact_name);
                 $('#emergency_contact_name').val(value.emergency_contact_name);
-                $('#emergency_contact_relationship_orig').val(value.emergency_contact_relationship);
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
-                $('#emergency_contact_number_orig').val(value.emergency_contact_number);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
                 //Work Information
@@ -862,7 +823,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         }
                     },
-                    order:[],
+                    order: [[ 0, "desc" ]],
                     columns: [
                         // { data: 'username',width:'20%'},
                         // { data: 'user_level',width:'20%'},
@@ -890,18 +851,25 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             "render":function(data,type,row){
                                 logs = row.logs.replaceAll(" [", "<br>[");
                                 return logs;
-                            }
+                            },
                         },
                     ],
-                    initComplete: function(){
-                        if(!$('.logs_table_data').DataTable().data().any()){
-                            $('#logs_table_data').hide();
-                        }
-                        else{
-                            $('#logs_table_data').show();
-                        }
-                    }
                 });
+
+                setInterval(function(){
+                    if($('#loading').is(':hidden') && standby == false){
+                        $.ajax({
+                            url: "/logs_reload",
+                            success: function(data){
+                                if(data != data_update){
+                                    data_update = data;
+                                    $('.logs_table_data').DataTable().ajax.reload(null, false);
+                                }
+                            }
+                        });
+                    }
+                }, 1000);
+
 
                 $('.employee_history_table').dataTable().fnDestroy();
                 $('.employee_history_table').DataTable({
