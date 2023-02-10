@@ -868,11 +868,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'history',
                             width: '80%',
-                            // "render":function(data,type,row){
-                            //     history = row.history.replaceAll(" [","<br>[");
-                            //     return history;
-                            // },
+                            "render":function(data,type,row){
+                                var history = row.history.replaceAll(" [","<br>[");
+                                return history;
+                            },
                         },
+                        // {
+                        //     data: 'history',
+                        //     width: '80%',
+                        //     "render": function(data, type, row) {
+                        //       var history = row.history.replaceAll(" [", "<br>[");
+                        //       return history;
+                        //     }
+                        // }
                     ],
                 });
 

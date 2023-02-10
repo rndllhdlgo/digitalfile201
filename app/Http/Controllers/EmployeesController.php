@@ -788,6 +788,7 @@ class EmployeesController extends Controller
         $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
         $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
         $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first()->date_hired;
+        $employee_shift_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_shift;
         $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_company;
         $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_branch;
         $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_department;
@@ -817,6 +818,16 @@ class EmployeesController extends Controller
         }
         else{
             $date_hired_change = NULL;
+        }
+        
+        if($request->employee_shift != $employee_shift_orig){
+            // $column_shift = 'shift_code';
+            $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
+            $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
+            $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
+        }
+        else{
+            $employee_shift_change = NULL;
         }
 
         if($request->employee_company != $employee_company_orig){
@@ -939,6 +950,7 @@ class EmployeesController extends Controller
             ->update([
                 'employee_number' => $request->employee_number,
                 'date_hired' => $request->date_hired,
+                'employee_shift' => $request->employee_shift,
                 'employee_company' => $request->employee_company,
                 'employee_branch' => $request->employee_branch,
                 'employee_department' => $request->employee_department,
@@ -976,24 +988,25 @@ class EmployeesController extends Controller
                 $request->philhealth_number != $philhealth_number_orig ||
                 $request->tin_number != $tin_number_orig ||
                 $request->account_number != $account_number_orig ||
-                $request->employee_department != $employee_department_orig
+                $request->employee_department != $employee_department_orig ||
+                $request->employee_shift != $employee_shift_orig
                 ){
                 // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                 // $employee_details = PersonalInformationTable::where('id', $request->id)->first();
                 $userlogs = new LogsTable;
                 $userlogs->employee_id = $request->id;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: [WORK INFO] $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change $employee_department_change";
+                $userlogs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: [WORK INFO] $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change $employee_department_change $employee_shift_change";
                 $userlogs->save();
 
                 $userlogs = new History;
                 $userlogs->employee_id = $request->id;
-                $userlogs->history = " $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change $employee_department_change";
+                $userlogs->history = "UPDATED DETAILS $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change $employee_department_change $employee_shift_change";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER UPDATES DETAILS OF THIS EMPLOYEE: [WORK INFO] $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $account_number_change $employee_department_change";
+                $userlogs->activity = "USER UPDATES DETAILS OF THIS EMPLOYEE: [WORK INFO] $employee_number_change $date_hired_change $employee_company_change $employee_branch_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $account_number_change $employee_department_change $employee_shift_change";
                 $userlogs->save();
             }
         }
