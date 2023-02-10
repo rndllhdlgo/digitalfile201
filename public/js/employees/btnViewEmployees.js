@@ -83,7 +83,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 //     }
                 // });
                 $('#ownership').val(value.ownership);
-                
+
                 $('#province_summary').val(value.province);
                 $('#province_content').html(value.province);
                 $('#city_summary').val(value.city);
@@ -145,61 +145,29 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
-                // $('#employee_number').attr('readonly',true);
-                // $('#employee_number').css('cursor','not-allowed');
-
+                $('#employee_number').attr('readonly',true);
+                $('#employee_number').css('cursor','not-allowed');
+                $('#date_hired').val(value.date_hired);
+                $('#employee_shift').val(value.employee_shift);
                 $('#employee_company').val(value.employee_company);
-                $('#employee_company_orig').val(value.employee_company);
-                
-                $('#employee_department').val(value.employee_department);
-                $('#employee_department_orig').val(value.employee_department);
-
                 $('#employee_branch').val(value.employee_branch);
-                $('#employee_branch_orig').val(value.employee_branch);
-
+                $('#employee_department').val(value.employee_department);
+                $('#employee_position').val(value.employee_position);
+                
                 $('#employment_status').val(value.employment_status);
-                $('#employment_status_orig').val(value.employment_status);
                 setTimeout(() => {
                     $('#employment_status').change();
                 }, app_timeout);
                 $('#employment_origin').val(value.employment_origin);
-                $('#employment_origin_orig').val(value.employment_origin);
-
-                $('#employee_shift').val(value.employee_shift);
-                $('#employee_shift_orig').val(value.employee_shift);
-
-                $('#employee_supervisor').val(value.employee_supervisor);
-                $('#employee_supervisor_orig').val(value.employee_supervisor);
-
-                $('#employee_position').val(value.employee_position);
-                $('#employee_position_orig').val(value.employee_position);
-
-                $('#date_hired').val(value.date_hired);
-                $('#date_hired_orig').val(value.date_hired);
 
                 $('#company_email_address').val(value.company_email_address);
-                $('#company_email_address_orig').val(value.company_email_address);
-                
                 $('#company_contact_number').val(value.company_contact_number);
-                $('#company_contact_number_orig').val(value.company_contact_number);
-
                 $('#hmo_number').val(value.hmo_number);
-                $('#hmo_number_orig').val(value.hmo_number);
-
                 $('#sss_number').val(value.sss_number);
-                $('#sss_number_orig').val(value.sss_number);
-
                 $('#pag_ibig_number').val(value.pag_ibig_number);
-                $('#pag_ibig_number_orig').val(value.pag_ibig_number);
-
                 $('#philhealth_number').val(value.philhealth_number);
-                $('#philhealth_number_orig').val(value.philhealth_number);
-
                 $('#tin_number').val(value.tin_number);
-                $('#tin_number_orig').val(value.tin_number);
-
                 $('#account_number').val(value.account_number);
-                $('#account_number_orig').val(value.account_number);
 
                 //Education Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
@@ -888,20 +856,39 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         }
                     },
+                    order: [[ 0, "desc" ]],
                     columns: [
-                        { data: 'history'},
+                        {
+                            data: 'date',
+                            width: '20%',
+                            "render": function(data, type, row){
+                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                            }
+                        },
+                        { 
+                            data: 'history',
+                            width: '80%',
+                            // "render":function(data,type,row){
+                            //     history = row.history.replaceAll(" [","<br>[");
+                            //     return history;
+                            // },
+                        },
                     ],
-                    initComplete: function(){
-                        if(!$('.employee_history_table').DataTable().data().any()){
-                            $('#employee_history_table').hide();
-                            $('.hr-history').hide();
-                        }
-                        else{
-                            $('#employee_history_table').show();
-                            $('.hr-history').show();
-                        }
-                    }
                 });
+
+                setInterval(function(){
+                    if($('#loading').is(':hidden') && standby == false){
+                        $.ajax({
+                            url: "/employee_history_reload",
+                            success: function(data){
+                                if(data != data_update){
+                                    data_update = data;
+                                    $('.employee_history_table').DataTable().ajax.reload(null, false);
+                                }
+                            }
+                        });
+                    }
+                }, 1000);
 
                 $('th').removeClass("sorting_asc");
 

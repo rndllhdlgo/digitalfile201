@@ -1,0 +1,9 @@
+$('.employee_history_table tbody').on('click', 'tr', function(){
+    var data =  $('.employee_history_table').DataTable().row(this).data();
+    Swal.fire({
+        title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+        // html: `<h4 style="color:#0d1a80 !important;">` + data.username + `[` + data.user_level + `]` + `</h4>` + `<br>` + `<h6>` + data.logs.replaceAll(" [","<br>[") + `</h6>`,
+        html: `<h5>` + data.history.replaceAll(" [","<br>[") + `</h5>`,
+        width: 850,
+    });
+});

@@ -122,10 +122,10 @@ function changeCivilStatus(){
 function changeEmploymentStatus(){
     var employment_status = $('#employment_status');
 
-    if($('#employment_status').val() == "Regular" 
-    || $('#employment_status').val() == 'Probationary'
-    || $('#employment_status').val() == 'Part_Time'
-    || $('#employment_status').val() == 'Retired'
+    if($('#employment_status').val() == "REGULAR" 
+    || $('#employment_status').val() == 'PROBATIONARY'
+    || $('#employment_status').val() == 'PART TIME'
+    || $('#employment_status').val() == 'RETIRED'
     ){
         $('#benefits').show();
         $('#benefits_summary').show();
@@ -133,7 +133,7 @@ function changeEmploymentStatus(){
         $('#termination_div').hide();
         
     }
-    else if($('#employment_status').val() == 'Resign'){
+    else if($('#employment_status').val() == 'RESIGN'){
             $('#resignation_div').show();
             $('.hr-resignation').show();
             $('#termination_div').hide();
@@ -141,7 +141,7 @@ function changeEmploymentStatus(){
             $('#benefits_summary').hide();
 
     }
-    else if($('#employment_status').val() == 'Terminate'){
+    else if($('#employment_status').val() == 'TERMINATE'){
             $('#termination_div').show();
             $('.hr-termination').show();
             $('#resignation_div').hide();
@@ -410,7 +410,6 @@ $('#note_required').on('click',function(){
     $('#employee_department').val('1');
     $('#employee_branch').val('3');
     $('#employment_status').val('Probationary');
-    $('#employment_origin').val('Newly Hired');
     $('#employee_shift').val('1');
     // $('#employee_supervisor').val('1');
     $('#employee_position').val('2');

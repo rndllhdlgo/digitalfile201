@@ -8,7 +8,7 @@
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
             </div>
         </div>
-
+        
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
@@ -101,14 +101,14 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onchange="changeEmploymentStatus()">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
-                    <option value="Regular">Regular</option>
-                    <option value="Probationary">Probationary</option>
-                    <option value="Part_Time">Part Time</option>
-                    <option value="Agency">Agency</option>
-                    <option value="Intern">Intern</option>
-                    <option value="Retired" id="retired">Retired</option>
-                    <option value="Resign" id="resign">Resign</option>
-                    <option value="Terminate" id="terminate">Terminate</option>
+                    <option value="REGULAR">REGULAR</option>
+                    <option value="PROBATIONARY">PROBATIONARY</option>
+                    <option value="PART TIME">PART TIME</option>
+                    <option value="AGENCY">AGENCY</option>
+                    <option value="INTERN">INTERN</option>
+                    <option value="RETIRED" id="retired">RETIRED</option>
+                    <option value="RESIGN" id="resign">RESIGN</option>
+                    <option value="TERMINATE" id="terminate">TERMINATE</option>
                 </select>
                 <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employment_status span_all"></span></label>
             </div>
@@ -120,9 +120,8 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
-                    <option value="Newly Hired">Newly Hired</option>
-                    <option value="Direct Hired">Direct Hired</option>
-                    <option value="Rehired">Rehired</option>
+                    <option value="DIRECT HIRED">DIRECT HIRED</option>
+                    <option value="REHIRED">REHIRED</option>
                 </select>
                 <label for="employment_origin" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT ORIGIN <span class="span_employment_origin span_all"></span></label>
             </div>
@@ -201,9 +200,10 @@
     <hr class="hr-design">
     
     <div id="employee_history_div">
-        <table class="table table-striped table-hover w-100 employee_history_table" id="employee_history_table">
+        <table class="table table-striped table-bordered table-hover w-100 employee_history_table" id="employee_history_table">
             <thead class="thead-educational">
                 <tr>
+                    <th style="width:20%">DATE & TIME</th>
                     <th>HISTORY</th>
                 </tr>
             </thead>

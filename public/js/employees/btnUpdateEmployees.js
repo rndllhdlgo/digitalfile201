@@ -89,7 +89,21 @@ $('#btnUpdate').on('click',function(){
                     if(data.result == 'true'){
                         var employee_id = $('#employee_id').val(data.id);
                         var employee_number = $('#employee_number').val();
-                        
+                        var date_hired = $('#date_hired').val();
+                        var employee_company = $('#employee_company').val();
+                        var employee_branch = $('#employee_branch').val();
+                        var employee_department = $('#employee_department').val();
+                        var employee_position = $('#employee_position').val();
+                        var employment_status = $('#employment_status').val();
+                        var employment_origin = $('#employment_origin').val();
+                        var company_email_address = $('#company_email_address').val();
+                        var company_contact_number = $('#company_contact_number').val();
+                        var hmo_number = $('#hmo_number').val();
+                        var sss_number = $('#sss_number').val();
+                        var pag_ibig_number = $('#pag_ibig_number').val();
+                        var philhealth_number = $('#philhealth_number').val();
+                        var tin_number = $('#tin_number').val();
+                        var account_number = $('#account_number').val();
                         $.ajax({
                             url:"/employees/updateWorkInformation",
                             type:"POST",
@@ -100,7 +114,21 @@ $('#btnUpdate').on('click',function(){
                                 id:id,
                                 employee_id:data.id,
                                 employee_number:employee_number,
-
+                                date_hired:date_hired,
+                                employee_company:employee_company,
+                                employee_branch:employee_branch,
+                                employee_department:employee_department,
+                                employee_position:employee_position,
+                                employment_status:employment_status,
+                                employment_origin:employment_origin,
+                                company_email_address:company_email_address,
+                                company_contact_number:company_contact_number,
+                                hmo_number:hmo_number,
+                                sss_number:sss_number,
+                                pag_ibig_number:pag_ibig_number,
+                                philhealth_number:philhealth_number,
+                                tin_number:tin_number,
+                                account_number:account_number,
                             },
                         });
 
@@ -433,14 +461,6 @@ $('#btnUpdate').on('click',function(){
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);
-                    }
-                    else if(data == 'nochanges'){
-                        $('#loading').hide();
-                        Swal.fire({
-                            title: 'NO CHANGES FOUND',
-                            icon: 'error',
-                            timer: 2000
-                        });
                     }
                     else{
                         $('#loading').hide();

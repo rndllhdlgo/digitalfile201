@@ -46,6 +46,7 @@ Route::get('/index/data','PagesController@index_data');
 
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
+Route::any('/setJobRequirements','PagesController@setJobRequirements');
 
 // Employees Controller
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
@@ -199,6 +200,8 @@ Route::any('/test/import','TryController@test_import');
 
 Route::any('/passwordValidation','TryController@passwordValidation_blade');
 
+Route::any('/tabPane_blade','TryController@tabPane_blade');
+
 Route::any('/users_page','PagesController@users_page');
 
 Route::any('/saveUser','UsersController@saveUser');
@@ -209,3 +212,4 @@ Route::any('/change/password','UsersController@change_password');
 Route::any('/users/status', 'UsersController@users_status');
 
 Route::get('/logs_reload', 'EmployeesController@logs_reload');
+Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');

@@ -2,7 +2,7 @@ $('.logs_table_data tbody').on('click', 'tr', function(){
     var data =  $('.logs_table_data').DataTable().row(this).data();
     Swal.fire({
         title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
-        html: `<h4 style="color:#0d1a80 !important;">` + data.username + `[` + data.user_level + `]` + `</h4>` + `<br>` + `<h6>` + data.logs.replaceAll(" [","<br>[") + `</h6>`,
+        html: `<h4 style="color:#0d1a80 !important;">` + data.username + `[` + data.user_level + `]` + `</h4>` + `<br>` + `<h5>` + data.logs.replaceAll(" [","<br>[") + `</h5>`,
         width: 850,
     });
     // Swal.fire({
