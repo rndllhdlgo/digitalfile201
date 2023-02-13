@@ -86,14 +86,12 @@
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="hidden" id="secondary_school_name_orig">
                         <input class="forminput form-control secondary_field text-capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_name" class="formlabel form-label"><span class="span_secondary_school_name span_all span_secondary">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="hidden" id="secondary_school_address_orig">
                         <input class="forminput form-control secondary_field text-capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_address" class="formlabel form-label"><span class="span_secondary_school_address span_all span_secondary">(Optional)</span></label>
                     </div>
@@ -101,13 +99,11 @@
 
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="hidden" id="secondary_school_inclusive_years_from_orig">
                         <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_from">
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="hidden" id="secondary_school_inclusive_years_to_orig">
                         <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_to">
                     </div>
                 </td>
@@ -130,14 +126,12 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="hidden" id="primary_school_name_orig">
                             <input class="forminput form-control text-capitalize " type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_name" class="formlabel form-label"><span class="span_primary_school_name span_all"></span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="hidden" id="primary_school_address_orig">
                             <input class="forminput form-control text-capitalize " type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_address" class="formlabel form-label"><span class="span_primary_school_address span_all"></span></label>
                         </div>
@@ -145,13 +139,11 @@
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="hidden" id="primary_school_inclusive_years_from_orig">
                             <input type="month" class="forminput form-control " id="primary_school_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="hidden" id="primary_school_inclusive_years_to_orig">
                             <input type="month" class="forminput form-control " id="primary_school_inclusive_years_to">
                         </div>
                     </td>

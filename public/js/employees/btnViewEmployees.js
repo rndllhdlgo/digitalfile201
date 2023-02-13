@@ -172,16 +172,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Education Trainings
                 $('#secondary_school_name').val(value.secondary_school_name);
-                $('#secondary_school_name_orig').val(value.secondary_school_name);
-
                 $('#secondary_school_address').val(value.secondary_school_address);
-                $('#secondary_school_address_orig').val(value.secondary_school_address);
-
                 $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
-                $('#secondary_school_inclusive_years_from_orig').val(value.secondary_school_inclusive_years_from);
-
                 $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
-                $('#secondary_school_inclusive_years_to_orig').val(value.secondary_school_inclusive_years_to);
 
                 $('#primary_school_name').val(value.primary_school_name);
                 $('#primary_school_name_orig').val(value.primary_school_name);

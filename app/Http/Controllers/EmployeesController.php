@@ -1095,97 +1095,113 @@ class EmployeesController extends Controller
             }
         }
         else{
-            $secondary_school_name_orig = $request->secondary_school_name_orig;
-            $secondary_school_address_orig = $request->secondary_school_address_orig;
-            $secondary_school_inclusive_years_from_orig = $request->secondary_school_inclusive_years_from_orig;
-            $secondary_school_inclusive_years_to_orig = $request->secondary_school_inclusive_years_to_orig;
+            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+            $secondary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_name;
+            $secondary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_address;
+            $secondary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_from;
+            $secondary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_to;
+            $primary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_name;
+            $primary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_address;
+            $primary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_from;
+            $primary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_to;
 
-            $primary_school_name_orig = $request->primary_school_name_orig;
-            $primary_school_address_orig = $request->primary_school_address_orig;
-            $primary_school_inclusive_years_from_orig = $request->primary_school_inclusive_years_from_orig;
-            $primary_school_inclusive_years_to_orig = $request->primary_school_inclusive_years_to_orig;
+            if($request->secondary_school_name != $secondary_school_name_orig){
+                $secondary_school_name_new = $request->secondary_school_name;
+                $secondary_school_name_change = "[SECONDARY SCHOOL NAME: FROM '$secondary_school_name_orig' TO '$secondary_school_name_new']";
+            }
+            else{
+                $secondary_school_name_change = NULL;
+            }
+
+            if($request->secondary_school_address != $secondary_school_address_orig){
+                $secondary_school_address_new = $request->secondary_school_address;
+                $secondary_school_address_change = "[SECONDARY SCHOOL ADDRESS: FROM '$secondary_school_address_orig' TO '$secondary_school_address_new']";
+            }
+            else{
+                $secondary_school_address_change = NULL;
+            }
+
+            if($request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig){
+                $secondary_school_inclusive_years_from_new = $request->secondary_school_inclusive_years_from;
+                $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_orig' TO '$secondary_school_inclusive_years_from_new']";
+            }
+            else{
+                $secondary_school_inclusive_years_from_change = NULL;
+            }
+            
+            if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
+                $secondary_school_inclusive_years_to_new = $request->secondary_school_inclusive_years_from;
+                $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_orig' TO '$secondary_school_inclusive_years_to_new']";
+            }
+            else{
+                $secondary_school_inclusive_years_to_change = NULL;
+            }
+            //
+            if($request->primary_school_name != $primary_school_name_orig){
+                $primary_school_name_new = $request->primary_school_name;
+                $primary_school_name_change = "[PRIMARY SCHOOL NAME: FROM '$primary_school_name_orig' TO '$primary_school_name_new']";
+            }
+            else{
+                $primary_school_name_change = NULL;
+            }
+
+            if($request->primary_school_address != $primary_school_address_orig){
+                $primary_school_address_new = $request->primary_school_address;
+                $primary_school_address_change = "[PRIMARY SCHOOL ADDRESS: FROM '$primary_school_address_orig' TO '$primary_school_address_new']";
+            }
+            else{
+                $primary_school_address_change = NULL;
+            }
+
+            if($request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig){
+                $primary_school_inclusive_years_from_new = $request->primary_school_inclusive_years_from;
+                $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_orig' TO '$primary_school_inclusive_years_from_new']";
+            }
+            else{
+                $primary_school_inclusive_years_from_change = NULL;
+            }
+            
+            if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
+                $primary_school_inclusive_years_to_new = $request->primary_school_inclusive_years_from;
+                $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_orig' TO '$primary_school_inclusive_years_to_new']";
+            }
+            else{
+                $primary_school_inclusive_years_to_change = NULL;
+            }
 
             $sql = EducationalAttainment::where('employee_id',$request->employee_id)
             ->update([
-                'secondary_school_name' => $request->secondary_school_name_new,
-                'secondary_school_address' => $request->secondary_school_address_new,
-                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from_new,
-                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to_new,
-                'primary_school_name' => $request->primary_school_name_new,
-                'primary_school_address' => $request->primary_school_address_new,
-                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from_new,
-                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to_new,
+                'secondary_school_name' => $request->secondary_school_name,
+                'secondary_school_address' => $request->secondary_school_address,
+                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                'primary_school_name' => $request->primary_school_name,
+                'primary_school_address' => $request->primary_school_address,
+                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
             ]);
 
             if($sql){
-                $education_trainings_title = "[EDUCATION/TRAININGS]";
-                if($secondary_school_name_orig != $request->secondary_school_name_new){
-                    $secondary_school_name_change = "[Secondary School Name: FROM '$secondary_school_name_orig' TO '$request->secondary_school_name_new']";
-                }
-                else{
-                    $secondary_school_name_change = NULL;
-                }
-                if($secondary_school_address_orig != $request->secondary_school_address_new){
-                    $secondary_school_address_change = "[Secondary School Address: FROM '$secondary_school_address_orig' TO '$request->secondary_school_address_new']";
-                }
-                else{
-                    $secondary_school_address_change = NULL;
-                }
-                if($secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new){
-                    $secondary_school_inclusive_years_from_change = "[Secondary School Start Year: FROM '$secondary_school_inclusive_years_from_orig' TO '$request->secondary_school_inclusive_years_from_new']";
-                }
-                else{
-                    $secondary_school_inclusive_years_from_change = NULL;
-                }
-                if($secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new){
-                    $secondary_school_inclusive_years_to_change = "[Secondary School End Year: FROM '$secondary_school_inclusive_years_to_orig' TO '$request->secondary_school_inclusive_years_to_new']";
-                }
-                else{
-                    $secondary_school_inclusive_years_to_change = NULL;
-                }
-                if($primary_school_name_orig != $request->primary_school_name_new){
-                    $primary_school_name_change = "[Primary School Name: FROM '$primary_school_name_orig' TO '$request->primary_school_name_new']";
-                }
-                else{
-                    $primary_school_name_change = NULL;
-                }
-                if($primary_school_address_orig != $request->primary_school_address_new){
-                    $primary_school_address_change = "[Primary School Address: FROM '$primary_school_address_orig' TO '$request->primary_school_address_new']";
-                }
-                else{
-                    $primary_school_address_change = NULL;
-                }
-                if($primary_school_inclusive_years_from_orig != $request->primary_school_inclusive_years_from_new){
-                    $primary_school_inclusive_years_from_change = "[Primary School Start Year: FROM '$primary_school_inclusive_years_from_orig' TO '$request->primary_school_inclusive_years_from_new']";
-                }
-                else{
-                    $primary_school_inclusive_years_from_change = NULL;
-                }
-                if($primary_school_inclusive_years_to_orig != $request->primary_school_inclusive_years_to_new){
-                    $primary_school_inclusive_years_to_change = "[Primary School End Year: FROM '$primary_school_inclusive_years_to_orig' TO '$request->primary_school_inclusive_years_to_new']";
-                }
-                else{
-                    $primary_school_inclusive_years_to_change = NULL;
-                }
-
+                
                 $result = 'true';
                 $id = $employee->id;
 
-                if($secondary_school_name_orig != $request->secondary_school_name_new
-                || $secondary_school_address_orig != $request->secondary_school_address_new
-                || $secondary_school_inclusive_years_from_orig != $request->secondary_school_inclusive_years_from_new
-                || $secondary_school_inclusive_years_to_orig != $request->secondary_school_inclusive_years_to_new
-                || $primary_school_name_orig != $request->primary_school_name_new
-                || $primary_school_address_orig != $request->primary_school_address_new
-                || $primary_school_inclusive_years_from_orig != $request->primary_school_inclusive_years_from_new
-                || $primary_school_inclusive_years_to_orig != $request->primary_school_inclusive_years_to_new
+                if(
+                   $request->secondary_school_name != $secondary_school_name_orig ||
+                   $request->secondary_school_address != $secondary_school_address_orig ||
+                   $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
+                   $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
+                   $request->primary_school_name != $primary_school_name_orig ||
+                   $request->primary_school_address != $primary_school_address_orig ||
+                   $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
+                   $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
                 ){
 
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                            $education_trainings_title
                                             $secondary_school_name_change
                                             $secondary_school_address_change
                                             $secondary_school_inclusive_years_from_change
@@ -1196,6 +1212,20 @@ class EmployeesController extends Controller
                                             $primary_school_inclusive_years_to_change
                                             ";
                     $employee_logs->save();
+
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                            $secondary_school_name_change
+                                            $secondary_school_address_change
+                                            $secondary_school_inclusive_years_from_change
+                                            $secondary_school_inclusive_years_to_change
+                                            $primary_school_name_change
+                                            $primary_school_address_change
+                                            $primary_school_inclusive_years_from_change
+                                            $primary_school_inclusive_years_to_change
+                                            ";
+                    $userlogs->save();
                 }
             }
             else{
