@@ -4,7 +4,8 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>{{env('APP_NAME')}}</title>
+        {{-- <title>{{env('APP_NAME')}}</title> --}}
+        <title>DIGITAL 201 FILE</title>
         <link rel="icon" href="/images/ideaserv_systems_logo.png">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/5.0.0/mdb.min.css" rel="stylesheet"/>

@@ -42,6 +42,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             });
             employee_data.forEach(value => {
 
+                
                 $('#hidden_id').val(value.id);
                 $('#current_employee').val(value.employee_number);
                 //Personal Information

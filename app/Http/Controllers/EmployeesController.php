@@ -824,7 +824,7 @@ class EmployeesController extends Controller
             // $column_shift = 'shift_code';
             $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
             $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
-            $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
+            $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours 'with BREAK-TIME' $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
         }
         else{
             $employee_shift_change = NULL;
@@ -833,7 +833,7 @@ class EmployeesController extends Controller
         if($request->employee_company != $employee_company_orig){
             $employee_company_orig = Company::where('id', $employee_company_orig)->first()->company_name;
             $employee_company_new = Company::where('id', $request->employee_company)->first()->company_name;
-            $employee_company_change = "[COMPANY NAME: FROM '$employee_company_orig' TO '$employee_company_new']";
+            $employee_company_change = "[COMPANY: FROM '$employee_company_orig' TO '$employee_company_new']";
         }
         else{
             $employee_company_change = NULL;
@@ -996,17 +996,68 @@ class EmployeesController extends Controller
                 $userlogs = new LogsTable;
                 $userlogs->employee_id = $request->id;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE $employee_number_change $date_hired_change $employee_shift_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change ";
+                $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE 
+                                    $employee_number_change 
+                                    $date_hired_change 
+                                    $employee_shift_change 
+                                    $employee_company_change 
+                                    $employee_branch_change 
+                                    $employee_department_change 
+                                    $employee_position_change 
+                                    $employment_status_change 
+                                    $employment_origin_change 
+                                    $company_email_address_change 
+                                    $company_contact_number_change 
+                                    $hmo_number_change 
+                                    $sss_number_change 
+                                    $pag_ibig_number_change 
+                                    $philhealth_number_change 
+                                    $tin_number_change 
+                                    $account_number_change ";
                 $userlogs->save();
 
                 $userlogs = new History;
                 $userlogs->employee_id = $request->id;
-                $userlogs->history = "UPDATED DETAILS $employee_number_change $date_hired_change $employee_company_change $employee_shift_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
+                $userlogs->history = "UPDATED DETAILS 
+                                      $employee_number_change 
+                                      $date_hired_change 
+                                      $employee_company_change 
+                                      $employee_shift_change 
+                                      $employee_branch_change 
+                                      $employee_department_change 
+                                      $employee_position_change 
+                                      $employment_status_change 
+                                      $employment_origin_change 
+                                      $company_email_address_change 
+                                      $company_contact_number_change 
+                                      $hmo_number_change 
+                                      $sss_number_change 
+                                      $pag_ibig_number_change 
+                                      $philhealth_number_change 
+                                      $tin_number_change 
+                                      $account_number_change";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig) $employee_number_change $date_hired_change $employee_shift_change$employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $account_number_change";
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig) 
+                                        $employee_number_change 
+                                        $date_hired_change 
+                                        $employee_shift_change 
+                                        $employee_company_change 
+                                        $employee_branch_change 
+                                        $employee_department_change 
+                                        $employee_position_change 
+                                        $employment_status_change 
+                                        $employment_origin_change 
+                                        $company_email_address_change 
+                                        $company_contact_number_change 
+                                        $hmo_number_change 
+                                        $sss_number_change 
+                                        $pag_ibig_number_change 
+                                        $philhealth_number_change 
+                                        $tin_number_change 
+                                        $account_number_change";
                 $userlogs->save();
             }
         }
