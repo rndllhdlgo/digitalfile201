@@ -1,3 +1,4 @@
+var college_change,training_change,vocational_change;
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
@@ -147,6 +148,7 @@ $(document).ready(function(){
             $('#college_table_orig_tbody').append(college_table);
             $('#college_table_orig').show();
             $('#college_table_orig tr:last').remove();
+            college_change = 'CHANGED';
         }
         
         $('#college_name').val("");
@@ -186,6 +188,7 @@ $(document).ready(function(){
             $('.dataTables_empty').closest('tr').remove();
             $('#training_table_orig_tbody').append(training_table);
             $('#training_table_orig').show();
+            training_change = 'CHANGED';
         }
         
         $('#training_name').val("");
@@ -224,6 +227,7 @@ $(document).ready(function(){
             $('.dataTables_empty').closest('tr').remove();
             $('#vocational_table_orig_tbody').append(vocational_table);
             $('#vocational_table_orig').show(); 
+            vocational_change = 'CHANGED';
         }
 
         $('#vocational_name').val("");

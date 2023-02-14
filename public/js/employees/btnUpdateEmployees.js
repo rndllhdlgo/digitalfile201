@@ -159,7 +159,10 @@ $('#btnUpdate').on('click',function(){
                                 primary_school_name:primary_school_name,
                                 primary_school_address:primary_school_address,
                                 primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                                primary_school_inclusive_years_to:primary_school_inclusive_years_to,
+                                college_change:college_change,
+                                training_change:training_change,
+                                vocational_change:vocational_change,
                             }
                         });
         

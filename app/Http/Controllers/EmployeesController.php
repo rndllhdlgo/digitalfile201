@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use App\Models\UserLogs;
 use App\Models\ChildrenTable;
@@ -514,8 +515,9 @@ class EmployeesController extends Controller
         }
         
         if($request->birthday != $birthday_orig){
-            $birthday_new = $request->birthday;
-            $birthday_change = "[BIRTHDAY: FROM '$birthday_orig' TO '$birthday_new']";
+            $birthday1 = Carbon::parse($birthday_orig)->format('F d, Y');
+            $birthday2 = Carbon::parse($request->birthday)->format('F d, Y');
+            $birthday_change = "[BIRTHDAY: FROM '$birthday1' TO '$birthday2']";
         }
         else{
             $birthday_change = NULL;
@@ -1170,6 +1172,27 @@ class EmployeesController extends Controller
                 $primary_school_inclusive_years_to_change = NULL;
             }
 
+            if($request->college_change == 'CHANGED'){
+                $college_update = "[COLLEGE EDUCATION: LIST OF COLLEGE EDUCATION/S HAVE BEEN CHANGED]";
+            }
+            else{
+                $college_update = NULL;
+            }
+
+            if($request->training_change == 'CHANGED'){
+                $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
+            }
+            else{
+                $training_update = NULL;
+            }
+
+            if($request->vocational_change == 'CHANGED'){
+                $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
+            }
+            else{
+                $vocational_update = NULL;
+            }
+
             $sql = EducationalAttainment::where('employee_id',$request->employee_id)
             ->update([
                 'secondary_school_name' => $request->secondary_school_name,
@@ -1195,7 +1218,10 @@ class EmployeesController extends Controller
                    $request->primary_school_name != $primary_school_name_orig ||
                    $request->primary_school_address != $primary_school_address_orig ||
                    $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
-                   $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
+                   $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
+                   $request->college_change == 'CHANGED' ||
+                   $request->training_change == 'CHANGED' ||
+                   $request->vocational_change == 'CHANGED'
                 ){
 
                     $employee_logs = new LogsTable;
@@ -1210,6 +1236,9 @@ class EmployeesController extends Controller
                                             $primary_school_address_change
                                             $primary_school_inclusive_years_from_change
                                             $primary_school_inclusive_years_to_change
+                                            $college_update
+                                            $training_update
+                                            $vocational_update
                                             ";
                     $employee_logs->save();
 
@@ -1224,6 +1253,9 @@ class EmployeesController extends Controller
                                             $primary_school_address_change
                                             $primary_school_inclusive_years_from_change
                                             $primary_school_inclusive_years_to_change
+                                            $college_update
+                                            $training_update
+                                            $vocational_update
                                             ";
                     $userlogs->save();
                 }

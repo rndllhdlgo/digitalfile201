@@ -892,6 +892,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 }, 1000);
 
+                college_change = '';
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
@@ -1319,6 +1320,7 @@ $(document).on('click','.btn_delete_college',function(){
     var data = $('.college_table_orig').DataTable().row(id).data();
     college_id.push(data.id);
     $(this).parent().parent().remove();
+    college_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_delete_training',function(){
@@ -1326,6 +1328,7 @@ $(document).on('click','.btn_delete_training',function(){
     var data = $('.training_table_orig').DataTable().row(id).data();
     training_id.push(data.id);
     $(this).parent().parent().remove();
+    training_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_delete_vocational',function(){
@@ -1333,6 +1336,7 @@ $(document).on('click','.btn_delete_vocational',function(){
     var data = $('.vocational_table_orig').DataTable().row(id).data();
     vocational_id.push(data.id);
     $(this).parent().parent().remove();
+    vocational_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_delete_job',function(){
