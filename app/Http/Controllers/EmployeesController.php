@@ -815,8 +815,9 @@ class EmployeesController extends Controller
         }
 
         if($request->date_hired != $date_hired_orig){
-            $date_hired_new = $request->date_hired;
-            $date_hired_change = "[DATE HIRED: FROM '$date_hired_orig' TO '$date_hired_new']";
+            $date_hired1 = Carbon::parse($date_hired_orig)->format('F d, Y');
+            $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
+            $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
         }
         else{
             $date_hired_change = NULL;
@@ -1125,15 +1126,17 @@ class EmployeesController extends Controller
             }
 
             if($request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig){
-                $secondary_school_inclusive_years_from_new = $request->secondary_school_inclusive_years_from;
-                $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_orig' TO '$secondary_school_inclusive_years_from_new']";
+                $secondary_school_inclusive_years_from_1 = Carbon::parse($secondary_school_inclusive_years_from_orig)->format('F Y');
+                $secondary_school_inclusive_years_from_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
+                $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_1' TO '$secondary_school_inclusive_years_from_2']";
             }
             else{
                 $secondary_school_inclusive_years_from_change = NULL;
             }
             
             if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
-                $secondary_school_inclusive_years_to_new = $request->secondary_school_inclusive_years_from;
+                $secondary_school_inclusive_years_to_1 = Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y');
+                $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
                 $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_orig' TO '$secondary_school_inclusive_years_to_new']";
             }
             else{
@@ -1157,16 +1160,18 @@ class EmployeesController extends Controller
             }
 
             if($request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig){
-                $primary_school_inclusive_years_from_new = $request->primary_school_inclusive_years_from;
-                $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_orig' TO '$primary_school_inclusive_years_from_new']";
+                $primary_school_inclusive_years_from_1 = Carbon::parse($primary_school_inclusive_years_from_orig)->format('F Y');
+                $primary_school_inclusive_years_from_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
+                $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_1' TO '$primary_school_inclusive_years_from_2']";
             }
             else{
                 $primary_school_inclusive_years_from_change = NULL;
             }
             
             if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
-                $primary_school_inclusive_years_to_new = $request->primary_school_inclusive_years_from;
-                $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_orig' TO '$primary_school_inclusive_years_to_new']";
+                $primary_school_inclusive_years_to_1 = Carbon::parse($primary_school_inclusive_years_to_orig)->format('F Y');
+                $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
+                $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_1' TO '$primary_school_inclusive_years_to_2']";
             }
             else{
                 $primary_school_inclusive_years_to_change = NULL;
