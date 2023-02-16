@@ -15,9 +15,6 @@ function checkRequiredFields(){
             }
         });
     }
-// $('#locs').on('click',function(){
-//     current_location = 
-// });
 
     // if($('#employee_information').is(":visible")){
     //     $('.formlabel').each(function(){

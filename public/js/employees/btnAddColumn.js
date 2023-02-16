@@ -555,26 +555,6 @@ $(document).ready(function(){
             $('.contracts_field').removeClass('required_field');
             $('.contracts_field').removeClass('border border-danger');
         }
-
-        // if($('#resignation_reason').val() || $('#resignation_date').val() || $('#resignation_file').val()){
-        //     $('.resignation_field').addClass('required_field');
-        //     $('.span_resignation').hide();
-        // }
-        // else{
-        //     $('.span_resignation').show();
-        //     $('.resignation_field').removeClass('required_field');
-        //     $('.resignation_field').removeClass('border border-danger');
-        // }
-        
-        // if($('#termination_reason').val() || $('#termination_date').val() || $('#termination_file').val()){
-        //     $('.termination_field').addClass('required_field');
-        //     $('.span_termination').hide();
-        // }
-        // else{
-        //     $('.span_termination').show();
-        //     $('.termination_field').removeClass('required_field');
-        //     $('.termination_field').removeClass('border border-danger');
-        // }
 }, 0);
 
 // var college_tr_add;

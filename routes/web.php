@@ -27,7 +27,6 @@ use App\Http\Controllers\SalesMonthly;
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/', 'HomeController@index');
-Route::get('/ping','HomeController@ping');
 Route::get('/org', 'HomeController@org');
 
 
@@ -189,18 +188,16 @@ Route::any('/employees/termination_delete','EmployeesController@termination_dele
 Route::any('/employees/logs_data','EmployeesController@logs_data');
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 
+// Try Controllers
 Route::any('/evaluation','TryController@evaluation_blade');
 Route::any('/evaluationSave','TryController@evaluation_save');
-
 Route::any('/chosen','TryController@chosen_blade');
 Route::any('/saveChosen','TryController@chosen_save');
-
 Route::any('/import','TryController@import_blade');
 Route::any('/test/import','TryController@test_import');
-
 Route::any('/passwordValidation','TryController@passwordValidation_blade');
-
 Route::any('/tabPane_blade','TryController@tabPane_blade');
+Route::any('/spatie','TryController@spatie_blade');
 
 Route::any('/users_page','PagesController@users_page');
 
