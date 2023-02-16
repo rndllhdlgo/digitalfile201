@@ -9,7 +9,9 @@ use App\Models\Ping;
 use Illuminate\Http\Request;
 use App\Models\PersonalInformationTable;
 use App\Models\WorkInformationTable;
-
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -30,6 +32,20 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // Role::create(['name'=>'ADMIN']);
+        // Permission::create(['name' => 'delete']); To Create Permissions
+        // auth()->user()->givePermissionTo('add'); To give permission to current user
+        // return auth()->user()->getAllPermissions(); To Get all permission of the current user/role
+        // return User::role('ADMIN')->get(); To Get the user based on the role
+        // return auth()->user()->revokePermissionTo('edit'); To remove the permission of the current role
+        // return User::permission('edit')->get();
+        // if(auth()->user()->hasPermissionTo('edit')){ to check if current role hasPermission('value')
+        //     return 'true';
+        // }
+        // else{
+        //     return 'false';
+        // }
+            
         $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();

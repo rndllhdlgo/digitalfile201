@@ -14,7 +14,6 @@
                     <tr>
                         <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
                             <span id="current_datetime" style="margin-left: 50px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
-                            {{-- <span id="current_speed" class="font-weight-bold"> (Ping: 0.000s)</span> --}}
                         </td>
                         <td  class="m-0 p-0" rowspan="3">
                             <i class="fa fa-user-circle fa-4x float-end" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
@@ -64,3 +63,6 @@
 		</ul>
     </div>
 </nav>
+
+<input type="hidden" id="current_user" value="{{auth()->user()->id}}" readonly>
+<input type="hidden" id="current_user_level" value="{{auth()->user()->user_level}}" readonly>
