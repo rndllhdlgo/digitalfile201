@@ -2123,8 +2123,8 @@ class EmployeesController extends Controller
         $employee_work_history_logs = History::selectRaw(
             'history_logs.id,
             history_logs.history,
-            history_logs.created_at AS date'
-            )
+            history_logs.created_at AS date,
+            DATE_FORMAT(history_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
         ->where('employee_id',$request->id)
         ->get();
         return DataTables::of($employee_work_history_logs)->make(true);
@@ -2167,8 +2167,8 @@ class EmployeesController extends Controller
                         users.name AS username,
                         users.user_level,
                         logs_tables.created_at AS date,
-                        logs_tables.logs'
-                        )
+                        DATE_FORMAT(logs_tables.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
+                        logs_tables.logs')
             ->where('employee_id',$request->id)
             ->join('users', 'users.id','user_id')
             ->get();

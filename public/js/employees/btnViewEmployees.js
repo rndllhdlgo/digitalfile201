@@ -807,17 +807,20 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
 
+                var logs_table_data;
                 $('.logs_table_data').dataTable().fnDestroy();
-                $('.logs_table_data').DataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
+                logs_table_data = $('.logs_table_data').DataTable({
+                    dom:'l<"breakspace">trip',
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
+                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
+                        lengthMenu:"Show _MENU_ User Activities",
+                        emptyTable:"No User Activities Data Found!",
+                        loadingRecords: "Loading User Activities Records...",
                     },
-                    serverSide: true,
+                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    processing:true,
+                    serverSide:false,
                     ajax: {
                         url: '/employees/logs_data',
                         async: false,
@@ -826,18 +829,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     },
                     order: [[ 0, "desc" ]],
+                    columnDefs: [
+                        {
+                            "targets": [0],
+                            "visible": false,
+                            "searchable": true
+                        },
+                    ],
                     columns: [
-                        // { data: 'username',width:'20%'},
-                        // { data: 'user_level',width:'20%'},
-                        // { 
-                        //     data: 'logs', 
-                        //     "render":function(data,type,row){
-                        //         logs = row.logs.replaceAll(" [", "<br>[");
-                        //         return logs;
-                        //     },
-                        //     width: '60%'
-                        // },
-                        // { data: 'datetime' },
+                        { data: 'datetime' },
                         {
                             data: 'date',
                             width: '15%',
@@ -857,6 +857,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         },
                     ],
                 });
+                $('div.breakspace').html('<br><br>');
+
+                $('.filter-input').on('keyup search', function(){
+                    logs_table_data.column($(this).data('column')).search($(this).val()).draw();
+                });
 
                 setInterval(function(){
                     if($('#loading').is(':hidden') && standby == false){
@@ -872,18 +877,20 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 }, 1000);
 
-
+                var employee_history_table;
                 $('.employee_history_table').dataTable().fnDestroy();
-                $('.employee_history_table').DataTable({
-                    searching: false,
-                    paging: false,
-                    info: false,
+                employee_history_table = $('.employee_history_table').DataTable({
+                    dom:'l<"breakspace">trip',
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
+                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
+                        lengthMenu:"Show _MENU_ User Activities",
+                        emptyTable:"No User Activities Data Found!",
+                        loadingRecords: "Loading User Activities Records...",
                     },
-                    serverSide: true,
+                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    processing:true,
+                    serverSide:false,
                     ajax: {
                         url: '/employees/history_data',
                         async: false,
@@ -892,7 +899,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     },
                     order: [[ 0, "desc" ]],
+                    columnDefs: [
+                        {
+                            "targets": [0],
+                            "visible": false,
+                            "searchable": true
+                        },
+                    ],
                     columns: [
+                        { data: 'datetime'},
                         {
                             data: 'date',
                             width: '20%',
@@ -917,6 +932,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         //     }
                         // }
                     ],
+                });
+                $('div.breakspace').html('<br><br>');
+
+                $('.filter-input').on('keyup search', function(){
+                    employee_history_table.column($(this).data('column')).search($(this).val()).draw();
                 });
 
                 setInterval(function(){
