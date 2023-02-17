@@ -179,14 +179,10 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
         
-                        var past_medical_condition_orig = $('#past_medical_condition_orig').val(),
-                        past_medical_condition_new = $('#past_medical_condition').val(),
-                        allergies_orig = $('#allergies_orig').val(),
-                        allergies_new = $('#allergies').val(),
-                        medication_orig = $('#medication_orig').val(),
-                        medication_new = $('#medication').val(),
-                        psychological_history_orig = $('#psychological_history_orig').val(),
-                        psychological_history_new = $('#psychological_history').val();
+                        var past_medical_condition = $('#past_medical_condition').val();
+                        var allergies = $('#allergies').val();
+                        var medication = $('#medication').val();
+                        var psychological_history = $('#psychological_history').val();
         
                         $.ajax({
                             url:"/employees/updateMedicalHistory",
@@ -197,14 +193,10 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                past_medical_condition_orig:past_medical_condition_orig,
-                                past_medical_condition_new:past_medical_condition_new,
-                                allergies_orig:allergies_orig,
-                                allergies_new:allergies_new,
-                                medication_orig:medication_orig,
-                                medication_new:medication_new,
-                                psychological_history_orig:psychological_history_orig,
-                                psychological_history_new:psychological_history_new
+                                past_medical_condition:past_medical_condition,
+                                allergies:allergies,
+                                medication:medication,
+                                psychological_history:psychological_history,
                             }
                         });
 

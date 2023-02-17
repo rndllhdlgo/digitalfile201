@@ -177,29 +177,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
 
                 $('#primary_school_name').val(value.primary_school_name);
-                $('#primary_school_name_orig').val(value.primary_school_name);
-
                 $('#primary_school_address').val(value.primary_school_address);
-                $('#primary_school_address_orig').val(value.primary_school_address);
-
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
-                $('#primary_school_inclusive_years_from_orig').val(value.primary_school_inclusive_years_from);
-
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
-                $('#primary_school_inclusive_years_to_orig').val(value.primary_school_inclusive_years_to);
 
                 // Medical History
                 $('#past_medical_condition').val(value.past_medical_condition);
-                $('#past_medical_condition_orig').val(value.past_medical_condition);
-
                 $('#allergies').val(value.allergies);
-                $('#allergies_orig').val(value.allergies);
-
                 $('#medication').val(value.medication);
-                $('#medication_orig').val(value.medication);
-
                 $('#psychological_history').val(value.psychological_history);
-                $('#psychological_history_orig').val(value.psychological_history);
 
                 // Compensation Benefits
                 $('#employee_salary').val(value.employee_salary);

@@ -1294,9 +1294,9 @@ class EmployeesController extends Controller
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
-                    $userlogs->save();
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
+                $userlogs->save();
             }
         }
         else{
@@ -1309,90 +1309,109 @@ class EmployeesController extends Controller
 
     public function updateMedicalHistory(Request $request){
         $employee = MedicalHistory::where('employee_id',$request->employee_id)->first();
-        if(!$employee){
-            if($request->past_medical_condition_new
-            || $request->allergies_new
-            || $request->medication_new
-            || $request->psychological_history_new
-            ){
-                $employee = new MedicalHistory;
-                $employee->employee_id = $request->employee_id;
-                $employee->past_medical_condition = $request->past_medical_condition_new;
-                $employee->allergies = $request->allergies_new;
-                $employee->medication = $request->medication_new;
-                $employee->psychological_history = $request->psychological_history_new;
-                $save = $employee->save();
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+            if(!$employee){
+                if($request->past_medical_condition ||
+                   $request->allergies ||
+                   $request->medication ||
+                   $request->psychological_history
+                ){
+                    $employee = new MedicalHistory;
+                    $employee->employee_id = $request->employee_id;
+                    $employee->past_medical_condition = $request->past_medical_condition;
+                    $employee->allergies = $request->allergies;
+                    $employee->medication = $request->medication;
+                    $employee->psychological_history = $request->psychological_history;
+                    $save = $employee->save();
+                }
             }
-        }
-        else{
-            $past_medical_condition_orig = $request->past_medical_condition_orig;
-            $allergies_orig = $request->allergies_orig;
-            $medication_orig = $request->medication_orig;
-            $psychological_history_orig = $request->psychological_history_orig;
+            else{
+                $past_medical_condition_orig = MedicalHistory::where('employee_id',$request->id)->first()->past_medical_condition;
+                $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
+                $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
+                $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
+                
+                if($request->past_medical_condition != $past_medical_condition_orig){
+                    $past_medical_condition_new = $request->past_medical_condition;
+                    $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
+                }
+                else{
+                    $past_medical_condition_change = NULL;
+                }
+               
+                if($request->allergies != $allergies_orig){
+                    $allergies_new = $request->allergies;
+                    $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
+                }
+                else{
+                    $allergies_change = NULL;
+                }
 
-            $sql = MedicalHistory::where('employee_id',$request->employee_id)
-            ->update([
-                'past_medical_condition' => $request->past_medical_condition_new,
-                'allergies' => $request->allergies_new,
-                'medication' => $request->medication_new,
-                'psychological_history' => $request->psychological_history_new
-            ]);
+                if($request->medication != $medication_orig){
+                    $medication_new = $request->medication;
+                    $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
+                }
+                else{
+                    $medication_change = NULL;
+                }
 
-        //     if($sql){
-        //         if($past_medical_condition_orig != $request->past_medical_condition_new){
-        //             $past_medical_condition_change = "[Past Med. Condition: FROM '$past_medical_condition_orig' TO '$request->past_medical_condition_new']";
-        //         }
-        //         else{
-        //             $past_medical_condition_change = NULL;
-        //         }
-        //         if($allergies_orig != $request->allergies_new){
-        //             $allergies_change = "[Allergies: FROM '$allergies_orig' TO '$request->allergies_new']";
-        //         }
-        //         else{
-        //             $allergies_change = NULL;
-        //         }
-        //         if($medication_orig != $request->medication_new){
-        //             $medication_change = "[Medication: FROM '$medication_orig' TO '$request->medication_new']";
-        //         }
-        //         else{
-        //             $medication_change = NULL;
-        //         }
-        //         if($psychological_history_orig != $request->psychological_history_new){
-        //             $psychological_history_change = "[Psychological History: FROM '$psychological_history_orig' TO '$request->psychological_history_new']";
-        //         }
-        //         else{
-        //             $psychological_history_change = NULL;
-        //         }
+                if($request->psychological_history != $psychological_history_orig){
+                    $psychological_history_new = $request->psychological_history;
+                    $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
+                }
+                else{
+                    $psychological_history_change = NULL;
+                }
 
-        //         $result = 'true';
-        //         $id = $employee->id;
+                $sql = MedicalHistory::where('employee_id',$request->employee_id)
+                    ->update([
+                        'past_medical_condition' => $request->past_medical_condition,
+                        'allergies' => $request->allergies,
+                        'medication' => $request->medication,
+                        'psychological_history' => $request->psychological_history,
+                    ]);
 
-        //         if($past_medical_condition_orig != $request->past_medical_condition_new
-        //         || $allergies_orig != $request->allergies_new
-        //         || $medication_orig != $request->medication_new
-        //         || $psychological_history_orig != $request->psychological_history_new
-        //         ){
+                if($sql){
+        
+                    $result = 'true';
+                    $id = $employee->id;
+        
+                    if(
+                        $request->past_medical_condition != $past_medical_condition_orig ||
+                        $request->allergies != $allergies_orig ||
+                        $request->medication != $medication_orig ||
+                        $request->psychological_history != $psychological_history_orig
+                    ){
+                        $employee_logs = new LogsTable;
+                        $employee_logs->employee_id = $request->id;
+                        $employee_logs->user_id = auth()->user()->id;
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                                $past_medical_condition_change
+                                                $allergies_change
+                                                $medication_change
+                                                $psychological_history_change
+                                                ";
+                        $employee_logs->save();
 
-        //             $employee_logs = new LogsTable;
-        //             $employee_logs->employee_id = $request->id;
-        //             $employee_logs->user_id = auth()->user()->id;
-        //             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-        //                                     $past_medical_condition_change
-        //                                     $allergies_change
-        //                                     $medication_change
-        //                                     $psychological_history_change
-        //                                     ";
-        //             $employee_logs->save();
-        //         }
-        //     }
-        //     else{
-        //         $result = 'false';
-        //         $id = '';
-        //     }
-        //     $data = array('result' => $result, 'id' => $id);
-        //     return response()->json($data);
-        // }
-        }
+                        $userlogs = new UserLogs;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                                $past_medical_condition_change
+                                                $allergies_change
+                                                $medication_change
+                                                $psychological_history_change
+                                                ";
+                        $userlogs->save();
+                    }
+                }
+                else{
+                    $result = 'false';
+                    $id = '';
+                }
+                $data = array('result' => $result, 'id' => $id);
+                return response()->json($data);
+            }
     }
 
     public function updateCompensationBenefits(Request $request){
