@@ -5,7 +5,7 @@
 <br>
 <div class="row">
     <div class="col">
-        <h4 style="color: #0d1a80;">MAINTENANCE</h4>
+        <h4 style="color: #0d1a80;" class="my-header">MAINTENANCE</h4>
     </div>
     <div class="col">
         <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-plus"></i> ADD COMPANY</button>

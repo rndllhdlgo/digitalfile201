@@ -2,7 +2,7 @@
 
 @section('content')
 <br>
-<strong style="color: #0d1a80;font-size:20px;">USER ACTIVITY LOGS</strong>
+<h4 style="color: #0d1a80;" class="my-header">USER ACTIVITY LOGS</h4>
     <hr>
     <div class="row">
         <div class="col">

@@ -4,7 +4,7 @@
 <br>
 <div class="row">
     <div class="col">
-        <h4 style="color: #0d1a80;">USERS TABLE</h4>
+        <h4 style="color: #0d1a80;" class="my-header">USERS</h4>
     </div>
     <div class="col">
         <button type="button" class="btn btn-success grow float-end" id="addUserBtn" title="ADD USER" style="font-weight: bolder;"><i class="fas fa-user-plus"></i> ADD USER</button>
