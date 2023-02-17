@@ -255,10 +255,17 @@ class EmployeesController extends Controller
 
     public function insertImage(Request $request){
         
+        // $employeeImageFile = $request->file('employee_image');
+        // $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
+        // $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
+        // $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
+        // return $employeeImageFileName;
+
         $employeeImageFile = $request->file('employee_image');
         $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-        $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
+        $employeeImageFileName = time().rand(1,100).'_Employee_Image.'.$employeeImageExtension;
         $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
+        
         return $employeeImageFileName;
     }
 
@@ -444,7 +451,8 @@ class EmployeesController extends Controller
                 unlink(public_path('storage/employee_images/'.$request->filename_delete));
             }
         }
-        $employee = PersonalInformationTable::where('id',$request->id)->first();
+        $employee = PersonalInformationTable::find($request->id);
+        $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $first_name_orig = PersonalInformationTable::where('id', $request->id)->first()->first_name;
         $middle_name_orig = PersonalInformationTable::where('id', $request->id)->first()->middle_name;
         $last_name_orig = PersonalInformationTable::where('id', $request->id)->first()->last_name;
@@ -474,6 +482,8 @@ class EmployeesController extends Controller
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
         
+        $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]' : null;
+
         if(strtoupper($request->first_name) != $first_name_orig){
             $first_name_new = strtoupper($request->first_name);
             $first_name_change = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
@@ -701,6 +711,7 @@ class EmployeesController extends Controller
 
         $sql = PersonalInformationTable::find($request->id)
             ->update([
+                'employee_image' => $request->employee_image,
                 'first_name' => strtoupper($request->first_name),
                 'middle_name' => strtoupper($request->middle_name),
                 'last_name' => strtoupper($request->last_name),
@@ -763,17 +774,78 @@ class EmployeesController extends Controller
                 $request->mother_profession != $mother_profession_orig ||
                 $request->emergency_contact_name != $emergency_contact_name_orig ||
                 $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
-                $request->emergency_contact_number != $emergency_contact_number_orig
+                $request->emergency_contact_number != $emergency_contact_number_orig ||
+                $request->employee_image_change == 'CHANGED'
             ){
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE $first_name_change $middle_name_change $last_name_change $suffix_change $nickname_change $birthday_change $gender_change $address_change $ownership_change $province_change $city_change $region_change $height_change $weight_change $religion_change $civil_status_change $email_address_change $telephone_number_change $cellphone_number_change $father_name_change $father_contact_number_change $father_profession_change $mother_name_change $mother_contact_number_change $mother_profession_change $emergency_contact_name_change $emergency_contact_relationship_change $emergency_contact_number_change";
+                $employee_logs->logs = "USER HAS UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE 
+                                        $first_name_change 
+                                        $middle_name_change 
+                                        $last_name_change 
+                                        $suffix_change 
+                                        $nickname_change 
+                                        $birthday_change 
+                                        $gender_change 
+                                        $address_change 
+                                        $ownership_change 
+                                        $province_change 
+                                        $city_change 
+                                        $region_change 
+                                        $height_change 
+                                        $weight_change 
+                                        $religion_change 
+                                        $civil_status_change 
+                                        $email_address_change 
+                                        $telephone_number_change 
+                                        $cellphone_number_change 
+                                        $father_name_change 
+                                        $father_contact_number_change 
+                                        $father_profession_change 
+                                        $mother_name_change 
+                                        $mother_contact_number_change 
+                                        $mother_profession_change 
+                                        $emergency_contact_name_change 
+                                        $emergency_contact_relationship_change 
+                                        $emergency_contact_number_change
+                                        $employee_image_update
+                                        ";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig) $first_name_change $middle_name_change $last_name_change $suffix_change $nickname_change $birthday_change $gender_change $address_change $ownership_change $province_change $city_change $region_change $height_change $weight_change $religion_change $civil_status_change $email_address_change $telephone_number_change $cellphone_number_change $father_name_change $father_contact_number_change $father_profession_change $mother_name_change $mother_contact_number_change $mother_profession_change $emergency_contact_name_change $emergency_contact_relationship_change $emergency_contact_number_change";
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig) 
+                                       $first_name_change 
+                                       $middle_name_change 
+                                       $last_name_change 
+                                       $suffix_change 
+                                       $nickname_change 
+                                       $birthday_change 
+                                       $gender_change 
+                                       $address_change 
+                                       $ownership_change 
+                                       $province_change 
+                                       $city_change 
+                                       $region_change 
+                                       $height_change 
+                                       $weight_change 
+                                       $religion_change 
+                                       $civil_status_change 
+                                       $email_address_change 
+                                       $telephone_number_change 
+                                       $cellphone_number_change 
+                                       $father_name_change 
+                                       $father_contact_number_change 
+                                       $father_profession_change 
+                                       $mother_name_change
+                                       $mother_contact_number_change 
+                                       $mother_profession_change 
+                                       $emergency_contact_name_change 
+                                       $emergency_contact_relationship_change 
+                                       $emergency_contact_number_change
+                                       $employee_image_update
+                                       ";
                 $userlogs->save();
             }
             //employeedtparamr

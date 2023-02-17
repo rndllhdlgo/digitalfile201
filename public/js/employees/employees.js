@@ -1,4 +1,4 @@
-var employeesTable;
+var employeesTable,employee_image_change;
 $(document).ready(function(){
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
@@ -194,7 +194,6 @@ $('#child_birthday').on('change',function(){
 });
 
 $('#image_close').on('click',function(){
-    // $('#personal_info').css('zoom','95%');
     Swal.fire({
         title: 'Do you want to remove image?',
         allowOutsideClick: false,
@@ -209,7 +208,6 @@ $('#image_close').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            // $('#personal_info').css('zoom','100%');
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
             $('#employee_image').val('');
@@ -221,6 +219,8 @@ $('#image_close').on('click',function(){
             $('#image_instruction').show();
             // $('.column-1').css("height","280px");
             $('#employee_image').addClass('required_field');
+            employee_image_change = 'CHANGED';
+            alert(employee_image_change);
         }
     });
 });
@@ -599,10 +599,21 @@ $(document).ready(function() {
     $('#job_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
 });
 
+// $(document).on('click', '#btnPdf', function(){
+//     var printContents=document.getElementById('print_file').innerHTML;
+//     var originalContents=document.body.innerHTML;
+//     document.body.innerHTML=printContents;
+//     window.print();
+//     document.body.innerHTML=originalContents;
+// });
+
 $(document).on('click', '#btnPdf', function(){
-    var printContents=document.getElementById('print_file').innerHTML;
-    var originalContents=document.body.innerHTML;
-    document.body.innerHTML=printContents;
-    window.print();
-    document.body.innerHTML=originalContents;
-});
+    var printContents = document.getElementById('print_file').innerHTML;
+    var iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    iframeDoc.body.innerHTML = printContents;
+    iframe.contentWindow.print();
+    document.body.removeChild(iframe);
+  });

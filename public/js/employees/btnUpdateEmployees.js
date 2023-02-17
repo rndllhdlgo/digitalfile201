@@ -47,6 +47,16 @@ $('#btnUpdate').on('click',function(){
     }).then((update) => {
         if (update.isConfirmed) {
             $('#loading').show();
+            if(!$('#filename').val() && $('#employee_image').val()){
+                employee_image_save();
+            }
+            else if(!$('#filename').val() && !$('#employee_image').val()){
+                employee_image = 'N/A';
+            }
+            else{
+                employee_image = $('#employee_image').val();
+                console.log(employee_image);
+            }
 
             $.ajax({
                 url:"/employees/updatePersonalInformation",
@@ -56,6 +66,9 @@ $('#btnUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
+                    employee_image:employee_image,
+                    filename_delete:$('#filename_delete').val(),
+                    employee_image_change:employee_image_change,
                     first_name:first_name,
                     middle_name:middle_name,
                     last_name:last_name,
