@@ -54,7 +54,7 @@ $('#btnUpdate').on('click',function(){
                 employee_image = 'N/A';
             }
             else{
-                employee_image = $('#employee_image').val();
+                employee_image = $('#filename').val();
             }
 
             $.ajax({
