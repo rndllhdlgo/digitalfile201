@@ -83,11 +83,8 @@ $('#addEmployeeBtn').on('click',function(){
     $('#tab1').addClass('tabactive');
     $('#resigned').hide();
     $('#spouse_contact_number').val('');
-    // $('#region').attr('placeholder','AUTOFILL');
 
-    // $('#region').val(' ');
     // $('.input-file-text').addClass('required_field');
-    $('#default').prop('checked',true);
 });
 
 function changeCivilStatus(){
@@ -502,7 +499,6 @@ setInterval(() => {
         $('#retired').show();
     }
 }, 0);
-
 
 setInterval(() => {
     // Check all required field function

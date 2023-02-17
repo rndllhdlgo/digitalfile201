@@ -893,6 +893,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }, 1000);
 
                 college_change = '';
+                vocational_change = '';
+                training_change = '';
+                job_history_change = '';
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
@@ -1344,6 +1347,7 @@ $(document).on('click','.btn_delete_job',function(){
     var data = $('.job_history_table_orig').DataTable().row(id).data();
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
+    job_history_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_memo_delete',function(){

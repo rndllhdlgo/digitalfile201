@@ -63,6 +63,7 @@ Route::any('/employees/updatePersonalInformation','EmployeesController@updatePer
 Route::any('/employees/updateWorkInformation','EmployeesController@updateWorkInformation');
 Route::any('/employees/updateCompensationBenefits','EmployeesController@updateCompensationBenefits');
 Route::any('/employees/updateEducationalAttainment','EmployeesController@updateEducationalAttainment');
+Route::any('/employees/updateJobHistory','EmployeesController@updateJobHistory');
 Route::any('/employees/updateMedicalHistory','EmployeesController@updateMedicalHistory');
 
 Route::any('/employees/saveChildren','EmployeesController@saveChildren');

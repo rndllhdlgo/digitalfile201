@@ -165,6 +165,19 @@ $('#btnUpdate').on('click',function(){
                                 vocational_change:vocational_change,
                             }
                         });
+
+                        $.ajax({
+                            url:"/employees/updateJobHistory", 
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                job_history_change:job_history_change,
+                            }
+                        });
         
                         var past_medical_condition_orig = $('#past_medical_condition_orig').val(),
                         past_medical_condition_new = $('#past_medical_condition').val(),

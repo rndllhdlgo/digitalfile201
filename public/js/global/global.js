@@ -396,8 +396,6 @@ $(".textarea_insurance").keyup(function(event){
 	}
 });
 
-
-
 var app_timeout = $('#APP_TIMEOUT').val();
 
 function decodeHtml(str){

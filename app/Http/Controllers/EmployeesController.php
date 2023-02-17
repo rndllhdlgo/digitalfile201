@@ -1274,6 +1274,39 @@ class EmployeesController extends Controller
         }
     }
 
+    public function updateJobHistory(Request $request){
+        $employee = JobHistoryTable::where('employee_id',$request->employee_id)->first();
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+
+        if($job_history_update){
+            $result = 'true';
+            $id = $employee->id;
+
+            if($request->job_history_change == 'CHANGED'){
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                        $job_history_update
+                                        ";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
+                    $userlogs->save();
+            }
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
+    }
+
     public function updateMedicalHistory(Request $request){
         $employee = MedicalHistory::where('employee_id',$request->employee_id)->first();
         if(!$employee){

@@ -1,4 +1,4 @@
-var college_change,training_change,vocational_change;
+var college_change,training_change,vocational_change,job_history_change;
 setInterval(checkforblankMultiple,0);
 function checkforblankMultiple(){
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
@@ -273,6 +273,8 @@ $(document).ready(function(){
             $('.dataTables_empty').closest('tr').remove();
             $('#job_history_table_tbody').append(job_history_table);
             $('#job_history_table_orig').show();
+            job_history_change = 'CHANGED';
+            alert(job_history_change);
         }
         
         $('#job_company_name').val("");
