@@ -55,7 +55,6 @@ $('#btnUpdate').on('click',function(){
             }
             else{
                 employee_image = $('#employee_image').val();
-                console.log(employee_image);
             }
 
             $.ajax({

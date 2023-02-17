@@ -527,4 +527,4 @@ function checkReqFields(){
 $(document).ready(function() {
     var headerText = $('.my-header').text();
     $('title').text('DIGITAL 201 FILE | ' + headerText);
-  });
+});

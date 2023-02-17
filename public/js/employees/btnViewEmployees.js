@@ -149,17 +149,72 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employee_number').attr('readonly',true);
                 $('#employee_number').css('cursor','not-allowed');
                 $('#date_hired').val(value.date_hired);
+
                 $('#employee_shift').val(value.employee_shift);
+                $('#employee_shift').chosen();
+                $('#employee_shift_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
+
                 $('#employee_company').val(value.employee_company);
+                $('#employee_company').chosen();
+                $('#employee_company_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
+
                 $('#employee_branch').val(value.employee_branch);
+                $('#employee_branch').chosen();
+                $('#employee_branch_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
+
                 $('#employee_department').val(value.employee_department);
+                $('#employee_department').chosen();
+                $('#employee_department_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
+
                 $('#employee_position').val(value.employee_position);
+                $('#employee_position').chosen();
+                $('#employee_position_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
                 
                 $('#employment_status').val(value.employment_status);
+                $('#employment_status').chosen();
+                $('#employment_status_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
                 setTimeout(() => {
                     $('#employment_status').change();
                 }, app_timeout);
+
                 $('#employment_origin').val(value.employment_origin);
+                $('#employment_origin').chosen();
+                $('#employment_origin_chosen').css({
+                    'width':'100%',
+                    'font-weight':'500',
+                    'font-size':'13px',
+                    'font-family':'Arial, Helvetica, sans-serif'
+                });
 
                 $('#company_email_address').val(value.company_email_address);
                 $('#company_contact_number').val(value.company_contact_number);
