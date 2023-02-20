@@ -8,6 +8,8 @@ var children_id,
     resignation_id,
     termination_id = [];
 
+var barangay_clearance_change;
+
 $(document).on('click','table.employeesTable tbody tr',function(){
     
     children_id = [];
@@ -244,19 +246,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 // Compensation Benefits
                 $('#employee_salary').val(value.employee_salary);
-                $('#employee_salary_orig').val(value.employee_salary);
-
                 $('#employee_incentives').val(value.employee_incentives);
-                $('#employee_incentives_orig').val(value.employee_incentives);
-
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
-                $('#employee_overtime_pay_orig').val(value.employee_overtime_pay);
-
                 $('#employee_bonus').val(value.employee_bonus);
-                $('#employee_bonus_orig').val(value.employee_bonus);
-
                 $('#employee_insurance').val(value.employee_insurance);
-                $('#employee_insurance_orig').val(value.employee_insurance);
 
                 $('#employee_information').show();
                 $('#addEmployeeBtn').hide();
@@ -1084,6 +1077,8 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_delete_button').hide();
             $('#barangay_clearance_view').show();
             $('#barangay_clearance_file').addClass('required_field');
+            barangay_clearance_change = 'CHANGED';
+            alert(barangay_clearance_change);
         }
 
         else if(save.isDenied){

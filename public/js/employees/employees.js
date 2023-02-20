@@ -465,23 +465,23 @@ $('#note_required').on('click',function(){
 });
 
 //Currency Format
-var formatter = new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'PHP',
-});
+// var formatter = new Intl.NumberFormat('en-US', {
+//     style: 'currency',
+//     currency: 'PHP',
+// });
   
-  $('#employee_salary').on('focusout', (e)=>{
-      e.target.value = formatter.format(e.target.value);
-  });
-  $('#employee_incentives').on('focusout', (e)=>{
-      e.target.value = formatter.format(e.target.value);
-  });
-  $('#employee_overtime_pay').on('focusout', (e)=>{
-      e.target.value = formatter.format(e.target.value);
-  });
-  $('#employee_bonus').on('focusout', (e)=>{
-      e.target.value = formatter.format(e.target.value);
-  });
+//   $('#employee_salary').on('focusout', (e)=>{
+//       e.target.value = formatter.format(e.target.value);
+//   });
+//   $('#employee_incentives').on('focusout', (e)=>{
+//       e.target.value = formatter.format(e.target.value);
+//   });
+//   $('#employee_overtime_pay').on('focusout', (e)=>{
+//       e.target.value = formatter.format(e.target.value);
+//   });
+//   $('#employee_bonus').on('focusout', (e)=>{
+//       e.target.value = formatter.format(e.target.value);
+//   });
 
 $("input[type='date']").keydown(function (event) { event.preventDefault(); });
 
@@ -616,4 +616,21 @@ $(document).on('click', '#btnPdf', function(){
     iframeDoc.body.innerHTML = printContents;
     iframe.contentWindow.print();
     document.body.removeChild(iframe);
-  });
+});
+
+function formatPesoInput(selector){
+    $(selector).on('keyup', function(){
+      let inputVal = $(this).val().replace(/[^\d]/g, '');
+      inputVal = inputVal.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      inputVal = '₱' + inputVal;
+      $(this).val(inputVal);
+    });
+}
+  
+$(document).ready(function() {
+    // Format multiple peso input fields using the function
+    formatPesoInput('#employee_salary');
+    formatPesoInput('#employee_incentives');
+    formatPesoInput('#employee_overtime_pay');
+    formatPesoInput('#employee_bonus');
+});

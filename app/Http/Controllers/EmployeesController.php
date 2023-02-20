@@ -1489,104 +1489,121 @@ class EmployeesController extends Controller
     public function updateCompensationBenefits(Request $request){
         $employee = CompensationBenefits::where('employee_id',$request->employee_id)->first();
         if(!$employee){
-            if($request->employee_salary_new 
-            || $request->employee_incentives_new 
-            || $request->employee_overtime_pay_new 
-            || $request->employee_bonus_new 
-            || $request->employee_insurance_new){
+            if($request->employee_salary
+            || $request->employee_incentives
+            || $request->employee_overtime_pay
+            || $request->employee_bonus
+            || $request->employee_insurance){
                 $employee = new CompensationBenefits;
                 $employee->employee_id = $request->employee_id;
-                $employee->employee_salary = $request->employee_salary_new;
-                $employee->employee_incentives = $request->employee_incentives_new;
-                $employee->employee_overtime_pay = $request->employee_overtime_pay_new;
-                $employee->employee_bonus = $request->employee_bonus_new;
-                $employee->employee_insurance = $request->employee_insurance_new;
+                $employee->employee_salary = $request->employee_salary;
+                $employee->employee_incentives = $request->employee_incentives;
+                $employee->employee_overtime_pay = $request->employee_overtime_pay;
+                $employee->employee_bonus = $request->employee_bonus;
+                $employee->employee_insurance = $request->employee_insurance;
                 $employee->save();
             }
         }
         else{
-            $employee_salary_orig = $request->employee_salary_orig;
-            $employee_incentives_orig = $request->employee_incentives_orig;
-            $employee_overtime_pay_orig = $request->employee_overtime_pay_orig;
-            $employee_bonus_orig = $request->employee_bonus_orig;
-            $employee_insurance_orig = $request->employee_insurance_orig;
-            
+            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+            $employee_salary_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_salary;
+            $employee_incentives_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_incentives;
+            $employee_overtime_pay_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_overtime_pay;
+            $employee_bonus_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_bonus;
+            $employee_insurance_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_insurance;
+
+            if($request->employee_salary != $employee_salary_orig){
+                $employee_salary_new = $request->employee_salary;
+                $employee_salary_change = "[SALARY: FROM '$employee_salary_orig' TO '$employee_salary_new']";
+            }
+            else{
+                $employee_salary_change = NULL;
+            } 
+
+            if($request->employee_incentives != $employee_incentives_orig){
+                $employee_incentives_new = $request->employee_incentives;
+                $employee_incentives_change = "[INCENTIVES: FROM '$employee_incentives_orig' TO '$employee_incentives_new']";
+            }
+            else{
+                $employee_incentives_change = NULL;
+            } 
+
+            if($request->employee_overtime_pay != $employee_overtime_pay_orig){
+                $employee_overtime_pay_new = $request->employee_overtime_pay;
+                $employee_overtime_pay_change = "[OVERTIME PAY: FROM '$employee_overtime_pay_orig' TO '$employee_overtime_pay_new']";
+            }
+            else{
+                $employee_overtime_pay_change = NULL;
+            } 
+
+            if($request->employee_bonus != $employee_bonus_orig){
+                $employee_bonus_new = $request->employee_bonus;
+                $employee_bonus_change = "[BONUS: FROM '$employee_bonus_orig' TO '$employee_bonus_new']";
+            }
+            else{
+                $employee_bonus_change = NULL;
+            } 
+
+            if($request->employee_insurance != $employee_insurance_orig){
+                $employee_insurance_new = $request->employee_insurance;
+                $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
+            }
+            else{
+                $employee_insurance_change = NULL;
+            } 
+
             $update = CompensationBenefits::where('employee_id',$request->employee_id)
             ->update([
-                'employee_salary' => $request->employee_salary_new,
-                'employee_incentives' => $request->employee_incentives_new,
-                'employee_overtime_pay' => $request->employee_overtime_pay_new,
-                'employee_bonus' => $request->employee_bonus_new,
-                'employee_insurance' => $request->employee_insurance_new
+                'employee_salary' => $request->employee_salary,
+                'employee_incentives' => $request->employee_incentives,
+                'employee_overtime_pay' => $request->employee_overtime_pay,
+                'employee_bonus' => $request->employee_bonus,
+                'employee_insurance' => $request->employee_insurance
             ]);
 
-        //     if($update){
-        //         if($employee_salary_orig != $request->employee_salary_new){
-        //             $compensation_benefits_title = "[Compensation/Benefits]";
-        //             $employee_salary_change = "[Salary: FROM '$employee_salary_orig' TO '$request->employee_salary_new']";
-        //         }
-        //         else{
-        //             $employee_salary_change = NULL;
-        //         }
-        //         if($employee_incentives_orig != $request->employee_incentives_new){
-        //             $compensation_benefits_title = "[Compensation/Benefits]";
-        //             $employee_incentives_change = "[Incentives Pay: FROM '$employee_incentives_orig' TO '$request->employee_incentives_new']";
-        //         }
-        //         else{
-        //             $employee_incentives_change = NULL;
-        //         }
-        //         if($employee_overtime_pay_orig != $request->employee_overtime_pay_new){
-        //             $compensation_benefits_title = "[Compensation/Benefits]";
-        //             $employee_overtime_pay_change = "[Overtime Pay: FROM '$employee_overtime_pay_orig' TO '$request->employee_overtime_pay_new']";
-        //         }
-        //         else{
-        //             $employee_overtime_pay_change = NULL;
-        //         }
-        //         if($employee_bonus_orig != $request->employee_bonus_new){
-        //             $compensation_benefits_title = "[Compensation/Benefits]";
-        //             $employee_bonus_change = "[Bonus Pay: FROM '$employee_bonus_orig' TO '$request->employee_bonus_new']";
-        //         }
-        //         else{
-        //             $employee_bonus_change = NULL;
-        //         }
-        //         if($employee_insurance_orig = $request->employee_insurance_new){
-        //             $compensation_benefits_title = "[Compensation/Benefits]";
-        //             $employee_insurance_change = "[Health Insurance/Benefits: FROM '$employee_insurance_orig' TO '$request->employee_insurance_new']";
-        //         }
-        //         else{
-        //             $employee_insurance_change = NULL;
-        //         }
+            if($update){
+            
+                $result = 'true';
+                $id = $employee->id;
 
-        //         $result = 'true';
-        //         $id = $employee->id;
+                if(
+                    $request->employee_salary != $employee_salary_orig ||
+                    $request->employee_incentives != $employee_incentives_orig ||
+                    $request->employee_overtime_pay != $employee_overtime_pay_orig ||
+                    $request->employee_bonus != $employee_bonus_orig ||
+                    $request->employee_insurance != $employee_insurance_orig
+                ){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                            $employee_salary_change
+                                            $employee_incentives_change
+                                            $employee_overtime_pay_change
+                                            $employee_bonus_change
+                                            $employee_insurance_change
+                                            ";
+                    $employee_logs->save();
 
-        //         if($employee_salary_orig != $request->employee_salary_new
-        //         || $employee_incentives_orig != $request->employee_incentives_new
-        //         || $employee_overtime_pay_orig != $request->employee_overtime_pay_new
-        //         || $employee_bonus_orig != $request->employee_bonus_new
-        //         || $employee_insurance_orig = $request->employee_insurance_new
-        //         ){
-        //             $employee_logs = new LogsTable;
-        //             $employee_logs->employee_id = $request->id;
-        //             $employee_logs->user_id = auth()->user()->id;
-        //             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-        //                                     $compensation_benefits_title
-        //                                     $employee_salary_change
-        //                                     $employee_incentives_change
-        //                                     $employee_overtime_pay_change
-        //                                     $employee_bonus_change
-        //                                     $employee_insurance_change
-        //                                     ";
-        //             $employee_logs->save();
-        //         }
-        //     }
-        //     else{
-        //         $result = 'false';
-        //         $id = '';
-        //     }
-        //     $data = array('result' => $result, 'id' => $id);
-        //     return response()->json($data);
-        // }
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                            $employee_salary_change
+                                            $employee_incentives_change
+                                            $employee_overtime_pay_change
+                                            $employee_bonus_change
+                                            $employee_insurance_change
+                                            ";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
     }
 

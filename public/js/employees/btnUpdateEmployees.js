@@ -212,16 +212,11 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        var employee_salary_orig = $('#employee_salary_orig').val(),
-                        employee_salary_new = $('#employee_salary').val(),
-                        employee_incentives_orig = $('#employee_incentives_orig').val(),
-                        employee_incentives_new = $('#employee_incentives').val(),
-                        employee_overtime_pay_orig = $('#employee_overtime_pay_orig').val(),
-                        employee_overtime_pay_new = $('#employee_overtime_pay').val(),
-                        employee_bonus_orig = $('#employee_bonus_orig').val(),
-                        employee_bonus_new = $('#employee_bonus').val(),
-                        employee_insurance_orig = $('#employee_insurance_orig').val();
-                        employee_insurance_new = $('#employee_insurance').val();
+                        var employee_salary = $('#employee_salary').val();
+                        var employee_incentives = $('#employee_incentives').val();
+                        var employee_overtime_pay = $('#employee_overtime_pay').val();
+                        var employee_bonus = $('#employee_bonus').val();
+                        var employee_insurance = $('#employee_insurance').val()
         
                         $.ajax({
                             url:"/employees/updateCompensationBenefits",
@@ -232,16 +227,11 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                employee_salary_orig:employee_salary_orig,
-                                employee_salary_new:employee_salary_new,
-                                employee_incentives_orig:employee_incentives_orig,
-                                employee_incentives_new:employee_incentives_new,
-                                employee_overtime_pay_orig:employee_overtime_pay_orig,
-                                employee_overtime_pay_new:employee_overtime_pay_new,
-                                employee_bonus_orig:employee_bonus_orig,
-                                employee_bonus_new:employee_bonus_new,
-                                employee_insurance_orig:employee_insurance_orig,
-                                employee_insurance_new:employee_insurance_new
+                                employee_salary:employee_salary,
+                                employee_incentives:employee_incentives,
+                                employee_overtime_pay:employee_overtime_pay,
+                                employee_bonus:employee_bonus,
+                                employee_insurance:employee_insurance
                             }
                         });
 
