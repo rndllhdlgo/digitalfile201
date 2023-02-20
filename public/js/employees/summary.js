@@ -61,6 +61,6 @@ $('#btnSummary').on('click',function(){
     $('#summaryModal').modal('show');
 });
 
-$(document).on('click','#close_summary',function(){
-    window.location.href = "/employees?employee_number="+$('#current_employee').val();
-});
+// $(document).on('click','#close_summary',function(){
+//     window.location.href = "/employees?employee_number="+$('#current_employee').val();
+// });

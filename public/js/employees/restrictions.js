@@ -13,11 +13,6 @@ function numbersOnly(input){
     input.value = input.value.replace(numbers_only,"");
 }
 
-function salaryField(input){
-    var salaryField = /[^0-9]/g;
-    input.value = input.value.replace(salaryField,"");
-}
-
 function contactNumberOnly(input){
     var contact_number = /[^. 0-9]/g; 
     input.value = input.value.replace(contact_number,"");
