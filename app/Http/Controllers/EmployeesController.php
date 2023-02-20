@@ -1209,7 +1209,7 @@ class EmployeesController extends Controller
             if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
                 $secondary_school_inclusive_years_to_1 = Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y');
                 $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-                $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_orig' TO '$secondary_school_inclusive_years_to_new']";
+                $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_1' TO '$secondary_school_inclusive_years_to_2']";
             }
             else{
                 $secondary_school_inclusive_years_to_change = NULL;

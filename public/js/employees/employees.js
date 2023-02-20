@@ -76,16 +76,135 @@ $('#addEmployeeBtn').on('click',function(){
     $('#employee_information').fadeIn();
     $('#employees_list').hide();
     $('#addEmployeeBtn').hide();
-    $('#btnEnableEdit').hide();
     $('#btnUpdate').hide();
     $('#btnSummary').hide();
     $('#navigation').show();
     $('#tab1').addClass('tabactive');
-    $('#resigned').hide();
     $('#spouse_contact_number').val('');
+
+    $('#employee_shift').chosen();
+    $('#employee_shift_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employee_company').chosen();
+    $('#employee_company_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employee_branch').chosen();
+    $('#employee_branch_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employee_department').chosen();
+    $('#employee_department_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employee_position').chosen();
+    $('#employee_position_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employment_status').chosen();
+    $('#employment_status_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
+
+    $('#employment_origin').chosen();
+    $('#employment_origin_chosen').css({
+        'width':'100%',
+        'font-weight':'500',
+        'font-size':'13px',
+        'font-family':'Arial, Helvetica, sans-serif'
+    });
 
     // $('.input-file-text').addClass('required_field');
 });
+
+setInterval(() => {
+    if(!$('#employee_shift').val()){
+        $('#employee_shift_chosen').addClass('required_field');
+        $('#employee_shift').addClass('required_field');
+    }
+    else{
+        $('#employee_shift_chosen').removeClass('required_field border border-danger');
+        $('#employee_shift').removeClass('required_field');
+    }
+
+    if(!$('#employee_company').val()){
+        $('#employee_company_chosen').addClass('required_field');
+        $('#employee_company').addClass('required_field');
+    }
+    else{
+        $('#employee_company_chosen').removeClass('required_field border border-danger');
+        $('#employee_company').removeClass('required_field');
+    }
+
+    if(!$('#employee_branch').val()){
+        $('#employee_branch_chosen').addClass('required_field');
+        $('#employee_branch').addClass('required_field');
+    }
+    else{
+        $('#employee_branch_chosen').removeClass('required_field border border-danger');
+        $('#employee_branch').removeClass('required_field');
+    }
+
+    if(!$('#employee_department').val()){
+        $('#employee_department_chosen').addClass('required_field');
+        $('#employee_department').addClass('required_field');
+    }
+    else{
+        $('#employee_department_chosen').removeClass('required_field border border-danger');
+        $('#employee_department').removeClass('required_field');
+    }
+
+    if(!$('#employee_position').val()){
+        $('#employee_position_chosen').addClass('required_field');
+        $('#employee_position').addClass('required_field');
+    }
+    else{
+        $('#employee_position_chosen').removeClass('required_field border border-danger');
+        $('#employee_position').removeClass('required_field');
+    }
+
+    if(!$('#employment_status').val()){
+        $('#employment_status_chosen').addClass('required_field');
+        $('#employment_status').addClass('required_field');
+    }
+    else{
+        $('#employment_status_chosen').removeClass('required_field border border-danger');
+        $('#employment_status').removeClass('required_field');
+    }
+
+    if(!$('#employment_origin').val()){
+        $('#employment_origin_chosen').addClass('required_field');
+        $('#employment_origin').addClass('required_field');
+    }
+    else{
+        $('#employment_origin_chosen').removeClass('required_field border border-danger');
+        $('#employment_origin').removeClass('required_field');
+    }
+}, 0);
 
 function changeCivilStatus(){
     var status = $('#civil_status');
