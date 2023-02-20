@@ -235,6 +235,22 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
+                        $.ajax({
+                            url:"/employees/updateDocumentsLogs",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                id:id,
+                                employee_id:data.id,
+                                barangay_clearance_change:barangay_clearance_change,
+                                birthcertificate_change:birthcertificate_change,
+                                diploma_change:diploma_change,
+                                medical_certificate_change:medical_certificate_change,
+                            }
+                        });
+
                         $('.college_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
@@ -453,7 +469,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        // $('#documents_form').submit();
+                        $('#documents_form').submit();
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);

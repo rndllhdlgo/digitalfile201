@@ -8,7 +8,10 @@ var children_id,
     resignation_id,
     termination_id = [];
 
-var barangay_clearance_change;
+var barangay_clearance_change,
+    birthcertificate_change,
+    diploma_change,
+    medical_certificate_change;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -821,7 +824,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         }
                     },
-                    order: [[ 0, "desc" ]],
+                    order: [],
                     columnDefs: [
                         {
                             "targets": [0],
@@ -891,7 +894,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         }
                     },
-                    order: [[ 0, "desc" ]],
+                    order: [],
                     columnDefs: [
                         {
                             "targets": [0],
@@ -1078,7 +1081,6 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_view').show();
             $('#barangay_clearance_file').addClass('required_field');
             barangay_clearance_change = 'CHANGED';
-            alert(barangay_clearance_change);
         }
 
         else if(save.isDenied){
@@ -1107,6 +1109,7 @@ $('#birthcertificate_delete_button').on('click',function(){
             $('#birthcertificate_delete_button').hide();
             $('#birthcertificate_view').show();
             $('#birthcertificate_file').addClass('required_field');
+            birthcertificate_change = 'CHANGED';
         }
 
         else if(save.isDenied){
@@ -1139,6 +1142,7 @@ $('#diploma_delete_button').on('click',function(){
             $('.diploma_div').show();
             $('#diploma_delete_button').hide();
             $('#diploma_view').show();
+            diploma_change = 'CHANGED';
         }
         else if(save.isDenied){
 
@@ -1166,6 +1170,8 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_delete_button').hide();
             $('#medical_certificate_view').show();
             $('#medical_certificate_file').addClass('required_field');
+            medical_certificate_change = 'CHANGED';
+            console.log(medical_certificate_change);
         }
         else if(save.isDenied){
 
