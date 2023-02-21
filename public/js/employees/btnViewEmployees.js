@@ -12,7 +12,9 @@ var barangay_clearance_change,
     birthcertificate_change,
     diploma_change,
     medical_certificate_change,
-    nbi_clearance_change;
+    nbi_clearance_change,
+    pag_ibig_file_change,
+    ;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -1232,6 +1234,8 @@ $('#pag_ibig_delete_button').on('click',function(){
             $('#pag_ibig_delete_button').hide();
             $('#pag_ibig_view').show();
             $('#pag_ibig_file').addClass('required_field');
+            pag_ibig_file_change = 'CHANGED';
+            console.log('PAG-IBIG ' + pag_ibig_file_change);
         }
 
         else if(save.isDenied){

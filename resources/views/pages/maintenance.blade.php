@@ -5,7 +5,7 @@
 <br>
 <div class="row">
     <div class="col">
-        <h4 style="color: #0d1a80;" class="my-header">MAINTENANCE</h4>
+        <h4 style="color: #0d1a80;" class="my-header">MAINTENANCE <span id="maintenance-span"></span> </h4>
     </div>
     <div class="col">
         <button type="button" class="btn btn-success float-end grow" id="addCompanyBtn" title="ADD COMPANY" style="font-weight: bold;"><i class="fas fa-plus"></i> ADD COMPANY</button>
@@ -32,9 +32,9 @@
         <li class="nav-item">
             <a class="nav-link pill" id="shift_tab" data-bs-toggle="tab" href="#shift_div"> SHIFT</a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
             <a class="nav-link pill" id="supervisor_tab" data-bs-toggle="tab" href="#supervisor_div"> SUPERVISOR</a>
-        </li>
+        </li> --}}
         <li class="nav-item">
             <a class="nav-link pill" id="job_position_and_description_tab" data-bs-toggle="tab" href="#job_position_and_description_div"> JOB POSITION</a>
         </li>

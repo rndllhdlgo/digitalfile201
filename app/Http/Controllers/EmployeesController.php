@@ -2149,6 +2149,13 @@ class EmployeesController extends Controller
                 $nbi_clearance_update = NULL;
             }
 
+            if($request->pag_ibig_file_change == 'CHANGED'){
+                $pag_ibig_file_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $pag_ibig_file_update = NULL;
+            }
+
             $update = Document::where('employee_id',$request->employee_id)
                 ->update([
                     'barangay_clearance_file' => $barangay_clearance_file,
@@ -2173,7 +2180,8 @@ class EmployeesController extends Controller
                         $request->birthcertificate_change == 'CHANGED' ||
                         $request->diploma_change == 'CHANGED' ||
                         $request->medical_certificate_change == 'CHANGED' ||
-                        $request->nbi_clearance_change == 'CHANGED'
+                        $request->nbi_clearance_change == 'CHANGED' ||
+                        $request->pag_ibig_file_change == 'CHANGED'
                         ){
                         $employee_logs = new LogsTable;
                         $employee_logs->employee_id = $request->id;
@@ -2184,6 +2192,7 @@ class EmployeesController extends Controller
                                                 $diploma_update
                                                 $medical_certificate_update
                                                 $nbi_clearance_update
+                                                $pag_ibig_file_update
                                                 ";
                         $employee_logs->save();
 
@@ -2196,6 +2205,7 @@ class EmployeesController extends Controller
                                                 $diploma_update
                                                 $medical_certificate_update
                                                 $nbi_clearance_update
+                                                $pag_ibig_file_update
                                                 ";
                         $userlogs->save();
                     }

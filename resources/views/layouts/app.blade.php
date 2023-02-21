@@ -18,11 +18,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href='https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.min.css' rel='stylesheet'>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-        <link href="{{asset('css/inc/chosen.css')}}" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.min.css" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/chosen/1.8.7/chosen.jquery.min.js"></script>
         
-        <link href="{{ asset('/css/all.css') }}" rel="stylesheet">
+        <link href="{{asset('css/inc/chosen.css')}}" rel="stylesheet" type="text/css"/>
+        <link href="{{asset('/css/all.css') }}" rel="stylesheet">
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
         <input type="hidden" id="current_employee">
@@ -58,9 +58,10 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512-vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
+        <script src="{{asset('js/inc/chosen.jquery.js')}}"></script>
         <script src="{{asset('js/inc/moment.js')}}"></script>
         <script src="{{asset('js/inc/datetime.js')}}"></script>
-        <script src="{{asset('js/inc/chosen.jquery.js')}}"></script>
+        <script src="{{asset('js/inc/printThis.js')}}"></script>
         <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
@@ -87,7 +88,6 @@
             <script src="{{ env('APP_URL')}}js/employees/logs.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/employees/history.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/printThis.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         
         @if(Request::is('users'))

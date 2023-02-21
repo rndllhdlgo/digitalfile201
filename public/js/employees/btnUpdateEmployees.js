@@ -249,6 +249,7 @@ $('#btnUpdate').on('click',function(){
                                 diploma_change:diploma_change,
                                 medical_certificate_change:medical_certificate_change,
                                 nbi_clearance_change:nbi_clearance_change,
+                                pag_ibig_file_change:pag_ibig_file_change,
                             }
                         });
 

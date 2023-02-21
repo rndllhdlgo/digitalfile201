@@ -209,9 +209,11 @@ $('#tab9').on('click',function(){
 
 //Maintenance
 $('#company_tab').addClass('tabactive');
+$('#maintenance-span').text('- COMPANY');
 
 $('#company_tab').on('click',function(){
     $(this).blur();
+    $('#maintenance-span').text('- COMPANY');
     $('#company_tab').addClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -243,6 +245,7 @@ $('#company_tab').on('click',function(){
 
 $('#department_tab').on('click',function(){
     $(this).blur();
+    $('#maintenance-span').text('- DEPARTMENT');
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -274,6 +277,7 @@ $('#department_tab').on('click',function(){
 
 $('#branch_tab').on('click',function(){
     $(this).blur();
+    $('#maintenance-span').text('- BRANCH');
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').addClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -305,6 +309,7 @@ $('#branch_tab').on('click',function(){
 
 $('#shift_tab').on('click',function(){
     $(this).blur();
+    $('#maintenance-span').text('- SHIFT');
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').addClass('tabactive');
@@ -337,6 +342,7 @@ $('#shift_tab').on('click',function(){
 
 $('#supervisor_tab').on('click',function(){
     $(this).blur();
+   
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');
@@ -369,6 +375,7 @@ $('#supervisor_tab').on('click',function(){
 
 $('#job_position_and_description_tab').on('click',function(){
     $(this).blur();
+    $('#maintenance-span').text('- JOB POSITION');
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');

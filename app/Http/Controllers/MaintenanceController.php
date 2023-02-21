@@ -337,7 +337,7 @@ class MaintenanceController extends Controller
         if($save){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "ADDED DEPARTMENT: User successfully added Department: '$department_logs'."; //Display logs in home page
+            $userlogs->activity = "ADDED DEPARTMENT: User successfully added Department: ['$department_logs']."; //Display logs in home page
             $userlogs->save();
             return 'true';
         }
@@ -355,6 +355,10 @@ class MaintenanceController extends Controller
         $save = $department->save();
 
         if($save){
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "UPDATED DEPARTMENT: User successfully updated Maintenance Department: ['$department_orig' TO '$department_new']"; //Display logs in home page
+            $userlogs->save();
             return 'true';
         }
         else{
