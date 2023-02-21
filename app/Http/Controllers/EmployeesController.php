@@ -2156,6 +2156,41 @@ class EmployeesController extends Controller
                 $pag_ibig_file_update = NULL;
             }
 
+            if($request->philhealth_file_change == 'CHANGED'){
+                $philhealth_file_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $philhealth_file_update = NULL;
+            }
+
+            if($request->police_clearance_file_change == 'CHANGED'){
+                $police_clearance_file_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $police_clearance_file_update = NULL;
+            }
+
+            if($request->resume_file_change == 'CHANGED'){
+                $resume_file_update = "[RESUME FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $resume_file_update = NULL;
+            }
+
+            if($request->sss_file_change == 'CHANGED'){
+                $sss_file_update = "[SSS FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $sss_file_update = NULL;
+            }
+
+            if($request->tor_file_change == 'CHANGED'){
+                $tor_file_update = "[TOR FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $tor_file_update = NULL;
+            }
+
             $update = Document::where('employee_id',$request->employee_id)
                 ->update([
                     'barangay_clearance_file' => $barangay_clearance_file,
@@ -2181,7 +2216,12 @@ class EmployeesController extends Controller
                         $request->diploma_change == 'CHANGED' ||
                         $request->medical_certificate_change == 'CHANGED' ||
                         $request->nbi_clearance_change == 'CHANGED' ||
-                        $request->pag_ibig_file_change == 'CHANGED'
+                        $request->pag_ibig_file_change == 'CHANGED' ||
+                        $request->philhealth_file_change == 'CHANGED' ||
+                        $request->police_clearance_file_change == 'CHANGED' ||
+                        $request->resume_file_change == 'CHANGED' ||
+                        $request->sss_file_change == 'CHANGED' ||
+                        $request->tor_file_change == 'CHANGED'
                         ){
                         $employee_logs = new LogsTable;
                         $employee_logs->employee_id = $request->id;
@@ -2193,6 +2233,11 @@ class EmployeesController extends Controller
                                                 $medical_certificate_update
                                                 $nbi_clearance_update
                                                 $pag_ibig_file_update
+                                                $philhealth_file_update
+                                                $police_clearance_file_update
+                                                $resume_file_update
+                                                $sss_file_update
+                                                $tor_file_update
                                                 ";
                         $employee_logs->save();
 
@@ -2206,6 +2251,11 @@ class EmployeesController extends Controller
                                                 $medical_certificate_update
                                                 $nbi_clearance_update
                                                 $pag_ibig_file_update
+                                                $philhealth_file_update
+                                                $police_clearance_file_update
+                                                $resume_file_update
+                                                $sss_file_update
+                                                $tor_file_update
                                                 ";
                         $userlogs->save();
                     }

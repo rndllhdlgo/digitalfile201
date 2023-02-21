@@ -250,6 +250,11 @@ $('#btnUpdate').on('click',function(){
                                 medical_certificate_change:medical_certificate_change,
                                 nbi_clearance_change:nbi_clearance_change,
                                 pag_ibig_file_change:pag_ibig_file_change,
+                                philhealth_file_change:philhealth_file_change,
+                                police_clearance_file_change:police_clearance_file_change,
+                                resume_file_change:resume_file_change,
+                                sss_file_change:sss_file_change,
+                                tor_file_change:tor_file_change
                             }
                         });
 

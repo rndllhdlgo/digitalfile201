@@ -14,6 +14,11 @@ var barangay_clearance_change,
     medical_certificate_change,
     nbi_clearance_change,
     pag_ibig_file_change,
+    philhealth_file_change,
+    police_clearance_file_change,
+    resume_file_change,
+    sss_file_change,
+    tor_file_change
     ;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
@@ -1084,7 +1089,7 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_view').show();
             $('#barangay_clearance_file').addClass('required_field');
             barangay_clearance_change = 'CHANGED';
-            console.log("Barangay Clearance" + barangay_clearance_change);
+            console.log(barangay_clearance_change);
         }
 
         else if(save.isDenied){
@@ -1114,7 +1119,7 @@ $('#birthcertificate_delete_button').on('click',function(){
             $('#birthcertificate_view').show();
             $('#birthcertificate_file').addClass('required_field');
             birthcertificate_change = 'CHANGED';
-            console.log("Birthcertificate" + birthcertificate_change);
+            console.log(birthcertificate_change);
         }
 
         else if(save.isDenied){
@@ -1148,7 +1153,7 @@ $('#diploma_delete_button').on('click',function(){
             $('#diploma_delete_button').hide();
             $('#diploma_view').show();
             diploma_change = 'CHANGED';
-            console.log("Diploma" + diploma_change);
+            console.log(diploma_change);
         }
         else if(save.isDenied){
 
@@ -1177,7 +1182,7 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_view').show();
             $('#medical_certificate_file').addClass('required_field');
             medical_certificate_change = 'CHANGED';
-            console.log("Med Cert" + medical_certificate_change);
+            console.log(medical_certificate_change);
         }
         else if(save.isDenied){
 
@@ -1205,7 +1210,7 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('#nbi_clearance_delete_button').hide();
             $('#nbi_clearance_view').show();
             nbi_clearance_change = 'CHANGED';
-            console.log("NBI" + nbi_clearance_change);
+            console.log(nbi_clearance_change);
         }
 
         else if(save.isDenied){
@@ -1235,7 +1240,7 @@ $('#pag_ibig_delete_button').on('click',function(){
             $('#pag_ibig_view').show();
             $('#pag_ibig_file').addClass('required_field');
             pag_ibig_file_change = 'CHANGED';
-            console.log('PAG-IBIG ' + pag_ibig_file_change);
+            console.log(pag_ibig_file_change);
         }
 
         else if(save.isDenied){
@@ -1264,6 +1269,8 @@ $('#philhealth_delete_button').on('click',function(){
             $('#philhealth_delete_button').hide();
             $('#philhealth_view').show();
             $('#philhealth_file').addClass('required_field');
+            philhealth_file_change = 'CHANGED';
+            console.log(philhealth_file_change);
         }
 
         else if(save.isDenied){
@@ -1292,6 +1299,8 @@ $('#police_clearance_delete_button').on('click',function(){
             $('#police_clearance_delete_button').hide();
             $('#police_clearance_view').show();
             $('#police_clearance_file').addClass('required_field');
+            police_clearance_file_change = 'CHANGED';
+            console.log(police_clearance_file_change);
 
         }
 
@@ -1321,6 +1330,8 @@ $('#resume_delete_button').on('click',function(){
             $('#resume_delete_button').hide();
             $('#resume_view').show();
             $('#resume_file').addClass('required_field');
+            resume_file_change = 'CHANGED';
+            console.log(resume_file_change);
         }
         else if(save.isDenied){
 
@@ -1349,6 +1360,8 @@ $('#sss_delete_button').on('click',function(){
             $('#sss_delete_button').hide();
             $('#sss_view').show();
             $('#sss_file').addClass('required_field');
+            sss_file_change = 'CHANGED';
+            console.log(sss_file_change);
         }
         else if(save.isDenied){
 
@@ -1375,6 +1388,8 @@ $('#tor_delete_button').on('click',function(){
             $('.transcript_of_records_div').show();
             $('#tor_delete_button').hide();
             $('#tor_view').show();
+            tor_file_change = 'CHANGED';
+            console.log(tor_file_change);
         }
         else if(save.isDenied){
 
