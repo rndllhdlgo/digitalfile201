@@ -720,9 +720,9 @@ $(document).ready(function() {
 
 $(document).ready(function(){
     $('#btnPdf').click(function(){
-        var current_employee_number = $('#current_employee').val();
         $('#print_file').printThis({
-            header: "&nbsp;<h4>Employee Number: " + current_employee_number + "</h4>",
+            importCSS: true,
+            header: '<img src="/images/ideaserv_systems_logo.png" style="width:150px; height:100px;"/>',
         });
     });
 });
@@ -733,36 +733,6 @@ $(document).ready(function(){
 //     window.print();
 //     $('body').html(originalContents);
 //   });
-  
-// $(document).on('click', '#btnPdf', function(){
-//     var printContents = document.getElementById('print_file').innerHTML;
-//     var iframe = document.createElement('iframe');
-//     iframe.style.display = 'none';
-//     document.body.appendChild(iframe);
-//     var iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-//     iframeDoc.body.innerHTML = printContents;
-//     iframe.contentWindow.print();
-//     document.body.removeChild(iframe);
-// });
-
-// $(document).on('click', '#btnPdf', function(){
-//     var printContents = $('#print_file').html();
-//     var iframe = $('<iframe>').css('display', 'none').appendTo('body');
-//     var iframeDoc = iframe[0].contentDocument || iframe[0].contentWindow.document;
-//     iframeDoc.body.innerHTML = printContents;
-//     iframe[0].contentWindow.print();
-//     iframe.remove();
-// });
-
-// $(document).on('click', '#btnPdf', function(){
-//     var printContents = $('#print_file').clone();
-//     var iframe = $('<iframe>').css('display', 'none').appendTo('body');
-//     var iframeDoc = iframe[0].contentDocument || iframe[0].contentWindow.document;
-//     iframeDoc.body.appendChild(printContents[0]);
-//     iframe[0].contentWindow.print();
-//     iframe.remove();
-// });
-
 
 function formatPesoInput(selector){
     $(selector).on('keyup', function(){

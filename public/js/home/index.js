@@ -126,7 +126,7 @@ $(document).ready(function(){
             { 
                 data: 'activity',
                 "render":function(data,type,row){
-                    activity = row.activity.replaceAll(" [","<br>[");
+                    activity = row.activity.replaceAll(" [","<br>[").replaceAll(" (","<br>(");
                     return activity;
                 },
             }

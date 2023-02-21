@@ -592,16 +592,7 @@ th{
 }
 
 @media print {
-    #print_file {
-      background-color: white;
-      padding: 0;
+    .page-break { 
+        page-break-after: always; 
     }
-  
-    h1 {
-      font-size: 20pt;
-    }
-  
-    p {
-      font-size: 16pt;
-    }
-  }
+}

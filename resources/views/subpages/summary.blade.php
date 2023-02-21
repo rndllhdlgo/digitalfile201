@@ -16,7 +16,7 @@
                     <div class="summary_container">
                         <br>
                          <div class="clear_float">
-                            <div class="column_one mb-3">
+                            <div class="column_one mb-1">
                                 <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
                                 </div>
@@ -92,7 +92,7 @@
                         <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_three mb-3" style="padding:5px;">
-                            <div class="row mb-1 mt-3">
+                            <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
                             </div>
 
@@ -118,9 +118,9 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="column_four mb-4" style="padding: 5px;">
-                            <div class="row mb-1 mt-3">
+                        
+                        <div class="column_four mb-3" style="padding: 5px;">
+                            <div class="row mb-1 mt-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
                             </div>
                             
