@@ -248,6 +248,7 @@ $('#btnUpdate').on('click',function(){
                                 birthcertificate_change:birthcertificate_change,
                                 diploma_change:diploma_change,
                                 medical_certificate_change:medical_certificate_change,
+                                nbi_clearance_change:nbi_clearance_change,
                             }
                         });
 

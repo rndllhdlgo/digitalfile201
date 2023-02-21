@@ -1867,7 +1867,8 @@ class EmployeesController extends Controller
         }
 
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        
         $employee = Document::where('employee_id',$request->employee_id)->first();
         if(!$employee){
             $document = new Document;
@@ -2141,6 +2142,13 @@ class EmployeesController extends Controller
                 $medical_certificate_update = NULL;
             }
 
+            if($request->nbi_clearance_change == 'CHANGED'){
+                $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $nbi_clearance_update = NULL;
+            }
+
             $update = Document::where('employee_id',$request->employee_id)
                 ->update([
                     'barangay_clearance_file' => $barangay_clearance_file,
@@ -2164,7 +2172,8 @@ class EmployeesController extends Controller
                         $request->barangay_clearance_change == 'CHANGED' ||
                         $request->birthcertificate_change == 'CHANGED' ||
                         $request->diploma_change == 'CHANGED' ||
-                        $request->medical_certificate_change == 'CHANGED'
+                        $request->medical_certificate_change == 'CHANGED' ||
+                        $request->nbi_clearance_change == 'CHANGED'
                         ){
                         $employee_logs = new LogsTable;
                         $employee_logs->employee_id = $request->id;
@@ -2174,17 +2183,19 @@ class EmployeesController extends Controller
                                                 $birthcertificate_update
                                                 $diploma_update
                                                 $medical_certificate_update
+                                                $nbi_clearance_update
                                                 ";
                         $employee_logs->save();
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
                         // $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS 
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $barangay_clearance_update
                                                 $birthcertificate_update
                                                 $diploma_update
                                                 $medical_certificate_update
+                                                $nbi_clearance_update
                                                 ";
                         $userlogs->save();
                     }

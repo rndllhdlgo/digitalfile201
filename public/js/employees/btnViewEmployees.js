@@ -11,7 +11,8 @@ var children_id,
 var barangay_clearance_change,
     birthcertificate_change,
     diploma_change,
-    medical_certificate_change;
+    medical_certificate_change,
+    nbi_clearance_change;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -342,13 +343,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'college_inclusive_years_from', 
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+moment(row.college_inclusive_years_from).format('MMM.YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM.YYYY');
                             },
                             width: '15%'},
                         { 
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+moment(row.college_inclusive_years_to).format('MMM.YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM.YYYY');
                             },
                             width: '15%'}
                     ],
@@ -1081,6 +1082,7 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_view').show();
             $('#barangay_clearance_file').addClass('required_field');
             barangay_clearance_change = 'CHANGED';
+            console.log("Barangay Clearance" + barangay_clearance_change);
         }
 
         else if(save.isDenied){
@@ -1110,6 +1112,7 @@ $('#birthcertificate_delete_button').on('click',function(){
             $('#birthcertificate_view').show();
             $('#birthcertificate_file').addClass('required_field');
             birthcertificate_change = 'CHANGED';
+            console.log("Birthcertificate" + birthcertificate_change);
         }
 
         else if(save.isDenied){
@@ -1143,6 +1146,7 @@ $('#diploma_delete_button').on('click',function(){
             $('#diploma_delete_button').hide();
             $('#diploma_view').show();
             diploma_change = 'CHANGED';
+            console.log("Diploma" + diploma_change);
         }
         else if(save.isDenied){
 
@@ -1171,7 +1175,7 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_view').show();
             $('#medical_certificate_file').addClass('required_field');
             medical_certificate_change = 'CHANGED';
-            console.log(medical_certificate_change);
+            console.log("Med Cert" + medical_certificate_change);
         }
         else if(save.isDenied){
 
@@ -1198,6 +1202,8 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('.nbi_clearance_div').show();
             $('#nbi_clearance_delete_button').hide();
             $('#nbi_clearance_view').show();
+            nbi_clearance_change = 'CHANGED';
+            console.log("NBI" + nbi_clearance_change);
         }
 
         else if(save.isDenied){
