@@ -200,6 +200,9 @@ Route::any('/test/import','TryController@test_import');
 Route::any('/passwordValidation','TryController@passwordValidation_blade');
 Route::any('/tabPane_blade','TryController@tabPane_blade');
 Route::any('/spatie','TryController@spatie_blade');
+Route::any('/export','TryController@export_blade');
+Route::any('/export_data','TryController@export_data');
+
 
 Route::any('/users_page','PagesController@users_page');
 
