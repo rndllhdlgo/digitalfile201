@@ -1607,68 +1607,6 @@ class EmployeesController extends Controller
         }
     }
 
-    public function duplicate_personal_info(Request $request){
-        if(PersonalInformationTable::where('email_address', '=', $request->email_address)->exists()){
-            return 'duplicate_email_address';
-        }
-        
-        if(PersonalInformationTable::where('telephone_number', '=', $request->telephone_number)->exists()){
-            return 'duplicate_telephone_number';
-        }
-
-        if(PersonalInformationTable::where('cellphone_number', '=', $request->cellphone_number)->exists()){
-            return 'duplicate_cellphone_number';
-        }
-
-        if(PersonalInformationTable::where('father_contact_number', '=', $request->father_contact_number)->exists()){
-            return 'duplicate_father_contact_number';
-        }
-
-        if(PersonalInformationTable::where('mother_contact_number', '=', $request->mother_contact_number)->exists()){
-            return 'duplicate_mother_contact_number';
-        }
-
-        if(PersonalInformationTable::where('emergency_contact_number', '=', $request->emergency_contact_number)->exists()){
-            return 'duplicate_emergency_contact_number';
-        }
-    }
-
-    public function duplicate_work_info(Request $request){
-        if(WorkInformationTable::where('employee_number', '=', $request->employee_number)->exists()) {
-            return 'duplicate_employee_number';
-        }
-
-        if(WorkInformationTable::where('company_email_address', '=', $request->company_email_address)->exists()) {
-            return 'duplicate_company_email_address';
-        }
-
-        if(WorkInformationTable::where('company_contact_number', '=', $request->company_contact_number)->exists()) {
-            return 'duplicate_company_contact_number';
-        }
-
-        if(WorkInformationTable::where('company_contact_number', '=', $request->company_contact_number)->exists()) {
-            return 'duplicate_company_contact_number';
-        }
-        
-        if(WorkInformationTable::where('sss_number', '=', $request->sss_number)->exists()) {
-            return 'duplicate_sss_number';
-        }
-
-        if(WorkInformationTable::where('pag_ibig_number', '=', $request->pag_ibig_number)->exists()) {
-            return 'duplicate_pag_ibig_number';
-        }
-
-        if(WorkInformationTable::where('philhealth_number', '=', $request->philhealth_number)->exists()) {
-            return 'duplicate_philhealth_number';
-        }
-        if(WorkInformationTable::where('tin_number', '=', $request->tin_number)->exists()) {
-            return 'duplicate_tin_number';
-        }
-        if(WorkInformationTable::where('account_number', '=', $request->account_number)->exists()) {
-            return 'duplicate_account_number';
-        }
-    }
-
     public function saveDocuments(Request $request)
     {   
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
@@ -2243,7 +2181,6 @@ class EmployeesController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        // $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
                         $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $barangay_clearance_update
                                                 $birthcertificate_update
@@ -2275,7 +2212,6 @@ class EmployeesController extends Controller
         return DataTables::of(ChildrenTable::where('employee_id',$request->id)->get())->make(true);
     }
     public function history_data(Request $request){
-        // return DataTables::of(History::where('employee_id',$request->id)->get())->make(true);
         $employee_work_history_logs = History::selectRaw(
             'history_logs.id,
             history_logs.history,
@@ -2324,7 +2260,6 @@ class EmployeesController extends Controller
     }
     
     public function logs_data(Request $request){
-        // return DataTables::of(LogsTable::where('employee_id',$request->id)->get())->make(true);
         $logs = LogsTable::selectRaw(
                         'users.id AS user_id,
                         logs_tables.id,
@@ -2407,6 +2342,20 @@ class EmployeesController extends Controller
         $termination_id = explode(",", $request->id);
         foreach($termination_id as $id){
             TerminationTable::where('id', $id)->delete();
+        }
+    }
+
+    public function duplicate_personal_info(Request $request){
+        if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
+            return 'duplicate_email_address';
+        }
+    }
+    public function duplicate_work_info(Request $request){
+        if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
+            return 'duplicate_employee_number';
+        }
+        else if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
+            return 'duplicate_company_email_address';
         }
     }
 }

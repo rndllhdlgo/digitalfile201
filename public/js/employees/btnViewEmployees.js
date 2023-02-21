@@ -18,8 +18,9 @@ var barangay_clearance_change,
     police_clearance_file_change,
     resume_file_change,
     sss_file_change,
-    tor_file_change
-    ;
+    tor_file_change;
+
+var email_address_orig;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -136,6 +137,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }, app_timeout);
 
                 $('#email_address').val(value.email_address);
+                email_address_orig = value.email_address;
+                
                 $('#telephone_number').val(value.telephone_number);
                 $('#cellphone_number').val(value.cellphone_number);
 
