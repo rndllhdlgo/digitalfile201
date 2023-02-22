@@ -58,6 +58,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 
                 $('#hidden_id').val(value.id);
+                $('#documents_form').attr("action",'/employees/updateDocuments');
                 $('#current_employee').val(value.employee_number);
                 //Personal Information
                 if(value.employee_image){
@@ -545,7 +546,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
                 
-                $('#documents_form').attr("action",'/employees/updateDocuments');
 
                 $('.memo_table_data').dataTable().fnDestroy();
                 $('.memo_table_data').DataTable({

@@ -164,85 +164,84 @@ class EmployeesController extends Controller
 
     public function employeeFetch(Request $request){
         $employees = PersonalInformationTable::select(
-            'personal_information_tables.id',
-            'employee_image',
-            'first_name',
-            'middle_name',
-            'last_name',
-            'suffix',
-            'nickname',
-            'birthday',
-            'gender',
-            'civil_status',
-            'address',
-            'ownership',
-            'province',
-            'city',
-            'region',
-            'height',
-            'weight',
-            'religion',
-            'email_address',
-            'telephone_number',
-            'cellphone_number',
-            'spouse_name',
-            'spouse_contact_number',
-            'spouse_profession',
-            'father_name',
-            'father_contact_number',
-            'father_profession',
-            'mother_name',
-            'mother_contact_number',
-            'mother_profession',
-            'emergency_contact_name',
-            'emergency_contact_relationship',
-            'emergency_contact_number',
-            'work_information_tables.employee_number',
-            'work_information_tables.date_hired',
-            'work_information_tables.employee_shift',
-            'work_information_tables.employee_company',
-            'work_information_tables.employee_branch',
-            'work_information_tables.employee_department',
-            'work_information_tables.employee_position',
-            'work_information_tables.employment_status',
-            'work_information_tables.employment_origin',
-            'work_information_tables.hmo_number',
-            'work_information_tables.sss_number',
-            'work_information_tables.pag_ibig_number',
-            'work_information_tables.philhealth_number',
-            'work_information_tables.tin_number',
-            'work_information_tables.account_number',
-            'work_information_tables.company_email_address',
-            'work_information_tables.company_contact_number',
-            'educational_attainments.secondary_school_name',
-            'educational_attainments.secondary_school_address',
-            'educational_attainments.secondary_school_inclusive_years_from',
-            'educational_attainments.secondary_school_inclusive_years_to',
-            'educational_attainments.primary_school_name',
-            'educational_attainments.primary_school_address',
-            'educational_attainments.primary_school_inclusive_years_from',
-            'educational_attainments.primary_school_inclusive_years_to',
-            'medical_histories.past_medical_condition',
-            'medical_histories.allergies',
-            'medical_histories.medication',
-            'medical_histories.psychological_history',
-            'documents.barangay_clearance_file',
-            'documents.birthcertificate_file',
-            'documents.diploma_file',
-            'documents.medical_certificate_file',
-            'documents.nbi_clearance_file',
-            'documents.pag_ibig_file',
-            'documents.philhealth_file',
-            'documents.police_clearance_file',
-            'documents.resume_file',
-            'documents.sss_file',
-            'documents.transcript_of_records_file',
-            'compensation_benefits.employee_salary',
-            'compensation_benefits.employee_incentives',
-            'compensation_benefits.employee_overtime_pay',
-            'compensation_benefits.employee_bonus',
-            'compensation_benefits.employee_insurance'
-        )
+                    'personal_information_tables.id',
+                    'employee_image',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'suffix',
+                    'nickname',
+                    'birthday',
+                    'gender',
+                    'civil_status',
+                    'address',
+                    'ownership',
+                    'province',
+                    'city',
+                    'region',
+                    'height',
+                    'weight',
+                    'religion',
+                    'email_address',
+                    'telephone_number',
+                    'cellphone_number',
+                    'spouse_name',
+                    'spouse_contact_number',
+                    'spouse_profession',
+                    'father_name',
+                    'father_contact_number',
+                    'father_profession',
+                    'mother_name',
+                    'mother_contact_number',
+                    'mother_profession',
+                    'emergency_contact_name',
+                    'emergency_contact_relationship',
+                    'emergency_contact_number',
+                    'work_information_tables.employee_number',
+                    'work_information_tables.date_hired',
+                    'work_information_tables.employee_shift',
+                    'work_information_tables.employee_company',
+                    'work_information_tables.employee_branch',
+                    'work_information_tables.employee_department',
+                    'work_information_tables.employee_position',
+                    'work_information_tables.employment_status',
+                    'work_information_tables.employment_origin',
+                    'work_information_tables.hmo_number',
+                    'work_information_tables.sss_number',
+                    'work_information_tables.pag_ibig_number',
+                    'work_information_tables.philhealth_number',
+                    'work_information_tables.tin_number',
+                    'work_information_tables.account_number',
+                    'work_information_tables.company_email_address',
+                    'work_information_tables.company_contact_number',
+                    'educational_attainments.secondary_school_name',
+                    'educational_attainments.secondary_school_address',
+                    'educational_attainments.secondary_school_inclusive_years_from',
+                    'educational_attainments.secondary_school_inclusive_years_to',
+                    'educational_attainments.primary_school_name',
+                    'educational_attainments.primary_school_address',
+                    'educational_attainments.primary_school_inclusive_years_from',
+                    'educational_attainments.primary_school_inclusive_years_to',
+                    'medical_histories.past_medical_condition',
+                    'medical_histories.allergies',
+                    'medical_histories.medication',
+                    'medical_histories.psychological_history',
+                    'documents.barangay_clearance_file',
+                    'documents.birthcertificate_file',
+                    'documents.diploma_file',
+                    'documents.medical_certificate_file',
+                    'documents.nbi_clearance_file',
+                    'documents.pag_ibig_file',
+                    'documents.philhealth_file',
+                    'documents.police_clearance_file',
+                    'documents.resume_file',
+                    'documents.sss_file',
+                    'documents.transcript_of_records_file',
+                    'compensation_benefits.employee_salary',
+                    'compensation_benefits.employee_incentives',
+                    'compensation_benefits.employee_overtime_pay',
+                    'compensation_benefits.employee_bonus',
+                    'compensation_benefits.employee_insurance')
         ->where('personal_information_tables.id',$request->id)
         ->leftJoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
@@ -254,18 +253,10 @@ class EmployeesController extends Controller
     }
 
     public function insertImage(Request $request){
-        
-        // $employeeImageFile = $request->file('employee_image');
-        // $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-        // $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
-        // $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
-        // return $employeeImageFileName;
-
         $employeeImageFile = $request->file('employee_image');
         $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-        $employeeImageFileName = time().rand(1,100).'_Employee_Image.'.$employeeImageExtension;
+        $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
         $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
-        
         return $employeeImageFileName;
     }
 
@@ -2129,7 +2120,7 @@ class EmployeesController extends Controller
                 $tor_file_update = NULL;
             }
 
-            $update = Document::where('employee_id',$request->employee_id)
+            Document::where('employee_id',$request->employee_id)
                 ->update([
                     'barangay_clearance_file' => $barangay_clearance_file,
                     'birthcertificate_file' => $birthcertificate_file,
@@ -2144,66 +2135,81 @@ class EmployeesController extends Controller
                     'transcript_of_records_file' => $transcript_of_records_file
                 ]);
 
-                if($update){
-                    $result = 'true';
-                    $id = $employee->id;
+            // $update = Document::where('employee_id',$request->employee_id)
+            //     ->update([
+            //         'barangay_clearance_file' => $barangay_clearance_file,
+            //         'birthcertificate_file' => $birthcertificate_file,
+            //         'diploma_file' => $diploma_file,
+            //         'medical_certificate_file' => $medical_certificate_file,
+            //         'nbi_clearance_file' => $nbi_clearance_file,
+            //         'pag_ibig_file' => $pag_ibig_file,
+            //         'philhealth_file' => $philhealth_file,
+            //         'police_clearance_file' => $police_clearance_file,
+            //         'resume_file' => $resume_file,
+            //         'sss_file' => $sss_file,
+            //         'transcript_of_records_file' => $transcript_of_records_file
+            //     ]);
 
-                    if(
-                        $request->barangay_clearance_change == 'CHANGED' ||
-                        $request->birthcertificate_change == 'CHANGED' ||
-                        $request->diploma_change == 'CHANGED' ||
-                        $request->medical_certificate_change == 'CHANGED' ||
-                        $request->nbi_clearance_change == 'CHANGED' ||
-                        $request->pag_ibig_file_change == 'CHANGED' ||
-                        $request->philhealth_file_change == 'CHANGED' ||
-                        $request->police_clearance_file_change == 'CHANGED' ||
-                        $request->resume_file_change == 'CHANGED' ||
-                        $request->sss_file_change == 'CHANGED' ||
-                        $request->tor_file_change == 'CHANGED'
-                        ){
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $request->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                                $barangay_clearance_update
-                                                $birthcertificate_update
-                                                $diploma_update
-                                                $medical_certificate_update
-                                                $nbi_clearance_update
-                                                $pag_ibig_file_update
-                                                $philhealth_file_update
-                                                $police_clearance_file_update
-                                                $resume_file_update
-                                                $sss_file_update
-                                                $tor_file_update
-                                                ";
-                        $employee_logs->save();
+            //     if($update){
+            //         $result = 'true';
+            //         $id = $employee->id;
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $barangay_clearance_update
-                                                $birthcertificate_update
-                                                $diploma_update
-                                                $medical_certificate_update
-                                                $nbi_clearance_update
-                                                $pag_ibig_file_update
-                                                $philhealth_file_update
-                                                $police_clearance_file_update
-                                                $resume_file_update
-                                                $sss_file_update
-                                                $tor_file_update
-                                                ";
-                        $userlogs->save();
-                    }
-                }
-                else{
-                    $result = 'false';
-                    $id = '';
-                }
+            //         if(
+            //             $request->barangay_clearance_change == 'CHANGED' ||
+            //             $request->birthcertificate_change == 'CHANGED' ||
+            //             $request->diploma_change == 'CHANGED' ||
+            //             $request->medical_certificate_change == 'CHANGED' ||
+            //             $request->nbi_clearance_change == 'CHANGED' ||
+            //             $request->pag_ibig_file_change == 'CHANGED' ||
+            //             $request->philhealth_file_change == 'CHANGED' ||
+            //             $request->police_clearance_file_change == 'CHANGED' ||
+            //             $request->resume_file_change == 'CHANGED' ||
+            //             $request->sss_file_change == 'CHANGED' ||
+            //             $request->tor_file_change == 'CHANGED'
+            //             ){
+            //             $employee_logs = new LogsTable;
+            //             $employee_logs->employee_id = $request->id;
+            //             $employee_logs->user_id = auth()->user()->id;
+            //             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+            //                                     $barangay_clearance_update
+            //                                     $birthcertificate_update
+            //                                     $diploma_update
+            //                                     $medical_certificate_update
+            //                                     $nbi_clearance_update
+            //                                     $pag_ibig_file_update
+            //                                     $philhealth_file_update
+            //                                     $police_clearance_file_update
+            //                                     $resume_file_update
+            //                                     $sss_file_update
+            //                                     $tor_file_update
+            //                                     ";
+            //             $employee_logs->save();
+
+            //             $userlogs = new UserLogs;
+            //             $userlogs->user_id = auth()->user()->id;
+            //             $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+            //                                     $barangay_clearance_update
+            //                                     $birthcertificate_update
+            //                                     $diploma_update
+            //                                     $medical_certificate_update
+            //                                     $nbi_clearance_update
+            //                                     $pag_ibig_file_update
+            //                                     $philhealth_file_update
+            //                                     $police_clearance_file_update
+            //                                     $resume_file_update
+            //                                     $sss_file_update
+            //                                     $tor_file_update
+            //                                     ";
+            //             $userlogs->save();
+            //         }
+            //     }
+            //     else{
+            //         $result = 'false';
+            //         $id = '';
+            //     }
                 sleep(2);
-                $data = array('result' => $result, 'id' => $id);
-                response()->json($data);
+                // $data = array('result' => $result, 'id' => $id);
+                // response()->json($data);
                 return Redirect::to(url()->previous());
         }
     }
