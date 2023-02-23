@@ -341,7 +341,7 @@ class EmployeesController extends Controller
     public function saveChildren(Request $request){
         $children = new ChildrenTable;
         $children->employee_id = $request->employee_id;
-        $children->child_name = ucwords($request->child_name);
+        $children->child_name = strtoupper($request->child_name);
         $children->child_birthday = $request->child_birthday;
         $children->child_gender = $request->child_gender;
         $children->save();
@@ -350,12 +350,12 @@ class EmployeesController extends Controller
     public function saveEducationalAttainment(Request $request){
         $employee = new EducationalAttainment;
         $employee->employee_id = $request->employee_id;
-        $employee->secondary_school_name = $request->secondary_school_name;
-        $employee->secondary_school_address = $request->secondary_school_address;
+        $employee->secondary_school_name = strtoupper($request->secondary_school_name);
+        $employee->secondary_school_address = strtoupper($request->secondary_school_address);
         $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
         $employee->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
-        $employee->primary_school_name = $request->primary_school_name;
-        $employee->primary_school_address = $request->primary_school_address;
+        $employee->primary_school_name = strtoupper($request->primary_school_name);
+        $employee->primary_school_address = strtoupper($request->primary_school_address);
         $employee->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
         $employee->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
         $employee->save();
@@ -364,8 +364,8 @@ class EmployeesController extends Controller
     public function saveCollege(Request $request){
         $employee = new CollegeTable;
         $employee->employee_id = $request->employee_id;
-        $employee->college_name = ucwords($request->college_name);
-        $employee->college_degree = ucfirst($request->college_degree);
+        $employee->college_name = strtoupper($request->college_name);
+        $employee->college_degree = strtoupper($request->college_degree);
         $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
         $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
         $employee->save();  
@@ -374,8 +374,8 @@ class EmployeesController extends Controller
     public function saveTraining(Request $request){
         $employee = new TrainingTable;
         $employee->employee_id = $request->employee_id;
-        $employee->training_name = ucfirst($request->training_name);
-        $employee->training_title = ucfirst($request->training_title);
+        $employee->training_name = strtoupper($request->training_name);
+        $employee->training_title = strtoupper($request->training_title);
         $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
         $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
         $employee->save();
@@ -384,8 +384,8 @@ class EmployeesController extends Controller
     public function saveVocational(Request $request){
         $employee = new VocationalTable;
         $employee->employee_id = $request->employee_id;
-        $employee->vocational_name = ucfirst($request->vocational_name);
-        $employee->vocational_course = ucfirst($request->vocational_course);
+        $employee->vocational_name = strtoupper($request->vocational_name);
+        $employee->vocational_course = strtoupper($request->vocational_course);
         $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
         $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
         $employee->save();
@@ -394,9 +394,9 @@ class EmployeesController extends Controller
     public function saveJobHistory(Request $request){
         $employee = new JobHistoryTable;
         $employee->employee_id = $request->employee_id;
-        $employee->job_company_name = ucfirst($request->job_company_name);
-        $employee->job_description = ucfirst($request->job_description);
-        $employee->job_position = ucfirst($request->job_position);
+        $employee->job_company_name = strtoupper($request->job_company_name);
+        $employee->job_description = strtoupper($request->job_description);
+        $employee->job_position = strtoupper($request->job_position);
         $employee->job_contact_number = $request->job_contact_number;
         $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
         $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
@@ -424,7 +424,7 @@ class EmployeesController extends Controller
             $employee->employee_incentives = $request->employee_incentives;
             $employee->employee_overtime_pay = $request->employee_overtime_pay;
             $employee->employee_bonus = $request->employee_bonus;
-            $employee->employee_insurance = $request->employee_insurance;
+            $employee->employee_insurance = strtoupper($request->employee_insurance);
             $employee->save();
         }
 
@@ -433,7 +433,7 @@ class EmployeesController extends Controller
 
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = "ADDED USER: User successfully added new employee: [Employee Number: $employee_number] [Employee Name: $employee_details->first_name $employee_details->middle_name $employee_details->last_name]";
+        $userlogs->activity = "ADDED USER: USER SUCCESSFULLY ADDED NEW EMPLOYEE: [Employee Number: $employee_number] [Employee Name: $employee_details->first_name $employee_details->middle_name $employee_details->last_name]";
         $userlogs->save();
     }
 
@@ -1895,11 +1895,14 @@ class EmployeesController extends Controller
             return Redirect::to(url()->previous());
         }
         else{
-
+            $document_orig = Document::where('employee_id', $request->employee_id)->first();
+            
             if($request->hasFile('barangay_clearance_file')){
                 if(file_exists('public/documents_files/'.$request->barangay_clearance_filename)){
                     unlink('public/documents_files/'.$request->barangay_clearance_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->barangay_clearance_file);
+
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
                 $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
@@ -1914,6 +1917,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->birthcertificate_filename)){
                     unlink('public/documents_files/'.$request->birthcertificate_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->birthcertificate_file);
 
                 $birthcertificateFile = $request->file('birthcertificate_file');
                 $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
@@ -1929,6 +1933,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->diploma_filename)){
                     unlink('public/documents_files/'.$request->diploma_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->diploma_file);
 
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
@@ -1944,6 +1949,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->medical_certificate_filename)){
                     unlink('public/documents_files/'.$request->medical_certificate_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->medical_certificate_file);
 
                 $medicalCertificateFile = $request->file('medical_certificate_file');
                 $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
@@ -1959,6 +1965,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->nbi_clearance_filename)){
                     unlink('public/documents_files/'.$request->nbi_clearance_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->nbi_clearance_file);
 
                 $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
@@ -1974,6 +1981,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->pag_ibig_filename)){
                     unlink('public/documents_files/'.$request->pag_ibig_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->pag_ibig_file);
 
                 $pagibigFile = $request->file('pag_ibig_file');
                 $pagibigExtension = $pagibigFile->getClientOriginalExtension();
@@ -1989,6 +1997,8 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->philhealth_filename)){
                     unlink('public/documents_files/'.$request->philhealth_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->philhealth_file);
+
                 $philhealthFile = $request->file('philhealth_file');
                 $philhealthExtension = $philhealthFile->getClientOriginalExtension();
                 $philhealthFilename = $employee_number.'_Philhealth_Form_'.$timestamp.'.'.$philhealthExtension;
@@ -2003,6 +2013,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->police_clearance_filename)){
                     unlink('public/documents_files/'.$request->police_clearance_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->police_clearance_file);
 
                 $policeClearanceFile = $request->file('police_clearance_file');
                 $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
@@ -2018,6 +2029,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->resume_filename)){
                     unlink('public/documents_files/'.$request->resume_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->resume_file);
 
                 $resumeFile = $request->file('resume_file');
                 $resumeExtension = $resumeFile->getClientOriginalExtension();
@@ -2033,6 +2045,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->sss_filename)){
                     unlink('public/documents_files/'.$request->sss_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->sss_file);
 
                 $sssFile = $request->file('sss_file');
                 $sssExtension = $sssFile->getClientOriginalExtension();
@@ -2048,6 +2061,7 @@ class EmployeesController extends Controller
                 if(file_exists('public/documents_files/'.$request->transcript_of_records_filename)){
                     unlink('public/documents_files/'.$request->transcript_of_records_filename);
                 }
+                Storage::delete('public/documents_files/'.$document_orig->transcript_of_records_file);
                     
                 $torFile = $request->file('tor_file');
                 $torExtension = $torFile->getClientOriginalExtension();

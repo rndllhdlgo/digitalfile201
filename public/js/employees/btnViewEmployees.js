@@ -20,7 +20,7 @@ var barangay_clearance_change,
     sss_file_change,
     tor_file_change;
 
-var email_address_orig;
+var memo_change;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     
@@ -929,14 +929,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 return history;
                             },
                         },
-                        // {
-                        //     data: 'history',
-                        //     width: '80%',
-                        //     "render": function(data, type, row) {
-                        //       var history = row.history.replaceAll(" [", "<br>[");
-                        //       return history;
-                        //     }
-                        // }
                     ],
                 });
                 $('div.breakspace').html('<br><br>');
@@ -966,7 +958,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('th').removeClass("sorting_asc");
 
                 var removeValue = value.employee_number+"_";
-                // alert(removeValue);
 
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
@@ -975,7 +966,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
-                    // alert(value.barangay_clearance_file);
                 }
 
                 if(value.birthcertificate_file){

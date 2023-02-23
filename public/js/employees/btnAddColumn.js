@@ -290,6 +290,9 @@ $(document).ready(function(){
 });
 
     function addMemoRow(){
+        memo_change = 'CHANGED';
+        console.log(memo_change);
+        
         $('#memo_subject').attr('id','');
         $('#memo_date').attr('id','');
         $('#memo_penalty').attr('id','');
