@@ -1,6 +1,11 @@
 <div id="documents" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-        <div class="first_table">
+    <br>
+    <span class="alert class alert-warning"><i class="fa-solid fa-circle-info"></i> <b> INSTRUCTION:</b> File Size: Maximum <b>(10MB)</b> File Extensions: <b>(.pdf)</b>.</span>
+    <br>
+    <br>
+    <div class="document_table_clear">
+        <div class="document_first_table">
             <h5 class="table-title">REQUIREMENTS</h5>
                 <table class="table table-striped table-bordered table-hover align-middle">
                     <thead class="thead-educational">
@@ -23,7 +28,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger grow" id="barangay_clearance_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" class="btn btn-success grow" id="barangay_clearance_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success grow btnDisabled btnView" id="barangay_clearance_view" title="VIEW" onclick="$('#barangay_clearance_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    class="hiddenDocumentPreview" id="barangay_clearance_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -41,7 +46,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-danger grow" id="birthcertificate_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" class="btn btn-success grow" id="birthcertificate_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success grow btnDisabled btnView" id="birthcertificate_view"     title="VIEW" onclick="$('#birthcertificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    class="hiddenDocumentPreview" id="birthcertificate_preview"   data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -58,7 +63,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="diploma_delete_button"   class="btn btn-danger grow" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" id="diploma_delete_button"   class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="diploma_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#diploma_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    id="diploma_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -76,7 +81,7 @@
                             </td>
                             <td class="text-center">
 
-                                <button type="button" id="medical_certificate_delete_button"   class="btn btn-danger grow" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" id="medical_certificate_delete_button"   class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="medical_certificate_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#medical_certificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    id="medical_certificate_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -93,7 +98,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="nbi_clearance_delete_button"   class="btn btn-danger grow" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" id="nbi_clearance_delete_button"   class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="nbi_clearance_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#nbi_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    id="nbi_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -110,7 +115,7 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="pag_ibig_delete_button"   class="btn btn-danger grow" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                                <button type="button" id="pag_ibig_delete_button"   class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="pag_ibig_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#pag_ibig_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    id="pag_ibig_preview"  class="hiddenDocumentPreview"data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -118,7 +123,7 @@
                     </tbody>
                 </table>
         </div>
-    <div class="second_table">
+    <div class="document_second_table">
         <br>
             <table class="table table-striped table-bordered table-hover align-middle" style="margin-top: 15px;">
                 <thead class="thead-educational">
@@ -141,7 +146,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger grow" id="philhealth_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-success grow" id="philhealth_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                             <button type="button" class="btn btn-success grow btnDisabled btnView" id="philhealth_view" title="VIEW" onclick="$('#philhealth_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <img src="" alt=""    class="hiddenDocumentPreview" id="philhealth_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
@@ -159,7 +164,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger grow" id="police_clearance_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-success grow" id="police_clearance_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                             <button type="button" id="police_clearance_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#police_clearance_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <img src="" alt=""    id="police_clearance_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
@@ -177,7 +182,7 @@
                             </div>
                         </td>
                         <td class="text-center"> 
-                            <button type="button" class="btn btn-danger grow" id="resume_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-success grow" id="resume_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                             <button type="button" class="btn btn-success grow btnDisabled btnView" id="resume_view" title="VIEW" onclick="$('#resume_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <img src="" alt=""    id="resume_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
@@ -195,7 +200,7 @@
                             </div>
                         </td>
                         <td class="text-center"> 
-                            <button type="button" class="btn btn-danger grow" id="sss_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-success grow" id="sss_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                             <button type="button" id="sss_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#sss_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <img src="" alt=""    id="sss_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
@@ -212,7 +217,7 @@
                             </div>
                         </td>
                         <td class="text-center">
-                            <button type="button" class="btn btn-danger grow" id="tor_delete_button" style="display: none;"><i class="fa-solid fa-trash-can"></i></button>
+                            <button type="button" class="btn btn-success grow" id="tor_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                             <button type="button" id="tor_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#tor_preview').click();" disabled><i class="fas fa-eye"></i></button>
                             <img src="" alt=""    id="tor_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                         </td>
@@ -220,6 +225,7 @@
                 </tbody>
             </table>
     </div> 
+</div>
 {{-- Display Preview of File Chosen --}}
     <div class="modal fade" id="preview_document">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">

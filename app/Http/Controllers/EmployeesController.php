@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 use App\Models\UserLogs;
@@ -38,7 +39,7 @@ class EmployeesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth'); 
     }
     
     public function logs_reload(){
@@ -438,8 +439,8 @@ class EmployeesController extends Controller
 
     public function updatePersonalInformation(Request $request){
         if($request->filename_delete){
-            if(file_exists(public_path('storage/employee_images/'.$request->filename_delete))){
-                unlink(public_path('storage/employee_images/'.$request->filename_delete));
+            if(file_exists('public/employee_images/'.$request->filename_delete)){
+                unlink('public/employee_images/'.$request->filename_delete);
             }
         }
         $employee = PersonalInformationTable::find($request->id);
@@ -1598,8 +1599,7 @@ class EmployeesController extends Controller
         }
     }
 
-    public function saveDocuments(Request $request)
-    {   
+    public function saveDocuments(Request $request){ 
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
                 $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
@@ -1723,6 +1723,12 @@ class EmployeesController extends Controller
     }
 
     public function updateDocuments(Request $request){
+        $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
+
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee = Document::where('employee_id',$request->employee_id)->first();
+        
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
                 $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
@@ -1794,99 +1800,109 @@ class EmployeesController extends Controller
                 $termination->save();
             }
         }
-
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         
-        $employee = Document::where('employee_id',$request->employee_id)->first();
         if(!$employee){
             $document = new Document;
             $document->employee_id = $request->employee_id;
             $barangayClearanceFile = $request->file('barangay_clearance_file');
             $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Barangay_Clearance_File.'.$barangayClearanceExtension;
+            $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
             $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
             $document->barangay_clearance_file = $barangayClearanceFilename;
 
-            $birthcertificateFile = $request->file('birthcertificate_file');
-            $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-            $birthcertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Birth_Certificate_File.'.$birthcertificateExtension;
-            $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
-            $document->birthcertificate_file = $birthcertificateFilename;
+            if($request->hasFile('birthcertificate_file')){
+                $birthcertificateFile = $request->file('birthcertificate_file');
+                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                $birthcertificateFilename = $employee_number.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
+                $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
+                $document->birthcertificate_file = $birthcertificateFilename;
+            }
 
             if($request->hasFile('diploma_file')){
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Diploma_File.'.$diplomaExtension;
+                $diplomaFilename = $employee_number.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
                 $document->diploma_file = $diplomaFilename;
             }
 
-            $medicalCertificateFile = $request->file('medical_certificate_file');
-            $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-            $medicalCertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Medical_Certificate_File.'.$medicalCertificateExtension;
-            $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
-            $document->medical_certificate_file = $medicalCertificateFilename;
+            if($request->hasFile('medical_certificate_file')){
+                $medicalCertificateFile = $request->file('medical_certificate_file');
+                $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+                $medicalCertificateFilename = $employee_number.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
+                $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
+                $document->medical_certificate_file = $medicalCertificateFilename;
+            }
 
             if($request->hasFile('nbi_clearance_file')){
                 $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_NBI_Clearance_File.'.$nbiExtension;
+                $nbiFilename = $employee_number.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents_files',$nbiFilename);
                 $document->nbi_clearance_file = $nbiFilename;
             }
 
-            $pagibigFile = $request->file('pag_ibig_file');
-            $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-            $pagibigFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Pag_ibig_File.'.$pagibigExtension;
-            $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
-            $document->pag_ibig_file = $pagibigFilename;
-
-            $philhealthFile = $request->file('philhealth_file');
-            $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-            $philhealthFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Philhealth_File.'.$philhealthExtension;
-            $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
-            $document->philhealth_file = $philhealthFilename;
-
-            $policeClearanceFile = $request->file('police_clearance_file');
-            $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-            $policeClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Police_Clearance_File.'.$policeClearanceExtension;
-            $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
-            $document->police_clearance_file = $policeClearanceFilename;
-
-            $resumeFile = $request->file('resume_file');
-            $resumeExtension = $resumeFile->getClientOriginalExtension();
-            $resumeFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Resume_File.'.$resumeExtension;
-            $resumeFile->storeAs('public/documents_files',$resumeFilename);
-            $document->resume_file = $resumeFilename;
-
-            $sssFile = $request->file('sss_file');
-            $sssExtension = $sssFile->getClientOriginalExtension();
-            $sssFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_SSS_File.'.$sssExtension;
-            $sssFile->storeAs('public/documents_files',$sssFilename);
-            $document->sss_file = $sssFilename;
+            if($request->hasFile('pag_ibig_file')){
+                $pagibigFile = $request->file('pag_ibig_file');
+                $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+                $pagibigFilename = $employee_number.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
+                $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
+                $document->pag_ibig_file = $pagibigFilename;
+            }
             
-        if($request->hasFile('tor_file')){
-            $torFile = $request->file('tor_file');
-            $torExtension = $torFile->getClientOriginalExtension();
-            $torFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Transcript_of_Records_File.'.$torExtension;
-            $torFile->storeAs('public/documents_files',$torFilename);
-            $document->transcript_of_records_file = $torFilename;
-        }
+            if($request->hasFile('philhealth_file')){
+                $philhealthFile = $request->file('philhealth_file');
+                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                $philhealthFilename = $employee_number.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
+                $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
+                $document->philhealth_file = $philhealthFilename;
+            }
 
+            if($request->hasFile('police_clearance_file')){
+                $policeClearanceFile = $request->file('police_clearance_file');
+                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                $policeClearanceFilename = $employee_number.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
+                $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
+                $document->police_clearance_file = $policeClearanceFilename;
+            }
+            
+            if($request->hasFile('resume_file')){
+                $resumeFile = $request->file('resume_file');
+                $resumeExtension = $resumeFile->getClientOriginalExtension();
+                $resumeFilename = $employee_number.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
+                $resumeFile->storeAs('public/documents_files',$resumeFilename);
+                $document->resume_file = $resumeFilename;
+            }
+
+            if($request->hasFile('sss_file')){
+                $sssFile = $request->file('sss_file');
+                $sssExtension = $sssFile->getClientOriginalExtension();
+                $sssFilename = $employee_number.'_SSS_File_'.$timestamp.'.'.$sssExtension;
+                $sssFile->storeAs('public/documents_files',$sssFilename);
+                $document->sss_file = $sssFilename;
+            }
+            
+            if($request->hasFile('tor_file')){
+                $torFile = $request->file('tor_file');
+                $torExtension = $torFile->getClientOriginalExtension();
+                $torFilename = $employee_number.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
+                $torFile->storeAs('public/documents_files',$torFilename);
+                $document->transcript_of_records_file = $torFilename;
+            }
             $document->save();
+            
             sleep(2);
             return Redirect::to(url()->previous());
         }
         else{
-            if($request->hasFile('barangay_clearance_file')){
-                if(file_exists('storage/documents_files/'.$request->barangay_clearance_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->barangay_clearance_filename));
-                }
 
+            if($request->hasFile('barangay_clearance_file')){
+                if(file_exists('public/documents_files/'.$request->barangay_clearance_filename)){
+                    unlink('public/documents_files/'.$request->barangay_clearance_filename);
+                }
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-                $barangayClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Barangay_Clearance.'.$barangayClearanceExtension;
+                $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
                 $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
                 $barangay_clearance_file = $barangayClearanceFilename;
             }
@@ -1895,13 +1911,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('birthcertificate_file')){
-                if(file_exists('storage/documents_files/'.$request->birthcertificate_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->birthcertificate_filename));
+                if(file_exists('public/documents_files/'.$request->birthcertificate_filename)){
+                    unlink('public/documents_files/'.$request->birthcertificate_filename);
                 }
 
                 $birthcertificateFile = $request->file('birthcertificate_file');
                 $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                $birthcertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Birth_Certificate.'.$birthcertificateExtension;
+                $birthcertificateFilename = $employee_number.'_Birth_Certificate_'.$timestamp.'.'.$birthcertificateExtension;
                 $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
                 $birthcertificate_file = $birthcertificateFilename;
             }
@@ -1910,13 +1926,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('diploma_file')){
-                if(file_exists('storage/documents_files/'.$request->diploma_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->diploma_filename));
+                if(file_exists('public/documents_files/'.$request->diploma_filename)){
+                    unlink('public/documents_files/'.$request->diploma_filename);
                 }
 
                 $diplomaFile = $request->file('diploma_file');
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Diploma.'.$diplomaExtension;
+                $diplomaFilename = $employee_number.'_Diploma_'.$timestamp.'.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
                 $diploma_file = $diplomaFilename;
             }
@@ -1925,13 +1941,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('medical_certificate_file')){
-                if(file_exists('storage/documents_files/'.$request->medical_certificate_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->medical_certificate_filename));
+                if(file_exists('public/documents_files/'.$request->medical_certificate_filename)){
+                    unlink('public/documents_files/'.$request->medical_certificate_filename);
                 }
 
                 $medicalCertificateFile = $request->file('medical_certificate_file');
                 $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                $medicalCertificateFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Medical_Certificate.'.$medicalCertificateExtension;
+                $medicalCertificateFilename = $employee_number.'_Medical_Certificate_'.$timestamp.'.'.$medicalCertificateExtension;
                 $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
                 $medical_certificate_file = $medicalCertificateFilename;
             }
@@ -1940,13 +1956,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('nbi_clearance_file')){
-                if(file_exists('storage/documents_files/'.$request->nbi_clearance_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->nbi_clearance_filename));
+                if(file_exists('public/documents_files/'.$request->nbi_clearance_filename)){
+                    unlink('public/documents_files/'.$request->nbi_clearance_filename);
                 }
 
                 $nbiFile = $request->file('nbi_clearance_file');
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_NBI_Clearance.'.$nbiExtension;
+                $nbiFilename = $employee_number.'_NBI_Clearance_'.$timestamp.'.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents_files',$nbiFilename);
                 $nbi_clearance_file = $nbiFilename;
             }
@@ -1955,27 +1971,27 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('pag_ibig_file')){
-                if(file_exists('storage/documents_files/'.$request->pag_ibig_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->pag_ibig_filename));
+                if(file_exists('public/documents_files/'.$request->pag_ibig_filename)){
+                    unlink('public/documents_files/'.$request->pag_ibig_filename);
                 }
 
                 $pagibigFile = $request->file('pag_ibig_file');
                 $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                $pagibigFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Pagibig_Form.'.$pagibigExtension;
+                $pagibigFilename = $employee_number.'_Pagibig_Form_'.$timestamp.'.'.$pagibigExtension;
                 $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
                 $pag_ibig_file = $pagibigFilename;
             }
             else{
                 $pag_ibig_file = $request->pag_ibig_filename;
             }
-
+            
             if($request->hasFile('philhealth_file')){
-                if(file_exists('storage/documents_files/'.$request->philhealth_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->philhealth_filename));
+                if(file_exists('public/documents_files/'.$request->philhealth_filename)){
+                    unlink('public/documents_files/'.$request->philhealth_filename);
                 }
                 $philhealthFile = $request->file('philhealth_file');
                 $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                $philhealthFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Philhealth_Form.'.$philhealthExtension;
+                $philhealthFilename = $employee_number.'_Philhealth_Form_'.$timestamp.'.'.$philhealthExtension;
                 $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
                 $philhealth_file = $philhealthFilename;
             }
@@ -1984,13 +2000,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('police_clearance_file')){
-                if(file_exists('storage/documents_files/'.$request->police_clearance_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->police_clearance_filename));
+                if(file_exists('public/documents_files/'.$request->police_clearance_filename)){
+                    unlink('public/documents_files/'.$request->police_clearance_filename);
                 }
 
                 $policeClearanceFile = $request->file('police_clearance_file');
                 $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                $policeClearanceFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Police_Clearance.'.$policeClearanceExtension;
+                $policeClearanceFilename = $employee_number.'_Police_Clearance_'.$timestamp.'.'.$policeClearanceExtension;
                 $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
                 $police_clearance_file = $policeClearanceFilename;
             }
@@ -1999,13 +2015,13 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('resume_file')){
-                if(file_exists('storage/documents_files/'.$request->resume_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->resume_filename));
+                if(file_exists('public/documents_files/'.$request->resume_filename)){
+                    unlink('public/documents_files/'.$request->resume_filename);
                 }
 
                 $resumeFile = $request->file('resume_file');
                 $resumeExtension = $resumeFile->getClientOriginalExtension();
-                $resumeFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Resume.'.$resumeExtension;
+                $resumeFilename = $employee_number.'_Resume_'.$timestamp.'.'.$resumeExtension;
                 $resumeFile->storeAs('public/documents_files',$resumeFilename);
                 $resume_file = $resumeFilename;
             }
@@ -2014,111 +2030,34 @@ class EmployeesController extends Controller
             }
 
             if($request->hasFile('sss_file')){                
-                if(file_exists('storage/documents_files/'.$request->sss_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->sss_filename));
+                if(file_exists('public/documents_files/'.$request->sss_filename)){
+                    unlink('public/documents_files/'.$request->sss_filename);
                 }
 
                 $sssFile = $request->file('sss_file');
                 $sssExtension = $sssFile->getClientOriginalExtension();
-                $sssFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_SSS_Form.'.$sssExtension;
+                $sssFilename = $employee_number.'_SSS_Form_'.$timestamp.'.'.$sssExtension;
                 $sssFile->storeAs('public/documents_files',$sssFilename);
                 $sss_file = $sssFilename;
             }
             else{
                 $sss_file = $request->sss_filename;
             }
-        
+
             if($request->hasFile('tor_file')){
-                if(file_exists('storage/documents_files/'.$request->transcript_of_records_filename)){
-                    unlink(public_path('storage/documents_files/'.$request->transcript_of_records_filename));
+                if(file_exists('public/documents_files/'.$request->transcript_of_records_filename)){
+                    unlink('public/documents_files/'.$request->transcript_of_records_filename);
                 }
                     
                 $torFile = $request->file('tor_file');
                 $torExtension = $torFile->getClientOriginalExtension();
-                $torFilename = $employee_number.'_'.strftime("%m-%d-%Y-%H-%M-%S").'_Transcript_of_Records.'.$torExtension;
+                $torFilename = $employee_number.'_Transcript_of_Records_'.$timestamp.'.'.$torExtension;
                 $torFile->storeAs('public/documents_files',$torFilename);
                 $transcript_of_records_file = $torFilename;
             }
             else{
                 $transcript_of_records_file = $request->transcript_of_records_filename;
             } 
-
-            if($request->barangay_clearance_change == 'CHANGED'){
-                $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $barangay_clearance_update = NULL;
-            }
-
-            if($request->birthcertificate_change == 'CHANGED'){
-                $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $birthcertificate_update = NULL;
-            }
-
-            if($request->diploma_change == 'CHANGED'){
-                $diploma_update = "[DIPLOMA FILE HAVE BEEN CHANGED]";
-            }
-            else{
-                $diploma_update = NULL;
-            }
-
-            if($request->medical_certificate_change == 'CHANGED'){
-                $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $medical_certificate_update = NULL;
-            }
-
-            if($request->nbi_clearance_change == 'CHANGED'){
-                $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $nbi_clearance_update = NULL;
-            }
-
-            if($request->pag_ibig_file_change == 'CHANGED'){
-                $pag_ibig_file_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $pag_ibig_file_update = NULL;
-            }
-
-            if($request->philhealth_file_change == 'CHANGED'){
-                $philhealth_file_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $philhealth_file_update = NULL;
-            }
-
-            if($request->police_clearance_file_change == 'CHANGED'){
-                $police_clearance_file_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $police_clearance_file_update = NULL;
-            }
-
-            if($request->resume_file_change == 'CHANGED'){
-                $resume_file_update = "[RESUME FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $resume_file_update = NULL;
-            }
-
-            if($request->sss_file_change == 'CHANGED'){
-                $sss_file_update = "[SSS FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $sss_file_update = NULL;
-            }
-
-            if($request->tor_file_change == 'CHANGED'){
-                $tor_file_update = "[TOR FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $tor_file_update = NULL;
-            }
 
             Document::where('employee_id',$request->employee_id)
                 ->update([
@@ -2135,82 +2074,198 @@ class EmployeesController extends Controller
                     'transcript_of_records_file' => $transcript_of_records_file
                 ]);
 
-            // $update = Document::where('employee_id',$request->employee_id)
-            //     ->update([
-            //         'barangay_clearance_file' => $barangay_clearance_file,
-            //         'birthcertificate_file' => $birthcertificate_file,
-            //         'diploma_file' => $diploma_file,
-            //         'medical_certificate_file' => $medical_certificate_file,
-            //         'nbi_clearance_file' => $nbi_clearance_file,
-            //         'pag_ibig_file' => $pag_ibig_file,
-            //         'philhealth_file' => $philhealth_file,
-            //         'police_clearance_file' => $police_clearance_file,
-            //         'resume_file' => $resume_file,
-            //         'sss_file' => $sss_file,
-            //         'transcript_of_records_file' => $transcript_of_records_file
-            //     ]);
+            if($request->hasFile('barangay_clearance_file')){
+                $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
+            }
 
-            //     if($update){
-            //         $result = 'true';
-            //         $id = $employee->id;
+            else{
+                $barangay_clearance_update = NULL;
+            }
 
-            //         if(
-            //             $request->barangay_clearance_change == 'CHANGED' ||
-            //             $request->birthcertificate_change == 'CHANGED' ||
-            //             $request->diploma_change == 'CHANGED' ||
-            //             $request->medical_certificate_change == 'CHANGED' ||
-            //             $request->nbi_clearance_change == 'CHANGED' ||
-            //             $request->pag_ibig_file_change == 'CHANGED' ||
-            //             $request->philhealth_file_change == 'CHANGED' ||
-            //             $request->police_clearance_file_change == 'CHANGED' ||
-            //             $request->resume_file_change == 'CHANGED' ||
-            //             $request->sss_file_change == 'CHANGED' ||
-            //             $request->tor_file_change == 'CHANGED'
-            //             ){
-            //             $employee_logs = new LogsTable;
-            //             $employee_logs->employee_id = $request->id;
-            //             $employee_logs->user_id = auth()->user()->id;
-            //             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-            //                                     $barangay_clearance_update
-            //                                     $birthcertificate_update
-            //                                     $diploma_update
-            //                                     $medical_certificate_update
-            //                                     $nbi_clearance_update
-            //                                     $pag_ibig_file_update
-            //                                     $philhealth_file_update
-            //                                     $police_clearance_file_update
-            //                                     $resume_file_update
-            //                                     $sss_file_update
-            //                                     $tor_file_update
-            //                                     ";
-            //             $employee_logs->save();
+            if($request->hasFile('birthcertificate_file')){
+                $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $birthcertificate_update = NULL;
+            }
 
-            //             $userlogs = new UserLogs;
-            //             $userlogs->user_id = auth()->user()->id;
-            //             $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-            //                                     $barangay_clearance_update
-            //                                     $birthcertificate_update
-            //                                     $diploma_update
-            //                                     $medical_certificate_update
-            //                                     $nbi_clearance_update
-            //                                     $pag_ibig_file_update
-            //                                     $philhealth_file_update
-            //                                     $police_clearance_file_update
-            //                                     $resume_file_update
-            //                                     $sss_file_update
-            //                                     $tor_file_update
-            //                                     ";
-            //             $userlogs->save();
-            //         }
+            if($request->hasFile('diploma_file')){
+                $diploma_update = "[DIPLOMA FILE HAVE BEEN CHANGED]";
+            }
+            else{
+                $diploma_update = NULL;
+            }
+
+            if($request->hasFile('medical_certificate_file')){
+                $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $medical_certificate_update = NULL;
+            }
+
+            if($request->hasFile('nbi_clearance_file')){
+                $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $nbi_clearance_update = NULL;
+            }
+
+            if($request->hasFile('pag_ibig_file')){
+                $pag_ibig_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $pag_ibig_update = NULL;
+            }
+
+            if($request->hasFile('philhealth_file')){
+                $philhealth_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $philhealth_update = NULL;
+            }
+
+            if($request->hasFile('police_clearance_file')){
+                $police_clearance_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $police_clearance_update = NULL;
+            }
+
+            if($request->hasFile('resume_file')){
+                $resume_update = "[RESUME FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $resume_update = NULL;
+            }
+
+            if($request->hasFile('sss_file')){
+                $sss_update = "[SSS FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $sss_update = NULL;
+            }
+
+            if($request->hasFile('tor_file')){
+                $tor_update = "[TRANSCRIPT OF RECORDS FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $tor_update = NULL;
+            }
+            
+
+            if(
+                $request->hasFile('barangay_clearance_file')
+             || $request->hasFile('birthcertificate_file')
+             || $request->hasFile('diploma_file')
+             || $request->hasFile('medical_certificate_file')
+             || $request->hasFile('nbi_clearance_file')
+             || $request->hasFile('pag_ibig_file')
+             || $request->hasFile('philhealth_file')
+             || $request->hasFile('police_clearance_file')
+             || $request->hasFile('resume_file')
+             || $request->hasFile('sss_file')
+             || $request->hasFile('tor_file')
+             
+             ){
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                        $barangay_clearance_update
+                                        $birthcertificate_update
+                                        $diploma_update
+                                        $medical_certificate_update
+                                        $nbi_clearance_update
+                                        $pag_ibig_update
+                                        $philhealth_update
+                                        $police_clearance_update
+                                        $resume_update
+                                        $sss_update
+                                        $tor_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $barangay_clearance_update
+                                        $birthcertificate_update
+                                        $diploma_update
+                                        $medical_certificate_update
+                                        $nbi_clearance_update
+                                        $pag_ibig_update
+                                        $philhealth_update
+                                        $police_clearance_update
+                                        $resume_update
+                                        $sss_update
+                                        $tor_update";
+                $userlogs->save();
+            }
+
+            sleep(2);
+            return Redirect::to(url()->previous());
+
+            // if($request->barangay_clearance_change){
+
+            //     if($request->barangay_clearance_change == 'CHANGED'){
+            //         $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
             //     }
             //     else{
-            //         $result = 'false';
-            //         $id = '';
+            //         $barangay_clearance_update = NULL;
             //     }
-                sleep(2);
-                // $data = array('result' => $result, 'id' => $id);
-                // response()->json($data);
-                return Redirect::to(url()->previous());
+
+            //     $result = 'true';
+            //     $id = $employee->id;
+
+            //     Document::where('employee_id',$request->employee_id)
+            //     ->update([
+            //         'barangay_clearance_file' => $barangay_clearance_file
+                    // 'birthcertificate_file' => $birthcertificate_file,
+                    // 'diploma_file' => $diploma_file,
+                    // 'medical_certificate_file' => $medical_certificate_file,
+                    // 'nbi_clearance_file' => $nbi_clearance_file,
+                    // 'pag_ibig_file' => $pag_ibig_file,
+                    // 'philhealth_file' => $philhealth_file,
+                    // 'police_clearance_file' => $police_clearance_file,
+                    // 'resume_file' => $resume_file,
+                    // 'sss_file' => $sss_file,
+                    // 'transcript_of_records_file' => $transcript_of_records_file
+                // ]);
+
+                // if($request->barangay_clearance_change == 'CHANGED' || $request->birthcertificate_change == 'CHANGED' || $request->diploma_change == 'CHANGED'){
+            //         $employee_logs = new LogsTable;
+            //         $employee_logs->employee_id = $request->id;
+            //         $employee_logs->user_id = auth()->user()->id;
+            //         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+            //                                 $barangay_clearance_update";
+            //         $employee_logs->save();
+                
+            //     sleep(2);
+            //     return 'Changed';
+            // }
+            // else{
+            //     $result = 'false';
+            //     $id = '';
+
+                // Document::where('employee_id',$request->employee_id)
+                // ->update([
+                //     'barangay_clearance_file' => $barangay_clearance_file
+                    // 'birthcertificate_file' => $birthcertificate_file,
+                    // 'diploma_file' => $diploma_file,
+                    // 'medical_certificate_file' => $medical_certificate_file,
+                    // 'nbi_clearance_file' => $nbi_clearance_file,
+                    // 'pag_ibig_file' => $pag_ibig_file,
+                    // 'philhealth_file' => $philhealth_file,
+                    // 'police_clearance_file' => $police_clearance_file,
+                    // 'resume_file' => $resume_file,
+                    // 'sss_file' => $sss_file,
+                    // 'transcript_of_records_file' => $transcript_of_records_file
+            //     ]);
+                
+            // }
+            //     $data = array('result' => $result, 'id' => $id);
+            //     response()->json($data);
+            //     sleep(2);
+            //     return redirect()->back();
         }
     }
 

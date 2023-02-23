@@ -56,7 +56,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             });
             employee_data.forEach(value => {
 
-                
                 $('#hidden_id').val(value.id);
                 $('#documents_form').attr("action",'/employees/updateDocuments');
                 $('#current_employee').val(value.employee_number);
@@ -966,20 +965,24 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 job_history_change = '';
                 $('th').removeClass("sorting_asc");
 
+                var removeValue = value.employee_number+"_";
+                // alert(removeValue);
+
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();
                     $('.barangay_clearance_span').show();
-                    $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file}</a>`);
+                    $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
+                    // alert(value.barangay_clearance_file);
                 }
 
                 if(value.birthcertificate_file){
                     $('#birthcertificate_filename').val(value.birthcertificate_file);
                     $('.birthcertificate_div').hide();
                     $('.birthcertificate_span').show();
-                    $('.birthcertificate_span').html(`<a href="/storage/documents_files/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file}</a>`);
+                    $('.birthcertificate_span').html(`<a href="/storage/documents_files/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
                 }
@@ -988,7 +991,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#diploma_filename').val(value.diploma_file);
                     $('.diploma_div').hide();
                     $('.diploma_span').show();
-                    $('.diploma_span').html(`<a href="/storage/documents_files/${value.diploma_file}" target="_blank"> ${value.diploma_file}</a>`);
+                    $('.diploma_span').html(`<a href="/storage/documents_files/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
                     $('#diploma_view').hide();
                     $('#diploma_delete_button').show();
                 }
@@ -997,7 +1000,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#medical_certificate_filename').val(value.medical_certificate_file);
                     $('.medical_certificate_div').hide();
                     $('.medical_certificate_span').show();
-                    $('.medical_certificate_span').html(`<a href="/storage/documents_files/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file}</a>`);
+                    $('.medical_certificate_span').html(`<a href="/storage/documents_files/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
                 }
@@ -1005,7 +1008,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#nbi_clearance_filename').val(value.nbi_clearance_file);
                     $('.nbi_clearance_div').hide();
                     $('.nbi_clearance_span').show();
-                    $('.nbi_clearance_span').html(`<a href="/storage/documents_files/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file}</a>`);
+                    $('.nbi_clearance_span').html(`<a href="/storage/documents_files/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
                     $('#nbi_clearance_view').hide();
                     $('#nbi_clearance_delete_button').show();
                 }
@@ -1014,7 +1017,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#pag_ibig_filename').val(value.pag_ibig_file);
                     $('.pag_ibig_div').hide();
                     $('.pag_ibig_span').show();
-                    $('.pag_ibig_span').html(`<a href="/storage/documents_files/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file}</a>`);
+                    $('.pag_ibig_span').html(`<a href="/storage/documents_files/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
                 }
@@ -1023,7 +1026,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#philhealth_filename').val(value.philhealth_file);
                     $('.philhealth_div').hide();
                     $('.philhealth_span').show();
-                    $('.philhealth_span').html(`<a href="/storage/documents_files/${value.philhealth_file}" target="_blank"> ${value.philhealth_file}</a>`);
+                    $('.philhealth_span').html(`<a href="/storage/documents_files/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
                     $('#philhealth_view').hide();
                     $('#philhealth_delete_button').show();
                 }
@@ -1032,7 +1035,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#police_clearance_filename').val(value.police_clearance_file);
                     $('.police_clearance_div').hide();
                     $('.police_clearance_span').show();
-                    $('.police_clearance_span').html(`<a href="/storage/documents_files/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file}</a>`);
+                    $('.police_clearance_span').html(`<a href="/storage/documents_files/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
                     $('#police_clearance_view').hide();
                     $('#police_clearance_delete_button').show();
                 }
@@ -1041,7 +1044,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#resume_filename').val(value.resume_file);
                     $('.resume_div').hide();
                     $('.resume_span').show();
-                    $('.resume_span').html(`<a href="/storage/documents_files/${value.resume_file}" target="_blank"> ${value.resume_file}</a>`);
+                    $('.resume_span').html(`<a href="/storage/documents_files/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
                     $('#resume_view').hide();
                     $('#resume_delete_button').show();
                 }
@@ -1050,7 +1053,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#sss_filename').val(value.sss_file);
                     $('.sss_div').hide();
                     $('.sss_span').show();
-                    $('.sss_span').html(`<a href="/storage/documents_files/${value.sss_file}" target="_blank"> ${value.sss_file}</a>`);
+                    $('.sss_span').html(`<a href="/storage/documents_files/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
                     $('#sss_view').hide();
                     $('#sss_delete_button').show();
                 }
@@ -1059,7 +1062,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#transcript_of_records_filename').val(value.transcript_of_records_file);
                     $('.transcript_of_records_div').hide();
                     $('.transcript_of_records_span').show();
-                    $('.transcript_of_records_span').html(`<a href="/storage/documents_files/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file}</a>`);
+                    $('.transcript_of_records_span').html(`<a href="/storage/documents_files/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
@@ -1073,7 +1076,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
 $('#barangay_clearance_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1091,6 +1094,7 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_delete_button').hide();
             $('#barangay_clearance_view').show();
             $('#barangay_clearance_file').addClass('required_field');
+            $('#barangay_clearance_file').click();
             barangay_clearance_change = 'CHANGED';
             console.log(barangay_clearance_change);
         }
@@ -1103,7 +1107,7 @@ $('#barangay_clearance_delete_button').on('click',function(){
 
 $('#birthcertificate_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1121,6 +1125,7 @@ $('#birthcertificate_delete_button').on('click',function(){
             $('#birthcertificate_delete_button').hide();
             $('#birthcertificate_view').show();
             $('#birthcertificate_file').addClass('required_field');
+            $('#birthcertificate_file').click();
             birthcertificate_change = 'CHANGED';
             console.log(birthcertificate_change);
         }
@@ -1133,7 +1138,7 @@ $('#birthcertificate_delete_button').on('click',function(){
 
 $('#diploma_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1155,6 +1160,7 @@ $('#diploma_delete_button').on('click',function(){
             $('.diploma_div').show();
             $('#diploma_delete_button').hide();
             $('#diploma_view').show();
+            $('#diploma_file').click();
             diploma_change = 'CHANGED';
             console.log(diploma_change);
         }
@@ -1166,7 +1172,7 @@ $('#diploma_delete_button').on('click',function(){
 
 $('#medical_certificate_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1184,6 +1190,7 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_delete_button').hide();
             $('#medical_certificate_view').show();
             $('#medical_certificate_file').addClass('required_field');
+            $('#medical_certificate_file').click();
             medical_certificate_change = 'CHANGED';
             console.log(medical_certificate_change);
         }
@@ -1195,7 +1202,7 @@ $('#medical_certificate_delete_button').on('click',function(){
 
 $('#nbi_clearance_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1212,6 +1219,7 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('.nbi_clearance_div').show();
             $('#nbi_clearance_delete_button').hide();
             $('#nbi_clearance_view').show();
+            $('#nbi_clearance_file').click();
             nbi_clearance_change = 'CHANGED';
             console.log(nbi_clearance_change);
         }
@@ -1224,7 +1232,7 @@ $('#nbi_clearance_delete_button').on('click',function(){
 
 $('#pag_ibig_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1242,6 +1250,7 @@ $('#pag_ibig_delete_button').on('click',function(){
             $('#pag_ibig_delete_button').hide();
             $('#pag_ibig_view').show();
             $('#pag_ibig_file').addClass('required_field');
+            $('#pag_ibig_file').click();
             pag_ibig_file_change = 'CHANGED';
             console.log(pag_ibig_file_change);
         }
@@ -1254,7 +1263,7 @@ $('#pag_ibig_delete_button').on('click',function(){
 
 $('#philhealth_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1272,6 +1281,7 @@ $('#philhealth_delete_button').on('click',function(){
             $('#philhealth_delete_button').hide();
             $('#philhealth_view').show();
             $('#philhealth_file').addClass('required_field');
+            $('#philhealth_file').click();
             philhealth_file_change = 'CHANGED';
             console.log(philhealth_file_change);
         }
@@ -1284,7 +1294,7 @@ $('#philhealth_delete_button').on('click',function(){
 
 $('#police_clearance_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1302,6 +1312,7 @@ $('#police_clearance_delete_button').on('click',function(){
             $('#police_clearance_delete_button').hide();
             $('#police_clearance_view').show();
             $('#police_clearance_file').addClass('required_field');
+            $('#police_clearance_file').click();
             police_clearance_file_change = 'CHANGED';
             console.log(police_clearance_file_change);
 
@@ -1315,7 +1326,7 @@ $('#police_clearance_delete_button').on('click',function(){
 
 $('#resume_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1333,6 +1344,7 @@ $('#resume_delete_button').on('click',function(){
             $('#resume_delete_button').hide();
             $('#resume_view').show();
             $('#resume_file').addClass('required_field');
+            $('#resume_file').click();
             resume_file_change = 'CHANGED';
             console.log(resume_file_change);
         }
@@ -1345,7 +1357,7 @@ $('#resume_delete_button').on('click',function(){
 
 $('#sss_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1363,6 +1375,7 @@ $('#sss_delete_button').on('click',function(){
             $('#sss_delete_button').hide();
             $('#sss_view').show();
             $('#sss_file').addClass('required_field');
+            $('#sss_file').click();
             sss_file_change = 'CHANGED';
             console.log(sss_file_change);
         }
@@ -1374,7 +1387,7 @@ $('#sss_delete_button').on('click',function(){
 
 $('#tor_delete_button').on('click',function(){
     Swal.fire({
-        title: 'Do you want to remove file?',
+        title: 'Do you want to replace file?',
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,
@@ -1391,6 +1404,7 @@ $('#tor_delete_button').on('click',function(){
             $('.transcript_of_records_div').show();
             $('#tor_delete_button').hide();
             $('#tor_view').show();
+            $('#tor_file').click();
             tor_file_change = 'CHANGED';
             console.log(tor_file_change);
         }
