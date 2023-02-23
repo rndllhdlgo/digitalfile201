@@ -583,25 +583,6 @@ $('#note_required').on('click',function(){
     $('#employee_insurance').val('• A');
 });
 
-//Currency Format
-// var formatter = new Intl.NumberFormat('en-US', {
-//     style: 'currency',
-//     currency: 'PHP',
-// });
-  
-//   $('#employee_salary').on('focusout', (e)=>{
-//       e.target.value = formatter.format(e.target.value);
-//   });
-//   $('#employee_incentives').on('focusout', (e)=>{
-//       e.target.value = formatter.format(e.target.value);
-//   });
-//   $('#employee_overtime_pay').on('focusout', (e)=>{
-//       e.target.value = formatter.format(e.target.value);
-//   });
-//   $('#employee_bonus').on('focusout', (e)=>{
-//       e.target.value = formatter.format(e.target.value);
-//   });
-
 $("input[type='date']").keydown(function (event) { event.preventDefault(); });
 
 setInterval(() => {
@@ -744,7 +725,6 @@ function formatPesoInput(selector){
 }
   
 $(document).ready(function() {
-    // Format multiple peso input fields using the function
     formatPesoInput('#employee_salary');
     formatPesoInput('#employee_incentives');
     formatPesoInput('#employee_overtime_pay');

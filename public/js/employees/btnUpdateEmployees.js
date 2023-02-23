@@ -235,29 +235,6 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        $.ajax({
-                            url:"/employees/updateDocumentsLogs",
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                barangay_clearance_change:barangay_clearance_change,
-                                birthcertificate_change:birthcertificate_change,
-                                diploma_change:diploma_change,
-                                medical_certificate_change:medical_certificate_change,
-                                nbi_clearance_change:nbi_clearance_change,
-                                pag_ibig_file_change:pag_ibig_file_change,
-                                philhealth_file_change:philhealth_file_change,
-                                police_clearance_file_change:police_clearance_file_change,
-                                resume_file_change:resume_file_change,
-                                sss_file_change:sss_file_change,
-                                tor_file_change:tor_file_change
-                            }
-                        });
-
                         $('.college_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
