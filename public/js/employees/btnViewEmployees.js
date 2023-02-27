@@ -162,6 +162,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 //Work Information
                 $('#employee_number').val(value.employee_number);
+                var removeValue = value.employee_number+"_";
                 $('#employee_number').attr('readonly',true);
                 $('#employee_number').css('cursor','not-allowed');
                 $('#date_hired').val(value.date_hired);
@@ -587,7 +588,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'memo_file', 
                             "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file}</a>` ;
+                                return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>` ;
                             },
                             width: '22.5%'
                         }
@@ -956,8 +957,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 training_change = '';
                 job_history_change = '';
                 $('th').removeClass("sorting_asc");
-
-                var removeValue = value.employee_number+"_";
 
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
@@ -1449,6 +1448,8 @@ $(document).on('click','.btn_memo_delete',function(){
     var data = $('.memo_table_data').DataTable().row(id).data();
     memo_id.push(data.id);
     $(this).parent().parent().remove();
+    memo_change = 'CHANGED';
+    console.log(memo_change);
 });
 
 $(document).on('click','.btn_evaluation_delete',function(){

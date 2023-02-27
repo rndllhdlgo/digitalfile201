@@ -1599,7 +1599,9 @@ class EmployeesController extends Controller
         }
     }
 
-    public function saveDocuments(Request $request){ 
+    public function saveDocuments(Request $request){
+        // $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
+        // $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
                 $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
@@ -1723,15 +1725,18 @@ class EmployeesController extends Controller
     }
 
     public function updateDocuments(Request $request){
-        $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
+        $memo_files = MemoTable::where('employee_id', $request->employee_id)->pluck('memo_file');
+        $evaluation_files = EvaluationTable::where('employee_id', $request->employee_id)->pluck('evaluation_file');
+        $countBefore = MemoTable::where('employee_id', $request->employee_id)->count();
 
+        $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee = Document::where('employee_id',$request->employee_id)->first();
         
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
+                $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
                 
                 $memo = new MemoTable;
@@ -1744,62 +1749,90 @@ class EmployeesController extends Controller
             }
         }
 
-        if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
-            foreach($request->file('evaluation_file') as $key => $value){
-                $evaluationFileName = time().rand(1,100).'_Evaluation_File.'.$request->evaluation_file[$key]->extension();
-                $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
-                
-                $evaluation = new EvaluationTable;
-                $evaluation->employee_id = $request->employee_id;
-                $evaluation->evaluation_reason = $request->evaluation_reason[$key];
-                $evaluation->evaluation_date = $request->evaluation_date[$key];
-                $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
-                $evaluation->evaluation_file = $evaluationFileName;
-                $evaluation->save();
-            }
-        }
-
-        if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
-            foreach($request->file('contracts_file') as $key => $value){
-                $contractsFileName = time().rand(1,100).'_Contracts_File.'.$request->contracts_file[$key]->extension();
-                $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
-                
-                $contracts = new ContractTable;
-                $contracts->employee_id = $request->employee_id;
-                $contracts->contracts_type = $request->contracts_type[$key];
-                $contracts->contracts_date = $request->contracts_date[$key];
-                $contracts->contracts_file = $contractsFileName;
-                $contracts->save();
-            }
+        $countAfter = MemoTable::where('employee_id', $request->employee_id)->count();
+        // return $countBefore.$countAfter;
+        if($countAfter != $countBefore){
+            $memo_update = "[MEMO HAS BEEN CHANGED]";
+            // return $countBefore.$countAfter.$memo_update;
+        } 
+        else{
+            return 'no changes';
         }
         
-        if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-            foreach($request->file('resignation_file') as $key => $value){
-                $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
-                $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
+        if(isset($memo_update)){
+            $employee_logs = new LogsTable;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                    $memo_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $memo_update";
+                $userlogs->save();
+            // return 'Variable does have value';
+        }
+
+        // return $countBefore.$countAfter.$memo_update;
+
+        // if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+        //     foreach($request->file('evaluation_file') as $key => $value){
+        //         $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
+        //         $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
                 
-                $resignation = new ResignationTable;
-                $resignation->employee_id = $request->employee_id;
-                $resignation->resignation_reason = $request->resignation_reason[$key];
-                $resignation->resignation_date = $request->resignation_date[$key];
-                $resignation->resignation_file = $resignationFileName;
-                $resignation->save();
-            }
-        }
+        //         $evaluation = new EvaluationTable;
+        //         $evaluation->employee_id = $request->employee_id;
+        //         $evaluation->evaluation_reason = $request->evaluation_reason[$key];
+        //         $evaluation->evaluation_date = $request->evaluation_date[$key];
+        //         $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
+        //         $evaluation->evaluation_file = $evaluationFileName;
+        //         $evaluation->save();
+        //     }
+        // }
 
-        if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-            foreach($request->file('termination_file') as $key => $value){
-                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
-                $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+        // if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
+        //     foreach($request->file('contracts_file') as $key => $value){
+        //         $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
+        //         $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
+                
+        //         $contracts = new ContractTable;
+        //         $contracts->employee_id = $request->employee_id;
+        //         $contracts->contracts_type = $request->contracts_type[$key];
+        //         $contracts->contracts_date = $request->contracts_date[$key];
+        //         $contracts->contracts_file = $contractsFileName;
+        //         $contracts->save();
+        //     }
+        // }
+        
+        // if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+        //     foreach($request->file('resignation_file') as $key => $value){
+        //         $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
+        //         $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
+                
+        //         $resignation = new ResignationTable;
+        //         $resignation->employee_id = $request->employee_id;
+        //         $resignation->resignation_reason = $request->resignation_reason[$key];
+        //         $resignation->resignation_date = $request->resignation_date[$key];
+        //         $resignation->resignation_file = $resignationFileName;
+        //         $resignation->save();
+        //     }
+        // }
 
-                $termination = new TerminationTable;
-                $termination->employee_id = $request->employee_id;
-                $termination->termination_reason = $request->termination_reason[$key];
-                $termination->termination_date = $request->termination_date[$key];
-                $termination->termination_file = $terminationFileName;
-                $termination->save();
-            }
-        }
+        // if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+        //     foreach($request->file('termination_file') as $key => $value){
+        //         $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+        //         $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+
+        //         $termination = new TerminationTable;
+        //         $termination->employee_id = $request->employee_id;
+        //         $termination->termination_reason = $request->termination_reason[$key];
+        //         $termination->termination_date = $request->termination_date[$key];
+        //         $termination->termination_file = $terminationFileName;
+        //         $termination->save();
+        //     }
+        // }
         
         if(!$employee){
             $document = new Document;
