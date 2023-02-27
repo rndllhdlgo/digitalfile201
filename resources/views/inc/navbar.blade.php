@@ -37,13 +37,18 @@
 <nav class="navbar navbar-expand-sm mt-1" style="background-color:#0d1a80;font-weight:bolder;">
     <div class="container-fluid">
         <ul class="navbar-nav">
-            <li class="nav-item space">
-                <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
-            </li>
-
             @if(Auth::user()->user_level == 'ADMIN' || Auth::user()->user_level == 'ENCODER') {{--ADMIN AUTHENTICATION --}}
                 <li class="nav-item space">
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/"><i class="fas fa-home"></i> HOME</a>
+                </li>
+
+                <li class="nav-item space">
                     <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEES MASTER FILE</a>
+                </li>
+            @endif
+            @if(Auth::user()->user_level == 'EMPLOYEE')
+                <li class="nav-item space">
+                    <a class="nav-link {{ Request::is('employees') ? 'active' : '' }}" href="/employees"><i class="fas fa-table"></i> EMPLOYEE DETAILS</a>
                 </li>
             @endif
             @if(Auth::user()->user_level == 'ADMIN')
@@ -66,3 +71,4 @@
 
 <input type="hidden" id="current_user" value="{{auth()->user()->id}}" readonly>
 <input type="hidden" id="current_user_level" value="{{auth()->user()->user_level}}" readonly>
+<input type="hidden" id="current_employee_number" value="{{auth()->user()->emp_number}}" readonly>

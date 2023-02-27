@@ -3,7 +3,7 @@
 @section('content')
 <br>
     <input type="hidden" name="hidden_id" id="hidden_id">
-        <div id="employees_list">
+        <div id="employees_list" style="display:none;">
             <div class="row">
                 <div class="col">
                     <h4 style="color: #0d1a80;" class="my-header">EMPLOYEE MASTER FILE</h4>
@@ -15,7 +15,7 @@
                 </div>
             </div>
            
-            <hr class="hr-design">         
+            <hr class="hr-design">
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                         <tr style="background-color: #0d1a80;">
@@ -65,7 +65,9 @@
             {{-- <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info-circle fa-lg"></i> <b>EMPLOYEE INFORMATION</b> </span> --}}
             <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
         
-            <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
+            @if(Auth::user()->user_level != 'EMPLOYEE')
+                <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
+            @endif
             <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
             <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
             <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="SAVE UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
@@ -119,18 +121,20 @@
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">COMPENSATION/BENEFITS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
-                    </li>
+                    @if(Auth::user()->user_level != 'EMPLOYEE')
+                        <li class="nav-item">
+                            <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">COMPENSATION/BENEFITS</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
+                        </li>
+                    @endif
                 </ul>
 
                 <form method="POST" enctype="multipart/form-data" action="/employees/saveDocuments" id="documents_form">

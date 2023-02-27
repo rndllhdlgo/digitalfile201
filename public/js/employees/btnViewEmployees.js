@@ -23,6 +23,7 @@ var barangay_clearance_change,
 var memo_change;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
+    $('#loading').hide();
     
     children_id = [];
     college_id = [];

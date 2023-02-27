@@ -12,6 +12,7 @@ use App\Models\WorkInformationTable;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -70,6 +71,9 @@ class HomeController extends Controller
         // auth()->user()->assignRole('ADMIN');
         // return auth()->user()->permissions;
         
+        if(Auth::user()->user_level == 'EMPLOYEE'){
+            return redirect('/employees');
+        }
 
         $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();

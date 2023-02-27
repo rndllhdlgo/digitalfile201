@@ -1768,11 +1768,10 @@ class EmployeesController extends Controller
             $employee_logs->save();
 
             $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $memo_update";
-                $userlogs->save();
-            // return 'Variable does have value';
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                    $memo_update";
+            $userlogs->save();
         }
 
         // return $countBefore.$countAfter.$memo_update;

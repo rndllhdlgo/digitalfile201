@@ -41,13 +41,13 @@ $(document).ready(function(){
         // order:[1,'asc'],
         order:[0,'desc'],
         columns:[
-            // {
-            //     data: 'employee_number',
-            //     "render": function(data, type, row){
-            //         return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-            //     }
-            // },
-            {data: 'employee_number'},
+            {
+                data: 'employee_number',
+                "render": function(data, type, row){
+                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
+                }
+            },
+            // {data: 'employee_number'},
             {data: 'last_name'},
             {data: 'first_name'},
             {data: 'middle_name'},
@@ -56,13 +56,13 @@ $(document).ready(function(){
             {data: 'employment_status'}
         ],
         initComplete: function(){
-            // if(window.location.search.includes('employee_number') == true){
-            //     var url = new URL(window.location.href);
-            //     var employee_number = url.searchParams.get("employee_number");
-            //     $('.'+employee_number).closest('tr').click();
-            //     // $('#loading').show();
-            // }
-            $('#loading').hide();
+            if(current_user_level == 'EMPLOYEE'){
+                $('.'+current_employee_number).closest('tr').click();
+            }
+            else{
+                $('#employees_list').show();
+                $('#loading').hide();
+            }
         }
     });
     $('div.breakspace').html('<br><br>');
