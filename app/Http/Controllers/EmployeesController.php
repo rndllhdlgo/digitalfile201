@@ -11,19 +11,26 @@ use Carbon\Carbon;
 use App\Models\UserLogs;
 use App\Models\ChildrenTable;
 use App\Models\CollegeTable;
+use App\Models\CollegeTablePending;
 use App\Models\TrainingTable;
+use App\Models\TrainingTablePending;
 use App\Models\VocationalTable;
+use App\Models\VocationalTablePending;
 use App\Models\JobHistoryTable;
+use App\Models\JobHistoryTablePending;
 use App\Models\MemoTable;
 use App\Models\EvaluationTable;
 use App\Models\ContractTable;
 use App\Models\ResignationTable;
 use App\Models\TerminationTable;
 use App\Models\PersonalInformationTable;
+use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
 use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
+use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
+use App\Models\MedicalHistoryPending;
 use App\Models\Document;
 use App\Models\LogsTable;
 use App\Models\History;
@@ -42,6 +49,11 @@ class EmployeesController extends Controller
         $this->middleware('auth'); 
     }
     
+    public function employee_status(){
+        if(PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->where('status','PENDING')->first()){
+            return 'PENDING';
+        }
+    }
     public function logs_reload(){
         if(LogsTable::count() == 0){
             return 'NULL';
@@ -362,45 +374,153 @@ class EmployeesController extends Controller
     }
 
     public function saveCollege(Request $request){
-        $employee = new CollegeTable;
-        $employee->employee_id = $request->employee_id;
-        $employee->college_name = strtoupper($request->college_name);
-        $employee->college_degree = strtoupper($request->college_degree);
-        $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
-        $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-        $employee->save();  
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            $employee = new CollegeTable;
+            $employee->employee_id = $request->employee_id;
+            $employee->college_name = strtoupper($request->college_name);
+            $employee->college_degree = strtoupper($request->college_degree);
+            $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
+            $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
+            $employee->save(); 
+        }
+        else{
+            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+            $employee = new CollegeTablePending;
+            $employee->employee_id = $emp_id;
+            $employee->college_name = strtoupper($request->college_name);
+            $employee->college_degree = strtoupper($request->college_degree);
+            $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
+            $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
+            $employee->save(); 
+        }
     }
 
     public function saveTraining(Request $request){
-        $employee = new TrainingTable;
-        $employee->employee_id = $request->employee_id;
-        $employee->training_name = strtoupper($request->training_name);
-        $employee->training_title = strtoupper($request->training_title);
-        $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
-        $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-        $employee->save();
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            $employee = new TrainingTable;
+            $employee->employee_id = $request->employee_id;
+            $employee->training_name = strtoupper($request->training_name);
+            $employee->training_title = strtoupper($request->training_title);
+            $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
+            $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
+            $employee->save();
+        }
+        else{
+            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+            $employee = new TrainingTablePending;
+            $employee->employee_id = $emp_id;
+            $employee->training_name = strtoupper($request->training_name);
+            $employee->training_title = strtoupper($request->training_title);
+            $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
+            $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
+            $employee->save();
+        }
     }
 
     public function saveVocational(Request $request){
-        $employee = new VocationalTable;
-        $employee->employee_id = $request->employee_id;
-        $employee->vocational_name = strtoupper($request->vocational_name);
-        $employee->vocational_course = strtoupper($request->vocational_course);
-        $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
-        $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-        $employee->save();
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            $employee = new VocationalTable;
+            $employee->employee_id = $request->employee_id;
+            $employee->vocational_name = strtoupper($request->vocational_name);
+            $employee->vocational_course = strtoupper($request->vocational_course);
+            $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
+            $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
+            $employee->save();
+        }
+        else{
+            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+            $employee = new VocationalTablePending;
+            $employee->employee_id = $emp_id;
+            $employee->vocational_name = strtoupper($request->vocational_name);
+            $employee->vocational_course = strtoupper($request->vocational_course);
+            $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
+            $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
+            $employee->save();
+        }
     }
 
     public function saveJobHistory(Request $request){
-        $employee = new JobHistoryTable;
-        $employee->employee_id = $request->employee_id;
-        $employee->job_company_name = strtoupper($request->job_company_name);
-        $employee->job_description = strtoupper($request->job_description);
-        $employee->job_position = strtoupper($request->job_position);
-        $employee->job_contact_number = $request->job_contact_number;
-        $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
-        $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-        $employee->save();
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            $employee = new JobHistoryTable;
+            $employee->employee_id = $request->employee_id;
+            $employee->job_company_name = strtoupper($request->job_company_name);
+            $employee->job_description = strtoupper($request->job_description);
+            $employee->job_position = strtoupper($request->job_position);
+            $employee->job_contact_number = $request->job_contact_number;
+            $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
+            $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
+            $sql = $employee->save();
+            
+            $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+    
+                if($request->job_history_change == 'CHANGED'){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
+                                            $job_history_update
+                                            ";
+                    $employee_logs->save();
+    
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                           $job_history_update";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
+        }
+        else{
+            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+            $employee = new JobHistoryTablePending;
+            $employee->employee_id = $emp_id;
+            $employee->job_company_name = strtoupper($request->job_company_name);
+            $employee->job_description = strtoupper($request->job_description);
+            $employee->job_position = strtoupper($request->job_position);
+            $employee->job_contact_number = $request->job_contact_number;
+            $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
+            $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
+            $sql = $employee->save();
+
+            $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+    
+                if($request->job_history_change == 'CHANGED'){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
+                                            $job_history_update
+                                            ";
+                    $employee_logs->save();
+    
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                           $job_history_update";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
+        }
     }
 
     public function saveMedicalHistory(Request $request){
@@ -701,7 +821,9 @@ class EmployeesController extends Controller
             $emergency_contact_number_change = NULL;
         }
 
-        $sql = PersonalInformationTable::find($request->id)
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            
+            $sql = PersonalInformationTable::find($request->id)
             ->update([
                 'employee_image' => $request->employee_image,
                 'first_name' => strtoupper($request->first_name),
@@ -839,15 +961,165 @@ class EmployeesController extends Controller
                                        $employee_image_update
                                        ";
                 $userlogs->save();
+                }
             }
-            //employeedtparamr
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
         else{
-            $result = 'false';
-            $id = '';
+            $empno = PersonalInformationTable::where('id',$request->id)->first()->empno;
+            $sql = PersonalInformationTablePending::
+                create([
+                'empno' => $empno,
+                'employee_image' => $request->employee_image,
+                'first_name' => strtoupper($request->first_name),
+                'middle_name' => strtoupper($request->middle_name),
+                'last_name' => strtoupper($request->last_name),
+                'suffix' => strtoupper($request->suffix),
+                'nickname' => strtoupper($request->nickname),
+                'birthday' => $request->birthday,
+                'gender' => $request->gender,
+                'address' => $request->address,
+                'ownership' => $request->ownership,
+                'province' => $request->province,
+                'city' => $request->city,
+                'region' => $request->region,
+                'height' => $request->height,
+                'weight' => $request->weight,
+                'religion' => strtoupper($request->religion),
+                'civil_status' => $request->civil_status,
+                'email_address' => $request->email_address,
+                'telephone_number' => $request->telephone_number,
+                'cellphone_number' => $request->cellphone_number,
+                'father_name' => strtoupper($request->father_name),
+                'father_contact_number' => $request->father_contact_number,
+                'father_profession' => strtoupper($request->father_profession),
+                'mother_name' => strtoupper($request->mother_name),
+                'mother_contact_number' => $request->mother_contact_number,
+                'mother_profession' => strtoupper($request->mother_profession),
+                'emergency_contact_name' => strtoupper($request->emergency_contact_name),
+                'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
+                'emergency_contact_number' => $request->emergency_contact_number
+            ]);
+
+        if($sql){
+
+            $result = 'true';
+            $id = $employee->id;
+
+            if(
+                $request->first_name != $first_name_orig ||
+                $request->middle_name != $middle_name_orig ||
+                $request->last_name != $last_name_orig ||
+                $request->suffix != $suffix_orig ||
+                $request->nickname != $nickname_orig ||
+                $request->birthday != $birthday_orig ||
+                $request->address != $address_orig ||
+                $request->ownership != $ownership_orig ||
+                $request->province != $province_orig ||
+                $request->city != $city_orig ||
+                $request->region != $region_orig ||
+                $request->height != $height_orig ||
+                $request->weight != $weight_orig ||
+                $request->religion != $religion_orig ||
+                $request->civil_status != $civil_status_orig ||
+                $request->email_address != $email_address_orig ||
+                $request->telephone_number != $telephone_number_orig ||
+                $request->cellphone_number != $cellphone_number_orig ||
+                $request->father_name != $father_name_orig ||
+                $request->father_contact_number != $father_contact_number_orig ||
+                $request->father_profession != $father_profession_orig ||
+                $request->mother_name != $mother_name_orig ||
+                $request->mother_contact_number != $mother_contact_number_orig ||
+                $request->mother_profession != $mother_profession_orig ||
+                $request->emergency_contact_name != $emergency_contact_name_orig ||
+                $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
+                $request->emergency_contact_number != $emergency_contact_number_orig ||
+                $request->employee_image_change == 'CHANGED'
+            ){
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE 
+                                        $first_name_change 
+                                        $middle_name_change 
+                                        $last_name_change 
+                                        $suffix_change 
+                                        $nickname_change 
+                                        $birthday_change 
+                                        $gender_change 
+                                        $address_change 
+                                        $ownership_change 
+                                        $province_change 
+                                        $city_change 
+                                        $region_change 
+                                        $height_change 
+                                        $weight_change 
+                                        $religion_change 
+                                        $civil_status_change 
+                                        $email_address_change 
+                                        $telephone_number_change 
+                                        $cellphone_number_change 
+                                        $father_name_change 
+                                        $father_contact_number_change 
+                                        $father_profession_change 
+                                        $mother_name_change 
+                                        $mother_contact_number_change 
+                                        $mother_profession_change 
+                                        $emergency_contact_name_change 
+                                        $emergency_contact_relationship_change 
+                                        $emergency_contact_number_change
+                                        $employee_image_update
+                                        ";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig) 
+                                       $first_name_change 
+                                       $middle_name_change 
+                                       $last_name_change 
+                                       $suffix_change 
+                                       $nickname_change 
+                                       $birthday_change 
+                                       $gender_change 
+                                       $address_change 
+                                       $ownership_change 
+                                       $province_change 
+                                       $city_change 
+                                       $region_change 
+                                       $height_change 
+                                       $weight_change 
+                                       $religion_change 
+                                       $civil_status_change 
+                                       $email_address_change 
+                                       $telephone_number_change 
+                                       $cellphone_number_change 
+                                       $father_name_change 
+                                       $father_contact_number_change 
+                                       $father_profession_change 
+                                       $mother_name_change
+                                       $mother_contact_number_change 
+                                       $mother_profession_change 
+                                       $emergency_contact_name_change 
+                                       $emergency_contact_relationship_change 
+                                       $emergency_contact_number_change
+                                       $employee_image_update
+                                       ";
+                $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
-        $data = array('result' => $result, 'id' => $id);
-        return response()->json($data);
     }
 
     public function updateWorkInformation(Request $request){
@@ -1262,114 +1534,193 @@ class EmployeesController extends Controller
                 $vocational_update = NULL;
             }
 
-            $sql = EducationalAttainment::where('employee_id',$request->employee_id)
-            ->update([
-                'secondary_school_name' => $request->secondary_school_name,
-                'secondary_school_address' => $request->secondary_school_address,
-                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                'primary_school_name' => $request->primary_school_name,
-                'primary_school_address' => $request->primary_school_address,
-                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
-            ]);
+            if(auth()->user()->user_level != 'EMPLOYEE'){
+                $sql = EducationalAttainment::where('employee_id',$request->employee_id)
+                ->update([
+                    'secondary_school_name' => $request->secondary_school_name,
+                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                    'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                    'primary_school_name' => $request->primary_school_name,
+                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                    'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+                ]);
 
-            if($sql){
-                
-                $result = 'true';
-                $id = $employee->id;
+                if($sql){
+                    
+                    $result = 'true';
+                    $id = $employee->id;
 
-                if(
-                   $request->secondary_school_name != $secondary_school_name_orig ||
-                   $request->secondary_school_address != $secondary_school_address_orig ||
-                   $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
-                   $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
-                   $request->primary_school_name != $primary_school_name_orig ||
-                   $request->primary_school_address != $primary_school_address_orig ||
-                   $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
-                   $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
-                   $request->college_change == 'CHANGED' ||
-                   $request->training_change == 'CHANGED' ||
-                   $request->vocational_change == 'CHANGED'
-                ){
+                    if(
+                    $request->secondary_school_name != $secondary_school_name_orig ||
+                    $request->secondary_school_address != $secondary_school_address_orig ||
+                    $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
+                    $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
+                    $request->primary_school_name != $primary_school_name_orig ||
+                    $request->primary_school_address != $primary_school_address_orig ||
+                    $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
+                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
+                    $request->college_change == 'CHANGED' ||
+                    $request->training_change == 'CHANGED' ||
+                    $request->vocational_change == 'CHANGED'
+                    ){
 
-                    $employee_logs = new LogsTable;
-                    $employee_logs->employee_id = $request->id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                            $secondary_school_name_change
-                                            $secondary_school_address_change
-                                            $secondary_school_inclusive_years_from_change
-                                            $secondary_school_inclusive_years_to_change
-                                            $primary_school_name_change
-                                            $primary_school_address_change
-                                            $primary_school_inclusive_years_from_change
-                                            $primary_school_inclusive_years_to_change
-                                            $college_update
-                                            $training_update
-                                            $vocational_update
-                                            ";
-                    $employee_logs->save();
+                        $employee_logs = new LogsTable;
+                        $employee_logs->employee_id = $request->id;
+                        $employee_logs->user_id = auth()->user()->id;
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                                $secondary_school_name_change
+                                                $secondary_school_address_change
+                                                $secondary_school_inclusive_years_from_change
+                                                $secondary_school_inclusive_years_to_change
+                                                $primary_school_name_change
+                                                $primary_school_address_change
+                                                $primary_school_inclusive_years_from_change
+                                                $primary_school_inclusive_years_to_change
+                                                $college_update
+                                                $training_update
+                                                $vocational_update
+                                                ";
+                        $employee_logs->save();
 
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
-                                            $secondary_school_name_change
-                                            $secondary_school_address_change
-                                            $secondary_school_inclusive_years_from_change
-                                            $secondary_school_inclusive_years_to_change
-                                            $primary_school_name_change
-                                            $primary_school_address_change
-                                            $primary_school_inclusive_years_from_change
-                                            $primary_school_inclusive_years_to_change
-                                            $college_update
-                                            $training_update
-                                            $vocational_update
-                                            ";
-                    $userlogs->save();
+                        $userlogs = new UserLogs;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                                $secondary_school_name_change
+                                                $secondary_school_address_change
+                                                $secondary_school_inclusive_years_from_change
+                                                $secondary_school_inclusive_years_to_change
+                                                $primary_school_name_change
+                                                $primary_school_address_change
+                                                $primary_school_inclusive_years_from_change
+                                                $primary_school_inclusive_years_to_change
+                                                $college_update
+                                                $training_update
+                                                $vocational_update
+                                                ";
+                        $userlogs->save();
+                    }
                 }
+                else{
+                    $result = 'false';
+                    $id = '';
+                }
+                $data = array('result' => $result, 'id' => $id);
+                return response()->json($data);
             }
             else{
-                $result = 'false';
-                $id = '';
+                $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+                $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
+                ->create([
+                    'employee_id' => $emp_id,
+                    'secondary_school_name' => $request->secondary_school_name,
+                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                    'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                    'primary_school_name' => $request->primary_school_name,
+                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                    'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+                ]);
+
+                if($sql){
+                    
+                    $result = 'true';
+                    $id = $employee->id;
+
+                    if(
+                    $request->secondary_school_name != $secondary_school_name_orig ||
+                    $request->secondary_school_address != $secondary_school_address_orig ||
+                    $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
+                    $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
+                    $request->primary_school_name != $primary_school_name_orig ||
+                    $request->primary_school_address != $primary_school_address_orig ||
+                    $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
+                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
+                    $request->college_change == 'CHANGED' ||
+                    $request->training_change == 'CHANGED' ||
+                    $request->vocational_change == 'CHANGED'
+                    ){
+
+                        $employee_logs = new LogsTable;
+                        $employee_logs->employee_id = $request->id;
+                        $employee_logs->user_id = auth()->user()->id;
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                                $secondary_school_name_change
+                                                $secondary_school_address_change
+                                                $secondary_school_inclusive_years_from_change
+                                                $secondary_school_inclusive_years_to_change
+                                                $primary_school_name_change
+                                                $primary_school_address_change
+                                                $primary_school_inclusive_years_from_change
+                                                $primary_school_inclusive_years_to_change
+                                                $college_update
+                                                $training_update
+                                                $vocational_update
+                                                ";
+                        $employee_logs->save();
+
+                        $userlogs = new UserLogs;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                                $secondary_school_name_change
+                                                $secondary_school_address_change
+                                                $secondary_school_inclusive_years_from_change
+                                                $secondary_school_inclusive_years_to_change
+                                                $primary_school_name_change
+                                                $primary_school_address_change
+                                                $primary_school_inclusive_years_from_change
+                                                $primary_school_inclusive_years_to_change
+                                                $college_update
+                                                $training_update
+                                                $vocational_update
+                                                ";
+                        $userlogs->save();
+                    }
+                }
+                else{
+                    $result = 'false';
+                    $id = '';
+                }
+                $data = array('result' => $result, 'id' => $id);
+                return response()->json($data);
             }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
     }
 
-    public function updateJobHistory(Request $request){
-        $employee = JobHistoryTable::where('employee_id',$request->employee_id)->first();
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-        $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+    // public function updateJobHistory(Request $request){
+    //     $employee = JobHistoryTable::where('employee_id',$request->employee_id)->first();
+    //     $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+    //     $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+    //     $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
 
-        if($job_history_update){
-            $result = 'true';
-            $id = $employee->id;
+    //     if($job_history_update){
+    //         $result = 'true';
+    //         $id = $employee->id;
 
-            if($request->job_history_change == 'CHANGED'){
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $request->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                        $job_history_update
-                                        ";
-                $employee_logs->save();
+    //         if($request->job_history_change == 'CHANGED'){
+    //             $employee_logs = new LogsTable;
+    //             $employee_logs->employee_id = $request->id;
+    //             $employee_logs->user_id = auth()->user()->id;
+    //             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+    //                                     $job_history_update
+    //                                     ";
+    //             $employee_logs->save();
 
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
-                $userlogs->save();
-            }
-        }
-        else{
-            $result = 'false';
-            $id = '';
-        }
-        $data = array('result' => $result, 'id' => $id);
-        return response()->json($data);
-    }
+    //             $userlogs = new UserLogs;
+    //             $userlogs->user_id = auth()->user()->id;
+    //             $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
+    //             $userlogs->save();
+    //         }
+    //     }
+    //     else{
+    //         $result = 'false';
+    //         $id = '';
+    //     }
+    //     $data = array('result' => $result, 'id' => $id);
+    //     return response()->json($data);
+    // }
 
     public function updateMedicalHistory(Request $request){
         $employee = MedicalHistory::where('employee_id',$request->employee_id)->first();
@@ -1428,53 +1779,105 @@ class EmployeesController extends Controller
                     $psychological_history_change = NULL;
                 }
 
-                $sql = MedicalHistory::where('employee_id',$request->employee_id)
-                    ->update([
+                if(auth()->user()->user_level != 'EMPLOYEE'){
+                        $sql = MedicalHistory::where('employee_id',$request->employee_id)
+                        ->update([
+                            'past_medical_condition' => $request->past_medical_condition,
+                            'allergies' => $request->allergies,
+                            'medication' => $request->medication,
+                            'psychological_history' => $request->psychological_history,
+                        ]);
+
+                    if($sql){
+            
+                        $result = 'true';
+                        $id = $employee->id;
+            
+                        if(
+                            $request->past_medical_condition != $past_medical_condition_orig ||
+                            $request->allergies != $allergies_orig ||
+                            $request->medication != $medication_orig ||
+                            $request->psychological_history != $psychological_history_orig
+                        ){
+                            $employee_logs = new LogsTable;
+                            $employee_logs->employee_id = $request->id;
+                            $employee_logs->user_id = auth()->user()->id;
+                            $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                                    $past_medical_condition_change
+                                                    $allergies_change
+                                                    $medication_change
+                                                    $psychological_history_change
+                                                    ";
+                            $employee_logs->save();
+
+                            $userlogs = new UserLogs;
+                            $userlogs->user_id = auth()->user()->id;
+                            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                                    $past_medical_condition_change
+                                                    $allergies_change
+                                                    $medication_change
+                                                    $psychological_history_change
+                                                    ";
+                            $userlogs->save();
+                        }
+                    }
+                    else{
+                        $result = 'false';
+                        $id = '';
+                    }
+                    $data = array('result' => $result, 'id' => $id);
+                    return response()->json($data);
+                }
+                else{
+                    $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+                    $sql = MedicalHistoryPending::create([
+                        'employee_id' => $emp_id,
                         'past_medical_condition' => $request->past_medical_condition,
                         'allergies' => $request->allergies,
                         'medication' => $request->medication,
                         'psychological_history' => $request->psychological_history,
                     ]);
 
-                if($sql){
-        
-                    $result = 'true';
-                    $id = $employee->id;
-        
-                    if(
-                        $request->past_medical_condition != $past_medical_condition_orig ||
-                        $request->allergies != $allergies_orig ||
-                        $request->medication != $medication_orig ||
-                        $request->psychological_history != $psychological_history_orig
-                    ){
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $request->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                                $past_medical_condition_change
-                                                $allergies_change
-                                                $medication_change
-                                                $psychological_history_change
-                                                ";
-                        $employee_logs->save();
+                    if($sql){
+            
+                        $result = 'true';
+                        $id = $employee->id;
+            
+                        if(
+                            $request->past_medical_condition != $past_medical_condition_orig ||
+                            $request->allergies != $allergies_orig ||
+                            $request->medication != $medication_orig ||
+                            $request->psychological_history != $psychological_history_orig
+                        ){
+                            $employee_logs = new LogsTable;
+                            $employee_logs->employee_id = $request->id;
+                            $employee_logs->user_id = auth()->user()->id;
+                            $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
+                                                    $past_medical_condition_change
+                                                    $allergies_change
+                                                    $medication_change
+                                                    $psychological_history_change
+                                                    ";
+                            $employee_logs->save();
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
-                                                $past_medical_condition_change
-                                                $allergies_change
-                                                $medication_change
-                                                $psychological_history_change
-                                                ";
-                        $userlogs->save();
+                            $userlogs = new UserLogs;
+                            $userlogs->user_id = auth()->user()->id;
+                            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                                                    $past_medical_condition_change
+                                                    $allergies_change
+                                                    $medication_change
+                                                    $psychological_history_change
+                                                    ";
+                            $userlogs->save();
+                        }
                     }
+                    else{
+                        $result = 'false';
+                        $id = '';
+                    }
+                    $data = array('result' => $result, 'id' => $id);
+                    return response()->json($data);
                 }
-                else{
-                    $result = 'false';
-                    $id = '';
-                }
-                $data = array('result' => $result, 'id' => $id);
-                return response()->json($data);
             }
     }
 
@@ -1755,9 +2158,6 @@ class EmployeesController extends Controller
             $memo_update = "[MEMO HAS BEEN CHANGED]";
             // return $countBefore.$countAfter.$memo_update;
         } 
-        else{
-            return 'no changes';
-        }
         
         if(isset($memo_update)){
             $employee_logs = new LogsTable;

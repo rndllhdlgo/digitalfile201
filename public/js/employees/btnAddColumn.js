@@ -274,7 +274,6 @@ $(document).ready(function(){
             $('#job_history_table_tbody').append(job_history_table);
             $('#job_history_table_orig').show();
             job_history_change = 'CHANGED';
-            alert(job_history_change);
         }
         
         $('#job_company_name').val("");

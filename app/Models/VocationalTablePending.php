@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class JobHistoryTable extends Model
+class VocationalTablePending extends Model
 {
     protected $guarded = [];
-    protected $table = 'job_history_tables';
+    protected $table = 'vocational_tables_pending';
 }

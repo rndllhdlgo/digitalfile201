@@ -178,18 +178,18 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        $.ajax({
-                            url:"/employees/updateJobHistory", 
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                job_history_change:job_history_change,
-                            }
-                        });
+                        // $.ajax({
+                        //     url:"/employees/updateJobHistory", 
+                        //     type:"POST",
+                        //     headers:{
+                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //     },
+                        //     data:{
+                        //         id:id,
+                        //         employee_id:data.id,
+                        //         job_history_change:job_history_change,
+                        //     }
+                        // });
         
                         var past_medical_condition = $('#past_medical_condition').val();
                         var allergies = $('#allergies').val();
@@ -321,7 +321,8 @@ $('#btnUpdate').on('click',function(){
                                     job_position : $(this).children('.td_3').html(),
                                     job_contact_number : $(this).children('.td_4').html(),
                                     job_inclusive_years_from : $(this).children('.td_5').html(),
-                                    job_inclusive_years_to : $(this).children('.td_6').html()
+                                    job_inclusive_years_to : $(this).children('.td_6').html(),
+                                    job_history_change:job_history_change,
                                 },
                             });
                         });
@@ -436,24 +437,26 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        $('#memo_subject').attr('name','');
-                        $('#memo_date').attr('name','');
-                        $('#memo_penalty').attr('name','');
-                        $('#memo_file').attr('name','');
-                        $('#evaluation_reason').attr('name','');
-                        $('#evaluation_date').attr('name','');
-                        $('#evaluation_evaluated_by').attr('name','');
-                        $('#evaluation_file').attr('name','');
-                        $('#contracts_type').attr('name','');
-                        $('#contracts_date').attr('name','');
-                        $('#contracts_file').attr('name','');
-                        $('#resignation_reason').attr('name','');
-                        $('#resignation_date').attr('name','');
-                        $('#resignation_file').attr('name','');
-                        $('#termination_reason').attr('name','');
-                        $('#termination_date').attr('name','');
-                        $('#termination_file').attr('name','');
-                        $('#documents_form').submit();
+                        if(!current_user_level == 'EMPLOYEE'){
+                            $('#memo_subject').attr('name','');
+                            $('#memo_date').attr('name','');
+                            $('#memo_penalty').attr('name','');
+                            $('#memo_file').attr('name','');
+                            $('#evaluation_reason').attr('name','');
+                            $('#evaluation_date').attr('name','');
+                            $('#evaluation_evaluated_by').attr('name','');
+                            $('#evaluation_file').attr('name','');
+                            $('#contracts_type').attr('name','');
+                            $('#contracts_date').attr('name','');
+                            $('#contracts_file').attr('name','');
+                            $('#resignation_reason').attr('name','');
+                            $('#resignation_date').attr('name','');
+                            $('#resignation_file').attr('name','');
+                            $('#termination_reason').attr('name','');
+                            $('#termination_date').attr('name','');
+                            $('#termination_file').attr('name','');
+                            $('#documents_form').submit();
+                        }
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);

@@ -60,7 +60,23 @@ $(document).ready(function(){
         ],
         initComplete: function(){
             if(current_user_level == 'EMPLOYEE'){
-                $('.'+current_employee_number).closest('tr').click();
+                $.ajax({
+                    url: "/employees/status",
+                    success: function(data){
+                        if(data == 'PENDING'){
+                            $('#loading').hide();
+                            Swal.fire({
+                                title: "PENDING UPDATE",
+                                html: "You have a pending update. Please contact HR for the approval or cancellation of your pending update.",
+                                icon: "warning",
+                                allowOutsideClick: false
+                            });
+                        }
+                        else{
+                            $('.'+current_employee_number).closest('tr').click();
+                        }
+                    }
+                });
             }
             else{
                 $('#employees_list').show();

@@ -47,18 +47,9 @@ class HomeController extends Controller
         //         $users->password = Hash::make($value['empno']);
         //         $users->save();
         //     }
-            
-        //     // User::create([
-        //     //     'user_level' => 'EMPLOYEE',
-        //     //     'emp_number' => $value['empno'],
-        //     //     'name' => $value['first_name'].' '. $value['last_name'],
-        //     //     'email_address' => $value['empno'],
-        //     //     'status' => 'ACTIVE',
-        //     //     'password' => Hash::make($value['empno'])
-        //     // ]);
 
         // }
-        // return $employee_list;
+        
         // Role::create(['name' => 'ENCODER']);
         // This code creates a new role in a Laravel application with the name "ADMIN".
         // Permission::create(['name' => 'delete employee']);

@@ -50,6 +50,8 @@ Route::any('/setJobRequirements','PagesController@setJobRequirements');
 // Employees Controller
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
+Route::any('/employees/status','EmployeesController@employee_status');
+
 
 Route::any('/employees/fetch','EmployeesController@employeeFetch');
 

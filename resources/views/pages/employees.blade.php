@@ -109,9 +109,11 @@
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_info"> PERSONAL INFO</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_info"> WORK INFO</a>
-                    </li>
+                    @if(Auth::user()->user_level != 'EMPLOYEE')
+                        <li class="nav-item">
+                            <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_info"> WORK INFO</a>
+                        </li>
+                    @endif
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#education_trainings"> EDUCATION/TRAININGS</a>
                     </li>
