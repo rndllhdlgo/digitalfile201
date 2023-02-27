@@ -21,6 +21,8 @@ $(document).ready(function(){
         var filter = 'intern';
     }
      
+    var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
+    
     employeesTable = $('table.employeesTable').DataTable({
         dom:'l<"breakspace">trip',
         language:{
@@ -30,6 +32,7 @@ $(document).ready(function(){
             loadingRecords: "Loading Employee Records...",
         },
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+        iDisplayLength: iLength,
         processing:true,
         serverSide:false,
         ajax: {

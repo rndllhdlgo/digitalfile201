@@ -7,6 +7,7 @@ use PDO;
 use App\Models\UserLogs;
 use App\Models\Ping;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\Models\PersonalInformationTable;
 use App\Models\WorkInformationTable;
 use Spatie\Permission\Models\Role;
@@ -33,6 +34,31 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $employee_list = PersonalInformationTable::all();
+        
+        // foreach($employee_list as $key => $value){
+        //     if(!User::where('emp_number',$value['empno'])->first()){
+        //         $users = new User;
+        //         $users->user_level = 'EMPLOYEE';
+        //         $users->emp_number = $value['empno'];
+        //         $users->name = $value['first_name'].' '. $value['last_name'];
+        //         $users->email = $value['empno'];
+        //         $users->status = 'ACTIVE';
+        //         $users->password = Hash::make($value['empno']);
+        //         $users->save();
+        //     }
+            
+        //     // User::create([
+        //     //     'user_level' => 'EMPLOYEE',
+        //     //     'emp_number' => $value['empno'],
+        //     //     'name' => $value['first_name'].' '. $value['last_name'],
+        //     //     'email_address' => $value['empno'],
+        //     //     'status' => 'ACTIVE',
+        //     //     'password' => Hash::make($value['empno'])
+        //     // ]);
+
+        // }
+        // return $employee_list;
         // Role::create(['name' => 'ENCODER']);
         // This code creates a new role in a Laravel application with the name "ADMIN".
         // Permission::create(['name' => 'delete employee']);
