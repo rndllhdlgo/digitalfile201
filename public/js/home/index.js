@@ -141,6 +141,20 @@ $(document).ready(function(){
         user_activity_table.column($(this).data('column')).search($(this).val()).draw();
     });
 
+    setInterval(function(){
+        if($('#loading').is(':hidden') && standby == false){
+            $.ajax({
+                url: "/index_reload_data",
+                success: function(data){
+                    if(data != data_update){
+                        data_update = data;
+                        $('.employeesTable').DataTable().ajax.reload(null, false);
+                    }
+                }
+            });
+        }
+    }, 1000);
+
     $('#user_activity_table tbody').on('click', 'tr', function(){
         var data = user_activity_table.row(this).data();
         Swal.fire({

@@ -91,6 +91,14 @@ class PagesController extends Controller
         return view('pages.maintenance');
     }
 
+    public function index_reload_data(){
+        if(UserLogs::count() == 0){
+            return 'NULL';
+        }
+        $data_update = UserLogs::latest('updated_at')->first()->updated_at;
+        return $data_update;
+    }
+
     public function index_data(){
         $list = UserLogs::selectRaw('user_logs.id,
                                      users.id AS user_id, 

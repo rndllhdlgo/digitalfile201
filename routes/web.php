@@ -42,6 +42,7 @@ Route::get('/getCities','PagesController@getCities');
 Route::get('/getRegion','PagesController@getRegion');
 
 Route::get('/index/data','PagesController@index_data');
+Route::get('/index_reload_data','PagesController@index_reload_data');
 
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
@@ -51,8 +52,6 @@ Route::any('/setJobRequirements','PagesController@setJobRequirements');
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
 Route::any('/employees/insertImage','EmployeesController@insertImage');
 Route::any('/employees/status','EmployeesController@employee_status');
-
-
 Route::any('/employees/fetch','EmployeesController@employeeFetch');
 
 Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
