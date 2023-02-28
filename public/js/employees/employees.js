@@ -67,10 +67,18 @@ $(document).ready(function(){
                             $('#loading').hide();
                             Swal.fire({
                                 title: "PENDING UPDATE",
-                                html: "You have a pending update. Please contact HR for the approval or cancellation of your pending update.",
+                                html: '<div style="font-family: Century Gothic, cursive;">You have a pending update. Please contact HR for the approval or cancellation of your pending update.</div>',
                                 icon: "warning",
+                                showCancelButton: false,
                                 allowOutsideClick: false,
-                                // showConfirmButton: false
+                                allowEscapeKey: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'LOGOUT'
+                            }).then((result) => {
+                                if (result.isConfirmed) {
+                                    window.location.href = '/logout';
+                                }
                             });
                         }
                         else{
@@ -359,7 +367,7 @@ $('#image_close').on('click',function(){
             // $('.column-1').css("height","280px");
             $('#employee_image').addClass('required_field');
             employee_image_change = 'CHANGED';
-            alert(employee_image_change);
+            console.log(employee_image_change);
         }
     });
 });

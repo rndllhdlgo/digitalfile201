@@ -375,7 +375,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
                 
-
                 $('.training_table_orig').dataTable().fnDestroy();
                 $('.training_table_orig').DataTable({
                     columnDefs: [
@@ -547,411 +546,414 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
                 
-
-                $('.memo_table_data').dataTable().fnDestroy();
-                $('.memo_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                    if(current_user_level != 'EMPLOYEE'){
+                        $('.memo_table_data').dataTable().fnDestroy();
+                        $('.memo_table_data').DataTable({
+                            columnDefs: [
+                                {
+                                    "render": function(data, type, row, meta){
+                                            return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                    },
+                                    "defaultContent": '',
+                                    "data": null,
+                                    "targets": [4],
+                                }
+                            ],
+                            searching: false,
+                            paging: false,
+                            info: false,
+                            ordering:false,
+                            autoWidth: false,
+                            language:{
+                                emptyTable: "No data available in table",
+                                processing: "Loading...",
                             },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [4],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/memo_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'memo_subject',width: '22.5%'},
-                        { 
-                            data: 'memo_date',
-                            "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('MMM. YYYY');
+                            serverSide: true,
+                            ajax: {
+                                url: '/employees/memo_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
                             },
-                            width: '22.5%'},
-                        { data: 'memo_penalty', width: '22.5%'},
-                        { 
-                            data: 'memo_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>` ;
-                            },
-                            width: '22.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.memo_table_data').DataTable().data().any()){
-                            $('#memo_table_data').hide();
-                        }
-                        else{
-                            $('#memo_table_data').show();
-                        }
-                    }
-                });
-
-                $('.evaluation_table_data').dataTable().fnDestroy();
-                $('.evaluation_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_evaluation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [4],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/evaluation_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'evaluation_reason',width: '22.5%'},
-                        { 
-                            data: 'evaluation_date', 
-                            "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('MMM. YYYY');
-                            },
-                            width: '22.5%'},
-                        { data: 'evaluation_evaluated_by', width: '22.5%'},
-                        { 
-                            data: 'evaluation_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file}</a>` ;
-                            },
-                            width: '22.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.evaluation_table_data').DataTable().data().any()){
-                            $('#evaluation_table_data').hide();
-                        }
-                        else{
-                            $('#evaluation_table_data').show();
-                        }
-                    }
-                });
-
-                $('.contracts_table_data').dataTable().fnDestroy();
-                $('.contracts_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_contracts_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [3],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/contracts_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'contracts_type',width: '20%'},
-                        { 
-                            data: 'contracts_date',
-                            "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('MMM. YYYY');
-                            },
-                            width: '33.4%'},
-                        { 
-                            data: 'contracts_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file}</a>` ;
-                            },
-                            width: '35.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.contracts_table_data').DataTable().data().any()){
-                            $('#contracts_table_data').hide();
-                        }
-                        else{
-                            $('#contracts_table_data').show();
-                        }
-                    }
-                });
-
-                $('.resignation_table_data').dataTable().fnDestroy();
-                $('.resignation_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_resignation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [3],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/resignation_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'resignation_reason',width: '20%'},
-                        { data: 'resignation_date', width: '33.4%'},
-                        { 
-                            data: 'resignation_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.resignation_file}" target="_blank">${row.resignation_file}</a>` ;
-                            },
-                            width: '35.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.resignation_table_data').DataTable().data().any()){
-                            $('#resignation_table_data').hide();
-                        }
-                        else{
-                            $('#resignation_table_data').show();
-                        }
-                    }
-                });
-
-                $('.termination_table_data').dataTable().fnDestroy();
-                $('.termination_table_data').DataTable({
-                    columnDefs: [
-                        {
-                            "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_termination_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                            },
-                            "defaultContent": '',
-                            "data": null,
-                            "targets": [3],
-                        }
-                    ],
-                    searching: false,
-                    paging: false,
-                    info: false,
-                    ordering:false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
-                    },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/termination_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'termination_reason',width: '20%'},
-                        { data: 'termination_date', width: '33.4%'},
-                        { 
-                            data: 'termination_file', 
-                            "render": function(data, type, row){
-                                return `<a href="/storage/evaluation_files/${row.termination_file}" target="_blank">${row.termination_file}</a>` ;
-                            },
-                            width: '35.5%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.termination_table_data').DataTable().data().any()){
-                            $('#termination_table_data').hide();
-                        }
-                        else{
-                            $('#termination_table_data').show();
-                        }
-                    }
-                });
-
-                var logs_table_data;
-                $('.logs_table_data').dataTable().fnDestroy();
-                logs_table_data = $('.logs_table_data').DataTable({
-                    dom:'l<"breakspace">trip',
-                    autoWidth: false,
-                    language:{
-                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
-                        lengthMenu:"Show _MENU_ User Activities",
-                        emptyTable:"No User Activities Data Found!",
-                        loadingRecords: "Loading User Activities Records...",
-                    },
-                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                    processing:true,
-                    serverSide:false,
-                    ajax: {
-                        url: '/employees/logs_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    order: [],
-                    columnDefs: [
-                        {
-                            "targets": [0],
-                            "visible": false,
-                            "searchable": true
-                        },
-                    ],
-                    columns: [
-                        { data: 'datetime' },
-                        {
-                            data: 'date',
-                            width: '15%',
-                            "render": function(data, type, row){
-                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                            columns: [
+                                { data: 'memo_subject',width: '22.5%'},
+                                { 
+                                    data: 'memo_date',
+                                    "render":function(data,type,row){
+                                        return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('MMM. YYYY');
+                                    },
+                                    width: '22.5%'},
+                                { data: 'memo_penalty', width: '22.5%'},
+                                { 
+                                    data: 'memo_file', 
+                                    "render": function(data, type, row){
+                                        return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>` ;
+                                    },
+                                    width: '22.5%'
+                                }
+                            ],
+                            initComplete: function(){
+                                if(!$('.memo_table_data').DataTable().data().any()){
+                                    $('#memo_table_data').hide();
+                                }
+                                else{
+                                    $('#memo_table_data').show();
+                                }
                             }
-                        },
-                        { data: 'username', width: '15%'},
-                        { data: 'user_level', width: '15%'},
-                        { 
-                            data: 'logs',
-                            width: '55%',
-                            "render":function(data,type,row){
-                                logs = row.logs.replaceAll(" [", "<br>[");
-                                return logs;
+                        });
+                    
+                        $('.evaluation_table_data').dataTable().fnDestroy();
+                        $('.evaluation_table_data').DataTable({
+                            columnDefs: [
+                                {
+                                    "render": function(data, type, row, meta){
+                                            return '<button type="button" class="btn btn-danger btn_evaluation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                    },
+                                    "defaultContent": '',
+                                    "data": null,
+                                    "targets": [4],
+                                }
+                            ],
+                            searching: false,
+                            paging: false,
+                            info: false,
+                            ordering:false,
+                            autoWidth: false,
+                            language:{
+                                emptyTable: "No data available in table",
+                                processing: "Loading...",
                             },
-                        },
-                    ],
-                });
-                $('div.breakspace').html('<br><br>');
+                            serverSide: true,
+                            ajax: {
+                                url: '/employees/evaluation_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
+                            },
+                            columns: [
+                                { data: 'evaluation_reason',width: '22.5%'},
+                                { 
+                                    data: 'evaluation_date', 
+                                    "render":function(data,type,row){
+                                        return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('MMM. YYYY');
+                                    },
+                                    width: '22.5%'},
+                                { data: 'evaluation_evaluated_by', width: '22.5%'},
+                                { 
+                                    data: 'evaluation_file', 
+                                    "render": function(data, type, row){
+                                        return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file}</a>` ;
+                                    },
+                                    width: '22.5%'
+                                }
+                            ],
+                            initComplete: function(){
+                                if(!$('.evaluation_table_data').DataTable().data().any()){
+                                    $('#evaluation_table_data').hide();
+                                }
+                                else{
+                                    $('#evaluation_table_data').show();
+                                }
+                            }
+                        });
+                        
+                        $('.contracts_table_data').dataTable().fnDestroy();
+                        $('.contracts_table_data').DataTable({
+                            columnDefs: [
+                                {
+                                    "render": function(data, type, row, meta){
+                                            return '<button type="button" class="btn btn-danger btn_contracts_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                    },
+                                    "defaultContent": '',
+                                    "data": null,
+                                    "targets": [3],
+                                }
+                            ],
+                            searching: false,
+                            paging: false,
+                            info: false,
+                            ordering:false,
+                            autoWidth: false,
+                            language:{
+                                emptyTable: "No data available in table",
+                                processing: "Loading...",
+                            },
+                            serverSide: true,
+                            ajax: {
+                                url: '/employees/contracts_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
+                            },
+                            columns: [
+                                { data: 'contracts_type',width: '20%'},
+                                { 
+                                    data: 'contracts_date',
+                                    "render":function(data,type,row){
+                                        return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('MMM. YYYY');
+                                    },
+                                    width: '33.4%'},
+                                { 
+                                    data: 'contracts_file', 
+                                    "render": function(data, type, row){
+                                        return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file}</a>` ;
+                                    },
+                                    width: '35.5%'
+                                }
+                            ],
+                            initComplete: function(){
+                                if(!$('.contracts_table_data').DataTable().data().any()){
+                                    $('#contracts_table_data').hide();
+                                }
+                                else{
+                                    $('#contracts_table_data').show();
+                                }
+                            }
+                        });
 
-                $('.filter-input').on('keyup search', function(){
-                    logs_table_data.column($(this).data('column')).search($(this).val()).draw();
-                });
+                        $('.resignation_table_data').dataTable().fnDestroy();
+                        $('.resignation_table_data').DataTable({
+                            columnDefs: [
+                                {
+                                    "render": function(data, type, row, meta){
+                                            return '<button type="button" class="btn btn-danger btn_resignation_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                    },
+                                    "defaultContent": '',
+                                    "data": null,
+                                    "targets": [3],
+                                }
+                            ],
+                            searching: false,
+                            paging: false,
+                            info: false,
+                            ordering:false,
+                            autoWidth: false,
+                            language:{
+                                emptyTable: "No data available in table",
+                                processing: "Loading...",
+                            },
+                            serverSide: true,
+                            ajax: {
+                                url: '/employees/resignation_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
+                            },
+                            columns: [
+                                { data: 'resignation_reason',width: '20%'},
+                                { data: 'resignation_date', width: '33.4%'},
+                                { 
+                                    data: 'resignation_file', 
+                                    "render": function(data, type, row){
+                                        return `<a href="/storage/evaluation_files/${row.resignation_file}" target="_blank">${row.resignation_file}</a>` ;
+                                    },
+                                    width: '35.5%'
+                                }
+                            ],
+                            initComplete: function(){
+                                if(!$('.resignation_table_data').DataTable().data().any()){
+                                    $('#resignation_table_data').hide();
+                                }
+                                else{
+                                    $('#resignation_table_data').show();
+                                }
+                            }
+                        });
 
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/logs_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.logs_table_data').DataTable().ajax.reload(null, false);
+                        $('.termination_table_data').dataTable().fnDestroy();
+                        $('.termination_table_data').DataTable({
+                            columnDefs: [
+                                {
+                                    "render": function(data, type, row, meta){
+                                            return '<button type="button" class="btn btn-danger btn_termination_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                    },
+                                    "defaultContent": '',
+                                    "data": null,
+                                    "targets": [3],
+                                }
+                            ],
+                            searching: false,
+                            paging: false,
+                            info: false,
+                            ordering:false,
+                            autoWidth: false,
+                            language:{
+                                emptyTable: "No data available in table",
+                                processing: "Loading...",
+                            },
+                            serverSide: true,
+                            ajax: {
+                                url: '/employees/termination_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
+                            },
+                            columns: [
+                                { data: 'termination_reason',width: '20%'},
+                                { data: 'termination_date', width: '33.4%'},
+                                { 
+                                    data: 'termination_file', 
+                                    "render": function(data, type, row){
+                                        return `<a href="/storage/evaluation_files/${row.termination_file}" target="_blank">${row.termination_file}</a>` ;
+                                    },
+                                    width: '35.5%'
+                                }
+                            ],
+                            initComplete: function(){
+                                if(!$('.termination_table_data').DataTable().data().any()){
+                                    $('#termination_table_data').hide();
+                                }
+                                else{
+                                    $('#termination_table_data').show();
                                 }
                             }
                         });
                     }
-                }, 1000);
 
-                var employee_history_table;
-                $('.employee_history_table').dataTable().fnDestroy();
-                employee_history_table = $('.employee_history_table').DataTable({
-                    dom:'l<"breakspace">trip',
-                    autoWidth: false,
-                    language:{
-                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
-                        lengthMenu:"Show _MENU_ User Activities",
-                        emptyTable:"No User Activities Data Found!",
-                        loadingRecords: "Loading User Activities Records...",
-                    },
-                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                    processing:true,
-                    serverSide:false,
-                    ajax: {
-                        url: '/employees/history_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    order: [],
-                    columnDefs: [
-                        {
-                            "targets": [0],
-                            "visible": false,
-                            "searchable": true
-                        },
-                    ],
-                    columns: [
-                        { data: 'datetime'},
-                        {
-                            data: 'date',
-                            width: '20%',
-                            "render": function(data, type, row){
-                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
-                            }
-                        },
-                        { 
-                            data: 'history',
-                            width: '80%',
-                            "render":function(data,type,row){
-                                var history = row.history.replaceAll(" [","<br>[");
-                                return history;
+                    if(current_user_level != 'EMPLOYEE'){
+                        var logs_table_data;
+                        $('.logs_table_data').dataTable().fnDestroy();
+                        logs_table_data = $('.logs_table_data').DataTable({
+                            dom:'l<"breakspace">trip',
+                            autoWidth: false,
+                            language:{
+                                info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
+                                lengthMenu:"Show _MENU_ User Activities",
+                                emptyTable:"No User Activities Data Found!",
+                                loadingRecords: "Loading User Activities Records...",
                             },
-                        },
-                    ],
-                });
-                $('div.breakspace').html('<br><br>');
-
-                $('.filter-input').on('keyup search', function(){
-                    employee_history_table.column($(this).data('column')).search($(this).val()).draw();
-                });
-
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/employee_history_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.employee_history_table').DataTable().ajax.reload(null, false);
+                            aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                            processing:true,
+                            serverSide:false,
+                            ajax: {
+                                url: '/employees/logs_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
                                 }
-                            }
+                            },
+                            order: [],
+                            columnDefs: [
+                                {
+                                    "targets": [0],
+                                    "visible": false,
+                                    "searchable": true
+                                },
+                            ],
+                            columns: [
+                                { data: 'datetime' },
+                                {
+                                    data: 'date',
+                                    width: '15%',
+                                    "render": function(data, type, row){
+                                        return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                                    }
+                                },
+                                { data: 'username', width: '15%'},
+                                { data: 'user_level', width: '15%'},
+                                { 
+                                    data: 'logs',
+                                    width: '55%',
+                                    "render":function(data,type,row){
+                                        logs = row.logs.replaceAll(" [", "<br>[");
+                                        return logs;
+                                    },
+                                },
+                            ],
                         });
+                        $('div.breakspace').html('<br><br>');
+
+                        $('.filter-input').on('keyup search', function(){
+                            logs_table_data.column($(this).data('column')).search($(this).val()).draw();
+                        });
+
+                        setInterval(function(){
+                            if($('#loading').is(':hidden') && standby == false){
+                                $.ajax({
+                                    url: "/logs_reload",
+                                    success: function(data){
+                                        if(data != data_update){
+                                            data_update = data;
+                                            $('.logs_table_data').DataTable().ajax.reload(null, false);
+                                        }
+                                    }
+                                });
+                            }
+                        }, 1000);
+
+                        var employee_history_table;
+                        $('.employee_history_table').dataTable().fnDestroy();
+                        employee_history_table = $('.employee_history_table').DataTable({
+                            dom:'l<"breakspace">trip',
+                            autoWidth: false,
+                            language:{
+                                info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
+                                lengthMenu:"Show _MENU_ User Activities",
+                                emptyTable:"No User Activities Data Found!",
+                                loadingRecords: "Loading User Activities Records...",
+                            },
+                            aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                            processing:true,
+                            serverSide:false,
+                            ajax: {
+                                url: '/employees/history_data',
+                                async: false,
+                                data:{
+                                    id: value.id,
+                                }
+                            },
+                            order: [],
+                            columnDefs: [
+                                {
+                                    "targets": [0],
+                                    "visible": false,
+                                    "searchable": true
+                                },
+                            ],
+                            columns: [
+                                { data: 'datetime'},
+                                {
+                                    data: 'date',
+                                    width: '20%',
+                                    "render": function(data, type, row){
+                                        return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                                    }
+                                },
+                                { 
+                                    data: 'history',
+                                    width: '80%',
+                                    "render":function(data,type,row){
+                                        var history = row.history.replaceAll(" [","<br>[");
+                                        return history;
+                                    },
+                                },
+                            ],
+                        });
+                        $('div.breakspace').html('<br><br>');
+
+                        $('.filter-input').on('keyup search', function(){
+                            employee_history_table.column($(this).data('column')).search($(this).val()).draw();
+                        });
+
+                        setInterval(function(){
+                            if($('#loading').is(':hidden') && standby == false){
+                                $.ajax({
+                                    url: "/employee_history_reload",
+                                    success: function(data){
+                                        if(data != data_update){
+                                            data_update = data;
+                                            $('.employee_history_table').DataTable().ajax.reload(null, false);
+                                        }
+                                    }
+                                });
+                            }
+                        }, 1000);
                     }
-                }, 1000);
 
                 college_change = '';
                 vocational_change = '';
@@ -1059,9 +1061,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#loading').hide();
             });
         }
-
     });
-    
 });
 
 $('#barangay_clearance_delete_button').on('click',function(){
@@ -1442,6 +1442,7 @@ $(document).on('click','.btn_delete_job',function(){
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
     job_history_change = 'CHANGED';
+    console.log(job_history_change);
 });
 
 $(document).on('click','.btn_memo_delete',function(){
