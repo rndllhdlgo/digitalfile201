@@ -69,7 +69,8 @@ $(document).ready(function(){
                                 title: "PENDING UPDATE",
                                 html: "You have a pending update. Please contact HR for the approval or cancellation of your pending update.",
                                 icon: "warning",
-                                allowOutsideClick: false
+                                allowOutsideClick: false,
+                                // showConfirmButton: false
                             });
                         }
                         else{

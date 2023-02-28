@@ -374,6 +374,8 @@ class EmployeesController extends Controller
     }
 
     public function saveCollege(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new CollegeTable;
             $employee->employee_id = $request->employee_id;
@@ -381,7 +383,38 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $employee->save(); 
+            $sql = $employee->save(); 
+
+            if($request->college_change == 'CHANGED'){
+                $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
+            }
+            else{
+                $college_update = NULL;
+            }            
+
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+    
+                if($request->college_change == 'CHANGED'){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->employee_id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
+                    $employee_logs->save();
+    
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
         else{
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
@@ -391,11 +424,37 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $employee->save(); 
+            $sql = $employee->save(); 
+
+            
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+    
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                $userlogs->save();
+                
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
     }
 
     public function saveTraining(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new TrainingTable;
             $employee->employee_id = $request->employee_id;
@@ -403,7 +462,38 @@ class EmployeesController extends Controller
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
             $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-            $employee->save();
+            $sql = $employee->save();
+
+            if($request->training_change == 'CHANGED'){
+                $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
+            }
+            else{
+                $training_update = NULL;
+            }
+
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+        
+                if($request->training_change == 'CHANGED'){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->employee_id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
+                    $employee_logs->save();
+        
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
         else{
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
@@ -413,11 +503,35 @@ class EmployeesController extends Controller
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
             $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-            $employee->save();
+            $sql = $employee->save();
+
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                $userlogs->save();
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
     }
 
     public function saveVocational(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new VocationalTable;
             $employee->employee_id = $request->employee_id;
@@ -425,7 +539,38 @@ class EmployeesController extends Controller
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-            $employee->save();
+            $sql = $employee->save();
+
+            if($request->vocational_change == 'CHANGED'){
+                $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
+            }
+            else{
+                $vocational_update = NULL;
+            }
+
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+        
+                if($request->vocational_change == 'CHANGED'){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $request->employee_id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
+                    $employee_logs->save();
+        
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
+                    $userlogs->save();
+                }
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
         else{
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
@@ -435,7 +580,29 @@ class EmployeesController extends Controller
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-            $employee->save();
+            $sql = $employee->save(); 
+
+            if($sql){
+                $result = 'true';
+                $id = $employee->id;
+
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE VOCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE VOCATIONAL ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                $userlogs->save();
+            }
+            else{
+                $result = 'false';
+                $id = '';
+            }
+            $data = array('result' => $result, 'id' => $id);
+            return response()->json($data);
         }
     }
 
@@ -452,25 +619,28 @@ class EmployeesController extends Controller
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
             $sql = $employee->save();
-            
-            $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+
+            if($request->job_history_change == 'CHANGED'){
+                $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
+            }
+            else{
+                $job_history_update = NULL;
+            }
+
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-    
+
                 if($request->job_history_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
-                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
-                                            $job_history_update
-                                            ";
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS $job_history_update";
                     $employee_logs->save();
-    
+
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                           $job_history_update";
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
                     $userlogs->save();
                 }
             }
@@ -493,26 +663,29 @@ class EmployeesController extends Controller
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
             $sql = $employee->save();
 
-            $job_history_update = $request->job_history_change == 'CHANGED' ? '[JOB HISTORY: LIST OF JOB HISTORY/S HAVE BEEN CHANGED]' : null;
+            // if($request->job_history_change == 'CHANGED'){
+            //     $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
+            // }
+            // else{
+            //     $job_history_update = NULL;
+            // }
+
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-    
-                if($request->job_history_change == 'CHANGED'){
+
+                // if($request->job_history_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
-                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
-                                            $job_history_update
-                                            ";
+                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE";
                     $employee_logs->save();
-    
+
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                           $job_history_update";
+                    $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
                     $userlogs->save();
-                }
+                // }
             }
             else{
                 $result = 'false';
@@ -1513,27 +1686,6 @@ class EmployeesController extends Controller
                 $primary_school_inclusive_years_to_change = NULL;
             }
 
-            if($request->college_change == 'CHANGED'){
-                $college_update = "[COLLEGE EDUCATION: LIST OF COLLEGE EDUCATION/S HAVE BEEN CHANGED]";
-            }
-            else{
-                $college_update = NULL;
-            }
-
-            if($request->training_change == 'CHANGED'){
-                $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
-            }
-            else{
-                $training_update = NULL;
-            }
-
-            if($request->vocational_change == 'CHANGED'){
-                $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
-            }
-            else{
-                $vocational_update = NULL;
-            }
-
             if(auth()->user()->user_level != 'EMPLOYEE'){
                 $sql = EducationalAttainment::where('employee_id',$request->employee_id)
                 ->update([
@@ -1560,10 +1712,7 @@ class EmployeesController extends Controller
                     $request->primary_school_name != $primary_school_name_orig ||
                     $request->primary_school_address != $primary_school_address_orig ||
                     $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
-                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
-                    $request->college_change == 'CHANGED' ||
-                    $request->training_change == 'CHANGED' ||
-                    $request->vocational_change == 'CHANGED'
+                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
                     ){
 
                         $employee_logs = new LogsTable;
@@ -1578,9 +1727,6 @@ class EmployeesController extends Controller
                                                 $primary_school_address_change
                                                 $primary_school_inclusive_years_from_change
                                                 $primary_school_inclusive_years_to_change
-                                                $college_update
-                                                $training_update
-                                                $vocational_update
                                                 ";
                         $employee_logs->save();
 
@@ -1595,9 +1741,6 @@ class EmployeesController extends Controller
                                                 $primary_school_address_change
                                                 $primary_school_inclusive_years_from_change
                                                 $primary_school_inclusive_years_to_change
-                                                $college_update
-                                                $training_update
-                                                $vocational_update
                                                 ";
                         $userlogs->save();
                     }
@@ -1637,16 +1780,13 @@ class EmployeesController extends Controller
                     $request->primary_school_name != $primary_school_name_orig ||
                     $request->primary_school_address != $primary_school_address_orig ||
                     $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
-                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig ||
-                    $request->college_change == 'CHANGED' ||
-                    $request->training_change == 'CHANGED' ||
-                    $request->vocational_change == 'CHANGED'
+                    $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
                     ){
 
                         $employee_logs = new LogsTable;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                        $employee_logs->logs = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1655,15 +1795,12 @@ class EmployeesController extends Controller
                                                 $primary_school_address_change
                                                 $primary_school_inclusive_years_from_change
                                                 $primary_school_inclusive_years_to_change
-                                                $college_update
-                                                $training_update
-                                                $vocational_update
                                                 ";
                         $employee_logs->save();
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1672,9 +1809,6 @@ class EmployeesController extends Controller
                                                 $primary_school_address_change
                                                 $primary_school_inclusive_years_from_change
                                                 $primary_school_inclusive_years_to_change
-                                                $college_update
-                                                $training_update
-                                                $vocational_update
                                                 ";
                         $userlogs->save();
                     }
@@ -1852,7 +1986,7 @@ class EmployeesController extends Controller
                             $employee_logs = new LogsTable;
                             $employee_logs->employee_id = $request->id;
                             $employee_logs->user_id = auth()->user()->id;
-                            $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
+                            $employee_logs->logs = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
                                                     $past_medical_condition_change
                                                     $allergies_change
                                                     $medication_change
@@ -2128,591 +2262,591 @@ class EmployeesController extends Controller
     }
 
     public function updateDocuments(Request $request){
-        $memo_files = MemoTable::where('employee_id', $request->employee_id)->pluck('memo_file');
-        $evaluation_files = EvaluationTable::where('employee_id', $request->employee_id)->pluck('evaluation_file');
-        $countBefore = MemoTable::where('employee_id', $request->employee_id)->count();
+        if(auth()->user()->user_level != 'EMPLOYEE'){
+            // $memo_files = MemoTable::where('employee_id', $request->employee_id)->pluck('memo_file');
+            // $evaluation_files = EvaluationTable::where('employee_id', $request->employee_id)->pluck('evaluation_file');
+            // $countBefore = MemoTable::where('employee_id', $request->employee_id)->count();
 
-        $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee = Document::where('employee_id',$request->employee_id)->first();
-        
-        if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
-            foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
-                $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
-                
-                $memo = new MemoTable;
-                $memo->employee_id = $request->employee_id;
-                $memo->memo_subject = $request->memo_subject[$key];
-                $memo->memo_date = $request->memo_date[$key];
-                $memo->memo_penalty = $request->memo_penalty[$key];
-                $memo->memo_file = $memoFileName;
-                $memo->save();
-            }
-        }
-
-        $countAfter = MemoTable::where('employee_id', $request->employee_id)->count();
-        // return $countBefore.$countAfter;
-        if($countAfter != $countBefore){
-            $memo_update = "[MEMO HAS BEEN CHANGED]";
-            // return $countBefore.$countAfter.$memo_update;
-        } 
-        
-        if(isset($memo_update)){
-            $employee_logs = new LogsTable;
-            $employee_logs->employee_id = $employee_details->id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                    $memo_update";
-            $employee_logs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                    $memo_update";
-            $userlogs->save();
-        }
-
-        // return $countBefore.$countAfter.$memo_update;
-
-        // if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
-        //     foreach($request->file('evaluation_file') as $key => $value){
-        //         $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
-        //         $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
-                
-        //         $evaluation = new EvaluationTable;
-        //         $evaluation->employee_id = $request->employee_id;
-        //         $evaluation->evaluation_reason = $request->evaluation_reason[$key];
-        //         $evaluation->evaluation_date = $request->evaluation_date[$key];
-        //         $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
-        //         $evaluation->evaluation_file = $evaluationFileName;
-        //         $evaluation->save();
-        //     }
-        // }
-
-        // if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
-        //     foreach($request->file('contracts_file') as $key => $value){
-        //         $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
-        //         $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
-                
-        //         $contracts = new ContractTable;
-        //         $contracts->employee_id = $request->employee_id;
-        //         $contracts->contracts_type = $request->contracts_type[$key];
-        //         $contracts->contracts_date = $request->contracts_date[$key];
-        //         $contracts->contracts_file = $contractsFileName;
-        //         $contracts->save();
-        //     }
-        // }
-        
-        // if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-        //     foreach($request->file('resignation_file') as $key => $value){
-        //         $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
-        //         $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
-                
-        //         $resignation = new ResignationTable;
-        //         $resignation->employee_id = $request->employee_id;
-        //         $resignation->resignation_reason = $request->resignation_reason[$key];
-        //         $resignation->resignation_date = $request->resignation_date[$key];
-        //         $resignation->resignation_file = $resignationFileName;
-        //         $resignation->save();
-        //     }
-        // }
-
-        // if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-        //     foreach($request->file('termination_file') as $key => $value){
-        //         $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
-        //         $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
-
-        //         $termination = new TerminationTable;
-        //         $termination->employee_id = $request->employee_id;
-        //         $termination->termination_reason = $request->termination_reason[$key];
-        //         $termination->termination_date = $request->termination_date[$key];
-        //         $termination->termination_file = $terminationFileName;
-        //         $termination->save();
-        //     }
-        // }
-        
-        if(!$employee){
-            $document = new Document;
-            $document->employee_id = $request->employee_id;
-            $barangayClearanceFile = $request->file('barangay_clearance_file');
-            $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-            $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
-            $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
-            $document->barangay_clearance_file = $barangayClearanceFilename;
-
-            if($request->hasFile('birthcertificate_file')){
-                $birthcertificateFile = $request->file('birthcertificate_file');
-                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                $birthcertificateFilename = $employee_number.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
-                $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
-                $document->birthcertificate_file = $birthcertificateFilename;
-            }
-
-            if($request->hasFile('diploma_file')){
-                $diplomaFile = $request->file('diploma_file');
-                $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
-                $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
-                $document->diploma_file = $diplomaFilename;
-            }
-
-            if($request->hasFile('medical_certificate_file')){
-                $medicalCertificateFile = $request->file('medical_certificate_file');
-                $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                $medicalCertificateFilename = $employee_number.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
-                $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
-                $document->medical_certificate_file = $medicalCertificateFilename;
-            }
-
-            if($request->hasFile('nbi_clearance_file')){
-                $nbiFile = $request->file('nbi_clearance_file');
-                $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
-                $nbiFile->storeAs('public/documents_files',$nbiFilename);
-                $document->nbi_clearance_file = $nbiFilename;
-            }
-
-            if($request->hasFile('pag_ibig_file')){
-                $pagibigFile = $request->file('pag_ibig_file');
-                $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                $pagibigFilename = $employee_number.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
-                $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
-                $document->pag_ibig_file = $pagibigFilename;
-            }
+            $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
+            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+            $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+            $employee = Document::where('employee_id',$request->employee_id)->first();
             
-            if($request->hasFile('philhealth_file')){
-                $philhealthFile = $request->file('philhealth_file');
-                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                $philhealthFilename = $employee_number.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
-                $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
-                $document->philhealth_file = $philhealthFilename;
-            }
-
-            if($request->hasFile('police_clearance_file')){
-                $policeClearanceFile = $request->file('police_clearance_file');
-                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                $policeClearanceFilename = $employee_number.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
-                $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
-                $document->police_clearance_file = $policeClearanceFilename;
-            }
-            
-            if($request->hasFile('resume_file')){
-                $resumeFile = $request->file('resume_file');
-                $resumeExtension = $resumeFile->getClientOriginalExtension();
-                $resumeFilename = $employee_number.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
-                $resumeFile->storeAs('public/documents_files',$resumeFilename);
-                $document->resume_file = $resumeFilename;
-            }
-
-            if($request->hasFile('sss_file')){
-                $sssFile = $request->file('sss_file');
-                $sssExtension = $sssFile->getClientOriginalExtension();
-                $sssFilename = $employee_number.'_SSS_File_'.$timestamp.'.'.$sssExtension;
-                $sssFile->storeAs('public/documents_files',$sssFilename);
-                $document->sss_file = $sssFilename;
-            }
-            
-            if($request->hasFile('tor_file')){
-                $torFile = $request->file('tor_file');
-                $torExtension = $torFile->getClientOriginalExtension();
-                $torFilename = $employee_number.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
-                $torFile->storeAs('public/documents_files',$torFilename);
-                $document->transcript_of_records_file = $torFilename;
-            }
-            $document->save();
-            
-            sleep(2);
-            return Redirect::to(url()->previous());
-        }
-        else{
-            $document_orig = Document::where('employee_id', $request->employee_id)->first();
-            
-            if($request->hasFile('barangay_clearance_file')){
-                if(file_exists('public/documents_files/'.$request->barangay_clearance_filename)){
-                    unlink('public/documents_files/'.$request->barangay_clearance_filename);
+            if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+                foreach($request->file('memo_file') as $key => $value){
+                    $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
+                    $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
+                    
+                    $memo = new MemoTable;
+                    $memo->employee_id = $request->employee_id;
+                    $memo->memo_subject = $request->memo_subject[$key];
+                    $memo->memo_date = $request->memo_date[$key];
+                    $memo->memo_penalty = $request->memo_penalty[$key];
+                    $memo->memo_file = $memoFileName;
+                    $memo->save();
                 }
-                Storage::delete('public/documents_files/'.$document_orig->barangay_clearance_file);
+            }
 
+            // $countAfter = MemoTable::where('employee_id', $request->employee_id)->count();
+            // // return $countBefore.$countAfter;
+            // if($countAfter != $countBefore){
+            //     $memo_update = "[MEMO HAS BEEN CHANGED]";
+            //     // return $countBefore.$countAfter.$memo_update;
+            // } 
+            
+            // if(isset($memo_update)){
+            //     $employee_logs = new LogsTable;
+            //     $employee_logs->employee_id = $employee_details->id;
+            //     $employee_logs->user_id = auth()->user()->id;
+            //     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+            //                             $memo_update";
+            //     $employee_logs->save();
+
+            //     $userlogs = new UserLogs;
+            //     $userlogs->user_id = auth()->user()->id;
+            //     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+            //                             $memo_update";
+            //     $userlogs->save();
+            // }
+
+            // return $countBefore.$countAfter.$memo_update;
+
+            // if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+            //     foreach($request->file('evaluation_file') as $key => $value){
+            //         $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
+            //         $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
+                    
+            //         $evaluation = new EvaluationTable;
+            //         $evaluation->employee_id = $request->employee_id;
+            //         $evaluation->evaluation_reason = $request->evaluation_reason[$key];
+            //         $evaluation->evaluation_date = $request->evaluation_date[$key];
+            //         $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
+            //         $evaluation->evaluation_file = $evaluationFileName;
+            //         $evaluation->save();
+            //     }
+            // }
+
+            // if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
+            //     foreach($request->file('contracts_file') as $key => $value){
+            //         $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
+            //         $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
+                    
+            //         $contracts = new ContractTable;
+            //         $contracts->employee_id = $request->employee_id;
+            //         $contracts->contracts_type = $request->contracts_type[$key];
+            //         $contracts->contracts_date = $request->contracts_date[$key];
+            //         $contracts->contracts_file = $contractsFileName;
+            //         $contracts->save();
+            //     }
+            // }
+            
+            // if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+            //     foreach($request->file('resignation_file') as $key => $value){
+            //         $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
+            //         $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
+                    
+            //         $resignation = new ResignationTable;
+            //         $resignation->employee_id = $request->employee_id;
+            //         $resignation->resignation_reason = $request->resignation_reason[$key];
+            //         $resignation->resignation_date = $request->resignation_date[$key];
+            //         $resignation->resignation_file = $resignationFileName;
+            //         $resignation->save();
+            //     }
+            // }
+
+            // if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+            //     foreach($request->file('termination_file') as $key => $value){
+            //         $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+            //         $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+
+            //         $termination = new TerminationTable;
+            //         $termination->employee_id = $request->employee_id;
+            //         $termination->termination_reason = $request->termination_reason[$key];
+            //         $termination->termination_date = $request->termination_date[$key];
+            //         $termination->termination_file = $terminationFileName;
+            //         $termination->save();
+            //     }
+            // }
+            
+            if(!$employee){
+                $document = new Document;
+                $document->employee_id = $request->employee_id;
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
                 $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
                 $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
-                $barangay_clearance_file = $barangayClearanceFilename;
+                $document->barangay_clearance_file = $barangayClearanceFilename;
+
+                if($request->hasFile('birthcertificate_file')){
+                    $birthcertificateFile = $request->file('birthcertificate_file');
+                    $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                    $birthcertificateFilename = $employee_number.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
+                    $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
+                    $document->birthcertificate_file = $birthcertificateFilename;
+                }
+
+                if($request->hasFile('diploma_file')){
+                    $diplomaFile = $request->file('diploma_file');
+                    $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+                    $diplomaFilename = $employee_number.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
+                    $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
+                    $document->diploma_file = $diplomaFilename;
+                }
+
+                if($request->hasFile('medical_certificate_file')){
+                    $medicalCertificateFile = $request->file('medical_certificate_file');
+                    $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+                    $medicalCertificateFilename = $employee_number.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
+                    $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
+                    $document->medical_certificate_file = $medicalCertificateFilename;
+                }
+
+                if($request->hasFile('nbi_clearance_file')){
+                    $nbiFile = $request->file('nbi_clearance_file');
+                    $nbiExtension = $nbiFile->getClientOriginalExtension();
+                    $nbiFilename = $employee_number.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
+                    $nbiFile->storeAs('public/documents_files',$nbiFilename);
+                    $document->nbi_clearance_file = $nbiFilename;
+                }
+
+                if($request->hasFile('pag_ibig_file')){
+                    $pagibigFile = $request->file('pag_ibig_file');
+                    $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+                    $pagibigFilename = $employee_number.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
+                    $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
+                    $document->pag_ibig_file = $pagibigFilename;
+                }
+                
+                if($request->hasFile('philhealth_file')){
+                    $philhealthFile = $request->file('philhealth_file');
+                    $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                    $philhealthFilename = $employee_number.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
+                    $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
+                    $document->philhealth_file = $philhealthFilename;
+                }
+
+                if($request->hasFile('police_clearance_file')){
+                    $policeClearanceFile = $request->file('police_clearance_file');
+                    $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                    $policeClearanceFilename = $employee_number.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
+                    $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
+                    $document->police_clearance_file = $policeClearanceFilename;
+                }
+                
+                if($request->hasFile('resume_file')){
+                    $resumeFile = $request->file('resume_file');
+                    $resumeExtension = $resumeFile->getClientOriginalExtension();
+                    $resumeFilename = $employee_number.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
+                    $resumeFile->storeAs('public/documents_files',$resumeFilename);
+                    $document->resume_file = $resumeFilename;
+                }
+
+                if($request->hasFile('sss_file')){
+                    $sssFile = $request->file('sss_file');
+                    $sssExtension = $sssFile->getClientOriginalExtension();
+                    $sssFilename = $employee_number.'_SSS_File_'.$timestamp.'.'.$sssExtension;
+                    $sssFile->storeAs('public/documents_files',$sssFilename);
+                    $document->sss_file = $sssFilename;
+                }
+                
+                if($request->hasFile('tor_file')){
+                    $torFile = $request->file('tor_file');
+                    $torExtension = $torFile->getClientOriginalExtension();
+                    $torFilename = $employee_number.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
+                    $torFile->storeAs('public/documents_files',$torFilename);
+                    $document->transcript_of_records_file = $torFilename;
+                }
+                $document->save();
+                
+                sleep(2);
+                return Redirect::to(url()->previous());
             }
             else{
-                $barangay_clearance_file = $request->barangay_clearance_filename;
-            }
+                $document_orig = Document::where('employee_id', $request->employee_id)->first();
+                
+                if($request->hasFile('barangay_clearance_file')){
+                    if(file_exists('public/documents_files/'.$request->barangay_clearance_filename)){
+                        unlink('public/documents_files/'.$request->barangay_clearance_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->barangay_clearance_file);
 
-            if($request->hasFile('birthcertificate_file')){
-                if(file_exists('public/documents_files/'.$request->birthcertificate_filename)){
-                    unlink('public/documents_files/'.$request->birthcertificate_filename);
+                    $barangayClearanceFile = $request->file('barangay_clearance_file');
+                    $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+                    $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
+                    $barangayClearanceFile->storeAs('public/documents_files',$barangayClearanceFilename);
+                    $barangay_clearance_file = $barangayClearanceFilename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->birthcertificate_file);
-
-                $birthcertificateFile = $request->file('birthcertificate_file');
-                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                $birthcertificateFilename = $employee_number.'_Birth_Certificate_'.$timestamp.'.'.$birthcertificateExtension;
-                $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
-                $birthcertificate_file = $birthcertificateFilename;
-            }
-            else{
-                $birthcertificate_file = $request->birthcertificate_filename;
-            }
-
-            if($request->hasFile('diploma_file')){
-                if(file_exists('public/documents_files/'.$request->diploma_filename)){
-                    unlink('public/documents_files/'.$request->diploma_filename);
+                else{
+                    $barangay_clearance_file = $request->barangay_clearance_filename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->diploma_file);
 
-                $diplomaFile = $request->file('diploma_file');
-                $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                $diplomaFilename = $employee_number.'_Diploma_'.$timestamp.'.'.$diplomaExtension;
-                $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
-                $diploma_file = $diplomaFilename;
-            }
-            else{
-                $diploma_file = $request->diploma_filename;
-            }
+                if($request->hasFile('birthcertificate_file')){
+                    if(file_exists('public/documents_files/'.$request->birthcertificate_filename)){
+                        unlink('public/documents_files/'.$request->birthcertificate_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->birthcertificate_file);
 
-            if($request->hasFile('medical_certificate_file')){
-                if(file_exists('public/documents_files/'.$request->medical_certificate_filename)){
-                    unlink('public/documents_files/'.$request->medical_certificate_filename);
+                    $birthcertificateFile = $request->file('birthcertificate_file');
+                    $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                    $birthcertificateFilename = $employee_number.'_Birth_Certificate_'.$timestamp.'.'.$birthcertificateExtension;
+                    $birthcertificateFile->storeAs('public/documents_files',$birthcertificateFilename);
+                    $birthcertificate_file = $birthcertificateFilename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->medical_certificate_file);
-
-                $medicalCertificateFile = $request->file('medical_certificate_file');
-                $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                $medicalCertificateFilename = $employee_number.'_Medical_Certificate_'.$timestamp.'.'.$medicalCertificateExtension;
-                $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
-                $medical_certificate_file = $medicalCertificateFilename;
-            }
-            else{
-                $medical_certificate_file = $request->medical_certificate_filename;
-            }
-
-            if($request->hasFile('nbi_clearance_file')){
-                if(file_exists('public/documents_files/'.$request->nbi_clearance_filename)){
-                    unlink('public/documents_files/'.$request->nbi_clearance_filename);
+                else{
+                    $birthcertificate_file = $request->birthcertificate_filename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->nbi_clearance_file);
 
-                $nbiFile = $request->file('nbi_clearance_file');
-                $nbiExtension = $nbiFile->getClientOriginalExtension();
-                $nbiFilename = $employee_number.'_NBI_Clearance_'.$timestamp.'.'.$nbiExtension;
-                $nbiFile->storeAs('public/documents_files',$nbiFilename);
-                $nbi_clearance_file = $nbiFilename;
-            }
-            else{
-                $nbi_clearance_file = $request->nbi_clearance_filename;
-            }
+                if($request->hasFile('diploma_file')){
+                    if(file_exists('public/documents_files/'.$request->diploma_filename)){
+                        unlink('public/documents_files/'.$request->diploma_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->diploma_file);
 
-            if($request->hasFile('pag_ibig_file')){
-                if(file_exists('public/documents_files/'.$request->pag_ibig_filename)){
-                    unlink('public/documents_files/'.$request->pag_ibig_filename);
+                    $diplomaFile = $request->file('diploma_file');
+                    $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+                    $diplomaFilename = $employee_number.'_Diploma_'.$timestamp.'.'.$diplomaExtension;
+                    $diplomaFile->storeAs('public/documents_files',$diplomaFilename);
+                    $diploma_file = $diplomaFilename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->pag_ibig_file);
-
-                $pagibigFile = $request->file('pag_ibig_file');
-                $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                $pagibigFilename = $employee_number.'_Pagibig_Form_'.$timestamp.'.'.$pagibigExtension;
-                $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
-                $pag_ibig_file = $pagibigFilename;
-            }
-            else{
-                $pag_ibig_file = $request->pag_ibig_filename;
-            }
-            
-            if($request->hasFile('philhealth_file')){
-                if(file_exists('public/documents_files/'.$request->philhealth_filename)){
-                    unlink('public/documents_files/'.$request->philhealth_filename);
+                else{
+                    $diploma_file = $request->diploma_filename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->philhealth_file);
 
-                $philhealthFile = $request->file('philhealth_file');
-                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                $philhealthFilename = $employee_number.'_Philhealth_Form_'.$timestamp.'.'.$philhealthExtension;
-                $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
-                $philhealth_file = $philhealthFilename;
-            }
-            else{
-                $philhealth_file = $request->philhealth_filename;
-            }
+                if($request->hasFile('medical_certificate_file')){
+                    if(file_exists('public/documents_files/'.$request->medical_certificate_filename)){
+                        unlink('public/documents_files/'.$request->medical_certificate_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->medical_certificate_file);
 
-            if($request->hasFile('police_clearance_file')){
-                if(file_exists('public/documents_files/'.$request->police_clearance_filename)){
-                    unlink('public/documents_files/'.$request->police_clearance_filename);
+                    $medicalCertificateFile = $request->file('medical_certificate_file');
+                    $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+                    $medicalCertificateFilename = $employee_number.'_Medical_Certificate_'.$timestamp.'.'.$medicalCertificateExtension;
+                    $medicalCertificateFile->storeAs('public/documents_files',$medicalCertificateFilename);
+                    $medical_certificate_file = $medicalCertificateFilename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->police_clearance_file);
-
-                $policeClearanceFile = $request->file('police_clearance_file');
-                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                $policeClearanceFilename = $employee_number.'_Police_Clearance_'.$timestamp.'.'.$policeClearanceExtension;
-                $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
-                $police_clearance_file = $policeClearanceFilename;
-            }
-            else{
-                $police_clearance_file = $request->police_clearance_filename;
-            }
-
-            if($request->hasFile('resume_file')){
-                if(file_exists('public/documents_files/'.$request->resume_filename)){
-                    unlink('public/documents_files/'.$request->resume_filename);
+                else{
+                    $medical_certificate_file = $request->medical_certificate_filename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->resume_file);
 
-                $resumeFile = $request->file('resume_file');
-                $resumeExtension = $resumeFile->getClientOriginalExtension();
-                $resumeFilename = $employee_number.'_Resume_'.$timestamp.'.'.$resumeExtension;
-                $resumeFile->storeAs('public/documents_files',$resumeFilename);
-                $resume_file = $resumeFilename;
-            }
-            else{
-                $resume_file = $request->resume_filename;
-            }
+                if($request->hasFile('nbi_clearance_file')){
+                    if(file_exists('public/documents_files/'.$request->nbi_clearance_filename)){
+                        unlink('public/documents_files/'.$request->nbi_clearance_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->nbi_clearance_file);
 
-            if($request->hasFile('sss_file')){                
-                if(file_exists('public/documents_files/'.$request->sss_filename)){
-                    unlink('public/documents_files/'.$request->sss_filename);
+                    $nbiFile = $request->file('nbi_clearance_file');
+                    $nbiExtension = $nbiFile->getClientOriginalExtension();
+                    $nbiFilename = $employee_number.'_NBI_Clearance_'.$timestamp.'.'.$nbiExtension;
+                    $nbiFile->storeAs('public/documents_files',$nbiFilename);
+                    $nbi_clearance_file = $nbiFilename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->sss_file);
-
-                $sssFile = $request->file('sss_file');
-                $sssExtension = $sssFile->getClientOriginalExtension();
-                $sssFilename = $employee_number.'_SSS_Form_'.$timestamp.'.'.$sssExtension;
-                $sssFile->storeAs('public/documents_files',$sssFilename);
-                $sss_file = $sssFilename;
-            }
-            else{
-                $sss_file = $request->sss_filename;
-            }
-
-            if($request->hasFile('tor_file')){
-                if(file_exists('public/documents_files/'.$request->transcript_of_records_filename)){
-                    unlink('public/documents_files/'.$request->transcript_of_records_filename);
+                else{
+                    $nbi_clearance_file = $request->nbi_clearance_filename;
                 }
-                Storage::delete('public/documents_files/'.$document_orig->transcript_of_records_file);
+
+                if($request->hasFile('pag_ibig_file')){
+                    if(file_exists('public/documents_files/'.$request->pag_ibig_filename)){
+                        unlink('public/documents_files/'.$request->pag_ibig_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->pag_ibig_file);
+
+                    $pagibigFile = $request->file('pag_ibig_file');
+                    $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+                    $pagibigFilename = $employee_number.'_Pagibig_Form_'.$timestamp.'.'.$pagibigExtension;
+                    $pagibigFile->storeAs('public/documents_files',$pagibigFilename);
+                    $pag_ibig_file = $pagibigFilename;
+                }
+                else{
+                    $pag_ibig_file = $request->pag_ibig_filename;
+                }
+                
+                if($request->hasFile('philhealth_file')){
+                    if(file_exists('public/documents_files/'.$request->philhealth_filename)){
+                        unlink('public/documents_files/'.$request->philhealth_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->philhealth_file);
+
+                    $philhealthFile = $request->file('philhealth_file');
+                    $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                    $philhealthFilename = $employee_number.'_Philhealth_Form_'.$timestamp.'.'.$philhealthExtension;
+                    $philhealthFile->storeAs('public/documents_files',$philhealthFilename);
+                    $philhealth_file = $philhealthFilename;
+                }
+                else{
+                    $philhealth_file = $request->philhealth_filename;
+                }
+
+                if($request->hasFile('police_clearance_file')){
+                    if(file_exists('public/documents_files/'.$request->police_clearance_filename)){
+                        unlink('public/documents_files/'.$request->police_clearance_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->police_clearance_file);
+
+                    $policeClearanceFile = $request->file('police_clearance_file');
+                    $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                    $policeClearanceFilename = $employee_number.'_Police_Clearance_'.$timestamp.'.'.$policeClearanceExtension;
+                    $policeClearanceFile->storeAs('public/documents_files',$policeClearanceFilename);
+                    $police_clearance_file = $policeClearanceFilename;
+                }
+                else{
+                    $police_clearance_file = $request->police_clearance_filename;
+                }
+
+                if($request->hasFile('resume_file')){
+                    if(file_exists('public/documents_files/'.$request->resume_filename)){
+                        unlink('public/documents_files/'.$request->resume_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->resume_file);
+
+                    $resumeFile = $request->file('resume_file');
+                    $resumeExtension = $resumeFile->getClientOriginalExtension();
+                    $resumeFilename = $employee_number.'_Resume_'.$timestamp.'.'.$resumeExtension;
+                    $resumeFile->storeAs('public/documents_files',$resumeFilename);
+                    $resume_file = $resumeFilename;
+                }
+                else{
+                    $resume_file = $request->resume_filename;
+                }
+
+                if($request->hasFile('sss_file')){                
+                    if(file_exists('public/documents_files/'.$request->sss_filename)){
+                        unlink('public/documents_files/'.$request->sss_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->sss_file);
+
+                    $sssFile = $request->file('sss_file');
+                    $sssExtension = $sssFile->getClientOriginalExtension();
+                    $sssFilename = $employee_number.'_SSS_Form_'.$timestamp.'.'.$sssExtension;
+                    $sssFile->storeAs('public/documents_files',$sssFilename);
+                    $sss_file = $sssFilename;
+                }
+                else{
+                    $sss_file = $request->sss_filename;
+                }
+
+                if($request->hasFile('tor_file')){
+                    if(file_exists('public/documents_files/'.$request->transcript_of_records_filename)){
+                        unlink('public/documents_files/'.$request->transcript_of_records_filename);
+                    }
+                    Storage::delete('public/documents_files/'.$document_orig->transcript_of_records_file);
+                        
+                    $torFile = $request->file('tor_file');
+                    $torExtension = $torFile->getClientOriginalExtension();
+                    $torFilename = $employee_number.'_Transcript_of_Records_'.$timestamp.'.'.$torExtension;
+                    $torFile->storeAs('public/documents_files',$torFilename);
+                    $transcript_of_records_file = $torFilename;
+                }
+                else{
+                    $transcript_of_records_file = $request->transcript_of_records_filename;
+                } 
+
+                Document::where('employee_id',$request->employee_id)
+                    ->update([
+                        'barangay_clearance_file' => $barangay_clearance_file,
+                        'birthcertificate_file' => $birthcertificate_file,
+                        'diploma_file' => $diploma_file,
+                        'medical_certificate_file' => $medical_certificate_file,
+                        'nbi_clearance_file' => $nbi_clearance_file,
+                        'pag_ibig_file' => $pag_ibig_file,
+                        'philhealth_file' => $philhealth_file,
+                        'police_clearance_file' => $police_clearance_file,
+                        'resume_file' => $resume_file,
+                        'sss_file' => $sss_file,
+                        'transcript_of_records_file' => $transcript_of_records_file
+                    ]);
+
+                if($request->hasFile('barangay_clearance_file')){
+                    $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
+                }
+
+                else{
+                    $barangay_clearance_update = NULL;
+                }
+
+                if($request->hasFile('birthcertificate_file')){
+                    $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $birthcertificate_update = NULL;
+                }
+
+                if($request->hasFile('diploma_file')){
+                    $diploma_update = "[DIPLOMA FILE HAVE BEEN CHANGED]";
+                }
+                else{
+                    $diploma_update = NULL;
+                }
+
+                if($request->hasFile('medical_certificate_file')){
+                    $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $medical_certificate_update = NULL;
+                }
+
+                if($request->hasFile('nbi_clearance_file')){
+                    $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $nbi_clearance_update = NULL;
+                }
+
+                if($request->hasFile('pag_ibig_file')){
+                    $pag_ibig_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $pag_ibig_update = NULL;
+                }
+
+                if($request->hasFile('philhealth_file')){
+                    $philhealth_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $philhealth_update = NULL;
+                }
+
+                if($request->hasFile('police_clearance_file')){
+                    $police_clearance_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $police_clearance_update = NULL;
+                }
+
+                if($request->hasFile('resume_file')){
+                    $resume_update = "[RESUME FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $resume_update = NULL;
+                }
+
+                if($request->hasFile('sss_file')){
+                    $sss_update = "[SSS FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $sss_update = NULL;
+                }
+
+                if($request->hasFile('tor_file')){
+                    $tor_update = "[TRANSCRIPT OF RECORDS FILE HAS BEEN CHANGED]";
+                }
+                else{
+                    $tor_update = NULL;
+                }
+                
+
+                if(
+                    $request->hasFile('barangay_clearance_file')
+                || $request->hasFile('birthcertificate_file')
+                || $request->hasFile('diploma_file')
+                || $request->hasFile('medical_certificate_file')
+                || $request->hasFile('nbi_clearance_file')
+                || $request->hasFile('pag_ibig_file')
+                || $request->hasFile('philhealth_file')
+                || $request->hasFile('police_clearance_file')
+                || $request->hasFile('resume_file')
+                || $request->hasFile('sss_file')
+                || $request->hasFile('tor_file')
+                
+                ){
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                                            $barangay_clearance_update
+                                            $birthcertificate_update
+                                            $diploma_update
+                                            $medical_certificate_update
+                                            $nbi_clearance_update
+                                            $pag_ibig_update
+                                            $philhealth_update
+                                            $police_clearance_update
+                                            $resume_update
+                                            $sss_update
+                                            $tor_update";
+                    $employee_logs->save();
+
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $barangay_clearance_update
+                                            $birthcertificate_update
+                                            $diploma_update
+                                            $medical_certificate_update
+                                            $nbi_clearance_update
+                                            $pag_ibig_update
+                                            $philhealth_update
+                                            $police_clearance_update
+                                            $resume_update
+                                            $sss_update
+                                            $tor_update";
+                    $userlogs->save();
+                }
+                // if($request->barangay_clearance_change){
+
+                //     if($request->barangay_clearance_change == 'CHANGED'){
+                //         $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
+                //     }
+                //     else{
+                //         $barangay_clearance_update = NULL;
+                //     }
+
+                //     $result = 'true';
+                //     $id = $employee->id;
+
+                //     Document::where('employee_id',$request->employee_id)
+                //     ->update([
+                //         'barangay_clearance_file' => $barangay_clearance_file
+                        // 'birthcertificate_file' => $birthcertificate_file,
+                        // 'diploma_file' => $diploma_file,
+                        // 'medical_certificate_file' => $medical_certificate_file,
+                        // 'nbi_clearance_file' => $nbi_clearance_file,
+                        // 'pag_ibig_file' => $pag_ibig_file,
+                        // 'philhealth_file' => $philhealth_file,
+                        // 'police_clearance_file' => $police_clearance_file,
+                        // 'resume_file' => $resume_file,
+                        // 'sss_file' => $sss_file,
+                        // 'transcript_of_records_file' => $transcript_of_records_file
+                    // ]);
+
+                    // if($request->barangay_clearance_change == 'CHANGED' || $request->birthcertificate_change == 'CHANGED' || $request->diploma_change == 'CHANGED'){
+                //         $employee_logs = new LogsTable;
+                //         $employee_logs->employee_id = $request->id;
+                //         $employee_logs->user_id = auth()->user()->id;
+                //         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                //                                 $barangay_clearance_update";
+                //         $employee_logs->save();
                     
-                $torFile = $request->file('tor_file');
-                $torExtension = $torFile->getClientOriginalExtension();
-                $torFilename = $employee_number.'_Transcript_of_Records_'.$timestamp.'.'.$torExtension;
-                $torFile->storeAs('public/documents_files',$torFilename);
-                $transcript_of_records_file = $torFilename;
-            }
-            else{
-                $transcript_of_records_file = $request->transcript_of_records_filename;
-            } 
+                //     sleep(2);
+                //     return 'Changed';
+                // }
+                // else{
+                //     $result = 'false';
+                //     $id = '';
 
-            Document::where('employee_id',$request->employee_id)
-                ->update([
-                    'barangay_clearance_file' => $barangay_clearance_file,
-                    'birthcertificate_file' => $birthcertificate_file,
-                    'diploma_file' => $diploma_file,
-                    'medical_certificate_file' => $medical_certificate_file,
-                    'nbi_clearance_file' => $nbi_clearance_file,
-                    'pag_ibig_file' => $pag_ibig_file,
-                    'philhealth_file' => $philhealth_file,
-                    'police_clearance_file' => $police_clearance_file,
-                    'resume_file' => $resume_file,
-                    'sss_file' => $sss_file,
-                    'transcript_of_records_file' => $transcript_of_records_file
-                ]);
-
-            if($request->hasFile('barangay_clearance_file')){
-                $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
+                    // Document::where('employee_id',$request->employee_id)
+                    // ->update([
+                    //     'barangay_clearance_file' => $barangay_clearance_file
+                        // 'birthcertificate_file' => $birthcertificate_file,
+                        // 'diploma_file' => $diploma_file,
+                        // 'medical_certificate_file' => $medical_certificate_file,
+                        // 'nbi_clearance_file' => $nbi_clearance_file,
+                        // 'pag_ibig_file' => $pag_ibig_file,
+                        // 'philhealth_file' => $philhealth_file,
+                        // 'police_clearance_file' => $police_clearance_file,
+                        // 'resume_file' => $resume_file,
+                        // 'sss_file' => $sss_file,
+                        // 'transcript_of_records_file' => $transcript_of_records_file
+                //     ]);
+                    
+                // }
+                //     $data = array('result' => $result, 'id' => $id);
+                //     response()->json($data);
+                //     sleep(2);
+                //     return redirect()->back();
             }
-
-            else{
-                $barangay_clearance_update = NULL;
-            }
-
-            if($request->hasFile('birthcertificate_file')){
-                $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $birthcertificate_update = NULL;
-            }
-
-            if($request->hasFile('diploma_file')){
-                $diploma_update = "[DIPLOMA FILE HAVE BEEN CHANGED]";
-            }
-            else{
-                $diploma_update = NULL;
-            }
-
-            if($request->hasFile('medical_certificate_file')){
-                $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $medical_certificate_update = NULL;
-            }
-
-            if($request->hasFile('nbi_clearance_file')){
-                $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $nbi_clearance_update = NULL;
-            }
-
-            if($request->hasFile('pag_ibig_file')){
-                $pag_ibig_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $pag_ibig_update = NULL;
-            }
-
-            if($request->hasFile('philhealth_file')){
-                $philhealth_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $philhealth_update = NULL;
-            }
-
-            if($request->hasFile('police_clearance_file')){
-                $police_clearance_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $police_clearance_update = NULL;
-            }
-
-            if($request->hasFile('resume_file')){
-                $resume_update = "[RESUME FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $resume_update = NULL;
-            }
-
-            if($request->hasFile('sss_file')){
-                $sss_update = "[SSS FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $sss_update = NULL;
-            }
-
-            if($request->hasFile('tor_file')){
-                $tor_update = "[TRANSCRIPT OF RECORDS FILE HAS BEEN CHANGED]";
-            }
-            else{
-                $tor_update = NULL;
-            }
-            
-
-            if(
-                $request->hasFile('barangay_clearance_file')
-             || $request->hasFile('birthcertificate_file')
-             || $request->hasFile('diploma_file')
-             || $request->hasFile('medical_certificate_file')
-             || $request->hasFile('nbi_clearance_file')
-             || $request->hasFile('pag_ibig_file')
-             || $request->hasFile('philhealth_file')
-             || $request->hasFile('police_clearance_file')
-             || $request->hasFile('resume_file')
-             || $request->hasFile('sss_file')
-             || $request->hasFile('tor_file')
-             
-             ){
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                        $barangay_clearance_update
-                                        $birthcertificate_update
-                                        $diploma_update
-                                        $medical_certificate_update
-                                        $nbi_clearance_update
-                                        $pag_ibig_update
-                                        $philhealth_update
-                                        $police_clearance_update
-                                        $resume_update
-                                        $sss_update
-                                        $tor_update";
-                $employee_logs->save();
-
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $barangay_clearance_update
-                                        $birthcertificate_update
-                                        $diploma_update
-                                        $medical_certificate_update
-                                        $nbi_clearance_update
-                                        $pag_ibig_update
-                                        $philhealth_update
-                                        $police_clearance_update
-                                        $resume_update
-                                        $sss_update
-                                        $tor_update";
-                $userlogs->save();
-            }
-
-            sleep(2);
-            return Redirect::to(url()->previous());
-
-            // if($request->barangay_clearance_change){
-
-            //     if($request->barangay_clearance_change == 'CHANGED'){
-            //         $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
-            //     }
-            //     else{
-            //         $barangay_clearance_update = NULL;
-            //     }
-
-            //     $result = 'true';
-            //     $id = $employee->id;
-
-            //     Document::where('employee_id',$request->employee_id)
-            //     ->update([
-            //         'barangay_clearance_file' => $barangay_clearance_file
-                    // 'birthcertificate_file' => $birthcertificate_file,
-                    // 'diploma_file' => $diploma_file,
-                    // 'medical_certificate_file' => $medical_certificate_file,
-                    // 'nbi_clearance_file' => $nbi_clearance_file,
-                    // 'pag_ibig_file' => $pag_ibig_file,
-                    // 'philhealth_file' => $philhealth_file,
-                    // 'police_clearance_file' => $police_clearance_file,
-                    // 'resume_file' => $resume_file,
-                    // 'sss_file' => $sss_file,
-                    // 'transcript_of_records_file' => $transcript_of_records_file
-                // ]);
-
-                // if($request->barangay_clearance_change == 'CHANGED' || $request->birthcertificate_change == 'CHANGED' || $request->diploma_change == 'CHANGED'){
-            //         $employee_logs = new LogsTable;
-            //         $employee_logs->employee_id = $request->id;
-            //         $employee_logs->user_id = auth()->user()->id;
-            //         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-            //                                 $barangay_clearance_update";
-            //         $employee_logs->save();
-                
-            //     sleep(2);
-            //     return 'Changed';
-            // }
-            // else{
-            //     $result = 'false';
-            //     $id = '';
-
-                // Document::where('employee_id',$request->employee_id)
-                // ->update([
-                //     'barangay_clearance_file' => $barangay_clearance_file
-                    // 'birthcertificate_file' => $birthcertificate_file,
-                    // 'diploma_file' => $diploma_file,
-                    // 'medical_certificate_file' => $medical_certificate_file,
-                    // 'nbi_clearance_file' => $nbi_clearance_file,
-                    // 'pag_ibig_file' => $pag_ibig_file,
-                    // 'philhealth_file' => $philhealth_file,
-                    // 'police_clearance_file' => $police_clearance_file,
-                    // 'resume_file' => $resume_file,
-                    // 'sss_file' => $sss_file,
-                    // 'transcript_of_records_file' => $transcript_of_records_file
-            //     ]);
-                
-            // }
-            //     $data = array('result' => $result, 'id' => $id);
-            //     response()->json($data);
-            //     sleep(2);
-            //     return redirect()->back();
         }
+        sleep(2);
+        return Redirect::to(url()->previous());
     }
 
     public function children_data(Request $request){

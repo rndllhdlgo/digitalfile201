@@ -171,25 +171,9 @@ $('#btnUpdate').on('click',function(){
                                 primary_school_name:primary_school_name,
                                 primary_school_address:primary_school_address,
                                 primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                primary_school_inclusive_years_to:primary_school_inclusive_years_to,
-                                college_change:college_change,
-                                training_change:training_change,
-                                vocational_change:vocational_change,
+                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
                             }
                         });
-
-                        // $.ajax({
-                        //     url:"/employees/updateJobHistory", 
-                        //     type:"POST",
-                        //     headers:{
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     },
-                        //     data:{
-                        //         id:id,
-                        //         employee_id:data.id,
-                        //         job_history_change:job_history_change,
-                        //     }
-                        // });
         
                         var past_medical_condition = $('#past_medical_condition').val();
                         var allergies = $('#allergies').val();
@@ -248,7 +232,8 @@ $('#btnUpdate').on('click',function(){
                                     college_name : $(this).children('.td_1').html(),
                                     college_degree : $(this).children('.td_2').html(),
                                     college_inclusive_years_from: $(this).children('.td_3').html(),
-                                    college_inclusive_years_to: $(this).children('.td_4').html()
+                                    college_inclusive_years_to: $(this).children('.td_4').html(),
+                                    college_change:college_change
                                 },
                             });
                         });
@@ -283,7 +268,8 @@ $('#btnUpdate').on('click',function(){
                                     training_name : $(this).children('.td_1').html(),
                                     training_title :  $(this).children('.td_2').html(),
                                     training_inclusive_years_from : $(this).children('.td_3').html(),
-                                    training_inclusive_years_to : $(this).children('.td_4').html()
+                                    training_inclusive_years_to : $(this).children('.td_4').html(),
+                                    training_change:training_change
                                 },
                             });
                         });
@@ -301,7 +287,8 @@ $('#btnUpdate').on('click',function(){
                                     vocational_name : $(this).children('.td_1').html(),
                                     vocational_course : $(this).children('.td_2').html(),
                                     vocational_inclusive_years_from: $(this).children('.td_3').html(),
-                                    vocational_inclusive_years_to: $(this).children('.td_4').html()
+                                    vocational_inclusive_years_to: $(this).children('.td_4').html(),
+                                    vocational_change:vocational_change,
                                 },
                             });
                         });
@@ -437,26 +424,25 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        if(!current_user_level == 'EMPLOYEE'){
-                            $('#memo_subject').attr('name','');
-                            $('#memo_date').attr('name','');
-                            $('#memo_penalty').attr('name','');
-                            $('#memo_file').attr('name','');
-                            $('#evaluation_reason').attr('name','');
-                            $('#evaluation_date').attr('name','');
-                            $('#evaluation_evaluated_by').attr('name','');
-                            $('#evaluation_file').attr('name','');
-                            $('#contracts_type').attr('name','');
-                            $('#contracts_date').attr('name','');
-                            $('#contracts_file').attr('name','');
-                            $('#resignation_reason').attr('name','');
-                            $('#resignation_date').attr('name','');
-                            $('#resignation_file').attr('name','');
-                            $('#termination_reason').attr('name','');
-                            $('#termination_date').attr('name','');
-                            $('#termination_file').attr('name','');
-                            $('#documents_form').submit();
-                        }
+                        $('#memo_subject').attr('name','');
+                        $('#memo_date').attr('name','');
+                        $('#memo_penalty').attr('name','');
+                        $('#memo_file').attr('name','');
+                        $('#evaluation_reason').attr('name','');
+                        $('#evaluation_date').attr('name','');
+                        $('#evaluation_evaluated_by').attr('name','');
+                        $('#evaluation_file').attr('name','');
+                        $('#contracts_type').attr('name','');
+                        $('#contracts_date').attr('name','');
+                        $('#contracts_file').attr('name','');
+                        $('#resignation_reason').attr('name','');
+                        $('#resignation_date').attr('name','');
+                        $('#resignation_file').attr('name','');
+                        $('#termination_reason').attr('name','');
+                        $('#termination_date').attr('name','');
+                        $('#termination_file').attr('name','');
+                        $('#documents_form').submit();
+                        
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);

@@ -149,6 +149,7 @@ $(document).ready(function(){
             $('#college_table_orig').show();
             $('#college_table_orig tr:last').remove();
             college_change = 'CHANGED';
+            console.log(college_change);
         }
         
         $('#college_name').val("");
@@ -189,6 +190,7 @@ $(document).ready(function(){
             $('#training_table_orig_tbody').append(training_table);
             $('#training_table_orig').show();
             training_change = 'CHANGED';
+            console.log(training_change);
         }
         
         $('#training_name').val("");
@@ -228,6 +230,7 @@ $(document).ready(function(){
             $('#vocational_table_orig_tbody').append(vocational_table);
             $('#vocational_table_orig').show(); 
             vocational_change = 'CHANGED';
+            console.log(vocational_change);
         }
 
         $('#vocational_name').val("");
@@ -274,6 +277,7 @@ $(document).ready(function(){
             $('#job_history_table_tbody').append(job_history_table);
             $('#job_history_table_orig').show();
             job_history_change = 'CHANGED';
+            console.log(job_history_change);
         }
         
         $('#job_company_name').val("");
