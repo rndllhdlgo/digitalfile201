@@ -2265,7 +2265,6 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             // $memo_files = MemoTable::where('employee_id', $request->employee_id)->pluck('memo_file');
             // $evaluation_files = EvaluationTable::where('employee_id', $request->employee_id)->pluck('evaluation_file');
-            // $countBefore = MemoTable::where('employee_id', $request->employee_id)->count();
 
             $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
             $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
@@ -2273,6 +2272,7 @@ class EmployeesController extends Controller
             $employee = Document::where('employee_id',$request->employee_id)->first();
             
             if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+                $MemoCountBefore = MemoTable::where('employee_id', $request->employee_id)->count();
                 foreach($request->file('memo_file') as $key => $value){
                     $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
                     $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
@@ -2285,60 +2285,99 @@ class EmployeesController extends Controller
                     $memo->memo_file = $memoFileName;
                     $memo->save();
                 }
+
+                $MemoCountAfter = MemoTable::where('employee_id', $request->employee_id)->count();
+
+                if($MemoCountBefore != $MemoCountAfter){
+                    $memo_update = "[MEMO HAS BEEN CHANGED]";
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS
+                                            $memo_update";
+                    $employee_logs->save();
+
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $memo_update";
+                    $userlogs->save();
+                }
+                else{
+                    return 'EQUAL MEMO';
+                }
             }
 
-            // $countAfter = MemoTable::where('employee_id', $request->employee_id)->count();
-            // // return $countBefore.$countAfter;
-            // if($countAfter != $countBefore){
-            //     $memo_update = "[MEMO HAS BEEN CHANGED]";
-            //     // return $countBefore.$countAfter.$memo_update;
-            // } 
+            if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+                $EvaluationCountBefore = EvaluationTable::where('employee_id', $request->employee_id)->count();
+                foreach($request->file('evaluation_file') as $key => $value){
+                    $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
+                    $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
+                    
+                    $evaluation = new EvaluationTable;
+                    $evaluation->employee_id = $request->employee_id;
+                    $evaluation->evaluation_reason = $request->evaluation_reason[$key];
+                    $evaluation->evaluation_date = $request->evaluation_date[$key];
+                    $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
+                    $evaluation->evaluation_file = $evaluationFileName;
+                    $evaluation->save();
+                }
+                $EvaluationCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
             
-            // if(isset($memo_update)){
-            //     $employee_logs = new LogsTable;
-            //     $employee_logs->employee_id = $employee_details->id;
-            //     $employee_logs->user_id = auth()->user()->id;
-            //     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-            //                             $memo_update";
-            //     $employee_logs->save();
+                if($EvaluationCountBefore != $EvaluationCountAfter){
+                    $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS
+                                            $evaluation_update";
+                    $employee_logs->save();
 
-            //     $userlogs = new UserLogs;
-            //     $userlogs->user_id = auth()->user()->id;
-            //     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-            //                             $memo_update";
-            //     $userlogs->save();
-            // }
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $evaluation_update";
+                    $userlogs->save();
+                }
+                else{
+                    return 'EQUAL EVALUATION';
+                }
+            }
 
-            // return $countBefore.$countAfter.$memo_update;
-
-            // if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
-            //     foreach($request->file('evaluation_file') as $key => $value){
-            //         $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
-            //         $request->evaluation_file[$key]->storeAs('public/evaluation_files',$evaluationFileName);
+            if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
+                $ContractsCountBefore = ContractTable::where('employee_id',$request->employee_id)->count();
+                foreach($request->file('contracts_file') as $key => $value){
+                    $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
+                    $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
                     
-            //         $evaluation = new EvaluationTable;
-            //         $evaluation->employee_id = $request->employee_id;
-            //         $evaluation->evaluation_reason = $request->evaluation_reason[$key];
-            //         $evaluation->evaluation_date = $request->evaluation_date[$key];
-            //         $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
-            //         $evaluation->evaluation_file = $evaluationFileName;
-            //         $evaluation->save();
-            //     }
-            // }
+                    $contracts = new ContractTable;
+                    $contracts->employee_id = $request->employee_id;
+                    $contracts->contracts_type = $request->contracts_type[$key];
+                    $contracts->contracts_date = $request->contracts_date[$key];
+                    $contracts->contracts_file = $contractsFileName;
+                    $contracts->save();
+                }
+                $ContractsCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
 
-            // if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
-            //     foreach($request->file('contracts_file') as $key => $value){
-            //         $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
-            //         $request->contracts_file[$key]->storeAs('public/evaluation_files',$contractsFileName);
-                    
-            //         $contracts = new ContractTable;
-            //         $contracts->employee_id = $request->employee_id;
-            //         $contracts->contracts_type = $request->contracts_type[$key];
-            //         $contracts->contracts_date = $request->contracts_date[$key];
-            //         $contracts->contracts_file = $contractsFileName;
-            //         $contracts->save();
-            //     }
-            // }
+                if($ContractsCountBefore != $ContractsCountAfter){
+                    $contracts_update = "[CONTRACTS HAS BEEN CHANGED]";
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS
+                                            $contracts_update";
+                    $employee_logs->save();
+
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $contracts_update";
+                    $userlogs->save();
+                }
+                else{
+                    return 'EQUAL EVALUATION';
+                }
+            }
             
             // if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
             //     foreach($request->file('resignation_file') as $key => $value){
