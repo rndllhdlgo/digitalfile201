@@ -50,10 +50,16 @@ $(document).ready(function(){
                     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
                 }
             },
+            {
+                data: null,
+                "render": function(data,type,row){
+                    return row.last_name + ', ' + row.first_name + ' ' + row.middle_name;
+                }
+            },
             // {data: 'employee_number'},
-            {data: 'last_name'},
-            {data: 'first_name'},
-            {data: 'middle_name'},
+            // {data: 'last_name'},
+            // {data: 'first_name'},
+            // {data: 'middle_name'},
             {data: 'employee_position'},
             {data: 'employee_branch'},
             {data: 'employment_status'}

@@ -28,26 +28,25 @@
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
                             </td>
-                             <td>
+                            <td>
                                 <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
                             </td>
-                            
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
                             </td>
                             
-                            <td>
+                            {{-- <td>
                                 <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
+                            </td> --}}
+                            {{-- <td>
                                 <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
-                            </td>
+                            </td> --}}
                         </tr>
                         <tr>
                             <th> EMPLOYEE NO.</th>
-                            <th> LAST NAME</th>
-                            <th> FIRST NAME</th>
-                            <th> MIDDLE NAME</th>
+                            <th> FULL NAME</th>
+                            {{-- <th> FIRST NAME</th> --}}
+                            {{-- <th> MIDDLE NAME</th> --}}
                             <th> POSITION</th>
                             <th> BRANCH</th>
                             <th> EMP. STATUS</th> 

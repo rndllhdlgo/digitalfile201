@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PersonalInformationTable;
 use App\Models\WorkInformationTable;
+use App\Models\Position;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
@@ -91,7 +92,7 @@ class HomeController extends Controller
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
-
+        
         $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();

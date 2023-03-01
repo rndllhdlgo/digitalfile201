@@ -16,7 +16,7 @@
                     <div class="summary_container">
                         <br>
                          <div class="clear_float">
-                            <div class="column_one mb-1">
+                            <div class="column_one">
                                 <div class="row mb-1">
                                     <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
                                 </div>
@@ -36,7 +36,7 @@
                                     </div>
                                 </div>
                                 <div class="row mb-3">
-                                    <div class="col-4">
+                                    <div class="col-4" id="suffix_div">
                                         <b>SUFFIX:</b><br>
                                         <span class="suffix font_weight"></span>
                                     </div>
@@ -91,8 +91,8 @@
 
                         <hr style="border:0.5px solid black; opacity:100%;">
 
-                        <div class="column_three mb-3" style="padding:5px;">
-                            <div class="row mb-1">
+                        <div class="column_three" style="padding:5px;">
+                            <div class="row">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
                             </div>
 
@@ -118,12 +118,12 @@
                                 </div>
                             </div>
                         </div>
-                        
-                        <div class="column_four mb-3" style="padding: 5px;">
-                            <div class="row mb-1 mt-1">
+
+                        <div class="column_four" style="padding:5px;">
+                            <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
                             </div>
-                            
+
                             <div class="row mb-3">
                                 <div class="col">
                                     <b>EMAIL ADDRESS:</b><br> <span class="email_address font_weight"></span>
@@ -131,11 +131,11 @@
                                 <div class="col">
                                     <b>CELLPHONE NO.:</b><br> <span class="cellphone_number font_weight"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="telephone_number_div">
                                     <b>TELEPHONE NO.:</b><br> <span class="telephone_number font_weight"></span>
                                 </div>
                             </div>
-
+                            
                             <div class="row mb-3" id="spouse_summary_div" style="display:none;">
                                 <div class="col">
                                     <b>SPOUSE NAME:</b><br> <span class="spouse_name"></span>
@@ -155,10 +155,11 @@
                                 <div class="col">
                                     <b>CELLPHONE NO.:</b><br> <span class="father_contact_number font_weight"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="father_profession_div">
                                     <b>PROFESSION:</b><br> <span class="father_profession font_weight"></span>
                                 </div>
                             </div>
+                            
                             <div class="row mb-3">
                                 <div class="col">
                                     <b>MOTHER'S MAIDEN NAME:</b><br> <span class="mother_name font_weight"></span>
@@ -166,10 +167,11 @@
                                 <div class="col">
                                     <b>CELLPHONE NO.:</b><br> <span class="mother_contact_number font_weight"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="mother_profession_div">
                                     <b>PROFESSION:</b><br> <span class="mother_profession font_weight"></span>
                                 </div>
                             </div>
+
                             <div class="row mb-3">
                                 <div class="col">
                                     <b>EMERGENCY CONTACT NAME:</b><br> <span class="emergency_contact_name font_weight"></span>
@@ -181,12 +183,13 @@
                                     <b>RELATIONSHIP:</b><br> <span class="emergency_contact_relationship font_weight"></span>
                                 </div>
                             </div>
-                        </div> <!-- Column 3-->
+                        </div>
 
+                        <div class="page-break"></div>
                         <hr style="border:0.5px solid black; opacity:100%;">
 
-                        <div class="column_five mb-4" style="padding:5px;">
-                            <div class="row mb-1 mt-4">
+                        <div class="column_five" style="padding:5px;">
+                            <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
                             </div>
 
@@ -200,18 +203,17 @@
                                     <input type="date" class="date_hired font_weight d-none" style="border:none; width:106px;" disabled> <span id="date_hired_summary"> </span>
                                 </div>
 
-                                <div class="col">
+                                {{-- <div class="col" style="visibility:hidden;">
                                     <b>SUPERVISOR:</b><br>
                                     <span class="employee_supervisor"></span>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
+                                </div> --}}
                                 <div class="col">
                                     <b>COMPANY:</b><br>
                                     <span class="employee_company"></span>
                                 </div>
+                            </div>
 
+                            <div class="row mb-3">
                                 <div class="col">
                                     <b>BRANCH:</b><br>
                                     <span class="employee_branch"></span>
@@ -221,56 +223,56 @@
                                     <b>DEPARTMENT:</b><br>
                                     <span class="employee_department"></span>
                                 </div> 
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col">
-                                    <b>POSITION:</b><br>
-                                    <span class="employee_position"></span>
-                                </div>
-
                                 <div class="col">
                                     <b>EMPLOYMENT STATUS:</b><br>
                                     <span class="employment_status"></span>
                                 </div>
+                            </div>
 
+                            <div class="row mb-3">
                                 <div class="col">
                                     <b>EMPLOYMENT ORIGIN:</b><br>
                                     <span class="employment_origin"></span>
                                 </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-8">
-                                    <b>SHIFT:</b><br>
-                                    <span class="employee_shift"></span>
-                                </div>
-                            </div>
-
-                            <div class="row mb-3">
-                                <div class="col-4">
+                                <div class="col">
                                     <b>WORK EMAIL ADDRESS:</b><br> 
                                     <span class="company_email_address font_weight"></span>
                                 </div>
-                                <div class="col-4">
+                                <div class="col">
                                     <b>WORK CONTACT NO.:</b><br> 
                                     <span class="company_contact_number font_weight"></span>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <hr style="border:0.5px solid black; opacity:100%;">
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <b>JOB POSITION:</b><br>
+                                    <span class="employee_position"></span>
+                                </div>
+
+                                <div class="col">
+                                    <b>JOB DESCRIPTION:</b><br>
+                                    <p class="job_desc_div" style="zoom: 110%;color:black;">
+
+                                    </p>
+                                </div>
+
+                                <div class="col">
+                                    <b>JOB REQUIREMENTS/SKILLS:</b><br>
+                                    <p class="job_req_div" style="zoom:110%;color:black">
+
+                                    </p>
+                                </div>
+                            </div>
+
+                            <hr style="border:0.5px solid black; opacity:100%;">
 
                             <div class="column_six mb-3" id="benefits_summary" style="padding:5px;">
                                 <div class="row mb-1 mt-3">
-                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL ACCOUNTS</u></h5>
+                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>GOVERNMENT MANDATORY BENEFITS INFORMATION</u></h5>
                                 </div>
 
                                 <div class="row mb-3">
-                                    <div class="col">
-                                        <b>HMO NO. :</b><br>
-                                        <span class="hmo_number"></span>
-                                    </div>
                                     <div class="col">
                                         <b>PAG-IBIG NO. :</b><br>
                                         <span class="pag_ibig_number"></span>
@@ -289,13 +291,11 @@
                                         <b>TIN NO. :</b><br>
                                         <span class="tin_number"></span>
                                     </div>
-                                    <div class="col">
-                                        <b>ACCOUNT NO. :</b><br>
-                                        <span class="account_number"></span>
-                                    </div>
                                 </div>
                                 <hr style="border:0.5px solid black; opacity:100%;">
                             </div>
+
+                        </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">
