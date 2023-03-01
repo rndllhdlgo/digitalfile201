@@ -2303,9 +2303,6 @@ class EmployeesController extends Controller
                                             $memo_update";
                     $userlogs->save();
                 }
-                else{
-                    return 'EQUAL MEMO';
-                }
             }
 
             if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
@@ -2339,9 +2336,6 @@ class EmployeesController extends Controller
                                             $evaluation_update";
                     $userlogs->save();
                 }
-                else{
-                    return 'EQUAL EVALUATION';
-                }
             }
 
             if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
@@ -2374,38 +2368,71 @@ class EmployeesController extends Controller
                                             $contracts_update";
                     $userlogs->save();
                 }
-                else{
-                    return 'EQUAL EVALUATION';
-                }
             }
             
-            // if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-            //     foreach($request->file('resignation_file') as $key => $value){
-            //         $resignationFileName = time().rand(1,100).'_Resignation_File.'.$request->resignation_file[$key]->extension();
-            //         $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
+            if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+                $ResignationCountBefore = ResignationTable::where('employee_id',$request->employee_id)->count();
+                foreach($request->file('resignation_file') as $key => $value){
+                    $resignationFileName = $employee_number.'_Resignation_File_'.$timestamp.'.'.$request->resignation_file[$key]->extension();
+                    $request->resignation_file[$key]->storeAs('public/evaluation_files',$resignationFileName);
                     
-            //         $resignation = new ResignationTable;
-            //         $resignation->employee_id = $request->employee_id;
-            //         $resignation->resignation_reason = $request->resignation_reason[$key];
-            //         $resignation->resignation_date = $request->resignation_date[$key];
-            //         $resignation->resignation_file = $resignationFileName;
-            //         $resignation->save();
-            //     }
-            // }
+                    $resignation = new ResignationTable;
+                    $resignation->employee_id = $request->employee_id;
+                    $resignation->resignation_reason = $request->resignation_reason[$key];
+                    $resignation->resignation_date = $request->resignation_date[$key];
+                    $resignation->resignation_file = $resignationFileName;
+                    $resignation->save();
+                }
+                $ResignationCountAfter = ResignationTable::where('employee_id',$request->employee_id)->count();
 
-            // if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-            //     foreach($request->file('termination_file') as $key => $value){
-            //         $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
-            //         $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+                if($ResignationCountBefore != $ResignationCountAfter){
+                    $resignation_update = "[RESIGNATION HAS BEEN CHANGED]";
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS
+                                            $resignation_update";
+                    $employee_logs->save();
 
-            //         $termination = new TerminationTable;
-            //         $termination->employee_id = $request->employee_id;
-            //         $termination->termination_reason = $request->termination_reason[$key];
-            //         $termination->termination_date = $request->termination_date[$key];
-            //         $termination->termination_file = $terminationFileName;
-            //         $termination->save();
-            //     }
-            // }
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $resignation_update";
+                    $userlogs->save();
+                }
+            }
+
+            if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+                $TerminationCountBefore = TerminationTable::where('employee_id',$request->employee_id)->count();
+                foreach($request->file('termination_file') as $key => $value){
+                    $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+                    $request->termination_file[$key]->storeAs('public/evaluation_files',$terminationFileName);
+
+                    $termination = new TerminationTable;
+                    $termination->employee_id = $request->employee_id;
+                    $termination->termination_reason = $request->termination_reason[$key];
+                    $termination->termination_date = $request->termination_date[$key];
+                    $termination->termination_file = $terminationFileName;
+                    $termination->save();
+                }
+                $TerminationCountAfter = TerminationTable::where('employee_id',$request->employee_id)->count();
+
+                if($TerminationCountBefore != $TerminationCountAfter){
+                    $termination_update = "[TERMINATION HAS BEEN CHANGED]";
+                    $employee_logs = new LogsTable;
+                    $employee_logs->employee_id = $employee_details->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS
+                                            $termination_update";
+                    $employee_logs->save();
+
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $termination_update";
+                    $userlogs->save();
+                }
+            }
             
             if(!$employee){
                 $document = new Document;
