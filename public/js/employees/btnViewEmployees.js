@@ -355,13 +355,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'college_inclusive_years_from', 
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM.YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('LL');
                             },
                             width: '15%'},
                         { 
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM.YYYY');
+                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('LL');
                             },
                             width: '15%'}
                     ],
@@ -410,13 +410,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'training_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+moment(row.training_inclusive_years_from).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+moment(row.training_inclusive_years_from).format('LL');
                             },
                             width: '15%'},
                         { 
                             data: 'training_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+moment(row.training_inclusive_years_to).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+moment(row.training_inclusive_years_to).format('LL');
                             },
                             width: '15%'}
                     ],
@@ -465,14 +465,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'vocational_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+moment(row.vocational_inclusive_years_from).format('LL');
                             },
                             width: '15%'
                         },
                         { 
                             data: 'vocational_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+moment(row.vocational_inclusive_years_to).format('LL');
                             },
                             width: '15%'
                         }
@@ -581,7 +581,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 { 
                                     data: 'memo_date',
                                     "render":function(data,type,row){
-                                        return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('MMM. YYYY');
+                                        return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('LL');
                                     },
                                     width: '22.5%'},
                                 { data: 'memo_penalty', width: '22.5%'},
@@ -637,14 +637,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 { 
                                     data: 'evaluation_date', 
                                     "render":function(data,type,row){
-                                        return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('MMM. YYYY');
+                                        return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('LL');
                                     },
                                     width: '22.5%'},
                                 { data: 'evaluation_evaluated_by', width: '22.5%'},
                                 { 
                                     data: 'evaluation_file', 
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file}</a>` ;
+                                        return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file.replace(removeValue, '')}</a>` ;
                                     },
                                     width: '22.5%'
                                 }
@@ -693,13 +693,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 { 
                                     data: 'contracts_date',
                                     "render":function(data,type,row){
-                                        return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('MMM. YYYY');
+                                        return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('LL');
                                     },
                                     width: '33.4%'},
                                 { 
                                     data: 'contracts_file', 
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file}</a>` ;
+                                        return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file.replace(removeValue, '')}</a>` ;
                                     },
                                     width: '35.5%'
                                 }
