@@ -561,13 +561,16 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
                             var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
 
-                            var job_company_name_span = $('<h6>').html(job_company_name + "<br>");
-                            var job_description_span = $('<span>').html(" - " + job_description);
-                            var job_position_span = $('<h5>').html(job_position + "<br>");
-                            var job_contact_number_span = $('<span>').html(job_contact_number + "<br>");
-                            var job_inclusive_years_from_span = $('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ");
-                            var job_inclusive_years_to_span = $('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + "<br>");
-                            $('#job_history_summary_div').append($('<div>').addClass('col').append(job_position_span, job_company_name_span,job_inclusive_years_from_span, job_inclusive_years_to_span, job_description_span));
+                            var job_years = $('<div class="col-2">').append($('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY'))));
+                            var job_details = $('<div class="col-10 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br>" + job_description.replace(/• /g,"<br>• ").replace(/<br>/, ''));
+                            
+                            $('#job_history_summary_div').append(job_years,job_details);
+                            // var job_company_name_span = $('<div class="col">').html(job_company_name + "<br>");
+                            // var job_description_span = $('<span>').html(" - " + job_description);
+                            // var job_contact_number_span = $('<span>').html(job_contact_number + "<br>");
+                            // var job_inclusive_years_from_span = $('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ");
+                            // var job_inclusive_years_to_span = $('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + "<br>");
+                            // $('#job_history_summary_div').append($('<div>').addClass('col').append(job_position_span, job_company_name_span,job_inclusive_years_from_span, job_inclusive_years_to_span, job_description_span));
                             // var job_description_ul = $('<ul class="job_description_ul">').append($('<li>').html(job_description));
                         }
                     }

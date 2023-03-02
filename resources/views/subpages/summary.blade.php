@@ -275,6 +275,8 @@
                                 </tbody>
                             </table>
                         </div> --}}
+                        <hr style="border:0.5px solid black; opacity:100%;">
+                        
                         <div class="column_six" style="padding:5px;">
                             <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK EXPERIENCE</u></h5>
@@ -341,5 +343,27 @@
         <ul class="job_description_ul">
             <li>ASSISTING WITH THE CREATION OF WEBSITES</li>
         </ul>
+    </div>
+</div> --}}
+
+{{-- <div id="job_history_summary_div" class="row">
+    <div class="col-2">
+        <span>Mar. 2022 - </span>
+        <span>Mar. 2023<br></span>
+    </div>
+    <div class="col">
+        <h5>GRAB FOOD DELIVERY RIDER/BICYCLE<br></h5>
+        <h6>GRAB<br></h6>
+        <span> - DELIVER FOOD/ESSENTIAL ITEMS</span>
+    </div>
+    
+    <div class="col-2">
+        <span>Mar. 2022 - </span>
+        <span>Mar. 2023<br></span>
+    </div>
+    <div class="col">
+        <h5>JR. PROGAMMER<br></h5>
+        <h6>APSOFT<br></h6>
+        <span> - ASSISTING WITH THE CREATION OF WEBSITES.</span>
     </div>
 </div> --}}
