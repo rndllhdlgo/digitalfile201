@@ -410,13 +410,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'training_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+moment(row.training_inclusive_years_from).format('LL');
+                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('LL');
                             },
                             width: '15%'},
                         { 
                             data: 'training_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+moment(row.training_inclusive_years_to).format('LL');
+                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('LL');
                             },
                             width: '15%'}
                     ],
@@ -465,14 +465,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'vocational_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+moment(row.vocational_inclusive_years_from).format('LL');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('LL');
                             },
                             width: '15%'
                         },
                         { 
                             data: 'vocational_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+moment(row.vocational_inclusive_years_to).format('LL');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('LL');
                             },
                             width: '15%'
                         }
@@ -524,14 +524,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'job_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
                             },
                             width : '15%'
                         },
                         { 
                             data: 'job_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
                             },
                             width : '15%'
                         }
@@ -542,6 +542,55 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                         else{
                             $('#job_history_table_orig').show();
+                        }
+                    }
+                });
+                
+                $('.job_history_table_summary').dataTable().fnDestroy();
+                $('.job_history_table_summary').DataTable({
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/job_history_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'job_company_name',width : '15%'},
+                        { data: 'job_description',width : '15%'},
+                        { data: 'job_position', width: '15%'},
+                        { data: 'job_contact_number', width : '15%'},
+                        { 
+                            data: 'job_inclusive_years_from',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        },
+                        { 
+                            data: 'job_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.job_history_table_summary').DataTable().data().any()){
+                            $('#job_history_table_summary').hide();
+                        }
+                        else{
+                            $('#job_history_table_summary').show();
                         }
                     }
                 });

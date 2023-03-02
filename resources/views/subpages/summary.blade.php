@@ -34,19 +34,16 @@
                                         <b>LAST NAME:</b><br>
                                         <span class="last_name font_weight"></span>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-4" id="suffix_div">
+                                    <div class="col" id="suffix_div">
                                         <b>SUFFIX:</b><br>
                                         <span class="suffix font_weight"></span>
                                     </div>
+                                </div>
+                                <div class="row mb-3">
                                     <div class="col-4">
                                         <b>NICKNAME:</b><br> 
                                         <span class="nickname font_weight"></span>
                                     </div>
-                                </div>
-
-                                <div class="row mb-3">
                                     <div class="col">
                                         <b>BIRTHDAY:</b><br>
                                         <input type="date" class="birthday font_weight d-none" style="border:none; width:106px;" disabled> <span id="birthday_summary"> </span>
@@ -55,29 +52,29 @@
                                         <b>AGE:</b><br>
                                         <span class="age font_weight"></span>
                                     </div>
+                                </div>
+
+                                <div class="row mb-3">
                                     <div class="col">
                                         <b>GENDER:</b><br>
                                         <span class="gender font_weight"></span>
                                     </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-4">
+                                    <div class="col">
                                         <b>HEIGHT:</b><br>
                                         <span class="height font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>RELIGION:</b><br>
-                                        <span class="religion font_weight"></span>
+                                        <b>WEIGHT:</b><br>  
+                                        <span class="weight font_weight"></span>
                                     </div>
                                 </div>
 
                                 <div class="row mb-3">
                                     <div class="col-4">
-                                        <b>WEIGHT:</b><br>  
-                                        <span class="weight font_weight"></span>
+                                        <b>RELIGION:</b><br>
+                                        <span class="religion font_weight"></span>
                                     </div>
-                                    
-                                    <div class="col">
+                                    <div class="col-4">
                                         <b>CIVIL STATUS:</b><br>  
                                         <input type="hidden" class="civil_status font_weight" style="border:none;" disabled> <span id="civil_status_content"></span>
                                     </div>
@@ -100,9 +97,6 @@
                                 <div class="col">
                                     <b>ADDRESS:</b> <span class="address font_weight"></span>
                                 </div>
-                            </div>
-                            
-                            <div class="row mb-3">
                                 <div class="col">
                                     <b>PROVINCE:</b> <input type="hidden" id="province_summary" class="font_weight" style="border:none;" disabled> <span id="province_content"></span>
                                 </div>
@@ -111,8 +105,6 @@
                                 <div class="col">
                                     <b>CITY:</b> <input type="hidden" id="city_summary" class="font_weight" style="border:none;" disabled> <span id="city_content"></span>
                                 </div>
-                            </div>
-                            <div class="row mb-3">
                                 <div class="col">
                                     <b>REGION:</b> <input type="hidden" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled> <span id="region_content"></span>
                                 </div>
@@ -264,37 +256,28 @@
                                     </p>
                                 </div>
                             </div>
+                        </div>
 
-                            <hr style="border:0.5px solid black; opacity:100%;">
+                        <hr style="border:0.5px solid black; opacity:100%;">
 
-                            <div class="column_six mb-3" id="benefits_summary" style="padding:5px;">
-                                <div class="row mb-1 mt-3">
-                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>GOVERNMENT MANDATORY BENEFITS INFORMATION</u></h5>
-                                </div>
-
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <b>PAG-IBIG NO. :</b><br>
-                                        <span class="pag_ibig_number"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>PHILHEALTH NO. :</b><br>
-                                        <span class="philhealth_number"></span>
-                                    </div>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col">
-                                        <b>SSS NO. :</b><br>
-                                        <span class="sss_number"></span>
-                                    </div>
-                                    <div class="col">
-                                        <b>TIN NO. :</b><br>
-                                        <span class="tin_number"></span>
-                                    </div>
-                                </div>
-                                <hr style="border:0.5px solid black; opacity:100%;">
+                        <div class="column_six" style="padding:5px;">
+                            <div class="row mb-1">
+                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
                             </div>
 
+                            <table id="job_history_table_summary" class="table table-bordered table-hover table-striped job_history_table_summary">
+                                <thead class="thead-educational">
+                                    <tr>
+                                        <th style="border:none;font-size:15px;">COMPANY</th>
+                                        <th style="border:none;">JOB DESCRIPTION</th>
+                                        <th style="border:none;">JOB POSITION</th>
+                                        <th style="border:none;">CONTACT NUMBER</th>
+                                        <th style="border:none;" colspan="2">INCLUSIVE YEARS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="job_history_table_summary_tbody">
+                                </tbody>
+                            </table>
                         </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->

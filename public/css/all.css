@@ -286,10 +286,10 @@ input[type=search]:focus{
     width: 79%;
 }
 
-.summary_container{
+/* .summary_container{
     width: 816px;
     margin: auto;
-}
+} */
 
 .column_one{
     float: left;

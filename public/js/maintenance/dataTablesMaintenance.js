@@ -204,8 +204,26 @@
             order: [],
             columns: [
                 {data: 'job_position_name'},
-                {data: 'job_description'},
-                {data: 'job_requirements'}
+                {
+                    data: 'job_description',
+                    "render":function(data,type,row){
+                    var job_description = '';
+                    if (row.job_description !== null && row.job_description !== undefined) {
+                        job_description = row.job_description.replace(/• /g,"<br>• ").replace(/<br>/, '');
+                    }
+                        return job_description;
+                    },
+                },
+                {
+                    data: 'job_requirements',
+                    "render":function(data,type,row){
+                    var job_requirements = '';
+                    if (row.job_requirements !== null && row.job_requirements !== undefined) {
+                        job_requirements = row.job_requirements.replace(/• /g,"<br>• ").replace(/<br>/, '');
+                    }
+                        return job_requirements;
+                    },
+                },
             ],
             initComplete: function(){
                 $('#loading').hide();

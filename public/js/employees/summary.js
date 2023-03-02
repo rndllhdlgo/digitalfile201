@@ -1,6 +1,7 @@
 $('#btnSummary').on('click',function(){
     $('ul.job_desc_div').empty();
     $('ul.job_req_div').empty();
+    $('.job_desc_div').empty();
     
     $.ajax({
         type: 'GET',
@@ -49,7 +50,6 @@ $('#btnSummary').on('click',function(){
     $('.first_name').html($('#first_name').val());
     $('.middle_name').html($('#middle_name').val());
     $('.last_name').html($('#last_name').val());
-    // $('.suffix').html($('#suffix').val() ? $('#suffix').val() : 'N/A');
     if ($('#suffix').val()){
         $('.suffix').html($('#suffix').val());
     }
@@ -70,7 +70,6 @@ $('#btnSummary').on('click',function(){
     $('.religion').html($('#religion').val());
     $('#civil_status_content').html($('#civil_status').val());
     $('.email_address').html($('#email_address').val());
-    // $('.telephone_number').html($('#telephone_number').val() ? $('#telephone_number').val() : $('#telephone_number_div').show());
     if ($('#telephone_number').val()){
         $('.telephone_number').html($('#telephone_number').val());
     }
@@ -85,7 +84,6 @@ $('#btnSummary').on('click',function(){
     $('.spouse_profession').html($('#spouse_profession').val());
     $('.father_name').html($('#father_name').val());
     $('.father_contact_number').html($('#father_contact_number').val());
-    // $('.father_profession').html($('#father_profession').val() ? $('#father_profession').val() : 'N/A');
     if ($('#father_profession').val()){
         $('.father_profession').html($('#father_profession').val());
     }
@@ -95,7 +93,6 @@ $('#btnSummary').on('click',function(){
     }
     $('.mother_name').html($('#mother_name').val());
     $('.mother_contact_number').html($('#mother_contact_number').val());
-    // $('.mother_profession').html($('#mother_profession').val() ? $('#mother_profession').val() : 'N/A');
     if ($('#mother_profession').val()){
         $('.mother_profession').html($('#mother_profession').val());
     }
