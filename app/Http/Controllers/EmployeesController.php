@@ -2946,6 +2946,10 @@ class EmployeesController extends Controller
         return DataTables::of(JobHistoryTable::where('employee_id',$request->id)->get())->make(true);
     }
 
+    public function job_history_summary_data(Request $request){
+        return $job_history_summary_data = JobHistoryTable::where('employee_id',$request->id)->get();
+    }
+
     public function memo_data(Request $request){
         return DataTables::of(MemoTable::where('employee_id',$request->id)->get())->make(true);
     }

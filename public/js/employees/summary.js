@@ -116,8 +116,22 @@ $('#btnSummary').on('click',function(){
     $('.employment_status').html($('#employment_status').val());
     $('.employment_origin').html($('#employment_origin').val());
     $('#date_hired_summary').html(moment($('#date_hired').val()).format('MMM. DD, YYYY'));
-    $('.company_email_address').html($('#company_email_address').val() ? $('#company_email_address').val() : 'N/A');
-    $('.company_contact_number').html($('#company_contact_number').val() ? $('#company_contact_number').val() : 'N/A');
+    // $('.company_email_address').html($('#company_email_address').val() ? $('#company_email_address').val() : 'N/A');
+    if ($('#company_email_address').val()){
+        $('.company_email_address').html($('#company_email_address').val());
+    }
+    else{
+        $('#company_email_address_div').css("visibility", "hidden");;
+        $('.company_email_address').hide();
+    }
+    // $('.company_contact_number').html($('#company_contact_number').val() ? $('#company_contact_number').val() : 'N/A');
+    if ($('#company_contact_number').val()){
+        $('.company_contact_number').html($('#company_contact_number').val());
+    }
+    else{
+        $('#company_contact_number_div').css("visibility", "hidden");;
+        $('.company_contact_number').hide();
+    }
 
     $('.hmo_number').html($('#hmo_number').val() ? $('#hmo_number').val() : 'N/A');
     $('.sss_number').html($('#sss_number').val());

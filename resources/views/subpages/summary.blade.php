@@ -14,7 +14,6 @@
 
                 <div id="print_file">
                     <div class="summary_container">
-                        <br>
                          <div class="clear_float">
                             <div class="column_one">
                                 <div class="row mb-1">
@@ -226,11 +225,11 @@
                                     <b>EMPLOYMENT ORIGIN:</b><br>
                                     <span class="employment_origin"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="company_email_address_div">
                                     <b>WORK EMAIL ADDRESS:</b><br> 
                                     <span class="company_email_address font_weight"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="company_contact_number_div">
                                     <b>WORK CONTACT NO.:</b><br> 
                                     <span class="company_contact_number font_weight"></span>
                                 </div>
@@ -244,28 +243,25 @@
 
                                 <div class="col">
                                     <b>JOB DESCRIPTION:</b><br>
-                                    <p class="job_desc_div" style="zoom: 110%;color:black;">
-
-                                    </p>
+                                    <p class="job_desc_div" style="zoom: 110%;color:black;"></p>
                                 </div>
 
                                 <div class="col">
                                     <b>JOB REQUIREMENTS/SKILLS:</b><br>
-                                    <p class="job_req_div" style="zoom:110%;color:black">
-
-                                    </p>
+                                    <p class="job_req_div" style="zoom:110%;color:black"></p>
                                 </div>
                             </div>
                         </div>
 
-                        <hr style="border:0.5px solid black; opacity:100%;">
+                        {{-- <div class="page-break"></div> --}}
+                        {{-- <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_six" style="padding:5px;">
                             <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
                             </div>
 
-                            <table id="job_history_table_summary" class="table table-bordered table-hover table-striped job_history_table_summary">
+                            <table id="job_history_table_summary" class="table-bordered job_history_table_summary">
                                 <thead class="thead-educational">
                                     <tr>
                                         <th style="border:none;font-size:15px;">COMPANY</th>
@@ -278,7 +274,51 @@
                                 <tbody id="job_history_table_summary_tbody">
                                 </tbody>
                             </table>
+                        </div> --}}
+                        <div class="column_six" style="padding:5px;">
+                            <div class="row mb-1">
+                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK EXPERIENCE</u></h5>
+                            </div>
+
+                            <div id="job_history_summary_div" class="row"></div>
                         </div>
+
+                        {{-- <div class="column_six" style="padding:5px;">
+                            <div class="row mb-1">
+                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
+                            </div>
+                        </div> --}}
+
+                        {{-- <div class="page-break"></div> --}}
+                        {{-- <hr style="border:0.5px solid black; opacity:100%;">
+
+                        <div class="column_seven mb-3" id="benefits_summary" style="padding:5px;">
+                            <div class="row mb-1">
+                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>GOVERNMENT MANDATORY BENEFITS INFORMATION</u></h5>
+                            </div>
+
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <b>PAG-IBIG NO. :</b><br>
+                                    <span class="pag_ibig_number"></span>
+                                </div>
+                                <div class="col">
+                                    <b>PHILHEALTH NO. :</b><br>
+                                    <span class="philhealth_number"></span>
+                                </div>
+                            </div>
+                            <div class="row mb-3">
+                                <div class="col">
+                                    <b>SSS NO. :</b><br>
+                                    <span class="sss_number"></span>
+                                </div>
+                                <div class="col">
+                                    <b>TIN NO. :</b><br>
+                                    <span class="tin_number"></span>
+                                </div>
+                            </div>
+                            <hr style="border:0.5px solid black; opacity:100%;">
+                        </div> --}}
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">
@@ -286,3 +326,20 @@
         </div> <!-- Modal Content -->
     </div> <!-- Modal Dialogue -->
 </div> <!-- Summary Modal -->
+
+{{-- <div id="job_history_summary_div" class="row">
+    <div class="col">
+        <span class="job_position_span">GRAB FOOD RIDER/BICYCLE<br></span>
+        <span class="job_company_name_span">GRAB<br></span>
+            <ul class="job_description_ul">
+                <li>DELIVER FOOD/ESSENTIAL ITEMS</li>
+            </ul>
+    </div>
+    <div class="col">
+        <span class="job_position_span">JR. PROGAMMER<br></span>
+        <span class="job_company_name_span">APSOFT<br></span>
+        <ul class="job_description_ul">
+            <li>ASSISTING WITH THE CREATION OF WEBSITES</li>
+        </ul>
+    </div>
+</div> --}}

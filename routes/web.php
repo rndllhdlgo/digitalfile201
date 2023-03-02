@@ -83,6 +83,7 @@ Route::any('/employees/childrenDataTable','EmployeesController@childrenDataTable
 Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');
 
 Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
+Route::any('/job_history_summary/data','EmployeesController@job_history_summary_data');
 
 // Users Controller
 Route::any('/users/listOfUsers','UsersController@listOfUsers');

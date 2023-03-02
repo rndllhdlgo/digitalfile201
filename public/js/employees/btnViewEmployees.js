@@ -546,54 +546,84 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
                 
-                $('.job_history_table_summary').dataTable().fnDestroy();
-                $('.job_history_table_summary').DataTable({
-                    searching: false,
-                    paging: false,
-                    ordering: false,
-                    info: false,
-                    autoWidth: false,
-                    language:{
-                        emptyTable: "No data available in table",
-                        processing: "Loading...",
+                $.ajax({
+                    method: 'GET',
+                    url: '/job_history_summary/data',
+                    data: {
+                        id: value.id,
                     },
-                    serverSide: true,
-                    ajax: {
-                        url: '/employees/job_history_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    columns: [
-                        { data: 'job_company_name',width : '15%'},
-                        { data: 'job_description',width : '15%'},
-                        { data: 'job_position', width: '15%'},
-                        { data: 'job_contact_number', width : '15%'},
-                        { 
-                            data: 'job_inclusive_years_from',
-                            "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
-                            },
-                            width : '15%'
-                        },
-                        { 
-                            data: 'job_inclusive_years_to',
-                            "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
-                            },
-                            width : '15%'
-                        }
-                    ],
-                    initComplete: function(){
-                        if(!$('.job_history_table_summary').DataTable().data().any()){
-                            $('#job_history_table_summary').hide();
-                        }
-                        else{
-                            $('#job_history_table_summary').show();
+                    success: function (data) {
+                        for(var job_content = 0; job_content < data.length; job_content++){
+                            var job_company_name = data[job_content].job_company_name;
+                            var job_description = data[job_content].job_description;
+                            var job_position = data[job_content].job_position;
+                            var job_contact_number = data[job_content].job_contact_number;
+                            var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
+                            var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
+
+                            var job_company_name_span = $('<h6>').html(job_company_name + "<br>");
+                            var job_description_span = $('<span>').html(" - " + job_description);
+                            var job_position_span = $('<h5>').html(job_position + "<br>");
+                            var job_contact_number_span = $('<span>').html(job_contact_number + "<br>");
+                            var job_inclusive_years_from_span = $('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ");
+                            var job_inclusive_years_to_span = $('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + "<br>");
+                            $('#job_history_summary_div').append($('<div>').addClass('col').append(job_position_span, job_company_name_span,job_inclusive_years_from_span, job_inclusive_years_to_span, job_description_span));
+                            // var job_description_ul = $('<ul class="job_description_ul">').append($('<li>').html(job_description));
                         }
                     }
                 });
+                
+                
+                // $('.job_history_table_summary').dataTable().fnDestroy();
+                // $('.job_history_table_summary').DataTable({
+                //     searching: false,
+                //     paging: false,
+                //     ordering: false,
+                //     info: false,
+                //     autoWidth: false,
+                //     language:{
+                //         emptyTable: "No data available in table",
+                //         processing: "Loading...",
+                //     },
+                //     serverSide: true,
+                //     ajax: {
+                //         url: '/employees/job_history_data',
+                //         async: false,
+                //         data:{
+                //             id: value.id,
+                //         }
+                //     },
+                //     columns: [
+                //         { data: 'job_company_name',width : '15%'},
+                //         { data: 'job_description',width : '15%'},
+                //         { data: 'job_position', width: '15%'},
+                //         { data: 'job_contact_number', width : '15%'},
+                //         { 
+                //             data: 'job_inclusive_years_from',
+                //             "render":function(data,type,row){
+                //                 return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                //             },
+                //             width : '15%'
+                //         },
+                //         { 
+                //             data: 'job_inclusive_years_to',
+                //             "render":function(data,type,row){
+                //                 return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                //             },
+                //             width : '15%'
+                //         }
+                //     ],
+                //     initComplete: function(){
+                //         if(!$('.job_history_table_summary').DataTable().data().any()){
+                //             $('#job_history_table_summary').hide();
+                //             $('.column_six').hide();
+                //         }
+                //         else{
+                //             $('#job_history_table_summary').show();
+                //             $('.column_six').show();
+                //         }
+                //     }
+                // });
                 
                     if(current_user_level != 'EMPLOYEE'){
                         $('.memo_table_data').dataTable().fnDestroy();
