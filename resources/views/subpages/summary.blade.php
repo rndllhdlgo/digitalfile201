@@ -84,9 +84,7 @@
                                 <img id="image_preview_summary">
                             </div> <!-- Column 2 -->
                         </div><!-- Clear Float -->
-
-                        <hr style="border:0.5px solid black; opacity:100%;">
-
+                        
                         <div class="column_three" style="padding:5px;">
                             <div class="row">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
@@ -176,7 +174,7 @@
                             </div>
                         </div>
 
-                        <div class="page-break"></div>
+                        {{-- <div class="page-break"></div> --}}
                         <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_five" style="padding:5px;">
@@ -292,7 +290,7 @@
                         </div> --}}
 
                         {{-- <div class="page-break"></div> --}}
-                        {{-- <hr style="border:0.5px solid black; opacity:100%;">
+                        <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_seven mb-3" id="benefits_summary" style="padding:5px;">
                             <div class="row mb-1">
@@ -320,7 +318,7 @@
                                 </div>
                             </div>
                             <hr style="border:0.5px solid black; opacity:100%;">
-                        </div> --}}
+                        </div>
                     </div> <!-- Summary Container -->
                 </div> <!-- Print Summary -->
                 <hr class="hr-design">

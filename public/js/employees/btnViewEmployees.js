@@ -519,6 +519,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'job_company_name',width : '15%'},
                         { data: 'job_description',width : '15%'},
+                        // {
+                        //     data: 'job_description',
+                        //     width : '15%',
+                        //     "render":function(data,type,row){
+                        //         job_description = row.job_description.replaceAll("• ","<br>• ").replace(/<br>/, '');
+                        //         return job_description;
+                        //     },
+                        // },
                         { data: 'job_position', width: '15%'},
                         { data: 'job_contact_number', width : '15%'},
                         { 
@@ -561,8 +569,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
                             var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
 
-                            var job_years = $('<div class="col-2">').append($('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY'))));
-                            var job_details = $('<div class="col-10 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br>" + job_description.replace(/• /g,"<br>• ").replace(/<br>/, ''));
+                            var job_years = $('<div class="col-3">').append($('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " ->")));
+                            // var job_details = $('<div class="col-9 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br>" + job_description.replace(/• /g,"<br>• ").replace(/<br>/, ''));
+                            var job_details = $('<div class="col-9 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br> - " + job_description);
                             
                             $('#job_history_summary_div').append(job_years,job_details);
                             // var job_company_name_span = $('<div class="col">').html(job_company_name + "<br>");
