@@ -1,19 +1,40 @@
 <div id="personal_info" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
     <hr class="hr-design">
-    
+        
     <div class="row mb-3">
         <div class="column1 mt-3">
+            {{-- <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
+
+            <div class="text-center mt-4">
+                <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" class="btn btn-primary bp" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                <input type="file" name="employee_image" id="employee_image" class="required_field hiddenFile" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
+            </div>
+
+            <img id="image_preview">
+
+            <div class="text-center mt-4" id="image_instruction">
+                <span>File Size: Maximum (10MB)</span><br>
+                <span>File Extensions: .jpg, .jpeg, .png</span> 
+            </div> 
+
+            <button type="button" class="btn btn-primary bp center" id="image_crop" style="display:none; zoom:80%;"><span class="fas fa-upload"></span> CROP IMAGE</button> --}}
+
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
-            
                 <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
                 
                 <div class="text-center mt-4">
                     <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
                 </div>
 
+                <div id="cropped_image">
                     <img id="image_preview">
-
+                </div>
+                    
                 <div class="text-center mt-4">
                     <button type="button" class="btn btn-primary bp" id="image_button" onclick="$('#employee_image').click()"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                     <input type="file" name="employee_image" class="required_field hiddenFile" id="employee_image" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
@@ -23,6 +44,7 @@
                     <span>File Size: Maximum (10MB)</span><br>
                     <span>File Extensions: .jpg, .jpeg, .png</span> 
                 </div>
+                <button type="button" class="btn btn-primary bp center" id="image_crop" style="display:none; zoom:80%; margin-top:-25px;">CROP IMAGE</button>
         </div>
         
         <div class="column2">

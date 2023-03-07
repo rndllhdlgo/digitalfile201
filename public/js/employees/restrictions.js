@@ -90,10 +90,10 @@ $(function(){
     var maxDate = year + '-' + month + '-' + day;    
     $('#child_birthday').attr('max', maxDate);
     $('#date_hired').attr('max', maxDate);
-    $('#evaluation_date').attr('max', maxDate);
-    $('#contracts_date').attr('max', maxDate);
-    $('#resignation_date').attr('max', maxDate);
-    $('#termination_date').attr('max', maxDate);
+    // $('#evaluation_date').attr('max', maxDate);
+    // $('#contracts_date').attr('max', maxDate);
+    // $('#resignation_date').attr('max', maxDate);
+    // $('#termination_date').attr('max', maxDate);
 });
 
 //Disable Birthday Under 18

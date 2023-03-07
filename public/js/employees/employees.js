@@ -364,13 +364,12 @@ $('#image_close').on('click',function(){
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
             $('#employee_image').val('');
-            $('#image_preview').attr('src','');
+            // $('#image_preview').attr('src','');
             $('#image_preview').hide();
             $('#image_close').hide();
             $('#image_user').show();
             $('#image_button').show();
             $('#image_instruction').show();
-            // $('.column-1').css("height","280px");
             $('#employee_image').addClass('required_field');
             employee_image_change = 'CHANGED';
             console.log(employee_image_change);

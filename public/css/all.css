@@ -623,3 +623,7 @@ th{
     background-color: #152aca !important;
     transition: 0.9s;
 }
+
+.cropper-crop {
+    pointer-events: none;
+}

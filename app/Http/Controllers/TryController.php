@@ -95,4 +95,8 @@ class TryController extends Controller
     {
         return DataTables::of(Export::all())->make(true);
     }
+
+    public function cropImage_blade(){
+        return view('try.cropImage');
+    }
 }

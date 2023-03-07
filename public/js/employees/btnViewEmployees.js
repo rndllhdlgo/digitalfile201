@@ -21,7 +21,7 @@ var barangay_clearance_change,
     tor_file_change;
 
 var memo_change;
-
+var email_address_orig;
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
     
@@ -355,13 +355,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'college_inclusive_years_from', 
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('LL');
+                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
                         { 
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('LL');
+                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
                     ],
@@ -410,13 +410,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'training_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('LL');
+                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
                         { 
                             data: 'training_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('LL');
+                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
                     ],
@@ -465,14 +465,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         { 
                             data: 'vocational_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('LL');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'
                         },
                         { 
                             data: 'vocational_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('LL');
+                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'
                         }
