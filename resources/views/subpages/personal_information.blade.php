@@ -236,21 +236,21 @@
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>
-                        <p id="duplicate_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
+                        <p id="duplicate_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email_address span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
                         <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="12" onkeyup="telephoneNumberField(this)" ondrop="return false;" onpaste="return false;">
-                        <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Telephone Number Already Exist!</p>
+                        <p id="duplicate_telephone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. <span class="span_telephone_number span_all">(Optional)</span> </label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Cellphone Number Already Exist! </p>
+                        <p id="duplicate_cellphone_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO. <span class="span_cellphone_number span_all"></span> </label>
                     </div>
                 </div>
@@ -270,7 +270,7 @@
                     <div class="f-outline">
                         <input type="hidden" id="spouse_contact_number_orig">
                         <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
+                        <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. <span class="span_spouse_number span_all"></span> </label>
                     </div>
                 </div>
@@ -294,7 +294,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist! </p>
+                        <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. <span class="span_father_contact_number span_all"></span> </label>
                     </div>
                 </div>
@@ -317,7 +317,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
+                        <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. <span class="span_mother_contact_number span_all"></span></label>
                     </div>
                 </div>
@@ -346,7 +346,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
+                        <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all"></span> </label>
                     </div>
                 </div>

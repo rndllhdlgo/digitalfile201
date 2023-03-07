@@ -2137,11 +2137,11 @@ class EmployeesController extends Controller
     }
 
     public function saveDocuments(Request $request){
-        // $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
-        // $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+            $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
+            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
+                $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation_files',$memoFileName);
                 
                 $memo = new MemoTable;
@@ -2263,9 +2263,6 @@ class EmployeesController extends Controller
 
     public function updateDocuments(Request $request){
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            // $memo_files = MemoTable::where('employee_id', $request->employee_id)->pluck('memo_file');
-            // $evaluation_files = EvaluationTable::where('employee_id', $request->employee_id)->pluck('evaluation_file');
-
             $timestamp = strftime("%m-%d-%Y %I:%M:%S %p");
             $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
             $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
@@ -2847,68 +2844,6 @@ class EmployeesController extends Controller
                                             $tor_update";
                     $userlogs->save();
                 }
-                // if($request->barangay_clearance_change){
-
-                //     if($request->barangay_clearance_change == 'CHANGED'){
-                //         $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
-                //     }
-                //     else{
-                //         $barangay_clearance_update = NULL;
-                //     }
-
-                //     $result = 'true';
-                //     $id = $employee->id;
-
-                //     Document::where('employee_id',$request->employee_id)
-                //     ->update([
-                //         'barangay_clearance_file' => $barangay_clearance_file
-                        // 'birthcertificate_file' => $birthcertificate_file,
-                        // 'diploma_file' => $diploma_file,
-                        // 'medical_certificate_file' => $medical_certificate_file,
-                        // 'nbi_clearance_file' => $nbi_clearance_file,
-                        // 'pag_ibig_file' => $pag_ibig_file,
-                        // 'philhealth_file' => $philhealth_file,
-                        // 'police_clearance_file' => $police_clearance_file,
-                        // 'resume_file' => $resume_file,
-                        // 'sss_file' => $sss_file,
-                        // 'transcript_of_records_file' => $transcript_of_records_file
-                    // ]);
-
-                    // if($request->barangay_clearance_change == 'CHANGED' || $request->birthcertificate_change == 'CHANGED' || $request->diploma_change == 'CHANGED'){
-                //         $employee_logs = new LogsTable;
-                //         $employee_logs->employee_id = $request->id;
-                //         $employee_logs->user_id = auth()->user()->id;
-                //         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                //                                 $barangay_clearance_update";
-                //         $employee_logs->save();
-                    
-                //     sleep(2);
-                //     return 'Changed';
-                // }
-                // else{
-                //     $result = 'false';
-                //     $id = '';
-
-                    // Document::where('employee_id',$request->employee_id)
-                    // ->update([
-                    //     'barangay_clearance_file' => $barangay_clearance_file
-                        // 'birthcertificate_file' => $birthcertificate_file,
-                        // 'diploma_file' => $diploma_file,
-                        // 'medical_certificate_file' => $medical_certificate_file,
-                        // 'nbi_clearance_file' => $nbi_clearance_file,
-                        // 'pag_ibig_file' => $pag_ibig_file,
-                        // 'philhealth_file' => $philhealth_file,
-                        // 'police_clearance_file' => $police_clearance_file,
-                        // 'resume_file' => $resume_file,
-                        // 'sss_file' => $sss_file,
-                        // 'transcript_of_records_file' => $transcript_of_records_file
-                //     ]);
-                    
-                // }
-                //     $data = array('result' => $result, 'id' => $id);
-                //     response()->json($data);
-                //     sleep(2);
-                //     return redirect()->back();
             }
         }
         sleep(2);
