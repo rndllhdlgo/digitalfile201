@@ -627,3 +627,8 @@ th{
 .cropper-crop {
     pointer-events: none;
 }
+
+.cropper-bg{
+    margin-top: -10px;
+    height: 215px !important;
+}

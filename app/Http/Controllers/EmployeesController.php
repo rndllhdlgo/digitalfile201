@@ -265,12 +265,33 @@ class EmployeesController extends Controller
         return DataTables::of($employees)->toJson();
     }
 
+    // public function insertImage(Request $request){
+    //     $employeeImageFile = $request->file('employee_image');
+    //     $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
+    //     $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
+    //     $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
+    //     return $employeeImageFileName;
+    // }
+    // public function insertImage(Request $request){
+    //     $imageData = $request->input('image_data');
+    //     list($type, $imageData) = explode(';', $imageData);
+    //     list(, $imageData) = explode(',', $imageData);
+    //     $imageData = base64_decode($imageData);
+    //     $fileName = strftime("%m-%d-%Y-%H-%M-%S").'_Cropped_Employee_Image.png';
+    //     $filePath = storage_path('app/public/employee_images/'.$fileName);
+    //     file_put_contents($filePath, $imageData);
+    //     return $fileName;
+    // }
+
     public function insertImage(Request $request){
-        $employeeImageFile = $request->file('employee_image');
-        $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-        $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
-        $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
-        return $employeeImageFileName;
+        $imageData = $request->input('image_data');
+        $extension = explode('/', mime_content_type($imageData))[1];
+        $imageData = str_replace('data:image/'.$extension.';base64,', '', $imageData);
+        $imageData = base64_decode($imageData);
+        // $fileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$extension;
+        $filePath = storage_path('app/public/employee_images/'.$request->fileName);
+        file_put_contents($filePath, $imageData);
+        return $request->fileName;
     }
 
     public function savePersonalInformation(Request $request){
@@ -995,7 +1016,6 @@ class EmployeesController extends Controller
         }
 
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            
             $sql = PersonalInformationTable::find($request->id)
             ->update([
                 'employee_image' => $request->employee_image,

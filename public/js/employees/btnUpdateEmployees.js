@@ -65,7 +65,7 @@ $('#btnUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
-                    employee_image:employee_image,
+                    employee_image:fileName,
                     filename_delete:$('#filename_delete').val(),
                     employee_image_change:employee_image_change,
                     first_name:first_name,

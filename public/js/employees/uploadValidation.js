@@ -1,5 +1,19 @@
 //Display Upload Preview// Validation //Display filename
 
+$('#image_button').on('click',function(){
+    $('#employee_image').click();
+});
+
+$(document).on('click','#image_crop',function(){
+    var cropper = $('#image_crop').data('cropper');
+    var canvas = cropper.getCroppedCanvas();
+    var croppedImageDataURL = canvas.toDataURL("image/jpeg");
+    $('#image_preview').attr('src', croppedImageDataURL);
+    $('#image_close').show();
+    $('#image_crop').hide();
+    cropper.destroy();
+});
+
 //Personal Information Tab
 function ImageValidation(employee_image) {
     var imageData = document.getElementById('employee_image');
@@ -37,98 +51,28 @@ function ImageValidation(employee_image) {
         });
     }   
     else {
-        // if(imageData.files && imageData.files[0]) {
-        //     var imageReader = new FileReader();
-        //         imageReader.onload = function(e) {
-        //             $('#image_preview').attr('src', e.target.result);
-        //         }
-        //         imageReader.readAsDataURL(imageData.files[0]);
-        //         $('#image_user').hide();
-        //         $('#image_button').hide();
-        //         $('#image_instruction').hide();
-        //         $('#image_close').show();
-        //         $('#image_preview').show();
-        // }
-
         if(imageData.files && imageData.files[0]) {
             var imageReader = new FileReader();
-            imageReader.onload = function(e) {
-                $('#image_preview').attr('src', e.target.result);
+                imageReader.onload = function(e) {
+                    $('#image_preview').attr('src', e.target.result);
+                    var cropper = new Cropper($('#image_preview')[0], {
+                        aspectRatio: 1/1, 
+                        viewMode: 1,
+                        dragMode: 'move',
+                        cropBoxMovable: false,
+                        cropBoxResizable: false,
+                    });
+                    $('#image_crop').data('cropper', cropper);
+                }
+                imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
                 $('#image_button').hide();
                 $('#image_instruction').hide();
-                $('#image_close').show();
                 $('#image_preview').show();
-        
-                // Initialize the cropper instance
-                var cropper = new Cropper($('#image_preview')[0], {
-                    aspectRatio: 1, 
-                    viewMode: 1,
-                    dragMode: 'move',
-                    cropBoxMovable: false,
-                    cropBoxResizable: false,
-                });
-
                 $('#image_crop').show();
-        
-                // Add event listener to the crop button
-                $('#image_crop').on('click', function() {
-                    // Get the cropped image data
-                    var croppedImageData = cropper.getCroppedCanvas().toDataURL();
-                    // Display the cropped image in the element
-                    $('#cropped_image').html('<img class="center" src="' + croppedImageData + '">');
-                    cropper.destroy();
-                    $('.cropper-canvas').hide();
-                    $('#image_crop').hide();
-                });
-            }
-            imageReader.readAsDataURL(imageData.files[0]);
         }
-        // if(imageData.files && imageData.files[0]) {
-        //     var imageReader = new FileReader();
-        //     imageReader.onload = function(e) {
-        //         $('#image_preview').attr('src', e.target.result);
-        //         $('#image_user').hide();
-        //         $('#image_button').hide();
-        //         $('#image_instruction').hide();
-        //         $('#image_close').show();
-        //         $('#image_preview').show();
-        
-        //         var cropper = new Cropper($('#image_preview')[0], {
-        //             aspectRatio: 1, 
-        //             viewMode: 1,
-        //             dragMode: 'move',
-        //             cropBoxMovable: false,
-        //             cropBoxResizable: false,
-        //         });
-                
-        //         $('#image_crop').show();
-                
-        //         // Add event listener to the crop button
-        //         $('#image_crop').on('click', function() {
-        //             // Get the cropped image data
-        //             var croppedImageData = cropper.getCroppedCanvas().toDataURL();
-        //             // Display the cropped image in the element
-        //             $('#cropped_image').html('<img class="center" src="' + croppedImageData + '">');
-        //             cropper.destroy();
-        //             $('.cropper-canvas').hide();
-        //             $('#image_crop').hide();
-                    
-        //             // Call the function to save the image
-        //             saveCroppedImage(croppedImageData);
-        //         });
-        //     }
-        //     imageReader.readAsDataURL(imageData.files[0]);
-        // }
     }
 }
-
-$(document).ready(function() {
-    $('#employee_image').change(function() {
-      console.log("File chosen:", this.files[0].name);
-    });
-  });
-
   
 //Performance and Evaluation Tab
 function memoValidation(memo_file) {

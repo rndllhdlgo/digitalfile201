@@ -1,25 +1,41 @@
-var employee_image;
-function employee_image_save() {
-    var formData = new FormData();
-    var file = $('#employee_image').prop('files')[0];
+// var employee_image;
+// function employee_image_save() {
+//     var formData = new FormData();
+//     var file = $('#employee_image').prop('files')[0];
 
-    formData.append('employee_image', file);
-    $.ajax({
-        url: '/employees/insertImage',
-        method: 'post',
-        data: formData,
-        contentType : false,
-        processData : false,
-        async: false,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(response){
-          console.log(response);
-          employee_image = response;
-        }
-    });
-}
+//     formData.append('employee_image', file);
+//     $.ajax({
+//         url: '/employees/insertImage',
+//         method: 'post',
+//         data: formData,
+//         contentType : false,
+//         processData : false,
+//         async: false,
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response){
+//           console.log(response);
+//           employee_image = response;
+//         }
+//     });
+// }
+// var employee_image;
+// function employee_image_save() {
+//     var employee_image = $('#image_preview').attr('src');
+//     $.ajax({
+//         url: '/employees/insertImage',
+//         method: 'post',
+//         data: { image_preview: employee_image },
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response){
+//             console.log(response);
+//         }
+//     });
+// }
+
 // function saveCroppedImage(imageData) {
 //     var formData = new FormData();
 //     formData.append('cropped_image', imageData);
@@ -43,8 +59,40 @@ function employee_image_save() {
 //     });
 // }
 
+var fileName;
+var employee_image;
+function employee_image_save(){
+    var extension = "jpeg";
+    var d = new Date();
+    fileName = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
+                    ("0" + d.getDate()).slice(-2) + "-" +
+                    d.getFullYear() + "-" +
+                    ("0" + d.getHours()).slice(-2) + "-" +
+                    ("0" + d.getMinutes()).slice(-2) + "-" +
+                    ("0" + d.getSeconds()).slice(-2) +
+                    '_Employee_Image.' + extension;
+
+    var croppedImageData = $('#image_preview').attr('src');
+    $.ajax({
+        url: '/employees/insertImage',
+        method: 'post',
+        data: { 
+                fileName: fileName,
+                image_data: croppedImageData 
+              },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+            console.log(response);
+            employee_image = response;
+        }
+    });
+}
+
 $('#btnSave').on('click', function(){
         // Personal Info
+        
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
         var middle_name = $('#middle_name').val();
@@ -109,7 +157,7 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    employee_image:employee_image,
+                    employee_image:fileName,
                     first_name:first_name,
                     last_name:last_name,
                     middle_name:middle_name,

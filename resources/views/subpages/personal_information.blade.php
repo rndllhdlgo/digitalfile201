@@ -3,9 +3,54 @@
         
     <div class="row mb-3">
         <div class="column1 mt-3">
-            {{-- <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
+            <input type="hidden" id="filename">
+            <input type="hidden" id="filename_delete">
+            <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
 
             <div class="text-center mt-4">
+                <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
+            </div>
+
+            <div class="text-center mt-4">
+                <button type="button" id="image_button" class="btn btn-primary bp"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
+                <input type="file" name="employee_image" id="employee_image" class="required_field hiddenFile" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
+            </div>
+
+            <div class="text-center mt-3" id="image_instruction">
+                <span>File Size: Maximum (10MB)</span><br>
+                <span>File Extensions: .jpg, .jpeg, .png</span> 
+            </div>
+
+            <div style="height:100%;width:100%;">
+
+                <img src="" id="image_preview" alt="">
+                <button type="button" class="btn btn-primary" id="image_crop" style="display: none;"><span><i class="fa-solid fa-crop"></i></span></button>
+            
+            </div>
+            
+            {{-- <div class="modal fade" id="cropModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">CROP IMAGE</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div style="height:250px;width:250px; border:2px solid black;" class="mt-2 center">
+                            <img src="" id="image_preview" alt="IMAGE OF EMPLOYEE">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary mt-2" id="image_crop"><span><i class="fa-solid fa-crop"></i></span></button>
+                        <button type="button" class="btn btn-primary mt-2" id="image_download"><span><i class="fa-solid fa-download"></i></span></button>
+                    </div>
+                  </div>
+                </div>
+            </div> --}}
+
+           {{-- <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i> --}}
+
+             {{-- <div class="text-center mt-4">
                 <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
             </div>
 
@@ -23,7 +68,7 @@
 
             <button type="button" class="btn btn-primary bp center" id="image_crop" style="display:none; zoom:80%;"><span class="fas fa-upload"></span> CROP IMAGE</button> --}}
 
-            <input type="hidden" id="filename">
+            {{-- <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
                 <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
                 
@@ -44,7 +89,7 @@
                     <span>File Size: Maximum (10MB)</span><br>
                     <span>File Extensions: .jpg, .jpeg, .png</span> 
                 </div>
-                <button type="button" class="btn btn-primary bp center" id="image_crop" style="display:none; zoom:80%; margin-top:-25px;">CROP IMAGE</button>
+                <button type="button" class="btn btn-primary bp center" id="image_crop" style="display:none; zoom:80%; margin-top:-25px;">CROP IMAGE</button> --}}
         </div>
         
         <div class="column2">

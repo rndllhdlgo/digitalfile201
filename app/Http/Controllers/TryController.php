@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\Storage;
 
 use App\Models\MultipleSave;
 use App\Models\Tr;
@@ -99,4 +100,32 @@ class TryController extends Controller
     public function cropImage_blade(){
         return view('try.cropImage');
     }
+
+    // public function cropImage_save(Request $request){
+    //     $croppedImage = $request->input('cropped_image');
+    //     $croppedImage = str_replace('data:image/jpeg;base64,', '', $croppedImage);
+    //     $croppedImage = str_replace(' ', '+', $croppedImage);
+    //     $croppedImage = base64_decode($croppedImage);
+        
+    //     $filename = uniqid() . '.jpg';
+    //     Storage::disk('public')->put('employee_images/' . $filename, $croppedImage);
+
+    //     return response()->json([
+    //         'success' => true,
+    //         'filename' => $filename,
+    //     ]);
+    // }    
+
+    public function cropImage_save(Request $request)
+{
+    $imageData = $request->input('employee_image');
+    $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
+    $imageData = str_replace(' ', '+', $imageData);
+    $imageName = 'cropped_image_' . time() . '.jpeg';
+
+    Storage::disk('public')->put($imageName, base64_decode($imageData));
+
+    return response()->json($imageName);
+}
+
 }
