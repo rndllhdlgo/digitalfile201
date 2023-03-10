@@ -630,5 +630,11 @@ th{
 
 .cropper-bg{
     margin-top: -10px;
-    height: 215px !important;
+    /* height: 220px !important; */
+}
+
+.center_div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

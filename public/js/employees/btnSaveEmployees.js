@@ -20,45 +20,6 @@
 //         }
 //     });
 // }
-// var employee_image;
-// function employee_image_save() {
-//     var employee_image = $('#image_preview').attr('src');
-//     $.ajax({
-//         url: '/employees/insertImage',
-//         method: 'post',
-//         data: { image_preview: employee_image },
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(response){
-//             console.log(response);
-//         }
-//     });
-// }
-
-// function saveCroppedImage(imageData) {
-//     var formData = new FormData();
-//     formData.append('cropped_image', imageData);
-    
-//     $.ajax({
-//         url: '/employees/insertImage',
-//         method: 'post',
-//         data: formData,
-//         contentType : false,
-//         processData : false,
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         },
-//         success: function(response){
-//             console.log(response);
-//             // You can do something with the response here
-//         },
-//         error: function(error){
-//             console.log(error);
-//         }
-//     });
-// }
-
 var fileName;
 var employee_image;
 function employee_image_save(){

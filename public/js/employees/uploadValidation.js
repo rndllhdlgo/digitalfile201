@@ -4,6 +4,9 @@ $('#image_button').on('click',function(){
     $('#employee_image').click();
 });
 
+// $(document).on('change','#employee_image',function(){
+
+// });
 $(document).on('click','#image_crop',function(){
     var cropper = $('#image_crop').data('cropper');
     var canvas = cropper.getCroppedCanvas();
@@ -11,6 +14,9 @@ $(document).on('click','#image_crop',function(){
     $('#image_preview').attr('src', croppedImageDataURL);
     $('#image_close').show();
     $('#image_crop').hide();
+    $('#image_zoom_in').hide();
+    $('#image_zoom_out').hide();
+    $('.column1').css('height','250px');
     cropper.destroy();
 });
 
@@ -29,7 +35,6 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-
     } 
     else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png"){
         Swal.fire({
@@ -56,13 +61,32 @@ function ImageValidation(employee_image) {
                 imageReader.onload = function(e) {
                     $('#image_preview').attr('src', e.target.result);
                     var cropper = new Cropper($('#image_preview')[0], {
-                        aspectRatio: 1/1, 
-                        viewMode: 1,
+                        aspectRatio: 1/1,
+                        viewMode: 3,
                         dragMode: 'move',
-                        cropBoxMovable: false,
+                        // cropBoxMovable: false,
                         cropBoxResizable: false,
+                        guides:false,
+                        zoomable: true,
+                        zoomOnWheel: true,
+                        zoomOnTouch: true,
+                        zoomRatio: 0.1,
+                        autoCropArea: 0.8
                     });
                     $('#image_crop').data('cropper', cropper);
+
+                    $('#image_zoom_in').on('click', function() {
+                        cropper.zoom(0.1); // zoom in by 10%
+                    });
+                      
+                    $('#image_zoom_out').on('click', function() {
+                        cropper.zoom(-0.1); // zoom out by 10%
+                    });
+                    // $('#image_zoom_slider').on('input', function() {
+                    //     console.log('d');
+                    //     var zoomValue = parseFloat($(this).val());
+                    //     cropper.zoomTo(zoomValue);
+                    // });
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
@@ -70,10 +94,13 @@ function ImageValidation(employee_image) {
                 $('#image_instruction').hide();
                 $('#image_preview').show();
                 $('#image_crop').show();
+                $('#image_zoom_in').show();
+                $('#image_zoom_out').show();
+                $('.column1').css('height','270px');
         }
     }
 }
-  
+
 //Performance and Evaluation Tab
 function memoValidation(memo_file) {
     var memoData = document.getElementById('memo_file');
