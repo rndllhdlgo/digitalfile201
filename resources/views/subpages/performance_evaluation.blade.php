@@ -16,7 +16,7 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field memo_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field memo_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all span_memo">(Optional)</span></label>
                         </div>
                     </td>
@@ -92,7 +92,7 @@
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field evaluation_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field evaluation_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all span_evaluation">(Optional)</span></label>
                         </div>
                     </td>

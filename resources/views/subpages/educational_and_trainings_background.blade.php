@@ -15,13 +15,13 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control college_field text-capitalize" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control college_field text-uppercase" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                                 <label for="college_name" class="formlabel form-label"><span class="span_college_name span_all span_college">(Optional)</span></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control college_field" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control college_field text-uppercase" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                                 <label for="college_degree" class="formlabel form-label"><span class="span_college_degree span_all span_college">(Optional)</span></label>
                             </div>
                         </td>
@@ -86,13 +86,13 @@
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control secondary_field text-capitalize" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control secondary_field text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_name" class="formlabel form-label"><span class="span_secondary_school_name span_all span_secondary">(Optional)</span></label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control secondary_field text-capitalize" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control secondary_field text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="secondary_school_address" class="formlabel form-label"><span class="span_secondary_school_address span_all span_secondary">(Optional)</span></label>
                     </div>
                 </td>
@@ -126,13 +126,13 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-capitalize required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_name" class="formlabel form-label"><span class="span_primary_school_name span_all"></span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-capitalize required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_address" class="formlabel form-label"><span class="span_primary_school_address span_all"></span></label>
                         </div>
                     </td>
@@ -167,14 +167,14 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control training_field text-capitalize" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control training_field text-uppercase" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                                 <label for="training_name" class="formlabel form-label"><span class="span_training_name span_all span_training">(Optional)</span></label>
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control training_field text-capitalize" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control training_field text-uppercase" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                                 <label for="training_title" class="formlabel form-label"><span class="span_training_title span_all span_training">(Optional)</span></label>
                             </div>
                         </td>
@@ -240,14 +240,14 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control vocational_field text-capitalize" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control vocational_field text-uppercase" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="vocational_name" class="formlabel form-label"><span class="span_vocational_name span_all span_vocational">(Optional)</span></label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control vocational_field text-capitalize" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control vocational_field text-uppercase" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="vocational_course" class="formlabel form-label"><span class="span_vocational_course span_all span_vocational">(Optional)</span></label>
                         </div>
                     </td>

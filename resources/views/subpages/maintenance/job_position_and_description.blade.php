@@ -33,7 +33,7 @@
                 <div class="modal-body">
                     <div class="f-outline mb-3">
                         <label for="job_position_name" class="form-label text-black"><strong>JOB POSITION</strong></label>
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="job_position_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase" type="search" id="job_position_name" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> Job Position Already Exist!</p>
                     </div>
                     <div class="row mb-3">
@@ -68,7 +68,7 @@
                     <input type="hidden" id="job_position_and_description_id">
                     <div class="f-outline mb-3">
                         <label for="job_position_name_new" class="form-label text-black"><strong>JOB POSITION</strong></label>
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="job_position_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase" type="search" id="job_position_name_new" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> Job Position Already Exist!</p>
                     </div>
                     <div class="mb-3">

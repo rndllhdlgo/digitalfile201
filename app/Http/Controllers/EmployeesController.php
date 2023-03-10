@@ -287,6 +287,7 @@ class EmployeesController extends Controller
 
     public function savePersonalInformation(Request $request){
         $employee = new PersonalInformationTable;
+        $employee->empno = $request->empno;
         $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee->first_name =  strtoupper($request->first_name);
         $employee->last_name = strtoupper($request->last_name); 
@@ -294,7 +295,7 @@ class EmployeesController extends Controller
         $employee->suffix = strtoupper($request->suffix);
         $employee->nickname = (!$request->nickname) ? strtoupper($request->first_name) : strtoupper($request->nickname);
         $employee->birthday = $request->birthday;
-        $employee->address = ucwords($request->address);
+        $employee->address = strtoupper($request->address);
         $employee->gender = $request->gender;
         $employee->ownership = $request->ownership;
         $employee->province = $request->province;
@@ -302,7 +303,7 @@ class EmployeesController extends Controller
         $employee->region = $request->region;
         $employee->height = $request->height;
         $employee->weight = $request->weight;
-        $employee->religion = ucwords($request->religion);
+        $employee->religion = strtoupper($request->religion);
         $employee->civil_status = $request->civil_status;
         $employee->email_address = strtolower($request->email_address);
         $employee->telephone_number = $request->telephone_number;
@@ -706,10 +707,10 @@ class EmployeesController extends Controller
         if($request->past_medical_condition && $request->allergies && $request->medication && $request->psychological_history){
             $employee = new MedicalHistory;
             $employee->employee_id = $request->employee_id;
-            $employee->past_medical_condition = ucwords($request->past_medical_condition);
-            $employee->allergies = ucwords($request->allergies);
-            $employee->medication = ucwords($request->medication);
-            $employee->psychological_history = ucwords($request->psychological_history);
+            $employee->past_medical_condition = strtoupper($request->past_medical_condition);
+            $employee->allergies = strtoupper($request->allergies);
+            $employee->medication = strtoupper($request->medication);
+            $employee->psychological_history = strtoupper($request->psychological_history);
             $employee->save();
         } 
     }

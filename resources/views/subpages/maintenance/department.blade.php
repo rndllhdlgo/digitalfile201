@@ -19,7 +19,7 @@
                 </div>
                 <div class="modal-body">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="department" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase" type="search" id="department" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> Department Already Exist!</p>
                         <label for="department" class="formlabel form-label"><i class="fas fa-address-card"></i> DEPARTMENT</label>
                     </div>
@@ -42,7 +42,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="department_id">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-capitalize" type="search" id="department_new" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase" type="search" id="department_new" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> Department Already Exist!</p>
                         <label for="department_new" class="formlabel form-label"><i class="fas fa-address-card"></i> DEPARTMENT </label>
                     </div>

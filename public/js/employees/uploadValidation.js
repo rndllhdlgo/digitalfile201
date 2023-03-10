@@ -62,7 +62,6 @@ function ImageValidation(employee_image) {
                         aspectRatio: 1/1,
                         viewMode: 3,
                         dragMode: 'move',
-                        // cropBoxMovable: false,
                         cropBoxResizable: false,
                         guides:false,
                         zoomable: true,
@@ -74,22 +73,25 @@ function ImageValidation(employee_image) {
                     $('#image_crop').data('cropper', cropper);
 
                     $('#image_zoom_in').on('click', function() {
-                        cropper.zoom(0.1); // zoom in by 10%
+                        cropper.zoom(0.1);
                     });
                       
                     $('#image_zoom_out').on('click', function() {
-                        cropper.zoom(-0.1); // zoom out by 10%
+                        cropper.zoom(-0.1);
                     });
 
                     $('#image_crop_reset').on('click',function(){
                         cropper.reset();
-                        cropper.reset(true); // Reset the canvas as well
+                        cropper.reset(true);
                     });
-                    // $('#image_zoom_slider').on('input', function() {
-                    //     console.log('d');
-                    //     var zoomValue = parseFloat($(this).val());
-                    //     cropper.zoomTo(zoomValue);
-                    // });
+
+                    $('#image_up').click(function() {
+                        cropper.move(0, -5);
+                    });
+                    
+                    $('#image_down').click(function() {
+                        cropper.move(0, 5);
+                    });
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();

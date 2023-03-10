@@ -30,6 +30,8 @@
                 <button type="button" class="btn btn-primary" id="image_crop" title="CROP"><span><i class="fa-solid fa-crop"></i></span></button>
                 <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><span><i class="fa-solid fa-magnifying-glass-plus"></i></span></button>
                 <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><span><i class="fa-solid fa-magnifying-glass-minus"></i></span></button>
+                <button type="button" class="btn btn-primary" id="image_up" title="UP"><span><i class="fas fa-arrow-up"></i></span></button>
+                <button type="button" class="btn btn-primary" id="image_down" title="DOWN"><span><i class="fas fa-arrow-down"></i></span></button>
                 <button type="button" class="btn btn-primary" id="image_crop_reset" title="RESET"><span><i class="fas fa-sync-alt"></i></span></button>
             </div>
         </div>
@@ -102,7 +104,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-9">
                     <div class="f-outline">
-                        <input class="forminput form-control text-capitalize required_field" type="search" id="address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control text-uppercase required_field" type="search" id="address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR, LOT/HOUSE #, STREET, SUBDIVISION, BARANGAY  <span class="span_unit span_all"></span> </label>
                     </div>
                 </div>

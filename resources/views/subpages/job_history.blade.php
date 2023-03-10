@@ -16,19 +16,19 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-capitalize" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="job_company_name" class="formlabel form-label"><span class="span_job_company_name span_all span_job">(Optional)</span> </label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-capitalize" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="job_description" class="formlabel form-label"><span class="span_job_position span_all span_job">(Optional)</span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-capitalize" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="job_position" class="formlabel form-label"><span class="span_job_position span_all span_job">(Optional)</span></label>
                         </div>
                     </td>

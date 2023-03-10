@@ -47,7 +47,7 @@ class UsersController extends Controller
             }
         $password = implode($pass);
 
-        $name = ucwords($request->name);
+        $name = strtoupper($request->name);
 
         if(User::where('email',$request->email)->count() > 0){
             return response('duplicate_email');
@@ -86,7 +86,7 @@ class UsersController extends Controller
         
         $users = User::find($request->id);
         $users->user_level = $request->user_level_new;
-        $users->name = ucwords($request->name_new);
+        $users->name = strtoupper($request->name_new);
         $users->email = $request->email_new;
         $sql = $users->save();
 
@@ -166,7 +166,7 @@ class UsersController extends Controller
             $status1 = 'INACTIVE';
             $status2 = 'ACTIVE';
         }
-        $name = ucwords($request->name);
+        $name = strtoupper($request->name);
 
         $users = User::find($request->id);
         $users->status = $request->status;

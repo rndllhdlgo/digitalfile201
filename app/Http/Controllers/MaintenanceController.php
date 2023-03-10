@@ -21,7 +21,7 @@ class MaintenanceController extends Controller
     }
 
     public function companySave(Request $request){
-        $company_name_logs = ucwords($request->company_name);
+        $company_name_logs = strtoupper($request->company_name);
 
         //To prevent add/Capital Letters
         // if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_logs))->count() > 0){
@@ -45,8 +45,8 @@ class MaintenanceController extends Controller
     }
 
     public function companyUpdate(Request $request){
-        $company_name_orig = ucwords($request->company_name_orig);
-        $company_name_new = ucwords($request->company_name_new);
+        $company_name_orig = strtoupper($request->company_name_orig);
+        $company_name_new = strtoupper($request->company_name_new);
 
         if(strtoupper($company_name_orig) != strtoupper($company_name_new)){
             if(Company::whereRaw('UPPER(company_name) = ?', strtoupper($company_name_new))->count() > 0){
@@ -77,7 +77,7 @@ class MaintenanceController extends Controller
     }
 
     public function branchSave(Request $request){
-        $branch_name_logs = ucwords($request->branch_name);
+        $branch_name_logs = strtoupper($request->branch_name);
 
         // if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_logs))->count() > 0){
         //     return 'duplicate';
@@ -100,8 +100,8 @@ class MaintenanceController extends Controller
     }
 
     public function branchUpdate(Request $request){
-        $branch_name_orig = ucwords($request->branch_name_orig);
-        $branch_name_new = ucwords($request->branch_name_new);
+        $branch_name_orig = strtoupper($request->branch_name_orig);
+        $branch_name_new = strtoupper($request->branch_name_new);
 
         if(strtoupper($branch_name_orig) != strtoupper($branch_name_new)){
             if(Branch::whereRaw('UPPER(branch_name) = ?', strtoupper($branch_name_new))->count() > 0){
@@ -220,7 +220,7 @@ class MaintenanceController extends Controller
     }
 
     public function supervisorSave(Request $request){
-        $supervisor_name_logs = ucwords($request->supervisor_name);
+        $supervisor_name_logs = strtoupper($request->supervisor_name);
 
         // if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_logs))->count() > 0){
         //     return 'duplicate';
@@ -243,8 +243,8 @@ class MaintenanceController extends Controller
     }
 
     public function supervisorUpdate(Request $request){
-        $supervisor_name_orig = ucwords($request->supervisor_name_orig);
-        $supervisor_name_new = ucwords($request->supervisor_name_new);
+        $supervisor_name_orig = strtoupper($request->supervisor_name_orig);
+        $supervisor_name_new = strtoupper($request->supervisor_name_new);
 
         if(strtoupper($supervisor_name_orig) != strtoupper($supervisor_name_new)){
             if(Supervisor::whereRaw('UPPER(supervisor_name) = ?', strtoupper($supervisor_name_new))->count() > 0){
@@ -275,7 +275,7 @@ class MaintenanceController extends Controller
     }
 
     public function jobPositionAndDescriptionSave(Request $request){
-        $job_position_name_logs = ucwords($request->job_position_name);
+        $job_position_name_logs = strtoupper($request->job_position_name);
         
         // if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
         //     return 'duplicate';
@@ -347,8 +347,8 @@ class MaintenanceController extends Controller
     }
     
     public function departmentUpdate(Request $request){
-        $department_orig = ucwords($request->department_orig);
-        $department_new = ucwords($request->department_new);
+        $department_orig = strtoupper($request->department_orig);
+        $department_new = strtoupper($request->department_new);
 
         $department = Department::find($request->department_id);
         $department->department = $department_new;

@@ -51,7 +51,7 @@ function employee_image_save(){
 
 $('#btnSave').on('click', function(){
         // Personal Info
-        
+        var empno = $('#employee_number').val();
         var first_name = $('#first_name').val();
         var last_name = $('#last_name').val();
         var middle_name = $('#middle_name').val();
@@ -116,6 +116,7 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
+                    empno:empno,
                     employee_image:employee_image,
                     first_name:first_name,
                     last_name:last_name,

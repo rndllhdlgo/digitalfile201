@@ -639,5 +639,15 @@ th{
 }
 
 #image_crop_settings button {
-    margin-right: 10px;
+    border-radius: 0;
+}
+
+#image_crop_settings #image_crop{
+    border-top-left-radius: 5px !important;
+    border-bottom-left-radius: 5px !important;
+}
+
+#image_crop_settings #image_crop_reset{
+    border-top-right-radius: 5px !important;
+    border-bottom-right-radius: 5px !important;
 }

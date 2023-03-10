@@ -88,7 +88,7 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var children_table = "<tr class='children_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+                                    "<td class='td_1 text-uppercase' style='width:22.5%;'>" + child_name + "</td>" +
                                     "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
                                     "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
                                     "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
@@ -98,7 +98,7 @@ $(document).ready(function(){
         }
         else{
             var children_table = "<tr class='children_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width:22.5%;'>" + child_name + "</td>" +
+                                    "<td class='td_1 text-uppercase' style='width:22.5%;'>" + child_name + "</td>" +
                                     "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
                                     "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
                                     "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" + 
@@ -127,7 +127,7 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width: 30%;'>" + college_name + "</td>" +
+                                    "<td class='td_1 text-uppercase' style='width: 30%;'>" + college_name + "</td>" +
                                     "<td class='td_2' style='width: 30%;'>" + college_degree + "</td>" +
                                     "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
                                     "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
@@ -138,7 +138,7 @@ $(document).ready(function(){
         }
         else{
             var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-capitalize' style='width: 30%;'>" + college_name + "</td>" +
+                                    "<td class='td_1 text-uppercase' style='width: 30%;'>" + college_name + "</td>" +
                                     "<td class='td_2' style='width: 30%;'>" + college_degree + "</td>" +
                                     "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
                                     "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
@@ -170,7 +170,7 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var training_table =   "<tr class='training_tr'>" +
-                                        "<td class='td_1 text-capitalize' style='width:30%;'>" + training_name + "</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:30%;'>" + training_name + "</td>" + 
                                         "<td class='td_2' style='width:30%;'>" + training_title + "</td>" + 
                                         "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+ 
                                         "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+ 
@@ -180,7 +180,7 @@ $(document).ready(function(){
         }
         else{
             var training_table =   "<tr class='training_tr'>" +
-                                        "<td class='td_1 text-capitalize' style='width:30%;'>" + training_name + "</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:30%;'>" + training_name + "</td>" + 
                                         "<td class='td_2' style='width:30%;'>" + training_title + "</td>" + 
                                         "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+ 
                                         "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+ 
@@ -210,7 +210,7 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var vocational_table = "<tr class='vocational_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
                                         "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
@@ -220,7 +220,7 @@ $(document).ready(function(){
         }
         else{
             var vocational_table = "<tr class='vocational_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:30%'>" + vocational_name +"</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" + 
                                         "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" + 
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" + 
                                         "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" + 
@@ -253,7 +253,7 @@ $(document).ready(function(){
 
         if($('#btnSave').is(":visible")){
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:15%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:15%;'>" + job_company_name + "</td>" + 
                                         "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
                                         "<td class='td_3' style='width:15%'>" + job_position + "</td>" + 
                                         "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" + 
@@ -265,7 +265,7 @@ $(document).ready(function(){
         }
         else{
             var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-capitalize' style='width:15%;'>" + job_company_name + "</td>" + 
+                                        "<td class='td_1 text-uppercase' style='width:15%;'>" + job_company_name + "</td>" + 
                                         "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
                                         "<td class='td_3' style='width:15%'>" + job_position + "</td>" + 
                                         "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" + 
@@ -303,7 +303,7 @@ $(document).ready(function(){
         $('#memoTable').find('tbody').prepend('<tr>'+
                     '<td class="pb-3 pt-3">'+ 
                         '<div class="f-outline">' + 
-                            '<input class="forminput form-control multiple_field text-capitalize" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">'+
+                            '<input class="forminput form-control multiple_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">'+
                             '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
                         '</div>'+
                     '</td>'+
@@ -364,7 +364,7 @@ $(document).ready(function(){
                             '</td>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
+                                    '<input class="forminput form-control multiple_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -420,7 +420,7 @@ $(document).ready(function(){
         $('#resignationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
+                                    '<input class="forminput form-control multiple_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+
@@ -450,7 +450,7 @@ $(document).ready(function(){
         $('#terminationTable').find('tbody').prepend('<tr>'+
                             '<td class="pb-3 pt-3">'+ 
                                 '<div class="f-outline">' + 
-                                    '<input class="forminput form-control multiple_field text-capitalize" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
+                                    '<input class="forminput form-control multiple_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
                                     '<label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>'+
                                 '</div>'+
                             '</td>'+

@@ -24,7 +24,7 @@
                                 <span class="barangay_clearance_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button barangay_clearance_div">
                                     <label class="input-group-text barangay_clearance_label text-white" for="barangay_clearance_file">Choose File</label>
-                                    <input type="file" class="form-control barangay_clearance_file input-file-text" id="barangay_clearance_file"  onchange="barangayClearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
+                                    <input type="file" class="form-control barangay_clearance_file input-file-text required_field" id="barangay_clearance_file"  onchange="barangayClearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -42,7 +42,7 @@
                                 <span class="birthcertificate_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button birthcertificate_div">
                                     <label class="input-group-text birthcertificate_label text-white" for="birthcertificate_file">Choose File</label>
-                                    <input type="file" class="form-control birthcertificate_file input-file-text" id="birthcertificate_file" name="birthcertificate_file" onchange="BirthCertificateValidation(birthcertificate_file)" accept=".pdf">
+                                    <input type="file" class="form-control birthcertificate_file input-file-text required_field" id="birthcertificate_file" name="birthcertificate_file" onchange="BirthCertificateValidation(birthcertificate_file)" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -76,7 +76,7 @@
                                 <span class="medical_certificate_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button medical_certificate_div">
                                     <label class="input-group-text medical_certificate_label text-white" for="medical_certificate_file">Choose File</label>
-                                    <input type="file" class="form-control medical_certificate_file input-file-text" id="medical_certificate_file" onchange="medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
+                                    <input type="file" class="form-control medical_certificate_file input-file-text required_field" id="medical_certificate_file" onchange="medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -111,7 +111,7 @@
                                 <span class="pag_ibig_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button pag_ibig_div">
                                     <label class="input-group-text pag_ibig_label text-white" for="pag_ibig_file">Choose File</label>
-                                    <input type="file" class="form-control pag_ibig_file input-file-text" id="pag_ibig_file" onchange="pagibigValidation(pag_ibig_file)" accept=".pdf" name="pag_ibig_file">
+                                    <input type="file" class="form-control pag_ibig_file input-file-text required_field" id="pag_ibig_file" onchange="pagibigValidation(pag_ibig_file)" accept=".pdf" name="pag_ibig_file">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -142,7 +142,7 @@
                             <span class="philhealth_span" style="display: none;"></span>
                             <div class="input-group custom-file-button philhealth_div">
                                 <label class="input-group-text philhealth_label text-white" for="philhealth_file">Choose File</label>
-                                <input type="file" class="form-control philhealth_file input-file-text" id="philhealth_file" onchange="philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
+                                <input type="file" class="form-control philhealth_file input-file-text required_field" id="philhealth_file" onchange="philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
                             </div>
                         </td>
                         <td class="text-center">
@@ -160,7 +160,7 @@
                             <span class="police_clearance_span" style="display: none;"></span>
                             <div class="input-group custom-file-button police_clearance_div">
                                 <label class="input-group-text police_clearance_label text-white" for="police_clearance_file">Choose File</label>
-                                <input type="file" class="form-control police_clearance_file input-file-text" id="police_clearance_file" onchange="policeClearanceValidation(police_clearance_file)" accept=".pdf" name="police_clearance_file">
+                                <input type="file" class="form-control police_clearance_file input-file-text required_field" id="police_clearance_file" onchange="policeClearanceValidation(police_clearance_file)" accept=".pdf" name="police_clearance_file">
                             </div>
                         </td>
                         <td class="text-center">
@@ -178,7 +178,7 @@
                             <span class="resume_span" style="display: none;"></span>
                             <div class="input-group custom-file-button resume_div">
                                 <label class="input-group-text resume_label text-white" for="resume_file">Choose File</label>
-                                <input type="file" class="form-control resume_file input-file-text" id="resume_file" onchange="resumeValidation(resume_file)" accept=".pdf" name="resume_file">
+                                <input type="file" class="form-control resume_file input-file-text required_field" id="resume_file" onchange="resumeValidation(resume_file)" accept=".pdf" name="resume_file">
                             </div>
                         </td>
                         <td class="text-center"> 
@@ -196,7 +196,7 @@
                             <span class="sss_span" style="display: none;"></span>
                             <div class="input-group custom-file-button sss_div">
                                 <label class="input-group-text sss_label text-white" for="sss_file">Choose File</label>
-                                <input type="file" class="form-control sss_file input-file-text" id="sss_file" onchange="sssValidation(sss_file)" accept=".pdf" name="sss_file">
+                                <input type="file" class="form-control sss_file input-file-text required_field" id="sss_file" onchange="sssValidation(sss_file)" accept=".pdf" name="sss_file">
                             </div>
                         </td>
                         <td class="text-center"> 
@@ -226,7 +226,7 @@
             </table>
     </div> 
 </div>
-{{-- Display Preview of File Chosen --}}
+
     <div class="modal fade" id="preview_document">
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
             <div class="modal-content" >
