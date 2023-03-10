@@ -20,12 +20,11 @@
 //         }
 //     });
 // }
-var fileName;
 var employee_image;
 function employee_image_save(){
     var extension = "jpeg";
     var d = new Date();
-    fileName = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
+    employee_image = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
                     ("0" + d.getDate()).slice(-2) + "-" +
                     d.getFullYear() + "-" +
                     ("0" + d.getHours()).slice(-2) + "-" +
@@ -38,7 +37,7 @@ function employee_image_save(){
         url: '/employees/insertImage',
         method: 'post',
         data: { 
-                fileName: fileName,
+                employee_image: employee_image,
                 image_data: croppedImageData 
               },
         headers: {
@@ -46,7 +45,6 @@ function employee_image_save(){
         },
         success: function(response){
             console.log(response);
-            employee_image = response;
         }
     });
 }
@@ -118,7 +116,7 @@ $('#btnSave').on('click', function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data:{
-                    employee_image:fileName,
+                    employee_image:employee_image,
                     first_name:first_name,
                     last_name:last_name,
                     middle_name:middle_name,

@@ -638,3 +638,7 @@ th{
     justify-content: center;
     align-items: center;
 }
+
+#image_crop_settings button {
+    margin-right: 10px;
+}

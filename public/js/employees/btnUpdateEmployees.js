@@ -28,7 +28,7 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_name = $('#emergency_contact_name').val();
     var emergency_contact_relationship = $('#emergency_contact_relationship').val();
     var emergency_contact_number = $('#emergency_contact_number').val();
-    
+    console.log($('#filename_delete').val());
     // var college_hange = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
     Swal.fire({
@@ -49,12 +49,16 @@ $('#btnUpdate').on('click',function(){
             $('#loading').show();
             if(!$('#filename').val() && $('#employee_image').val()){
                 employee_image_save();
+                console.log('s');
             }
             else if(!$('#filename').val() && !$('#employee_image').val()){
                 employee_image = 'N/A';
+                console.log('d');
             }
             else{
                 employee_image = $('#filename').val();
+                console.log(employee_image);
+                console.log('v');
             }
 
             $.ajax({
@@ -65,7 +69,7 @@ $('#btnUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
-                    employee_image:fileName,
+                    employee_image:employee_image,
                     filename_delete:$('#filename_delete').val(),
                     employee_image_change:employee_image_change,
                     first_name:first_name,

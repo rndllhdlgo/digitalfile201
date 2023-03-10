@@ -13,9 +13,7 @@ $(document).on('click','#image_crop',function(){
     var croppedImageDataURL = canvas.toDataURL("image/jpeg");
     $('#image_preview').attr('src', croppedImageDataURL);
     $('#image_close').show();
-    $('#image_crop').hide();
-    $('#image_zoom_in').hide();
-    $('#image_zoom_out').hide();
+    $('#image_crop_settings').hide();
     $('.column1').css('height','250px');
     cropper.destroy();
 });
@@ -82,6 +80,11 @@ function ImageValidation(employee_image) {
                     $('#image_zoom_out').on('click', function() {
                         cropper.zoom(-0.1); // zoom out by 10%
                     });
+
+                    $('#image_crop_reset').on('click',function(){
+                        cropper.reset();
+                        cropper.reset(true); // Reset the canvas as well
+                    });
                     // $('#image_zoom_slider').on('input', function() {
                     //     console.log('d');
                     //     var zoomValue = parseFloat($(this).val());
@@ -93,9 +96,7 @@ function ImageValidation(employee_image) {
                 $('#image_button').hide();
                 $('#image_instruction').hide();
                 $('#image_preview').show();
-                $('#image_crop').show();
-                $('#image_zoom_in').show();
-                $('#image_zoom_out').show();
+                $('#image_crop_settings').show();
                 $('.column1').css('height','270px');
         }
     }

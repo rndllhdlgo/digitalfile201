@@ -6,7 +6,7 @@
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
 
-            <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; "></i>
+            <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
 
             <div class="text-center mt-4">
                 <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
@@ -26,10 +26,11 @@
                 <img src="" id="image_preview" alt="">
             </div>
 
-            <div class="mt-1 center_div">
-                <button type="button" class="btn btn-primary" id="image_crop" style="display: none;" title="CROP"><span><i class="fa-solid fa-crop"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_zoom_in" style="display:none; margin-right:5px; margin-left:5px;" title="ZOOM IN"><span><i class="fa-solid fa-magnifying-glass-plus"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_zoom_out" style="display:none;" title="ZOOM OUT"><span><i class="fa-solid fa-magnifying-glass-minus"></i></span></button>
+            <div class="mt-1 center_div" id="image_crop_settings" style="display:none;">
+                <button type="button" class="btn btn-primary" id="image_crop" title="CROP"><span><i class="fa-solid fa-crop"></i></span></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><span><i class="fa-solid fa-magnifying-glass-plus"></i></span></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><span><i class="fa-solid fa-magnifying-glass-minus"></i></span></button>
+                <button type="button" class="btn btn-primary" id="image_crop_reset" title="RESET"><span><i class="fas fa-sync-alt"></i></span></button>
             </div>
                 
             {{-- <div class="modal fade" id="cropModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static">

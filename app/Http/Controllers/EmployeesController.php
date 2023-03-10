@@ -289,9 +289,9 @@ class EmployeesController extends Controller
         $imageData = str_replace('data:image/'.$extension.';base64,', '', $imageData);
         $imageData = base64_decode($imageData);
         // $fileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$extension;
-        $filePath = storage_path('app/public/employee_images/'.$request->fileName);
+        $filePath = storage_path('app/public/employee_images/'.$request->employee_image);
         file_put_contents($filePath, $imageData);
-        return $request->fileName;
+        return $request->employee_image;
     }
 
     public function savePersonalInformation(Request $request){
@@ -753,8 +753,8 @@ class EmployeesController extends Controller
 
     public function updatePersonalInformation(Request $request){
         if($request->filename_delete){
-            if(file_exists('public/employee_images/'.$request->filename_delete)){
-                unlink('public/employee_images/'.$request->filename_delete);
+            if(file_exists('storage/employee_images/'.$request->filename_delete)){
+                unlink('storage/employee_images/'.$request->filename_delete);
             }
         }
         $employee = PersonalInformationTable::find($request->id);

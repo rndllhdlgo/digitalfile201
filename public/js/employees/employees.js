@@ -370,7 +370,7 @@ $('#image_close').on('click',function(){
             $('#image_user').show();
             $('#image_button').show();
             $('#image_instruction').show();
-            $('#image_crop').hide();
+            $('#image_crop_settings').hide();
             $('#employee_image').addClass('required_field');
             employee_image_change = 'CHANGED';
             console.log(employee_image_change);
