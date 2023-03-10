@@ -6,11 +6,7 @@ use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
-use App\Http\Controllers\ChartController;
-use App\Http\Controllers\DonutController;
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\DonutSalesController;
-use App\Http\Controllers\SalesMonthly;
+use App\Http\Controllers\UpdatesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +33,7 @@ Route::any('/evaluation', 'PagesController@evaluation');
 Route::any('/contracts', 'PagesController@contracts');
 Route::any('/users', 'PagesController@users');
 Route::any('/maintenance', 'PagesController@maintenance');
+Route::any('/updates', 'PagesController@updates');
 
 Route::get('/getCities','PagesController@getCities');
 Route::get('/getRegion','PagesController@getRegion');
@@ -135,6 +132,8 @@ Route::any('/maintenance/branch_name_new/checkDuplicate','MaintenanceController@
 Route::any('/maintenance/shift_details_code/checkDuplicate','MaintenanceController@checkDuplicate');
 Route::any('/maintenance/supervisor_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
 Route::any('/maintenance/job_position_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
+
+// Updates Controller
 
 Route::any('/employees/college_data','EmployeesController@college_data');
 Route::any('/employees/college_delete','EmployeesController@college_delete');

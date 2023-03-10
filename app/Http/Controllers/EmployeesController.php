@@ -54,6 +54,7 @@ class EmployeesController extends Controller
             return 'PENDING';
         }
     }
+
     public function logs_reload(){
         if(LogsTable::count() == 0){
             return 'NULL';
@@ -272,16 +273,6 @@ class EmployeesController extends Controller
     //     $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
     //     return $employeeImageFileName;
     // }
-    // public function insertImage(Request $request){
-    //     $imageData = $request->input('image_data');
-    //     list($type, $imageData) = explode(';', $imageData);
-    //     list(, $imageData) = explode(',', $imageData);
-    //     $imageData = base64_decode($imageData);
-    //     $fileName = strftime("%m-%d-%Y-%H-%M-%S").'_Cropped_Employee_Image.png';
-    //     $filePath = storage_path('app/public/employee_images/'.$fileName);
-    //     file_put_contents($filePath, $imageData);
-    //     return $fileName;
-    // }
 
     public function insertImage(Request $request){
         $imageData = $request->input('image_data');
@@ -301,12 +292,7 @@ class EmployeesController extends Controller
         $employee->last_name = strtoupper($request->last_name); 
         $employee->middle_name = strtoupper($request->middle_name);
         $employee->suffix = strtoupper($request->suffix);
-        if(!$request->nickname){
-            $employee->nickname = strtoupper($request->first_name);
-        }
-        else{
-            $employee->nickname = strtoupper($request->nickname);
-        }
+        $employee->nickname = (!$request->nickname) ? strtoupper($request->first_name) : strtoupper($request->nickname);
         $employee->birthday = $request->birthday;
         $employee->address = ucwords($request->address);
         $employee->gender = $request->gender;
@@ -447,7 +433,6 @@ class EmployeesController extends Controller
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
             $sql = $employee->save(); 
 
-            
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
@@ -2865,9 +2850,9 @@ class EmployeesController extends Controller
                     $userlogs->save();
                 }
             }
+            sleep(2);
+            return Redirect::to(url()->previous());
         }
-        sleep(2);
-        return Redirect::to(url()->previous());
     }
 
     public function children_data(Request $request){

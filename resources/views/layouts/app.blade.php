@@ -108,7 +108,10 @@
             <script src="{{ env('APP_URL')}}js/maintenance/dataTablesMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
-        @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance'))
+        @if(Request::is('updates'))
+            <script src="{{ env('APP_URL')}}js/updates/updates.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+        @endif
+        @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance') || Request::is('updates'))
             <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif

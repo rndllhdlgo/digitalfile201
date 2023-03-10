@@ -91,6 +91,16 @@ class PagesController extends Controller
         return view('pages.maintenance');
     }
 
+    public function updates(){
+        if(!auth()->user()){
+            return redirect('/login');
+        }
+        if(Auth::user()->user_level != 'ADMIN'){
+            return redirect('/');
+        }        
+        return view('pages.updates');
+    }
+
     public function index_reload_data(){
         if(UserLogs::count() == 0){
             return 'NULL';
