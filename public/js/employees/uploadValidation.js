@@ -15,7 +15,7 @@ $(document).on('click','#image_crop',function(){
     $('#image_close').show();
     $('.top-container').hide();
     $('.bottom-container').hide();
-    $('.column1').css('height','280px');
+    // $('.column1').css('height','280px');
     cropper.destroy();
 });
 
@@ -108,7 +108,7 @@ function ImageValidation(employee_image) {
                 $('#image_preview').show();
                 $('.top-container').show();
                 $('.bottom-container').show();
-                $('.column1').css('height','293px');
+                // $('.column1').css('height','293px');
         }
     }
 }

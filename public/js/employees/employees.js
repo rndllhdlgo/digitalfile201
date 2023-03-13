@@ -373,7 +373,7 @@ $(document).on('click','#image_close, #image_close_trash',function(){
             $('#image_instruction').show();
             $('.top-container').hide();
             $('.bottom-container').hide();
-            $('.column1').css('height','280px');
+            // $('.column1').css('height','280px');
             $('#employee_image').addClass('required_field');
 
             $.ajax({

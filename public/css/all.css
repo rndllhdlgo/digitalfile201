@@ -643,4 +643,5 @@ th{
 .bottom-container button{
     border-radius: 0 !important;
     width:42px !important;
+    zoom:85% !important;
 }

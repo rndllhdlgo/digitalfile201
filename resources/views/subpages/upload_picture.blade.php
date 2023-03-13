@@ -21,7 +21,7 @@
     <img src="" id="image_preview" alt="">
 </div>
 
-<div class="top-container center_div" style="display:none; margin-top:3px !important;">
+<div class="top-container center_div" style="display:none; margin-top:1px !important;">
     <button type="button" class="btn btn-success" id="image_download" title="DOWNLOAD" style="visibility: hidden;"><i class="fas fa-download"></i></button>
     <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
     <button type="button" class="btn btn-secondary" id="image_up" title="MOVE UP"><i class="fas fa-arrow-up"></i></button>
