@@ -2,7 +2,7 @@
     <hr class="hr-design">
         
     <div class="row mb-3">
-        <div class="column1 mt-3">
+        <div class="column1">
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
 
@@ -12,7 +12,7 @@
                 <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
             </div>
 
-            <div class="text-center mt-4">
+            <div class="text-center mt-3">
                 <button type="button" id="image_button" class="btn btn-primary bp"><span class="fas fa-upload"></span> UPLOAD IMAGE</button>
                 <input type="file" name="employee_image" id="employee_image" class="required_field hiddenFile" accept=".jpg,.jpeg,.png,.gif" onchange="ImageValidation(employee_image)">
             </div>
@@ -26,13 +26,19 @@
                 <img src="" id="image_preview" alt="">
             </div>
 
-            <div class="mt-1 center_div" id="image_crop_settings" style="display:none;">
-                <button type="button" class="btn btn-primary" id="image_crop" title="CROP"><span><i class="fa-solid fa-crop"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><span><i class="fa-solid fa-magnifying-glass-plus"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><span><i class="fa-solid fa-magnifying-glass-minus"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_up" title="UP"><span><i class="fas fa-arrow-up"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_down" title="DOWN"><span><i class="fas fa-arrow-down"></i></span></button>
-                <button type="button" class="btn btn-primary" id="image_crop_reset" title="RESET"><span><i class="fas fa-sync-alt"></i></span></button>
+            <div class="top-container center_div" style="display:none; margin-top:3px !important;">
+                <button type="button" class="btn btn-success" id="image_download" title="DOWNLOAD" style="visibility:hidden;"><i class="fas fa-download"></i></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
+                <button type="button" class="btn btn-secondary" id="image_up" title="MOVE UP"><i class="fas fa-arrow-up"></i></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><i class="fas fa-search-minus"></i></button>
+                <button type="button" class="btn btn-success" id="image_crop" title="CROP IMAGE"><i class="fas fa-crop"></i></button>
+              </div>
+              <div class="bottom-container center_div" style="display:none;">
+                <button type="button" class="btn btn-danger" id="image_close_trash" title="REMOVE IMAGE"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn btn-secondary" id="image_left" title="MOVE LEFT"><i class="fas fa-arrow-left"></i></button>
+                <button type="button" class="btn btn-secondary" id="image_down" title="MOVE DOWN"><i class="fas fa-arrow-down"></i></button>
+                <button type="button" class="btn btn-secondary" id="image_right" title="MOVE RIGHT"><i class="fas fa-arrow-right"></i></button>
+                <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
             </div>
         </div>
         

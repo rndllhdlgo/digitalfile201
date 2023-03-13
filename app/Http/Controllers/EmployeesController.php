@@ -40,6 +40,8 @@ use App\Models\Company;
 use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Position;
+
+use App\Models\EmployeeStatus;
 use DataTables;
 
 class EmployeesController extends Controller
@@ -157,6 +159,25 @@ class EmployeesController extends Controller
                 ->join('branches','branches.id','work_information_tables.employee_branch')
                 ->get();
         }
+        else if($request->filter == 'incomplete'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
+                )
+                ->where('employee_status.employee_status','Incomplete')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
+                ->get();
+        }
         else{
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
@@ -166,11 +187,13 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
                 )
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
             }
         return DataTables::of($employees)->make(true);
@@ -3009,5 +3032,10 @@ class EmployeesController extends Controller
         else if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
             return 'duplicate_company_email_address';
         }
+    }
+
+    public function upload_picture(Request $request)
+    {
+        return view('subpages.upload_picture')->render();
     }
 }

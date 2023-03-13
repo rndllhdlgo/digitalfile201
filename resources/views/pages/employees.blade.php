@@ -6,7 +6,7 @@
         <div id="employees_list" style="display:none;">
             <div class="row">
                 <div class="col">
-                    <h4 style="color: #0d1a80;" class="my-header">EMPLOYEE MASTER FILE</h4>
+                    <h4 style="color: #0d1a80;" class="my-header">EMPLOYEE MASTER FILE <span id="head_title"></span></h4>
                 </div>
                 <div class="col">
                     @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
@@ -34,10 +34,9 @@
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
                             </td>
-                            
-                            {{-- <td>
+                            <td>
                                 <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
-                            </td> --}}
+                            </td>
                             {{-- <td>
                                 <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
                             </td> --}}
@@ -45,11 +44,10 @@
                         <tr>
                             <th> EMPLOYEE NO.</th>
                             <th> FULL NAME</th>
-                            {{-- <th> FIRST NAME</th> --}}
-                            {{-- <th> MIDDLE NAME</th> --}}
                             <th> POSITION</th>
                             <th> BRANCH</th>
                             <th> EMP. STATUS</th> 
+                            <th> STATUS</th> 
                         </tr>
                     </thead>
                         <tbody>

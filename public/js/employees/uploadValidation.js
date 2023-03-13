@@ -1,6 +1,6 @@
 //Display Upload Preview// Validation //Display filename
 
-$('#image_button').on('click',function(){
+$(document).on('click','#image_button',function(){
     $('#employee_image').click();
 });
 
@@ -13,8 +13,9 @@ $(document).on('click','#image_crop',function(){
     var croppedImageDataURL = canvas.toDataURL("image/jpeg");
     $('#image_preview').attr('src', croppedImageDataURL);
     $('#image_close').show();
-    $('#image_crop_settings').hide();
-    $('.column1').css('height','250px');
+    $('.top-container').hide();
+    $('.bottom-container').hide();
+    $('.column1').css('height','280px');
     cropper.destroy();
 });
 
@@ -59,10 +60,9 @@ function ImageValidation(employee_image) {
                 imageReader.onload = function(e) {
                     $('#image_preview').attr('src', e.target.result);
                     var cropper = new Cropper($('#image_preview')[0], {
-                        aspectRatio: 1/1,
+                        aspectRatio: 1,
                         viewMode: 3,
                         dragMode: 'move',
-                        cropBoxResizable: false,
                         guides:false,
                         zoomable: true,
                         zoomOnWheel: true,
@@ -92,14 +92,23 @@ function ImageValidation(employee_image) {
                     $('#image_down').click(function() {
                         cropper.move(0, 5);
                     });
+
+                    $('#image_left').click(function() {
+                        cropper.move(-10, 0);
+                    });
+                      
+                    $('#image_right').click(function() {
+                        cropper.move(10, 0);
+                    });
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
                 $('#image_button').hide();
                 $('#image_instruction').hide();
                 $('#image_preview').show();
-                $('#image_crop_settings').show();
-                $('.column1').css('height','270px');
+                $('.top-container').show();
+                $('.bottom-container').show();
+                $('.column1').css('height','293px');
         }
     }
 }

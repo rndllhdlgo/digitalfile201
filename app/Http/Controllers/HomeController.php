@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\PersonalInformationTable;
 use App\Models\WorkInformationTable;
 use App\Models\Position;
+use App\Models\EmployeeStatus;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
@@ -88,7 +89,7 @@ class HomeController extends Controller
         // auth()->user()->givePermissionTo('add employee');
         // auth()->user()->assignRole('ADMIN');
         // return auth()->user()->permissions;
-        
+                
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
@@ -99,7 +100,8 @@ class HomeController extends Controller
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
-        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern'));
+        $incomplete = EmployeeStatus::where('employee_status','Incomplete')->count();
+        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','incomplete'));
     }
 
     public function org()

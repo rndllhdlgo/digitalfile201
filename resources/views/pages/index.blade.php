@@ -49,6 +49,17 @@
                 </center>
             </a>
         </div>
+        <div class="col">
+            <a class="dashhover" href="/employees?employee_status=incomplete" style="text-decoration: none;">
+                <center>
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
+                    <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
+                        {{number_format($incomplete)}}
+                    </div>
+                    <b class="dashlabel" style="color: #0d1a80; font-size: 20px; padding-top: 10px;">UPDATES</b>
+                </center>
+            </a>
+        </div>
     </div>
     <br>
     <table class="table table-striped table-hover table-bordered w-100 user_activity_table" id="user_activity_table">

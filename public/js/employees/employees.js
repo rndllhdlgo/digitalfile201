@@ -20,6 +20,10 @@ $(document).ready(function(){
         $('#head_title').html('- INTERN');
         var filter = 'intern';
     }
+    else if(current_location == '/employees?employee_status=incomplete'){
+        $('#head_title').html('- INCOMPLETE DETAILS');
+        var filter = 'incomplete';
+    }
      
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
     
@@ -48,7 +52,7 @@ $(document).ready(function(){
                 data: 'employee_number',
                 "render": function(data, type, row){
                     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-                }
+                },
             },
             {
                 data: null,
@@ -56,13 +60,10 @@ $(document).ready(function(){
                     return row.last_name + ', ' + row.first_name + ' ' + row.middle_name;
                 }
             },
-            // {data: 'employee_number'},
-            // {data: 'last_name'},
-            // {data: 'first_name'},
-            // {data: 'middle_name'},
             {data: 'employee_position'},
             {data: 'employee_branch'},
-            {data: 'employment_status'}
+            {data: 'employment_status'},
+            {data: 'employee_status'}
         ],
         initComplete: function(){
             if(current_user_level == 'EMPLOYEE'){
@@ -346,7 +347,7 @@ $('#child_birthday').on('change',function(){
     return $('#child_age').val(age);
 });
 
-$('#image_close').on('click',function(){
+$(document).on('click','#image_close, #image_close_trash',function(){
     Swal.fire({
         title: 'Do you want to remove image?',
         allowOutsideClick: false,
@@ -370,8 +371,19 @@ $('#image_close').on('click',function(){
             $('#image_user').show();
             $('#image_button').show();
             $('#image_instruction').show();
-            $('#image_crop_settings').hide();
+            $('.top-container').hide();
+            $('.bottom-container').hide();
+            $('.column1').css('height','280px');
             $('#employee_image').addClass('required_field');
+
+            $.ajax({
+                url:"/upload_picture",
+                type:"get",
+                async: false,
+                success:function(image_upload_div){
+                    $('.column1').html(image_upload_div)
+                }
+            });
             employee_image_change = 'CHANGED';
             console.log(employee_image_change);
         }

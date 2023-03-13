@@ -277,7 +277,7 @@ input[type=search]:focus{
 .column1 {
     float: left;
     width: 20%;
-    height: 250px;
+    height: 280px;
     border:1px solid gray;
     margin-left: 1%;
 }
@@ -629,7 +629,8 @@ th{
 }
 
 .cropper-bg{
-    margin-top: -10px;
+    margin-top: -25px;
+    /* height: 195px !important; */
 }
 
 .center_div{
@@ -638,16 +639,8 @@ th{
     align-items: center;
 }
 
-#image_crop_settings button {
-    border-radius: 0;
-}
-
-#image_crop_settings #image_crop{
-    border-top-left-radius: 5px !important;
-    border-bottom-left-radius: 5px !important;
-}
-
-#image_crop_settings #image_crop_reset{
-    border-top-right-radius: 5px !important;
-    border-bottom-right-radius: 5px !important;
+.top-container button,
+.bottom-container button{
+    border-radius: 0 !important;
+    width:42px !important;
 }
