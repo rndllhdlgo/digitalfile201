@@ -3,7 +3,7 @@ var current_user = $('#current_user').val();
 var current_user_level = $('#current_user_level').val();
 var current_employee_number = $('#current_employee_number').val();
 var data_update, standby = true;
-//Verify that the user has filled out all required fields.
+
 setInterval(checkRequiredFields, 0);
 function checkRequiredFields(){
     if($(".required_field:visible").length > 0){

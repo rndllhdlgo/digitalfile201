@@ -25,13 +25,22 @@ var employee_image;
 function employee_image_save(){
     var extension = "jpeg";
     var d = new Date();
-    employee_image = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
-                    ("0" + d.getDate()).slice(-2) + "-" +
-                    d.getFullYear() + "-" +
-                    ("0" + d.getHours()).slice(-2) + "-" +
-                    ("0" + d.getMinutes()).slice(-2) + "-" +
-                    ("0" + d.getSeconds()).slice(-2) +
-                    '_Employee_Image.' + extension;
+    var date = new Date();
+    // employee_image = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
+    //                 ("0" + d.getDate()).slice(-2) + "-" +
+    //                 d.getFullYear() + "-" +
+    //                 ("0" + d.getHours()).slice(-2) + "-" +
+    //                 ("0" + d.getMinutes()).slice(-2) + "-" +
+    //                 ("0" + d.getSeconds()).slice(-2) +
+    //                 '_Employee_Image.' + extension;
+
+    employee_image = $('#employee_number').val() + '_' + $('#last_name').val() + '_' + $('#first_name').val() + '_' +
+                    date.getFullYear().toString().slice(-2) +
+                    ("0" + (date.getMonth() + 1)).slice(-2) +
+                    ("0" + date.getDate()).slice(-2) +
+                    ("0" + date.getHours()).slice(-2) +
+                    ("0" + date.getMinutes()).slice(-2) +
+                    ("0" + date.getSeconds()).slice(-2) + '.' + extension;
 
     var croppedImageData = $('#image_preview').attr('src');
     $.ajax({

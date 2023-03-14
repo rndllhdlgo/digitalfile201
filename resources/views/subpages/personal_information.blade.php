@@ -342,6 +342,7 @@
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_emergency_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
+                        <p id="same_value" class="validation"><i class="fas fa-exclamation-triangle"></i> SAME VALUE ON CELLPHONE NUMBER!</p>
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all"></span> </label>
                     </div>
                 </div>

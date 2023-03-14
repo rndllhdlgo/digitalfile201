@@ -24,9 +24,9 @@ $(document).ready(function(){
         $('#head_title').html('- INCOMPLETE DETAILS');
         var filter = 'incomplete';
     }
-     
+
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
-    
+
     employeesTable = $('table.employeesTable').DataTable({
         dom:'l<"breakspace">trip',
         language:{
@@ -249,7 +249,7 @@ function changeCivilStatus(){
         $('#spouse_contact_number').addClass('required_field');
         $('.children_information').hide();
         $('#children_table').hide();
-        
+
         $('#spouse_summary_div').show();
     }
     else if($('#civil_status').val() == "SOLO PARENT"){
@@ -273,7 +273,7 @@ function changeCivilStatus(){
 function changeEmploymentStatus(){
     var employment_status = $('#employment_status');
 
-    if($('#employment_status').val() == "REGULAR" 
+    if($('#employment_status').val() == "REGULAR"
     || $('#employment_status').val() == 'PROBATIONARY'
     || $('#employment_status').val() == 'PART TIME'
     || $('#employment_status').val() == 'RETIRED'
@@ -282,7 +282,7 @@ function changeEmploymentStatus(){
         $('#benefits_summary').show();
         $('#resignation_div').hide();
         $('#termination_div').hide();
-        
+
     }
     else if($('#employment_status').val() == 'RESIGN'){
             $('#resignation_div').show();
@@ -585,6 +585,7 @@ $('#note_required').on('click',function(){
     $('#philhealth_number').val('022005294391');
     $('#tin_number').val('398-758-866');
     $('#account_number').val('5');
+    $('#birthday').val('2013-02-11');
 
     // //Education/Trainings
     $('#college_name').val('Universidad De Manila');
@@ -608,7 +609,7 @@ $('#note_required').on('click',function(){
     $('#vocational_name').val('A');
     $('#vocational_course').val('A');
     $('#vocational_inclusive_years_from').val('2020-01');
-    $('#vocational_inclusive_years_to').val('2020-02'); 
+    $('#vocational_inclusive_years_to').val('2020-02');
     $('#vocationalAdd').click();
 
     // Job History
@@ -651,7 +652,7 @@ setInterval(() => {
 
 setInterval(() => {
     // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
     || $('#first_name').val().length < 2
     || $('#middle_name').val().length < 2
     || $('#last_name').val().length < 2
@@ -677,7 +678,7 @@ setInterval(() => {
     || $('#company_contact_number').hasClass('duplicate_field')
     )
     {
-        $('#btnSave').prop("disabled",true);    
+        $('#btnSave').prop("disabled",true);
     }
     else{
         $('#btnSave').prop("disabled",false);
@@ -686,7 +687,7 @@ setInterval(() => {
 
 setInterval(() => {
     // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length 
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
     || $('#first_name').val().length < 2
     || $('#middle_name').val().length < 2
     || $('#last_name').val().length < 2
@@ -712,8 +713,8 @@ setInterval(() => {
     || $('#company_contact_number').hasClass('duplicate_field')
     )
     {
-        $('#btnUpdate').prop("disabled",true);    
-       
+        $('#btnUpdate').prop("disabled",true);
+
     }
     else{
         $('#btnUpdate').prop("disabled",false);
@@ -732,7 +733,7 @@ setInterval(() => {
 $(document).ready(function() {
     // Get current date
     var currentDate = new Date();
-    
+
     // Set the maximum value for the month to the current month
     $('#college_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
     $('#college_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
@@ -772,10 +773,25 @@ function formatPesoInput(selector){
       $(this).val(inputVal);
     });
 }
-  
+
 $(document).ready(function() {
     formatPesoInput('#employee_salary');
     formatPesoInput('#employee_incentives');
     formatPesoInput('#employee_overtime_pay');
     formatPesoInput('#employee_bonus');
+});
+
+$(document).ready(function() {
+    var cellphone_number = $('#cellphone_number');
+    var emergency_contact_number = $('#emergency_contact_number');
+
+    $("#cellphone_number, #emergency_contact_number").on("keyup", function(){
+        if (cellphone_number.val() === emergency_contact_number.val()) {
+        console.log('The two input fields have the same value.');
+        $('#same_value').show();
+        } else {
+        console.log('The two input fields have different values.');
+        $('#same_value').hide();
+        }
+    });
 });

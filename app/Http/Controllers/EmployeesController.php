@@ -302,8 +302,7 @@ class EmployeesController extends Controller
         $extension = explode('/', mime_content_type($imageData))[1];
         $imageData = str_replace('data:image/'.$extension.';base64,', '', $imageData);
         $imageData = base64_decode($imageData);
-        // $fileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$extension;
-        $filePath = storage_path('/public/employee_images/'.$request->employee_image);
+        $filePath = storage_path('app/public/employee_images/'.$request->employee_image);
         file_put_contents($filePath, $imageData);
         return $request->employee_image;
     }
@@ -693,18 +692,10 @@ class EmployeesController extends Controller
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
             $sql = $employee->save();
 
-            // if($request->job_history_change == 'CHANGED'){
-            //     $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
-            // }
-            // else{
-            //     $job_history_update = NULL;
-            // }
-
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
 
-                // if($request->job_history_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
@@ -715,7 +706,6 @@ class EmployeesController extends Controller
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
                     $userlogs->save();
-                // }
             }
             else{
                 $result = 'false';
