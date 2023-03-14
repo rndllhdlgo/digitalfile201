@@ -1,9 +1,9 @@
-var children_id, 
-    college_id, 
-    training_id, 
-    job_history_id, 
-    memo_id, 
-    evaluation_id, 
+var children_id,
+    college_id,
+    training_id,
+    job_history_id,
+    memo_id,
+    evaluation_id,
     contracts_id,
     resignation_id,
     termination_id = [];
@@ -24,7 +24,7 @@ var memo_change;
 var email_address_orig;
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
-    
+
     children_id = [];
     college_id = [];
     training_id = [];
@@ -75,7 +75,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 else{
                     $('#filename').val('');
                 }
-                
+
                 $('#filename_delete').val('');
 
                 $('#first_name').val(value.first_name);
@@ -139,7 +139,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#email_address').val(value.email_address);
                 email_address_orig = value.email_address;
-                
+
                 $('#telephone_number').val(value.telephone_number);
                 $('#cellphone_number').val(value.cellphone_number);
 
@@ -212,7 +212,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     'font-size':'13px',
                     'font-family':'Arial, Helvetica, sans-serif'
                 });
-                
+
                 $('#employment_status').val(value.employment_status);
                 $('#employment_status').chosen();
                 $('#employment_status_chosen').css({
@@ -352,13 +352,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'college_name',width: '30%'},
                         { data: 'college_degree', width: '30%'},
-                        { 
-                            data: 'college_inclusive_years_from', 
+                        {
+                            data: 'college_inclusive_years_from',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
-                        { 
+                        {
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
@@ -374,7 +374,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
-                
+
                 $('.training_table_orig').dataTable().fnDestroy();
                 $('.training_table_orig').DataTable({
                     columnDefs: [
@@ -407,13 +407,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'training_name',width: '30%'},
                         { data: 'training_title', width: '30%'},
-                        { 
+                        {
                             data: 'training_inclusive_years_from',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
-                        { 
+                        {
                             data: 'training_inclusive_years_to',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
@@ -462,14 +462,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'vocational_name', width: '30%'},
                         { data: 'vocational_course', width: '30%'},
-                        { 
+                        {
                             data: 'vocational_inclusive_years_from',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'
                         },
-                        { 
+                        {
                             data: 'vocational_inclusive_years_to',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
@@ -529,14 +529,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         // },
                         { data: 'job_position', width: '15%'},
                         { data: 'job_contact_number', width : '15%'},
-                        { 
+                        {
                             data: 'job_inclusive_years_from',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
                             },
                             width : '15%'
                         },
-                        { 
+                        {
                             data: 'job_inclusive_years_to',
                             "render":function(data,type,row){
                                 return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
@@ -553,39 +553,31 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
-                
-                $.ajax({
-                    method: 'GET',
-                    url: '/job_history_summary/data',
-                    data: {
-                        id: value.id,
-                    },
-                    success: function (data) {
-                        for(var job_content = 0; job_content < data.length; job_content++){
-                            var job_company_name = data[job_content].job_company_name;
-                            var job_description = data[job_content].job_description;
-                            var job_position = data[job_content].job_position;
-                            var job_contact_number = data[job_content].job_contact_number;
-                            var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
-                            var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
 
-                            var job_years = $('<div class="col-3">').append($('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " ->")));
-                            // var job_details = $('<div class="col-9 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br>" + job_description.replace(/• /g,"<br>• ").replace(/<br>/, ''));
-                            var job_details = $('<div class="col-9 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br> - " + job_description);
-                            
-                            $('#job_history_summary_div').append(job_years,job_details);
-                            // var job_company_name_span = $('<div class="col">').html(job_company_name + "<br>");
-                            // var job_description_span = $('<span>').html(" - " + job_description);
-                            // var job_contact_number_span = $('<span>').html(job_contact_number + "<br>");
-                            // var job_inclusive_years_from_span = $('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ");
-                            // var job_inclusive_years_to_span = $('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + "<br>");
-                            // $('#job_history_summary_div').append($('<div>').addClass('col').append(job_position_span, job_company_name_span,job_inclusive_years_from_span, job_inclusive_years_to_span, job_description_span));
-                            // var job_description_ul = $('<ul class="job_description_ul">').append($('<li>').html(job_description));
+                    $.ajax({
+                        method: 'GET',
+                        url: '/job_history_summary/data',
+                        data: {
+                            id: value.id,
+                        },
+                        success: function (data) {
+                            $('.column_six').show();
+                            for(var job_content = 0; job_content < data.length; job_content++){
+                                var job_company_name = data[job_content].job_company_name;
+                                var job_description = data[job_content].job_description;
+                                var job_position = data[job_content].job_position;
+                                var job_contact_number = data[job_content].job_contact_number;
+                                var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
+                                var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
+
+                                var job_years = $('<div class="col-3">').append($('<span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " ->")));
+                                var job_details = $('<div class="col-9 mb-2">').html("<b>" + job_position + "</b><br><i>" + job_company_name + "</i><br>" + job_contact_number + "<br> - " + job_description);
+                                $('#job_history_summary_div').append(job_years,job_details);
+                            }
                         }
-                    }
-                });
-                
-                
+                    });
+
+
                 // $('.job_history_table_summary').dataTable().fnDestroy();
                 // $('.job_history_table_summary').DataTable({
                 //     searching: false,
@@ -610,14 +602,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 //         { data: 'job_description',width : '15%'},
                 //         { data: 'job_position', width: '15%'},
                 //         { data: 'job_contact_number', width : '15%'},
-                //         { 
+                //         {
                 //             data: 'job_inclusive_years_from',
                 //             "render":function(data,type,row){
                 //                 return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
                 //             },
                 //             width : '15%'
                 //         },
-                //         { 
+                //         {
                 //             data: 'job_inclusive_years_to',
                 //             "render":function(data,type,row){
                 //                 return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
@@ -636,7 +628,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 //         }
                 //     }
                 // });
-                
+
                     if(current_user_level != 'EMPLOYEE'){
                         $('.memo_table_data').dataTable().fnDestroy();
                         $('.memo_table_data').DataTable({
@@ -669,15 +661,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             },
                             columns: [
                                 { data: 'memo_subject',width: '22.5%'},
-                                { 
+                                {
                                     data: 'memo_date',
                                     "render":function(data,type,row){
                                         return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('LL');
                                     },
                                     width: '22.5%'},
                                 { data: 'memo_penalty', width: '22.5%'},
-                                { 
-                                    data: 'memo_file', 
+                                {
+                                    data: 'memo_file',
                                     "render": function(data, type, row){
                                         return `<a href="/storage/evaluation_files/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>` ;
                                     },
@@ -693,7 +685,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 }
                             }
                         });
-                    
+
                         $('.evaluation_table_data').dataTable().fnDestroy();
                         $('.evaluation_table_data').DataTable({
                             columnDefs: [
@@ -725,15 +717,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             },
                             columns: [
                                 { data: 'evaluation_reason',width: '22.5%'},
-                                { 
-                                    data: 'evaluation_date', 
+                                {
+                                    data: 'evaluation_date',
                                     "render":function(data,type,row){
                                         return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('LL');
                                     },
                                     width: '22.5%'},
                                 { data: 'evaluation_evaluated_by', width: '22.5%'},
-                                { 
-                                    data: 'evaluation_file', 
+                                {
+                                    data: 'evaluation_file',
                                     "render": function(data, type, row){
                                         return `<a href="/storage/evaluation_files/${row.evaluation_file}" target="_blank">${row.evaluation_file.replace(removeValue, '')}</a>` ;
                                     },
@@ -749,7 +741,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 }
                             }
                         });
-                        
+
                         $('.contracts_table_data').dataTable().fnDestroy();
                         $('.contracts_table_data').DataTable({
                             columnDefs: [
@@ -781,14 +773,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             },
                             columns: [
                                 { data: 'contracts_type',width: '20%'},
-                                { 
+                                {
                                     data: 'contracts_date',
                                     "render":function(data,type,row){
                                         return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('LL');
                                     },
                                     width: '33.4%'},
-                                { 
-                                    data: 'contracts_file', 
+                                {
+                                    data: 'contracts_file',
                                     "render": function(data, type, row){
                                         return `<a href="/storage/evaluation_files/${row.contracts_file}" target="_blank">${row.contracts_file.replace(removeValue, '')}</a>` ;
                                     },
@@ -837,8 +829,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             columns: [
                                 { data: 'resignation_reason',width: '20%'},
                                 { data: 'resignation_date', width: '33.4%'},
-                                { 
-                                    data: 'resignation_file', 
+                                {
+                                    data: 'resignation_file',
                                     "render": function(data, type, row){
                                         return `<a href="/storage/evaluation_files/${row.resignation_file}" target="_blank">${row.resignation_file}</a>` ;
                                     },
@@ -887,8 +879,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             columns: [
                                 { data: 'termination_reason',width: '20%'},
                                 { data: 'termination_date', width: '33.4%'},
-                                { 
-                                    data: 'termination_file', 
+                                {
+                                    data: 'termination_file',
                                     "render": function(data, type, row){
                                         return `<a href="/storage/evaluation_files/${row.termination_file}" target="_blank">${row.termination_file}</a>` ;
                                     },
@@ -947,7 +939,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 },
                                 { data: 'username', width: '15%'},
                                 { data: 'user_level', width: '15%'},
-                                { 
+                                {
                                     data: 'logs',
                                     width: '55%',
                                     "render":function(data,type,row){
@@ -1015,7 +1007,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                         return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
                                     }
                                 },
-                                { 
+                                {
                                     data: 'history',
                                     width: '80%',
                                     "render":function(data,type,row){
@@ -1056,7 +1048,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();
                     $('.barangay_clearance_span').show();
-                    $('.barangay_clearance_span').html(`<a href="/storage/documents_files/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                    $('.barangay_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
                 }
@@ -1065,7 +1057,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#birthcertificate_filename').val(value.birthcertificate_file);
                     $('.birthcertificate_div').hide();
                     $('.birthcertificate_span').show();
-                    $('.birthcertificate_span').html(`<a href="/storage/documents_files/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                    $('.birthcertificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
                 }
@@ -1074,7 +1066,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#diploma_filename').val(value.diploma_file);
                     $('.diploma_div').hide();
                     $('.diploma_span').show();
-                    $('.diploma_span').html(`<a href="/storage/documents_files/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                    $('.diploma_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
                     $('#diploma_view').hide();
                     $('#diploma_delete_button').show();
                 }
@@ -1083,7 +1075,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#medical_certificate_filename').val(value.medical_certificate_file);
                     $('.medical_certificate_div').hide();
                     $('.medical_certificate_span').show();
-                    $('.medical_certificate_span').html(`<a href="/storage/documents_files/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                    $('.medical_certificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
                 }
@@ -1091,7 +1083,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#nbi_clearance_filename').val(value.nbi_clearance_file);
                     $('.nbi_clearance_div').hide();
                     $('.nbi_clearance_span').show();
-                    $('.nbi_clearance_span').html(`<a href="/storage/documents_files/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                    $('.nbi_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
                     $('#nbi_clearance_view').hide();
                     $('#nbi_clearance_delete_button').show();
                 }
@@ -1100,7 +1092,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#pag_ibig_filename').val(value.pag_ibig_file);
                     $('.pag_ibig_div').hide();
                     $('.pag_ibig_span').show();
-                    $('.pag_ibig_span').html(`<a href="/storage/documents_files/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                    $('.pag_ibig_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
                 }
@@ -1109,7 +1101,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#philhealth_filename').val(value.philhealth_file);
                     $('.philhealth_div').hide();
                     $('.philhealth_span').show();
-                    $('.philhealth_span').html(`<a href="/storage/documents_files/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                    $('.philhealth_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
                     $('#philhealth_view').hide();
                     $('#philhealth_delete_button').show();
                 }
@@ -1118,7 +1110,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#police_clearance_filename').val(value.police_clearance_file);
                     $('.police_clearance_div').hide();
                     $('.police_clearance_span').show();
-                    $('.police_clearance_span').html(`<a href="/storage/documents_files/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                    $('.police_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
                     $('#police_clearance_view').hide();
                     $('#police_clearance_delete_button').show();
                 }
@@ -1127,7 +1119,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#resume_filename').val(value.resume_file);
                     $('.resume_div').hide();
                     $('.resume_span').show();
-                    $('.resume_span').html(`<a href="/storage/documents_files/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                    $('.resume_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
                     $('#resume_view').hide();
                     $('#resume_delete_button').show();
                 }
@@ -1136,7 +1128,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#sss_filename').val(value.sss_file);
                     $('.sss_div').hide();
                     $('.sss_span').show();
-                    $('.sss_span').html(`<a href="/storage/documents_files/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                    $('.sss_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
                     $('#sss_view').hide();
                     $('#sss_delete_button').show();
                 }
@@ -1145,7 +1137,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#transcript_of_records_filename').val(value.transcript_of_records_file);
                     $('.transcript_of_records_div').hide();
                     $('.transcript_of_records_span').show();
-                    $('.transcript_of_records_span').html(`<a href="/storage/documents_files/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                    $('.transcript_of_records_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
@@ -1588,7 +1580,7 @@ $(document).on('click','.btn_termination_delete',function(){
                 //             }
                 //         });
                 //         setTimeout(() => {
-                //             $('#province').change();  
+                //             $('#province').change();
                 //             setTimeout(() => {
                 //                 $('.city').each(function(){
                 //                     if($(this).html() == value.city){

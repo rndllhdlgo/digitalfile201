@@ -549,11 +549,11 @@ $('#note_required').on('click',function(){
     $('#last_name').val('Hidalgo');
     $('#nickname').val('Dell');
     $('#address').val('sample');
-    $('#gender').val('Male');
-    $('#height').val('5"3');
+    $('#gender').val('MALE');
+    $('#height').val('153cm');
     $('#weight').val('55kgs');
     $('#religion').val('Catholic');
-    $('#civil_status').val('Single');
+    $('#civil_status').val('SINGLE');
     $('#email_address').val('rendellhidalgo11@gmail.com');
     $('#cellphone_number').val('09322003718');
     $('#father_name').val('Reynaldo Hidalgo');
@@ -565,9 +565,12 @@ $('#note_required').on('click',function(){
     $('#emergency_contact_name').val('Marlyn Hidalgo');
     $('#emergency_contact_relationship').val('Mother');
     $('#emergency_contact_number').val('09322003718');
+    $('#birthday').val('2013-02-11');
+    $('#birthday').change();
+    $('#ownership').val('RENT');
 
     //Work Info
-    $('#employee_number').val('50006');
+    $('#employee_number').val('50008');
     $('#employee_company').val('4');
     $('#employee_department').val('1');
     $('#employee_branch').val('3');

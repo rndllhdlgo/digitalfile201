@@ -37,7 +37,7 @@ class HomeController extends Controller
     public function index()
     {
         // $employee_list = PersonalInformationTable::all();
-        
+
         // foreach($employee_list as $key => $value){
         //     if(!User::where('emp_number',$value['empno'])->first()){
         //         $users = new User;
@@ -51,7 +51,7 @@ class HomeController extends Controller
         //     }
 
         // }
-        
+
         // Role::create(['name' => 'ENCODER']);
         // This code creates a new role in a Laravel application with the name "ADMIN".
         // Permission::create(['name' => 'delete employee']);
@@ -74,10 +74,10 @@ class HomeController extends Controller
         // else{
         //     return 'not save';
         // }
-        
+
         // auth()->user()->givePermissionTo('update employee');
-        // return auth()->user()->getAllPermissions(); 
-        // return User::role('ADMIN')->get(); 
+        // return auth()->user()->getAllPermissions();
+        // return User::role('ADMIN')->get();
         // return auth()->user()->revokePermissionTo('edit');
         // return User::permission('edit')->get();
         // if(auth()->user()->hasPermissionTo('edit')){ to check if current role hasPermission('value')
@@ -89,11 +89,11 @@ class HomeController extends Controller
         // auth()->user()->givePermissionTo('add employee');
         // auth()->user()->assignRole('ADMIN');
         // return auth()->user()->permissions;
-                
+
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
-        
+
         $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();

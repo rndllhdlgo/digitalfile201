@@ -273,9 +273,10 @@
                                 </tbody>
                             </table>
                         </div> --}}
-                        <hr style="border:0.5px solid black; opacity:100%;">
                         
-                        <div class="column_six" style="padding:5px;">
+                        <div class="column_six" style="padding:5px; display:none;">
+                        <hr style="border:0.5px solid black; opacity:100%;">
+
                             <div class="row mb-1">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK EXPERIENCE</u></h5>
                             </div>

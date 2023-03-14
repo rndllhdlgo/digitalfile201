@@ -136,7 +136,7 @@ html::-webkit-scrollbar-track:hover {
     background-color: white;
     color:#0d1a80 !important;
     border-radius: 5px;
-} 
+}
 .logout-text{
     color:black !important;
 }
@@ -170,12 +170,12 @@ thead{
     font-weight:600;
 }
 td{
-    font-size: 16px; 
+    font-size: 16px;
 }
 
 strong{
     color:black !important;
-} 
+}
 
 /* Validation Design */
 .validation{
@@ -418,15 +418,15 @@ input[type=search]:focus{
 .custom-file-button input[type=file] {
     margin-left: -2px !important;
   }
-  
+
   .custom-file-button input[type=file]::-webkit-file-upload-button {
     display: none;
   }
-  
+
   .custom-file-button input[type=file]::file-selector-button {
     display: none;
   }
-  
+
   .custom-file-button:hover label {
     background-color: #dde0e3;
     cursor: pointer;
@@ -595,8 +595,8 @@ th{
 }
 
 @media print {
-    .page-break { 
-        page-break-after: always; 
+    .page-break {
+        page-break-after: always;
     }
 }
 
@@ -630,7 +630,6 @@ th{
 
 .cropper-bg{
     margin-top: -25px;
-    /* height: 195px !important; */
 }
 
 .center_div{
@@ -644,4 +643,5 @@ th{
     border-radius: 0 !important;
     width:42px !important;
     zoom:85% !important;
+    box-shadow: none !important;
 }

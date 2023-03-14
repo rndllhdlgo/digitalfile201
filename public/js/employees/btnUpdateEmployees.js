@@ -158,9 +158,9 @@ $('#btnUpdate').on('click',function(){
                         var primary_school_address = $('#primary_school_address').val();
                         var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
                         var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
-        
+
                         $.ajax({
-                            url:"/employees/updateEducationalAttainment", 
+                            url:"/employees/updateEducationalAttainment",
                             type:"POST",
                             headers:{
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -178,12 +178,12 @@ $('#btnUpdate').on('click',function(){
                                 primary_school_inclusive_years_to:primary_school_inclusive_years_to
                             }
                         });
-        
+
                         var past_medical_condition = $('#past_medical_condition').val();
                         var allergies = $('#allergies').val();
                         var medication = $('#medication').val();
                         var psychological_history = $('#psychological_history').val();
-        
+
                         $.ajax({
                             url:"/employees/updateMedicalHistory",
                             type:"POST",
@@ -205,7 +205,7 @@ $('#btnUpdate').on('click',function(){
                         var employee_overtime_pay = $('#employee_overtime_pay').val();
                         var employee_bonus = $('#employee_bonus').val();
                         var employee_insurance = $('#employee_insurance').val()
-        
+
                         $.ajax({
                             url:"/employees/updateCompensationBenefits",
                             type:"POST",
@@ -448,7 +448,7 @@ $('#btnUpdate').on('click',function(){
                         if(current_user_level != 'EMPLOYEE'){
                             $('#documents_form').submit();
                         }
-                        
+
                         $('#loading').hide();
                         if(current_user_level == 'EMPLOYEE'){
                             // Swal.fire({
@@ -464,7 +464,7 @@ $('#btnUpdate').on('click',function(){
                             //     timer: 5000,
                             //     timerProgressBar: true,
                             //     showConfirmButton: false,
-                            //     allowOutsideClick: false                      
+                            //     allowOutsideClick: false
                             // }).then((result) => {
                             //     if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
                             //         window.location.href = '/logout';
@@ -493,7 +493,7 @@ $('#btnUpdate').on('click',function(){
                                 title: 'UPDATE SUCCESS'
                             });
                         }
-                        
+
                         // Swal.fire('UPDATE SUCCESS','','success');
                         // setTimeout(function(){window.location.reload();}, 2000);
                     }

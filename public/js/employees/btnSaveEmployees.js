@@ -20,6 +20,7 @@
 //         }
 //     });
 // }
+
 var employee_image;
 function employee_image_save(){
     var extension = "jpeg";
@@ -36,9 +37,9 @@ function employee_image_save(){
     $.ajax({
         url: '/employees/insertImage',
         method: 'post',
-        data: { 
+        data: {
                 employee_image: employee_image,
-                image_data: croppedImageData 
+                image_data: croppedImageData
               },
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -61,7 +62,6 @@ $('#btnSave').on('click', function(){
         var gender = $('#gender').val();
         var civil_status = $('#civil_status').val();
         var address = $('#address').val();
-        // var house = $('input[name=house]:checked').val();
         var ownership = $('#ownership').val();
         var province = $("#province option:selected").text();
         var city = $("#city option:selected").text();
@@ -84,7 +84,7 @@ $('#btnSave').on('click', function(){
         var emergency_contact_name = $('#emergency_contact_name').val();
         var emergency_contact_relationship = $('#emergency_contact_relationship').val();
         var emergency_contact_number = $('#emergency_contact_number').val();
-        
+
         Swal.fire({
         title: 'Do you want to save?',
         allowOutsideClick: false,
@@ -108,7 +108,7 @@ $('#btnSave').on('click', function(){
             else{
                 employee_image = $('#employee_image').val();
             }
-            
+
             $.ajax({
                 url:"/employees/savePersonalInformation",
                 type:"POST",
@@ -212,7 +212,7 @@ $('#btnSave').on('click', function(){
                             var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
 
                             $.ajax({
-                                url:"/employees/saveEducationalAttainment", 
+                                url:"/employees/saveEducationalAttainment",
                                 type:"POST",
                                 headers:{
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -290,7 +290,7 @@ $('#btnSave').on('click', function(){
                                         },
                                     });
                                 });
-                                
+
                                 $('.college_tr').each(function(){
                                     $.ajax({
                                         type: 'POST',
@@ -392,7 +392,7 @@ $('#btnSave').on('click', function(){
                         }
                 },
             });
-        } 
+        }
         else if (save.isDenied) {
             Swal.fire("SAVE CANCELLED", "", "info");
         }
