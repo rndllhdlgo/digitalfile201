@@ -2923,7 +2923,7 @@ class EmployeesController extends Controller
     }
 
     public function job_history_summary_data(Request $request){
-        return $job_history_summary_data = JobHistoryTable::where('employee_id',$request->id)->get();
+        return JobHistoryTable::where('employee_id',$request->id)->get();
     }
 
     public function memo_data(Request $request){

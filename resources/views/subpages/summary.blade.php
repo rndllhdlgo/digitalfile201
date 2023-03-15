@@ -250,47 +250,17 @@
                                 </div>
                             </div>
                         </div>
-
-                        {{-- <div class="page-break"></div> --}}
-                        {{-- <hr style="border:0.5px solid black; opacity:100%;">
-
-                        <div class="column_six" style="padding:5px;">
-                            <div class="row mb-1">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
-                            </div>
-
-                            <table id="job_history_table_summary" class="table-bordered job_history_table_summary">
-                                <thead class="thead-educational">
-                                    <tr>
-                                        <th style="border:none;font-size:15px;">COMPANY</th>
-                                        <th style="border:none;">JOB DESCRIPTION</th>
-                                        <th style="border:none;">JOB POSITION</th>
-                                        <th style="border:none;">CONTACT NUMBER</th>
-                                        <th style="border:none;" colspan="2">INCLUSIVE YEARS</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="job_history_table_summary_tbody">
-                                </tbody>
-                            </table>
-                        </div> --}}
                         
                         <div class="column_six" style="padding:5px; display:none;">
-                        <hr style="border:0.5px solid black; opacity:100%;">
+                            <hr style="border:0.5px solid black; opacity:100%;">
 
-                            <div class="row mb-1">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK EXPERIENCE</u></h5>
-                            </div>
+                                <div class="row mb-1">
+                                    <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK EXPERIENCE</u></h5>
+                                </div>
 
-                            <div id="job_history_summary_div" class="row"></div>
+                                <div id="job_history_summary_div" class="row"></div>
                         </div>
-
-                        {{-- <div class="column_six" style="padding:5px;">
-                            <div class="row mb-1">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
-                            </div>
-                        </div> --}}
-
-                        {{-- <div class="page-break"></div> --}}
+                       
                         <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_seven mb-3" id="benefits_summary" style="padding:5px;">

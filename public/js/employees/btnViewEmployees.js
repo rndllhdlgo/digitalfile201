@@ -547,9 +547,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){
                             $('#job_history_table_orig').hide();
+                            $('.column_six').hide();
                         }
                         else{
                             $('#job_history_table_orig').show();
+                            $('.column_six').show();
                         }
                     }
                 });
@@ -561,7 +563,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             id: value.id,
                         },
                         success: function (data) {
-                            $('.column_six').show();
                             for(var job_content = 0; job_content < data.length; job_content++){
                                 var job_company_name = data[job_content].job_company_name;
                                 var job_description = data[job_content].job_description;
@@ -576,58 +577,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             }
                         }
                     });
-
-
-                // $('.job_history_table_summary').dataTable().fnDestroy();
-                // $('.job_history_table_summary').DataTable({
-                //     searching: false,
-                //     paging: false,
-                //     ordering: false,
-                //     info: false,
-                //     autoWidth: false,
-                //     language:{
-                //         emptyTable: "No data available in table",
-                //         processing: "Loading...",
-                //     },
-                //     serverSide: true,
-                //     ajax: {
-                //         url: '/employees/job_history_data',
-                //         async: false,
-                //         data:{
-                //             id: value.id,
-                //         }
-                //     },
-                //     columns: [
-                //         { data: 'job_company_name',width : '15%'},
-                //         { data: 'job_description',width : '15%'},
-                //         { data: 'job_position', width: '15%'},
-                //         { data: 'job_contact_number', width : '15%'},
-                //         {
-                //             data: 'job_inclusive_years_from',
-                //             "render":function(data,type,row){
-                //                 return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
-                //             },
-                //             width : '15%'
-                //         },
-                //         {
-                //             data: 'job_inclusive_years_to',
-                //             "render":function(data,type,row){
-                //                 return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
-                //             },
-                //             width : '15%'
-                //         }
-                //     ],
-                //     initComplete: function(){
-                //         if(!$('.job_history_table_summary').DataTable().data().any()){
-                //             $('#job_history_table_summary').hide();
-                //             $('.column_six').hide();
-                //         }
-                //         else{
-                //             $('#job_history_table_summary').show();
-                //             $('.column_six').show();
-                //         }
-                //     }
-                // });
 
                     if(current_user_level != 'EMPLOYEE'){
                         $('.memo_table_data').dataTable().fnDestroy();

@@ -112,19 +112,4 @@ class HomeController extends Controller
                     ->get();
         return view('pages.org', compact('employees'));
     }
-
-    // public function ping(){
-    //     // $start = microtime(true);
-    //     // $conn = DB::connection();
-    //     // $end = microtime(true) - $start;
-    //     // $time = number_format($end * 100000, 3);
-    //     // return $time;
-
-    //     $start = microtime(true);
-    //     // $conn = DB::connection();
-    //     $conn = Ping::limit(50000)->get();
-    //     $end = microtime(true) - $start;
-    //     $time = number_format($end, 3);
-    //     return $time;
-    // }
 }
