@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\MaintenanceController;
@@ -19,12 +20,13 @@ use App\Http\Controllers\UpdatesController;
 |
 */
 
-//Authentication Routes
+//Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
 Route::get('/', 'HomeController@index');
 Route::get('/org', 'HomeController@org');
-
+Route::get('/index/data','HomeController@index_data');
+Route::get('/index_reload_data','HomeController@index_reload_data');
 
 // Pages Controller
 Route::any('/employees', 'PagesController@employees');
@@ -38,8 +40,8 @@ Route::any('/updates', 'PagesController@updates');
 Route::get('/getCities','PagesController@getCities');
 Route::get('/getRegion','PagesController@getRegion');
 
-Route::get('/index/data','PagesController@index_data');
-Route::get('/index_reload_data','PagesController@index_reload_data');
+// Route::get('/index/data','PagesController@index_data');
+// Route::get('/index_reload_data','PagesController@index_reload_data');
 
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');

@@ -15,6 +15,7 @@ use App\Models\JobPosition;
 use App\Models\JobDescription;
 use App\Models\Position;
 use App\Models\Department;
+use App\User;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -79,7 +80,8 @@ class PagesController extends Controller
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
         }
-        return view('pages.users');
+        $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
+        return view('pages.users', compact('user_level'));
     }
     public function maintenance(){
         if(!auth()->user()){
@@ -101,27 +103,27 @@ class PagesController extends Controller
         return view('pages.updates');
     }
 
-    public function index_reload_data(){
-        if(UserLogs::count() == 0){
-            return 'NULL';
-        }
-        $data_update = UserLogs::latest('updated_at')->first()->updated_at;
-        return $data_update;
-    }
+    // public function index_reload_data(){
+    //     if(UserLogs::count() == 0){
+    //         return 'NULL';
+    //     }
+    //     $data_update = UserLogs::latest('updated_at')->first()->updated_at;
+    //     return $data_update;
+    // }
 
-    public function index_data(){
-        $list = UserLogs::selectRaw('user_logs.id,
-                                     users.id AS user_id, 
-                                     users.name AS username, 
-                                     users.email AS email, 
-                                     users.user_level AS role, 
-                                     user_logs.activity AS activity, 
-                                     user_logs.created_at AS date, 
-                                     DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
-            ->join('users', 'users.id', '=', 'user_id')
-            ->orderBy('user_logs.id', 'DESC')
-            ->get();
+    // public function index_data(){
+    //     $list = UserLogs::selectRaw('user_logs.id,
+    //                                  users.id AS user_id, 
+    //                                  users.name AS username, 
+    //                                  users.email AS email, 
+    //                                  users.user_level AS role, 
+    //                                  user_logs.activity AS activity, 
+    //                                  user_logs.created_at AS date, 
+    //                                  DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
+    //         ->join('users', 'users.id', '=', 'user_id')
+    //         ->orderBy('user_logs.id', 'DESC')
+    //         ->get();
 
-        return DataTables::of($list)->make(true);
-    }
+    //     return DataTables::of($list)->make(true);
+    // }
 }

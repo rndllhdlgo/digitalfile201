@@ -67,6 +67,10 @@ $('.filter-input').on('keyup search', function(){
     usersTable.column($(this).data('column')).search($(this).val()).draw();
 });
 
+$('.filter-select').on('change', function(){
+    usersTable.column($(this).data('column')).search(!$(this).val()?'':'^'+$(this).val()+'$',true,false,true).draw();
+});
+
 $('#addUserBtn').on('click',function(){
     $('#user_level').val('');
     $('#name').val('');

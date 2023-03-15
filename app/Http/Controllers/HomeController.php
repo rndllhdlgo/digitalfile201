@@ -16,6 +16,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
 use Auth;
+use DataTables;
 
 class HomeController extends Controller
 {
@@ -101,7 +102,8 @@ class HomeController extends Controller
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
         $incomplete = EmployeeStatus::where('employee_status','Incomplete')->count();
-        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','incomplete'));
+        $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
+        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','incomplete','user_level'));
     }
 
     public function org()
@@ -111,5 +113,29 @@ class HomeController extends Controller
                     ->where('employee_supervisor', '!=', '')
                     ->get();
         return view('pages.org', compact('employees'));
+    }
+
+    public function index_reload_data(){
+        if(UserLogs::count() == 0){
+            return 'NULL';
+        }
+        $data_update = UserLogs::latest('updated_at')->first()->updated_at;
+        return $data_update;
+    }
+
+    public function index_data(){
+        $list = UserLogs::selectRaw('user_logs.id,
+                                     users.id AS user_id, 
+                                     users.name AS username, 
+                                     users.email AS email, 
+                                     users.user_level AS role, 
+                                     user_logs.activity AS activity, 
+                                     user_logs.created_at AS date, 
+                                     DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
+            ->join('users', 'users.id', '=', 'user_id')
+            ->orderBy('user_logs.id', 'DESC')
+            ->get();
+
+        return DataTables::of($list)->make(true);
     }
 }
