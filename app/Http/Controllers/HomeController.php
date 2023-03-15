@@ -101,9 +101,9 @@ class HomeController extends Controller
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
-        $incomplete = EmployeeStatus::where('employee_status','Incomplete')->count();
+        $pending = EmployeeStatus::where('employee_status','Pending')->count();
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
-        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','incomplete','user_level'));
+        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','pending','user_level'));
     }
 
     public function org()

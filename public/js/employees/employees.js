@@ -20,9 +20,9 @@ $(document).ready(function(){
         $('#head_title').html('- INTERN');
         var filter = 'intern';
     }
-    else if(current_location == '/employees?employee_status=incomplete'){
+    else if(current_location == '/employees?employee_status=pending'){
         $('#head_title').html('- INCOMPLETE DETAILS');
-        var filter = 'incomplete';
+        var filter = 'pending';
     }
 
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;

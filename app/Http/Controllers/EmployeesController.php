@@ -48,9 +48,9 @@ class EmployeesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth'); 
+        $this->middleware('auth');
     }
-    
+
     public function employee_status(){
         if(PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->where('status','PENDING')->first()){
             return 'PENDING';
@@ -83,12 +83,14 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
                 )
                 ->where('work_information_tables.employment_status','Probationary')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
         else if($request->filter == 'regular'){
@@ -100,12 +102,15 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
+
                 )
                 ->where('work_information_tables.employment_status','Regular')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
         else if($request->filter == 'part_time'){
@@ -117,12 +122,14 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
                 )
                 ->where('work_information_tables.employment_status','Part Time')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
         else if($request->filter == 'agency'){
@@ -134,12 +141,14 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
                 )
                 ->where('work_information_tables.employment_status','Agency')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
         else if($request->filter == 'intern'){
@@ -151,15 +160,17 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'employee_status.employee_status'
                 )
                 ->where('work_information_tables.employment_status','Intern')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
-        else if($request->filter == 'incomplete'){
+        else if($request->filter == 'pending'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'work_information_tables.employee_number',
@@ -171,7 +182,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'employee_status.employee_status'
                 )
-                ->where('employee_status.employee_status','Incomplete')
+                ->where('employee_status.employee_status','Pending')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
@@ -282,9 +293,9 @@ class EmployeesController extends Controller
         ->where('personal_information_tables.id',$request->id)
         ->leftJoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
-        ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')  
-        ->leftJoin('documents','documents.employee_id','personal_information_tables.id')  
-        ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')  
+        ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')
+        ->leftJoin('documents','documents.employee_id','personal_information_tables.id')
+        ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
         ->get();
         return DataTables::of($employees)->toJson();
     }
@@ -312,7 +323,7 @@ class EmployeesController extends Controller
         $employee->empno = $request->empno;
         $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
         $employee->first_name =  strtoupper($request->first_name);
-        $employee->last_name = strtoupper($request->last_name); 
+        $employee->last_name = strtoupper($request->last_name);
         $employee->middle_name = strtoupper($request->middle_name);
         $employee->suffix = strtoupper($request->suffix);
         $employee->nickname = (!$request->nickname) ? strtoupper($request->first_name) : strtoupper($request->nickname);
@@ -343,7 +354,7 @@ class EmployeesController extends Controller
         $employee->emergency_contact_relationship = strtoupper($request->emergency_contact_relationship);
         $employee->emergency_contact_number = $request->emergency_contact_number;
         $sql = $employee->save();
-        
+
         if($sql){
             $result = 'true';
             $id = $employee->id;
@@ -413,26 +424,26 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $sql = $employee->save(); 
+            $sql = $employee->save();
 
             if($request->college_change == 'CHANGED'){
                 $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
             }
             else{
                 $college_update = NULL;
-            }            
+            }
 
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-    
+
                 if($request->college_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
                     $employee_logs->save();
-    
+
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
@@ -454,12 +465,12 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $sql = $employee->save(); 
+            $sql = $employee->save();
 
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-    
+
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->employee_id;
                 $employee_logs->user_id = auth()->user()->id;
@@ -470,7 +481,7 @@ class EmployeesController extends Controller
                 $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
                 $userlogs->save();
-                
+
             }
             else{
                 $result = 'false';
@@ -503,14 +514,14 @@ class EmployeesController extends Controller
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-        
+
                 if($request->training_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
                     $employee_logs->save();
-        
+
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
@@ -580,14 +591,14 @@ class EmployeesController extends Controller
             if($sql){
                 $result = 'true';
                 $id = $employee->id;
-        
+
                 if($request->vocational_change == 'CHANGED'){
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
                     $employee_logs->save();
-        
+
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
@@ -609,7 +620,7 @@ class EmployeesController extends Controller
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-            $sql = $employee->save(); 
+            $sql = $employee->save();
 
             if($sql){
                 $result = 'true';
@@ -725,7 +736,7 @@ class EmployeesController extends Controller
             $employee->medication = strtoupper($request->medication);
             $employee->psychological_history = strtoupper($request->psychological_history);
             $employee->save();
-        } 
+        }
     }
 
     public function saveCompensationBenefits(Request $request){
@@ -786,7 +797,7 @@ class EmployeesController extends Controller
         $emergency_contact_name_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_name;
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
-        
+
         $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]' : null;
 
         if(strtoupper($request->first_name) != $first_name_orig){
@@ -812,7 +823,7 @@ class EmployeesController extends Controller
         else{
             $last_name_change = NULL;
         }
-        
+
         if(strtoupper($request->suffix) != $suffix_orig){
             $suffix_new = strtoupper($request->suffix);
             $suffix_change = "[SUFFIX: FROM '$suffix_orig' TO '$suffix_new']";
@@ -828,7 +839,7 @@ class EmployeesController extends Controller
         else{
             $nickname_change = NULL;
         }
-        
+
         if($request->birthday != $birthday_orig){
             $birthday1 = Carbon::parse($birthday_orig)->format('F d, Y');
             $birthday2 = Carbon::parse($request->birthday)->format('F d, Y');
@@ -1086,34 +1097,34 @@ class EmployeesController extends Controller
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE 
-                                        $first_name_change 
-                                        $middle_name_change 
-                                        $last_name_change 
-                                        $suffix_change 
-                                        $nickname_change 
-                                        $birthday_change 
-                                        $gender_change 
-                                        $address_change 
-                                        $ownership_change 
-                                        $province_change 
-                                        $city_change 
-                                        $region_change 
-                                        $height_change 
-                                        $weight_change 
-                                        $religion_change 
-                                        $civil_status_change 
-                                        $email_address_change 
-                                        $telephone_number_change 
-                                        $cellphone_number_change 
-                                        $father_name_change 
-                                        $father_contact_number_change 
-                                        $father_profession_change 
-                                        $mother_name_change 
-                                        $mother_contact_number_change 
-                                        $mother_profession_change 
-                                        $emergency_contact_name_change 
-                                        $emergency_contact_relationship_change 
+                $employee_logs->logs = "USER HAS UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE
+                                        $first_name_change
+                                        $middle_name_change
+                                        $last_name_change
+                                        $suffix_change
+                                        $nickname_change
+                                        $birthday_change
+                                        $gender_change
+                                        $address_change
+                                        $ownership_change
+                                        $province_change
+                                        $city_change
+                                        $region_change
+                                        $height_change
+                                        $weight_change
+                                        $religion_change
+                                        $civil_status_change
+                                        $email_address_change
+                                        $telephone_number_change
+                                        $cellphone_number_change
+                                        $father_name_change
+                                        $father_contact_number_change
+                                        $father_profession_change
+                                        $mother_name_change
+                                        $mother_contact_number_change
+                                        $mother_profession_change
+                                        $emergency_contact_name_change
+                                        $emergency_contact_relationship_change
                                         $emergency_contact_number_change
                                         $employee_image_update
                                         ";
@@ -1121,34 +1132,34 @@ class EmployeesController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig) 
-                                       $first_name_change 
-                                       $middle_name_change 
-                                       $last_name_change 
-                                       $suffix_change 
-                                       $nickname_change 
-                                       $birthday_change 
-                                       $gender_change 
-                                       $address_change 
-                                       $ownership_change 
-                                       $province_change 
-                                       $city_change 
-                                       $region_change 
-                                       $height_change 
-                                       $weight_change 
-                                       $religion_change 
-                                       $civil_status_change 
-                                       $email_address_change 
-                                       $telephone_number_change 
-                                       $cellphone_number_change 
-                                       $father_name_change 
-                                       $father_contact_number_change 
-                                       $father_profession_change 
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig)
+                                       $first_name_change
+                                       $middle_name_change
+                                       $last_name_change
+                                       $suffix_change
+                                       $nickname_change
+                                       $birthday_change
+                                       $gender_change
+                                       $address_change
+                                       $ownership_change
+                                       $province_change
+                                       $city_change
+                                       $region_change
+                                       $height_change
+                                       $weight_change
+                                       $religion_change
+                                       $civil_status_change
+                                       $email_address_change
+                                       $telephone_number_change
+                                       $cellphone_number_change
+                                       $father_name_change
+                                       $father_contact_number_change
+                                       $father_profession_change
                                        $mother_name_change
-                                       $mother_contact_number_change 
-                                       $mother_profession_change 
-                                       $emergency_contact_name_change 
-                                       $emergency_contact_relationship_change 
+                                       $mother_contact_number_change
+                                       $mother_profession_change
+                                       $emergency_contact_name_change
+                                       $emergency_contact_relationship_change
                                        $emergency_contact_number_change
                                        $employee_image_update
                                        ";
@@ -1236,34 +1247,34 @@ class EmployeesController extends Controller
                 $employee_logs = new LogsTable;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE 
-                                        $first_name_change 
-                                        $middle_name_change 
-                                        $last_name_change 
-                                        $suffix_change 
-                                        $nickname_change 
-                                        $birthday_change 
-                                        $gender_change 
-                                        $address_change 
-                                        $ownership_change 
-                                        $province_change 
-                                        $city_change 
-                                        $region_change 
-                                        $height_change 
-                                        $weight_change 
-                                        $religion_change 
-                                        $civil_status_change 
-                                        $email_address_change 
-                                        $telephone_number_change 
-                                        $cellphone_number_change 
-                                        $father_name_change 
-                                        $father_contact_number_change 
-                                        $father_profession_change 
-                                        $mother_name_change 
-                                        $mother_contact_number_change 
-                                        $mother_profession_change 
-                                        $emergency_contact_name_change 
-                                        $emergency_contact_relationship_change 
+                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE
+                                        $first_name_change
+                                        $middle_name_change
+                                        $last_name_change
+                                        $suffix_change
+                                        $nickname_change
+                                        $birthday_change
+                                        $gender_change
+                                        $address_change
+                                        $ownership_change
+                                        $province_change
+                                        $city_change
+                                        $region_change
+                                        $height_change
+                                        $weight_change
+                                        $religion_change
+                                        $civil_status_change
+                                        $email_address_change
+                                        $telephone_number_change
+                                        $cellphone_number_change
+                                        $father_name_change
+                                        $father_contact_number_change
+                                        $father_profession_change
+                                        $mother_name_change
+                                        $mother_contact_number_change
+                                        $mother_profession_change
+                                        $emergency_contact_name_change
+                                        $emergency_contact_relationship_change
                                         $emergency_contact_number_change
                                         $employee_image_update
                                         ";
@@ -1271,34 +1282,34 @@ class EmployeesController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig) 
-                                       $first_name_change 
-                                       $middle_name_change 
-                                       $last_name_change 
-                                       $suffix_change 
-                                       $nickname_change 
-                                       $birthday_change 
-                                       $gender_change 
-                                       $address_change 
-                                       $ownership_change 
-                                       $province_change 
-                                       $city_change 
-                                       $region_change 
-                                       $height_change 
-                                       $weight_change 
-                                       $religion_change 
-                                       $civil_status_change 
-                                       $email_address_change 
-                                       $telephone_number_change 
-                                       $cellphone_number_change 
-                                       $father_name_change 
-                                       $father_contact_number_change 
-                                       $father_profession_change 
+                $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig)
+                                       $first_name_change
+                                       $middle_name_change
+                                       $last_name_change
+                                       $suffix_change
+                                       $nickname_change
+                                       $birthday_change
+                                       $gender_change
+                                       $address_change
+                                       $ownership_change
+                                       $province_change
+                                       $city_change
+                                       $region_change
+                                       $height_change
+                                       $weight_change
+                                       $religion_change
+                                       $civil_status_change
+                                       $email_address_change
+                                       $telephone_number_change
+                                       $cellphone_number_change
+                                       $father_name_change
+                                       $father_contact_number_change
+                                       $father_profession_change
                                        $mother_name_change
-                                       $mother_contact_number_change 
-                                       $mother_profession_change 
-                                       $emergency_contact_name_change 
-                                       $emergency_contact_relationship_change 
+                                       $mother_contact_number_change
+                                       $mother_profession_change
+                                       $emergency_contact_name_change
+                                       $emergency_contact_relationship_change
                                        $emergency_contact_number_change
                                        $employee_image_update
                                        ";
@@ -1350,7 +1361,7 @@ class EmployeesController extends Controller
         else{
             $date_hired_change = NULL;
         }
-        
+
         if($request->employee_shift != $employee_shift_orig){
             $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
             $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
@@ -1419,7 +1430,7 @@ class EmployeesController extends Controller
         else{
             $company_email_address_change = NULL;
         }
-        
+
         if($request->company_contact_number != $company_contact_number_orig){
             $company_contact_number_new = $request->company_contact_number;
             $company_contact_number_change = "[WORK CONTACT NO.: FROM '$company_contact_number_orig' TO '$company_contact_number_new']";
@@ -1526,67 +1537,67 @@ class EmployeesController extends Controller
                 $userlogs = new LogsTable;
                 $userlogs->employee_id = $request->id;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE 
-                                    $employee_number_change 
-                                    $date_hired_change 
-                                    $employee_shift_change 
-                                    $employee_company_change 
-                                    $employee_branch_change 
-                                    $employee_department_change 
-                                    $employee_position_change 
-                                    $employment_status_change 
-                                    $employment_origin_change 
-                                    $company_email_address_change 
-                                    $company_contact_number_change 
-                                    $hmo_number_change 
-                                    $sss_number_change 
-                                    $pag_ibig_number_change 
-                                    $philhealth_number_change 
-                                    $tin_number_change 
+                $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
+                                    $employee_number_change
+                                    $date_hired_change
+                                    $employee_shift_change
+                                    $employee_company_change
+                                    $employee_branch_change
+                                    $employee_department_change
+                                    $employee_position_change
+                                    $employment_status_change
+                                    $employment_origin_change
+                                    $company_email_address_change
+                                    $company_contact_number_change
+                                    $hmo_number_change
+                                    $sss_number_change
+                                    $pag_ibig_number_change
+                                    $philhealth_number_change
+                                    $tin_number_change
                                     $account_number_change ";
                 $userlogs->save();
 
                 $userlogs = new History;
                 $userlogs->employee_id = $request->id;
-                $userlogs->history = "UPDATED DETAILS 
-                                      $employee_number_change 
-                                      $date_hired_change 
-                                      $employee_company_change 
-                                      $employee_shift_change 
-                                      $employee_branch_change 
-                                      $employee_department_change 
-                                      $employee_position_change 
-                                      $employment_status_change 
-                                      $employment_origin_change 
-                                      $company_email_address_change 
-                                      $company_contact_number_change 
-                                      $hmo_number_change 
-                                      $sss_number_change 
-                                      $pag_ibig_number_change 
-                                      $philhealth_number_change 
-                                      $tin_number_change 
+                $userlogs->history = "UPDATED DETAILS
+                                      $employee_number_change
+                                      $date_hired_change
+                                      $employee_company_change
+                                      $employee_shift_change
+                                      $employee_branch_change
+                                      $employee_department_change
+                                      $employee_position_change
+                                      $employment_status_change
+                                      $employment_origin_change
+                                      $company_email_address_change
+                                      $company_contact_number_change
+                                      $hmo_number_change
+                                      $sss_number_change
+                                      $pag_ibig_number_change
+                                      $philhealth_number_change
+                                      $tin_number_change
                                       $account_number_change";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig) 
-                                        $employee_number_change 
-                                        $date_hired_change 
-                                        $employee_shift_change 
-                                        $employee_company_change 
-                                        $employee_branch_change 
-                                        $employee_department_change 
-                                        $employee_position_change 
-                                        $employment_status_change 
-                                        $employment_origin_change 
-                                        $company_email_address_change 
-                                        $company_contact_number_change 
-                                        $hmo_number_change 
-                                        $sss_number_change 
-                                        $pag_ibig_number_change 
-                                        $philhealth_number_change 
-                                        $tin_number_change 
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
+                                        $employee_number_change
+                                        $date_hired_change
+                                        $employee_shift_change
+                                        $employee_company_change
+                                        $employee_branch_change
+                                        $employee_department_change
+                                        $employee_position_change
+                                        $employment_status_change
+                                        $employment_origin_change
+                                        $company_email_address_change
+                                        $company_contact_number_change
+                                        $hmo_number_change
+                                        $sss_number_change
+                                        $pag_ibig_number_change
+                                        $philhealth_number_change
+                                        $tin_number_change
                                         $account_number_change";
                 $userlogs->save();
             }
@@ -1660,7 +1671,7 @@ class EmployeesController extends Controller
             else{
                 $secondary_school_inclusive_years_from_change = NULL;
             }
-            
+
             if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
                 $secondary_school_inclusive_years_to_1 = Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y');
                 $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
@@ -1694,7 +1705,7 @@ class EmployeesController extends Controller
             else{
                 $primary_school_inclusive_years_from_change = NULL;
             }
-            
+
             if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
                 $primary_school_inclusive_years_to_1 = Carbon::parse($primary_school_inclusive_years_to_orig)->format('F Y');
                 $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
@@ -1718,7 +1729,7 @@ class EmployeesController extends Controller
                 ]);
 
                 if($sql){
-                    
+
                     $result = 'true';
                     $id = $employee->id;
 
@@ -1750,7 +1761,7 @@ class EmployeesController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1786,7 +1797,7 @@ class EmployeesController extends Controller
                 ]);
 
                 if($sql){
-                    
+
                     $result = 'true';
                     $id = $employee->id;
 
@@ -1818,7 +1829,7 @@ class EmployeesController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1898,7 +1909,7 @@ class EmployeesController extends Controller
                 $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
                 $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
                 $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
-                
+
                 if($request->past_medical_condition != $past_medical_condition_orig){
                     $past_medical_condition_new = $request->past_medical_condition;
                     $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
@@ -1906,7 +1917,7 @@ class EmployeesController extends Controller
                 else{
                     $past_medical_condition_change = NULL;
                 }
-               
+
                 if($request->allergies != $allergies_orig){
                     $allergies_new = $request->allergies;
                     $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
@@ -1941,10 +1952,10 @@ class EmployeesController extends Controller
                         ]);
 
                     if($sql){
-            
+
                         $result = 'true';
                         $id = $employee->id;
-            
+
                         if(
                             $request->past_medical_condition != $past_medical_condition_orig ||
                             $request->allergies != $allergies_orig ||
@@ -1964,7 +1975,7 @@ class EmployeesController extends Controller
 
                             $userlogs = new UserLogs;
                             $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                     $past_medical_condition_change
                                                     $allergies_change
                                                     $medication_change
@@ -1991,10 +2002,10 @@ class EmployeesController extends Controller
                     ]);
 
                     if($sql){
-            
+
                         $result = 'true';
                         $id = $employee->id;
-            
+
                         if(
                             $request->past_medical_condition != $past_medical_condition_orig ||
                             $request->allergies != $allergies_orig ||
@@ -2014,7 +2025,7 @@ class EmployeesController extends Controller
 
                             $userlogs = new UserLogs;
                             $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                     $past_medical_condition_change
                                                     $allergies_change
                                                     $medication_change
@@ -2066,7 +2077,7 @@ class EmployeesController extends Controller
             }
             else{
                 $employee_salary_change = NULL;
-            } 
+            }
 
             if($request->employee_incentives != $employee_incentives_orig){
                 $employee_incentives_new = $request->employee_incentives;
@@ -2074,7 +2085,7 @@ class EmployeesController extends Controller
             }
             else{
                 $employee_incentives_change = NULL;
-            } 
+            }
 
             if($request->employee_overtime_pay != $employee_overtime_pay_orig){
                 $employee_overtime_pay_new = $request->employee_overtime_pay;
@@ -2082,7 +2093,7 @@ class EmployeesController extends Controller
             }
             else{
                 $employee_overtime_pay_change = NULL;
-            } 
+            }
 
             if($request->employee_bonus != $employee_bonus_orig){
                 $employee_bonus_new = $request->employee_bonus;
@@ -2090,7 +2101,7 @@ class EmployeesController extends Controller
             }
             else{
                 $employee_bonus_change = NULL;
-            } 
+            }
 
             if($request->employee_insurance != $employee_insurance_orig){
                 $employee_insurance_new = $request->employee_insurance;
@@ -2098,7 +2109,7 @@ class EmployeesController extends Controller
             }
             else{
                 $employee_insurance_change = NULL;
-            } 
+            }
 
             $update = CompensationBenefits::where('employee_id',$request->employee_id)
             ->update([
@@ -2110,7 +2121,7 @@ class EmployeesController extends Controller
             ]);
 
             if($update){
-            
+
                 $result = 'true';
                 $id = $employee->id;
 
@@ -2135,7 +2146,7 @@ class EmployeesController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) 
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                             $employee_salary_change
                                             $employee_incentives_change
                                             $employee_overtime_pay_change
@@ -2164,7 +2175,7 @@ class EmployeesController extends Controller
             foreach($request->file('memo_file') as $key => $value){
                 $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$memoFileName);
-                
+
                 $memo = new MemoTable;
                 $memo->employee_id = $request->employee_id;
                 $memo->memo_subject = $request->memo_subject[$key];
@@ -2179,7 +2190,7 @@ class EmployeesController extends Controller
             foreach($request->file('evaluation_file') as $key => $value){
                 $evaluationFileName = $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
-                
+
                 $evaluation = new EvaluationTable;
                 $evaluation->employee_id = $request->employee_id;
                 $evaluation->evaluation_reason = $request->evaluation_reason[$key];
@@ -2194,7 +2205,7 @@ class EmployeesController extends Controller
             foreach($request->file('contracts_file') as $key => $value){
                 $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
-                
+
                 $contracts = new ContractTable;
                 $contracts->employee_id = $request->employee_id;
                 $contracts->contracts_type = $request->contracts_type[$key];
@@ -2203,7 +2214,7 @@ class EmployeesController extends Controller
                 $contracts->save();
             }
         }
-    
+
             $document = new Document;
             $document->employee_id = $request->employee_id;
 
@@ -2222,7 +2233,7 @@ class EmployeesController extends Controller
             $birthcertificateFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
             $document->birthcertificate_file = $birthcertificateFilename;
         }
-            
+
         if($request->hasFile('diploma_file')){
             $diplomaFile = $request->file('diploma_file');
             $diplomaExtension = $diplomaFile->getClientOriginalExtension();
@@ -2254,7 +2265,7 @@ class EmployeesController extends Controller
             $pagibigFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
             $document->pag_ibig_file = $pagibigFilename;
         }
-            
+
         if($request->hasFile('philhealth_file')){
             $philhealthFile = $request->file('philhealth_file');
             $philhealthExtension = $philhealthFile->getClientOriginalExtension();
@@ -2262,7 +2273,7 @@ class EmployeesController extends Controller
             $philhealthFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
             $document->philhealth_file = $philhealthFilename;
         }
-            
+
         if($request->hasFile('police_clearance_file')){
             $policeClearanceFile = $request->file('police_clearance_file');
             $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
@@ -2286,7 +2297,7 @@ class EmployeesController extends Controller
             $sssFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
             $document->sss_file = $sssFilename;
         }
-            
+
         if($request->hasFile('tor_file')){
             $torFile = $request->file('tor_file');
             $torExtension = $torFile->getClientOriginalExtension();
@@ -2306,13 +2317,13 @@ class EmployeesController extends Controller
             $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
             $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
             $employee = Document::where('employee_id',$request->employee_id)->first();
-            
+
             if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
                 $MemoCountBefore = MemoTable::where('employee_id', $request->employee_id)->count();
                 foreach($request->file('memo_file') as $key => $value){
                     $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
                     $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$memoFileName);
-                    
+
                     $memo = new MemoTable;
                     $memo->employee_id = $request->employee_id;
                     $memo->memo_subject = $request->memo_subject[$key];
@@ -2346,7 +2357,7 @@ class EmployeesController extends Controller
                 foreach($request->file('evaluation_file') as $key => $value){
                     $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
                     $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
-                    
+
                     $evaluation = new EvaluationTable;
                     $evaluation->employee_id = $request->employee_id;
                     $evaluation->evaluation_reason = $request->evaluation_reason[$key];
@@ -2356,7 +2367,7 @@ class EmployeesController extends Controller
                     $evaluation->save();
                 }
                 $EvaluationCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
-            
+
                 if($EvaluationCountBefore != $EvaluationCountAfter){
                     $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
                     $employee_logs = new LogsTable;
@@ -2379,7 +2390,7 @@ class EmployeesController extends Controller
                 foreach($request->file('contracts_file') as $key => $value){
                     $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
                     $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
-                    
+
                     $contracts = new ContractTable;
                     $contracts->employee_id = $request->employee_id;
                     $contracts->contracts_type = $request->contracts_type[$key];
@@ -2405,13 +2416,13 @@ class EmployeesController extends Controller
                     $userlogs->save();
                 }
             }
-            
+
             if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
                 $ResignationCountBefore = ResignationTable::where('employee_id',$request->employee_id)->count();
                 foreach($request->file('resignation_file') as $key => $value){
                     $resignationFileName = $employee_number.'_Resignation_File_'.$timestamp.'.'.$request->resignation_file[$key]->extension();
                     $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
-                    
+
                     $resignation = new ResignationTable;
                     $resignation->employee_id = $request->employee_id;
                     $resignation->resignation_reason = $request->resignation_reason[$key];
@@ -2469,7 +2480,7 @@ class EmployeesController extends Controller
                     $userlogs->save();
                 }
             }
-            
+
             if(!$employee){
                 $document = new Document;
                 $document->employee_id = $request->employee_id;
@@ -2480,7 +2491,7 @@ class EmployeesController extends Controller
                     $barangayClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
                     $document->barangay_clearance_file = $barangayClearanceFilename;
                 }
-                
+
                 if($request->hasFile('birthcertificate_file')){
                     $birthcertificateFile = $request->file('birthcertificate_file');
                     $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
@@ -2520,7 +2531,7 @@ class EmployeesController extends Controller
                     $pagibigFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
                     $document->pag_ibig_file = $pagibigFilename;
                 }
-                
+
                 if($request->hasFile('philhealth_file')){
                     $philhealthFile = $request->file('philhealth_file');
                     $philhealthExtension = $philhealthFile->getClientOriginalExtension();
@@ -2536,7 +2547,7 @@ class EmployeesController extends Controller
                     $policeClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
                     $document->police_clearance_file = $policeClearanceFilename;
                 }
-                
+
                 if($request->hasFile('resume_file')){
                     $resumeFile = $request->file('resume_file');
                     $resumeExtension = $resumeFile->getClientOriginalExtension();
@@ -2552,7 +2563,7 @@ class EmployeesController extends Controller
                     $sssFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
                     $document->sss_file = $sssFilename;
                 }
-                
+
                 if($request->hasFile('tor_file')){
                     $torFile = $request->file('tor_file');
                     $torExtension = $torFile->getClientOriginalExtension();
@@ -2561,13 +2572,13 @@ class EmployeesController extends Controller
                     $document->transcript_of_records_file = $torFilename;
                 }
                 $document->save();
-                
+
                 sleep(2);
                 return Redirect::to(url()->previous());
             }
             else{
                 $document_orig = Document::where('employee_id', $request->employee_id)->first();
-                
+
                 if($request->hasFile('barangay_clearance_file')){
                     if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename)){
                         unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename);
@@ -2663,7 +2674,7 @@ class EmployeesController extends Controller
                 else{
                     $pag_ibig_file = $request->pag_ibig_filename;
                 }
-                
+
                 if($request->hasFile('philhealth_file')){
                     if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename)){
                         unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename);
@@ -2712,7 +2723,7 @@ class EmployeesController extends Controller
                     $resume_file = $request->resume_filename;
                 }
 
-                if($request->hasFile('sss_file')){                
+                if($request->hasFile('sss_file')){
                     if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename)){
                         unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename);
                     }
@@ -2733,7 +2744,7 @@ class EmployeesController extends Controller
                         unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->transcript_of_records_filename);
                     }
                     Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->transcript_of_records_file);
-                        
+
                     $torFile = $request->file('tor_file');
                     $torExtension = $torFile->getClientOriginalExtension();
                     $torFilename = $employee_number.'_Transcript_of_Records_File'.$timestamp.'.'.$torExtension;
@@ -2742,7 +2753,7 @@ class EmployeesController extends Controller
                 }
                 else{
                     $transcript_of_records_file = $request->transcript_of_records_filename;
-                } 
+                }
 
                 Document::where('employee_id',$request->employee_id)
                     ->update([
@@ -2836,7 +2847,7 @@ class EmployeesController extends Controller
                 else{
                     $tor_update = NULL;
                 }
-                
+
 
                 if(
                     $request->hasFile('barangay_clearance_file')
@@ -2850,7 +2861,7 @@ class EmployeesController extends Controller
                 || $request->hasFile('resume_file')
                 || $request->hasFile('sss_file')
                 || $request->hasFile('tor_file')
-                
+
                 ){
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $employee_details->id;
@@ -2945,7 +2956,7 @@ class EmployeesController extends Controller
     public function termination_data(Request $request){
         return DataTables::of(TerminationTable::where('employee_id',$request->id)->get())->make(true);
     }
-    
+
     public function logs_data(Request $request){
         $logs = LogsTable::selectRaw(
                         'users.id AS user_id,
@@ -2960,7 +2971,7 @@ class EmployeesController extends Controller
             ->orderBy('logs_tables.id', 'DESC')
             ->get();
         return DataTables::of($logs)->make(true);
-    }  
+    }
 
     public function college_delete(Request $request){
         $college_id = explode(",", $request->id);
@@ -2968,7 +2979,7 @@ class EmployeesController extends Controller
             CollegeTable::where('id', $id)->delete();
         }
     }
-    
+
     public function children_delete(Request $request){
         $children_id = explode(",", $request->id);
         foreach($children_id as $id){
