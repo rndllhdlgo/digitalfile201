@@ -20,10 +20,6 @@ $(document).ready(function(){
         $('#head_title').html('- INTERN');
         var filter = 'intern';
     }
-    else if(current_location == '/employees?employee_status=pending'){
-        $('#head_title').html('- INCOMPLETE DETAILS');
-        var filter = 'pending';
-    }
 
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
@@ -62,8 +58,7 @@ $(document).ready(function(){
             },
             {data: 'employee_position'},
             {data: 'employee_branch'},
-            {data: 'employment_status'},
-            {data: 'employee_status'}
+            {data: 'employment_status'}
         ],
         initComplete: function(){
             if(current_user_level == 'EMPLOYEE'){

@@ -21,16 +21,16 @@ use DataTables;
 
 class PagesController extends Controller
 {
-    
+
     public function employees(){
         if(!auth()->user()){
             return redirect('/login');
         }
-        
+
         // if(Auth::user()->user_level != 'ADMIN'){
         //     return redirect('/');
         // }
-        
+
         $companies = Company::select('id','company_name')->get();
         $branches = Branch::select('id','branch_name')->get();
         $supervisors = Supervisor::select('id','supervisor_name')->get();
@@ -39,7 +39,7 @@ class PagesController extends Controller
         $jobDescriptions = Position::select('id','job_description')->get();
         $jobRequirements = Position::select('id','job_requirements')->get();
         $departments = Department::select('id','department')->get();
-        
+
         $provinces = Province::orderBy('provDesc', 'asc')->get();
         return view('pages.employees', compact('provinces','companies','branches','supervisors','shifts','jobPositions','jobDescriptions','jobRequirements','departments'));
     }
@@ -57,7 +57,7 @@ class PagesController extends Controller
         $region = Region::query()->where('regCode', $cities->regCode)->get();
         return response()->json($region);
     }
-    
+
     public function setJobPosition(Request $request){
         $list = Position::where('id',$request->id)->get()->sortBy('job_position_name');
         return response()->json($list);
@@ -89,7 +89,7 @@ class PagesController extends Controller
         }
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
-        }        
+        }
         return view('pages.maintenance');
     }
 
@@ -99,7 +99,7 @@ class PagesController extends Controller
         }
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
-        }        
+        }
         return view('pages.updates');
     }
 
@@ -113,12 +113,12 @@ class PagesController extends Controller
 
     // public function index_data(){
     //     $list = UserLogs::selectRaw('user_logs.id,
-    //                                  users.id AS user_id, 
-    //                                  users.name AS username, 
-    //                                  users.email AS email, 
-    //                                  users.user_level AS role, 
-    //                                  user_logs.activity AS activity, 
-    //                                  user_logs.created_at AS date, 
+    //                                  users.id AS user_id,
+    //                                  users.name AS username,
+    //                                  users.email AS email,
+    //                                  users.user_level AS role,
+    //                                  user_logs.activity AS activity,
+    //                                  user_logs.created_at AS date,
     //                                  DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
     //         ->join('users', 'users.id', '=', 'user_id')
     //         ->orderBy('user_logs.id', 'DESC')

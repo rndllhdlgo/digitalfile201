@@ -37,9 +37,6 @@
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
                             </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
-                            </td>
                             {{-- <td>
                                 <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
                             </td> --}}
@@ -50,7 +47,6 @@
                             <th> POSITION</th>
                             <th> BRANCH</th>
                             <th> EMP. STATUS</th>
-                            <th> STATUS</th>
                         </tr>
                     </thead>
                         <tbody>

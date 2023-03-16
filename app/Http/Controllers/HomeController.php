@@ -9,6 +9,7 @@ use App\Models\Ping;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Models\PersonalInformationTable;
+use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
 use App\Models\Position;
 use App\Models\EmployeeStatus;
@@ -101,7 +102,7 @@ class HomeController extends Controller
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
-        $pending = EmployeeStatus::where('employee_status','Pending')->count();
+        $pending = PersonalInformationTablePending::where('status','Pending')->count();
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
         return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','pending','user_level'));
     }
