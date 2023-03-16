@@ -33,7 +33,7 @@ $('#tab2').on('click',function(){
     $('#tab7').removeClass('tabactive');
     $('#tab8').removeClass('tabactive');
     $('#tab9').removeClass('tabactive');
-    
+
     $('#personal_info').hide();
     $('#work_info').show();
     $('#education_trainings').hide();
@@ -342,7 +342,7 @@ $('#shift_tab').on('click',function(){
 
 $('#supervisor_tab').on('click',function(){
     $(this).blur();
-   
+
     $('#company_tab').removeClass('tabactive');
     $('#branch_tab').removeClass('tabactive');
     $('#shift_tab').removeClass('tabactive');

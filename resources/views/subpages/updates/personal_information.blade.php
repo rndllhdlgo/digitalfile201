@@ -1,6 +1,5 @@
 <div id="update_personal_info" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
-    <hr class="hr-design">
-
+    <br>
     <div class="row mb-3">
         <div class="column1">
             <div>
@@ -115,7 +114,7 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="weight" placeholder=" " style="background-color:white;">
-                        <label for="weight" class="formlabel form-label"><i class="fas fa-balance-scale"></i> WEIGHT (in kg.)<span class="span_weight span_all"></span></label>
+                        <label for="weight" class="formlabel form-label"><i class="fas fa-weight"></i> WEIGHT (in kg.)<span class="span_weight span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
@@ -217,4 +216,5 @@
             </div>
         </div>
     </div>
+    <hr class="hr-design">
 </div>

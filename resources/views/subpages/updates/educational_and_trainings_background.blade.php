@@ -1,6 +1,6 @@
 
 <div id="update_education_trainings" class="tab-pane fade" style="border-radius:0px;">
-    <hr class="hr-design">
+    <br>
         <h5 class="table-title" style="border-bottom: 3px solid black !important;">COLLEGE EDUCATION</h5>
            <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display:none;">
                 <thead class="thead-educational">
@@ -55,8 +55,8 @@
                 </tbody>
             </table>
     <hr class="hr-design">
-
     <br>
+
     <h5 class="table-title">PRIMARY EDUCATION</h5>
     <table class="table table-striped table-bordered table-hover align-middle">
         <thead class="thead-educational">

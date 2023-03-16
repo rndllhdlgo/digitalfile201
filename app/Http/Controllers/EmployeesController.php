@@ -2978,7 +2978,7 @@ class EmployeesController extends Controller
 
 
                 if(
-                    $request->hasFile('barangay_clearance_file')
+                  $request->hasFile('barangay_clearance_file')
                 || $request->hasFile('birthcertificate_file')
                 || $request->hasFile('diploma_file')
                 || $request->hasFile('medical_certificate_file')

@@ -23,7 +23,8 @@ var updatesTable = $('#updatesTable').DataTable({
         },
         { data: "employee_position"},
         { data: "employee_branch"},
-        { data: "employment_status"}
+        { data: "employment_status"},
+        { data: "status"}
     ],
     initComplete: function(){
         $('#loading').hide();
@@ -96,6 +97,10 @@ $(document).on('click','#updatesTable tbody tr',function(){
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
+                $('#past_medical_condition').val(value.past_medical_condition);
+                $('#allergies').val(value.allergies);
+                $('#medication').val(value.medication);
+                $('#psychological_history').val(value.psychological_history);
 
                 $('.college_table_orig').dataTable().fnDestroy();
                 $('.college_table_orig').DataTable({
@@ -234,11 +239,62 @@ $(document).on('click','#updatesTable tbody tr',function(){
                     }
                 });
 
+                $('.job_history_table_orig').dataTable().fnDestroy();
+                $('.job_history_table_orig').DataTable({
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "No data available in table",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/updates/job_history_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'job_company_name',width : '15%'},
+                        { data: 'job_description',width : '15%'},
+                        { data: 'job_position', width: '15%'},
+                        { data: 'job_contact_number', width : '15%'},
+                        {
+                            data: 'job_inclusive_years_from',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        },
+                        {
+                            data: 'job_inclusive_years_to',
+                            "render":function(data,type,row){
+                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                            },
+                            width : '15%'
+                        }
+                    ],
+                    initComplete: function(){
+                        if(!$('.job_history_table_orig').DataTable().data().any()){
+                            $('#job_history_table_orig').hide();
+                        }
+                        else{
+                            $('#job_history_table_orig').show();
+                        }
+                    }
+                });
+
                 $('#loading').hide();
                 $('th').removeClass("sorting_asc");
                 $('#update_button_group').show();
                 $('.forminput').css('cursor','not-allowed');
                 $('.forminput').attr('readonly',true);
+                $('textarea').css('cursor','not-allowed');
+                $('textarea').attr('readonly',true);
                 $('#updates_datatables').hide();
                 $('#update_form').show();
                 $('#update_tab_content').show();
@@ -257,6 +313,9 @@ $('#tab1').on('click',function(){
     $('#tab4').removeClass('tabactive');
 
     $('#update_personal_info').fadeIn();
+    $('#update_education_trainings').hide();
+    $('#update_job_history').hide();
+    $('#update_medical_history').hide();
 });
 
 $('#tab2').on('click',function(){
@@ -268,6 +327,34 @@ $('#tab2').on('click',function(){
 
     $('#update_personal_info').hide();
     $('#update_education_trainings').show();
+    $('#update_job_history').hide();
+    $('#update_medical_history').hide();
+});
+
+$('#tab3').on('click',function(){
+    $(this).blur();
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').addClass('tabactive');
+    $('#tab4').removeClass('tabactive');
+
+    $('#update_personal_info').hide();
+    $('#update_education_trainings').hide();
+    $('#update_job_history').show();
+    $('#update_medical_history').hide();
+});
+
+$('#tab4').on('click',function(){
+    $(this).blur();
+    $('#tab1').removeClass('tabactive');
+    $('#tab2').removeClass('tabactive');
+    $('#tab3').removeClass('tabactive');
+    $('#tab4').addClass('tabactive');
+
+    $('#update_personal_info').hide();
+    $('#update_education_trainings').hide();
+    $('#update_job_history').hide();
+    $('#update_medical_history').show();
 });
 
 $('#birthday').on('change',function(){

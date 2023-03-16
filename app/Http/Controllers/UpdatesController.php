@@ -49,7 +49,8 @@ class UpdatesController extends Controller
             'last_name',
             'positions.job_position_name AS employee_position',
             'branches.branch_name AS employee_branch',
-            'work_information_tables_pending.employment_status'
+            'work_information_tables_pending.employment_status',
+            'status'
         )
         ->join('work_information_tables_pending','work_information_tables_pending.employee_id','personal_information_tables_pending.id')
         ->join('positions','positions.id','work_information_tables_pending.employee_position')
@@ -100,9 +101,14 @@ class UpdatesController extends Controller
             'educational_attainments_pending.primary_school_name',
             'educational_attainments_pending.primary_school_address',
             'educational_attainments_pending.primary_school_inclusive_years_from',
-            'educational_attainments_pending.primary_school_inclusive_years_to')
+            'educational_attainments_pending.primary_school_inclusive_years_to',
+            'medical_histories_pending.past_medical_condition',
+            'medical_histories_pending.allergies',
+            'medical_histories_pending.medication',
+            'medical_histories_pending.psychological_history')
         ->where('personal_information_tables_pending.id',$request->id)
         ->leftJoin('educational_attainments_pending','educational_attainments_pending.employee_id','personal_information_tables_pending.id')
+        ->leftJoin('medical_histories_pending','medical_histories_pending.employee_id','personal_information_tables_pending.id')
         ->get();
         return DataTables::of($update_fetch)->toJson();
     }
@@ -115,5 +121,8 @@ class UpdatesController extends Controller
     }
     public function vocational_data(Request $request){
         return DataTables::of(VocationalTablePending::where('employee_id',$request->id)->get())->make(true);
+    }
+    public function job_history_data(Request $request){
+        return DataTables::of(JobHistoryTablePending::where('employee_id',$request->id)->get())->make(true);
     }
 }

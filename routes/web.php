@@ -218,3 +218,4 @@ Route::get('/update_fetch', 'UpdatesController@update_fetch');
 Route::get('/updates/college_data', 'UpdatesController@college_data');
 Route::get('/updates/training_data', 'UpdatesController@training_data');
 Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
+Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');

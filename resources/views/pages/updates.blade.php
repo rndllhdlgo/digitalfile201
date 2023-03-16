@@ -9,7 +9,6 @@
     </div>
     <div class="col">
         <div id="update_button_group" class="btn-group float-end" role="group" style="display:none;">
-            <button type="button" class="btn btn-primary" title="VIEW SUMMARY"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
             <button type="button" class="btn btn-success" title="APPROVE"><i class="fas fa-check-circle"></i> APPROVE</button>
             <button type="button" class="btn btn-danger" title="REJECT"><i class="fas fa-times-circle"></i> REJECT</button>
         </div>
@@ -26,6 +25,7 @@
                     <th> POSITION</th>
                     <th> BRANCH</th>
                     <th> EMP. STATUS</th>
+                    <th> STATUS</th>
                 </tr>
             </thead>
         </table>
@@ -40,10 +40,10 @@
                 <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#update_education_trainings"> EDUCATION/TRAININGS</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#job_history"> JOB HISTORY</a>
+                <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#update_job_history"> JOB HISTORY</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
+                <a class="nav-link pill" id="tab4" data-bs-toggle="tab" href="#update_medical_history"> MEDICAL HISTORY</a>
             </li>
         </ul>
     </div>
@@ -51,5 +51,7 @@
     <div id="update_tab_content" class="tab-content" style="display:none;">
             @include('subpages.updates.personal_information')
             @include('subpages.updates.educational_and_trainings_background')
+            @include('subpages.updates.job_history')
+            @include('subpages.updates.medical_history')
     </div>
 @endsection

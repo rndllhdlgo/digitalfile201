@@ -52,7 +52,7 @@
                         <button type="button" id="jobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
-            </tbody> 
+            </tbody>
         </table>
 
    {{-- Job Data Table --}}
