@@ -452,30 +452,12 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
-
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $request->employee_id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE";
-                $employee_logs->save();
-
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-                $userlogs->save();
-
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+            $userlogs->save();
         }
     }
 
@@ -530,29 +512,12 @@ class EmployeesController extends Controller
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
             $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
-
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $request->employee_id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE";
-                $employee_logs->save();
-
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-                $userlogs->save();
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+            $userlogs->save();
         }
     }
 
@@ -607,29 +572,12 @@ class EmployeesController extends Controller
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
-
-                $employee_logs = new LogsTable;
-                $employee_logs->employee_id = $request->employee_id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE VOCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE";
-                $employee_logs->save();
-
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE VOCATIONAL ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-                $userlogs->save();
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE VOCATIONAL ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+            $userlogs->save();
         }
     }
 
@@ -645,7 +593,7 @@ class EmployeesController extends Controller
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
             if($request->job_history_change == 'CHANGED'){
                 $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
@@ -688,29 +636,12 @@ class EmployeesController extends Controller
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
-
-                    $employee_logs = new LogsTable;
-                    $employee_logs->employee_id = $request->employee_id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE";
-                    $employee_logs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-                    $userlogs->save();
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+            $userlogs->save();
         }
     }
 
@@ -1900,43 +1831,95 @@ class EmployeesController extends Controller
             $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
             $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
-            ->create([
-                'employee_id' => $emp_id,
-                'secondary_school_name' => strtoupper($request->secondary_school_name),
-                'secondary_school_address' => strtoupper($request->secondary_school_address),
-                'secondary_school_inclusive_years_from' => strtoupper($request->secondary_school_inclusive_years_from),
-                'secondary_school_inclusive_years_to' => strtoupper($request->secondary_school_inclusive_years_to),
-                'primary_school_name' => strtoupper($request->primary_school_name),
-                'primary_school_address' => strtoupper($request->primary_school_address),
-                'primary_school_inclusive_years_from' => strtoupper($request->primary_school_inclusive_years_from),
-                'primary_school_inclusive_years_to' => strtoupper($request->primary_school_inclusive_years_to),
-            ]);
-
-            $secondary_school_inclusive_years_from = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-            $secondary_school_inclusive_years_to = Carbon::parse($request->secondary_school_inclusive_years_to)->format('F Y');
-            $primary_school_inclusive_years_from = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-            $primary_school_inclusive_years_to = Carbon::parse($request->primary_school_inclusive_years_to)->format('F Y');
 
             if(
-               $request->primary_school_name
-            || $request->primary_school_address
-            || $request->primary_school_inclusive_years_from
-            || $request->primary_school_inclusive_years_to
-            )
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                    [PRIMARY SCHOOL NAME: $request->primary_school_name]
-                                    [PRIMARY SCHOOL ADDRESS: $request->primary_school_address]
-                                    [PRIMARY SCHOOL START YEAR/MONTH: $primary_school_inclusive_years_from]
-                                    [PRIMARY SCHOOL END YEAR/MONTH: $primary_school_inclusive_years_to]
-                                    [SECONDARY SCHOOL NAME: $request->secondary_school_name]
-                                    [SECONDARY SCHOOL ADDRESS: $request->secondary_school_address]
-                                    [SECONDARY SCHOOL START YEAR/MONTH: $secondary_school_inclusive_years_from]
-                                    [SECONDARY SCHOOL END YEAR/MONTH: $secondary_school_inclusive_years_to]
-                                    ";
-            $userlogs->save();
+                   $request->secondary_school_name
+                || $request->secondary_school_address
+                || $request->secondary_school_inclusive_years_from
+                || $request->secondary_school_inclusive_years_to
+                || $request->primary_school_name
+                || $request->primary_school_address
+                || $request->primary_school_inclusive_years_from
+                || $request->primary_school_inclusive_years_to
+            ){
+
+                EducationalAttainmentPending::where('employee_id',$request->employee_id)
+                ->create([
+                    'employee_id' => $emp_id,
+                    'secondary_school_name' => $request->secondary_school_name,
+                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                    'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                    'primary_school_name' => $request->primary_school_name,
+                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                    'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
+                ]);
+
+                if($request->primary_school_name){
+                    $primary_school_name_logs = "[PRIMARY SCHOOL NAME: $request->primary_school_name]";
+                }
+                else{
+                    $primary_school_name_logs = NULL;
+                }
+                if($request->primary_school_address){
+                    $primary_school_address_logs = "[PRIMARY SCHOOL ADDRESS: $request->primary_school_address]";
+                }
+                else{
+                    $primary_school_address_logs = NULL;
+                }
+                if($request->primary_school_inclusive_years_from){
+                    $primary_school_inclusive_years_from_logs = "[PRIMARY SCHOOL START YEAR/MONTH: $request->primary_school_inclusive_years_from]";
+                }
+                else{
+                    $primary_school_inclusive_years_from_logs = NULL;
+                }
+                if($request->primary_school_inclusive_years_to){
+                    $primary_school_inclusive_years_to_logs = "[PRIMARY SCHOOL END YEAR/MONTH: $request->primary_school_inclusive_years_to]";
+                }
+                else{
+                    $primary_school_inclusive_years_to_logs = NULL;
+                }
+
+                if($request->secondary_school_name){
+                    $secondary_school_name_logs = "[SECONDARY SCHOOL NAME: $request->secondary_school_name]";
+                }
+                else{
+                    $secondary_school_name_logs = NULL;
+                }
+                if($request->secondary_school_address){
+                    $secondary_school_address_logs = "[SECONDARY SCHOOL ADDRESS: $request->secondary_school_address]";
+                }
+                else{
+                    $secondary_school_address_logs = NULL;
+                }
+                if($request->secondary_school_inclusive_years_from){
+                    $secondary_school_inclusive_years_from_logs = "[SECONDARY SCHOOL START YEAR/MONTH: $request->secondary_school_inclusive_years_from]";
+                }
+                else{
+                    $secondary_school_inclusive_years_from_logs = NULL;
+                }
+                if($request->secondary_school_inclusive_years_to){
+                    $secondary_school_inclusive_years_to_logs = "[SECONDARY SCHOOL END YEAR/MONTH: $request->secondary_school_inclusive_years_to]";
+                }
+                else{
+                    $secondary_school_inclusive_years_to_logs = NULL;
+                }
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $primary_school_name_logs
+                                        $primary_school_address_logs
+                                        $primary_school_inclusive_years_from_logs
+                                        $primary_school_inclusive_years_to_logs
+                                        $secondary_school_name_logs
+                                        $secondary_school_address_logs
+                                        $secondary_school_inclusive_years_from_logs
+                                        $secondary_school_inclusive_years_to_logs
+                                        ";
+                $userlogs->save();
+            }
         }
     }
 
@@ -1974,162 +1957,136 @@ class EmployeesController extends Controller
     // }
 
     public function updateMedicalHistory(Request $request){
-        $employee = MedicalHistory::where('employee_id',$request->employee_id)->first();
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-            if(!$employee){
-                if($request->past_medical_condition ||
-                   $request->allergies ||
-                   $request->medication ||
-                   $request->psychological_history
-                ){
-                    $employee = new MedicalHistory;
-                    $employee->employee_id = $request->employee_id;
-                    $employee->past_medical_condition = $request->past_medical_condition;
-                    $employee->allergies = $request->allergies;
-                    $employee->medication = $request->medication;
-                    $employee->psychological_history = $request->psychological_history;
-                    $save = $employee->save();
-                }
-            }
-            else{
-                $past_medical_condition_orig = MedicalHistory::where('employee_id',$request->id)->first()->past_medical_condition;
-                $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
-                $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
-                $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
+    //     if(auth()->user()->user_level != 'EMPLOYEE'){
+    //         $employee = MedicalHistory::where('employee_id',$request->employee_id)->first();
+    //         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+    //         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
-                if($request->past_medical_condition != $past_medical_condition_orig){
-                    $past_medical_condition_new = $request->past_medical_condition;
-                    $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
-                }
-                else{
-                    $past_medical_condition_change = NULL;
-                }
+    //         if(!$employee){
+    //             if($request->past_medical_condition ||
+    //                $request->allergies ||
+    //                $request->medication ||
+    //                $request->psychological_history
+    //             ){
+    //                 $employee = new MedicalHistory;
+    //                 $employee->employee_id = $request->employee_id;
+    //                 $employee->past_medical_condition = $request->past_medical_condition;
+    //                 $employee->allergies = $request->allergies;
+    //                 $employee->medication = $request->medication;
+    //                 $employee->psychological_history = $request->psychological_history;
+    //                 $save = $employee->save();
+    //             }
+    //         }
+    //         else{
+    //             $past_medical_condition_orig = MedicalHistory::where('employee_id',$request->id)->first()->past_medical_condition;
+    //             $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
+    //             $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
+    //             $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
 
-                if($request->allergies != $allergies_orig){
-                    $allergies_new = $request->allergies;
-                    $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
-                }
-                else{
-                    $allergies_change = NULL;
-                }
+    //             if($request->past_medical_condition != $past_medical_condition_orig){
+    //                 $past_medical_condition_new = $request->past_medical_condition;
+    //                 $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
+    //             }
+    //             else{
+    //                 $past_medical_condition_change = NULL;
+    //             }
 
-                if($request->medication != $medication_orig){
-                    $medication_new = $request->medication;
-                    $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
-                }
-                else{
-                    $medication_change = NULL;
-                }
+    //             if($request->allergies != $allergies_orig){
+    //                 $allergies_new = $request->allergies;
+    //                 $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
+    //             }
+    //             else{
+    //                 $allergies_change = NULL;
+    //             }
 
-                if($request->psychological_history != $psychological_history_orig){
-                    $psychological_history_new = $request->psychological_history;
-                    $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
-                }
-                else{
-                    $psychological_history_change = NULL;
-                }
+    //             if($request->medication != $medication_orig){
+    //                 $medication_new = $request->medication;
+    //                 $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
+    //             }
+    //             else{
+    //                 $medication_change = NULL;
+    //             }
 
-                if(auth()->user()->user_level != 'EMPLOYEE'){
-                        $sql = MedicalHistory::where('employee_id',$request->employee_id)
-                        ->update([
-                            'past_medical_condition' => $request->past_medical_condition,
-                            'allergies' => $request->allergies,
-                            'medication' => $request->medication,
-                            'psychological_history' => $request->psychological_history,
-                        ]);
+    //             if($request->psychological_history != $psychological_history_orig){
+    //                 $psychological_history_new = $request->psychological_history;
+    //                 $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
+    //             }
+    //             else{
+    //                 $psychological_history_change = NULL;
+    //             }
 
-                    if($sql){
+    //             $sql = MedicalHistory::where('employee_id',$request->employee_id)
+    //             ->update([
+    //                 'past_medical_condition' => $request->past_medical_condition,
+    //                 'allergies' => $request->allergies,
+    //                 'medication' => $request->medication,
+    //                 'psychological_history' => $request->psychological_history,
+    //             ]);
 
-                        $result = 'true';
-                        $id = $employee->id;
+    //             if($sql){
 
-                        if(
-                            $request->past_medical_condition != $past_medical_condition_orig ||
-                            $request->allergies != $allergies_orig ||
-                            $request->medication != $medication_orig ||
-                            $request->psychological_history != $psychological_history_orig
-                        ){
-                            $employee_logs = new LogsTable;
-                            $employee_logs->employee_id = $request->id;
-                            $employee_logs->user_id = auth()->user()->id;
-                            $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
-                                                    $past_medical_condition_change
-                                                    $allergies_change
-                                                    $medication_change
-                                                    $psychological_history_change
-                                                    ";
-                            $employee_logs->save();
+    //                 $result = 'true';
+    //                 $id = $employee->id;
 
-                            $userlogs = new UserLogs;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                    $past_medical_condition_change
-                                                    $allergies_change
-                                                    $medication_change
-                                                    $psychological_history_change
-                                                    ";
-                            $userlogs->save();
-                        }
-                    }
-                    else{
-                        $result = 'false';
-                        $id = '';
-                    }
-                    $data = array('result' => $result, 'id' => $id);
-                    return response()->json($data);
-                }
-                else{
-                    $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-                    $sql = MedicalHistoryPending::create([
-                        'employee_id' => $emp_id,
-                        'past_medical_condition' => $request->past_medical_condition,
-                        'allergies' => $request->allergies,
-                        'medication' => $request->medication,
-                        'psychological_history' => $request->psychological_history,
-                    ]);
+    //                 if(
+    //                     $request->past_medical_condition != $past_medical_condition_orig ||
+    //                     $request->allergies != $allergies_orig ||
+    //                     $request->medication != $medication_orig ||
+    //                     $request->psychological_history != $psychological_history_orig
+    //                 ){
+    //                     $employee_logs = new LogsTable;
+    //                     $employee_logs->employee_id = $request->id;
+    //                     $employee_logs->user_id = auth()->user()->id;
+    //                     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+    //                                             $past_medical_condition_change
+    //                                             $allergies_change
+    //                                             $medication_change
+    //                                             $psychological_history_change
+    //                                             ";
+    //                     $employee_logs->save();
 
-                    if($sql){
+    //                     $userlogs = new UserLogs;
+    //                     $userlogs->user_id = auth()->user()->id;
+    //                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+    //                                             $past_medical_condition_change
+    //                                             $allergies_change
+    //                                             $medication_change
+    //                                             $psychological_history_change
+    //                                             ";
+    //                     $userlogs->save();
+    //                 }
+    //             }
+    //             else{
+    //                 $result = 'false';
+    //                 $id = '';
+    //             }
+    //             $data = array('result' => $result, 'id' => $id);
+    //             return response()->json($data);
+    //         }
+    //     }
+    //     else{
+    //         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+    //         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+    //         $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+    //         $sql = MedicalHistoryPending::create([
+    //             'employee_id' => $emp_id,
+    //             'past_medical_condition' => strtoupper($request->past_medical_condition),
+    //             'allergies' => strtoupper($request->allergies),
+    //             'medication' => strtoupper($request->medication),
+    //             'psychological_history' => strtoupper($request->psychological_history)
+    //         ]);
 
-                        $result = 'true';
-                        $id = $employee->id;
-
-                        if(
-                            $request->past_medical_condition != $past_medical_condition_orig ||
-                            $request->allergies != $allergies_orig ||
-                            $request->medication != $medication_orig ||
-                            $request->psychological_history != $psychological_history_orig
-                        ){
-                            $employee_logs = new LogsTable;
-                            $employee_logs->employee_id = $request->id;
-                            $employee_logs->user_id = auth()->user()->id;
-                            $employee_logs->logs = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE
-                                                    $past_medical_condition_change
-                                                    $allergies_change
-                                                    $medication_change
-                                                    $psychological_history_change
-                                                    ";
-                            $employee_logs->save();
-
-                            $userlogs = new UserLogs;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                    $past_medical_condition_change
-                                                    $allergies_change
-                                                    $medication_change
-                                                    $psychological_history_change
-                                                    ";
-                            $userlogs->save();
-                        }
-                    }
-                    else{
-                        $result = 'false';
-                        $id = '';
-                    }
-                    $data = array('result' => $result, 'id' => $id);
-                    return response()->json($data);
-                }
-            }
+    //         if($request->past_medical_condition )
+    //             $userlogs = new UserLogs;
+    //             $userlogs->user_id = auth()->user()->id;
+    //             $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+    //                                     [PAST MEDICAL CONDITION: $request->past_medical_condition]
+    //                                     [ALLERGIES: $request->allergies]
+    //                                     [MEDICATION: $request->medication]
+    //                                     [PSYCHOLOGICAL HISTORY: $request->psychological_history]
+    //                                     ";
+    //             $userlogs->save();
+    //     }
     }
 
     public function updateCompensationBenefits(Request $request){
