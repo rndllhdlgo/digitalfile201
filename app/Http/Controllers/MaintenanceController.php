@@ -139,7 +139,7 @@ class MaintenanceController extends Controller
         // if(Shift::whereRaw('UPPER(shift_code) = ?', strtoupper($shift_code_logs))->count() > 0){
         //     return 'duplicate';
         // }
-        
+
         $shift = new Shift;
         $shift->shift_code = $shift_code_logs;
         $shift->shift_working_hours = $shift_working_hours_logs;
@@ -276,7 +276,7 @@ class MaintenanceController extends Controller
 
     public function jobPositionAndDescriptionSave(Request $request){
         $job_position_name_logs = strtoupper($request->job_position_name);
-        
+
         // if(Position::whereRaw('UPPER(job_position_name) = ?', strtoupper($job_position_name_logs))->count() > 0){
         //     return 'duplicate';
         // }
@@ -321,7 +321,7 @@ class MaintenanceController extends Controller
             return 'false';
         }
     }
-    
+
     public function departmentData(){
         $department = Department::all();
         return DataTables::of($department)->make(true);
@@ -345,7 +345,7 @@ class MaintenanceController extends Controller
             return 'false';
         }
     }
-    
+
     public function departmentUpdate(Request $request){
         $department_orig = strtoupper($request->department_orig);
         $department_new = strtoupper($request->department_new);

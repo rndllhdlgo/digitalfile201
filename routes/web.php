@@ -211,3 +211,10 @@ Route::any('/users/status', 'UsersController@users_status');
 
 Route::get('/logs_reload', 'EmployeesController@logs_reload');
 Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
+
+// Updates Controller
+Route::get('/update_list', 'UpdatesController@update_list');
+Route::get('/update_fetch', 'UpdatesController@update_fetch');
+Route::get('/updates/college_data', 'UpdatesController@college_data');
+Route::get('/updates/training_data', 'UpdatesController@training_data');
+Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');

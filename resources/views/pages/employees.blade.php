@@ -2,7 +2,7 @@
 
 @section('content')
 <br>
-    <input type="hidden" name="hidden_id" id="hidden_id">
+        <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list" style="display:none;">
             <div class="row">
                 <div class="col">
@@ -10,11 +10,14 @@
                 </div>
                 <div class="col">
                     @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
-                        <button type="button" class="btn btn-success float-end grow" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
+                        {{-- <button type="button" class="btn btn-success float-end" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button> --}}
+                        <div class="btn-group float-end" role="group">
+                            <button type="button" id="addEmployeeBtn" class="btn btn-success" title="ADD EMPLOYEE"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
+                        </div>
                     @endif
                 </div>
             </div>
-           
+
             <hr class="hr-design">
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
@@ -46,8 +49,8 @@
                             <th> FULL NAME</th>
                             <th> POSITION</th>
                             <th> BRANCH</th>
-                            <th> EMP. STATUS</th> 
-                            <th> STATUS</th> 
+                            <th> EMP. STATUS</th>
+                            <th> STATUS</th>
                         </tr>
                     </thead>
                         <tbody>
@@ -57,21 +60,29 @@
         </div>
 
         <div id="employee_information" style="display: none;">
-            <h4 style="color: #0d1a80;">EMPLOYEE INFORMATION</h4>
+                <h4 style="color: #0d1a80;">EMPLOYEE INFORMATION</h4>
+                <br>
+                <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
+
+                {{-- @if(Auth::user()->user_level != 'EMPLOYEE') --}}
+                    {{-- <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button> --}}
+                {{-- @endif --}}
+                {{-- <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button> --}}
+                {{-- <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button> --}}
+                {{-- <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button> --}}
+                {{-- <button type="button" class="btn btn-primary mx-1 float-end grow" id="btnSummary" title="VIEW SUMMARY" style="font-weight: bold;"><i class="fas fa-eye"></i> VIEW SUMMARY</button> --}}
+                <div class="btn-group float-end" role="group">
+                    <button type="button" id="btnSave" class="btn btn-success btnDisabled" title="SAVE"><i class="fas fa-save"></i> SAVE</button>
+                    <button type="button" id="btnClear" class="btn btn-warning btnDisabled" title="CLEAR"><i class="fas fa-eraser"></i> CLEAR</button>
+                    <button type="button" id="btnSummary" class="btn btn-primary btnDisabled" title="VIEW" style="border-top-left-radius: 10px !important; border-bottom-left-radius:10px !important;"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
+                    <button type="button" id="btnUpdate" class="btn btn-success btnDisabled" title="UPDATE"><i class="fas fa-save"></i> UPDATE</button>
+                    @if(Auth::user()->user_level != 'EMPLOYEE')
+                        <button type="button" class="btn btn-danger" id="btnCancel" title="BACK"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
+                    @endif
+                </div>
             <br>
-            {{-- <span class="alert class alert-primary" id="note_information" style="margin-right:10px;"><i class="fas fa-info-circle fa-lg"></i> <b>EMPLOYEE INFORMATION</b> </span> --}}
-            <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
-        
-            @if(Auth::user()->user_level != 'EMPLOYEE')
-                <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
-            @endif
-            <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button>
-            <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button>
-            <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button>
-            <button type="button" class="btn btn-primary mx-1 float-end grow" id="btnSummary" title="VIEW SUMMARY" style="font-weight: bold;"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
-        <br>
-        <br>
-        <hr>
+            <br>
+            <hr>
 
             <div class="toast-container position-fixed top-0 end-0 p-3">
                 <div id="clearAll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
@@ -84,7 +95,7 @@
                             <span style="font-size: 14px;">Successfully cleared all pages of the Form</span>
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
 
             <div class="toast-container position-fixed top-0 end-0 p-3">
@@ -98,10 +109,9 @@
                             <span style="font-size: 14px;">Successfully cleared current page of the Form.</span>
                         </div>
                     </div>
-                </div>  
+                </div>
             </div>
-            
-            {{-- Nav Pills --}}
+
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_info"> PERSONAL INFO</a>
@@ -150,9 +160,9 @@
                                 @include('subpages.performance_evaluation')
                                 @include('subpages.logs')
                             <br>
-                        </div>{{--  End of Tab Content  --}}
+                        </div>
                 </form>
-        </div> {{-- End of Employee Form --}}
+        </div>
 
-        @include('subpages.summary')
+    @include('subpages.summary')
 @endsection

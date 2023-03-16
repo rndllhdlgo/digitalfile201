@@ -334,13 +334,11 @@ input[type=search]:focus{
     cursor:pointer;
     display: none;
 }
-
-
-#donut_image_preview{
-    height: 100px;
-    width: 100px;
+#update_image_preview{
+    height: 210px;
+    width:100%;
     cursor:pointer;
-    display:none;
+    display: none;
 }
 
 #preview_file{

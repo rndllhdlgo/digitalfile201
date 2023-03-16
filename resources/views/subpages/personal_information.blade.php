@@ -1,6 +1,6 @@
 <div id="personal_info" class="tab-pane active" style="border-radius:0px;margin-bottom:-20px;">
     <hr class="hr-design">
-        
+
     <div class="row mb-3">
         <div class="column1">
             <input type="hidden" id="filename">
@@ -19,7 +19,7 @@
 
             <div class="text-center mt-3" id="image_instruction">
                 <span>File Size: Maximum (10MB)</span><br>
-                <span>File Extensions: .jpg, .jpeg, .png</span> 
+                <span>File Extensions: .jpg, .jpeg, .png</span>
             </div>
 
             <div>
@@ -41,7 +41,7 @@
                 <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
             </div>
         </div>
-        
+
         <div class="column2">
             <div class="row mb-3">
                 <div class="col">
@@ -66,14 +66,14 @@
                         <p id="last_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
                         <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME <span class="span_last_name span_all"></span> </label>
                     </div>
-                </div> 
-                
+                </div>
+
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control optional_field text-uppercase" type="search" id="suffix" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                         <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX <span class="span_suffix span_all">(Optional)</span></label>
                     </div>
-                </div> 
+                </div>
             </div>
 
             <div class="row mb-3">
@@ -130,7 +130,7 @@
                     </div>
                 </div>
             </div>
-            
+
                 {{-- <div class="col">
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field"  id="region" placeholder=" " style="background-color:white;">
@@ -160,7 +160,7 @@
                         <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
                     </div>
                 </div> --}}
-            
+
             <div class="row mb-3">
                 <div class="col-3">
                     <div class="f-outline">
@@ -178,12 +178,12 @@
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field" name="city" id="city">
                             <option value="" selected disabled>SELECT CITY</option>
-                            
+
                         </select>
                         <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
                     </div>
                 </div>
-                
+
                 <div class="col-6">
                     <div class="f-outline">
                         <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
@@ -257,7 +257,7 @@
                 <div class="col">
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                            <p id="spouse_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters </p>   
+                            <p id="spouse_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters </p>
                             <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> SPOUSE NAME <span class="span_spouse_name span_all"></span> </label>
                         </div>
                 </div>
@@ -277,7 +277,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="row mb-3 mt-3">
                 <div class="col-4">
                         <div class="f-outline">
@@ -323,7 +323,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="row mb-3">
                 <div class="col">
                         <div class="f-outline">
@@ -410,7 +410,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            </tbody>  
+                            </tbody>
                         </table>
 
                         <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-36px;">

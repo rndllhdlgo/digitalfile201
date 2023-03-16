@@ -91,13 +91,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#gender').val(value.gender);
                 $('#address').val(value.address);
-
-                // $('#house_orig').val(value.house);
-                // $("input[name='house']").each(function() {
-                //     if ($(this).val() == value.house) {
-                //         $(this).prop('checked', true);
-                //     }
-                // });
                 $('#ownership').val(value.ownership);
 
                 $('#province_summary').val(value.province);
@@ -266,13 +259,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
                 $('#employee_bonus').val(value.employee_bonus);
                 $('#employee_insurance').val(value.employee_insurance);
-
-                $('#employee_information').show();
-                $('#addEmployeeBtn').hide();
-                $('#employees_list').hide();
-                $('#tab1').click();
-                $('#btnClear').hide();
-                $('#btnSave').hide();
 
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
@@ -1091,6 +1077,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#tor_delete_button').show();
                 }
                 $('#loading').hide();
+
+                $('#employee_information').show();
+                $('#addEmployeeBtn').hide();
+                $('#employees_list').hide();
+                $('#tab1').click();
+                $('#btnClear').hide();
+                $('#btnSave').hide();
             });
         }
     });
