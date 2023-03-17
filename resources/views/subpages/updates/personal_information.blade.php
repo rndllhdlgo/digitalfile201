@@ -3,6 +3,7 @@
     <div class="row mb-3">
         <div class="column1">
             <div>
+                <input type="hidden" id="employee_image">
                 <img src="" id="update_image_preview" alt="" style="margin-top:14% !important;">
             </div>
         </div>

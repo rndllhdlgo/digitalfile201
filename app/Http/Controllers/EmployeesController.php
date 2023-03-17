@@ -716,8 +716,6 @@ class EmployeesController extends Controller
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
 
-        $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]' : null;
-
         if(strtoupper($request->first_name) != $first_name_orig){
             $first_name_new = strtoupper($request->first_name);
             $first_name_change = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
@@ -944,6 +942,8 @@ class EmployeesController extends Controller
         }
 
         if(auth()->user()->user_level != 'EMPLOYEE'){
+            $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]' : null;
+
             $sql = PersonalInformationTable::find($request->id)
             ->update([
                 'employee_image' => $request->employee_image,
@@ -1093,6 +1093,9 @@ class EmployeesController extends Controller
         }
         else{
             $empno = PersonalInformationTable::where('id',$request->id)->first()->empno;
+
+            $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER UPLOADED NEW IMAGE]' : null;
+
             $sql = PersonalInformationTablePending::
                 create([
                 'empno' => $empno,
@@ -1982,7 +1985,7 @@ class EmployeesController extends Controller
                     $psychological_history_change = NULL;
                 }
 
-                $update = MedicalHistory::where('employee_id',$request->employee_id)
+                $sql = MedicalHistory::where('employee_id',$request->employee_id)
                         ->update([
                             'past_medical_condition' => $request->past_medical_condition,
                             'allergies' => $request->allergies,
@@ -1990,7 +1993,7 @@ class EmployeesController extends Controller
                             'psychological_history' => $request->psychological_history,
                         ]);
 
-                if($update){
+                if($sql){
 
                     $result = 'true';
                     $id = $employee->id;
@@ -2159,7 +2162,7 @@ class EmployeesController extends Controller
                 $employee_insurance_change = NULL;
             }
 
-            $update = CompensationBenefits::where('employee_id',$request->employee_id)
+            $sql = CompensationBenefits::where('employee_id',$request->employee_id)
             ->update([
                 'employee_salary' => $request->employee_salary,
                 'employee_incentives' => $request->employee_incentives,
@@ -2168,7 +2171,7 @@ class EmployeesController extends Controller
                 'employee_insurance' => $request->employee_insurance
             ]);
 
-            if($update){
+            if($sql){
 
                 $result = 'true';
                 $id = $employee->id;

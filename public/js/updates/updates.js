@@ -54,6 +54,8 @@ $(document).on('click','#updatesTable tbody tr',function(){
             });
             update_data.forEach(value => {
                 $('#hidden_id').val(value.id);
+                $('#empno').val(value.empno);
+                $('#employee_image').val(value.employee_image);
                 $('#update_image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                 $('#update_image_preview').show();
                 $('#first_name').val(value.first_name);
@@ -298,6 +300,105 @@ $(document).on('click','#updatesTable tbody tr',function(){
                 $('#updates_datatables').hide();
                 $('#update_form').show();
                 $('#update_tab_content').show();
+            });
+        }
+    });
+});
+
+
+$(document).on('click','#btnApprove',function(){
+    var empno = $('#empno').val();
+    var employee_image = $('#employee_image').val();
+    var last_name = $('#last_name').val();
+    var first_name = $('#first_name').val();
+    var middle_name = $('#middle_name').val();
+    var suffix = $('#suffix').val();
+    var nickname = $('#nickname').val();
+    var gender = $('#gender').val();
+    var civil_status = $('#civil_status').val();
+    var birthday = $('#birthday').val();
+    var cellphone_number = $('#cellphone_number').val();
+    var address = $('#address').val();
+    var ownership = $('#ownership').val();
+    var province = $('#province').val();
+    var city = $('#city').val();
+    var region = $('#region').val();
+    var height = $('#height').val();
+    var weight = $('#weight').val();
+    var religion = $('#religion').val();
+    var email_address = $('#email_address').val();
+    var telephone_number = $('#telephone_number').val();
+    var father_name = $('#father_name').val();
+    var father_contact_number = $('#father_contact_number').val();
+    var father_profession = $('#father_profession').val();
+    var mother_name = $('#mother_name').val();
+    var mother_contact_number = $('#mother_contact_number').val();
+    var mother_profession = $('#mother_profession').val();
+    var emergency_contact_name = $('#emergency_contact_name').val();
+    var emergency_contact_relationship = $('#emergency_contact_relationship').val();
+    var emergency_contact_number = $('#emergency_contact_number').val();
+
+    Swal.fire({
+        title: 'Do you want to approve changes?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((changes) => {
+        if(changes.isConfirmed){
+
+            $.ajax({
+                url:"/update_personal_information",
+                type:"POST",
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data:{
+                    empno:empno,
+                    employee_image:employee_image,
+                    first_name:first_name,
+                    middle_name:middle_name,
+                    last_name:last_name,
+                    suffix:suffix,
+                    nickname:nickname,
+                    birthday:birthday,
+                    gender:gender,
+                    address:address,
+                    ownership:ownership,
+                    province:province,
+                    city:city,
+                    region:region,
+                    height:height,
+                    weight:weight,
+                    religion:religion,
+                    civil_status:civil_status,
+                    email_address:email_address,
+                    telephone_number:telephone_number,
+                    cellphone_number:cellphone_number,
+                    father_name:father_name,
+                    father_contact_number:father_contact_number,
+                    father_profession:father_profession,
+                    mother_name:mother_name,
+                    mother_contact_number:mother_contact_number,
+                    mother_profession:mother_profession,
+                    emergency_contact_name:emergency_contact_name,
+                    emergency_contact_relationship:emergency_contact_relationship,
+                    emergency_contact_number:emergency_contact_number,
+                },
+                success: function(data){
+                    if(data == 'true'){
+                        console.log('success');
+                    }
+                    else{
+                        console.log('failed');
+                    }
+                }
             });
         }
     });

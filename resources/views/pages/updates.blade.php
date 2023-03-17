@@ -3,14 +3,15 @@
 @section('content')
 <br>
 <input type="hidden" name="hidden_id" id="hidden_id">
+<input type="hidden" name="empno" id="empno">
 <div class="row">
     <div class="col-8">
         <h4 style="color: #0d1a80;" class="my-header">UPDATES</h4>
     </div>
     <div class="col">
         <div id="update_button_group" class="btn-group float-end" role="group" style="display:none;">
-            <button type="button" class="btn btn-success" title="APPROVE"><i class="fas fa-check-circle"></i> APPROVE</button>
-            <button type="button" class="btn btn-danger" title="REJECT"><i class="fas fa-times-circle"></i> REJECT</button>
+            <button type="button" id="btnApprove" class="btn btn-success" title="APPROVE"><i class="fas fa-check-circle"></i> APPROVE</button>
+            <button type="button" id="btnReject" class="btn btn-danger" title="REJECT"><i class="fas fa-times-circle"></i> REJECT</button>
         </div>
     </div>
 </div>

@@ -62,6 +62,7 @@ class UpdatesController extends Controller
     public function update_fetch(Request $request){
         $update_fetch = PersonalInformationTablePending::select(
             'personal_information_tables_pending.id',
+            'personal_information_tables_pending.empno',
             'employee_image',
             'first_name',
             'middle_name',
@@ -111,6 +112,55 @@ class UpdatesController extends Controller
         ->leftJoin('medical_histories_pending','medical_histories_pending.employee_id','personal_information_tables_pending.id')
         ->get();
         return DataTables::of($update_fetch)->toJson();
+    }
+
+    public function update_personal_information(Request $request){
+        $first = PersonalInformationTable::select('employee_image')->where('empno', $request->empno)->value('employee_image');
+        $second = PersonalInformationTablePending::select('employee_image')->where('empno', $request->empno)->value('employee_image');
+
+        if($first !== $second){
+            unlink('storage/employee_images/'.$first);
+        }
+
+        $sql = PersonalInformationTable::where('empno',$request->empno)->first()
+        ->update([
+            'employee_image' => $request->employee_image,
+            'first_name' => $request->first_name,
+            'middle_name' => $request->middle_name,
+            'last_name' => $request->last_name,
+            'suffix' => $request->suffix,
+            'nickname' => $request->nickname,
+            'birthday' => $request->birthday,
+            'gender' => $request->gender,
+            'address' => $request->address,
+            'ownership' => $request->ownership,
+            'province' => $request->province,
+            'city' => $request->city,
+            'region' => $request->region,
+            'height' => $request->height,
+            'weight' => $request->weight,
+            'religion' => $request->religion,
+            'civil_status' => $request->civil_status,
+            'email_address' => $request->email_address,
+            'telephone_number' => $request->telephone_number,
+            'cellphone_number' => $request->cellphone_number,
+            'father_name' => $request->father_name,
+            'father_contact_number' => $request->father_contact_number,
+            'father_profession' => $request->father_profession,
+            'mother_name' => $request->mother_name,
+            'mother_contact_number' => $request->mother_contact_number,
+            'mother_profession' => $request->mother_profession,
+            'emergency_contact_name' => $request->emergency_contact_name,
+            'emergency_contact_relationship' => $request->emergency_contact_relationship,
+            'emergency_contact_number' => $request->emergency_contact_number
+        ]);
+
+        if($sql){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
     }
 
     public function college_data(Request $request){

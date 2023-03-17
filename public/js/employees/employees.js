@@ -167,8 +167,6 @@ $('#addEmployeeBtn').on('click',function(){
         'font-size':'13px',
         'font-family':'Arial, Helvetica, sans-serif'
     });
-
-    // $('.input-file-text').addClass('required_field');
 });
 
 setInterval(() => {

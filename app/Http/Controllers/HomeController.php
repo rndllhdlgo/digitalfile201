@@ -38,6 +38,10 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $first = PersonalInformationTable::select('employee_image')->where('empno', 50006)->value('employee_image');
+        // $second = PersonalInformationTablePending::select('employee_image')->where('empno', 50006)->value('employee_image');
+        // return $first;
+
         // $employee_list = PersonalInformationTable::all();
 
         // foreach($employee_list as $key => $value){
@@ -126,12 +130,12 @@ class HomeController extends Controller
 
     public function index_data(){
         $list = UserLogs::selectRaw('user_logs.id,
-                                     users.id AS user_id, 
-                                     users.name AS username, 
-                                     users.email AS email, 
-                                     users.user_level AS role, 
-                                     user_logs.activity AS activity, 
-                                     user_logs.created_at AS date, 
+                                     users.id AS user_id,
+                                     users.name AS username,
+                                     users.email AS email,
+                                     users.user_level AS role,
+                                     user_logs.activity AS activity,
+                                     user_logs.created_at AS date,
                                      DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
             ->join('users', 'users.id', '=', 'user_id')
             ->orderBy('user_logs.id', 'DESC')
