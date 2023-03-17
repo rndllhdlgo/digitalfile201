@@ -69,7 +69,7 @@ $(document).ready(function(){
                             $('#loading').hide();
                             Swal.fire({
                                 title: "PENDING UPDATE",
-                                html: '<div style="font-family: Century Gothic, cursive;">You have a pending update. Please contact HR for the approval or cancellation of your pending update.</div>',
+                                html: '<div style="font-family: Century Gothic, cursive;">You have a pending update. Please contact HR for the status of your request update.</div>',
                                 icon: "warning",
                                 showCancelButton: false,
                                 allowOutsideClick: false,
