@@ -4,7 +4,7 @@
         <div class="column1">
             <div>
                 <input type="hidden" id="employee_image">
-                <img src="" id="update_image_preview" alt="" style="margin-top:14% !important;">
+                <img src="" id="image_preview" alt="" style="margin-top:14% !important;">
             </div>
         </div>
 

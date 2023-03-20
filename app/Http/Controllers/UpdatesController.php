@@ -51,6 +51,7 @@ class UpdatesController extends Controller
             'branches.branch_name AS employee_branch',
             'work_information_tables_pending.employment_status',
             'status'
+        // )->where('status','!=','APPROVED')
         )
         ->join('work_information_tables_pending','work_information_tables_pending.employee_id','personal_information_tables_pending.id')
         ->join('positions','positions.id','work_information_tables_pending.employee_position')
@@ -115,11 +116,11 @@ class UpdatesController extends Controller
     }
 
     public function update_personal_information(Request $request){
-        $first = PersonalInformationTable::select('employee_image')->where('empno', $request->empno)->value('employee_image');
-        $second = PersonalInformationTablePending::select('employee_image')->where('empno', $request->empno)->value('employee_image');
+        $current_image = PersonalInformationTable::select('employee_image')->where('empno', $request->empno)->value('employee_image');
+        $new_image = PersonalInformationTablePending::select('employee_image')->where('empno', $request->empno)->value('employee_image');
 
-        if($first !== $second){
-            unlink('storage/employee_images/'.$first);
+        if($current_image !== $new_image){
+            unlink('storage/employee_images/'.$current_image);
         }
 
         $sql = PersonalInformationTable::where('empno',$request->empno)->first()
@@ -152,14 +153,66 @@ class UpdatesController extends Controller
             'mother_profession' => $request->mother_profession,
             'emergency_contact_name' => $request->emergency_contact_name,
             'emergency_contact_relationship' => $request->emergency_contact_relationship,
-            'emergency_contact_number' => $request->emergency_contact_number
+            'emergency_contact_number' => $request->emergency_contact_number,
         ]);
 
         if($sql){
+            // PersonalInformationTablePending::where('empno',$request->empno)->first()
+            // ->update([
+            //     'status' => 'APPROVED'
+            // ]);
+            // sleep(2);
+            // PersonalInformationTablePending::where('empno', $request->empno)->delete();
             return 'true';
         }
         else{
             return 'false';
+        }
+    }
+
+    public function update_educational_attainment(Request $request){
+
+        $employee_educational = EducationalAttainment::where('empno',$request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_educational){
+            if(
+               $request->secondary_school_name
+            || $request->secondary_school_address
+            || $request->secondary_school_inclusive_years_from
+            || $request->secondary_school_inclusive_years_to
+            || $request->primary_school_name
+            || $request->primary_school_address
+            || $request->primary_school_inclusive_years_from
+            || $request->primary_school_inclusive_years_to
+            ){
+                $sql = EducationalAttainment::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'secondary_school_name' => $request->secondary_school_name,
+                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                    'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                    'primary_school_name' => $request->primary_school_name,
+                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                    'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+                ]);
+            }
+        }
+        else{
+            $sql = EducationalAttainment::where('empno',$request->empno)->first()
+            ->update([
+                'secondary_school_name' => $request->secondary_school_name,
+                'secondary_school_address' => $request->secondary_school_address,
+                'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+                'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+                'primary_school_name' => $request->primary_school_name,
+                'primary_school_address' => $request->primary_school_address,
+                'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+            ]);
         }
     }
 

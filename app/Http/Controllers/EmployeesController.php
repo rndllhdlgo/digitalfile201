@@ -1673,6 +1673,7 @@ class EmployeesController extends Controller
                     ){
                         $employee = new EducationalAttainment;
                         $employee->employee_id = $request->employee_id;
+                        $employee->empno = $request->empno;
                         $employee->secondary_school_name = $request->secondary_school_name;
                         $employee->secondary_school_address = $request->secondary_school_address;
                         $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
@@ -1849,6 +1850,7 @@ class EmployeesController extends Controller
                 EducationalAttainmentPending::where('employee_id',$request->employee_id)
                 ->create([
                     'employee_id' => $emp_id,
+                    'empno' => $employee_number,
                     'secondary_school_name' => $request->secondary_school_name,
                     'secondary_school_address' => $request->secondary_school_address,
                     'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,

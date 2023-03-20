@@ -56,8 +56,8 @@ $(document).on('click','#updatesTable tbody tr',function(){
                 $('#hidden_id').val(value.id);
                 $('#empno').val(value.empno);
                 $('#employee_image').val(value.employee_image);
-                $('#update_image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
-                $('#update_image_preview').show();
+                $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
+                $('#image_preview').show();
                 $('#first_name').val(value.first_name);
                 $('#middle_name').val(value.middle_name);
                 $('#last_name').val(value.last_name);
@@ -138,15 +138,7 @@ $(document).on('click','#updatesTable tbody tr',function(){
                                 return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
-                    ],
-                    initComplete: function(){
-                        if(!$('.college_table_orig').DataTable().data().any()){
-                            $('#college_table_orig').hide();
-                        }
-                        else{
-                            $('#college_table_orig').show();
-                        }
-                    }
+                    ]
                 });
 
                 $('.training_table_orig').dataTable().fnDestroy();
@@ -183,15 +175,7 @@ $(document).on('click','#updatesTable tbody tr',function(){
                                 return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
-                    ],
-                    initComplete: function(){
-                        if(!$('.training_table_orig').DataTable().data().any()){
-                            $('#training_table_orig').hide();
-                        }
-                        else{
-                            $('#training_table_orig').show();
-                        }
-                    }
+                    ]
                 });
 
                 $('.vocational_table_orig').dataTable().fnDestroy();
@@ -231,14 +215,6 @@ $(document).on('click','#updatesTable tbody tr',function(){
                             width: '15%'
                         }
                     ],
-                    initComplete: function(){
-                        if(!$('.vocational_table_orig').DataTable().data().any()){
-                            $('#vocational_table_orig').hide();
-                        }
-                        else{
-                            $('#vocational_table_orig').show();
-                        }
-                    }
                 });
 
                 $('.job_history_table_orig').dataTable().fnDestroy();
@@ -280,14 +256,6 @@ $(document).on('click','#updatesTable tbody tr',function(){
                             width : '15%'
                         }
                     ],
-                    initComplete: function(){
-                        if(!$('.job_history_table_orig').DataTable().data().any()){
-                            $('#job_history_table_orig').hide();
-                        }
-                        else{
-                            $('#job_history_table_orig').show();
-                        }
-                    }
                 });
 
                 $('#loading').hide();
@@ -295,6 +263,7 @@ $(document).on('click','#updatesTable tbody tr',function(){
                 $('#update_button_group').show();
                 $('.forminput').css('cursor','not-allowed');
                 $('.forminput').attr('readonly',true);
+                $('.forminput').removeClass('required_field');
                 $('textarea').css('cursor','not-allowed');
                 $('textarea').attr('readonly',true);
                 $('#updates_datatables').hide();
@@ -393,10 +362,39 @@ $(document).on('click','#btnApprove',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
-                        console.log('success');
+
+                        var empno = $('#empno').val();
+                        var secondary_school_name = $('#secondary_school_name').val();
+                        var secondary_school_address = $('#secondary_school_address').val();
+                        var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
+                        var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
+                        var primary_school_name = $('#primary_school_name').val();
+                        var primary_school_address = $('#primary_school_address').val();
+                        var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
+                        var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
+
+                        $.ajax({
+                            url:"/update_educational_attainment",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                empno:empno,
+                                secondary_school_name:secondary_school_name,
+                                secondary_school_address:secondary_school_address,
+                                secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
+                                secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
+                                primary_school_name:primary_school_name,
+                                primary_school_address:primary_school_address,
+                                primary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                            }
+                        });
+                        Swal.fire('UPDATE SUCCESS','','success');
                     }
                     else{
-                        console.log('failed');
+                        Swal.fire('UPDATE FAILED','','error');
                     }
                 }
             });

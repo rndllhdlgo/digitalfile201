@@ -150,6 +150,7 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
+                        var empno = $('#employee_number').val();
                         var secondary_school_name = $('#secondary_school_name').val();
                         var secondary_school_address = $('#secondary_school_address').val();
                         var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -168,6 +169,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
+                                empno:empno,
                                 secondary_school_name:secondary_school_name,
                                 secondary_school_address:secondary_school_address,
                                 secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
