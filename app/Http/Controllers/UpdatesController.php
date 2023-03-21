@@ -211,7 +211,40 @@ class UpdatesController extends Controller
                 'primary_school_name' => $request->primary_school_name,
                 'primary_school_address' => $request->primary_school_address,
                 'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+                'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
+            ]);
+        }
+    }
+
+    public function update_medical_history(Request $request){
+        $employee_medical_history = MedicalHistory::where('empno',$request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_medical_history){
+            if(
+               $request->past_medical_condition
+            || $request->allergies
+            || $request->medication
+            || $request->psychological_history
+            ){
+                $sql = MedicalHistory::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'past_medical_condition' => $request->past_medical_condition,
+                    'allergies' => $request->allergies,
+                    'medication' => $request->medication,
+                    'psychological_history' => $request->psychological_history
+                ]);
+            }
+        }
+        else{
+            $sql = MedicalHistory::where('empno', $request->empno)->first()
+            ->update([
+                'past_medical_condition' => $request->past_medical_condition,
+                'allergies' => $request->allergies,
+                'medication' => $request->medication,
+                'psychological_history' => $request->psychological_history
             ]);
         }
     }

@@ -11,7 +11,7 @@
             </tr>
         </tbody>
     </table>
-    
+
     <h5 class="table-title">ALLERGIES</h5>
     <table class="table table-bordered table-striped table-hover align-middle">
         <tbody>

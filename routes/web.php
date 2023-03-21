@@ -217,6 +217,7 @@ Route::get('/update_list', 'UpdatesController@update_list');
 Route::get('/update_fetch', 'UpdatesController@update_fetch');
 Route::any('/update_personal_information', 'UpdatesController@update_personal_information');
 Route::any('/update_educational_attainment', 'UpdatesController@update_educational_attainment');
+Route::any('/update_medical_history', 'UpdatesController@update_medical_history');
 Route::get('/updates/college_data', 'UpdatesController@college_data');
 Route::get('/updates/training_data', 'UpdatesController@training_data');
 Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');

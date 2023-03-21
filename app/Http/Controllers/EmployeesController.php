@@ -390,6 +390,7 @@ class EmployeesController extends Controller
     public function saveEducationalAttainment(Request $request){
         $employee = new EducationalAttainment;
         $employee->employee_id = $request->employee_id;
+        $employee->empno = $request->empno;
         $employee->secondary_school_name = strtoupper($request->secondary_school_name);
         $employee->secondary_school_address = strtoupper($request->secondary_school_address);
         $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
@@ -2049,6 +2050,7 @@ class EmployeesController extends Controller
             ){
                 MedicalHistoryPending::create([
                     'employee_id' => $emp_id,
+                    'empno' => $employee_number,
                     'past_medical_condition' => $request->past_medical_condition,
                     'allergies' => $request->allergies,
                     'medication' => $request->medication,
@@ -2958,6 +2960,7 @@ class EmployeesController extends Controller
     public function children_data(Request $request){
         return DataTables::of(ChildrenTable::where('employee_id',$request->id)->get())->make(true);
     }
+
     public function history_data(Request $request){
         $employee_work_history_logs = History::selectRaw(
             'history_logs.id,
@@ -3101,6 +3104,7 @@ class EmployeesController extends Controller
             return 'duplicate_email_address';
         }
     }
+
     public function duplicate_work_info(Request $request){
         if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
             return 'duplicate_employee_number';
@@ -3110,8 +3114,8 @@ class EmployeesController extends Controller
         }
     }
 
-    public function upload_picture(Request $request)
-    {
+    public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
     }
+
 }

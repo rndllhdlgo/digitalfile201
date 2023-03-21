@@ -28,7 +28,7 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_name = $('#emergency_contact_name').val();
     var emergency_contact_relationship = $('#emergency_contact_relationship').val();
     var emergency_contact_number = $('#emergency_contact_number').val();
-    console.log($('#filename_delete').val());
+    // console.log($('#filename_delete').val());
     // var college_hange = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
     Swal.fire({
@@ -49,16 +49,12 @@ $('#btnUpdate').on('click',function(){
             $('#loading').show();
             if(!$('#filename').val() && $('#employee_image').val()){
                 employee_image_save();
-                console.log('s');
             }
             else if(!$('#filename').val() && !$('#employee_image').val()){
                 employee_image = 'N/A';
-                console.log('d');
             }
             else{
                 employee_image = $('#filename').val();
-                console.log(employee_image);
-                console.log('v');
             }
 
             $.ajax({
@@ -150,7 +146,6 @@ $('#btnUpdate').on('click',function(){
                             },
                         });
 
-                        var empno = $('#employee_number').val();
                         var secondary_school_name = $('#secondary_school_name').val();
                         var secondary_school_address = $('#secondary_school_address').val();
                         var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -169,7 +164,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                empno:empno,
+                                empno:$('#employee_number').val(),
                                 secondary_school_name:secondary_school_name,
                                 secondary_school_address:secondary_school_address,
                                 secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
@@ -195,6 +190,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
+                                empno:$('#employee_number').val(),
                                 past_medical_condition:past_medical_condition,
                                 allergies:allergies,
                                 medication:medication,

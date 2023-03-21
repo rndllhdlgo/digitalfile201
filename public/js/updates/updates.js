@@ -362,8 +362,6 @@ $(document).on('click','#btnApprove',function(){
                 },
                 success: function(data){
                     if(data == 'true'){
-
-                        var empno = $('#empno').val();
                         var secondary_school_name = $('#secondary_school_name').val();
                         var secondary_school_address = $('#secondary_school_address').val();
                         var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -391,6 +389,27 @@ $(document).on('click','#btnApprove',function(){
                                 primary_school_inclusive_years_to:primary_school_inclusive_years_to
                             }
                         });
+
+                        var past_medical_condition = $('#past_medical_condition').val();
+                        var allergies = $('#allergies').val();
+                        var medication = $('#medication').val();
+                        var psychological_history = $('#psychological_history').val();
+
+                        $.ajax({
+                            url:"/update_medical_history",
+                            type:"POST",
+                            headers:{
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                empno:empno,
+                                past_medical_condition:past_medical_condition,
+                                allergies:allergies,
+                                medication:medication,
+                                psychological_history:psychological_history,
+                            }
+                        });
+
                         Swal.fire('UPDATE SUCCESS','','success');
                     }
                     else{
