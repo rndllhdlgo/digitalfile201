@@ -249,6 +249,34 @@ class UpdatesController extends Controller
         }
     }
 
+    public function update_college(Request $request){
+        $employee_college = CollegeTable::where('empno', $request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_college){
+            $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
+
+            $sql = CollegeTable::
+            create([
+                'employee_id' => $employee_id,
+                'empno' => $request->empno,
+                'college_name' => $employee_college_pending->college_name,
+                'college_degree' => $employee_college_pending->college_degree,
+                'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
+                'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
+            ]);
+        }
+        else{
+            $sql = CollegeTable::where('empno', $request->empno)
+            ->update([
+                'college_name' => $employee_college_pending->college_name,
+                'college_degree' => $employee_college_pending->college_degree,
+                'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
+                'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
+            ]);
+        }
+    }
+
     public function college_data(Request $request){
         return DataTables::of(CollegeTablePending::where('employee_id',$request->id)->get())->make(true);
     }

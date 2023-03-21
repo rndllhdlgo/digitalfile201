@@ -231,6 +231,7 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
+                                    empno:$('#employee_number').val(),
                                     college_name : $(this).children('.td_1').html(),
                                     college_degree : $(this).children('.td_2').html(),
                                     college_inclusive_years_from: $(this).children('.td_3').html(),

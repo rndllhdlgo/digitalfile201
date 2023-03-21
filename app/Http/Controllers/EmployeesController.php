@@ -408,8 +408,9 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new CollegeTable;
             $employee->employee_id = $request->employee_id;
-            $employee->college_name = strtoupper($request->college_name);
-            $employee->college_degree = strtoupper($request->college_degree);
+            $employee->empno = $request->empno;
+            $employee->college_name = $request->college_name;
+            $employee->college_degree = $request->college_degree;
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
             $sql = $employee->save();
@@ -449,8 +450,9 @@ class EmployeesController extends Controller
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
             $employee = new CollegeTablePending;
             $employee->employee_id = $emp_id;
-            $employee->college_name = strtoupper($request->college_name);
-            $employee->college_degree = strtoupper($request->college_degree);
+            $employee->empno = $request->empno;
+            $employee->college_name = $request->college_name;
+            $employee->college_degree = $request->college_degree;
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
             $employee->save();
