@@ -215,13 +215,14 @@ Route::get('/employee_history_reload', 'EmployeesController@employee_history_rel
 // Updates Controller
 Route::get('/update_list', 'UpdatesController@update_list');
 Route::get('/update_fetch', 'UpdatesController@update_fetch');
+Route::get('/updates/college_data', 'UpdatesController@college_data');
+Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
+Route::get('/updates/training_data', 'UpdatesController@training_data');
+Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');
 Route::any('/update_personal_information', 'UpdatesController@update_personal_information');
 Route::any('/update_educational_attainment', 'UpdatesController@update_educational_attainment');
 Route::any('/update_medical_history', 'UpdatesController@update_medical_history');
-Route::get('/updates/college_data', 'UpdatesController@college_data');
 Route::any('/update_college', 'UpdatesController@update_college');
-Route::get('/updates/training_data', 'UpdatesController@training_data');
 Route::any('/update_training', 'UpdatesController@update_training');
-Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
 Route::any('/update_vocational', 'UpdatesController@update_vocational');
-Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');
+Route::any('/update_job_history', 'UpdatesController@update_job_history');

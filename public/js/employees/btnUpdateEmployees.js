@@ -308,6 +308,7 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
+                                    empno:$('#employee_number').val(),
                                     job_company_name : $(this).children('.td_1').html(),
                                     job_description : $(this).children('.td_2').html(),
                                     job_position : $(this).children('.td_3').html(),

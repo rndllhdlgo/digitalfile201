@@ -21,6 +21,7 @@ use App\Models\TerminationTable;
 use App\Models\PersonalInformationTable;
 use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
+use App\Models\WorkInformationTablePending;
 use App\Models\CompensationBenefits;
 use App\Models\EducationalAttainment;
 use App\Models\EducationalAttainmentPending;
@@ -40,6 +41,7 @@ use DataTables;
 
 class UpdatesController extends Controller
 {
+
     public function update_list(){
         $update_list = PersonalInformationTablePending::select(
             'personal_information_tables_pending.id',
@@ -51,7 +53,6 @@ class UpdatesController extends Controller
             'branches.branch_name AS employee_branch',
             'work_information_tables_pending.employment_status',
             'status'
-        // )->where('status','!=','APPROVED')
         )
         ->join('work_information_tables_pending','work_information_tables_pending.employee_id','personal_information_tables_pending.id')
         ->join('positions','positions.id','work_information_tables_pending.employee_position')
@@ -118,12 +119,14 @@ class UpdatesController extends Controller
     public function update_personal_information(Request $request){
         $current_image = PersonalInformationTable::select('employee_image')->where('empno', $request->empno)->value('employee_image');
         $new_image = PersonalInformationTablePending::select('employee_image')->where('empno', $request->empno)->value('employee_image');
+        $employee_personal_pending = PersonalInformationTablePending::where('empno', $request->empno)->first();
+        $employee_work_pending = WorkInformationTablePending::where('employee_number', $request->empno)->first();
 
         if($current_image !== $new_image){
             unlink('storage/employee_images/'.$current_image);
         }
 
-        $sql = PersonalInformationTable::where('empno',$request->empno)->first()
+        $sql = PersonalInformationTable::where('empno', $request->empno)->first()
         ->update([
             'employee_image' => $request->employee_image,
             'first_name' => $request->first_name,
@@ -157,6 +160,8 @@ class UpdatesController extends Controller
         ]);
 
         if($sql){
+            $employee_personal_pending->delete();
+            $employee_work_pending->delete();
             return 'true';
         }
         else{
@@ -211,7 +216,8 @@ class UpdatesController extends Controller
     }
 
     public function update_medical_history(Request $request){
-        $employee_medical_history = MedicalHistory::where('empno',$request->empno)->first();
+        $employee_medical_history = MedicalHistory::where('empno', $request->empno)->first();
+        $employee_medical_history_pending = MedicalHistoryPending::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
 
         if(!$employee_medical_history){
@@ -230,6 +236,7 @@ class UpdatesController extends Controller
                     'medication' => $request->medication,
                     'psychological_history' => $request->psychological_history
                 ]);
+                $employee_medical_history_pending->delete();
             }
         }
         else{
@@ -240,6 +247,7 @@ class UpdatesController extends Controller
                 'medication' => $request->medication,
                 'psychological_history' => $request->psychological_history
             ]);
+            $employee_medical_history_pending->delete();
         }
     }
 
@@ -260,9 +268,11 @@ class UpdatesController extends Controller
                     'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
                     'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
                 ]);
+                $employee_college_pending->delete();
             }
         }
         else{
+            $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
             $sql = CollegeTable::where('empno', $request->empno)
             ->update([
                 'college_name' => $employee_college_pending->college_name,
@@ -270,6 +280,7 @@ class UpdatesController extends Controller
                 'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
                 'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
             ]);
+            $employee_college_pending->delete();
         }
     }
 
@@ -290,9 +301,11 @@ class UpdatesController extends Controller
                     'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
                     'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
                 ]);
+                $employee_training_pending->delete();
             }
         }
         else{
+            $employee_training_pending = TrainingTablePending::where('empno', $request->empno)->first();
             $sql = TrainingTable::where('empno', $request->empno)
             ->update([
                 'training_name' => $employee_training_pending->training_name,
@@ -300,6 +313,7 @@ class UpdatesController extends Controller
                 'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
                 'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
             ]);
+            $employee_training_pending->delete();
         }
     }
 
@@ -333,6 +347,43 @@ class UpdatesController extends Controller
                 'vocational_inclusive_years_to' => $employee_vocational_pending->vocational_inclusive_years_to
             ]);
             $employee_vocational_pending->delete();
+        }
+    }
+
+    public function update_job_history(Request $request){
+        $employee_job = JobHistoryTable::where('empno', $request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_job){
+            $employee_job_pending = JobHistoryTablePending::where('empno', $request->empno)->first();
+
+            if($employee_job_pending){
+                $sql = JobHistoryTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'job_company_name' => $employee_job_pending->job_company_name,
+                    'job_description' => $employee_job_pending->job_description,
+                    'job_position' => $employee_job_pending->job_position,
+                    'job_contact_number' => $employee_job_pending->job_contact_number,
+                    'job_inclusive_years_from' => $employee_job_pending->job_inclusive_years_from,
+                    'job_inclusive_years_to' => $employee_job_pending->job_inclusive_years_to
+                ]);
+                $employee_job_pending->delete();
+            }
+        }
+        else{
+            $employee_job_pending = JobHistoryTablePending::where('empno', $request->empno)->first();
+            $sql = JobHistoryTable::where('empno', $request->empno)
+            ->update([
+                'job_company_name' => $employee_job_pending->job_company_name,
+                'job_description' => $employee_job_pending->job_description,
+                'job_position' => $employee_job_pending->job_position,
+                'job_contact_number' => $employee_job_pending->job_contact_number,
+                'job_inclusive_years_from' => $employee_job_pending->job_inclusive_years_from,
+                'job_inclusive_years_to' => $employee_job_pending->job_inclusive_years_to
+            ]);
+            $employee_job_pending->delete();
         }
     }
 

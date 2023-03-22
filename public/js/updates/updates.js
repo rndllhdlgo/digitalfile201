@@ -34,6 +34,7 @@ var updatesTable = $('#updatesTable').DataTable({
 $('div.breakspace').html('<br><br>');
 
 $(document).on('click','#updatesTable tbody tr',function(){
+    if(!updatesTable.data().any()){ return false; }
     var data = updatesTable.row(this).data();
     var id = data.id;
 
@@ -436,6 +437,17 @@ $(document).on('click','#btnApprove',function(){
 
                         $.ajax({
                             url: '/update_vocational',
+                            type: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                empno: empno,
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/update_job_history',
                             type: 'POST',
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

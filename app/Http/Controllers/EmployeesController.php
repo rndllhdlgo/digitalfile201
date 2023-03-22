@@ -594,9 +594,10 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new JobHistoryTable;
             $employee->employee_id = $request->employee_id;
-            $employee->job_company_name = strtoupper($request->job_company_name);
-            $employee->job_description = strtoupper($request->job_description);
-            $employee->job_position = strtoupper($request->job_position);
+            $employee->empno = $request->empno;
+            $employee->job_company_name = $request->job_company_name;
+            $employee->job_description = $request->job_description;
+            $employee->job_position = $request->job_position;
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
@@ -637,9 +638,10 @@ class EmployeesController extends Controller
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
             $employee = new JobHistoryTablePending;
             $employee->employee_id = $emp_id;
-            $employee->job_company_name = strtoupper($request->job_company_name);
-            $employee->job_description = strtoupper($request->job_description);
-            $employee->job_position = strtoupper($request->job_position);
+            $employee->empno = $request->empno;
+            $employee->job_company_name = $request->job_company_name;
+            $employee->job_description = $request->job_description;
+            $employee->job_position = $request->job_position;
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
@@ -1586,7 +1588,7 @@ class EmployeesController extends Controller
                     $request->employee_department != $employee_department_orig ||
                     $request->employee_shift != $employee_shift_orig
                     ){
-                    // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
+
                     $employee_details = PersonalInformationTable::where('id', $request->id)->first();
                     $userlogs = new LogsTable;
                     $userlogs->employee_id = $request->id;
