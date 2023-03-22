@@ -170,11 +170,11 @@ class UpdatesController extends Controller
     }
 
     public function update_educational_attainment(Request $request){
-
         $employee_educational = EducationalAttainment::where('empno',$request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
 
         if(!$employee_educational){
+                $employee_educational_pending = EducationalAttainmentPending::where('empno', $request->empno)->first();
             if(
                $request->secondary_school_name
             || $request->secondary_school_address
@@ -198,9 +198,11 @@ class UpdatesController extends Controller
                     'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
                     'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
                 ]);
+                $employee_educational_pending->delete();
             }
         }
         else{
+            $employee_educational_pending = EducationalAttainmentPending::where('empno', $request->empno)->first();
             $sql = EducationalAttainment::where('empno',$request->empno)->first()
             ->update([
                 'secondary_school_name' => $request->secondary_school_name,
@@ -212,6 +214,7 @@ class UpdatesController extends Controller
                 'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
                 'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
             ]);
+            $employee_educational_pending->delete();
         }
     }
 
@@ -390,12 +393,15 @@ class UpdatesController extends Controller
     public function college_data(Request $request){
         return DataTables::of(CollegeTablePending::where('employee_id',$request->id)->get())->make(true);
     }
+
     public function training_data(Request $request){
         return DataTables::of(TrainingTablePending::where('employee_id',$request->id)->get())->make(true);
     }
+
     public function vocational_data(Request $request){
         return DataTables::of(VocationalTablePending::where('employee_id',$request->id)->get())->make(true);
     }
+
     public function job_history_data(Request $request){
         return DataTables::of(JobHistoryTablePending::where('employee_id',$request->id)->get())->make(true);
     }
