@@ -221,5 +221,7 @@ Route::any('/update_medical_history', 'UpdatesController@update_medical_history'
 Route::get('/updates/college_data', 'UpdatesController@college_data');
 Route::any('/update_college', 'UpdatesController@update_college');
 Route::get('/updates/training_data', 'UpdatesController@training_data');
+Route::any('/update_training', 'UpdatesController@update_training');
 Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
+Route::any('/update_vocational', 'UpdatesController@update_vocational');
 Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');

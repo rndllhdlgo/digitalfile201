@@ -268,6 +268,7 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
+                                    empno:$('#employee_number').val(),
                                     training_name : $(this).children('.td_1').html(),
                                     training_title :  $(this).children('.td_2').html(),
                                     training_inclusive_years_from : $(this).children('.td_3').html(),
@@ -287,6 +288,7 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
+                                    empno:$('#employee_number').val(),
                                     vocational_name : $(this).children('.td_1').html(),
                                     vocational_course : $(this).children('.td_2').html(),
                                     vocational_inclusive_years_from: $(this).children('.td_3').html(),

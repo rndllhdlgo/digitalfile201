@@ -157,12 +157,6 @@ class UpdatesController extends Controller
         ]);
 
         if($sql){
-            // PersonalInformationTablePending::where('empno',$request->empno)->first()
-            // ->update([
-            //     'status' => 'APPROVED'
-            // ]);
-            // sleep(2);
-            // PersonalInformationTablePending::where('empno', $request->empno)->delete();
             return 'true';
         }
         else{
@@ -256,15 +250,17 @@ class UpdatesController extends Controller
         if(!$employee_college){
             $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
 
-            $sql = CollegeTable::
-            create([
-                'employee_id' => $employee_id,
-                'empno' => $request->empno,
-                'college_name' => $employee_college_pending->college_name,
-                'college_degree' => $employee_college_pending->college_degree,
-                'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
-                'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
-            ]);
+            if($employee_college_pending){
+                $sql = CollegeTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'college_name' => $employee_college_pending->college_name,
+                    'college_degree' => $employee_college_pending->college_degree,
+                    'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
+                    'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
+                ]);
+            }
         }
         else{
             $sql = CollegeTable::where('empno', $request->empno)
@@ -274,6 +270,69 @@ class UpdatesController extends Controller
                 'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
                 'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
             ]);
+        }
+    }
+
+    public function update_training(Request $request){
+        $employee_training = TrainingTable::where('empno', $request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_training){
+            $employee_training_pending = TrainingTablePending::where('empno', $request->empno)->first();
+
+            if($employee_training_pending){
+                $sql = TrainingTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'training_name' => $employee_training_pending->training_name,
+                    'training_title' => $employee_training_pending->training_title,
+                    'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
+                    'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
+                ]);
+            }
+        }
+        else{
+            $sql = TrainingTable::where('empno', $request->empno)
+            ->update([
+                'training_name' => $employee_training_pending->training_name,
+                'training_title' => $employee_training_pending->training_title,
+                'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
+                'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
+            ]);
+        }
+    }
+
+    public function update_vocational(Request $request){
+        $employee_vocational = VocationalTable::where('empno', $request->empno)->first();
+        $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+
+        if(!$employee_vocational){
+            $employee_vocational_pending = VocationalTablePending::where('empno', $request->empno)->first();
+
+            if($employee_vocational_pending){
+                $sql = VocationalTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
+                    'vocational_name' => $employee_vocational_pending->vocational_name,
+                    'vocational_course' => $employee_vocational_pending->vocational_course,
+                    'vocational_inclusive_years_from' => $employee_vocational_pending->vocational_inclusive_years_from,
+                    'vocational_inclusive_years_to' => $employee_vocational_pending->vocational_inclusive_years_to
+                ]);
+                $employee_vocational_pending->delete();
+            }
+        }
+        else{
+            $employee_vocational_pending = VocationalTablePending::where('empno', $request->empno)->first();
+            $sql = VocationalTable::where('empno', $request->empno)
+            ->update([
+                'vocational_name' => $employee_vocational_pending->vocational_name,
+                'vocational_course' => $employee_vocational_pending->vocational_course,
+                'vocational_inclusive_years_from' => $employee_vocational_pending->vocational_inclusive_years_from,
+                'vocational_inclusive_years_to' => $employee_vocational_pending->vocational_inclusive_years_to
+            ]);
+            $employee_vocational_pending->delete();
         }
     }
 

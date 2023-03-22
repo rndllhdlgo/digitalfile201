@@ -470,6 +470,7 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new TrainingTable;
             $employee->employee_id = $request->employee_id;
+            $employee->empno = $request->empno;
             $employee->training_name = strtoupper($request->training_name);
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
@@ -511,6 +512,7 @@ class EmployeesController extends Controller
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
             $employee = new TrainingTablePending;
             $employee->employee_id = $emp_id;
+            $employee->empno = $request->empno;
             $employee->training_name = strtoupper($request->training_name);
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
@@ -530,8 +532,9 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new VocationalTable;
             $employee->employee_id = $request->employee_id;
-            $employee->vocational_name = strtoupper($request->vocational_name);
-            $employee->vocational_course = strtoupper($request->vocational_course);
+            $employee->empno = $request->empno;
+            $employee->vocational_name = $request->vocational_name;
+            $employee->vocational_course = $request->vocational_course;
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
             $sql = $employee->save();
@@ -571,8 +574,9 @@ class EmployeesController extends Controller
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
             $employee = new VocationalTablePending;
             $employee->employee_id = $emp_id;
-            $employee->vocational_name = strtoupper($request->vocational_name);
-            $employee->vocational_course = strtoupper($request->vocational_course);
+            $employee->empno = $request->empno;
+            $employee->vocational_name = $request->vocational_name;
+            $employee->vocational_course = $request->vocational_course;
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
             $employee->save();
@@ -3119,5 +3123,4 @@ class EmployeesController extends Controller
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
     }
-
 }

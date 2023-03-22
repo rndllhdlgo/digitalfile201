@@ -643,3 +643,7 @@ th{
     zoom:85% !important;
     box-shadow: none !important;
 }
+
+label{
+    text-transform: uppercase !important;
+}

@@ -99,10 +99,12 @@ $(document).on('click','#updatesTable tbody tr',function(){
                 $('#primary_school_address').val(value.primary_school_address);
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
-                $('#past_medical_condition').val(value.past_medical_condition);
-                $('#allergies').val(value.allergies);
                 $('#medication').val(value.medication);
-                $('#psychological_history').val(value.psychological_history);
+
+                !value.past_medical_condition ? $('#past_medical_condition').removeAttr('placeholder') : $('#past_medical_condition').val(value.past_medical_condition);
+                !value.allergies ? $('#allergies').removeAttr('placeholder') : $('#allergies').val(value.allergies);
+                !value.medication ? $('#medication').removeAttr('placeholder') : $('#medication').val(value.medication);
+                !value.psychological_history ? $('#psychological_history').removeAttr('placeholder') : $('#psychological_history').val(value.psychological_history);
 
                 $('.college_table_orig').dataTable().fnDestroy();
                 $('.college_table_orig').DataTable({
@@ -412,6 +414,28 @@ $(document).on('click','#btnApprove',function(){
 
                         $.ajax({
                             url: '/update_college',
+                            type: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                empno: empno,
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/update_training',
+                            type: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            data:{
+                                empno: empno,
+                            }
+                        });
+
+                        $.ajax({
+                            url: '/update_vocational',
                             type: 'POST',
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
