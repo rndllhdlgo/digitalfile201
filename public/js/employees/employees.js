@@ -643,76 +643,76 @@ setInterval(() => {
     }
 }, 0);
 
-setInterval(() => {
-    // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
-    || $('#first_name').val().length < 2
-    || $('#middle_name').val().length < 2
-    || $('#last_name').val().length < 2
-    || $('#father_name').val().length < 2
-    || $('#mother_name').val().length < 2
-    || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    && $('#father_contact_number').val().length < 11
-    && $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    && $('#company_contact_number').val().length < 11
-    || !email_address.value.match(regExp)
-    && !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('duplicate_field')
-    || $('#email_address').hasClass('duplicate_field')
-    || $('#telephone_number').hasClass('duplicate_field')
-    || $('#cellphone_number').hasClass('duplicate_field')
-    || $('#father_contact_number').hasClass('duplicate_field')
-    || $('#mother_contact_number').hasClass('duplicate_field')
-    || $('#spouse_contact_number').hasClass('duplicate_field')
-    || $('#emergency_contact_number').hasClass('duplicate_field')
-    || $('#company_email_address').hasClass('duplicate_field')
-    || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#btnSave').prop("disabled",true);
-    }
-    else{
-        $('#btnSave').prop("disabled",false);
-    }
-}, 0);
+// setInterval(() => {
+//     // Check all required field function
+//     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
+//     || $('#first_name').val().length < 2
+//     || $('#middle_name').val().length < 2
+//     || $('#last_name').val().length < 2
+//     || $('#father_name').val().length < 2
+//     || $('#mother_name').val().length < 2
+//     || $('#emergency_contact_name').val().length < 2
+//     || $('#cellphone_number').val().length < 11
+//     && $('#father_contact_number').val().length < 11
+//     && $('#mother_contact_number').val().length < 11
+//     || $('#emergency_contact_number').val().length < 11
+//     && $('#company_contact_number').val().length < 11
+//     || !email_address.value.match(regExp)
+//     && !company_email_address.value.match(regExp)
+//     || $('#employee_number').hasClass('duplicate_field')
+//     || $('#email_address').hasClass('duplicate_field')
+//     || $('#telephone_number').hasClass('duplicate_field')
+//     || $('#cellphone_number').hasClass('duplicate_field')
+//     || $('#father_contact_number').hasClass('duplicate_field')
+//     || $('#mother_contact_number').hasClass('duplicate_field')
+//     || $('#spouse_contact_number').hasClass('duplicate_field')
+//     || $('#emergency_contact_number').hasClass('duplicate_field')
+//     || $('#company_email_address').hasClass('duplicate_field')
+//     || $('#company_contact_number').hasClass('duplicate_field')
+//     )
+//     {
+//         $('#btnSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#btnSave').prop("disabled",false);
+//     }
+// }, 0);
 
-setInterval(() => {
-    // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
-    || $('#first_name').val().length < 2
-    || $('#middle_name').val().length < 2
-    || $('#last_name').val().length < 2
-    || $('#father_name').val().length < 2
-    || $('#mother_name').val().length < 2
-    || $('#emergency_contact_name').val().length < 2
-    || $('#cellphone_number').val().length < 11
-    && $('#father_contact_number').val().length < 11
-    && $('#mother_contact_number').val().length < 11
-    || $('#emergency_contact_number').val().length < 11
-    && $('#company_contact_number').val().length < 11
-    || !email_address.value.match(regExp)
-    && !company_email_address.value.match(regExp)
-    || $('#employee_number').hasClass('duplicate_field')
-    || $('#email_address').hasClass('duplicate_field')
-    || $('#telephone_number').hasClass('duplicate_field')
-    || $('#cellphone_number').hasClass('duplicate_field')
-    || $('#father_contact_number').hasClass('duplicate_field')
-    || $('#mother_contact_number').hasClass('duplicate_field')
-    || $('#spouse_contact_number').hasClass('duplicate_field')
-    || $('#emergency_contact_number').hasClass('duplicate_field')
-    || $('#company_email_address').hasClass('duplicate_field')
-    || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#btnUpdate').prop("disabled",true);
+// setInterval(() => {
+//     // Check all required field function
+//     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
+//     || $('#first_name').val().length < 2
+//     || $('#middle_name').val().length < 2
+//     || $('#last_name').val().length < 2
+//     || $('#father_name').val().length < 2
+//     || $('#mother_name').val().length < 2
+//     || $('#emergency_contact_name').val().length < 2
+//     || $('#cellphone_number').val().length < 11
+//     && $('#father_contact_number').val().length < 11
+//     && $('#mother_contact_number').val().length < 11
+//     || $('#emergency_contact_number').val().length < 11
+//     && $('#company_contact_number').val().length < 11
+//     || !email_address.value.match(regExp)
+//     && !company_email_address.value.match(regExp)
+//     || $('#employee_number').hasClass('duplicate_field')
+//     || $('#email_address').hasClass('duplicate_field')
+//     || $('#telephone_number').hasClass('duplicate_field')
+//     || $('#cellphone_number').hasClass('duplicate_field')
+//     || $('#father_contact_number').hasClass('duplicate_field')
+//     || $('#mother_contact_number').hasClass('duplicate_field')
+//     || $('#spouse_contact_number').hasClass('duplicate_field')
+//     || $('#emergency_contact_number').hasClass('duplicate_field')
+//     || $('#company_email_address').hasClass('duplicate_field')
+//     || $('#company_contact_number').hasClass('duplicate_field')
+//     )
+//     {
+//         $('#btnUpdate').prop("disabled",true);
 
-    }
-    else{
-        $('#btnUpdate').prop("disabled",false);
-    }
-}, 0);
+//     }
+//     else{
+//         $('#btnUpdate').prop("disabled",false);
+//     }
+// }, 0);
 
 setInterval(() => {
     if($('#btnSave').is(":visible")){

@@ -24,17 +24,9 @@
 var employee_image;
 function employee_image_save(){
     var extension = "jpeg";
-    var d = new Date();
     var date = new Date();
-    // employee_image = ("0" + (d.getMonth() + 1)).slice(-2) + "-" +
-    //                 ("0" + d.getDate()).slice(-2) + "-" +
-    //                 d.getFullYear() + "-" +
-    //                 ("0" + d.getHours()).slice(-2) + "-" +
-    //                 ("0" + d.getMinutes()).slice(-2) + "-" +
-    //                 ("0" + d.getSeconds()).slice(-2) +
-    //                 '_Employee_Image.' + extension;
 
-    employee_image = $('#employee_number').val() + '_' + $('#last_name').val() + '_' + $('#first_name').val() + '_' +
+    employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
                     date.getFullYear().toString().slice(-2) +
                     ("0" + (date.getMonth() + 1)).slice(-2) +
                     ("0" + date.getDate()).slice(-2) +
@@ -211,7 +203,6 @@ $('#btnSave').on('click', function(){
                                 },
                             });
                             // Educational Training
-                            var empno = $('#employee_number').val();
                             var secondary_school_name = $('#secondary_school_name').val();
                             var secondary_school_address = $('#secondary_school_address').val();
                             var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
@@ -254,6 +245,7 @@ $('#btnSave').on('click', function(){
                                 },
                                 data:{
                                     employee_id:data.id,
+                                    empno:empno,
                                     allergies:allergies,
                                     past_medical_condition:past_medical_condition,
                                     medication:medication,
@@ -284,97 +276,100 @@ $('#btnSave').on('click', function(){
                                 },
                             });
 
-                            //This code is to save the data in multiple rows
-                                $('.children_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveChildren',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            child_name : $(this).children('.td_1').html(),
-                                            child_birthday: $(this).children('.td_2').html(),
-                                            child_gender  : $(this).children('.td_4').html()
-                                        },
-                                    });
+                            $('.children_tr').each(function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/employees/saveChildren',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        employee_id : data.id,
+                                        child_name : $(this).children('.td_1').html(),
+                                        child_birthday: $(this).children('.td_2').html(),
+                                        child_gender  : $(this).children('.td_4').html()
+                                    },
                                 });
+                            });
 
-                                $('.college_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveCollege',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            college_name : $(this).children('.td_1').html(),
-                                            college_degree : $(this).children('.td_2').html(),
-                                            college_inclusive_years_from: $(this).children('.td_3').html(),
-                                            college_inclusive_years_to: $(this).children('.td_4').html()
-                                        },
-                                    });
+                            $('.college_tr').each(function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/employees/saveCollege',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        employee_id : data.id,
+                                        empno:empno,
+                                        college_name : $(this).children('.td_1').html(),
+                                        college_degree : $(this).children('.td_2').html(),
+                                        college_inclusive_years_from: $(this).children('.td_3').html(),
+                                        college_inclusive_years_to: $(this).children('.td_4').html()
+                                    },
                                 });
+                            });
 
-                                $('.training_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveTraining',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            training_name : $(this).children('.td_1').html(),
-                                            training_title :  $(this).children('.td_2').html(),
-                                            training_inclusive_years_from: $(this).children('.td_3').html(),
-                                            training_inclusive_years_to: $(this).children('.td_4').html()
-                                        },
-                                    });
+                            $('.training_tr').each(function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/employees/saveTraining',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        employee_id : data.id,
+                                        empno:empno,
+                                        training_name : $(this).children('.td_1').html(),
+                                        training_title :  $(this).children('.td_2').html(),
+                                        training_inclusive_years_from: $(this).children('.td_3').html(),
+                                        training_inclusive_years_to: $(this).children('.td_4').html()
+                                    },
                                 });
+                            });
 
-                                $('.vocational_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveVocational',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            vocational_name : $(this).children('.td_1').html(),
-                                            vocational_course : $(this).children('.td_2').html(),
-                                            vocational_inclusive_years_from: $(this).children('.td_3').html(),
-                                            vocational_inclusive_years_to: $(this).children('.td_4').html()
-                                        },
-                                    });
+                            $('.vocational_tr').each(function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/employees/saveVocational',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        employee_id : data.id,
+                                        empno:empno,
+                                        vocational_name : $(this).children('.td_1').html(),
+                                        vocational_course : $(this).children('.td_2').html(),
+                                        vocational_inclusive_years_from: $(this).children('.td_3').html(),
+                                        vocational_inclusive_years_to: $(this).children('.td_4').html()
+                                    },
                                 });
+                            });
 
-                                $('.job_history_tr').each(function(){
-                                    $.ajax({
-                                        type: 'POST',
-                                        url: '/employees/saveJobHistory',
-                                        async: false,
-                                        headers:{
-                                            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                        },
-                                        data:{
-                                            employee_id : data.id,
-                                            job_company_name : $(this).children('.td_1').html(),
-                                            job_description : $(this).children('.td_2').html(),
-                                            job_position : $(this).children('.td_3').html(),
-                                            job_contact_number : $(this).children('.td_4').html(),
-                                            job_inclusive_years_from : $(this).children('.td_5').html(),
-                                            job_inclusive_years_to : $(this).children('.td_6').html()
-                                        },
-                                    });
+                            $('.job_history_tr').each(function(){
+                                $.ajax({
+                                    type: 'POST',
+                                    url: '/employees/saveJobHistory',
+                                    async: false,
+                                    headers:{
+                                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                    },
+                                    data:{
+                                        employee_id : data.id,
+                                        empno:empno,
+                                        job_company_name : $(this).children('.td_1').html(),
+                                        job_description : $(this).children('.td_2').html(),
+                                        job_position : $(this).children('.td_3').html(),
+                                        job_contact_number : $(this).children('.td_4').html(),
+                                        job_inclusive_years_from : $(this).children('.td_5').html(),
+                                        job_inclusive_years_to : $(this).children('.td_6').html()
+                                    },
                                 });
+                            });
 
                                 $('#memo_subject').attr('name','');
                                 $('#memo_date').attr('name','');
@@ -393,7 +388,7 @@ $('#btnSave').on('click', function(){
                                 $('#termination_reason').attr('name','');
                                 $('#termination_date').attr('name','');
                                 $('#termination_file').attr('name','');
-                                $('#documents_form').submit();
+                                // $('#documents_form').submit();
                                 Swal.fire("SAVE SUCCESS", "", "success");
                                 // setTimeout(function(){window.location.reload();}, 2000);
                         }

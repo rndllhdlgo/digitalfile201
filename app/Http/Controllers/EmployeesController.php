@@ -381,7 +381,7 @@ class EmployeesController extends Controller
     public function saveChildren(Request $request){
         $children = new ChildrenTable;
         $children->employee_id = $request->employee_id;
-        $children->child_name = strtoupper($request->child_name);
+        $children->child_name = $request->child_name;
         $children->child_birthday = $request->child_birthday;
         $children->child_gender = $request->child_gender;
         $children->save();
@@ -601,7 +601,7 @@ class EmployeesController extends Controller
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-            $employee->save();
+            $sql = $employee->save();
 
             if($request->job_history_change == 'CHANGED'){
                 $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
@@ -1871,50 +1871,50 @@ class EmployeesController extends Controller
                 ]);
 
                 if($request->primary_school_name){
-                    $primary_school_name_logs = "[PRIMARY SCHOOL NAME: $request->primary_school_name]";
+                    $primary_school_name_logs = "[PRIMARY SCHOOL NAME: ".strtoupper($request->primary_school_name)."]";
                 }
                 else{
                     $primary_school_name_logs = NULL;
                 }
                 if($request->primary_school_address){
-                    $primary_school_address_logs = "[PRIMARY SCHOOL ADDRESS: $request->primary_school_address]";
+                    $primary_school_address_logs = "[PRIMARY SCHOOL ADDRESS: ".strtoupper($request->primary_school_address)."]";
                 }
                 else{
                     $primary_school_address_logs = NULL;
                 }
                 if($request->primary_school_inclusive_years_from){
-                    $primary_school_inclusive_years_from_logs = "[PRIMARY SCHOOL START YEAR/MONTH: $request->primary_school_inclusive_years_from]";
+                    $primary_school_inclusive_years_from_logs = "[PRIMARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_from)->format('F, Y')."]";
                 }
                 else{
                     $primary_school_inclusive_years_from_logs = NULL;
                 }
                 if($request->primary_school_inclusive_years_to){
-                    $primary_school_inclusive_years_to_logs = "[PRIMARY SCHOOL END YEAR/MONTH: $request->primary_school_inclusive_years_to]";
+                    $primary_school_inclusive_years_to_logs = "[PRIMARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_to)->format('F, Y')."]";
                 }
                 else{
                     $primary_school_inclusive_years_to_logs = NULL;
                 }
 
                 if($request->secondary_school_name){
-                    $secondary_school_name_logs = "[SECONDARY SCHOOL NAME: $request->secondary_school_name]";
+                    $secondary_school_name_logs = "[SECONDARY SCHOOL NAME: ".strtoupper($request->secondary_school_name)."]";
                 }
                 else{
                     $secondary_school_name_logs = NULL;
                 }
                 if($request->secondary_school_address){
-                    $secondary_school_address_logs = "[SECONDARY SCHOOL ADDRESS: $request->secondary_school_address]";
+                    $secondary_school_address_logs = "[SECONDARY SCHOOL ADDRESS: ".strtoupper($request->secondary_school_address)."]";
                 }
                 else{
                     $secondary_school_address_logs = NULL;
                 }
                 if($request->secondary_school_inclusive_years_from){
-                    $secondary_school_inclusive_years_from_logs = "[SECONDARY SCHOOL START YEAR/MONTH: $request->secondary_school_inclusive_years_from]";
+                    $secondary_school_inclusive_years_from_logs = "[SECONDARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_from)->format('F, Y')."]";
                 }
                 else{
                     $secondary_school_inclusive_years_from_logs = NULL;
                 }
                 if($request->secondary_school_inclusive_years_to){
-                    $secondary_school_inclusive_years_to_logs = "[SECONDARY SCHOOL END YEAR/MONTH: $request->secondary_school_inclusive_years_to]";
+                    $secondary_school_inclusive_years_to_logs = "[SECONDARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_to)->format('F, Y')."]";
                 }
                 else{
                     $secondary_school_inclusive_years_to_logs = NULL;
