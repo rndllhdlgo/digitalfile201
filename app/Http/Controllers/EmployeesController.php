@@ -725,7 +725,7 @@ class EmployeesController extends Controller
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
 
-        if(strtoupper($request->first_name) != $first_name_orig){
+        if($request->first_name != $first_name_orig){
             $first_name_new = strtoupper($request->first_name);
             $first_name_change = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
         }
@@ -733,7 +733,7 @@ class EmployeesController extends Controller
             $first_name_change = NULL;
         }
 
-        if(strtoupper($request->middle_name) != $middle_name_orig){
+        if($request->middle_name != $middle_name_orig){
             $middle_name_new = strtoupper($request->middle_name);
             $middle_name_change = "[MIDDLE NAME: FROM '$middle_name_orig' TO '$middle_name_new']";
         }
@@ -741,7 +741,7 @@ class EmployeesController extends Controller
             $middle_name_change = NULL;
         }
 
-        if(strtoupper($request->last_name) != $last_name_orig){
+        if($request->last_name != $last_name_orig){
             $last_name_new = strtoupper($request->last_name);
             $last_name_change = "[LAST NAME: FROM '$last_name_orig' TO '$last_name_new']";
         }
@@ -749,7 +749,7 @@ class EmployeesController extends Controller
             $last_name_change = NULL;
         }
 
-        if(strtoupper($request->suffix) != $suffix_orig){
+        if($request->suffix != $suffix_orig){
             $suffix_new = strtoupper($request->suffix);
             $suffix_change = "[SUFFIX: FROM '$suffix_orig' TO '$suffix_new']";
         }
@@ -757,7 +757,7 @@ class EmployeesController extends Controller
             $suffix_change = NULL;
         }
 
-        if(strtoupper($request->nickname) != $nickname_orig){
+        if($request->nickname != $nickname_orig){
             $nickname_new = strtoupper($request->nickname);
             $nickname_change = "[NICKNAME: FROM '$nickname_orig' TO '$nickname_new']";
         }
@@ -838,7 +838,7 @@ class EmployeesController extends Controller
             $weight_change = NULL;
         }
 
-        if(strtoupper($request->religion) != $religion_orig){
+        if($request->religion != $religion_orig){
             $religion_new = strtoupper($request->religion);
             $religion_change = "[RELIGION: FROM '$religion_orig' TO '$religion_new']";
         }
@@ -878,7 +878,7 @@ class EmployeesController extends Controller
             $cellphone_number_change = NULL;
         }
 
-        if(strtoupper($request->father_name) != $father_name_orig){
+        if($request->father_name != $father_name_orig){
             $father_name_new = strtoupper($request->father_name);
             $father_name_change = "[FATHER'S NAME: FROM '$father_name_orig' TO '$father_name_new']";
         }
@@ -894,7 +894,7 @@ class EmployeesController extends Controller
             $father_contact_number_change = NULL;
         }
 
-        if(strtoupper($request->father_profession) != $father_profession_orig){
+        if($request->father_profession != $father_profession_orig){
             $father_profession_new = strtoupper($request->father_profession);
             $father_profession_change = "[FATHER'S PROFESSION: FROM '$father_profession_orig' TO '$father_profession_new']";
         }
@@ -902,7 +902,7 @@ class EmployeesController extends Controller
             $father_profession_change = NULL;
         }
 
-        if(strtoupper($request->mother_name) != $mother_name_orig){
+        if($request->mother_name != $mother_name_orig){
             $mother_name_new = strtoupper($request->mother_name);
             $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$mother_name_orig' TO '$mother_name_new']";
         }
@@ -918,7 +918,7 @@ class EmployeesController extends Controller
             $mother_contact_number_change = NULL;
         }
 
-        if(strtoupper($request->mother_profession) != $mother_profession_orig){
+        if($request->mother_profession != $mother_profession_orig){
             $mother_profession_new = strtoupper($request->mother_profession);
             $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$mother_profession_orig' TO '$mother_profession_new']";
         }
@@ -926,7 +926,7 @@ class EmployeesController extends Controller
             $mother_profession_change = NULL;
         }
 
-        if(strtoupper($request->emergency_contact_name) != $emergency_contact_name_orig){
+        if($request->emergency_contact_name != $emergency_contact_name_orig){
             $emergency_contact_name_new = strtoupper($request->emergency_contact_name);
             $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$emergency_contact_name_orig' TO '$emergency_contact_name_new']";
         }
@@ -934,7 +934,7 @@ class EmployeesController extends Controller
             $emergency_contact_name_change = NULL;
         }
 
-        if(strtoupper($request->emergency_contact_relationship) != $emergency_contact_relationship_orig){
+        if($request->emergency_contact_relationship != $emergency_contact_relationship_orig){
             $emergency_contact_relationship_new = strtoupper($request->emergency_contact_relationship);
             $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$emergency_contact_relationship_orig' TO '$emergency_contact_relationship_new']";
         }

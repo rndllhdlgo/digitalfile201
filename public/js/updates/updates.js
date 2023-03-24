@@ -458,11 +458,11 @@ $(document).on('click','#btnApprove',function(){
                         });
 
                         Swal.fire('UPDATE SUCCESS','','success');
-                        setTimeout(function(){window.location.reload();}, 2000);
+                        // setTimeout(function(){window.location.reload();}, 2000);
                     }
                     else{
                         Swal.fire('UPDATE FAILED','','error');
-                        setTimeout(function(){window.location.reload();}, 2000);
+                        // setTimeout(function(){window.location.reload();}, 2000);
                     }
                 }
             });
@@ -533,4 +533,8 @@ $('#birthday').on('change',function(){
             age--;
         }
     return $('#age').val(age);
+});
+
+$('#btnViewRequest').on('click',function(){
+
 });

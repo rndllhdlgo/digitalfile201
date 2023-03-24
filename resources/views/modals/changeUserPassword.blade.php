@@ -38,7 +38,7 @@
                         <i class="fa-solid fa-eye fa-lg" id="show_password_eye"></i>
                         <b id="show_password_text" style="font-size:14px;">SHOW PASSWORD</b>
                     </div>
-                    
+
                     <div class="mb-4 ml-3">
                         <b>Example format: 1De@s3rV </b><br>
                         <b><span id="validation1" class="text-danger"><i id="validicon1" class="fas fa-times-circle"></i> Must be atleast 8 characters!<br></span></b>

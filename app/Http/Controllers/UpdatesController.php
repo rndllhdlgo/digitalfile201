@@ -38,11 +38,13 @@ use App\Models\Department;
 use App\Models\Position;
 
 use DataTables;
+use Carbon\Carbon;
 
 class UpdatesController extends Controller
 {
 
     public function update_list(){
+
         $update_list = PersonalInformationTablePending::select(
             'personal_information_tables_pending.id',
             'work_information_tables_pending.employee_number',
@@ -121,6 +123,262 @@ class UpdatesController extends Controller
         $new_image = PersonalInformationTablePending::select('employee_image')->where('empno', $request->empno)->value('employee_image');
         $employee_personal_pending = PersonalInformationTablePending::where('empno', $request->empno)->first();
         $employee_work_pending = WorkInformationTablePending::where('employee_number', $request->empno)->first();
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
+
+        $first_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->first_name;
+        $middle_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->middle_name;
+        $last_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->last_name;
+        $suffix_orig = PersonalInformationTable::where('empno', $request->empno)->first()->suffix;
+        $nickname_orig = PersonalInformationTable::where('empno', $request->empno)->first()->nickname;
+        $birthday_orig = PersonalInformationTable::where('empno', $request->empno)->first()->birthday;
+        $gender_orig = PersonalInformationTable::where('empno', $request->empno)->first()->gender;
+        $address_orig = PersonalInformationTable::where('empno', $request->empno)->first()->address;
+        $ownership_orig = PersonalInformationTable::where('empno', $request->empno)->first()->ownership;
+        $province_orig = PersonalInformationTable::where('empno', $request->empno)->first()->province;
+        $city_orig = PersonalInformationTable::where('empno', $request->empno)->first()->city;
+        $region_orig = PersonalInformationTable::where('empno', $request->empno)->first()->region;
+        $height_orig = PersonalInformationTable::where('empno', $request->empno)->first()->height;
+        $weight_orig = PersonalInformationTable::where('empno', $request->empno)->first()->weight;
+        $religion_orig = PersonalInformationTable::where('empno', $request->empno)->first()->religion;
+        $civil_status_orig = PersonalInformationTable::where('empno', $request->empno)->first()->civil_status;
+        $email_address_orig = PersonalInformationTable::where('empno', $request->empno)->first()->email_address;
+        $telephone_number_orig = PersonalInformationTable::where('empno', $request->empno)->first()->telephone_number;
+        $cellphone_number_orig = PersonalInformationTable::where('empno', $request->empno)->first()->cellphone_number;
+        $father_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->father_name;
+        $father_contact_number_orig = PersonalInformationTable::where('empno', $request->empno)->first()->father_contact_number;
+        $father_profession_orig = PersonalInformationTable::where('empno', $request->empno)->first()->father_profession;
+        $mother_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->mother_name;
+        $mother_contact_number_orig = PersonalInformationTable::where('empno', $request->empno)->first()->mother_contact_number;
+        $mother_profession_orig = PersonalInformationTable::where('empno', $request->empno)->first()->mother_profession;
+        $emergency_contact_name_orig = PersonalInformationTable::where('empno', $request->empno)->first()->emergency_contact_name;
+        $emergency_contact_relationship_orig = PersonalInformationTable::where('empno', $request->empno)->first()->emergency_contact_relationship;
+        $emergency_contact_number_orig = PersonalInformationTable::where('empno', $request->empno)->first()->emergency_contact_number;
+
+        if($request->first_name != $first_name_orig){
+            $first_name_new = strtoupper($request->first_name);
+            $first_name_logs = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
+        }
+        else{
+            $first_name_logs = NULL;
+        }
+
+        if($request->middle_name != $middle_name_orig){
+            $middle_name_new = strtoupper($request->middle_name);
+            $middle_name_logs = "[MIDDLE NAME: FROM '$middle_name_orig' TO '$middle_name_new']";
+        }
+        else{
+            $middle_name_logs = NULL;
+        }
+
+        if($request->last_name != $last_name_orig){
+            $last_name_new = strtoupper($request->last_name);
+            $last_name_logs = "[LAST NAME: FROM '$last_name_orig' TO '$last_name_new']";
+        }
+        else{
+            $last_name_logs = NULL;
+        }
+
+        if($request->suffix != $suffix_orig){
+            $suffix_new = strtoupper($request->suffix);
+            $suffix_logs = "[SUFFIX: FROM '$suffix_orig' TO '$suffix_new']";
+        }
+        else{
+            $suffix_logs = NULL;
+        }
+
+        if($request->nickname != $nickname_orig){
+            $nickname_new = strtoupper($request->nickname);
+            $nickname_logs = "[NICKNAME: FROM '$nickname_orig' TO '$nickname_new']";
+        }
+        else{
+            $nickname_logs = NULL;
+        }
+
+        if($request->birthday != $birthday_orig){
+            $birthday1 = Carbon::parse($birthday_orig)->format('F d, Y');
+            $birthday2 = Carbon::parse($request->birthday)->format('F d, Y');
+            $birthday_logs = "[BIRTHDAY: FROM '$birthday1' TO '$birthday2']";
+        }
+        else{
+            $birthday_logs = NULL;
+        }
+
+        if($request->gender != $gender_orig){
+            $gender_new = $request->gender;
+            $gender_logs = "[GENDER: FROM '$gender_orig' TO '$gender_new']";
+        }
+        else{
+            $gender_logs = NULL;
+        }
+
+        if($request->address != $address_orig){
+            $address_new = $request->address;
+            $address_logs = "[ADDRESS: FROM '$address_orig' TO '$address_new']";
+        }
+        else{
+            $address_logs = NULL;
+        }
+
+        if($request->ownership != $ownership_orig){
+            $ownership_new = $request->ownership;
+            $ownership_logs = "[OWNERSHIP: FROM '$ownership_orig' TO '$ownership_new']";
+        }
+        else{
+            $ownership_logs = NULL;
+        }
+
+        if($request->province != $province_orig){
+            $province_new = $request->province;
+            $province_logs = "[PROVINCE: FROM '$province_orig' TO '$province_new']";
+        }
+        else{
+            $province_logs = NULL;
+        }
+
+        if($request->city != $city_orig){
+            $city_new = $request->city;
+            $city_logs = "[CITY: FROM '$city_orig' TO '$city_new']";
+        }
+        else{
+            $city_logs = NULL;
+        }
+
+        if($request->region != $region_orig){
+            $region_new = $request->region;
+            $region_logs = "[REGION: FROM '$region_orig' TO '$region_new']";
+        }
+        else{
+            $region_logs = NULL;
+        }
+
+        if($request->height != $height_orig){
+            $height_new = $request->height;
+            $height_logs = "[HEIGHT: FROM '$height_orig' TO '$height_new']";
+        }
+        else{
+            $height_logs = NULL;
+        }
+
+        if($request->weight != $weight_orig){
+            $weight_new = $request->weight;
+            $weight_logs = "[WEIGHT: FROM '$weight_orig' TO '$weight_new']";
+        }
+        else{
+            $weight_logs = NULL;
+        }
+
+        if($request->religion != $religion_orig){
+            $religion_new = strtoupper($request->religion);
+            $religion_logs = "[RELIGION: FROM '$religion_orig' TO '$religion_new']";
+        }
+        else{
+            $religion_logs = NULL;
+        }
+
+        if($request->civil_status != $civil_status_orig){
+            $civil_status_new = $request->civil_status;
+            $civil_status_logs = "[CIVIL STATUS: FROM '$civil_status_orig' TO '$civil_status_new']";
+        }
+        else{
+            $civil_status_logs = NULL;
+        }
+
+        if($request->email_address != $email_address_orig){
+            $email_address_new = $request->email_address;
+            $email_address_logs = "[EMAIL ADDRESS: FROM '$email_address_orig' TO '$email_address_new']";
+        }
+        else{
+            $email_address_logs = NULL;
+        }
+
+        if($request->telephone_number != $telephone_number_orig){
+            $telephone_number_new = $request->telephone_number;
+            $telephone_number_logs = "[TELEPHONE NUMBER: FROM '$telephone_number_orig' TO '$telephone_number_new']";
+        }
+        else{
+            $telephone_number_logs = NULL;
+        }
+
+        if($request->cellphone_number != $cellphone_number_orig){
+            $cellphone_number_new = $request->cellphone_number;
+            $cellphone_number_logs = "[CELLPHONE NUMBER: FROM '$cellphone_number_orig' TO '$cellphone_number_new']";
+        }
+        else{
+            $cellphone_number_logs = NULL;
+        }
+
+        if($request->father_name != $father_name_orig){
+            $father_name_new = strtoupper($request->father_name);
+            $father_name_logs = "[FATHER'S NAME: FROM '$father_name_orig' TO '$father_name_new']";
+        }
+        else{
+            $father_name_logs = NULL;
+        }
+
+        if($request->father_contact_number != $father_contact_number_orig){
+            $father_contact_number_new = $request->father_contact_number;
+            $father_contact_number_logs = "[FATHER'S CONTACT NUMBER: FROM '$father_contact_number_orig' TO '$father_contact_number_new']";
+        }
+        else{
+            $father_contact_number_logs = NULL;
+        }
+
+        if($request->father_profession != $father_profession_orig){
+            $father_profession_new = strtoupper($request->father_profession);
+            $father_profession_logs = "[FATHER'S PROFESSION: FROM '$father_profession_orig' TO '$father_profession_new']";
+        }
+        else{
+            $father_profession_logs = NULL;
+        }
+
+        if($request->mother_name != $mother_name_orig){
+            $mother_name_new = strtoupper($request->mother_name);
+            $mother_name_logs = "[MOTHER'S MAIDEN NAME: FROM '$mother_name_orig' TO '$mother_name_new']";
+        }
+        else{
+            $mother_name_logs = NULL;
+        }
+
+        if($request->mother_contact_number != $mother_contact_number_orig){
+            $mother_contact_number_new = $request->mother_contact_number;
+            $mother_contact_number_logs = "[MOTHER'S CONTACT NUMBER: FROM '$mother_contact_number_orig' TO '$mother_contact_number_new']";
+        }
+        else{
+            $mother_contact_number_logs = NULL;
+        }
+
+        if($request->mother_profession != $mother_profession_orig){
+            $mother_profession_new = strtoupper($request->mother_profession);
+            $mother_profession_logs = "[MOTHER'S PROFESSION: FROM '$mother_profession_orig' TO '$mother_profession_new']";
+        }
+        else{
+            $mother_profession_logs = NULL;
+        }
+
+        if($request->emergency_contact_name != $emergency_contact_name_orig){
+            $emergency_contact_name_new = strtoupper($request->emergency_contact_name);
+            $emergency_contact_name_logs = "[EMERGENCY CONTACT NAME: FROM '$emergency_contact_name_orig' TO '$emergency_contact_name_new']";
+        }
+        else{
+            $emergency_contact_name_logs = NULL;
+        }
+
+        if($request->emergency_contact_relationship != $emergency_contact_relationship_orig){
+            $emergency_contact_relationship_new = strtoupper($request->emergency_contact_relationship);
+            $emergency_contact_relationship_logs = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$emergency_contact_relationship_orig' TO '$emergency_contact_relationship_new']";
+        }
+        else{
+            $emergency_contact_relationship_logs = NULL;
+        }
+
+        if($request->emergency_contact_number != $emergency_contact_number_orig){
+            $emergency_contact_number_new = $request->emergency_contact_number;
+            $emergency_contact_number_logs = "[EMERGENCY CONTACT NUMBER: FROM '$emergency_contact_number_orig' TO '$emergency_contact_number_new']";
+        }
+        else{
+            $emergency_contact_number_logs = NULL;
+        }
 
         if($current_image !== $new_image){
             unlink('storage/employee_images/'.$current_image);
@@ -159,7 +417,72 @@ class UpdatesController extends Controller
             'emergency_contact_number' => $request->emergency_contact_number,
         ]);
 
+
         if($sql){
+            if(
+                $request->first_name != $first_name_orig ||
+                $request->middle_name != $middle_name_orig ||
+                $request->last_name != $last_name_orig ||
+                $request->suffix != $suffix_orig ||
+                $request->nickname != $nickname_orig ||
+                $request->birthday != $birthday_orig ||
+                $request->address != $address_orig ||
+                $request->ownership != $ownership_orig ||
+                $request->province != $province_orig ||
+                $request->city != $city_orig ||
+                $request->region != $region_orig ||
+                $request->height != $height_orig ||
+                $request->weight != $weight_orig ||
+                $request->religion != $religion_orig ||
+                $request->civil_status != $civil_status_orig ||
+                $request->email_address != $email_address_orig ||
+                $request->telephone_number != $telephone_number_orig ||
+                $request->cellphone_number != $cellphone_number_orig ||
+                $request->father_name != $father_name_orig ||
+                $request->father_contact_number != $father_contact_number_orig ||
+                $request->father_profession != $father_profession_orig ||
+                $request->mother_name != $mother_name_orig ||
+                $request->mother_contact_number != $mother_contact_number_orig ||
+                $request->mother_profession != $mother_profession_orig ||
+                $request->emergency_contact_name != $emergency_contact_name_orig ||
+                $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
+                $request->emergency_contact_number != $emergency_contact_number_orig
+            ){
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $first_name_logs
+                                        $middle_name_logs
+                                        $last_name_logs
+                                        $suffix_logs
+                                        $nickname_logs
+                                        $birthday_logs
+                                        $gender_logs
+                                        $address_logs
+                                        $ownership_logs
+                                        $province_logs
+                                        $city_logs
+                                        $region_logs
+                                        $height_logs
+                                        $weight_logs
+                                        $religion_logs
+                                        $civil_status_logs
+                                        $email_address_logs
+                                        $telephone_number_logs
+                                        $cellphone_number_logs
+                                        $father_name_logs
+                                        $father_contact_number_logs
+                                        $father_profession_logs
+                                        $mother_name_logs
+                                        $mother_contact_number_logs
+                                        $mother_profession_logs
+                                        $emergency_contact_name_logs
+                                        $emergency_contact_relationship_logs
+                                        $emergency_contact_number_logs
+                                        ";
+                $userlogs->save();
+            }
+
             $employee_personal_pending->delete();
             $employee_work_pending->delete();
             return 'true';
