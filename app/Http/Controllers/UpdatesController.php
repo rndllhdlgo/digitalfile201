@@ -515,12 +515,12 @@ class UpdatesController extends Controller
                 create([
                     'employee_id' => $employee_id,
                     'empno' => $request->empno,
-                    'secondary_school_name' => $request->secondary_school_name,
-                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_name' => strtoupper($request->secondary_school_name),
+                    'secondary_school_address' => strtoupper($request->secondary_school_address),
                     'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
                     'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                    'primary_school_name' => $request->primary_school_name,
-                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_name' => strtoupper($request->primary_school_name),
+                    'primary_school_address' => strtoupper($request->primary_school_address),
                     'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
                     'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
                 ]);
@@ -691,12 +691,12 @@ class UpdatesController extends Controller
 
             $sql = EducationalAttainment::where('empno',$request->empno)->first()
                 ->update([
-                    'secondary_school_name' => $request->secondary_school_name,
-                    'secondary_school_address' => $request->secondary_school_address,
+                    'secondary_school_name' => strtoupper($request->secondary_school_name),
+                    'secondary_school_address' => strtoupper($request->secondary_school_address),
                     'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
                     'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                    'primary_school_name' => $request->primary_school_name,
-                    'primary_school_address' => $request->primary_school_address,
+                    'primary_school_name' => strtoupper($request->primary_school_name),
+                    'primary_school_address' => strtoupper($request->primary_school_address),
                     'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
                     'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
                 ]);
@@ -715,17 +715,19 @@ class UpdatesController extends Controller
                                             $primary_school_inclusive_years_to_change
                                             ";
                     $userlogs->save();
-                    $employee_educational_pending->delete();
                 }
+                $employee_educational_pending->delete();
         }
     }
 
     public function update_medical_history(Request $request){
         $employee_medical_history = MedicalHistory::where('empno', $request->empno)->first();
-        $employee_medical_history_pending = MedicalHistoryPending::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
 
         if(!$employee_medical_history){
+            $employee_medical_history_pending = MedicalHistoryPending::where('empno', $request->empno)->first();
             if(
                $request->past_medical_condition
             || $request->allergies
@@ -741,17 +743,111 @@ class UpdatesController extends Controller
                     'medication' => $request->medication,
                     'psychological_history' => $request->psychological_history
                 ]);
-                $employee_medical_history_pending->delete();
+
+                if($sql){
+                    if($request->past_medical_condition){
+                        $past_medical_condition_logs = "[PAST MEDICAL CONDITION: ".strtoupper($request->past_medical_condition)."]";
+                    }
+                    else{
+                        $past_medical_condition_logs = NULL;
+                    }
+                    if($request->allergies){
+                        $allergies_logs = "[ALLERGIES: ".strtoupper($request->allergies)."]";
+                    }
+                    else{
+                        $allergies_logs = NULL;
+                    }
+                    if($request->medication){
+                        $medication_logs = "[MEDICATION: ".strtoupper($request->past_medical_condition)."]";
+                    }
+                    else{
+                        $medication_logs = NULL;
+                    }
+                    if($request->psychological_history){
+                        $psychological_history_logs = "[PSYCHOLOGICAL HISTORY: ".strtoupper($request->psychological_history)."]";
+                    }
+                    else{
+                        $psychological_history_logs = NULL;
+                    }
+
+                    if(
+                        $request->past_medical_condition
+                        || $request->allergies
+                        || $request->medication
+                        || $request->psychological_history
+                    ){
+                        $userlogs = new UserLogs;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                            $past_medical_condition_logs
+                                            $allergies_logs
+                                            $medication_logs
+                                            $psychological_history_logs
+                                            ";
+                        $userlogs->save();
+                    }
+                    $employee_medical_history_pending->delete();
+                }
             }
         }
         else{
+            $employee_medical_history_pending = MedicalHistoryPending::where('empno', $request->empno)->first();
+            $past_medical_condition_orig = MedicalHistory::where('empno',$request->empno)->first()->past_medical_condition;
+            $allergies_orig = MedicalHistory::where('empno',$request->empno)->first()->allergies;
+            $medication_orig = MedicalHistory::where('empno',$request->empno)->first()->medication;
+            $psychological_history_orig = MedicalHistory::where('empno',$request->empno)->first()->psychological_history;
+
+            if($request->past_medical_condition != $past_medical_condition_orig){
+                $past_medical_condition_new = $request->past_medical_condition;
+                $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
+            }
+            else{
+                $past_medical_condition_change = NULL;
+            }
+
+            if($request->allergies != $allergies_orig){
+                $allergies_new = $request->allergies;
+                $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
+            }
+            else{
+                $allergies_change = NULL;
+            }
+
+            if($request->medication != $medication_orig){
+                $medication_new = $request->medication;
+                $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
+            }
+            else{
+                $medication_change = NULL;
+            }
+
+            if($request->psychological_history != $psychological_history_orig){
+                $psychological_history_new = $request->psychological_history;
+                $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
+            }
+            else{
+                $psychological_history_change = NULL;
+            }
+
             $sql = MedicalHistory::where('empno', $request->empno)->first()
             ->update([
-                'past_medical_condition' => $request->past_medical_condition,
-                'allergies' => $request->allergies,
-                'medication' => $request->medication,
-                'psychological_history' => $request->psychological_history
+                'past_medical_condition' => strtoupper($request->past_medical_condition),
+                'allergies' => strtoupper($request->allergies),
+                'medication' => strtoupper($request->medication),
+                'psychological_history' => strtoupper($request->psychological_history)
             ]);
+
+            if($sql){
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $past_medical_condition_change
+                                        $allergies_change
+                                        $medication_change
+                                        $psychological_history_change
+                                        ";
+                $userlogs->save();
+            }
             $employee_medical_history_pending->delete();
         }
     }
