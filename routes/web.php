@@ -226,3 +226,4 @@ Route::any('/update_college', 'UpdatesController@update_college');
 Route::any('/update_training', 'UpdatesController@update_training');
 Route::any('/update_vocational', 'UpdatesController@update_vocational');
 Route::any('/update_job_history', 'UpdatesController@update_job_history');
+Route::any('/updates/request_data', 'UpdatesController@updates_request_data');

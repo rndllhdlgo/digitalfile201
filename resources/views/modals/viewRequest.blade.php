@@ -1,4 +1,4 @@
-<div class="modal fade" id="requestModal">
+<div class="modal fade" id="requestModal" style="margin-top:100px !important;">
     <div class="modal-dialog modal-xl">
         <div class="modal-content">
             <div class="modal-header" style="background-color: #0d1a80 !important;">
@@ -13,10 +13,10 @@
                                 <th>FIELD NAME</th>
                                 <th>ORIGINAL VALUE</th>
                                 <th>NEW VALUE</th>
+                                {{-- <th>ACTION</th> --}}
                             </tr>
                         </thead>
                         <tbody>
-
                         </tbody>
                     </table>
                 </div>

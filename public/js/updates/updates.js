@@ -261,6 +261,45 @@ $(document).on('click','#updatesTable tbody tr',function(){
                     ],
                 });
 
+                $('#requestTable').dataTable().fnDestroy();
+                $('#requestTable').DataTable({
+                    // columnDefs: [
+                    //     {
+                    //         "render": function(data, type, row, meta){
+                    //                 return '<button type="button" class="btn btn-danger btn_delete_request center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                    //         },
+                    //         "defaultContent": '',
+                    //         "data": null,
+                    //         "targets": [3],
+                    //     }
+                    // ],
+                    searching: false,
+                    paging: false,
+                    ordering: false,
+                    info: false,
+                    autoWidth: false,
+                    language: {
+                        info: "Showing _START_ to _END_ of _TOTAL_ REQUEST UPDATES",
+                        lengthMenu: "Show _MENU_ REQUEST UPDATES",
+                        emptyTable: "No Request Updates Data Found!",
+                    },
+                    processing: true,
+                    ajax: {
+                        url: '/updates/request_data',
+                        async: false,
+                        data:{
+                            empno: value.empno,
+                        }
+                    },
+                    order:[],
+                    columns: [
+                        { data: 'field'},
+                        { data: 'original_value'},
+                        { data: 'new_value'}
+                    ]
+                });
+                $('div.breakspace').html('<br><br>');
+
                 $('#loading').hide();
                 $('th').removeClass("sorting_asc");
                 $('#update_button_group').show();
@@ -537,6 +576,12 @@ $('#birthday').on('change',function(){
 
 
 $('#btnViewRequest').on('click',function(){
-
-    // $('#requestModal').modal('show');
+    $('#requestModal').modal('show');
 });
+
+// $(document).on('click','.btn_delete_request',function(){
+//     var id = $(this).attr("id");
+//     var data = $('.college_table_orig').DataTable().row(id).data();
+//     college_id.push(data.id);
+//     $(this).parent().parent().remove();
+// });

@@ -12,7 +12,7 @@
         <div id="update_button_group" class="btn-group float-end" role="group" style="display:none;">
             <button type="button" id="btnViewRequest" class="btn btn-primary" title="VIEW REQUREST"><i class="fas fa-eye"></i> VIEW REQUEST</button>
             <button type="button" id="btnApprove" class="btn btn-success" title="APPROVE"><i class="fas fa-check-circle"></i> APPROVE</button>
-            <button type="button" id="btnReject" class="btn btn-danger" title="REJECT"><i class="fas fa-times-circle"></i> REJECT</button>
+            {{-- <button type="button" id="btnReject" class="btn btn-danger" title="REJECT"><i class="fas fa-times-circle"></i> REJECT</button> --}}
         </div>
     </div>
 </div>

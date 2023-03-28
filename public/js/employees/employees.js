@@ -535,6 +535,33 @@ $('#viewJobDescriptionBtn').on('click',function(){
 
 
 //Fill All Function
+$('#fillAll').on('click', function(){
+    $('#first_name').val('RENDELLX');
+    $('#middle_name').val('MENDEZX');
+    $('#last_name').val('HIDALGOX');
+    $('#nickname').val('DELLX');
+    $('#address').val('519 WEST ANTIPOLO STREET GAGALANGIN TONDO MANILA, 169X');
+    $('#gender').val('FEMALE');
+    $('#height').val('153CMX');
+    $('#weight').val('55KGSX');
+    $('#religion').val('CATHOLICX');
+    $('#civil_status').val('WIDOWED');
+    $('#email_address').val('RENDELLHIDALGO11X@GMAIL.COM');
+    $('#cellphone_number').val('09322003711');
+    $('#father_name').val('REYNALDO HIDALGOX');
+    $('#father_contact_number').val('09322003711');
+    $('#father_profession').val('UTILITY WORKERX');
+    $('#mother_name').val('MARLYN HIDALGOX');
+    $('#mother_contact_number').val('09324207231');
+    $('#mother_profession').val('HOUSE WIFEX');
+    $('#emergency_contact_name').val('MARLYN HIDALGOX');
+    $('#emergency_contact_relationship').val('MOTHERX');
+    $('#emergency_contact_number').val('09324207231');
+    $('#birthday').val('2000-02-11');
+    $('#birthday').change();
+    $('#ownership').val('OWNED');
+});
+
 $('#note_required').on('click',function(){
     //Personal Info
     $('#first_name').val('Rendell');

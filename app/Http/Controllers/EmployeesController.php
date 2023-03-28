@@ -91,7 +91,6 @@ class EmployeesController extends Controller
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
-                ->leftJoin('employee_status','employee_status.employee_id','personal_information_tables.id')
                 ->get();
         }
         else if($request->filter == 'regular'){
@@ -157,23 +156,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status'
                 )
                 ->where('work_information_tables.employment_status','Intern')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
-                ->get();
-        }
-        else if($request->filter == 'pending'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'work_information_tables.employee_number',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'positions.job_position_name AS employee_position',
-                'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
-                )
-                ->where('employee_status.employee_status','Pending')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
@@ -1175,42 +1157,6 @@ class EmployeesController extends Controller
                     $request->emergency_contact_number != $emergency_contact_number_orig ||
                     $request->employee_image_change == 'CHANGED'
                 ){
-                    $employee_logs = new LogsTable;
-                    $employee_logs->employee_id = $request->id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER HAS REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE
-                                            $first_name_change
-                                            $middle_name_change
-                                            $last_name_change
-                                            $suffix_change
-                                            $nickname_change
-                                            $birthday_change
-                                            $gender_change
-                                            $address_change
-                                            $ownership_change
-                                            $province_change
-                                            $city_change
-                                            $region_change
-                                            $height_change
-                                            $weight_change
-                                            $religion_change
-                                            $civil_status_change
-                                            $email_address_change
-                                            $telephone_number_change
-                                            $cellphone_number_change
-                                            $father_name_change
-                                            $father_contact_number_change
-                                            $father_profession_change
-                                            $mother_name_change
-                                            $mother_contact_number_change
-                                            $mother_profession_change
-                                            $emergency_contact_name_change
-                                            $emergency_contact_relationship_change
-                                            $emergency_contact_number_change
-                                            $employee_image_update
-                                            ";
-                    $employee_logs->save();
-
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE PERSONAL INFORMATION DETAILS OF THIS EMPLOYEE ($first_name_orig $middle_name_orig $last_name_orig)
@@ -1245,6 +1191,161 @@ class EmployeesController extends Controller
                                         $employee_image_update
                                         ";
                     $userlogs->save();
+                }
+
+                $changes = [
+                    [
+                        'field' => 'FIRST NAME',
+                        'original_value' => $first_name_orig,
+                        'new_value' => strtoupper($request->first_name)
+                    ],
+                    [
+                        'field' => 'MIDDLE NAME',
+                        'original_value' => $middle_name_orig,
+                        'new_value' => strtoupper($request->middle_name)
+                    ],
+                    [
+                        'field' => 'LAST NAME',
+                        'original_value' => $last_name_orig,
+                        'new_value' => strtoupper($request->last_name)
+                    ],
+                    [
+                        'field' => 'SUFFIX',
+                        'original_value' => $suffix_orig,
+                        'new_value' => strtoupper($request->suffix)
+                    ],
+                    [
+                        'field' => 'NICKNAME',
+                        'original_value' => $nickname_orig,
+                        'new_value' => strtoupper($request->nickname)
+                    ],
+                    [
+                        'field' => 'GENDER',
+                        'original_value' => $gender_orig,
+                        'new_value' => strtoupper($request->gender)
+                    ],
+                    [
+                        'field' => 'CIVIL STATUS',
+                        'original_value' => $civil_status_orig,
+                        'new_value' => strtoupper($request->civil_status)
+                    ],
+                    [
+                        'field' => 'BIRTHDAY',
+                        'original_value' => Carbon::parse($birthday_orig)->format('F d, Y'),
+                        'new_value' => Carbon::parse($request->birthday)->format('F d, Y')
+                    ],
+                    [
+                        'field' => 'ADDRESS',
+                        'original_value' => $address_orig,
+                        'new_value' => strtoupper($request->address)
+                    ],
+                    [
+                        'field' => 'OWNERSHIP',
+                        'original_value' => $ownership_orig,
+                        'new_value' => strtoupper($request->ownership)
+                    ],
+                    [
+                        'field' => 'PROVINCE',
+                        'original_value' => $province_orig,
+                        'new_value' => strtoupper($request->province)
+                    ],
+                    [
+                        'field' => 'CITY',
+                        'original_value' => $city_orig,
+                        'new_value' => strtoupper($request->city)
+                    ],
+                    [
+                        'field' => 'REGION',
+                        'original_value' => $region_orig,
+                        'new_value' => strtoupper($request->region)
+                    ],
+                    [
+                        'field' => 'HEIGHT',
+                        'original_value' => $height_orig,
+                        'new_value' => $request->height
+                    ],
+                    [
+                        'field' => 'WEIGHT',
+                        'original_value' => $weight_orig,
+                        'new_value' => $request->weight
+                    ],
+                    [
+                        'field' => 'RELIGION',
+                        'original_value' => $religion_orig,
+                        'new_value' => strtoupper($request->religion)
+                    ],
+                    [
+                        'field' => 'EMAIL ADDRESS',
+                        'original_value' => $email_address_orig,
+                        'new_value' => $request->email_address
+                    ],
+                    [
+                        'field' => 'TELEPHONE NUMBER',
+                        'original_value' => $telephone_number_orig,
+                        'new_value' => strtoupper($request->telephone_number)
+                    ],
+                    [
+                        'field' => 'CELLPHONE NUMBER',
+                        'original_value' => $cellphone_number_orig,
+                        'new_value' => strtoupper($request->cellphone_number)
+                    ],
+                    [
+                        'field' => 'FATHER NAME',
+                        'original_value' => $father_name_orig,
+                        'new_value' => strtoupper($request->father_name)
+                    ],
+                    [
+                        'field' => 'FATHER CONTACT NUMBER',
+                        'original_value' => $father_contact_number_orig,
+                        'new_value' => strtoupper($request->father_contact_number)
+                    ],
+                    [
+                        'field' => 'FATHER PROFESSION',
+                        'original_value' => $father_profession_orig,
+                        'new_value' => strtoupper($request->father_profession)
+                    ],
+                    [
+                        'field' => 'MOTHER NAME',
+                        'original_value' => $mother_name_orig,
+                        'new_value' => strtoupper($request->mother_name)
+                    ],
+                    [
+                        'field' => 'MOTHER CONTACT NUMBER',
+                        'original_value' => $mother_contact_number_orig,
+                        'new_value' => strtoupper($request->mother_contact_number)
+                    ],
+                    [
+                        'field' => 'MOTHER PROFESSION',
+                        'original_value' => $mother_profession_orig,
+                        'new_value' => strtoupper($request->mother_profession)
+                    ],
+                    [
+                        'field' => 'EMERGENCY CONTACT NAME',
+                        'original_value' => $emergency_contact_name_orig,
+                        'new_value' => strtoupper($request->emergency_contact_name)
+                    ],
+                    [
+                        'field' => 'EMERGENCY CONTACT RELATIONSHIP',
+                        'original_value' => $emergency_contact_relationship_orig,
+                        'new_value' => strtoupper($request->emergency_contact_relationship)
+                    ],
+                    [
+                        'field' => 'EMERGENCY CONTACT NUMBER',
+                        'original_value' => $emergency_contact_number_orig,
+                        'new_value' => strtoupper($request->emergency_contact_number)
+                    ]
+                ];
+
+                foreach($changes as $change){
+                    if(!empty($change['new_value']) && $change['original_value'] !== $change['new_value']){
+                        $request_logs = new Requests;
+                        $request_logs->employee_id = $request->id;
+                        $request_logs->empno = $empno;
+                        $request_logs->field = $change['field'];
+                        $request_logs->original_value = $change['original_value'];
+                        $request_logs->new_value = $change['new_value'];
+                        $request_logs->save();
+                    }
                 }
             }
             else{
