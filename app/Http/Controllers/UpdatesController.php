@@ -854,6 +854,8 @@ class UpdatesController extends Controller
     public function update_college(Request $request){
         $employee_college = CollegeTable::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
 
         if(!$employee_college){
             $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
@@ -868,19 +870,35 @@ class UpdatesController extends Controller
                     'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
                     'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "FIRST = USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_college_pending->delete();
             }
         }
         else{
+            $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
             if($employee_college_pending){
-                $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
-                $sql = CollegeTable::where('empno', $request->empno)
-                ->update([
+                $sql = CollegeTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
                     'college_name' => $employee_college_pending->college_name,
                     'college_degree' => $employee_college_pending->college_degree,
                     'college_inclusive_years_from' => $employee_college_pending->college_inclusive_years_from,
                     'college_inclusive_years_to' => $employee_college_pending->college_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "SECOND = USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_college_pending->delete();
             }
         }

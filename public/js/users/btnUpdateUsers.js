@@ -49,7 +49,7 @@ $('#btnUserUpdate').on('click',function(){
                         $('#usersModal').modal('hide');
                         Swal.fire("UPDATE FAILED","","error");
                         setTimeout(function(){$('#usersTable').DataTable().ajax.reload();}, 2000);
-                    }  
+                    }
                 }
             });
         }

@@ -126,25 +126,25 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase " type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_name" class="formlabel form-label"><span class="span_primary_school_name span_all"></span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase " type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                             <label for="primary_school_address" class="formlabel form-label"><span class="span_primary_school_address span_all"></span></label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control " id="primary_school_inclusive_years_from">
+                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control " id="primary_school_inclusive_years_to">
+                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_to">
                         </div>
                     </td>
                 </tr>

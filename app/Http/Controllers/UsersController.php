@@ -20,7 +20,7 @@ class UsersController extends Controller
     }
 
     // public function saveUser(Request $request){
-        
+
     //     //check email duplication
     //     if(User::where('email',$request->email)->count() > 0){
     //         return response('duplicate');
@@ -83,7 +83,7 @@ class UsersController extends Controller
         $user_level_orig = $request->user_level_orig;
         $name_orig = $request->name_orig;
         $email_orig = $request->email_orig;
-        
+
         $users = User::find($request->id);
         $users->user_level = $request->user_level_new;
         $users->name = strtoupper($request->name_new);
@@ -116,13 +116,13 @@ class UsersController extends Controller
                 $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED: User successfully updated details of [$users->name] with the following CHANGES: $email_change $name_change $users_level_change.";
                 $userlogs->save();
-            
+
                 return $sql ? 'true':'false';
             }
         }
-            
+
     }
-    
+
     public function change_validate(Request $request){
         if(Hash::check($request->current, auth()->user()->password)){
             $result = 'true';

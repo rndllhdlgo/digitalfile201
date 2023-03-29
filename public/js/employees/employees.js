@@ -41,8 +41,8 @@ $(document).ready(function(){
                 filter:filter
             },
         },
-        // order:[1,'asc'],
-        order:[0,'desc'],
+        order:[1,'asc'],
+        // order:[0,'desc'],
         columns:[
             {
                 data: 'employee_number',
@@ -535,123 +535,123 @@ $('#viewJobDescriptionBtn').on('click',function(){
 
 
 //Fill All Function
-$('#fillAll').on('click', function(){
-    $('#first_name').val('RENDELLX');
-    $('#middle_name').val('MENDEZX');
-    $('#last_name').val('HIDALGOX');
-    $('#nickname').val('DELLX');
-    $('#address').val('519 WEST ANTIPOLO STREET GAGALANGIN TONDO MANILA, 169X');
-    $('#gender').val('FEMALE');
-    $('#height').val('153CMX');
-    $('#weight').val('55KGSX');
-    $('#religion').val('CATHOLICX');
-    $('#civil_status').val('WIDOWED');
-    $('#email_address').val('RENDELLHIDALGO11X@GMAIL.COM');
-    $('#cellphone_number').val('09322003711');
-    $('#father_name').val('REYNALDO HIDALGOX');
-    $('#father_contact_number').val('09322003711');
-    $('#father_profession').val('UTILITY WORKERX');
-    $('#mother_name').val('MARLYN HIDALGOX');
-    $('#mother_contact_number').val('09324207231');
-    $('#mother_profession').val('HOUSE WIFEX');
-    $('#emergency_contact_name').val('MARLYN HIDALGOX');
-    $('#emergency_contact_relationship').val('MOTHERX');
-    $('#emergency_contact_number').val('09324207231');
-    $('#birthday').val('2000-02-11');
-    $('#birthday').change();
-    $('#ownership').val('OWNED');
-});
+// $('#fillAll').on('click', function(){
+//     $('#first_name').val('RENDELLX');
+//     $('#middle_name').val('MENDEZX');
+//     $('#last_name').val('HIDALGOX');
+//     $('#nickname').val('DELLX');
+//     $('#address').val('519 WEST ANTIPOLO STREET GAGALANGIN TONDO MANILA, 169X');
+//     $('#gender').val('FEMALE');
+//     $('#height').val('153CMX');
+//     $('#weight').val('55KGSX');
+//     $('#religion').val('CATHOLICX');
+//     $('#civil_status').val('WIDOWED');
+//     $('#email_address').val('RENDELLHIDALGO11X@GMAIL.COM');
+//     $('#cellphone_number').val('09322003711');
+//     $('#father_name').val('REYNALDO HIDALGOX');
+//     $('#father_contact_number').val('09322003711');
+//     $('#father_profession').val('UTILITY WORKERX');
+//     $('#mother_name').val('MARLYN HIDALGOX');
+//     $('#mother_contact_number').val('09324207231');
+//     $('#mother_profession').val('HOUSE WIFEX');
+//     $('#emergency_contact_name').val('MARLYN HIDALGOX');
+//     $('#emergency_contact_relationship').val('MOTHERX');
+//     $('#emergency_contact_number').val('09324207231');
+//     $('#birthday').val('2000-02-11');
+//     $('#birthday').change();
+//     $('#ownership').val('OWNED');
+// });
 
-$('#note_required').on('click',function(){
-    //Personal Info
-    $('#first_name').val('Rendell');
-    $('#middle_name').val('Mendez');
-    $('#last_name').val('Hidalgo');
-    $('#nickname').val('Dell');
-    $('#address').val('sample');
-    $('#gender').val('MALE');
-    $('#height').val('153cm');
-    $('#weight').val('55kgs');
-    $('#religion').val('Catholic');
-    $('#civil_status').val('SINGLE');
-    $('#email_address').val('rendellhidalgo11@gmail.com');
-    $('#cellphone_number').val('09322003718');
-    $('#father_name').val('Reynaldo Hidalgo');
-    $('#father_contact_number').val('09322003718');
-    $('#father_profession').val('Utility Worker');
-    $('#mother_name').val('Marlyn Hidalgo');
-    $('#mother_contact_number').val('09324207239');
-    $('#mother_profession').val('House Wife');
-    $('#emergency_contact_name').val('Marlyn Hidalgo');
-    $('#emergency_contact_relationship').val('Mother');
-    $('#emergency_contact_number').val('09322003718');
-    $('#birthday').val('2013-02-11');
-    $('#birthday').change();
-    $('#ownership').val('RENT');
+// $('#note_required').on('click',function(){
+//     //Personal Info
+//     $('#first_name').val('Rendell');
+//     $('#middle_name').val('Mendez');
+//     $('#last_name').val('Hidalgo');
+//     $('#nickname').val('Dell');
+//     $('#address').val('sample');
+//     $('#gender').val('MALE');
+//     $('#height').val('153cm');
+//     $('#weight').val('55kgs');
+//     $('#religion').val('Catholic');
+//     $('#civil_status').val('SINGLE');
+//     $('#email_address').val('rendellhidalgo11@gmail.com');
+//     $('#cellphone_number').val('09322003718');
+//     $('#father_name').val('Reynaldo Hidalgo');
+//     $('#father_contact_number').val('09322003718');
+//     $('#father_profession').val('Utility Worker');
+//     $('#mother_name').val('Marlyn Hidalgo');
+//     $('#mother_contact_number').val('09324207239');
+//     $('#mother_profession').val('House Wife');
+//     $('#emergency_contact_name').val('Marlyn Hidalgo');
+//     $('#emergency_contact_relationship').val('Mother');
+//     $('#emergency_contact_number').val('09322003718');
+//     $('#birthday').val('2013-02-11');
+//     $('#birthday').change();
+//     $('#ownership').val('RENT');
 
-    //Work Info
-    $('#employee_number').val('50008');
-    $('#employee_company').val('4');
-    $('#employee_department').val('1');
-    $('#employee_branch').val('3');
-    $('#employment_status').val('Probationary');
-    $('#employee_shift').val('1');
-    // $('#employee_supervisor').val('1');
-    $('#employee_position').val('2');
-    $('#company_email_address').val('rdhidalgo@ideaserv.com.ph');
-    $('#company_contact_number').val('09322003718');
-    $('#sss_number').val('35-2192659-2');
-    $('#pag_ibig_number').val('121305024402');
-    $('#philhealth_number').val('022005294391');
-    $('#tin_number').val('398-758-866');
-    $('#account_number').val('5');
-    $('#birthday').val('2013-02-11');
+//     //Work Info
+//     $('#employee_number').val('50008');
+//     $('#employee_company').val('4');
+//     $('#employee_department').val('1');
+//     $('#employee_branch').val('3');
+//     $('#employment_status').val('Probationary');
+//     $('#employee_shift').val('1');
+//     // $('#employee_supervisor').val('1');
+//     $('#employee_position').val('2');
+//     $('#company_email_address').val('rdhidalgo@ideaserv.com.ph');
+//     $('#company_contact_number').val('09322003718');
+//     $('#sss_number').val('35-2192659-2');
+//     $('#pag_ibig_number').val('121305024402');
+//     $('#philhealth_number').val('022005294391');
+//     $('#tin_number').val('398-758-866');
+//     $('#account_number').val('5');
+//     $('#birthday').val('2013-02-11');
 
-    // //Education/Trainings
-    $('#college_name').val('Universidad De Manila');
-    $('#college_degree').val('BTVTE Major in CPT');
-    $('#college_inclusive_years_from').val('2018-06');
-    $('#college_inclusive_years_to').val('2022-07');
-    $('#collegeAdd').click();
-    $('#secondary_school_name').val('Florentino Torres High School');
-    $('#secondary_school_address').val('Torres');
-    $('#secondary_school_inclusive_years_from').val('2012-06');
-    $('#secondary_school_inclusive_years_to').val('2016-04');
-    $('#primary_school_name').val('Lakandula Elementary School');
-    $('#primary_school_address').val('Lakandula');
-    $('#primary_school_inclusive_years_from').val('2006-06');
-    $('#primary_school_inclusive_years_to').val('2012-04');
-    $('#training_name').val('A');
-    $('#training_title').val('A');
-    $('#training_inclusive_years_from').val('2020-01');
-    $('#training_inclusive_years_to').val('2020-02');
-    $('#trainingAdd').click();
-    $('#vocational_name').val('A');
-    $('#vocational_course').val('A');
-    $('#vocational_inclusive_years_from').val('2020-01');
-    $('#vocational_inclusive_years_to').val('2020-02');
-    $('#vocationalAdd').click();
+//     // //Education/Trainings
+//     $('#college_name').val('Universidad De Manila');
+//     $('#college_degree').val('BTVTE Major in CPT');
+//     $('#college_inclusive_years_from').val('2018-06');
+//     $('#college_inclusive_years_to').val('2022-07');
+//     $('#collegeAdd').click();
+//     $('#secondary_school_name').val('Florentino Torres High School');
+//     $('#secondary_school_address').val('Torres');
+//     $('#secondary_school_inclusive_years_from').val('2012-06');
+//     $('#secondary_school_inclusive_years_to').val('2016-04');
+//     $('#primary_school_name').val('Lakandula Elementary School');
+//     $('#primary_school_address').val('Lakandula');
+//     $('#primary_school_inclusive_years_from').val('2006-06');
+//     $('#primary_school_inclusive_years_to').val('2012-04');
+//     $('#training_name').val('A');
+//     $('#training_title').val('A');
+//     $('#training_inclusive_years_from').val('2020-01');
+//     $('#training_inclusive_years_to').val('2020-02');
+//     $('#trainingAdd').click();
+//     $('#vocational_name').val('A');
+//     $('#vocational_course').val('A');
+//     $('#vocational_inclusive_years_from').val('2020-01');
+//     $('#vocational_inclusive_years_to').val('2020-02');
+//     $('#vocationalAdd').click();
 
-    // Job History
-    $('#job_company_name').val('A');
-    $('#job_description').val('A');
-    $('#job_position').val('A');
-    $('#job_contact_number').val('1');
-    $('#job_inclusive_years_from').val('2022-01');
-    $('#job_inclusive_years_to').val('2023-01');
-    $('#jobHistoryAdd').click();
-    // Medical History
-    $('#past_medical_condition').val('• A');
-    $('#allergies').val('• A');
-    $('#medication').val('• A');
-    $('#psychological_history').val('• A');
-    // Compensation/Benefits
-    $('#employee_salary').val('₱15,000');
-    $('#employee_incentives').val('₱1.00');
-    $('#employee_overtime_pay').val('₱1.00');
-    $('#employee_bonus').val('₱1.00');
-    $('#employee_insurance').val('• A');
-});
+//     // Job History
+//     $('#job_company_name').val('A');
+//     $('#job_description').val('A');
+//     $('#job_position').val('A');
+//     $('#job_contact_number').val('1');
+//     $('#job_inclusive_years_from').val('2022-01');
+//     $('#job_inclusive_years_to').val('2023-01');
+//     $('#jobHistoryAdd').click();
+//     // Medical History
+//     $('#past_medical_condition').val('• A');
+//     $('#allergies').val('• A');
+//     $('#medication').val('• A');
+//     $('#psychological_history').val('• A');
+//     // Compensation/Benefits
+//     $('#employee_salary').val('₱15,000');
+//     $('#employee_incentives').val('₱1.00');
+//     $('#employee_overtime_pay').val('₱1.00');
+//     $('#employee_bonus').val('₱1.00');
+//     $('#employee_insurance').val('• A');
+// });
 
 $("input[type='date']").keydown(function (event) { event.preventDefault(); });
 
@@ -670,76 +670,76 @@ setInterval(() => {
     }
 }, 0);
 
-// setInterval(() => {
-//     // Check all required field function
-//     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
-//     || $('#first_name').val().length < 2
-//     || $('#middle_name').val().length < 2
-//     || $('#last_name').val().length < 2
-//     || $('#father_name').val().length < 2
-//     || $('#mother_name').val().length < 2
-//     || $('#emergency_contact_name').val().length < 2
-//     || $('#cellphone_number').val().length < 11
-//     && $('#father_contact_number').val().length < 11
-//     && $('#mother_contact_number').val().length < 11
-//     || $('#emergency_contact_number').val().length < 11
-//     && $('#company_contact_number').val().length < 11
-//     || !email_address.value.match(regExp)
-//     && !company_email_address.value.match(regExp)
-//     || $('#employee_number').hasClass('duplicate_field')
-//     || $('#email_address').hasClass('duplicate_field')
-//     || $('#telephone_number').hasClass('duplicate_field')
-//     || $('#cellphone_number').hasClass('duplicate_field')
-//     || $('#father_contact_number').hasClass('duplicate_field')
-//     || $('#mother_contact_number').hasClass('duplicate_field')
-//     || $('#spouse_contact_number').hasClass('duplicate_field')
-//     || $('#emergency_contact_number').hasClass('duplicate_field')
-//     || $('#company_email_address').hasClass('duplicate_field')
-//     || $('#company_contact_number').hasClass('duplicate_field')
-//     )
-//     {
-//         $('#btnSave').prop("disabled",true);
-//     }
-//     else{
-//         $('#btnSave').prop("disabled",false);
-//     }
-// }, 0);
+setInterval(() => {
+    // Check all required field function
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
+    // || $('#first_name').val().length < 2
+    // || $('#middle_name').val().length < 2
+    // || $('#last_name').val().length < 2
+    // || $('#father_name').val().length < 2
+    // || $('#mother_name').val().length < 2
+    // || $('#emergency_contact_name').val().length < 2
+    // || $('#cellphone_number').val().length < 11
+    // && $('#father_contact_number').val().length < 11
+    // && $('#mother_contact_number').val().length < 11
+    // || $('#emergency_contact_number').val().length < 11
+    // && $('#company_contact_number').val().length < 11
+    // || !email_address.value.match(regExp)
+    // && !company_email_address.value.match(regExp)
+    // || $('#employee_number').hasClass('duplicate_field')
+    // || $('#email_address').hasClass('duplicate_field')
+    // || $('#telephone_number').hasClass('duplicate_field')
+    // || $('#cellphone_number').hasClass('duplicate_field')
+    // || $('#father_contact_number').hasClass('duplicate_field')
+    // || $('#mother_contact_number').hasClass('duplicate_field')
+    // || $('#spouse_contact_number').hasClass('duplicate_field')
+    // || $('#emergency_contact_number').hasClass('duplicate_field')
+    // || $('#company_email_address').hasClass('duplicate_field')
+    // || $('#company_contact_number').hasClass('duplicate_field')
+    )
+    {
+        $('#btnSave').prop("disabled",true);
+    }
+    else{
+        $('#btnSave').prop("disabled",false);
+    }
+}, 0);
 
-// setInterval(() => {
-//     // Check all required field function
-//     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
-//     || $('#first_name').val().length < 2
-//     || $('#middle_name').val().length < 2
-//     || $('#last_name').val().length < 2
-//     || $('#father_name').val().length < 2
-//     || $('#mother_name').val().length < 2
-//     || $('#emergency_contact_name').val().length < 2
-//     || $('#cellphone_number').val().length < 11
-//     && $('#father_contact_number').val().length < 11
-//     && $('#mother_contact_number').val().length < 11
-//     || $('#emergency_contact_number').val().length < 11
-//     && $('#company_contact_number').val().length < 11
-//     || !email_address.value.match(regExp)
-//     && !company_email_address.value.match(regExp)
-//     || $('#employee_number').hasClass('duplicate_field')
-//     || $('#email_address').hasClass('duplicate_field')
-//     || $('#telephone_number').hasClass('duplicate_field')
-//     || $('#cellphone_number').hasClass('duplicate_field')
-//     || $('#father_contact_number').hasClass('duplicate_field')
-//     || $('#mother_contact_number').hasClass('duplicate_field')
-//     || $('#spouse_contact_number').hasClass('duplicate_field')
-//     || $('#emergency_contact_number').hasClass('duplicate_field')
-//     || $('#company_email_address').hasClass('duplicate_field')
-//     || $('#company_contact_number').hasClass('duplicate_field')
-//     )
-//     {
-//         $('#btnUpdate').prop("disabled",true);
+setInterval(() => {
+    // Check all required field function
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
+    // || $('#first_name').val().length < 2
+    // || $('#middle_name').val().length < 2
+    // || $('#last_name').val().length < 2
+    // || $('#father_name').val().length < 2
+    // || $('#mother_name').val().length < 2
+    // || $('#emergency_contact_name').val().length < 2
+    // || $('#cellphone_number').val().length < 11
+    // && $('#father_contact_number').val().length < 11
+    // && $('#mother_contact_number').val().length < 11
+    // || $('#emergency_contact_number').val().length < 11
+    // && $('#company_contact_number').val().length < 11
+    // || !email_address.value.match(regExp)
+    // && !company_email_address.value.match(regExp)
+    // || $('#employee_number').hasClass('duplicate_field')
+    // || $('#email_address').hasClass('duplicate_field')
+    // || $('#telephone_number').hasClass('duplicate_field')
+    // || $('#cellphone_number').hasClass('duplicate_field')
+    // || $('#father_contact_number').hasClass('duplicate_field')
+    // || $('#mother_contact_number').hasClass('duplicate_field')
+    // || $('#spouse_contact_number').hasClass('duplicate_field')
+    // || $('#emergency_contact_number').hasClass('duplicate_field')
+    // || $('#company_email_address').hasClass('duplicate_field')
+    // || $('#company_contact_number').hasClass('duplicate_field')
+    )
+    {
+        $('#btnUpdate').prop("disabled",true);
 
-//     }
-//     else{
-//         $('#btnUpdate').prop("disabled",false);
-//     }
-// }, 0);
+    }
+    else{
+        $('#btnUpdate').prop("disabled",false);
+    }
+}, 0);
 
 setInterval(() => {
     if($('#btnSave').is(":visible")){
