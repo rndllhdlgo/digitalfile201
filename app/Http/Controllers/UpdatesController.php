@@ -874,7 +874,7 @@ class UpdatesController extends Controller
                 if($sql){
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "FIRST = USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
                     $userlogs->save();
                 }
                 $employee_college_pending->delete();
@@ -896,7 +896,7 @@ class UpdatesController extends Controller
                 if($sql){
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "SECOND = USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
                     $userlogs->save();
                 }
                 $employee_college_pending->delete();
@@ -907,6 +907,8 @@ class UpdatesController extends Controller
     public function update_training(Request $request){
         $employee_training = TrainingTable::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
 
         if(!$employee_training){
             $employee_training_pending = TrainingTablePending::where('empno', $request->empno)->first();
@@ -921,19 +923,35 @@ class UpdatesController extends Controller
                     'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
                     'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_training_pending->delete();
             }
         }
         else{
             $employee_training_pending = TrainingTablePending::where('empno', $request->empno)->first();
             if($employee_training_pending){
-                $sql = TrainingTable::where('empno', $request->empno)
-                ->update([
+                $sql = TrainingTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
                     'training_name' => $employee_training_pending->training_name,
                     'training_title' => $employee_training_pending->training_title,
                     'training_inclusive_years_from' => $employee_training_pending->training_inclusive_years_from,
                     'training_inclusive_years_to' => $employee_training_pending->training_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_training_pending->delete();
             }
         }
@@ -942,6 +960,8 @@ class UpdatesController extends Controller
     public function update_vocational(Request $request){
         $employee_vocational = VocationalTable::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
 
         if(!$employee_vocational){
             $employee_vocational_pending = VocationalTablePending::where('empno', $request->empno)->first();
@@ -956,6 +976,13 @@ class UpdatesController extends Controller
                     'vocational_inclusive_years_from' => $employee_vocational_pending->vocational_inclusive_years_from,
                     'vocational_inclusive_years_to' => $employee_vocational_pending->vocational_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_vocational_pending->delete();
             }
         }
@@ -963,13 +990,22 @@ class UpdatesController extends Controller
             $employee_vocational_pending = VocationalTablePending::where('empno', $request->empno)->first();
 
             if($employee_vocational_pending){
-                $sql = VocationalTable::where('empno', $request->empno)
-                ->update([
+                $sql = VocationalTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
                     'vocational_name' => $employee_vocational_pending->vocational_name,
                     'vocational_course' => $employee_vocational_pending->vocational_course,
                     'vocational_inclusive_years_from' => $employee_vocational_pending->vocational_inclusive_years_from,
                     'vocational_inclusive_years_to' => $employee_vocational_pending->vocational_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_vocational_pending->delete();
             }
         }
@@ -978,6 +1014,8 @@ class UpdatesController extends Controller
     public function update_job_history(Request $request){
         $employee_job = JobHistoryTable::where('empno', $request->empno)->first();
         $employee_id = PersonalInformationTable::where('empno', $request->empno)->value('id');
+        $employee_number = WorkInformationTable::where('employee_number', $request->empno)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('empno', $request->empno)->first();
 
         if(!$employee_job){
             $employee_job_pending = JobHistoryTablePending::where('empno', $request->empno)->first();
@@ -994,6 +1032,13 @@ class UpdatesController extends Controller
                     'job_inclusive_years_from' => $employee_job_pending->job_inclusive_years_from,
                     'job_inclusive_years_to' => $employee_job_pending->job_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_job_pending->delete();
             }
         }
@@ -1001,8 +1046,10 @@ class UpdatesController extends Controller
             $employee_job_pending = JobHistoryTablePending::where('empno', $request->empno)->first();
 
             if($employee_job_pending){
-                $sql = JobHistoryTable::where('empno', $request->empno)
-                ->update([
+                $sql = JobHistoryTable::
+                create([
+                    'employee_id' => $employee_id,
+                    'empno' => $request->empno,
                     'job_company_name' => $employee_job_pending->job_company_name,
                     'job_description' => $employee_job_pending->job_description,
                     'job_position' => $employee_job_pending->job_position,
@@ -1010,6 +1057,13 @@ class UpdatesController extends Controller
                     'job_inclusive_years_from' => $employee_job_pending->job_inclusive_years_from,
                     'job_inclusive_years_to' => $employee_job_pending->job_inclusive_years_to
                 ]);
+
+                if($sql){
+                    $userlogs = new UserLogs;
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->activity = "USER SUCCESSFULLY APPROVED THE REQUEST UPDATE FOR THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+                    $userlogs->save();
+                }
                 $employee_job_pending->delete();
             }
         }

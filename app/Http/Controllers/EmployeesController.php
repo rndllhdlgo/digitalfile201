@@ -413,12 +413,12 @@ class EmployeesController extends Controller
                     $employee_logs = new LogsTable;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "FIRST - USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
                     $employee_logs->save();
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "SECOND - USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
                     $userlogs->save();
                 }
             }
@@ -442,7 +442,7 @@ class EmployeesController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "THIRD - USER SUCCESSFULLY REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
             $userlogs->save();
         }
     }
