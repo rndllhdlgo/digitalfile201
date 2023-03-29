@@ -1565,7 +1565,6 @@ class EmployeesController extends Controller
                     $request->employee_department != $employee_department_orig ||
                     $request->employee_shift != $employee_shift_orig
                     ){
-                    // $employee_number = WorkInformationTable::where('id', $request->id)->first()->employee_number;
                     $employee_details = PersonalInformationTable::where('id', $request->id)->first();
                     $userlogs = new LogsTable;
                     $userlogs->employee_id = $request->id;
@@ -1665,107 +1664,6 @@ class EmployeesController extends Controller
                     'tin_number' => $request->tin_number,
                     'account_number' => $request->account_number,
                 ]);
-
-            if($sql){
-
-                $result = 'true';
-                $id = $employee->id;
-
-                if(
-                    $request->employee_number != $employee_number_orig ||
-                    $request->date_hired != $date_hired_orig ||
-                    $request->employee_company != $employee_company_orig ||
-                    $request->employee_branch != $employee_branch_orig ||
-                    $request->employee_position != $employee_position_orig ||
-                    $request->employment_status != $employment_status_orig ||
-                    $request->employment_origin != $employment_origin_orig ||
-                    $request->company_email_address != $company_email_address_orig ||
-                    $request->company_contact_number != $company_contact_number_orig ||
-                    $request->hmo_number != $hmo_number_orig ||
-                    $request->sss_number != $sss_number_orig ||
-                    $request->pag_ibig_number != $pag_ibig_number_orig ||
-                    $request->philhealth_number != $philhealth_number_orig ||
-                    $request->tin_number != $tin_number_orig ||
-                    $request->account_number != $account_number_orig ||
-                    $request->employee_department != $employee_department_orig ||
-                    $request->employee_shift != $employee_shift_orig
-                    ){
-
-                    $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-                    $userlogs = new LogsTable;
-                    $userlogs->employee_id = $request->id;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
-                                        $employee_number_change
-                                        $date_hired_change
-                                        $employee_shift_change
-                                        $employee_company_change
-                                        $employee_branch_change
-                                        $employee_department_change
-                                        $employee_position_change
-                                        $employment_status_change
-                                        $employment_origin_change
-                                        $company_email_address_change
-                                        $company_contact_number_change
-                                        $hmo_number_change
-                                        $sss_number_change
-                                        $pag_ibig_number_change
-                                        $philhealth_number_change
-                                        $tin_number_change
-                                        $account_number_change ";
-                    $userlogs->save();
-
-                    $userlogs = new History;
-                    $userlogs->employee_id = $request->id;
-                    $userlogs->history = "UPDATED DETAILS
-                                        $employee_number_change
-                                        $date_hired_change
-                                        $employee_company_change
-                                        $employee_shift_change
-                                        $employee_branch_change
-                                        $employee_department_change
-                                        $employee_position_change
-                                        $employment_status_change
-                                        $employment_origin_change
-                                        $company_email_address_change
-                                        $company_contact_number_change
-                                        $hmo_number_change
-                                        $sss_number_change
-                                        $pag_ibig_number_change
-                                        $philhealth_number_change
-                                        $tin_number_change
-                                        $account_number_change";
-                    $userlogs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
-                                            $employee_number_change
-                                            $date_hired_change
-                                            $employee_shift_change
-                                            $employee_company_change
-                                            $employee_branch_change
-                                            $employee_department_change
-                                            $employee_position_change
-                                            $employment_status_change
-                                            $employment_origin_change
-                                            $company_email_address_change
-                                            $company_contact_number_change
-                                            $hmo_number_change
-                                            $sss_number_change
-                                            $pag_ibig_number_change
-                                            $philhealth_number_change
-                                            $tin_number_change
-                                            $account_number_change";
-                    $userlogs->save();
-                }
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
     }
 

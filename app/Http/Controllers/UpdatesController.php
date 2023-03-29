@@ -418,7 +418,6 @@ class UpdatesController extends Controller
             'emergency_contact_number' => $request->emergency_contact_number,
         ]);
 
-
         if($sql){
             if(
                 $request->first_name != $first_name_orig ||
@@ -873,7 +872,6 @@ class UpdatesController extends Controller
             }
         }
         else{
-
             if($employee_college_pending){
                 $employee_college_pending = CollegeTablePending::where('empno', $request->empno)->first();
                 $sql = CollegeTable::where('empno', $request->empno)
