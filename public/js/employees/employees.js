@@ -2,24 +2,30 @@ var employeesTable,employee_image_change;
 $(document).ready(function(){
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18];
         var filter = 'probationary';
     }
     else if(current_location == '/employees?employment_status=regular'){
         $('#head_title').html('- REGULAR');
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18];
         var filter = 'regular';
     }
-    else if(current_location == '/employees?employment_status=part_time'){
-        $('#head_title').html('- PART TIME');
-        var filter = 'part_time';
-    }
+
     else if(current_location == '/employees?employment_status=agency'){
         $('#head_title').html('- AGENCY');
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18];
         var filter = 'agency';
     }
-    else if(current_location == '/employees?employment_status=intern'){
-        $('#head_title').html('- INTERN');
-        var filter = 'intern';
-    }
+
+    // else if(current_location == '/employees?employment_status=part_time'){
+    //     $('#head_title').html('- PART TIME');
+    //     var filter = 'part_time';
+    // }
+    // else if(current_location == '/employees?employment_status=intern'){
+    //     $('#head_title').html('- INTERN');
+    //     var filter = 'intern';
+    // }
+
     else if(current_location == '/employees?employment_status=male'){
         $('#head_title').html('- MALE');
         var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18];
