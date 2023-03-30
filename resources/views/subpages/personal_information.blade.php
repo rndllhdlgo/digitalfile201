@@ -195,7 +195,7 @@
 
                 <div class="col-3">
                     <div class="f-outline">
-                        <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
+                        <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" placeholder=" " disabled>
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>

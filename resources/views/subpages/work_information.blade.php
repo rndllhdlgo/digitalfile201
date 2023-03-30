@@ -42,7 +42,7 @@
                 <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT COMPANY</option>
                         @foreach($companies as $company)
-                            <option value="{{$company->id}}">{{$company->company_name}}</option>
+                            <option value="{{$company->entity}}">{{$company->company_name}}</option>
                         @endforeach
                 </select>
                 <label for="employee_company" class="formlabel form-label"><i class="fa-solid fa-building"></i> COMPANY <span class="span_employee_company span_all"></span></label>

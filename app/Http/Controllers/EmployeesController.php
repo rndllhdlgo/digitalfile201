@@ -107,7 +107,7 @@ class EmployeesController extends Controller
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -139,11 +139,11 @@ class EmployeesController extends Controller
                 'stat'
                 )
                 ->where('work_information_tables.employment_status','Probationary')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -175,11 +175,11 @@ class EmployeesController extends Controller
                 'stat'
                 )
                 ->where('work_information_tables.employment_status','Agency')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -211,11 +211,11 @@ class EmployeesController extends Controller
                 'stat'
                 )
                 ->where('personal_information_tables.gender','Male')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -247,11 +247,11 @@ class EmployeesController extends Controller
                 'stat'
                 )
                 ->where('personal_information_tables.gender','Female')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -349,11 +349,11 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('branches','branches.id','work_information_tables.employee_branch')
                 ->leftjoin('departments','departments.id','work_information_tables.employee_department')
-                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
