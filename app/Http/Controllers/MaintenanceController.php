@@ -127,7 +127,7 @@ class MaintenanceController extends Controller
 
     //Shift
     public function shiftData(){
-        $shift = Shift::all();
+        $shift = Shift::select('shift','break','desc','in','out','break_out','break_in')->get();
         return DataTables::of($shift)->make(true);
     }
 

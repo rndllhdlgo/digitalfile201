@@ -100,15 +100,17 @@ class HomeController extends Controller
             return redirect('/employees');
         }
 
-        $employees = WorkInformationTable::where('employee_company', '<>', '')->count();
+        $employees = WorkInformationTable::where('employee_company', '!=', '')->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
+        $male = PersonalInformationTable::where('gender', 'Male')->where('address', '<>', '')->count();
+        $female = PersonalInformationTable::where('gender','Female')->where('address', '<>', '')->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
         $pending = PersonalInformationTablePending::where('status','Pending')->count();
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
-        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','pending','user_level'));
+        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','pending','user_level','male','female'));
     }
 
     public function org()

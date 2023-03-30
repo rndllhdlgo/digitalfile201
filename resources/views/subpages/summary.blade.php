@@ -6,10 +6,10 @@
                 <h5 class="modal-title text-white" id="exampleModalLabel">Employee Summary Details</h5>
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="close_summary"></button>
             </div>
-        
+
             <div class="modal-body p-2" style="overflow-x: hidden;">
                 <button type="button" class="btn btn-primary" id="btnPdf">SAVE AS PDF</button>
-            
+
             <hr class="hr-design">
 
                 <div id="print_file">
@@ -28,7 +28,7 @@
                                         <b>MIDDLE NAME:</b><br>
                                         <span class="middle_name font_weight"></span>
                                     </div>
-                                    
+
                                     <div class="col">
                                         <b>LAST NAME:</b><br>
                                         <span class="last_name font_weight"></span>
@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="row mb-3">
                                     <div class="col-4">
-                                        <b>NICKNAME:</b><br> 
+                                        <b>NICKNAME:</b><br>
                                         <span class="nickname font_weight"></span>
                                     </div>
                                     <div class="col">
@@ -63,7 +63,7 @@
                                         <span class="height font_weight"></span>
                                     </div>
                                     <div class="col">
-                                        <b>WEIGHT:</b><br>  
+                                        <b>WEIGHT:</b><br>
                                         <span class="weight font_weight"></span>
                                     </div>
                                 </div>
@@ -74,7 +74,7 @@
                                         <span class="religion font_weight"></span>
                                     </div>
                                     <div class="col-4">
-                                        <b>CIVIL STATUS:</b><br>  
+                                        <b>CIVIL STATUS:</b><br>
                                         <input type="hidden" class="civil_status font_weight" style="border:none;" disabled> <span id="civil_status_content"></span>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                 <img id="image_preview_summary">
                             </div> <!-- Column 2 -->
                         </div><!-- Clear Float -->
-                        
+
                         <div class="column_three" style="padding:5px;">
                             <div class="row">
                                 <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
@@ -124,7 +124,7 @@
                                     <b>TELEPHONE NO.:</b><br> <span class="telephone_number font_weight"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="row mb-3" id="spouse_summary_div" style="display:none;">
                                 <div class="col">
                                     <b>SPOUSE NAME:</b><br> <span class="spouse_name"></span>
@@ -148,7 +148,7 @@
                                     <b>PROFESSION:</b><br> <span class="father_profession font_weight"></span>
                                 </div>
                             </div>
-                            
+
                             <div class="row mb-3">
                                 <div class="col">
                                     <b>MOTHER'S MAIDEN NAME:</b><br> <span class="mother_name font_weight"></span>
@@ -211,7 +211,7 @@
                                 <div class="col">
                                     <b>DEPARTMENT:</b><br>
                                     <span class="employee_department"></span>
-                                </div> 
+                                </div>
                                 <div class="col">
                                     <b>EMPLOYMENT STATUS:</b><br>
                                     <span class="employment_status"></span>
@@ -224,11 +224,11 @@
                                     <span class="employment_origin"></span>
                                 </div>
                                 <div class="col" id="company_email_address_div">
-                                    <b>WORK EMAIL ADDRESS:</b><br> 
+                                    <b>WORK EMAIL ADDRESS:</b><br>
                                     <span class="company_email_address font_weight"></span>
                                 </div>
                                 <div class="col" id="company_contact_number_div">
-                                    <b>WORK CONTACT NO.:</b><br> 
+                                    <b>WORK CONTACT NO.:</b><br>
                                     <span class="company_contact_number font_weight"></span>
                                 </div>
                             </div>
@@ -250,7 +250,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="column_six" style="padding:5px; display:none;">
                             <hr style="border:0.5px solid black; opacity:100%;">
 
@@ -260,7 +260,7 @@
 
                                 <div id="job_history_summary_div" class="row"></div>
                         </div>
-                       
+
                         <hr style="border:0.5px solid black; opacity:100%;">
 
                         <div class="column_seven mb-3" id="benefits_summary" style="padding:5px;">
@@ -325,7 +325,7 @@
         <h6>GRAB<br></h6>
         <span> - DELIVER FOOD/ESSENTIAL ITEMS</span>
     </div>
-    
+
     <div class="col-2">
         <span>Mar. 2022 - </span>
         <span>Mar. 2023<br></span>

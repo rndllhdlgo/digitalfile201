@@ -161,14 +161,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employee_number').css('cursor','not-allowed');
                 $('#date_hired').val(value.date_hired);
 
-                $('#employee_shift').val(value.employee_shift);
-                $('#employee_shift').chosen();
-                $('#employee_shift_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
+                $('#employee_shift').val(value.desc);
 
                 $('#employee_company').val(value.employee_company);
                 $('#employee_company').chosen();
@@ -986,6 +979,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.barangay_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
+                    $('#barangay_clearance_file').removeClass('required_field');
                 }
 
                 if(value.birthcertificate_file){
@@ -995,6 +989,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.birthcertificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
+                    $('#birthcertificate_file').removeClass('required_field');
+
                 }
 
                 if(value.diploma_file){
@@ -1013,6 +1009,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.medical_certificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
+                    $('#medical_certificate_file').removeClass('required_field');
+
                 }
                 if(value.nbi_clearance_file){
                     $('#nbi_clearance_filename').val(value.nbi_clearance_file);
@@ -1030,6 +1028,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.pag_ibig_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
+                    $('#pag_ibig_file').removeClass('required_field');
                 }
 
                 if(value.philhealth_file){
@@ -1039,6 +1038,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.philhealth_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
                     $('#philhealth_view').hide();
                     $('#philhealth_delete_button').show();
+                    $('#philhealth_file').removeClass('required_field');
                 }
 
                 if(value.police_clearance_file){
@@ -1048,6 +1048,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.police_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
                     $('#police_clearance_view').hide();
                     $('#police_clearance_delete_button').show();
+                    $('#police_clearance_file').removeClass('required_field');
                 }
 
                 if(value.resume_file){
@@ -1057,6 +1058,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.resume_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
                     $('#resume_view').hide();
                     $('#resume_delete_button').show();
+                    $('#resume_file').removeClass('required_field');
                 }
 
                 if(value.sss_file){
@@ -1066,6 +1068,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.sss_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
                     $('#sss_view').hide();
                     $('#sss_delete_button').show();
+                    $('#sss_file').removeClass('required_field');
                 }
 
                 if(value.transcript_of_records_file){

@@ -20,6 +20,19 @@ $(document).ready(function(){
         $('#head_title').html('- INTERN');
         var filter = 'intern';
     }
+    else if(current_location == '/employees?employment_status=male'){
+        $('#head_title').html('- MALE');
+        var targets = [5,6,7,8,9,10,12,13,14,15,16,17];
+        var filter = 'male';
+    }
+    else if(current_location == '/employees?employment_status=female'){
+        $('#head_title').html('- FEMALE');
+        var targets = [5,6,7,8,9,10,12,13,14,15,16,17];
+        var filter = 'female';
+    }
+    else{
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17];
+    }
 
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
@@ -41,8 +54,16 @@ $(document).ready(function(){
                 filter:filter
             },
         },
-        order:[1,'asc'],
+        // order:[1,'asc'],
         // order:[0,'desc'],
+        order:[],
+        columnDefs: [
+            {
+                "targets": targets,
+                "visible": false,
+                "searchable": true
+            },
+        ],
         columns:[
             {
                 data: 'employee_number',
@@ -58,7 +79,31 @@ $(document).ready(function(){
             },
             {data: 'employee_position'},
             {data: 'employee_branch'},
-            {data: 'employment_status'}
+            {data: 'employment_status'},
+            {data: 'employee_company'},
+            {data: 'employee_department'},
+            {data: 'date_hired'},
+            {data: 'email_address'},
+            {data: 'cellphone_number'},
+            {data: 'telephone_number'},
+            {data: 'gender'},
+            {data: 'civil_status'},
+            {data: 'birthday'},
+            {data: 'religion'},
+            {data: 'province'},
+            {data: 'city'},
+            {data: 'region'},
+            {
+                data: 'stat',
+                "render": function(data, type, row){
+                    if(row.stat == '1'){
+                        return "NEW EMPLOYEE";
+                    }
+                    else{
+                        return '';
+                    }
+                },
+            },
         ],
         initComplete: function(){
             if(current_user_level == 'EMPLOYEE'){
@@ -96,7 +141,43 @@ $(document).ready(function(){
         }
     });
     $('div.breakspace').html('<br><br>');
+
+    $('body').on('click', '.checkboxFilter', function(){
+        var column = employeesTable.column($(this).attr('data-column'));
+        var colnum = $(this).attr('data-column');
+        column.visible(!column.visible());
+        $('.fl-'+colnum).val('');
+        employeesTable.column(colnum).search('').draw();
+    });
+
+    setInterval(() => {
+        if($('.popover-header').is(':visible')){
+            for(var i=0; i<=17; i++){
+                if(employeesTable.column(i).visible()){
+                    $('#filter-'+i).prop('checked', true);
+                }
+                else{
+                    $('#filter-'+i).prop('checked', false);
+                }
+            }
+        }
+    }, 0);
+
+    $('#filter').popover({
+        html: true,
+        sanitize: false
+    });
+
+    $('html').on('click', function(e){
+        $('#filter').each(function(){
+            if(!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0){
+                $('#filter').popover('hide');
+            }
+        });
+    });
 });
+
+
 
 $('.filter-input').on('keyup search', function(){
     employeesTable.column($(this).data('column')).search($(this).val()).draw();

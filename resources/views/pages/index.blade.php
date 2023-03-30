@@ -8,7 +8,7 @@
         <div class="col">
             <a class="dashhover" href="/employees" style="text-decoration: none;">
                 <center>
-                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employees.png') }}">
                     <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
                         {{number_format($employees)}}
                     </div>
@@ -19,7 +19,7 @@
         <div class="col">
             <a class="dashhover" href="/employees?employment_status=regular" style="text-decoration: none;">
                 <center>
-                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/regular.png') }}">
                     <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
                         {{number_format($regular)}}
                     </div>
@@ -30,7 +30,7 @@
         <div class="col">
             <a class="dashhover" href="/employees?employment_status=probationary" style="text-decoration: none;">
                 <center>
-                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/probationary.png') }}">
                     <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
                         {{number_format($probationary)}}
                     </div>
@@ -41,7 +41,7 @@
         <div class="col">
             <a class="dashhover" href="/employees?employment_status=agency" style="text-decoration: none;">
                 <center>
-                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/agency.png') }}">
                     <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
                         {{number_format($agency)}}
                     </div>
@@ -50,6 +50,28 @@
             </a>
         </div>
         <div class="col">
+            <a class="dashhover" href="/employees?employment_status=male" style="text-decoration: none;">
+                <center>
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/male.png') }}">
+                    <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
+                        {{number_format($male)}}
+                    </div>
+                    <b class="dashlabel" style="color: #0d1a80; font-size: 20px; padding-top: 10px;">MALE</b>
+                </center>
+            </a>
+        </div>
+        <div class="col">
+            <a class="dashhover" href="/employees?employment_status=female" style="text-decoration: none;">
+                <center>
+                    <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/female.png') }}">
+                    <div class="dashbox container mt-1" style="z-index: 100; background-color: #0d1a80; color: white; margin-bottom: 5px; line-height: 48px; height: 48px; width: 150px; text-align: center; font-size: 26px; border-radius: 30px;">
+                        {{number_format($female)}}
+                    </div>
+                    <b class="dashlabel" style="color: #0d1a80; font-size: 20px; padding-top: 10px;">FEMALE</b>
+                </center>
+            </a>
+        </div>
+        {{-- <div class="col">
             <a class="dashhover" href="/updates" style="text-decoration: none;">
                 <center>
                     <img class="dashicon text-center" style="height: 100px;" src="{{ asset('/storage/dashboard_icons/employee.png') }}">
@@ -59,7 +81,7 @@
                     <b class="dashlabel" style="color: #0d1a80; font-size: 20px; padding-top: 10px;">UPDATES</b>
                 </center>
             </a>
-        </div>
+        </div> --}}
     </div>
     <br>
     <table class="table table-striped table-hover table-bordered w-100 user_activity_table" id="user_activity_table">
@@ -118,7 +140,7 @@
                 <th style="width:50%">ACTIVITY</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody title="CLICK TO VIEW">
         </tbody>
     </table>
 

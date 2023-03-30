@@ -83,11 +83,25 @@
             ajax: {
                 url: '/maintenance/shiftData',
             },
-            order: [],
+            order: [0,'asc'],
             columns: [
-                {data: 'shift_code'},
-                {data: 'shift_working_hours'},
-                {data: 'shift_break_time'}
+                {data: 'shift'},
+                {
+                    data: null,
+                    "render": function(data,type,row){
+                        return moment(row.in, 'HH:mm:ss').format('h:mm A') + '-' + moment(row.out, 'HH:mm:ss').format('h:mm A');
+
+                    }
+                },
+                {
+                    data: null,
+                    "render": function(data,type,row){
+                        if(row.break == 'N'){
+                            return 'NO BREAK';
+                        }
+                            return moment(row.break_out, 'HH:mm:ss').format('h:mm A') + '-' + moment(row.break_in, 'HH:mm:ss').format('h:mm A');
+                    }
+                }
             ],
             initComplete: function(){
                 $('#loading').hide();

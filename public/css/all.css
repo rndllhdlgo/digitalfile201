@@ -329,14 +329,15 @@ input[type=search]:focus{
     /* height: 240px;
     width: 276px;
     margin-left: -12px; */
-    height: 210px;
-    width:100%;
+    height: 210px !important;
+    width:210px !important;
     cursor:pointer;
     display: none;
+    justify-content: center;
 }
 #update_image_preview{
-    height: 210px;
-    width:100%;
+    height: 210px !important;
+    width:210px !important;
     cursor:pointer;
     display: none;
 }
@@ -626,10 +627,6 @@ th{
     pointer-events: none;
 }
 
-.cropper-bg{
-    margin-top: -25px;
-}
-
 .center_div{
     display: flex;
     justify-content: center;
@@ -640,7 +637,6 @@ th{
 .bottom-container button{
     border-radius: 0 !important;
     width:42px !important;
-    zoom:85% !important;
     box-shadow: none !important;
 }
 

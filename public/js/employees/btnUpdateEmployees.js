@@ -28,6 +28,7 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_name = $('#emergency_contact_name').val();
     var emergency_contact_relationship = $('#emergency_contact_relationship').val();
     var emergency_contact_number = $('#emergency_contact_number').val();
+    var blood_type = $('#blood_type').val();
     // console.log($('#filename_delete').val());
     // var college_hange = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
@@ -96,13 +97,14 @@ $('#btnUpdate').on('click',function(){
                     emergency_contact_name:emergency_contact_name,
                     emergency_contact_relationship:emergency_contact_relationship,
                     emergency_contact_number:emergency_contact_number,
+                    blood_type:blood_type
                 },
                 success:function(data){
                     if(data.result == 'true'){
                         var employee_id = $('#employee_id').val(data.id);
                         var employee_number = $('#employee_number').val();
                         var date_hired = $('#date_hired').val();
-                        var employee_shift = $('#employee_shift').val();
+                        // var employee_shift = $('#employee_shift').val();
                         var employee_company = $('#employee_company').val();
                         var employee_branch = $('#employee_branch').val();
                         var employee_department = $('#employee_department').val();
@@ -128,7 +130,7 @@ $('#btnUpdate').on('click',function(){
                                 employee_id:data.id,
                                 employee_number:employee_number,
                                 date_hired:date_hired,
-                                employee_shift:employee_shift,
+                                // employee_shift:employee_shift,
                                 employee_company:employee_company,
                                 employee_branch:employee_branch,
                                 employee_department:employee_department,

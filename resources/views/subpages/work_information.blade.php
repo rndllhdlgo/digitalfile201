@@ -8,15 +8,15 @@
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
             </div>
         </div>
-        
+
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
-                <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label> 
+                <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label>
             </div>
         </div>
 
-        <div class="col">
+        {{-- <div class="col">
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT SHIFT </option>
@@ -25,6 +25,13 @@
                         @endforeach
                 </select>
                 <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock"></i> SHIFT <span class="span_employee_shift span_all"></span></label>
+            </div>
+        </div> --}}
+
+        <div class="col">
+            <div class="f-outline">
+                <input class="forminput form-control required_field" type="text" id="employee_shift" placeholder=" " style="background-color:white;" readonly>
+                <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock" aria-hidden="true" ></i> EMPLOYEE SHIFT </label>
             </div>
         </div>
     </div>
@@ -143,7 +150,7 @@
                 <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                 <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.<span class="span_company_contact_number span_all"> (Optional)</span></label>
             </div>
-        </div> 
+        </div>
     </div>
 
     <div id="benefits" style="display: none;">
@@ -236,7 +243,7 @@
                     </tr>
                 </tbody>
             </table>
-    
+
             <table class="table table-bordered table-striped table-hover resignation_table_data" id="resignation_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>
@@ -289,7 +296,7 @@
                     </tr>
                 </tbody>
             </table>
-            
+
             <table class="table table-bordered table-striped table-hover termination_table_data" id="termination_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>
@@ -325,13 +332,12 @@
                     <th>HISTORY</th>
                 </tr>
             </thead>
-            <tbody>
-
+            <tbody title="CLICK TO VIEW">
             </tbody>
         </table>
         <hr class="hr-design hr-history">
     </div>
-    
+
     <div class="modal fade" id="viewJobDescriptionModal" tabindex="-1" aria-labelledby="viewJobDescriptionModal" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered">
             <div class="modal-content">

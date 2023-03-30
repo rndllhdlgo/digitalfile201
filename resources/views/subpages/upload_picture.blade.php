@@ -14,7 +14,7 @@
 
 <div class="text-center mt-3" id="image_instruction">
     <span>File Size: Maximum (10MB)</span><br>
-    <span>File Extensions: .jpg, .jpeg, .png</span> 
+    <span>File Extensions: .jpg, .jpeg, .png</span>
 </div>
 
 <div>
@@ -22,6 +22,14 @@
 </div>
 
 <div class="top-container center_div" style="display:none; margin-top:1px !important;">
+    <button type="button" class="btn btn-danger" id="image_close_trash" title="REMOVE IMAGE"><i class="fas fa-trash"></i></button>
+    <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
+    <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
+    <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><i class="fas fa-search-minus"></i></button>
+    <button type="button" class="btn btn-success" id="image_crop" title="CROP IMAGE"><i class="fas fa-crop"></i></button>
+</div>
+
+{{-- <div class="top-container center_div" style="display:none; margin-top:1px !important;">
     <button type="button" class="btn btn-success" id="image_download" title="DOWNLOAD" style="visibility: hidden;"><i class="fas fa-download"></i></button>
     <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
     <button type="button" class="btn btn-secondary" id="image_up" title="MOVE UP"><i class="fas fa-arrow-up"></i></button>
@@ -34,4 +42,4 @@
     <button type="button" class="btn btn-secondary" id="image_down" title="MOVE DOWN"><i class="fas fa-arrow-down"></i></button>
     <button type="button" class="btn btn-secondary" id="image_right" title="MOVE RIGHT"><i class="fas fa-arrow-right"></i></button>
     <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
-</div>
+</div> --}}

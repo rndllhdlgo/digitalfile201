@@ -34,7 +34,7 @@
                     <td>
                         <div class="f-outline">
                             <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="employee_bonus" class="formlabel form-label"></label>        
+                            <label for="employee_bonus" class="formlabel form-label"></label>
                         </div>
                     </td>
                 </tr>

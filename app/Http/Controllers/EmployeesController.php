@@ -76,7 +76,7 @@ class EmployeesController extends Controller
     }
 
     public function listOfEmployees(Request $request){
-        if($request->filter == 'probationary'){
+        if($request->filter == 'regular'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'work_information_tables.employee_number',
@@ -85,32 +85,34 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
-                )
-                ->where('work_information_tables.employment_status','Probationary')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('branches','branches.id','work_information_tables.employee_branch')
-                ->get();
-        }
-        else if($request->filter == 'regular'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'work_information_tables.employee_number',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'positions.job_position_name AS employee_position',
-                'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
                 )
                 ->where('work_information_tables.employment_status','Regular')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
                 ->get();
         }
-        else if($request->filter == 'part_time'){
+        else if($request->filter == 'probationary'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'work_information_tables.employee_number',
@@ -119,12 +121,31 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
                 )
-                ->where('work_information_tables.employment_status','Part Time')
+                ->where('work_information_tables.employment_status','Probationary')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
                 ->get();
         }
         else if($request->filter == 'agency'){
@@ -136,15 +157,34 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
                 )
                 ->where('work_information_tables.employment_status','Agency')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
                 ->get();
         }
-        else if($request->filter == 'intern'){
+        else if($request->filter == 'male'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'work_information_tables.employee_number',
@@ -153,14 +193,136 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
                 )
-                ->where('work_information_tables.employment_status','Intern')
+                ->where('personal_information_tables.gender','Male')
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
                 ->get();
         }
+        else if($request->filter == 'female'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'branches.branch_name AS employee_branch',
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
+                )
+                ->where('personal_information_tables.gender','Female')
+                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->join('positions','positions.id','work_information_tables.employee_position')
+                ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
+                ->get();
+        }
+        // else if($request->filter == 'part_time'){
+        //     $employees = PersonalInformationTable::select(
+        //         'personal_information_tables.id',
+        //         'work_information_tables.employee_number',
+        //         'first_name',
+        //         'middle_name',
+        //         'last_name',
+        //         'positions.job_position_name AS employee_position',
+        //         'branches.branch_name AS employee_branch',
+        //         'work_information_tables.employment_status',
+        //         'companies.company_name AS employee_company',
+        //         'departments.department AS employee_department',
+        //         'work_information_tables.date_hired',
+        //         'email_address',
+        //         'cellphone_number',
+        //         'telephone_number',
+        //         'gender',
+        //         'civil_status',
+        //         'birthday',
+        //         'religion',
+        //         'province',
+        //         'city',
+        //         'region',
+        //         'stat'
+        //         )
+        //         ->where('work_information_tables.employment_status','Part Time')
+        //         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        //         ->join('positions','positions.id','work_information_tables.employee_position')
+        //         ->join('branches','branches.id','work_information_tables.employee_branch')
+        //         ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+        //         ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+        //         ->get();
+        // }
+
+        // else if($request->filter == 'intern'){
+        //     $employees = PersonalInformationTable::select(
+        //         'personal_information_tables.id',
+        //         'work_information_tables.employee_number',
+        //         'first_name',
+        //         'middle_name',
+        //         'last_name',
+        //         'positions.job_position_name AS employee_position',
+        //         'branches.branch_name AS employee_branch',
+        //         'work_information_tables.employment_status',
+        //         'companies.company_name AS employee_company',
+        //         'departments.department AS employee_department',
+        //         'work_information_tables.date_hired',
+        //         'email_address',
+        //         'cellphone_number',
+        //         'telephone_number',
+        //         'gender',
+        //         'civil_status',
+        //         'birthday',
+        //         'religion',
+        //         'province',
+        //         'city',
+        //         'region',
+        //         'stat'
+        //         )
+        //         ->where('work_information_tables.employment_status','Intern')
+        //         ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        //         ->join('positions','positions.id','work_information_tables.employee_position')
+        //         ->join('branches','branches.id','work_information_tables.employee_branch')
+        //         ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+        //         ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+        //         ->get();
+        // }
         else{
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
@@ -170,11 +332,30 @@ class EmployeesController extends Controller
                 'last_name',
                 'positions.job_position_name AS employee_position',
                 'branches.branch_name AS employee_branch',
-                'work_information_tables.employment_status'
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'departments.department AS employee_department',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
                 )
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('branches','branches.id','work_information_tables.employee_branch')
+                ->leftjoin('departments','departments.id','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.id','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
                 ->get();
             }
         return DataTables::of($employees)->make(true);
@@ -183,6 +364,7 @@ class EmployeesController extends Controller
     public function employeeFetch(Request $request){
         $employees = PersonalInformationTable::select(
                     'personal_information_tables.id',
+                    'desc',
                     'employee_image',
                     'first_name',
                     'middle_name',
@@ -266,6 +448,7 @@ class EmployeesController extends Controller
         ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')
         ->leftJoin('documents','documents.employee_id','personal_information_tables.id')
         ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        ->leftJoin('shift','shift.shift','personal_information_tables.shift')
         ->get();
         return DataTables::of($employees)->toJson();
     }
@@ -951,6 +1134,7 @@ class EmployeesController extends Controller
                 'province' => $request->province,
                 'city' => $request->city,
                 'region' => $request->region,
+                'blood_type' => $request->blood_type,
                 'height' => $request->height,
                 'weight' => $request->weight,
                 'religion' => strtoupper($request->religion),
@@ -967,6 +1151,7 @@ class EmployeesController extends Controller
                 'emergency_contact_name' => strtoupper($request->emergency_contact_name),
                 'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
                 'emergency_contact_number' => $request->emergency_contact_number
+                // 'stat' => ''
             ]);
 
             if($sql){
@@ -1361,7 +1546,7 @@ class EmployeesController extends Controller
         $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
         $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
         $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first()->date_hired;
-        $employee_shift_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_shift;
+        // $employee_shift_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_shift;
         $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_company;
         $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_branch;
         $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_department;
@@ -1394,14 +1579,14 @@ class EmployeesController extends Controller
             $date_hired_change = NULL;
         }
 
-        if($request->employee_shift != $employee_shift_orig){
-            $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
-            $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
-            $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours 'with BREAK-TIME' $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
-        }
-        else{
-            $employee_shift_change = NULL;
-        }
+        // if($request->employee_shift != $employee_shift_orig){
+        //     $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
+        //     $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
+        //     $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours 'with BREAK-TIME' $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
+        // }
+        // else{
+        //     $employee_shift_change = NULL;
+        // }
 
         if($request->employee_company != $employee_company_orig){
             $employee_company_orig = Company::where('id', $employee_company_orig)->first()->company_name;
@@ -1524,7 +1709,7 @@ class EmployeesController extends Controller
                 ->update([
                     'employee_number' => $request->employee_number,
                     'date_hired' => $request->date_hired,
-                    'employee_shift' => $request->employee_shift,
+                    // 'employee_shift' => $request->employee_shift,
                     'employee_company' => $request->employee_company,
                     'employee_branch' => $request->employee_branch,
                     'employee_department' => $request->employee_department,
@@ -1562,8 +1747,8 @@ class EmployeesController extends Controller
                     $request->philhealth_number != $philhealth_number_orig ||
                     $request->tin_number != $tin_number_orig ||
                     $request->account_number != $account_number_orig ||
-                    $request->employee_department != $employee_department_orig ||
-                    $request->employee_shift != $employee_shift_orig
+                    $request->employee_department != $employee_department_orig
+                    // $request->employee_shift != $employee_shift_orig
                     ){
                     $employee_details = PersonalInformationTable::where('id', $request->id)->first();
                     $userlogs = new LogsTable;
@@ -1572,7 +1757,6 @@ class EmployeesController extends Controller
                     $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
                                         $employee_number_change
                                         $date_hired_change
-                                        $employee_shift_change
                                         $employee_company_change
                                         $employee_branch_change
                                         $employee_department_change
@@ -1595,7 +1779,6 @@ class EmployeesController extends Controller
                                         $employee_number_change
                                         $date_hired_change
                                         $employee_company_change
-                                        $employee_shift_change
                                         $employee_branch_change
                                         $employee_department_change
                                         $employee_position_change
@@ -1616,7 +1799,6 @@ class EmployeesController extends Controller
                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
                                             $employee_number_change
                                             $date_hired_change
-                                            $employee_shift_change
                                             $employee_company_change
                                             $employee_branch_change
                                             $employee_department_change
@@ -1648,7 +1830,7 @@ class EmployeesController extends Controller
                     'employee_id' => $emp_id,
                     'employee_number' => $request->employee_number,
                     'date_hired' => $request->date_hired,
-                    'employee_shift' => $request->employee_shift,
+                    // 'employee_shift' => $request->employee_shift,
                     'employee_company' => $request->employee_company,
                     'employee_branch' => $request->employee_branch,
                     'employee_department' => $request->employee_department,

@@ -4,9 +4,6 @@ $(document).on('click','#image_button',function(){
     $('#employee_image').click();
 });
 
-// $(document).on('change','#employee_image',function(){
-
-// });
 $(document).on('click','#image_crop',function(){
     var cropper = $('#image_crop').data('cropper');
     var canvas = cropper.getCroppedCanvas();
@@ -14,8 +11,6 @@ $(document).on('click','#image_crop',function(){
     $('#image_preview').attr('src', croppedImageDataURL);
     $('#image_close').show();
     $('.top-container').hide();
-    $('.bottom-container').hide();
-    // $('.column1').css('height','280px');
     cropper.destroy();
 });
 
@@ -34,7 +29,7 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-    } 
+    }
     else if(imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -43,7 +38,7 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-        
+
     }
     else if(imageFileSize > 5242880 * 2){
         Swal.fire({
@@ -53,7 +48,7 @@ function ImageValidation(employee_image) {
             allowOutsideClick: false,
             allowEscapeKey: false
         });
-    }   
+    }
     else {
         if(imageData.files && imageData.files[0]) {
             var imageReader = new FileReader();
@@ -75,7 +70,7 @@ function ImageValidation(employee_image) {
                     $('#image_zoom_in').on('click', function() {
                         cropper.zoom(0.1);
                     });
-                      
+
                     $('#image_zoom_out').on('click', function() {
                         cropper.zoom(-0.1);
                     });
@@ -85,21 +80,21 @@ function ImageValidation(employee_image) {
                         cropper.reset(true);
                     });
 
-                    $('#image_up').click(function() {
-                        cropper.move(0, -5);
-                    });
-                    
-                    $('#image_down').click(function() {
-                        cropper.move(0, 5);
-                    });
+                    // $('#image_up').click(function() {
+                    //     cropper.move(0, -5);
+                    // });
 
-                    $('#image_left').click(function() {
-                        cropper.move(-10, 0);
-                    });
-                      
-                    $('#image_right').click(function() {
-                        cropper.move(10, 0);
-                    });
+                    // $('#image_down').click(function() {
+                    //     cropper.move(0, 5);
+                    // });
+
+                    // $('#image_left').click(function() {
+                    //     cropper.move(-10, 0);
+                    // });
+
+                    // $('#image_right').click(function() {
+                    //     cropper.move(10, 0);
+                    // });
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
@@ -107,8 +102,6 @@ function ImageValidation(employee_image) {
                 $('#image_instruction').hide();
                 $('#image_preview').show();
                 $('.top-container').show();
-                $('.bottom-container').show();
-                // $('.column1').css('height','293px');
         }
     }
 }
@@ -129,7 +122,7 @@ function memoValidation(memo_file) {
             allowEscapeKey: false
         });
         $('#memo_file').val('');
-    } 
+    }
     else if(memoExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -179,7 +172,7 @@ function evaluationValidation(evaluation_file) {
             allowEscapeKey: false
         });
         $('#evaluation_file').val('');
-    } 
+    }
     else if(evaluationExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -229,7 +222,7 @@ function contractsValidation(contracts_file) {
             allowEscapeKey: false
         });
         $('#contracts_file').val('');
-    } 
+    }
     else if(contractsExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -279,7 +272,7 @@ function resignationValidation(resignation_file) {
             allowEscapeKey: false
         });
         $('#resignation_file').val('');
-    } 
+    }
     else if(resignationExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -329,7 +322,7 @@ function terminationValidation(termination_file) {
             allowEscapeKey: false
         });
         $('#termination_file').val('');
-    } 
+    }
     else if(terminationExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -409,7 +402,7 @@ function BirthCertificateValidation(birthcertificate_file) {
         $('#birthcertificate_preview').attr('src','');
         $('#birthcertificate_view').prop('disabled',true);
         // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else {
         if (birthcertData.files && birthcertData.files[0]) {
             var birthcertReader = new FileReader();
@@ -564,7 +557,7 @@ function policeClearanceValidation(police_clearance_file) {
         $('#police_clearance_preview').attr('src','');
         $('#police_clearance_view').prop('disabled',true);
         // $('.police_clearance_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(policeClearanceExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -624,7 +617,7 @@ function sssValidation(sss_file) {
         $('#sss_preview').attr('src','');
         $('#sss_view').prop('disabled',true);
         // $('.sss_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(sssExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -684,7 +677,7 @@ function philhealthValidation(philhealth_file) {
         $('#philhealth_preview').attr('src','');
         $('#philhealth_view').prop('disabled',true);
         // $('.philhealth_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(philhealthExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -744,7 +737,7 @@ function pagibigValidation(pag_ibig_file) {
         $('#pag_ibig_preview').attr('src','');
         $('#pag_ibig_view').prop('disabled',true);
         // $('.pag_ibig_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(pagibigExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -804,7 +797,7 @@ function medicalCertificateValidation(medical_certificate_file) {
         $('#medical_certificate_preview').attr('src','');
         $('#medical_certificate_view').prop('disabled',true);
         // $('.medical_certificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(medicalCertificateExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -864,7 +857,7 @@ function torValidation(tor_file) {
         $('#tor_preview').attr('src','');
         $('#tor_view').prop('disabled',true);
         // $('.tor_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(torExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -924,7 +917,7 @@ function diplomaValidation(diploma_file) {
         $('#diploma_preview').attr('src','');
         $('#diploma_view').prop('disabled',true);
         // $('.diploma_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(diplomaExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -984,7 +977,7 @@ function resumeValidation(resume_file) {
         $('#resume_preview').attr('src','');
         $('#resume_view').prop('disabled',true);
         // $('.resume_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
-    } 
+    }
     else if(resumeExtension != "pdf"){
         Swal.fire({
             title: 'UNSUPPORTED FILE TYPE',
@@ -1197,7 +1190,7 @@ $('#resume_preview').on('click',function(){
 // $('#nbi_file').on('change',function(){
 //     if (nbi_file.value) {
 //         nbi_text.innerHTML = "<b>File Name</b>: " + nbi_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         nbi_text.innerHTML = "No file chosen.";
 //     }
@@ -1210,7 +1203,7 @@ $('#resume_preview').on('click',function(){
 // $('#barangay_clearance_file').on('change',function(){
 //     if (barangay_clearance_file.value) {
 //         barangay_clearance_text.innerHTML = "<b> File Name: </b>" + barangay_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         barangay_clearance_text.innerHTML = "No file chosen.";
 //     }
@@ -1223,7 +1216,7 @@ $('#resume_preview').on('click',function(){
 // $('#police_clearance_file').on('change',function(){
 //     if (police_clearance_file.value) {
 //         police_clearance_text.innerHTML = "<b> File Name: </b>" + police_clearance_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         police_clearance_text.innerHTML = "No file chosen.";
 //     }
@@ -1236,7 +1229,7 @@ $('#resume_preview').on('click',function(){
 // $('#sss_file').on('change',function(){
 //     if (sss_file.value) {
 //         sss_text.innerHTML = "<b> File Name: </b>" + sss_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         sss_text.innerHTML = "No file chosen.";
 //     }
@@ -1249,7 +1242,7 @@ $('#resume_preview').on('click',function(){
 // $('#philhealth_file').on('change',function(){
 //     if (philhealth_file.value) {
 //         philhealth_text.innerHTML = "<b> File Name: </b>" + philhealth_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         philhealth_text.innerHTML = "No file chosen.";
 //     }
@@ -1262,7 +1255,7 @@ $('#resume_preview').on('click',function(){
 // $('#pag_ibig_file').on('change',function(){
 //     if (pag_ibig_file.value) {
 //         pag_ibig_text.innerHTML = "<b> File Name: </b>" + pag_ibig_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         pag_ibig_text.innerHTML = "No file chosen.";
 //     }
@@ -1275,7 +1268,7 @@ $('#resume_preview').on('click',function(){
 // $('#medical_certificate_file').on('change',function(){
 //     if (medical_certificate_file.value) {
 //         medical_certificate_text.innerHTML = "<b> File Name: </b>" + medical_certificate_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         medical_certificate_text.innerHTML = "No file chosen.";
 //     }
@@ -1288,7 +1281,7 @@ $('#resume_preview').on('click',function(){
 // $('#tor_file').on('change',function(){
 //     if (tor_file.value) {
 //         tor_text.innerHTML = "<b> File Name: </b>" + tor_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         tor_text.innerHTML = "No file chosen.";
 //     }
@@ -1301,7 +1294,7 @@ $('#resume_preview').on('click',function(){
 // $('#diploma_file').on('change',function(){
 //     if (diploma_file.value) {
 //         diploma_text.innerHTML = "<b> File Name: </b>" + diploma_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         diploma_text.innerHTML = "No file chosen.";
 //     }
@@ -1314,7 +1307,7 @@ $('#resume_preview').on('click',function(){
 // $('#resume_file').on('change',function(){
 //     if (resume_file.value) {
 //         resume_text.innerHTML = "<b> File Name: </b>" + resume_file.value.match(/[\/\\]([\w\d\s\.\-\(\)]+)$/)[1];
-//     } 
+//     }
 //     else {
 //         resume_text.innerHTML = "No file chosen.";
 //     }

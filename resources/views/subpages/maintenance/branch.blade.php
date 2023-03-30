@@ -6,7 +6,7 @@
                     <th><i class="fas fa-id-card"></i> BRANCH NAME</th>
                 </tr>
         </thead>
-            <tbody>
+            <tbody title="CLICK TO EDIT">
             </tbody>
     </table>
 

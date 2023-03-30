@@ -32,25 +32,25 @@
                 </div>
                 <div class="modal-body">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_code" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p>
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_code" placeholder=" " style="background-color:white;" autocomplete="off">
+                        {{-- <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p> --}}
                         <label for="shift_code" class="formlabel form-label"><i class="fa-solid fa-hashtag"></i> SHIFT CODE </label>
                     </div>
                     <br>
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_working_hours" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_working_hours" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="shift_working_hours" class="formlabel form-label"><i class="fa-solid fa-clock"></i> WORKING HOURS </label>
                     </div>
                     <br>
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_break_time" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_break_time" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="shift_break_time" class="formlabel form-label"><i class="fa-solid fa-clock"></i> BREAK TIME </label>
                     </div>
                 </div>
-                <div class="modal-footer">
+                {{-- <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="shiftSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
                     <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>
@@ -65,25 +65,25 @@
                 <div class="modal-body">
                     <input type="hidden" id="shift_id">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_details_code" placeholder=" " style="background-color:white;" autocomplete="off">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p>
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_details_code" placeholder=" " style="background-color:white;" autocomplete="off">
+                        {{-- <p class="validation"><i class="fas fa-exclamation-triangle"></i> Shift Code Already Exist!</p> --}}
                         <label for="shift_details_code" class="formlabel form-label"><i class="fas fa-address-card"></i> SHIFT CODE </label>
                     </div>
                     <br>
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_details_working_hours" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_details_working_hours" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="shift_details_working_hours" class="formlabel form-label"><i class="fas fa-address-card"></i> WORKING HOURS </label>
                     </div>
                     <br>
                     <div class="f-outline">
-                        <input class="forminput form-control required_field text-uppercase" type="search" id="shift_details_break_time" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control required_field text-uppercase shift_field" type="search" id="shift_details_break_time" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="shift_details_break_time" class="formlabel form-label"><i class="fas fa-address-card"></i> BREAK TIME </label>
                     </div>
                 </div>
-                <div class="modal-footer">
+                {{-- <div class="modal-footer">
                     <button type="button" class="btn btn-success grow btnDisabled" id="shiftUpdate"><i class="fas fa-edit"></i> <b>UPDATE</b></button>
                     <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
-                </div>
+                </div> --}}
             </div>
         </div>
     </div>

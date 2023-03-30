@@ -6,7 +6,7 @@
                     <th><i class="fas fa-id-card"></i> COMPANY NAME</th>
                 </tr>
         </thead>
-            <tbody>
+            <tbody title="CLICK TO EDIT">
             </tbody>
     </table>
 

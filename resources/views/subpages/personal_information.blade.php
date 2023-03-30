@@ -23,23 +23,32 @@
             </div>
 
             <div>
-                <img src="" id="image_preview" alt="">
+                <center>
+                    <img src="" id="image_preview" alt="">
+                </center>
             </div>
 
             <div class="top-container center_div" style="display:none; margin-top:1px !important;">
+                <button type="button" class="btn btn-danger" id="image_close_trash" title="REMOVE IMAGE"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
+                <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><i class="fas fa-search-minus"></i></button>
+                <button type="button" class="btn btn-success" id="image_crop" title="CROP IMAGE"><i class="fas fa-crop"></i></button>
+            </div>
+            {{-- <div class="top-container center_div" style="margin-top:1px !important;">
                 <button type="button" class="btn btn-success" id="image_download" title="DOWNLOAD" style="visibility:hidden;"><i class="fas fa-download"></i></button>
                 <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
                 <button type="button" class="btn btn-secondary" id="image_up" title="MOVE UP"><i class="fas fa-arrow-up"></i></button>
                 <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><i class="fas fa-search-minus"></i></button>
                 <button type="button" class="btn btn-success" id="image_crop" title="CROP IMAGE"><i class="fas fa-crop"></i></button>
               </div>
-              <div class="bottom-container center_div" style="display:none;">
+              <div class="bottom-container center_div">
                 <button type="button" class="btn btn-danger" id="image_close_trash" title="REMOVE IMAGE"><i class="fas fa-trash"></i></button>
                 <button type="button" class="btn btn-secondary" id="image_left" title="MOVE LEFT"><i class="fas fa-arrow-left"></i></button>
                 <button type="button" class="btn btn-secondary" id="image_down" title="MOVE DOWN"><i class="fas fa-arrow-down"></i></button>
                 <button type="button" class="btn btn-secondary" id="image_right" title="MOVE RIGHT"><i class="fas fa-arrow-right"></i></button>
                 <button type="button" class="btn btn-danger" id="image_crop_reset" title="RESET IMAGE"><i class="fas fa-sync-alt"></i></button>
-            </div>
+            </div> --}}
         </div>
 
         <div class="column2">
@@ -184,10 +193,16 @@
                     </div>
                 </div>
 
-                <div class="col-6">
+                <div class="col-3">
                     <div class="f-outline">
                         <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" disabled>
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
+                    </div>
+                </div>
+                <div class="col-3">
+                    <div class="f-outline">
+                        <input type="text" class="forminput form-control" name="blood_type" id="blood_type" placeholder=" " style="background-color: white !important;">
+                        <label for="blood_type" class="formlabel form-label"><i class="fa-solid fa-droplet"></i> BLOOD TYPE
                     </div>
                 </div>
             </div>
@@ -195,13 +210,13 @@
             <div class="row mb-3 mt-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT (in cm.) <span class="span_height span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                        <input class="forminput form-control" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
                         <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT (in kg.)<span class="span_weight span_all"></span></label>
                     </div>
                 </div>
@@ -288,7 +303,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. <span class="span_father_contact_number span_all"></span> </label>
                     </div>
@@ -311,7 +326,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. <span class="span_mother_contact_number span_all"></span></label>
                     </div>

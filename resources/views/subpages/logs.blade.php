@@ -27,7 +27,7 @@
                 <th style="width:50%">ACTIVITY</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody title="CLICK TO VIEW">
         </tbody>
     </table>
 </div>

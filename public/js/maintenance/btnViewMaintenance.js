@@ -44,20 +44,21 @@ $('#supervisorTable').on('click','tbody tr',function(){
     $('#updateSupervisorModal').modal('show');
 });
 
-$('#shiftTable').on('click','tbody tr',function(){
-    var data = shiftTable.row(this).data();
+// $('#shiftTable').on('click','tbody tr',function(){
+//     var data = shiftTable.row(this).data();
 
-    $('#shift_id').val(data.id);
-    $('#shift_code').val(data.shift_code);
-    $('#shift_working_hours').val(data.shift_working_hours);
-    $('#shift_break_time').val(data.shift_break_time);
-    $('#shift_details_code').val(data.shift_code);
-    $('#shift_details_working_hours').val(data.shift_working_hours);
-    $('#shift_details_break_time').val(data.shift_break_time);
-    $('.validation').hide();
+//     $('#shift_id').val(data.id);
+//     $('#shift_code').val(data.shift_code);
+//     $('#shift_working_hours').val(data.shift_working_hours);
+//     $('#shift_break_time').val(data.shift_break_time);
+//     $('#shift_details_code').val(data.shift_code);
+//     $('#shift_details_working_hours').val(data.shift_working_hours);
+//     $('#shift_details_break_time').val(data.shift_break_time);
+//     $('.validation').hide();
+//     $('.shift_field').attr('readonly', true);
 
-    $('#updateShiftModal').modal('show');
-});
+//     $('#updateShiftModal').modal('show');
+// });
 
 $('#jobPositionAndDescriptionTable').on('click','tbody tr',function(){
     var data = jobPositionAndDescriptionTable.row(this).data();

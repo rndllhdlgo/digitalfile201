@@ -8,17 +8,28 @@
                 <div class="col">
                     <h4 style="color: #0d1a80;" class="my-header">EMPLOYEE MASTER FILE <span id="head_title"></span></h4>
                 </div>
-                <div class="col">
-                    @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER') {{--To hide the section based on user level --}}
-                        {{-- <button type="button" class="btn btn-success float-end" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button> --}}
+                {{-- <div class="col">
+                    @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER')
+                        <button type="button" class="btn btn-success float-end" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
                         <div class="btn-group float-end" role="group">
                             <button type="button" id="addEmployeeBtn" class="btn btn-success" title="ADD EMPLOYEE"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
                         </div>
                     @endif
+                </div> --}}
+            </div>
+
+            <div class="row">
+                <div class="col ml-2">
+                    <a href="#" id="filter" class="text-default" title="Toggle Visible Columns" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content='@include('inc.columnEmployee')'>
+                        <b class="mr-1">TOGGLE COLUMNS</b>
+                        <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </a>
                 </div>
             </div>
 
             <hr class="hr-design">
+            <div class="table-responsive container-fluid pt-2">
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
                     <thead class="text-white" style="background-color:#0d1a80;">
                         <tr style="background-color: #0d1a80;">
@@ -37,9 +48,51 @@
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
                             </td>
-                            {{-- <td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
                                 <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
-                            </td> --}}
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="7" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="8" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="9" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="10" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="11" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="12" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="13" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="14" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="15" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="16" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="17" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="18" style="border:1px solid #683817"/>
+                            </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="19" style="border:1px solid #683817"/>
+                            </td>
                         </tr>
                         <tr>
                             <th> EMPLOYEE NO.</th>
@@ -47,11 +100,26 @@
                             <th> POSITION</th>
                             <th> BRANCH</th>
                             <th> EMP. STATUS</th>
+                            <th> COMPANY</th>
+                            <th> DEPARTMENT</th>
+                            <th> DATE HIRED</th>
+                            <th> EMAIL ADDRESS</th>
+                            <th> CELLPHONE NUMBER</th>
+                            <th> TELEPHONE NUMBER</th>
+                            <th> GENDER</th>
+                            <th> CIVIL STATUS</th>
+                            <th> BIRTHDAY</th>
+                            <th> PROVINCE</th>
+                            <th> CITY</th>
+                            <th> REGION</th>
+                            <th> RELIGION</th>
+                            <th> STATUS</th>
                         </tr>
                     </thead>
-                        <tbody>
+                        <tbody title="CLICK TO EDIT">
                         </tbody>
                 </table>
+            </div>
             <hr class="hr-design">
         </div>
 

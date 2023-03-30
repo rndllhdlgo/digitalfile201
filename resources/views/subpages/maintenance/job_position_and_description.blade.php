@@ -19,7 +19,7 @@
                     <th><i class="fas fa-id-card"></i> JOB REQUIREMENTS/SKILLS</th>
                 </tr>
         </thead>
-            <tbody>
+            <tbody title="CLICK TO EDIT">
             </tbody>
     </table>
 
