@@ -199,10 +199,26 @@
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
-                <div class="col-3">
+                {{-- <div class="col-3">
                     <div class="f-outline">
                         <input type="text" class="forminput form-control" name="blood_type" id="blood_type" placeholder=" " style="background-color: white !important;">
                         <label for="blood_type" class="formlabel form-label"><i class="fa-solid fa-droplet"></i> BLOOD TYPE
+                    </div>
+                </div> --}}
+                <div class="col-3">
+                    <div class="f-outline">
+                        <select class="form-select forminput form-control"  id="blood_type" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <option value="" disabled selected>SELECT BLOOD TYPE </option>
+                            <option value="A">A</option>
+                            <option value="A-">A-</option>
+                            <option value="B">B</option>
+                            <option value="B-">B-</option>
+                            <option value="AB">AB</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O">O</option>
+                            <option value="O-">O-</option>
+                        </select>
+                        <label for="blood_type" class="formlabel form-label"><i class="fa-solid fa-droplet"></i> BLOOD TYPE </label>
                     </div>
                 </div>
             </div>

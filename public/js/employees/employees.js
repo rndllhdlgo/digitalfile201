@@ -526,46 +526,49 @@ $(document).on('click','#image_close, #image_close_trash',function(){
 // });
 
 $(document).on('change', '#province', function(){
-    var citiesOption = " ";
-    // $('#region').attr('placeholder','AUTOFILL');
-    $.ajax({
-        url:"/getCities",
-        type:"get",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{
-            provCode:$(this).val(),
-        },
-        success:function(data){
-            var cities = $.map(data, function(value, index) {
-                return [value];
-            });
-            citiesOption+='<option selected disabled>SELECT CITY/MUNICIPALITY</option>';
-            cities.forEach(value => {
-                citiesOption+='<option class="city" value="'+value.citymunCode+'">'+value.citymunDesc+'</option>';
-            });
-            $("#city").find('option').remove().end().append(citiesOption);
-        }
-    });
-    $("#city").prop('disabled', false);
+    if($(this).val()){
+        var citiesOption = " ";
+        $.ajax({
+            url:"/getCities",
+            type:"get",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{
+                provCode:$(this).val(),
+            },
+            success:function(data){
+                var cities = $.map(data, function(value, index) {
+                    return [value];
+                });
+                citiesOption+='<option selected disabled>SELECT CITY/MUNICIPALITY</option>';
+                cities.forEach(value => {
+                    citiesOption+='<option class="city" value="'+value.citymunCode+'">'+value.citymunDesc+'</option>';
+                });
+                $("#city").find('option').remove().end().append(citiesOption);
+            }
+        });
+        $("#city").prop('disabled', false);
+    }
 });
 
 $(document).on('change', '#city', function(){
-    var RegionOption = " ";
-    $.ajax({
-        url:"/getRegion",
-        type:"get",
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        data:{
-            citymunCode:$(this).val(),
-        },
-        success:function(data){
-            $('#region').val(data[0].regDesc);
-        }
-    });
+    if($(this).val()){
+        var RegionOption = " ";
+        $.ajax({
+            url:"/getRegion",
+            type:"get",
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            data:{
+                citymunCode:$(this).val(),
+            },
+            success:function(data){
+                $('#region').val(data[0].regDesc);
+            }
+        });
+    }
 });
 
 $('#viewJobDescriptionBtn').on('click',function(){

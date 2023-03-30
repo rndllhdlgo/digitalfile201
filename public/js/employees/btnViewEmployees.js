@@ -200,25 +200,33 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 });
 
                 $('#employment_status').val(value.employment_status);
-                $('#employment_status').chosen();
-                $('#employment_status_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
+                // $('#employment_status').chosen();
+                // $('#employment_status_chosen').css({
+                //     'width':'100%',
+                //     'font-weight':'500',
+                //     'font-size':'13px',
+                //     'font-family':'Arial, Helvetica, sans-serif'
+                // });
+
+                var rank = $('#employment_status option[value='+value.employment_status+"]").attr('rank');
+                if(rank != 5){
+                    $("#employment_status option").filter(function(){
+                        return $(this).attr("rank") < rank;
+                    }).remove();
+                }
+
                 setTimeout(() => {
                     $('#employment_status').change();
                 }, app_timeout);
 
                 $('#employment_origin').val(value.employment_origin);
-                $('#employment_origin').chosen();
-                $('#employment_origin_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
+                // $('#employment_origin').chosen();
+                // $('#employment_origin_chosen').css({
+                //     'width':'100%',
+                //     'font-weight':'500',
+                //     'font-size':'13px',
+                //     'font-family':'Arial, Helvetica, sans-serif'
+                // });
 
                 $('#company_email_address').val(value.company_email_address);
                 $('#company_contact_number').val(value.company_contact_number);
