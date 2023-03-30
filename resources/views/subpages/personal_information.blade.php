@@ -305,13 +305,13 @@
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_father_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>
-                        <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. <span class="span_father_contact_number span_all"></span> </label>
+                        <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL) <span class="span_father_contact_number span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase optional_field" type="search" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_father_profession span_all"></span> </label>
+                        <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL) <span class="span_father_profession span_all"></span> </label>
                     </div>
                 </div>
             </div>
@@ -328,13 +328,13 @@
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" ondrop="return false;" onpaste="return false;" onkeyup="contactNumberOnly(this)">
                         <p id="duplicate_mother_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
-                        <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. <span class="span_mother_contact_number span_all"></span></label>
+                        <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL) <span class="span_mother_contact_number span_all"></span></label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase optional_field" type="search" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
-                        <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_mother_profession span_all"></span></label>
+                        <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL) <span class="span_mother_profession span_all"></span></label>
                     </div>
                 </div>
             </div>
@@ -400,8 +400,8 @@
                                             <div class="f-outline">
                                                 <select class="form-select forminput form-control optional_field child_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
                                                     <option value="" disabled selected>SELECT GENDER </option>
-                                                    <option value="M">Male</option>
-                                                    <option value="F">Female</option>
+                                                    <option value="MALE">MALE</option>
+                                                    <option value="FEMALE">FEMALE</option>
                                                 </select>
                                                 <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all span_child">(Optional)</span></label>
                                             </div>

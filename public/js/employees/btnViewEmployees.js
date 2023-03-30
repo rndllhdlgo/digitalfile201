@@ -599,7 +599,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'memo_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.memo_file}" target="_blank">${row.memo_file}</a>`;
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '22.5%'
                                 }
@@ -655,7 +655,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'evaluation_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.evaluation_file}" target="_blank">${row.evaluation_file}</a>`;
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.evaluation_file}" target="_blank">${row.evaluation_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '22.5%'
                                 }
@@ -710,7 +710,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'contracts_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.contracts_file}" target="_blank">${row.contracts_file}</a>`;
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.contracts_file}" target="_blank">${row.contracts_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
@@ -760,7 +760,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'resignation_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.resignation_file}" target="_blank">${row.resignation_file}</a>`;
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.resignation_file}" target="_blank">${row.resignation_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
@@ -810,7 +810,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'termination_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.termination_file}" target="_blank">${row.termination_file}</a>`;
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.termination_file}" target="_blank">${row.termination_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
