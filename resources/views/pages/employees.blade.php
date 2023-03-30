@@ -112,6 +112,7 @@
                             <th> PROVINCE</th>
                             <th> CITY</th>
                             <th> REGION</th>
+                            <th> BLOOD TYPE</th>
                             <th> RELIGION</th>
                             <th> STATUS</th>
                         </tr>

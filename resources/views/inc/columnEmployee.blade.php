@@ -66,7 +66,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-7" data-column="7" /> EMAIL ADDRESS
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-7" data-column="7" /> DATE HIRED
                 </label>
             </div>
         </div>
@@ -75,7 +75,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-8" data-column="8" /> DATE HIRED
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-8" data-column="8" /> EMAIL ADDRESS
                 </label>
             </div>
         </div>
@@ -129,7 +129,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-14" data-column="14" /> RELIGION
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-14" data-column="14" /> PROVINCE
                 </label>
             </div>
         </div>
@@ -138,7 +138,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-15" data-column="15" /> PROVINCE
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-15" data-column="15" /> CITY
                 </label>
             </div>
         </div>
@@ -147,7 +147,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-16" data-column="16" /> CITY
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-16" data-column="16" /> REGION
                 </label>
             </div>
         </div>
@@ -156,7 +156,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-17" data-column="17" /> REGION
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-17" data-column="17" /> BLOOD TYPE
                 </label>
             </div>
         </div>
@@ -165,7 +165,16 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-18" data-column="18" /> STATUS
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-18" data-column="18" /> RELIGION
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="checkbox">
+                <label>
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-19" data-column="19" disabled/> STATUS
                 </label>
             </div>
         </div>

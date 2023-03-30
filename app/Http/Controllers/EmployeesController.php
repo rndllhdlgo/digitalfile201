@@ -1150,8 +1150,8 @@ class EmployeesController extends Controller
                 'mother_profession' => strtoupper($request->mother_profession),
                 'emergency_contact_name' => strtoupper($request->emergency_contact_name),
                 'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
-                'emergency_contact_number' => $request->emergency_contact_number
-                // 'stat' => ''
+                'emergency_contact_number' => $request->emergency_contact_number,
+                'stat' => ''
             ]);
 
             if($sql){

@@ -22,16 +22,16 @@ $(document).ready(function(){
     }
     else if(current_location == '/employees?employment_status=male'){
         $('#head_title').html('- MALE');
-        var targets = [5,6,7,8,9,10,12,13,14,15,16,17];
+        var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18];
         var filter = 'male';
     }
     else if(current_location == '/employees?employment_status=female'){
         $('#head_title').html('- FEMALE');
-        var targets = [5,6,7,8,9,10,12,13,14,15,16,17];
+        var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18];
         var filter = 'female';
     }
     else{
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17];
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18];
     }
 
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
@@ -89,10 +89,11 @@ $(document).ready(function(){
             {data: 'gender'},
             {data: 'civil_status'},
             {data: 'birthday'},
-            {data: 'religion'},
             {data: 'province'},
             {data: 'city'},
             {data: 'region'},
+            {data: 'blood_type'},
+            {data: 'religion'},
             {
                 data: 'stat',
                 "render": function(data, type, row){
@@ -152,7 +153,7 @@ $(document).ready(function(){
 
     setInterval(() => {
         if($('.popover-header').is(':visible')){
-            for(var i=0; i<=17; i++){
+            for(var i=0; i<=18; i++){
                 if(employeesTable.column(i).visible()){
                     $('#filter-'+i).prop('checked', true);
                 }
