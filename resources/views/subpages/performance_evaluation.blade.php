@@ -80,7 +80,7 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field evaluation_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field evaluation_field text-uppercase" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all span_evaluation">(Optional)</span></label>
                         </div>
                     </td>
@@ -135,7 +135,7 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field contracts_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field contracts_field text-uppercase" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
                             <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all span_contracts">(Optional)</span></label>
                         </div>
                     </td>

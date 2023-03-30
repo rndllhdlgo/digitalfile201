@@ -861,7 +861,7 @@ class EmployeesController extends Controller
             }
         }
         $employee = PersonalInformationTable::find($request->id);
-        $employee->employee_image = $request->employee_image == 'N\A' ? '' : $request->employee_image;
+        $employee->employee_image = $request->employee_image == '' ? '' : $request->employee_image;
         $first_name_orig = PersonalInformationTable::where('id', $request->id)->first()->first_name;
         $middle_name_orig = PersonalInformationTable::where('id', $request->id)->first()->middle_name;
         $last_name_orig = PersonalInformationTable::where('id', $request->id)->first()->last_name;
@@ -1151,7 +1151,7 @@ class EmployeesController extends Controller
                 'emergency_contact_name' => strtoupper($request->emergency_contact_name),
                 'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
                 'emergency_contact_number' => $request->emergency_contact_number,
-                'stat' => ''
+                'stat' => $request->completed
             ]);
 
             if($sql){
@@ -1958,12 +1958,12 @@ class EmployeesController extends Controller
 
                     $sql = EducationalAttainment::where('employee_id',$request->employee_id)
                     ->update([
-                        'secondary_school_name' => $request->secondary_school_name,
-                        'secondary_school_address' => $request->secondary_school_address,
+                        'secondary_school_name' => strtoupper($request->secondary_school_name),
+                        'secondary_school_address' => strtoupper($request->secondary_school_address),
                         'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
                         'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                        'primary_school_name' => $request->primary_school_name,
-                        'primary_school_address' => $request->primary_school_address,
+                        'primary_school_name' => strtoupper($request->primary_school_name),
+                        'primary_school_address' => strtoupper($request->primary_school_address),
                         'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
                         'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
                     ]);

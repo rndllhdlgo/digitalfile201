@@ -1,5 +1,5 @@
 $('#companyTable').on('click','tbody tr',function(){
-    
+
     var data = companyTable.row(this).data();
 
     $('#company_id').val(data.id);
@@ -8,7 +8,7 @@ $('#companyTable').on('click','tbody tr',function(){
     $('.validation').hide();
 
     $('#updateCompanyModal').modal('show');
-    
+
 });
 
 $('#departmentTable').on('click','tbody tr',function(){

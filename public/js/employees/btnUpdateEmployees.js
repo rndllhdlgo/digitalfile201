@@ -1,4 +1,11 @@
 $('#btnUpdate').on('click',function(){
+    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
+        var completed = '1';
+    }
+    else{
+        var completed = '';
+    }
+
     var id = $('#hidden_id').val();
     var first_name = $('#first_name').val();
     var middle_name = $('#middle_name').val();
@@ -52,7 +59,7 @@ $('#btnUpdate').on('click',function(){
                 employee_image_save();
             }
             else if(!$('#filename').val() && !$('#employee_image').val()){
-                employee_image = 'N/A';
+                employee_image = '';
             }
             else{
                 employee_image = $('#filename').val();
@@ -66,6 +73,7 @@ $('#btnUpdate').on('click',function(){
                 },
                 data:{
                     id:id,
+                    completed:completed,
                     employee_image:employee_image,
                     filename_delete:$('#filename_delete').val(),
                     employee_image_change:employee_image_change,
