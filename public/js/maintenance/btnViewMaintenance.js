@@ -1,48 +1,48 @@
-$('#companyTable').on('click','tbody tr',function(){
+// $('#companyTable').on('click','tbody tr',function(){
 
-    var data = companyTable.row(this).data();
+//     var data = companyTable.row(this).data();
 
-    $('#company_id').val(data.id);
-    $('#company_name').val(data.company_name);
-    $('#company_name_new').val(data.company_name);
-    $('.validation').hide();
+//     $('#company_id').val(data.id);
+//     $('#company_name').val(data.company_name);
+//     $('#company_name_new').val(data.company_name);
+//     $('.validation').hide();
 
-    $('#updateCompanyModal').modal('show');
+//     $('#updateCompanyModal').modal('show');
 
-});
+// });
 
-$('#departmentTable').on('click','tbody tr',function(){
-    var data = departmentTable.row(this).data();
+// $('#departmentTable').on('click','tbody tr',function(){
+//     var data = departmentTable.row(this).data();
 
-    $('#department_id').val(data.id);
-    $('#department').val(data.department);
-    $('#department_new').val(data.department);
-    $('.validation').hide();
+//     $('#department_id').val(data.id);
+//     $('#department').val(data.department);
+//     $('#department_new').val(data.department);
+//     $('.validation').hide();
 
-    $('#updateDepartmentModal').modal('show');
-});
+//     $('#updateDepartmentModal').modal('show');
+// });
 
-$('#branchTable').on('click','tbody tr',function(){
-    var data = branchTable.row(this).data();
+// $('#branchTable').on('click','tbody tr',function(){
+//     var data = branchTable.row(this).data();
 
-    $('#branch_id').val(data.id);
-    $('#branch_name').val(data.branch_name);
-    $('#branch_name_new').val(data.branch_name);
-    $('.validation').hide();
+//     $('#branch_id').val(data.id);
+//     $('#branch_name').val(data.branch_name);
+//     $('#branch_name_new').val(data.branch_name);
+//     $('.validation').hide();
 
-    $('#updateBranchModal').modal('show');
-});
+//     $('#updateBranchModal').modal('show');
+// });
 
-$('#supervisorTable').on('click','tbody tr',function(){
-    var data = supervisorTable.row(this).data();
+// $('#supervisorTable').on('click','tbody tr',function(){
+//     var data = supervisorTable.row(this).data();
 
-    $('#supervisor_id').val(data.id);
-    $('#supervisor_name').val(data.supervisor_name);
-    $('#supervisor_name_new').val(data.supervisor_name);
-    $('.validation').hide();
+//     $('#supervisor_id').val(data.id);
+//     $('#supervisor_name').val(data.supervisor_name);
+//     $('#supervisor_name_new').val(data.supervisor_name);
+//     $('.validation').hide();
 
-    $('#updateSupervisorModal').modal('show');
-});
+//     $('#updateSupervisorModal').modal('show');
+// });
 
 // $('#shiftTable').on('click','tbody tr',function(){
 //     var data = shiftTable.row(this).data();

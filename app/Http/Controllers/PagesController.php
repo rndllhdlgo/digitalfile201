@@ -32,13 +32,13 @@ class PagesController extends Controller
         // }
 
         $companies = Company::select('entity','company_name')->get();
-        $branches = Branch::select('id','branch_name')->get();
+        $branches = Branch::select('entity03','entity03_desc')->get();
         $supervisors = Supervisor::select('id','supervisor_name')->get();
         // $shifts = Shift::select('id','shift_code','shift_working_hours','shift_break_time')->get();
         $jobPositions = Position::select('id','job_position_name')->get();
         $jobDescriptions = Position::select('id','job_description')->get();
         $jobRequirements = Position::select('id','job_requirements')->get();
-        $departments = Department::select('id','department')->get();
+        $departments = Department::select('deptcode','deptdesc')->get();
 
         $provinces = Province::orderBy('provDesc', 'asc')->get();
         return view('pages.employees', compact('provinces','companies','branches','supervisors','jobPositions','jobDescriptions','jobRequirements','departments'));

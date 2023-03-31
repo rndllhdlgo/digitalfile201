@@ -39,7 +39,7 @@
         },
         order: [],
         columns: [
-            {data: 'department'}
+            {data: 'deptdesc'}
         ],
         initComplete: function(){
             $('#loading').hide();
@@ -63,7 +63,7 @@
         },
         order: [],
         columns: [
-            {data: 'branch_name'}
+            {data: 'entity03_desc'}
         ],
         initComplete: function(){
             $('#loading').hide();

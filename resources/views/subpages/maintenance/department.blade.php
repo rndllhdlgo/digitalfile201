@@ -6,7 +6,7 @@
                 <th><i class="fas fa-id-card"></i> DEPARTMENT</th>
             </tr>
         </thead>
-            <tbody title="CLICK TO EDIT">
+            <tbody>
             </tbody>
     </table>
 

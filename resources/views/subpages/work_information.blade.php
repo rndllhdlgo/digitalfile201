@@ -54,7 +54,7 @@
                 <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT BRANCH</option>
                         @foreach($branches as $branch)
-                            <option value="{{$branch->id}}">{{$branch->branch_name}}</option>
+                            <option value="{{$branch->entity03}}">{{$branch->entity03_desc}}</option>
                         @endforeach
                 </select>
                 <label for="employee_branch" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH <span class="span_employee_branch span_all"></span></label>
@@ -66,7 +66,7 @@
                 <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off">
                     <option value="" disabled selected>SELECT DEPARTMENT</option>
                     @foreach($departments as $department)
-                            <option value="{{$department->id}}">{{$department->department}}</option>
+                            <option value="{{$department->deptcode}}">{{$department->deptdesc}}</option>
                         @endforeach
                 </select>
                 <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT <span class="span_employee_department span_all"></span></label>
