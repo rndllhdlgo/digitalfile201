@@ -287,7 +287,7 @@ input[type=search]:focus{
 }
 
 .summary_container{
-    width: 816px;
+    width: 900px !important;
     margin: auto;
 }
 
@@ -642,4 +642,14 @@ th{
 
 label{
     text-transform: uppercase !important;
+}
+
+.textarea-container{
+    background-color:transparent !important;
+    resize:none !important;
+    border:none !important;
+    overflow:hidden !important;
+    outline:none !important;
+    pointer-events:none !important;
+    height:auto !important;
 }

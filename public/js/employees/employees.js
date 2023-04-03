@@ -838,8 +838,8 @@ $(document).ready(function() {
 $(document).ready(function(){
     $('#btnPdf').click(function(){
         $('#print_file').printThis({
-            importCSS: true,
-            header: '<img src="/images/ideaserv_systems_logo.png" style="width:150px; height:100px;"/>',
+            importCSS: true
+            // header: '<img src="/images/ideaserv_systems_logo.png" style="width:150px; height:100px;"/>',
         });
     });
 });

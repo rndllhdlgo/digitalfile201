@@ -1,11 +1,11 @@
 <div id="htmlHeader" class="d-flex" style="height: 90px;">
     <div class="row w-100">
         <div class="col-6">
-            <a href="/">
+            {{-- <a href="/">
                 <img src="/images/ideaserv_systems_logo.png" style="width: auto; height: 90px; line-height: 90px; margin-top: -5px;">
-            </a>
-            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 25px; line-height: 90px; margin-left: 10px; text-decoration: none;">
-                DIGITAL 201 FILE
+            </a> --}}
+            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 30px; line-height: 90px; margin-left: 10px; text-decoration: none;">
+                {{env('APP_NAME')}}
             </a>
         </div>
         <div class="col-6">

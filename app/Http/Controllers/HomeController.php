@@ -17,6 +17,7 @@ use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
 use Auth;
+use Mail;
 use DataTables;
 
 class HomeController extends Controller

@@ -2,7 +2,8 @@ $('#btnSummary').on('click',function(){
     $('ul.job_desc_div').empty();
     $('ul.job_req_div').empty();
     $('.job_desc_div').empty();
-    
+    $('.job_req_div').empty();
+
     $.ajax({
         type: 'GET',
         url: '/setJobDescription',
@@ -54,12 +55,12 @@ $('#btnSummary').on('click',function(){
         $('.suffix').html($('#suffix').val());
     }
     else{
-        $('#suffix_div').hide();
+        $('#suffix_div').css('visibility','hidden');
         $('.suffix').hide();
     }
     $('.nickname').html($('#nickname').val());
     $('.birthday').val($('#birthday').val());
-    $('#birthday_summary').html(moment($('#birthday').val()).format('MMM. DD, YYYY'));
+    $('#birthday_summary').html($('#birthday').val());
     setTimeout(() => {
         $('.birthday').change();
     }, app_timeout);
@@ -77,7 +78,7 @@ $('#btnSummary').on('click',function(){
         $('#telephone_number_div').css("visibility", "hidden");
         $('.telephone_number').hide();
     }
-      
+
     $('.cellphone_number').html($('#cellphone_number').val());
     $('.spouse_name').html($('#spouse_name').val());
     $('.spouse_contact_number').html($('#spouse_contact_number').val());
@@ -116,7 +117,6 @@ $('#btnSummary').on('click',function(){
     $('.employment_status').html($('#employment_status').val());
     $('.employment_origin').html($('#employment_origin').val());
     $('#date_hired_summary').html(moment($('#date_hired').val()).format('MMM. DD, YYYY'));
-    // $('.company_email_address').html($('#company_email_address').val() ? $('#company_email_address').val() : 'N/A');
     if ($('#company_email_address').val()){
         $('.company_email_address').html($('#company_email_address').val());
     }
@@ -124,7 +124,6 @@ $('#btnSummary').on('click',function(){
         $('#company_email_address_div').css("visibility", "hidden");;
         $('.company_email_address').hide();
     }
-    // $('.company_contact_number').html($('#company_contact_number').val() ? $('#company_contact_number').val() : 'N/A');
     if ($('#company_contact_number').val()){
         $('.company_contact_number').html($('#company_contact_number').val());
     }
@@ -140,9 +139,83 @@ $('#btnSummary').on('click',function(){
     $('.tin_number').html($('#tin_number').val());
     $('.account_number').html($('#account_number').val());
 
+    $('.past_medical_condition').attr('rows', $('.past_medical_condition').val().split('\n').length);
+    $('.allergies').attr('rows', $('.allergies').val().split('\n').length);
+    $('.medication').attr('rows', $('.medication').val().split('\n').length);
+    $('.psychological_history').attr('rows', $('.psychological_history').val().split('\n').length);
+
     $('#summaryModal').modal('show');
 });
 
+// $('#btnSummary').on('click',function(){
+//     $('#summaryModalForm').modal('show');
+// });
+
+$('#viewSummary').on('click', function(){
+
+    $('.first_name').html($('#first_name').val());
+    $('.middle_name').html($('#middle_name').val());
+    $('.last_name').html($('#last_name').val());
+    if ($('#suffix').val()){
+        $('.suffix').html($('#suffix').val());
+    }
+    else{
+        $('#suffix_div').css('visibility','hidden');
+        $('.suffix').hide();
+    }
+    $('.nickname').html($('#nickname').val());
+    $('.birthday').val($('#birthday').val());
+    $('#birthday_summary').html(moment($('#birthday').val()).format('MMM. DD, YYYY'));
+    setTimeout(() => {
+        $('.birthday').change();
+    }, app_timeout);
+    $('.gender').html($('#gender').val());
+    $('.address').html($('#address').val());
+    $('.height').html($('#height').val());
+    $('.weight').html($('#weight').val());
+    $('.religion').html($('#religion').val());
+    $('#civil_status_content').html($('#civil_status').val());
+    $('.email_address').html($('#email_address').val());
+    $('.cellphone_number').html($('#cellphone_number').val());
+    if ($('#telephone_number').val()){
+        $('.telephone_number').html($('#telephone_number').val());
+    }
+    else{
+        $('#telephone_number_div').css("visibility", "hidden");
+        $('.telephone_number').hide();
+    }
+
+
+    $('#summaryModal').modal('show');
+    $('#summaryModalForm').modal('hide');
+});
+
+$(document).ready(function(){
+    $("#checkbox4").change(function(){
+        if($("#checkbox6").is(":checked")){
+            $(".column_eight").show();
+        }
+        else{
+            $(".column_eight").hide();
+        }
+    });
+    $("#checkbox5").change(function(){
+        if($("#checkbox5").is(":checked")){
+            $(".column_eight").show();
+        }
+        else{
+            $(".column_eight").hide();
+        }
+    });
+    $("#checkbox6").change(function(){
+        if($("#checkbox6").is(":checked")){
+            $(".column_eight").show();
+        }
+        else{
+            $(".column_eight").hide();
+        }
+    });
+});
 // $(document).on('click','#close_summary',function(){
 //     window.location.href = "/employees?employee_number="+$('#current_employee').val();
 // });

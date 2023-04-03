@@ -465,56 +465,74 @@ $('#btnUpdate').on('click',function(){
                         }
 
                         $('#loading').hide();
-                        if(current_user_level == 'EMPLOYEE'){
-                            // Swal.fire({
-                            //     icon: 'success',
-                            //     title: 'REQUEST SUCCESS',
-                            //     text: 'You have requested that your information be updated, Please wait for HR to approve it.'
-                            // });
+                        // if(current_user_level == 'EMPLOYEE'){
+                        //     // Swal.fire({
+                        //     //     icon: 'success',
+                        //     //     title: 'REQUEST SUCCESS',
+                        //     //     text: 'You have requested that your information be updated, Please wait for HR to approve it.'
+                        //     // });
 
-                            // Swal.fire({
-                            //     title: 'REQUEST SUCCESS',
-                            //     text: 'You have requested that your information be updated, Please wait for HR to approve it.',
-                            //     icon: 'success',
-                            //     timer: 5000,
-                            //     timerProgressBar: true,
-                            //     showConfirmButton: false,
-                            //     allowOutsideClick: false
-                            // }).then((result) => {
-                            //     if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
-                            //         window.location.href = '/logout';
-                            //     }
-                            // });
-                            $('#employee_information').hide();
-                            Swal.fire({
-                                title: 'REQUEST SUCCESS',
-                                html: '<div style="font-family: Century Gothic, cursive;">You have requested to update your information. Please wait for HR to approve it.<br><br>For the meantime, you will not be able to request another update if you have pending updates.</div>',
-                                icon: 'success',
-                                showCancelButton: false,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'LOGOUT'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = '/logout';
-                                }
-                            });
-                        }
-                        else{
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'UPDATE SUCCESS'
-                            });
-                        }
-
-                        // Swal.fire('UPDATE SUCCESS','','success');
+                        //     // Swal.fire({
+                        //     //     title: 'REQUEST SUCCESS',
+                        //     //     text: 'You have requested that your information be updated, Please wait for HR to approve it.',
+                        //     //     icon: 'success',
+                        //     //     timer: 5000,
+                        //     //     timerProgressBar: true,
+                        //     //     showConfirmButton: false,
+                        //     //     allowOutsideClick: false
+                        //     // }).then((result) => {
+                        //     //     if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
+                        //     //         window.location.href = '/logout';
+                        //     //     }
+                        //     // });
+                        //     $('#employee_information').hide();
+                        //     Swal.fire({
+                        //         title: 'REQUEST SUCCESS',
+                        //         html: '<div style="font-family: Century Gothic, cursive;">You have requested to update your information. Please wait for HR to approve it.<br><br>For the meantime, you will not be able to request another update if you have pending updates.</div>',
+                        //         icon: 'success',
+                        //         showCancelButton: false,
+                        //         allowOutsideClick: false,
+                        //         allowEscapeKey: false,
+                        //         confirmButtonColor: '#3085d6',
+                        //         cancelButtonColor: '#d33',
+                        //         confirmButtonText: 'LOGOUT'
+                        //     }).then((result) => {
+                        //         if (result.isConfirmed) {
+                        //             window.location.href = '/logout';
+                        //         }
+                        //     });
+                        // }
+                        // else{
+                        //     Swal.fire({
+                        //         icon: 'success',
+                        //         title: 'UPDATE SUCCESS'
+                        //     });
+                        // }
+                        Swal.fire('UPDATE SUCCESS','','success');
                         setTimeout(function(){window.location.reload();}, 2000);
+
+                        // Swal.fire({
+                        //     title: 'UPDATE SUCESS',
+                        //     // html:college_warning,
+                        //     allowOutsideClick: false,
+                        //     allowEscapeKey: false,
+                        //     showDenyButton: true,
+                        //     confirmButtonText: 'RELOAD PAGE',
+                        //     denyButtonText: 'CANCEL',
+                        //     customClass: {
+                        //     actions: 'my-actions',
+                        //     confirmButton: 'order-2',
+                        //     denyButton: 'order-3',
+                        //     }
+                        // }).then((update) => {
+                        //     if (update.isConfirmed) {
+                        //         window.location.reload();
+                        //     }
+                        // });
                     }
                     else{
                         $('#loading').hide();
-                        Swal.fire('UPDATE FAILED','','success');
+                        Swal.fire('UPDATE FAILED','','error');
                         setTimeout(function(){window.location.reload();}, 2000);
                     }
                 }

@@ -1,47 +1,47 @@
 <div id="compensation_benefits" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-
-        <h5 class="table-title">COMPENSATION</h5>
-        <table class="table table-striped table-bordered table-hover align-middle">
-            <thead class="thead-educational">
-                <tr>
-                    <th><i class="fa-solid fa-peso-sign"></i> BASIC SALARY</th>
-                    <th><i class="fa-solid fa-peso-sign"></i> INCENTIVE PAY</th>
-                    <th><i class="fa-solid fa-peso-sign"></i> OVERTIME PAY</th>
-                    <th><i class="fa-solid fa-peso-sign"></i> BONUS</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="employee_salary" class="formlabel form-label"></label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="employee_incentives" class="formlabel form-label"></label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="employee_overtime_pay" class="formlabel form-label"></label>
-                        </div>
-                    </td>
-                    <td>
-                        <div class="f-outline">
-                            <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
-                            <label for="employee_bonus" class="formlabel form-label"></label>
-                        </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    <hr class="hr-design">
-    <br>
+        <div class="d-none">
+            <h5 class="table-title">COMPENSATION</h5>
+            <table class="table table-striped table-bordered table-hover align-middle">
+                <thead class="thead-educational">
+                    <tr>
+                        <th><i class="fa-solid fa-peso-sign"></i> BASIC SALARY</th>
+                        <th><i class="fa-solid fa-peso-sign"></i> INCENTIVE PAY</th>
+                        <th><i class="fa-solid fa-peso-sign"></i> OVERTIME PAY</th>
+                        <th><i class="fa-solid fa-peso-sign"></i> BONUS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="f-outline">
+                                <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <label for="employee_salary" class="formlabel form-label"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="f-outline">
+                                <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <label for="employee_incentives" class="formlabel form-label"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="f-outline">
+                                <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <label for="employee_overtime_pay" class="formlabel form-label"></label>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="f-outline">
+                                <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <label for="employee_bonus" class="formlabel form-label"></label>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <hr class="hr-design">
+        </div>
     <h5 class="table-title">HEALTHCARE / BENEFITS</h5>
     <table class="table table-bordered table-striped table-hover align-middle">
         <tbody>

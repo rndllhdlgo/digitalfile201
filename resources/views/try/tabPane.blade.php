@@ -3,7 +3,7 @@
 @section('content')
 <br>
 
-<div class="row">
+{{-- <div class="row">
     <div class="col">
         <input class="forminput form-control" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11">
     </div>
@@ -27,5 +27,79 @@
             }
         });
     });
+</script> --}}
+<button type="button" class="btn btn-primary" id="open">OPEN</button>
+<div class="modal fade" id="summaryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #0d1a80;">
+                <h5 class="modal-title text-white" id="exampleModalLabel">Employee Summary Details</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" id="close_summary"></button>
+            </div>
+
+            <div class="modal-body p-2" style="overflow-x: hidden;">
+                <button type="button" class="btn btn-primary" id="btnPdf">SAVE AS PDF</button>
+
+            <hr class="hr-design">
+                <div class="summary_container">
+                    <div class="clear_float">
+                        <div class="column_one">
+                            <div class="row mb-1">
+                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
+                            </div>
+                        </div>
+
+                        <div class="column_two mt-4">
+                            <img id="image_preview_summary">
+                        </div>
+                    </div>
+
+                    <div class="column_three" style="padding:5px;">
+                        <div class="row">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_four" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_five" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_six" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_seven" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>GOVERNMENT MANDATORY BENEFITS</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_eight" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>MEDICAL HISTORY</u></h5>
+                        </div>
+                    </div>
+                </div>
+            <hr class="hr-design">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#open').on('click',function(){
+        $('#summaryModal').modal('show');
+    });
+    $('#loading').hide();
 </script>
 @endsection

@@ -203,7 +203,7 @@
                             <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">COMPENSATION/BENEFITS</a>
+                            <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">BENEFITS</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
@@ -230,4 +230,5 @@
         </div>
 
     @include('subpages.summary')
+    @include('modals.summaryModal')
 @endsection
