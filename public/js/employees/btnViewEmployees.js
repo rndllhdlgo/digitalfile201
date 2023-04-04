@@ -562,6 +562,66 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     });
 
+                    $.ajax({
+                        method: 'GET',
+                        url: '/college_summary/data',
+                        data: {
+                            id: value.id,
+                        },
+                        success: function (data) {
+                            for(var college_content = 0; college_content < data.length; college_content++){
+                                var college_name = data[college_content].college_name;
+                                var college_degree = data[college_content].college_degree;
+                                var college_from = data[college_content].college_inclusive_years_from;
+                                var college_to = data[college_content].college_inclusive_years_to;
+
+                                var college_school_name = $('.college_school_name').append(college_name + "<br>");
+                                var college_school_degree = $('.college_school_degree').append(college_degree + "<br>");
+                                var college_years = $('.college_years').append(moment(college_from).format('MMM. YYYY') + "<b> -> </b>" + moment(college_to).format('MMM. YYYY') + "<br>");
+                            }
+                        }
+                    });
+
+                    $.ajax({
+                        method: 'GET',
+                        url: '/training_summary/data',
+                        data: {
+                            id: value.id,
+                        },
+                        success: function (data) {
+                            for(var training_content = 0; training_content < data.length; training_content++){
+                                var training_name = data[training_content].training_name;
+                                var training_title = data[training_content].training_title;
+                                var training_from = data[training_content].training_inclusive_years_from;
+                                var training_to = data[training_content].training_inclusive_years_to;
+
+                                var training_school_name = $('.training_school_name').append(training_name + "<br>");
+                                var training_school_title = $('.training_title').append(training_title + "<br>");
+                                var training_years = $('.training_years').append(moment(training_from).format('MMM. YYYY') + "<b> -> </b>" + moment(training_to).format('MMM. YYYY') + "<br>");
+                            }
+                        }
+                    });
+
+                    $.ajax({
+                        method: 'GET',
+                        url: '/vocational_summary/data',
+                        data: {
+                            id: value.id,
+                        },
+                        success: function (data) {
+                            for(var vocational_content = 0; vocational_content < data.length; vocational_content++){
+                                var vocational_name = data[vocational_content].vocational_name;
+                                var vocational_course= data[vocational_content].vocational_course;
+                                var vocational_from = data[vocational_content].vocational_inclusive_years_from;
+                                var vocational_to = data[vocational_content].vocational_inclusive_years_to;
+
+                                var vocational_school_name = $('.vocational_school_name').append(vocational_name + "<br>");
+                                var vocational_school_course = $('.vocational_course').append(vocational_course + "<br>");
+                                var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMM. YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMM. YYYY') + "<br>");
+                            }
+                        }
+                    });
+
                     if(current_user_level != 'EMPLOYEE'){
                         $('.memo_table_data').dataTable().fnDestroy();
                         $('.memo_table_data').DataTable({

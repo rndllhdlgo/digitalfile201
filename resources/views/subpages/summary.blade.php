@@ -9,14 +9,15 @@
 
             <div class="modal-body p-2" style="overflow-x: hidden;">
                 <button type="button" class="btn btn-primary" id="btnPdf">SAVE AS PDF</button>
+                <button type="button" class="btn btn-primary" id="btnSection">SELECT SECTION</button>
 
             <hr class="hr-design">
             <div id="print_file">
                 <div class="summary_container">
                     <div class="clear_float">
                         <div class="column_one">
-                            <div class="row mb-1">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
+                            <div class="row">
+                                <h5 class="summary_title">PERSONAL INFORMATION</h5>
                             </div>
 
                             <div class="row mb-3">
@@ -81,11 +82,12 @@
                         <div class="column_two mt-4">
                             <img id="image_preview_summary">
                         </div>
+                        <hr>
                     </div>
 
                     <div class="column_three" style="padding:5px;">
                         <div class="row">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>HOME ADDRESS</u></h5>
+                            <h5 class="summary_title">HOME ADDRESS</h5>
                         </div>
 
                         <div class="row mb-3">
@@ -104,11 +106,12 @@
                                 <b>REGION:</b> <input type="hidden" id="region_summary" class="font_weight" style="border:none; width:85%;" disabled> <span id="region_content"></span>
                             </div>
                         </div>
+                        <hr>
                     </div>
 
                     <div class="column_four" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>CONTACT DETAILS</u></h5>
+                        <div class="row ">
+                            <h5 class="summary_title">CONTACT DETAILS</h5>
                         </div>
 
                         <div class="row mb-3">
@@ -158,11 +161,12 @@
                                 <b>RELATIONSHIP:</b><br> <span class="emergency_contact_relationship font_weight"></span>
                             </div>
                         </div>
+                        <hr>
                     </div>
 
                     <div class="column_five" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>WORK INFORMATION</u></h5>
+                        <div class="row ">
+                            <h5 class="summary_title">WORK INFORMATION</h5>
                         </div>
 
                         <div class="row mb-3">
@@ -231,19 +235,11 @@
                                 <p class="job_req_div" style="zoom:110%;color:black"></p>
                             </div>
                         </div>
+                        <hr>
                     </div>
-
                     <div class="column_six" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>JOB HISTORY</u></h5>
-                        </div>
-
-                        <div id="job_history_summary_div" class="row"></div>
-                    </div>
-
-                    <div class="column_seven" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>GOVERNMENT MANDATORY BENEFITS</u></h5>
+                        <div class="row ">
+                            <h5 class="summary_title">GOVERNMENT MANDATORY BENEFITS</h5>
                         </div>
 
                         <div class="row mb-3">
@@ -264,11 +260,113 @@
                                 <span class="tin_number"></span>
                             </div>
                         </div>
+                        <hr>
                     </div>
 
-                    <div class="column_eight" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>MEDICAL HISTORY</u></h5>
+                    <div class="column_seven" style="padding:5px;display:none;">
+                        <div class="row ">
+                            <h5 class="summary_title">EDUCATIONAL ATTAINMENT</h5>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>COLLEGE ATTAINMENT</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class="college_school_name"></span>
+                            </div>
+                            <div class="col">
+                                <b>DEGREE:</b><br>
+                                <span class="college_school_degree"></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class="college_years"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>SECONDARY SCHOOL ATTAINMENT</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class="secondary_school_name"></span>
+                            </div>
+                            <div class="col">
+                                <b>SCHOOL ADDRESS:</b><br>
+                                <span class="secondary_school_address"></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class="secondary_from"></span>
+                                <span class="secondary_to"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>PRIMARY SCHOOL ATTAINMENT</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class="primary_school_name"></span>
+                            </div>
+                            <div class="col">
+                                <b>SCHOOL ADDRESS:</b><br>
+                                <span class="primary_school_address"></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class="primary_from"></span>
+                                <span class="primary_to"></span>
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="column_eight" style="padding:5px;display:none;">
+                        <div class="row">
+                            <h5 class="summary_title">TRAININGS/VOCATIONALS ATTENDED</h5>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>TRAININGS</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class="training_school_name"></span>
+                            </div>
+                            <div class="col">
+                                <b>TITLE:</b><br>
+                                <span class="training_title"></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class="training_years"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>VOCATIONALS</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class="vocational_school_name"></span>
+                            </div>
+                            <div class="col">
+                                <b>COURSE:</b><br>
+                                <span class="vocational_course"></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class="vocational_years"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column_nine" style="padding:5px;display:none;">
+                        <div class="row ">
+                            <h5 class="summary_title">JOB HISTORY</h5>
+                        </div>
+
+                        <div id="job_history_summary_div" class="row"></div>
+                        <hr>
+                    </div>
+                    <div class="column_ten" style="padding:5px;display:none;">
+                        <div class="row ">
+                            <h5 class="summary_title">MEDICAL HISTORY</h5>
                         </div>
 
                         <div class="row mb-3">
@@ -292,12 +390,7 @@
                                 <textarea class="form-control text-uppercase psychological_history textarea-container" readonly></textarea>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="column_nine" style="padding:5px;">
-                        <div class="row mb-1">
-                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>EDUCATIONAL ATTAINMENT</u></h5>
-                        </div>
+                        <hr>
                     </div>
                 </div>
             </div>

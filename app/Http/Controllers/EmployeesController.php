@@ -3377,12 +3377,24 @@ class EmployeesController extends Controller
         return DataTables::of(CollegeTable::where('employee_id',$request->id)->get())->make(true);
     }
 
+    public function college_summary_data(Request $request){
+        return CollegeTable::where('employee_id',$request->id)->get();
+    }
+
     public function training_data(Request $request){
         return DataTables::of(TrainingTable::where('employee_id',$request->id)->get())->make(true);
     }
 
+    public function training_summary_data(Request $request){
+        return TrainingTable::where('employee_id',$request->id)->get();
+    }
+
     public function vocational_data(Request $request){
         return DataTables::of(VocationalTable::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function vocational_summary_data(Request $request){
+        return VocationalTable::where('employee_id',$request->id)->get();
     }
 
     public function job_history_data(Request $request){

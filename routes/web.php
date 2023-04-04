@@ -84,6 +84,9 @@ Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable')
 
 Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
 Route::any('/job_history_summary/data','EmployeesController@job_history_summary_data');
+Route::any('/college_summary/data','EmployeesController@college_summary_data');
+Route::any('/training_summary/data','EmployeesController@training_summary_data');
+Route::any('/vocational_summary/data','EmployeesController@vocational_summary_data');
 
 // Users Controller
 Route::any('/users/listOfUsers','UsersController@listOfUsers');

@@ -7,20 +7,20 @@
             </div>
             <div class="modal-body">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkbox1" checked>
-                    <label class="form-check-label" for="checkbox1">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox1" checked disabled>
+                    <label for="checkbox1">
                         PERSONAL INFORMATION
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkbox2" checked>
-                    <label class="form-check-label" for="checkbox2">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox2" checked disabled>
+                    <label for="checkbox2">
                         WORK INFORMATION
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="checkbox3" checked>
-                    <label class="form-check-label" for="checkbox3">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox3" checked disabled>
+                    <label for="checkbox3">
                         GOVERNMENT MANDATORY BENEFITS INFORMATION
                     </label>
                 </div>
@@ -33,12 +33,18 @@
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox5">
                     <label class="form-check-label" for="checkbox5">
-                        JOB HISTORY
+                        TRAININGS/VOCATIONALS
                     </label>
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox6">
                     <label class="form-check-label" for="checkbox6">
+                        JOB HISTORY
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox7">
+                    <label class="form-check-label" for="checkbox7">
                         MEDICAL HISTORY
                     </label>
                 </div>

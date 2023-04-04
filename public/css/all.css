@@ -653,3 +653,13 @@ label{
     pointer-events:none !important;
     height:auto !important;
 }
+
+.form-check-input label{
+    color:black !important;
+}
+
+.summary_title{
+    background-color: rgb(182, 181, 181) !important;
+    padding:5px !important;
+    width: auto !important;
+}

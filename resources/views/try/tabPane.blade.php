@@ -44,8 +44,8 @@
                 <div class="summary_container">
                     <div class="clear_float">
                         <div class="column_one">
-                            <div class="row mb-1">
-                                <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>PERSONAL INFORMATION</u></h5>
+                            <div class="row">
+                                <h5 class="summary_title">PERSONAL INFORMATION</h5>
                             </div>
                         </div>
 
@@ -87,6 +87,51 @@
                     <div class="column_eight" style="padding:5px;">
                         <div class="row mb-1">
                             <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>MEDICAL HISTORY</u></h5>
+                        </div>
+                    </div>
+
+                    <div class="column_nine" style="padding:5px;">
+                        <div class="row mb-1">
+                            <h5 style="font-family: Verdana, Geneva, Tahoma, sans-serif;"><u>EDUCATIONAL ATTAINMENT</u></h5>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>COLLEGE ATTAINMENT</b></h6><br>
+                                <div class="col">
+                                    <b>SCHOOL NAME:</b>
+                                </div>
+                                <div class="col">
+                                    <b>DEGREE:</b>
+                                </div>
+                                <div class="col">
+                                    <b>INCLUSIVE YEARS:</b>
+                                </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>SECONDARY SCHOOL ATTAINMENT</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b>
+                            </div>
+                            <div class="col">
+                                <b>SCHOOL ADDRESS:</b>
+                            </div>
+                            <div class="col">
+                                <b>INCLUSIVE YEARS:</b>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>PRIMARY SCHOOL ATTAINMENT</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b>
+                            </div>
+                            <div class="col">
+                                <b>SCHOOL ADDRESS:</b>
+                            </div>
+                            <div class="col">
+                                <b>INCLUSIVE YEARS:</b>
+                            </div>
                         </div>
                     </div>
                 </div>
