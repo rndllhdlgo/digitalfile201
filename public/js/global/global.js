@@ -196,7 +196,7 @@ $(document).ready(function(){
             $('#pass1').attr('type','text');
             $('#pass2').attr('type', 'text');
             $('#pass3').attr('type', 'text');
-        } 
+        }
         else{
             $('#show_password_text').text('SHOW PASSWORD');
             $('#show_password_eye').addClass('fa-eye').removeClass('fa-eye-slash');
@@ -419,10 +419,10 @@ $(document).ready(function(){
             var today_Day = today_Date.getDate();
             var today_Year = today_Date.getFullYear();
             var today_Time = new Date().toLocaleTimeString();
-    
+
             if(today_Month < 10) today_Month = '0' + today_Month.toString();
             if(today_Day < 10) today_Day = '0' + today_Day.toString();
-    
+
             var today_DateFormat = today_Year + '-' + today_Month + '-' + today_Day;
             today_DateFormat = moment(today_DateFormat, 'YYYY-MM-DD').format('dddd, MMMM DD, YYYY');
             current_datetime.textContent = today_DateFormat + ', ' + today_Time;
@@ -534,3 +534,15 @@ $(document).ready(function() {
         $('title').text('201 FILING SYSTEM | ' + headerText);
     }
 });
+
+function formatDate(dateString) {
+    var date = new Date(dateString);
+    var monthNames = [
+      "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+    ];
+    var monthIndex = date.getMonth();
+    var day = date.getDate();
+    var year = date.getFullYear();
+
+    return monthNames[monthIndex] + ' ' + ('0' + day).slice(-2) + ', ' + year;
+  }

@@ -39,12 +39,9 @@ $('#btnUpdate').on('click',function(){
     var emergency_contact_relationship = $('#emergency_contact_relationship').val();
     var emergency_contact_number = $('#emergency_contact_number').val();
     var blood_type = $('#blood_type').val();
-    // console.log($('#filename_delete').val());
-    // var college_hange = college_tr_add == 'true' ? '<b class="text-danger">WARNING: Currently addeed POS will be DELETED upon update!</b>' : '';
 
     Swal.fire({
         title: 'Do you want to Update?',
-        // html:college_warning,
         allowOutsideClick: false,
         allowEscapeKey: false,
         showDenyButton: true,

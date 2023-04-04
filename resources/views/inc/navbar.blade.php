@@ -1,12 +1,12 @@
 <div id="htmlHeader" class="d-flex" style="height: 90px;">
     <div class="row w-100">
-        <div class="col-3">
-            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 28px; line-height: 100px; margin-left: 10px; text-decoration: none;">
-                {{env('APP_NAME')}}
+        <div class="col-6">
+            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 32px; line-height: 100px; margin-left: 10px; text-decoration: none;">
+                <span style="display: inline;">
+                    {{env('APP_NAME')}}
+                </span>
+                <img src="/images/banner.png" style="margin-left:330px;margin-top:-210px;">
             </a>
-        </div>
-        <div class="col-3">
-            <img src="/images/banner.png" style="margin-left:-25px;margin-top:-5px;">
         </div>
         <div class="col-6">
             <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">

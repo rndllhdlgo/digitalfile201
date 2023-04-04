@@ -69,6 +69,15 @@ $(document).ready(function(){
                 "visible": false,
                 "searchable": true
             },
+            {
+                targets: '_all',
+                render: function(data, type, row, meta){
+                    if (data == null) {
+                        return '';
+                    }
+                    return data.toUpperCase();
+                }
+            }
         ],
         columns:[
             {
@@ -80,7 +89,7 @@ $(document).ready(function(){
             {
                 data: null,
                 "render": function(data,type,row){
-                    return row.last_name + ', ' + row.first_name + ' ' + row.middle_name;
+                    return (row.last_name + ', ' + row.first_name + ' ' + row.middle_name).toUpperCase();
                 }
             },
             {data: 'employee_position'},
@@ -88,13 +97,37 @@ $(document).ready(function(){
             {data: 'employment_status'},
             {data: 'employee_company'},
             {data: 'employee_department'},
-            {data: 'date_hired'},
-            {data: 'email_address'},
+            {
+                data: 'date_hired',
+                "render":function(data,type,row){
+                    if(row.date_hired){
+                        return formatDate(row.date_hired);
+                    }
+                    return '';
+                }
+            },
+            {
+                data: 'email_address',
+                "render": function(data,type,row){
+                    if(row.email_address){
+                        return (row.email_address).toLowerCase();
+                    }
+                    return '';
+                }
+            },
             {data: 'cellphone_number'},
             {data: 'telephone_number'},
             {data: 'gender'},
             {data: 'civil_status'},
-            {data: 'birthday'},
+            {
+                data: 'birthday',
+                "render":function(data,type,row){
+                    if(row.birthday){
+                        return formatDate(row.birthday);
+                    }
+                    return '';
+                }
+            },
             {data: 'province'},
             {data: 'city'},
             {data: 'region'},
@@ -365,7 +398,7 @@ function changeEmploymentStatus(){
         $('#termination_div').hide();
 
     }
-    else if($('#employment_status').val() == 'RESIGN'){
+    else if($('#employment_status').val() == 'RESIGNED'){
             $('#resignation_div').show();
             $('.hr-resignation').show();
             $('#termination_div').hide();
@@ -373,7 +406,7 @@ function changeEmploymentStatus(){
             $('#benefits_summary').hide();
 
     }
-    else if($('#employment_status').val() == 'TERMINATE'){
+    else if($('#employment_status').val() == 'TERMINATED'){
             $('#termination_div').show();
             $('.hr-termination').show();
             $('#resignation_div').hide();

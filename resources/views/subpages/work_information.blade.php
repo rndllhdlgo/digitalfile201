@@ -114,8 +114,8 @@
                     <option class="" value="PROBATIONARY" rank="2">PROBATIONARY</option>
                     <option class="" value="REGULAR" rank="3">REGULAR</option>
                     <option class="" value="RETIRED" id="retired" rank="4">RETIRED</option>
-                    <option class="" value="TERMINATE" id="terminate" rank="4">TERMINATE</option>
-                    <option class="" value="RESIGN" id="resign" rank="5">RESIGN</option>
+                    <option class="" value="TERMINATED" id="terminate" rank="4">TERMINATED</option>
+                    <option class="" value="RESIGNED" id="resign" rank="5">RESIGNED</option>
                 </select>
                 <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employment_status span_all"></span></label>
             </div>

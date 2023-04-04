@@ -43,7 +43,9 @@ class HomeController extends Controller
             return redirect('/employees');
         }
 
-        $employees = PersonalInformationTable::all()->count();
+        // $employees = PersonalInformationTable::all()->count();
+        $active = WorkInformationTable::whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
+        $inactive = WorkInformationTable::whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
@@ -53,7 +55,7 @@ class HomeController extends Controller
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
         $pending = PersonalInformationTablePending::where('status','Pending')->count();
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
-        return view('pages.index', compact('employees','regular','probationary','part_time','agency','intern','pending','user_level','male','female'));
+        return view('pages.index', compact('active','inactive','regular','probationary','part_time','agency','intern','pending','user_level','male','female'));
     }
 
     public function org()

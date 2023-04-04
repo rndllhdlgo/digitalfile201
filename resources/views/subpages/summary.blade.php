@@ -355,6 +355,7 @@
                                 <span class="vocational_years"></span>
                             </div>
                         </div>
+                        <hr>
                     </div>
                     <div class="column_nine" style="padding:5px;display:none;">
                         <div class="row ">
