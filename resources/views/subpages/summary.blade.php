@@ -82,8 +82,8 @@
                         <div class="column_two mt-4">
                             <img id="image_preview_summary">
                         </div>
-                        <hr>
                     </div>
+                    <hr>
 
                     <div class="column_three" style="padding:5px;">
                         <div class="row">

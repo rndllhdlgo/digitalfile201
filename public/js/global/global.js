@@ -527,5 +527,10 @@ function checkReqFields(){
 
 $(document).ready(function() {
     var headerText = $('.my-header').text();
-    $('title').text('DIGITAL 201 FILE | ' + headerText);
+    if(!headerText){
+        $('title').text('201 FILING SYSTEM');
+    }
+    else{
+        $('title').text('201 FILING SYSTEM | ' + headerText);
+    }
 });

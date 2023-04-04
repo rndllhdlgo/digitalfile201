@@ -1,32 +1,32 @@
 <div id="htmlHeader" class="d-flex" style="height: 90px;">
     <div class="row w-100">
-        <div class="col-6">
-            {{-- <a href="/">
-                <img src="/images/ideaserv_systems_logo.png" style="width: auto; height: 90px; line-height: 90px; margin-top: -5px;">
-            </a> --}}
-            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 30px; line-height: 90px; margin-left: 10px; text-decoration: none;">
+        <div class="col-3">
+            <a href="/" style="color: #0d1a80; font-family: Arial; font-weight: bold; font-size: 28px; line-height: 100px; margin-left: 10px; text-decoration: none;">
                 {{env('APP_NAME')}}
             </a>
+        </div>
+        <div class="col-3">
+            <img src="/images/banner.png" style="margin-left:-25px;margin-top:-5px;">
         </div>
         <div class="col-6">
             <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">
                 <thead>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;">
-                            <span id="current_datetime" style="margin-left: 50px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important;">
+                            <span id="current_datetime" style="margin-left: 220px; font-size:13px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
                         </td>
                         <td  class="m-0 p-0" rowspan="3">
-                            <i class="fa fa-user-circle fa-4x float-end" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
+                            <i class="fa fa-user-circle fa-4x float-end" style="margin-right: -10px;" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
                         </td>
                     </tr>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 5px !important;position:static;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important;position:static;font-size:13px;">
                             {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}]
                         </td>
                     </tr>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom:5x !important;">
-                            <span id="lblChangePassword" style="text-decoration:underline; cursor:pointer;">Change Password</span>
+                        <td class="m-0 p-0 float-end" style="margin-bottom:3x !important;">
+                            <span id="lblChangePassword" style="text-decoration:underline; cursor:pointer;font-size:13px;">Change Password</span>
                         </td>
                     </tr>
                 </thead>

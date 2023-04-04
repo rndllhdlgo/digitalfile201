@@ -79,22 +79,6 @@ function ImageValidation(employee_image) {
                         cropper.reset();
                         cropper.reset(true);
                     });
-
-                    // $('#image_up').click(function() {
-                    //     cropper.move(0, -5);
-                    // });
-
-                    // $('#image_down').click(function() {
-                    //     cropper.move(0, 5);
-                    // });
-
-                    // $('#image_left').click(function() {
-                    //     cropper.move(-10, 0);
-                    // });
-
-                    // $('#image_right').click(function() {
-                    //     cropper.move(10, 0);
-                    // });
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();
