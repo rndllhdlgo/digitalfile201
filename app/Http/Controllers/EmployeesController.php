@@ -88,7 +88,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -107,7 +106,6 @@ class EmployeesController extends Controller
                 ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->join('positions','positions.id','work_information_tables.employee_position')
                 ->join('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
@@ -125,7 +123,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -144,7 +141,6 @@ class EmployeesController extends Controller
                 ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->leftjoin('positions','positions.id','work_information_tables.employee_position')
                 ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
@@ -162,7 +158,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -181,7 +176,6 @@ class EmployeesController extends Controller
                 ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->leftjoin('positions','positions.id','work_information_tables.employee_position')
                 ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
@@ -199,7 +193,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -218,7 +211,6 @@ class EmployeesController extends Controller
                 ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->leftjoin('positions','positions.id','work_information_tables.employee_position')
                 ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
@@ -236,7 +228,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -255,7 +246,76 @@ class EmployeesController extends Controller
                 ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->leftjoin('positions','positions.id','work_information_tables.employee_position')
                 ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
+                ->get();
+        }
+        else if($request->filter == 'active'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'entity03.entity03_desc AS employee_branch',
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'entity',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
+                )
+                ->whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
+                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->orderBy('stat','DESC')
+                ->orderBy('last_name','ASC')
+                ->get();
+        }
+        else if($request->filter == 'inactive'){
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'work_information_tables.employee_number',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'positions.job_position_name AS employee_position',
+                'entity03.entity03_desc AS employee_branch',
+                'work_information_tables.employment_status',
+                'companies.company_name AS employee_company',
+                'entity',
+                'work_information_tables.date_hired',
+                'email_address',
+                'cellphone_number',
+                'telephone_number',
+                'gender',
+                'civil_status',
+                'birthday',
+                'religion',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'stat'
+                )
+                ->whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')

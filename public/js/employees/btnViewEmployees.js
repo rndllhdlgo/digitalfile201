@@ -1062,7 +1062,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 job_history_change = '';
                 $('th').removeClass("sorting_asc");
 
-                var trim_empno = (value.employee_number).substring(2);
+                if(value.employee_number){
+                    var trim_empno = (value.employee_number).substring(2);
+                }
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();

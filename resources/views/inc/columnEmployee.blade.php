@@ -170,7 +170,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <div class="row" id="stat_toggle">
         <div class="col">
             <div class="checkbox">
                 <label>

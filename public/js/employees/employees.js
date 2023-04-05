@@ -17,6 +17,17 @@ $(document).ready(function(){
         var filter = 'agency';
     }
 
+    else if(current_location == '/employees?status=active'){
+        $('#head_title').html('- ACTIVE EMPLOYEES');
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18];
+        var filter = 'active';
+    }
+    else if(current_location == '/employees?status=inactive'){
+        $('#head_title').html('- INACTIVE EMPLOYEES');
+        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        var filter = 'inactive';
+    }
+
     // else if(current_location == '/employees?employment_status=part_time'){
     //     $('#head_title').html('- PART TIME');
     //     var filter = 'part_time';
