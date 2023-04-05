@@ -15,25 +15,25 @@
                     <tr>
                         <td>
                             <div class="f-outline">
-                                <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control optional_field" type="search" id="employee_salary" placeholder="(Optional)" style="background-color:white;" autocomplete="off" >
                                 <label for="employee_salary" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td>
                             <div class="f-outline">
-                                <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control optional_field" type="search" id="employee_incentives" placeholder="(Optional)" style="background-color:white;" autocomplete="off" >
                                 <label for="employee_incentives" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td>
                             <div class="f-outline">
-                                <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control optional_field" type="search" id="employee_overtime_pay" placeholder="(Optional)" style="background-color:white;" autocomplete="off" >
                                 <label for="employee_overtime_pay" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td>
                             <div class="f-outline">
-                                <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" autocomplete="off" ondrop="return false;" onpaste="return false;">
+                                <input class="forminput form-control optional_field" type="search" id="employee_bonus" placeholder="(Optional)" style="background-color:white;" autocomplete="off" >
                                 <label for="employee_bonus" class="formlabel form-label"></label>
                             </div>
                         </td>

@@ -37,19 +37,19 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field text-capitalize" type="search" id="sample1" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field text-capitalize" type="search" id="sample1" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                             <label for="sample1" class="formlabel form-label"><span class="span_college_name span_all">(Optional)</span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field" type="text" id="sample2" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field" type="text" id="sample2" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                             <label for="sample2" class="formlabel form-label"><span class="span_college_degree span_all">(Optional)</span></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field" type="search" id="sample3" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" ondrop="return false;" onpaste="return false;">
+                            <input class="forminput form-control multiple_field" type="search" id="sample3" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" >
                             <label for="sample3" class="formlabel form-label"><span class="span_college_inclusive_years span_all">(Optional)</span></label>
                         </div>
                     </td>

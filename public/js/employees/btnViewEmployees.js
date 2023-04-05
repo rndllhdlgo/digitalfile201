@@ -200,13 +200,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     'font-family':'Arial, Helvetica, sans-serif'
                 });
 
-                // $('#employment_status').chosen();
-                // $('#employment_status_chosen').css({
-                //     'width':'100%',
-                //     'font-weight':'500',
-                //     'font-size':'13px',
-                //     'font-family':'Arial, Helvetica, sans-serif'
-                // });
                 if(value.employment_status){
                     $('#employment_status').val(value.employment_status);
                     var rank = $('#employment_status option[value='+value.employment_status+"]").attr('rank');
@@ -233,10 +226,16 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#account_number').val(value.account_number);
 
                 //Education Trainings
-                $('#secondary_school_name').val(value.secondary_school_name);
-                $('#secondary_school_address').val(value.secondary_school_address);
-                $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
-                $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
+                if(value.secondary_school_name){
+                    $('.secondary_div').show();
+                    $('#secondary_school_name').val(value.secondary_school_name);
+                    $('#secondary_school_address').val(value.secondary_school_address);
+                    $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
+                    $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
+                }
+                else{
+                    $('.secondary_div').hide();
+                }
 
                 $('#primary_school_name').val(value.primary_school_name);
                 $('#primary_school_address').val(value.primary_school_address);
@@ -244,14 +243,41 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
 
                 // Medical History
-                $('#past_medical_condition').val(value.past_medical_condition);
-                $('.past_medical_condition').val(value.past_medical_condition);
-                $('#allergies').val(value.allergies);
-                $('.allergies').val(value.allergies);
-                $('#medication').val(value.medication);
-                $('.medication').val(value.medication);
-                $('#psychological_history').val(value.psychological_history);
-                $('.psychological_history').val(value.psychological_history);
+                if(value.past_medical_condition){
+                    $('.past_med_div').show();
+                    $('#past_medical_condition').val(value.past_medical_condition);
+                }
+                else{
+                    $('.past_med_div').hide();
+                }
+                if(value.allergies){
+                    $('.allergies_div').show();
+                    $('#allergies').val(value.allergies);
+                }
+                else{
+                    $('.allergies_div').hide();
+                }
+                if(value.medication){
+                    $('.medication_div').show();
+                    $('#medication').val(value.medication);
+                }
+                else{
+                    $('.medication_div').hide();
+                }
+                if(value.psychological_history){
+                    $('.psych_div').show();
+                    $('#psychological_history').val(value.psychological_history);
+                }
+                else{
+                    $('.psych_div').hide();
+                }
+
+                if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
+                    $('#med_checkbox').hide();
+                }
+                else{
+                    $('#med_checkbox').show();
+                }
 
                 // Compensation Benefits
                 $('#employee_salary').val(value.employee_salary);
@@ -559,6 +585,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
                                 $('#job_history_summary_div').append(job_years,job_details);
                             }
+                            if(job_content > 0){
+                                $('#job_checkbox').show();
+                            }
+                            else{
+                                $('#job_checkbox').hide();
+                            }
                         }
                     });
 
@@ -579,6 +611,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var college_school_degree = $('.college_school_degree').append(college_degree + "<br>");
                                 var college_years = $('.college_years').append(moment(college_from).format('MMM. YYYY') + "<b> -> </b>" + moment(college_to).format('MMM. YYYY') + "<br>");
                             }
+                            if(college_content > 0){
+                                $('.college_div').show();
+                            }
+                            else{
+                                $('.college_div').hide();
+                            }
                         }
                     });
 
@@ -588,7 +626,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         data: {
                             id: value.id,
                         },
-                        success: function (data) {
+                        success: function (data){
                             for(var training_content = 0; training_content < data.length; training_content++){
                                 var training_name = data[training_content].training_name;
                                 var training_title = data[training_content].training_title;
@@ -598,6 +636,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var training_school_name = $('.training_school_name').append(training_name + "<br>");
                                 var training_school_title = $('.training_title').append(training_title + "<br>");
                                 var training_years = $('.training_years').append(moment(training_from).format('MMM. YYYY') + "<b> -> </b>" + moment(training_to).format('MMM. YYYY') + "<br>");
+                            }
+                            if(training_content > 0){
+                                $('.training_div').show();
+                            }
+                            else{
+                                $('.training_div').hide();
                             }
                         }
                     });
@@ -618,6 +662,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var vocational_school_name = $('.vocational_school_name').append(vocational_name + "<br>");
                                 var vocational_school_course = $('.vocational_course').append(vocational_course + "<br>");
                                 var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMM. YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMM. YYYY') + "<br>");
+                            }
+                            if(vocational_content > 0){
+                                $('.training_div').show();
+                            }
+                            else{
+                                $('.training_div').hide();
                             }
                         }
                     });
@@ -1575,33 +1625,3 @@ $(document).on('click','.btn_termination_delete',function(){
     termination_id.push(data.id);
     $(this).parent().parent().remove();
 });
-
-// $('.region').each(function(){
-                //     if($(this).html() == value.region){
-                //         $(this).prop('selected', true);
-                //     }
-                // });
-
-                // setTimeout(() => {
-                //     $('#region').change();
-                //     setTimeout(() => {
-                //         $('.province').each(function(){
-                //             if($(this).html() == value.province){
-                //                 $(this).prop('selected', true);
-                //             }
-                //         });
-                //         setTimeout(() => {
-                //             $('#province').change();
-                //             setTimeout(() => {
-                //                 $('.city').each(function(){
-                //                     if($(this).html() == value.city){
-                //                         $(this).prop('selected', true);
-                //                     }
-                //                 });
-                //                 setTimeout(() => {
-                //                     $('#city').change();
-                //                 }, app_timeout);
-                //             }, app_timeout);
-                //         }, app_timeout);
-                //     }, app_timeout);
-                // }, app_timeout);

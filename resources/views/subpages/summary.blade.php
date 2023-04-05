@@ -268,7 +268,7 @@
                             <h5 class="summary_title">EDUCATIONAL ATTAINMENT</h5>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 college_div" style="display:none;">
                             <h6><b>COLLEGE ATTAINMENT</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
@@ -284,7 +284,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 secondary_div" style="display:none;">
                             <h6><b>SECONDARY SCHOOL ATTAINMENT</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
@@ -324,7 +324,7 @@
                             <h5 class="summary_title">TRAININGS/VOCATIONALS ATTENDED</h5>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 training_div" style="display:none;">
                             <h6><b>TRAININGS</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
@@ -340,7 +340,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 vocational_div" style="display:none;">
                             <h6><b>VOCATIONALS</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
@@ -371,22 +371,22 @@
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col">
+                            <div class="col past_med_div">
                                 <b>PAST MEDICAL CONDITION</b><br>
                                 <textarea class="form-control text-uppercase past_medical_condition textarea-container" readonly></textarea>
                             </div>
-                            <div class="col">
+                            <div class="col allergies_div">
                                 <b>ALLERGIES</b><br>
                                 <textarea class="form-control text-uppercase allergies textarea-container" readonly></textarea>
                             </div>
                         </div>
 
                         <div class="row mb-3">
-                            <div class="col">
+                            <div class="col medication_div">
                                 <b>MEDICATION</b><br>
                                 <textarea class="form-control text-uppercase medication textarea-container" readonly></textarea>
                             </div>
-                            <div class="col">
+                            <div class="col psych_div">
                                 <b>PSYCHOLOGICAL HISTORY</b><br>
                                 <textarea class="form-control text-uppercase psychological_history textarea-container" readonly></textarea>
                             </div>

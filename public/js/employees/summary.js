@@ -305,9 +305,13 @@ $('#viewSummary').on('click', function(){
     $('.tin_number').html($('#tin_number').val());
     $('.account_number').html($('#account_number').val());
 
+    $('.past_medical_condition').html($('#past_medical_condition').val());
     $('.past_medical_condition').attr('rows', $('.past_medical_condition').val().split('\n').length);
+    $('.allergies').html($('#allergies').val());
     $('.allergies').attr('rows', $('.allergies').val().split('\n').length);
+    $('.medication').html($('#medication').val());
     $('.medication').attr('rows', $('.medication').val().split('\n').length);
+    $('.psychological_history').html($('#psychological_history').val());
     $('.psychological_history').attr('rows', $('.psychological_history').val().split('\n').length);
 
     $('.secondary_school_name').html($('#secondary_school_name').val());

@@ -22,8 +22,8 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.12/cropper.min.js"></script>
 
         <link rel="stylesheet" href="/cropper/cropper.min.css">
-        <link href="{{asset('css/inc/chosen.css')}}" rel="stylesheet" type="text/css"/>
-        <link href="{{asset('/css/all.css') }}" rel="stylesheet">
+        <link href="/css/inc/chosen.css" rel="stylesheet" type="text/css"/>
+        <link href="/css/all.css" rel="stylesheet">
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
@@ -59,59 +59,59 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.1/html2pdf.bundle.min.js" integrity="sha512-vDKWohFHe2vkVWXHp3tKvIxxXg0pJxeid5eo+UjdjME3DBFBn2F8yWOE0XmiFcFbXxrEOR1JriWEno5Ckpn15A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.24/dist/sweetalert2.all.min.js"></script>
-        <script src="{{asset('js/inc/chosen.jquery.js')}}"></script>
-        <script src="{{asset('js/inc/moment.js')}}"></script>
-        <script src="{{asset('js/inc/datetime.js')}}"></script>
-        <script src="{{asset('js/inc/printThis.js')}}"></script>
-        <script src="{{ env('APP_URL')}}js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+        <script src="/js/inc/chosen.jquery.js"></script>
+        <script src="/js/inc/moment.js"></script>
+        <script src="/js/inc/datetime.js"></script>
+        <script src="/js/inc/printThis.js"></script>
+        <script src="/js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
         <!-- Insert JS FILES -->
         @if(Request::is('/'))<!--Route-->
-            <script src="{{ env('APP_URL')}}js/home/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/home/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('login'))
-            <script src="{{ env('APP_URL')}}js/login.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/login.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('employees'))
-            <script src="{{ env('APP_URL')}}js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnClose.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnSaveEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/inputFieldEffect.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/checkDuplicate.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/logs.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/employees/history.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnClose.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnSaveEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/inputFieldEffect.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/checkDuplicate.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/logs.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/history.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('users'))
-            <script src="{{ env('APP_URL')}}js/users/users.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/users/btnSaveUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/users/btnUpdateUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/users/btnViewUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/users/users.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/users/btnSaveUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/users/btnUpdateUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/users/btnViewUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('maintenance'))
-            <script src="{{ env('APP_URL')}}js/maintenance/maintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/maintenance/btnSaveMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/maintenance/btnUpdateMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/maintenance/btnViewMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/maintenance/dataTablesMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/maintenance/maintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/maintenance/btnSaveMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/maintenance/btnUpdateMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/maintenance/btnViewMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/maintenance/dataTablesMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('updates'))
-            <script src="{{ env('APP_URL')}}js/updates/updates.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/updates/updates.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
         @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance') || Request::is('updates'))
-            <script src="{{ env('APP_URL')}}js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="{{ env('APP_URL')}}js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 </body>
 </html>
