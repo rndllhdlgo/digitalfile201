@@ -244,7 +244,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 // Medical History
                 if(value.past_medical_condition){
-                    $('.past_med_div').show();
                     $('#past_medical_condition').val(value.past_medical_condition);
                 }
                 else{
@@ -273,10 +272,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }
 
                 if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
-                    $('#med_checkbox').hide();
+                    $('.column_ten').hide();
                 }
                 else{
-                    $('#med_checkbox').show();
+                    $('.column_ten').show();
                 }
 
                 // Compensation Benefits
@@ -585,12 +584,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
                                 $('#job_history_summary_div').append(job_years,job_details);
                             }
-                            if(job_content > 0){
-                                $('#job_checkbox').show();
-                            }
-                            else{
-                                $('#job_checkbox').hide();
-                            }
                         }
                     });
 
@@ -610,12 +603,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var college_school_name = $('.college_school_name').append(college_name + "<br>");
                                 var college_school_degree = $('.college_school_degree').append(college_degree + "<br>");
                                 var college_years = $('.college_years').append(moment(college_from).format('MMM. YYYY') + "<b> -> </b>" + moment(college_to).format('MMM. YYYY') + "<br>");
-                            }
-                            if(college_content > 0){
-                                $('.college_div').show();
-                            }
-                            else{
-                                $('.college_div').hide();
                             }
                         }
                     });
@@ -637,12 +624,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var training_school_title = $('.training_title').append(training_title + "<br>");
                                 var training_years = $('.training_years').append(moment(training_from).format('MMM. YYYY') + "<b> -> </b>" + moment(training_to).format('MMM. YYYY') + "<br>");
                             }
-                            if(training_content > 0){
-                                $('.training_div').show();
-                            }
-                            else{
-                                $('.training_div').hide();
-                            }
                         }
                     });
 
@@ -662,12 +643,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 var vocational_school_name = $('.vocational_school_name').append(vocational_name + "<br>");
                                 var vocational_school_course = $('.vocational_course').append(vocational_course + "<br>");
                                 var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMM. YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMM. YYYY') + "<br>");
-                            }
-                            if(vocational_content > 0){
-                                $('.training_div').show();
-                            }
-                            else{
-                                $('.training_div').hide();
                             }
                         }
                     });

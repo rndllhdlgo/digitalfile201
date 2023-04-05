@@ -319,6 +319,7 @@
                         </div>
                         <hr>
                     </div>
+
                     <div class="column_eight" style="padding:5px;display:none;">
                         <div class="row">
                             <h5 class="summary_title">TRAININGS/VOCATIONALS ATTENDED</h5>

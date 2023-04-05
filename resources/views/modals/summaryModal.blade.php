@@ -30,7 +30,7 @@
                         EDUCATIONAL ATTAINMENTS
                     </label>
                 </div>
-                <div class="form-check">
+                <div class="form-check" id="train_voc_div">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox5">
                     <label for="checkbox5">
                         TRAININGS/VOCATIONALS
