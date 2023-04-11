@@ -59,6 +59,14 @@ class EmployeesController extends Controller
     //     }
     // }
 
+    // public function insertImage(Request $request){
+    //     $employeeImageFile = $request->file('employee_image');
+    //     $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
+    //     $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
+    //     $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
+    //     return $employeeImageFileName;
+    // }
+
     public function logs_reload(){
         if(LogsTable::count() == 0){
             return 'NULL';
@@ -498,13 +506,6 @@ class EmployeesController extends Controller
         ->toJson();
     }
 
-    // public function insertImage(Request $request){
-    //     $employeeImageFile = $request->file('employee_image');
-    //     $employeeImageExtension = $employeeImageFile->getClientOriginalExtension();
-    //     $employeeImageFileName = strftime("%m-%d-%Y-%H-%M-%S").'_Employee_Image.'.$employeeImageExtension;
-    //     $employeeImageFile->storeAs('public/employee_images',$employeeImageFileName);
-    //     return $employeeImageFileName;
-    // }
 
     public function insertImage(Request $request){
         $imageData = $request->input('image_data');
@@ -1094,6 +1095,30 @@ class EmployeesController extends Controller
             $cellphone_number_change = NULL;
         }
 
+        if($request->spouse_name != $spouse_name_orig){
+            $spouse_name_new = strtoupper($request->spouse_name);
+            $spouse_name_change = "[SPOUSE NAME: FROM '$spouse_name_orig' TO '$spouse_name_new']";
+        }
+        else{
+            $spouse_name_change = NULL;
+        }
+
+        if($request->spouse_contact_number != $spouse_contact_number_orig){
+            $spouse_contact_number_new = $request->spouse_contact_number;
+            $spouse_contact_number_change = "[SPOUSE CONTACT NUMBER: FROM '$spouse_contact_number_orig' TO '$spouse_contact_number_new']";
+        }
+        else{
+            $father_contact_number_change = NULL;
+        }
+
+        if($request->spouse_profession != $spouse_profession_orig){
+            $spouse_profession_new = strtoupper($request->spouse_profession);
+            $spouse_profession_change = "[SPOUSE PROFESSION: FROM '$spouse_profession_orig' TO '$spouse_profession_new']";
+        }
+        else{
+            $spouse_profession_change = NULL;
+        }
+
         if($request->father_name != $father_name_orig){
             $father_name_new = strtoupper($request->father_name);
             $father_name_change = "[FATHER'S NAME: FROM '$father_name_orig' TO '$father_name_new']";
@@ -1231,6 +1256,9 @@ class EmployeesController extends Controller
                     $request->father_name != $father_name_orig ||
                     $request->father_contact_number != $father_contact_number_orig ||
                     $request->father_profession != $father_profession_orig ||
+                    $request->spouse_name != $spouse_name_orig ||
+                    $request->spouse_contact_number != $spouse_contact_number_orig ||
+                    $request->spouse_profession != $spouse_profession_orig ||
                     $request->mother_name != $mother_name_orig ||
                     $request->mother_contact_number != $mother_contact_number_orig ||
                     $request->mother_profession != $mother_profession_orig ||
@@ -1262,6 +1290,9 @@ class EmployeesController extends Controller
                                             $email_address_change
                                             $telephone_number_change
                                             $cellphone_number_change
+                                            $spouse_name_change
+                                            $spouse_contact_number_change
+                                            $spouse_profession_change
                                             $father_name_change
                                             $father_contact_number_change
                                             $father_profession_change
@@ -1297,6 +1328,9 @@ class EmployeesController extends Controller
                                         $email_address_change
                                         $telephone_number_change
                                         $cellphone_number_change
+                                        $spouse_name_change
+                                        $spouse_contact_number_change
+                                        $spouse_profession_change
                                         $father_name_change
                                         $father_contact_number_change
                                         $father_profession_change
@@ -1594,9 +1628,8 @@ class EmployeesController extends Controller
 
     public function updateWorkInformation(Request $request){
         $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
-        $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
+        // $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
         $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first()->date_hired;
-        // $employee_shift_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_shift;
         $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_company;
         $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_branch;
         $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_department;
@@ -1612,13 +1645,13 @@ class EmployeesController extends Controller
         $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->tin_number;
         $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->account_number;
 
-        if($request->employee_number != $employee_number_orig){
-            $employee_number_new = $request->employee_number;
-            $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
-        }
-        else{
-            $employee_number_change = NULL;
-        }
+        // if($request->employee_number != $employee_number_orig){
+        //     $employee_number_new = $request->employee_number;
+        //     $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
+        // }
+        // else{
+        //     $employee_number_change = NULL;
+        // }
 
         if($request->date_hired != $date_hired_orig){
             $date_hired1 = Carbon::parse($date_hired_orig)->format('F d, Y');
@@ -1628,15 +1661,6 @@ class EmployeesController extends Controller
         else{
             $date_hired_change = NULL;
         }
-
-        // if($request->employee_shift != $employee_shift_orig){
-        //     $employee_shift_orig = Shift::where('id', $employee_shift_orig)->first();
-        //     $employee_shift_new = Shift::where('id', $request->employee_shift)->first();
-        //     $employee_shift_change = "[SHIFT: FROM '$employee_shift_orig->shift_code $employee_shift_orig->shift_working_hours 'with BREAK-TIME' $employee_shift_orig->shift_break_time' TO '$employee_shift_new->shift_code $employee_shift_new->shift_working_hours $employee_shift_new->shift_break_time']";
-        // }
-        // else{
-        //     $employee_shift_change = NULL;
-        // }
 
         if($request->employee_company != $employee_company_orig){
             $employee_company_orig = Company::where('id', $employee_company_orig)->first()->company_name;
@@ -1759,7 +1783,6 @@ class EmployeesController extends Controller
                 ->update([
                     'employee_number' => substr($request->employee_number, 2),
                     'date_hired' => $request->date_hired,
-                    // 'employee_shift' => $request->employee_shift,
                     'employee_company' => $request->employee_company,
                     'employee_branch' => $request->employee_branch,
                     'employee_department' => $request->employee_department,
