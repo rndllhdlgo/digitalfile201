@@ -60,11 +60,11 @@
                             </div>
 
                             <div class="row mb-3">
-                                <div class="col">
+                                <div class="col" id="height_div">
                                     <b>HEIGHT:</b><br>
                                     <span class="height font_weight"></span>
                                 </div>
-                                <div class="col">
+                                <div class="col" id="weight_div">
                                     <b>WEIGHT:</b><br>
                                     <span class="weight font_weight"></span>
                                 </div>
@@ -114,6 +114,17 @@
                             <h5 class="summary_title">CONTACT DETAILS</h5>
                         </div>
 
+                        <div class="row mb-3" id="spouse_div" style="display:none;">
+                            <div class="col">
+                                <b>SPOUSE NAME:</b><br> <span class="spouse_name font_weight"></span>
+                            </div>
+                            <div class="col" id="spouse_no_div">
+                                <b>CELLPHONE NO.:</b><br> <span class="spouse_contact_number font_weight"></span>
+                            </div>
+                            <div class="col" id="spouse_prof_div">
+                                <b>PROFESSION:</b><br> <span class="spouse_profession font_weight"></span>
+                            </div>
+                        </div>
                         <div class="row mb-3">
                             <div class="col">
                                 <b>EMAIL ADDRESS:</b><br> <span class="email_address font_weight"></span>
@@ -130,7 +141,7 @@
                             <div class="col">
                                 <b>FATHER'S NAME:</b><br> <span class="father_name font_weight"></span>
                             </div>
-                            <div class="col">
+                            <div class="col" id="father_contact_number_div">
                                 <b>CELLPHONE NO.:</b><br> <span class="father_contact_number font_weight"></span>
                             </div>
                             <div class="col" id="father_profession_div">
@@ -142,7 +153,7 @@
                             <div class="col">
                                 <b>MOTHER'S MAIDEN NAME:</b><br> <span class="mother_name font_weight"></span>
                             </div>
-                            <div class="col">
+                            <div class="col" id="mother_contact_number_div">
                                 <b>CELLPHONE NO.:</b><br> <span class="mother_contact_number font_weight"></span>
                             </div>
                             <div class="col" id="mother_profession_div">

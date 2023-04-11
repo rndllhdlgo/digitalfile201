@@ -235,11 +235,25 @@ $('#viewSummary').on('click', function(){
     $('.gender').html($('#gender').val());
     $('.address').html($('#address').val());
     $('.height').html($('#height').val());
+    if($('#height').val()){
+        $('.height').html($('#height').val());
+    }
+    else{
+        $('#height_div').css("visibility", "hidden");
+        $('.height').hide();
+    }
     $('.weight').html($('#weight').val());
+    if($('#weight').val()){
+        $('.weight').html($('#weight').val());
+    }
+    else{
+        $('#weight_div').css("visibility", "hidden");
+        $('.weight').hide();
+    }
     $('.religion').html($('#religion').val());
     $('#civil_status_content').html($('#civil_status').val());
     $('.email_address').html($('#email_address').val());
-    if ($('#telephone_number').val()){
+    if($('#telephone_number').val()){
         $('.telephone_number').html($('#telephone_number').val());
     }
     else{
@@ -250,9 +264,31 @@ $('#viewSummary').on('click', function(){
     $('.cellphone_number').html($('#cellphone_number').val());
     $('.spouse_name').html($('#spouse_name').val());
     $('.spouse_contact_number').html($('#spouse_contact_number').val());
+    if($('#spouse_contact_number').val()){
+        $('.spouse_contact_number').html($('#spouse_contact_number').val());
+    }
+    else{
+        $('#spouse_no_div').css("visibility", "hidden");
+        $('.spouse_contact_number').hide();
+    }
+
     $('.spouse_profession').html($('#spouse_profession').val());
+    if($('#spouse_profession').val()){
+        $('.spouse_profession').html($('#spouse_profession').val());
+    }
+    else{
+        $('#spouse_prof_div').css("visibility", "hidden");
+        $('.spouse_profession').hide();
+    }
     $('.father_name').html($('#father_name').val());
     $('.father_contact_number').html($('#father_contact_number').val());
+    if ($('#father_contact_number').val()){
+        $('.father_contact_number').html($('#father_contact_number').val());
+    }
+    else{
+        $('#father_contact_number_div').css("visibility", "hidden");;
+        $('.father_contact_number').hide();
+    }
     if ($('#father_profession').val()){
         $('.father_profession').html($('#father_profession').val());
     }
@@ -262,6 +298,14 @@ $('#viewSummary').on('click', function(){
     }
     $('.mother_name').html($('#mother_name').val());
     $('.mother_contact_number').html($('#mother_contact_number').val());
+    if ($('#mother_contact_number').val()){
+        $('.mother_contact_number').html($('#mother_contact_number').val());
+    }
+    else{
+        $('#mother_contact_number_div').css("visibility", "hidden");;
+        $('.mother_contact_number').hide();
+    }
+
     if ($('#mother_profession').val()){
         $('.mother_profession').html($('#mother_profession').val());
     }

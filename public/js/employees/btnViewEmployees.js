@@ -131,6 +131,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#civil_status').change();
                 }, app_timeout);
 
+                if(value.civil_status == 'MARRIED'){
+                    $('#spouse_div').show();
+                }
+                else{
+                    $('#spouse_div').hide();
+                }
+
                 $('#email_address').val(value.email_address);
                 email_address_orig = value.email_address;
 
@@ -139,9 +146,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#spouse_name').val(value.spouse_name);
                 $('#spouse_contact_number').val(value.spouse_contact_number);
-                $('#spouse_contact_number_orig').val(value.spouse_contact_number);
                 $('#spouse_profession').val(value.spouse_profession);
-                $('#spouse_profession_orig').val(value.spouse_profession);
 
                 $('#father_name').val(value.father_name);
                 $('#father_contact_number').val(value.father_contact_number);

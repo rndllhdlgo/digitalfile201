@@ -133,9 +133,6 @@
                             <option value="STAY IN">STAY IN</option>
                         </select>
                         <label for="ownership" class="formlabel form-label"><i class="fa-solid fa-house"></i> OWNERSHIP <span class="span_ownership span_all"></span> </label>
-                        {{-- <input type="hidden" id="house_orig">
-                        <input type="radio" id="default" name="house" class="house" value="Owned" style="margin-left:30px;"> Owned
-                        <input type="radio" name="house" class="house" value="Rent" style="margin-left: 30px;"> Rent --}}
                     </div>
                 </div>
             </div>
@@ -199,12 +196,6 @@
                         <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
                     </div>
                 </div>
-                {{-- <div class="col-3">
-                    <div class="f-outline">
-                        <input type="text" class="forminput form-control" name="blood_type" id="blood_type" placeholder=" " style="background-color: white !important;">
-                        <label for="blood_type" class="formlabel form-label"><i class="fa-solid fa-droplet"></i> BLOOD TYPE
-                    </div>
-                </div> --}}
                 <div class="col-3">
                     <div class="f-outline">
                         <select class="form-select forminput form-control"  id="blood_type" placeholder=" " style="background-color:white;" autocomplete="off">
@@ -294,15 +285,12 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input type="hidden" id="spouse_contact_number_orig">
                         <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
-                        <p id="duplicate_spouse_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
-                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. <span class="span_spouse_number span_all"></span> </label>
+                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL) <span class="span_spouse_number span_all"></span> </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input type="hidden" id="spouse_profession_orig">
                         <input class="forminput form-control text-uppercase" type="search" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                         <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_spouse_profession span_all"></span> </label>
                     </div>

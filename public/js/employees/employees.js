@@ -371,7 +371,6 @@ function changeCivilStatus(){
     if($('#civil_status').val() == "MARRIED"){
         $('#spouse').show();
         $('#spouse_name').addClass('required_field');
-        $('#spouse_contact_number').addClass('required_field');
         $('.children_information').hide();
         $('#children_table').hide();
 
@@ -390,7 +389,6 @@ function changeCivilStatus(){
         $('.children_information').hide();
         $('#spouse').hide();
         $('#spouse_name').removeClass('required_field');
-        $('#spouse_contact_number').removeClass('required_field');
         $('#spouse_profession').removeClass('required_field');
     }
 }
