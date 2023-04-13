@@ -1,0 +1,35 @@
+-To Create Controller
+php artisan make:controller NameOfController
+
+-To Make Model
+php artisan make:model ModelName -m
+
+-To link storage to public folder
+php artisan storage:link
+
+-To install bootstrap for login form
+composer require laravel/ui
+php artisan ui bootstrap
+php artisan ui bootstrap --auth
+
+-To install yajra data tables
+composer require yajra/laravel-datatables-oracle:"^9.0" (to terminal)
+
+config/app.php
+'providers' => [
+    ...,
+    Yajra\DataTables\DataTablesServiceProvider::class,
+]
+'aliases' => [
+    ...,
+    'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+]
+php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
+
+-to update php version
+update-alternatives --config php
+
+-To access folder
+cd /var/www/html/digital201/
+code .
+ssh dell@ideaservph.tech
