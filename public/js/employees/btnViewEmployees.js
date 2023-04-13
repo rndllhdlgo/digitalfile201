@@ -250,37 +250,48 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 // Medical History
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);
+                    $('.past_med_div').show();
+                    console.log('past_med_show');
                 }
                 else{
                     $('.past_med_div').hide();
+                    console.log('past_med_hide');
                 }
                 if(value.allergies){
                     $('.allergies_div').show();
                     $('#allergies').val(value.allergies);
+                    console.log('allergies_show');
                 }
                 else{
                     $('.allergies_div').hide();
+                    console.log('allergies_hide');
                 }
                 if(value.medication){
                     $('.medication_div').show();
                     $('#medication').val(value.medication);
+                    console.log('medication_show');
                 }
                 else{
                     $('.medication_div').hide();
+                    console.log('medication_div');
                 }
                 if(value.psychological_history){
                     $('.psych_div').show();
                     $('#psychological_history').val(value.psychological_history);
+                    console.log('psych_div_show');
                 }
                 else{
                     $('.psych_div').hide();
+                    console.log('psych_div_hide');
                 }
 
                 if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
-                    $('.column_ten').hide();
+                    $('#checkbox7').prop('disabled',true);
+                    console.log('d');
                 }
                 else{
-                    $('.column_ten').show();
+                    $('#checkbox7').prop('disabled',false);
+                    console.log('e');
                 }
 
                 // Compensation Benefits
@@ -439,9 +450,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
                             $('#training_table_orig').hide();
+                            $('.training_div').hide();
                         }
                         else{
                             $('#training_table_orig').show();
+                            $('.training_div').show();
                         }
                     }
                 });
@@ -496,12 +509,23 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
                             $('#vocational_table_orig').hide();
+                            $('.vocational_div').hide();
                         }
                         else{
                             $('#vocational_table_orig').show();
+                            $('.vocational_div').show();
                         }
                     }
                 });
+
+                if(!$('.training_table_orig').DataTable().data().any() && !$('.vocational_table_orig').DataTable().data().any()){
+                    $('.training_div').hide();
+                    $('.vocational_div').hide();
+                    $('#checkbox5').prop('disabled',true);
+                }
+                else{
+                    $('#checkbox5').prop('disabled',false);
+                }
 
                 $('.job_history_table_orig').dataTable().fnDestroy();
                 $('.job_history_table_orig').DataTable({
@@ -535,14 +559,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     columns: [
                         { data: 'job_company_name',width : '15%'},
                         { data: 'job_description',width : '15%'},
-                        // {
-                        //     data: 'job_description',
-                        //     width : '15%',
-                        //     "render":function(data,type,row){
-                        //         job_description = row.job_description.replaceAll("• ","<br>• ").replace(/<br>/, '');
-                        //         return job_description;
-                        //     },
-                        // },
                         { data: 'job_position', width: '15%'},
                         { data: 'job_contact_number', width : '15%'},
                         {
@@ -563,9 +579,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){
                             $('#job_history_table_orig').hide();
+                            $('#checkbox6').prop('disabled',true);
+                            $('.column_nine').hide();
                         }
                         else{
                             $('#job_history_table_orig').show();
+                            $('#checkbox6').prop('disabled',false);
+                            $('.column_nine').show();
                         }
                     }
                 });

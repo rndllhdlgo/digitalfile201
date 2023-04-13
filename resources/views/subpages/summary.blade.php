@@ -280,7 +280,7 @@
                         </div>
 
                         <div class="row mb-3 college_div" style="display:none;">
-                            <h6><b>COLLEGE ATTAINMENT</b></h6><br>
+                            <h6><b>COLLEGE</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="college_school_name"></span>
@@ -296,7 +296,7 @@
                         </div>
 
                         <div class="row mb-3 secondary_div" style="display:none;">
-                            <h6><b>SECONDARY SCHOOL ATTAINMENT</b></h6><br>
+                            <h6><b>SECONDARY SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="secondary_school_name"></span>
@@ -313,7 +313,7 @@
                         </div>
 
                         <div class="row mb-3">
-                            <h6><b>PRIMARY SCHOOL ATTAINMENT</b></h6><br>
+                            <h6><b>PRIMARY SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="primary_school_name"></span>

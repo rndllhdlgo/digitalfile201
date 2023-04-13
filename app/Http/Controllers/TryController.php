@@ -27,9 +27,9 @@ class TryController extends Controller
             foreach($request->file('memo_file') as $key => $value){
                 $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/multiple_files',$memoFileName);
-                
+
                 $memo = new MultipleSave;
-                
+
                 $memo->memo_subject = $request->memo_subject[$key];
                 $memo->memo_date = $request->memo_date[$key];
                 $memo->memo_penalty = $request->memo_penalty[$key];
@@ -37,7 +37,7 @@ class TryController extends Controller
                 $memo->save();
             }
         }
-    } 
+    }
 
     public function chosen_blade(){
         $companies = Company::select('id','company_name')->get();
@@ -106,7 +106,7 @@ class TryController extends Controller
     //     $croppedImage = str_replace('data:image/jpeg;base64,', '', $croppedImage);
     //     $croppedImage = str_replace(' ', '+', $croppedImage);
     //     $croppedImage = base64_decode($croppedImage);
-        
+
     //     $filename = uniqid() . '.jpg';
     //     Storage::disk('public')->put('employee_images/' . $filename, $croppedImage);
 
@@ -114,18 +114,20 @@ class TryController extends Controller
     //         'success' => true,
     //         'filename' => $filename,
     //     ]);
-    // }    
+    // }
 
-    public function cropImage_save(Request $request)
-{
-    $imageData = $request->input('employee_image');
-    $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
-    $imageData = str_replace(' ', '+', $imageData);
-    $imageName = 'cropped_image_' . time() . '.jpeg';
+    public function cropImage_save(Request $request){
+        $imageData = $request->input('employee_image');
+        $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
+        $imageData = str_replace(' ', '+', $imageData);
+        $imageName = 'cropped_image_' . time() . '.jpeg';
 
-    Storage::disk('public')->put($imageName, base64_decode($imageData));
+        Storage::disk('public')->put($imageName, base64_decode($imageData));
 
-    return response()->json($imageName);
-}
+        return response()->json($imageName);
+    }
 
+    public function reports(){
+        return view('try.reports');
+    }
 }

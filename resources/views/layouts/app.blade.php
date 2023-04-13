@@ -66,8 +66,7 @@
         <script src="/js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-        <!-- Insert JS FILES -->
-        @if(Request::is('/'))<!--Route-->
+        @if(Request::is('/'))
             <script src="/js/home/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
