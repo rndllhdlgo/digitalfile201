@@ -201,6 +201,8 @@ Route::any('/export','TryController@export_blade');
 Route::any('/export_data','TryController@export_data');
 Route::any('/cropImage','TryController@cropImage_blade');
 Route::any('/cropImageSave','TryController@cropImage_save');
+Route::any('/reports','TryController@reports');
+Route::any('/reports_data','TryController@reports_data');
 
 
 Route::any('/users_page','PagesController@users_page');

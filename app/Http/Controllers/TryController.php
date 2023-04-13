@@ -13,6 +13,8 @@ use App\Models\Company;
 use App\Imports\TestImport;
 use App\Models\Import;
 use App\Models\Export;
+use App\Models\Report;
+use Carbon\Carbon;
 use DataTables;
 
 class TryController extends Controller
@@ -129,5 +131,23 @@ class TryController extends Controller
 
     public function reports(){
         return view('try.reports');
+    }
+
+    // public function reports_data(){
+    //     return DataTables::of(Report::all())->make(true);
+    // }
+
+    public function reports_data(Request $request){
+        $selectedMonth = $request->input('selectedMonth');
+        $selectedYear = $request->input('selectedYear');
+
+        // format the selected month and year as a date string
+        $selectedDate = Carbon::createFromDate($selectedYear, $selectedMonth)->format('Y-m');
+
+        // retrieve the data from your database and filter by date
+        $data = Report::where('date', 'like', $selectedDate.'%')->get();
+
+        // return the filtered data as DataTables JSON response
+        return DataTables::of($data)->make(true);
     }
 }
