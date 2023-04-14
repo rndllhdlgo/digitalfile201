@@ -37,7 +37,6 @@
             <tr>
                 <th>FILENAME</th>
                 <th>BRANCH</th>
-                {{-- <th>ACTION</th> --}}
             </tr>
         </thead>
         <tbody></tbody>

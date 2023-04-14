@@ -138,8 +138,8 @@ class TryController extends Controller
     // }
 
     public function reports_data(Request $request){
-        $selectedMonth = $request->input('selectedMonth');
-        $selectedYear = $request->input('selectedYear');
+        $selectedMonth = $request->selectedMonth;
+        $selectedYear = $request->selectedYear;
 
         // format the selected month and year as a date string
         $selectedDate = Carbon::createFromDate($selectedYear, $selectedMonth)->format('Y-m');
