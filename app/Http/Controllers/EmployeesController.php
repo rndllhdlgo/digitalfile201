@@ -506,7 +506,6 @@ class EmployeesController extends Controller
         ->toJson();
     }
 
-
     public function insertImage(Request $request){
         $imageData = $request->input('image_data');
         $extension = explode('/', mime_content_type($imageData))[1];
@@ -1352,278 +1351,278 @@ class EmployeesController extends Controller
             $data = array('result' => $result, 'id' => $id);
             return response()->json($data);
         }
-        else{
-            $empno = PersonalInformationTable::where('id',$request->id)->first()->empno;
+        // else{
+        //     $empno = PersonalInformationTable::where('id',$request->id)->first()->empno;
 
-            $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER UPLOADED NEW IMAGE]' : null;
+        //     $employee_image_update = $request->employee_image_change == 'CHANGED' ? '[IMAGE CHANGE: USER UPLOADED NEW IMAGE]' : null;
 
-            $sql = PersonalInformationTablePending::
-                create([
-                'empno' => $empno,
-                'employee_image' => $request->employee_image,
-                'first_name' => strtoupper($request->first_name),
-                'middle_name' => strtoupper($request->middle_name),
-                'last_name' => strtoupper($request->last_name),
-                'suffix' => strtoupper($request->suffix),
-                'nickname' => strtoupper($request->nickname),
-                'birthday' => $request->birthday,
-                'gender' => $request->gender,
-                'address' => $request->address,
-                'ownership' => $request->ownership,
-                'province' => $request->province,
-                'city' => $request->city,
-                'region' => $request->region,
-                'height' => $request->height,
-                'weight' => $request->weight,
-                'religion' => strtoupper($request->religion),
-                'civil_status' => $request->civil_status,
-                'email_address' => $request->email_address,
-                'telephone_number' => $request->telephone_number,
-                'cellphone_number' => $request->cellphone_number,
-                'father_name' => strtoupper($request->father_name),
-                'father_contact_number' => $request->father_contact_number,
-                'father_profession' => strtoupper($request->father_profession),
-                'mother_name' => strtoupper($request->mother_name),
-                'mother_contact_number' => $request->mother_contact_number,
-                'mother_profession' => strtoupper($request->mother_profession),
-                'emergency_contact_name' => strtoupper($request->emergency_contact_name),
-                'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
-                'emergency_contact_number' => $request->emergency_contact_number
-            ]);
+        //     $sql = PersonalInformationTablePending::
+        //         create([
+        //         'empno' => $empno,
+        //         'employee_image' => $request->employee_image,
+        //         'first_name' => strtoupper($request->first_name),
+        //         'middle_name' => strtoupper($request->middle_name),
+        //         'last_name' => strtoupper($request->last_name),
+        //         'suffix' => strtoupper($request->suffix),
+        //         'nickname' => strtoupper($request->nickname),
+        //         'birthday' => $request->birthday,
+        //         'gender' => $request->gender,
+        //         'address' => $request->address,
+        //         'ownership' => $request->ownership,
+        //         'province' => $request->province,
+        //         'city' => $request->city,
+        //         'region' => $request->region,
+        //         'height' => $request->height,
+        //         'weight' => $request->weight,
+        //         'religion' => strtoupper($request->religion),
+        //         'civil_status' => $request->civil_status,
+        //         'email_address' => $request->email_address,
+        //         'telephone_number' => $request->telephone_number,
+        //         'cellphone_number' => $request->cellphone_number,
+        //         'father_name' => strtoupper($request->father_name),
+        //         'father_contact_number' => $request->father_contact_number,
+        //         'father_profession' => strtoupper($request->father_profession),
+        //         'mother_name' => strtoupper($request->mother_name),
+        //         'mother_contact_number' => $request->mother_contact_number,
+        //         'mother_profession' => strtoupper($request->mother_profession),
+        //         'emergency_contact_name' => strtoupper($request->emergency_contact_name),
+        //         'emergency_contact_relationship' => strtoupper($request->emergency_contact_relationship),
+        //         'emergency_contact_number' => $request->emergency_contact_number
+        //     ]);
 
-            if($sql){
+        //     if($sql){
 
-                $result = 'true';
-                $id = $employee->id;
+        //         $result = 'true';
+        //         $id = $employee->id;
 
-                if(
-                    $request->first_name != $first_name_orig ||
-                    $request->middle_name != $middle_name_orig ||
-                    $request->last_name != $last_name_orig ||
-                    $request->suffix != $suffix_orig ||
-                    $request->nickname != $nickname_orig ||
-                    $request->birthday != $birthday_orig ||
-                    $request->address != $address_orig ||
-                    $request->ownership != $ownership_orig ||
-                    $request->province != $province_orig ||
-                    $request->city != $city_orig ||
-                    $request->region != $region_orig ||
-                    $request->height != $height_orig ||
-                    $request->weight != $weight_orig ||
-                    $request->religion != $religion_orig ||
-                    $request->civil_status != $civil_status_orig ||
-                    $request->email_address != $email_address_orig ||
-                    $request->telephone_number != $telephone_number_orig ||
-                    $request->cellphone_number != $cellphone_number_orig ||
-                    $request->father_name != $father_name_orig ||
-                    $request->father_contact_number != $father_contact_number_orig ||
-                    $request->father_profession != $father_profession_orig ||
-                    $request->mother_name != $mother_name_orig ||
-                    $request->mother_contact_number != $mother_contact_number_orig ||
-                    $request->mother_profession != $mother_profession_orig ||
-                    $request->emergency_contact_name != $emergency_contact_name_orig ||
-                    $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
-                    $request->emergency_contact_number != $emergency_contact_number_orig ||
-                    $request->employee_image_change == 'CHANGED'
-                ){
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THIS EMPLOYEE'S PERSONAL INFORMATION DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
-                                        $first_name_change
-                                        $middle_name_change
-                                        $last_name_change
-                                        $suffix_change
-                                        $nickname_change
-                                        $birthday_change
-                                        $gender_change
-                                        $address_change
-                                        $ownership_change
-                                        $province_change
-                                        $city_change
-                                        $region_change
-                                        $height_change
-                                        $weight_change
-                                        $religion_change
-                                        $civil_status_change
-                                        $email_address_change
-                                        $telephone_number_change
-                                        $cellphone_number_change
-                                        $father_name_change
-                                        $father_contact_number_change
-                                        $father_profession_change
-                                        $mother_name_change
-                                        $mother_contact_number_change
-                                        $mother_profession_change
-                                        $emergency_contact_name_change
-                                        $emergency_contact_relationship_change
-                                        $emergency_contact_number_change
-                                        $employee_image_update
-                                        ";
-                    $userlogs->save();
-                }
+        //         if(
+        //             $request->first_name != $first_name_orig ||
+        //             $request->middle_name != $middle_name_orig ||
+        //             $request->last_name != $last_name_orig ||
+        //             $request->suffix != $suffix_orig ||
+        //             $request->nickname != $nickname_orig ||
+        //             $request->birthday != $birthday_orig ||
+        //             $request->address != $address_orig ||
+        //             $request->ownership != $ownership_orig ||
+        //             $request->province != $province_orig ||
+        //             $request->city != $city_orig ||
+        //             $request->region != $region_orig ||
+        //             $request->height != $height_orig ||
+        //             $request->weight != $weight_orig ||
+        //             $request->religion != $religion_orig ||
+        //             $request->civil_status != $civil_status_orig ||
+        //             $request->email_address != $email_address_orig ||
+        //             $request->telephone_number != $telephone_number_orig ||
+        //             $request->cellphone_number != $cellphone_number_orig ||
+        //             $request->father_name != $father_name_orig ||
+        //             $request->father_contact_number != $father_contact_number_orig ||
+        //             $request->father_profession != $father_profession_orig ||
+        //             $request->mother_name != $mother_name_orig ||
+        //             $request->mother_contact_number != $mother_contact_number_orig ||
+        //             $request->mother_profession != $mother_profession_orig ||
+        //             $request->emergency_contact_name != $emergency_contact_name_orig ||
+        //             $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
+        //             $request->emergency_contact_number != $emergency_contact_number_orig ||
+        //             $request->employee_image_change == 'CHANGED'
+        //         ){
+        //             $userlogs = new UserLogs;
+        //             $userlogs->user_id = auth()->user()->id;
+        //             $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THIS EMPLOYEE'S PERSONAL INFORMATION DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
+        //                                 $first_name_change
+        //                                 $middle_name_change
+        //                                 $last_name_change
+        //                                 $suffix_change
+        //                                 $nickname_change
+        //                                 $birthday_change
+        //                                 $gender_change
+        //                                 $address_change
+        //                                 $ownership_change
+        //                                 $province_change
+        //                                 $city_change
+        //                                 $region_change
+        //                                 $height_change
+        //                                 $weight_change
+        //                                 $religion_change
+        //                                 $civil_status_change
+        //                                 $email_address_change
+        //                                 $telephone_number_change
+        //                                 $cellphone_number_change
+        //                                 $father_name_change
+        //                                 $father_contact_number_change
+        //                                 $father_profession_change
+        //                                 $mother_name_change
+        //                                 $mother_contact_number_change
+        //                                 $mother_profession_change
+        //                                 $emergency_contact_name_change
+        //                                 $emergency_contact_relationship_change
+        //                                 $emergency_contact_number_change
+        //                                 $employee_image_update
+        //                                 ";
+        //             $userlogs->save();
+        //         }
 
-                $changes = [
-                    [
-                        'field' => 'FIRST NAME',
-                        'original_value' => $first_name_orig,
-                        'new_value' => strtoupper($request->first_name)
-                    ],
-                    [
-                        'field' => 'MIDDLE NAME',
-                        'original_value' => $middle_name_orig,
-                        'new_value' => strtoupper($request->middle_name)
-                    ],
-                    [
-                        'field' => 'LAST NAME',
-                        'original_value' => $last_name_orig,
-                        'new_value' => strtoupper($request->last_name)
-                    ],
-                    [
-                        'field' => 'SUFFIX',
-                        'original_value' => $suffix_orig,
-                        'new_value' => strtoupper($request->suffix)
-                    ],
-                    [
-                        'field' => 'NICKNAME',
-                        'original_value' => $nickname_orig,
-                        'new_value' => strtoupper($request->nickname)
-                    ],
-                    [
-                        'field' => 'GENDER',
-                        'original_value' => $gender_orig,
-                        'new_value' => strtoupper($request->gender)
-                    ],
-                    [
-                        'field' => 'CIVIL STATUS',
-                        'original_value' => $civil_status_orig,
-                        'new_value' => strtoupper($request->civil_status)
-                    ],
-                    [
-                        'field' => 'BIRTHDAY',
-                        'original_value' => Carbon::parse($birthday_orig)->format('F d, Y'),
-                        'new_value' => Carbon::parse($request->birthday)->format('F d, Y')
-                    ],
-                    [
-                        'field' => 'ADDRESS',
-                        'original_value' => $address_orig,
-                        'new_value' => strtoupper($request->address)
-                    ],
-                    [
-                        'field' => 'OWNERSHIP',
-                        'original_value' => $ownership_orig,
-                        'new_value' => strtoupper($request->ownership)
-                    ],
-                    [
-                        'field' => 'PROVINCE',
-                        'original_value' => $province_orig,
-                        'new_value' => strtoupper($request->province)
-                    ],
-                    [
-                        'field' => 'CITY',
-                        'original_value' => $city_orig,
-                        'new_value' => strtoupper($request->city)
-                    ],
-                    [
-                        'field' => 'REGION',
-                        'original_value' => $region_orig,
-                        'new_value' => strtoupper($request->region)
-                    ],
-                    [
-                        'field' => 'HEIGHT',
-                        'original_value' => $height_orig,
-                        'new_value' => $request->height
-                    ],
-                    [
-                        'field' => 'WEIGHT',
-                        'original_value' => $weight_orig,
-                        'new_value' => $request->weight
-                    ],
-                    [
-                        'field' => 'RELIGION',
-                        'original_value' => $religion_orig,
-                        'new_value' => strtoupper($request->religion)
-                    ],
-                    [
-                        'field' => 'EMAIL ADDRESS',
-                        'original_value' => $email_address_orig,
-                        'new_value' => $request->email_address
-                    ],
-                    [
-                        'field' => 'TELEPHONE NUMBER',
-                        'original_value' => $telephone_number_orig,
-                        'new_value' => strtoupper($request->telephone_number)
-                    ],
-                    [
-                        'field' => 'CELLPHONE NUMBER',
-                        'original_value' => $cellphone_number_orig,
-                        'new_value' => strtoupper($request->cellphone_number)
-                    ],
-                    [
-                        'field' => 'FATHER NAME',
-                        'original_value' => $father_name_orig,
-                        'new_value' => strtoupper($request->father_name)
-                    ],
-                    [
-                        'field' => 'FATHER CONTACT NUMBER',
-                        'original_value' => $father_contact_number_orig,
-                        'new_value' => strtoupper($request->father_contact_number)
-                    ],
-                    [
-                        'field' => 'FATHER PROFESSION',
-                        'original_value' => $father_profession_orig,
-                        'new_value' => strtoupper($request->father_profession)
-                    ],
-                    [
-                        'field' => 'MOTHER NAME',
-                        'original_value' => $mother_name_orig,
-                        'new_value' => strtoupper($request->mother_name)
-                    ],
-                    [
-                        'field' => 'MOTHER CONTACT NUMBER',
-                        'original_value' => $mother_contact_number_orig,
-                        'new_value' => strtoupper($request->mother_contact_number)
-                    ],
-                    [
-                        'field' => 'MOTHER PROFESSION',
-                        'original_value' => $mother_profession_orig,
-                        'new_value' => strtoupper($request->mother_profession)
-                    ],
-                    [
-                        'field' => 'EMERGENCY CONTACT NAME',
-                        'original_value' => $emergency_contact_name_orig,
-                        'new_value' => strtoupper($request->emergency_contact_name)
-                    ],
-                    [
-                        'field' => 'EMERGENCY CONTACT RELATIONSHIP',
-                        'original_value' => $emergency_contact_relationship_orig,
-                        'new_value' => strtoupper($request->emergency_contact_relationship)
-                    ],
-                    [
-                        'field' => 'EMERGENCY CONTACT NUMBER',
-                        'original_value' => $emergency_contact_number_orig,
-                        'new_value' => strtoupper($request->emergency_contact_number)
-                    ]
-                ];
+        //         $changes = [
+        //             [
+        //                 'field' => 'FIRST NAME',
+        //                 'original_value' => $first_name_orig,
+        //                 'new_value' => strtoupper($request->first_name)
+        //             ],
+        //             [
+        //                 'field' => 'MIDDLE NAME',
+        //                 'original_value' => $middle_name_orig,
+        //                 'new_value' => strtoupper($request->middle_name)
+        //             ],
+        //             [
+        //                 'field' => 'LAST NAME',
+        //                 'original_value' => $last_name_orig,
+        //                 'new_value' => strtoupper($request->last_name)
+        //             ],
+        //             [
+        //                 'field' => 'SUFFIX',
+        //                 'original_value' => $suffix_orig,
+        //                 'new_value' => strtoupper($request->suffix)
+        //             ],
+        //             [
+        //                 'field' => 'NICKNAME',
+        //                 'original_value' => $nickname_orig,
+        //                 'new_value' => strtoupper($request->nickname)
+        //             ],
+        //             [
+        //                 'field' => 'GENDER',
+        //                 'original_value' => $gender_orig,
+        //                 'new_value' => strtoupper($request->gender)
+        //             ],
+        //             [
+        //                 'field' => 'CIVIL STATUS',
+        //                 'original_value' => $civil_status_orig,
+        //                 'new_value' => strtoupper($request->civil_status)
+        //             ],
+        //             [
+        //                 'field' => 'BIRTHDAY',
+        //                 'original_value' => Carbon::parse($birthday_orig)->format('F d, Y'),
+        //                 'new_value' => Carbon::parse($request->birthday)->format('F d, Y')
+        //             ],
+        //             [
+        //                 'field' => 'ADDRESS',
+        //                 'original_value' => $address_orig,
+        //                 'new_value' => strtoupper($request->address)
+        //             ],
+        //             [
+        //                 'field' => 'OWNERSHIP',
+        //                 'original_value' => $ownership_orig,
+        //                 'new_value' => strtoupper($request->ownership)
+        //             ],
+        //             [
+        //                 'field' => 'PROVINCE',
+        //                 'original_value' => $province_orig,
+        //                 'new_value' => strtoupper($request->province)
+        //             ],
+        //             [
+        //                 'field' => 'CITY',
+        //                 'original_value' => $city_orig,
+        //                 'new_value' => strtoupper($request->city)
+        //             ],
+        //             [
+        //                 'field' => 'REGION',
+        //                 'original_value' => $region_orig,
+        //                 'new_value' => strtoupper($request->region)
+        //             ],
+        //             [
+        //                 'field' => 'HEIGHT',
+        //                 'original_value' => $height_orig,
+        //                 'new_value' => $request->height
+        //             ],
+        //             [
+        //                 'field' => 'WEIGHT',
+        //                 'original_value' => $weight_orig,
+        //                 'new_value' => $request->weight
+        //             ],
+        //             [
+        //                 'field' => 'RELIGION',
+        //                 'original_value' => $religion_orig,
+        //                 'new_value' => strtoupper($request->religion)
+        //             ],
+        //             [
+        //                 'field' => 'EMAIL ADDRESS',
+        //                 'original_value' => $email_address_orig,
+        //                 'new_value' => $request->email_address
+        //             ],
+        //             [
+        //                 'field' => 'TELEPHONE NUMBER',
+        //                 'original_value' => $telephone_number_orig,
+        //                 'new_value' => strtoupper($request->telephone_number)
+        //             ],
+        //             [
+        //                 'field' => 'CELLPHONE NUMBER',
+        //                 'original_value' => $cellphone_number_orig,
+        //                 'new_value' => strtoupper($request->cellphone_number)
+        //             ],
+        //             [
+        //                 'field' => 'FATHER NAME',
+        //                 'original_value' => $father_name_orig,
+        //                 'new_value' => strtoupper($request->father_name)
+        //             ],
+        //             [
+        //                 'field' => 'FATHER CONTACT NUMBER',
+        //                 'original_value' => $father_contact_number_orig,
+        //                 'new_value' => strtoupper($request->father_contact_number)
+        //             ],
+        //             [
+        //                 'field' => 'FATHER PROFESSION',
+        //                 'original_value' => $father_profession_orig,
+        //                 'new_value' => strtoupper($request->father_profession)
+        //             ],
+        //             [
+        //                 'field' => 'MOTHER NAME',
+        //                 'original_value' => $mother_name_orig,
+        //                 'new_value' => strtoupper($request->mother_name)
+        //             ],
+        //             [
+        //                 'field' => 'MOTHER CONTACT NUMBER',
+        //                 'original_value' => $mother_contact_number_orig,
+        //                 'new_value' => strtoupper($request->mother_contact_number)
+        //             ],
+        //             [
+        //                 'field' => 'MOTHER PROFESSION',
+        //                 'original_value' => $mother_profession_orig,
+        //                 'new_value' => strtoupper($request->mother_profession)
+        //             ],
+        //             [
+        //                 'field' => 'EMERGENCY CONTACT NAME',
+        //                 'original_value' => $emergency_contact_name_orig,
+        //                 'new_value' => strtoupper($request->emergency_contact_name)
+        //             ],
+        //             [
+        //                 'field' => 'EMERGENCY CONTACT RELATIONSHIP',
+        //                 'original_value' => $emergency_contact_relationship_orig,
+        //                 'new_value' => strtoupper($request->emergency_contact_relationship)
+        //             ],
+        //             [
+        //                 'field' => 'EMERGENCY CONTACT NUMBER',
+        //                 'original_value' => $emergency_contact_number_orig,
+        //                 'new_value' => strtoupper($request->emergency_contact_number)
+        //             ]
+        //         ];
 
-                foreach($changes as $change){
-                    if(!empty($change['new_value']) && $change['original_value'] !== $change['new_value']){
-                        $request_logs = new Requests;
-                        $request_logs->employee_id = $request->id;
-                        $request_logs->empno = $empno;
-                        $request_logs->field = $change['field'];
-                        $request_logs->original_value = $change['original_value'];
-                        $request_logs->new_value = $change['new_value'];
-                        $request_logs->save();
-                    }
-                }
-            }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
-        }
+        //         foreach($changes as $change){
+        //             if(!empty($change['new_value']) && $change['original_value'] !== $change['new_value']){
+        //                 $request_logs = new Requests;
+        //                 $request_logs->employee_id = $request->id;
+        //                 $request_logs->empno = $empno;
+        //                 $request_logs->field = $change['field'];
+        //                 $request_logs->original_value = $change['original_value'];
+        //                 $request_logs->new_value = $change['new_value'];
+        //                 $request_logs->save();
+        //             }
+        //         }
+        //     }
+        //     else{
+        //         $result = 'false';
+        //         $id = '';
+        //     }
+        //     $data = array('result' => $result, 'id' => $id);
+        //     return response()->json($data);
+        // }
     }
 
     public function updateWorkInformation(Request $request){
@@ -1896,30 +1895,30 @@ class EmployeesController extends Controller
             $data = array('result' => $result, 'id' => $id);
             return response()->json($data);
         }
-        else{
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $sql = WorkInformationTablePending::where('employee_id',$request->employee_id)
-                ->create([
-                    'employee_id' => $emp_id,
-                    'employee_number' => $request->employee_number,
-                    'date_hired' => $request->date_hired,
-                    // 'employee_shift' => $request->employee_shift,
-                    'employee_company' => $request->employee_company,
-                    'employee_branch' => $request->employee_branch,
-                    'employee_department' => $request->employee_department,
-                    'employee_position' => $request->employee_position,
-                    'employment_status' => $request->employment_status,
-                    'employment_origin' => $request->employment_origin,
-                    'company_email_address' => $request->company_email_address,
-                    'company_contact_number' => $request->company_contact_number,
-                    'hmo_number' => $request->hmo_number,
-                    'sss_number' => $request->sss_number,
-                    'pag_ibig_number' => $request->pag_ibig_number,
-                    'philhealth_number' => $request->philhealth_number,
-                    'tin_number' => $request->tin_number,
-                    'account_number' => $request->account_number,
-                ]);
-        }
+        // else{
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $sql = WorkInformationTablePending::where('employee_id',$request->employee_id)
+        //         ->create([
+        //             'employee_id' => $emp_id,
+        //             'employee_number' => $request->employee_number,
+        //             'date_hired' => $request->date_hired,
+        //             // 'employee_shift' => $request->employee_shift,
+        //             'employee_company' => $request->employee_company,
+        //             'employee_branch' => $request->employee_branch,
+        //             'employee_department' => $request->employee_department,
+        //             'employee_position' => $request->employee_position,
+        //             'employment_status' => $request->employment_status,
+        //             'employment_origin' => $request->employment_origin,
+        //             'company_email_address' => $request->company_email_address,
+        //             'company_contact_number' => $request->company_contact_number,
+        //             'hmo_number' => $request->hmo_number,
+        //             'sss_number' => $request->sss_number,
+        //             'pag_ibig_number' => $request->pag_ibig_number,
+        //             'philhealth_number' => $request->philhealth_number,
+        //             'tin_number' => $request->tin_number,
+        //             'account_number' => $request->account_number,
+        //         ]);
+        // }
     }
 
     public function updateEducationalAttainment(Request $request){
@@ -2096,233 +2095,233 @@ class EmployeesController extends Controller
                 }
         }
         // EMPLOYEE EDUCATION
-        else{
-            $employee = EducationalAttainment::where('employee_id',$request->employee_id)->first();
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        // else{
+        //     $employee = EducationalAttainment::where('employee_id',$request->employee_id)->first();
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        //     $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
-            if(!$employee){
-                if(
-                    $request->secondary_school_name
-                 || $request->secondary_school_address
-                 || $request->secondary_school_inclusive_years_from
-                 || $request->secondary_school_inclusive_years_to
-                 || $request->primary_school_name
-                 || $request->primary_school_address
-                 || $request->primary_school_inclusive_years_from
-                 || $request->primary_school_inclusive_years_to
-                ){
-                    $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
-                        ->create([
-                            'employee_id' => $emp_id,
-                            'empno' => $employee_number,
-                            'secondary_school_name' => strtoupper($request->secondary_school_name),
-                            'secondary_school_address' => strtoupper($request->secondary_school_address),
-                            'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-                            'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                            'primary_school_name' => strtoupper($request->primary_school_name),
-                            'primary_school_address' => strtoupper($request->primary_school_address),
-                            'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                            'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
-                        ]);
+        //     if(!$employee){
+        //         if(
+        //             $request->secondary_school_name
+        //          || $request->secondary_school_address
+        //          || $request->secondary_school_inclusive_years_from
+        //          || $request->secondary_school_inclusive_years_to
+        //          || $request->primary_school_name
+        //          || $request->primary_school_address
+        //          || $request->primary_school_inclusive_years_from
+        //          || $request->primary_school_inclusive_years_to
+        //         ){
+        //             $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
+        //                 ->create([
+        //                     'employee_id' => $emp_id,
+        //                     'empno' => $employee_number,
+        //                     'secondary_school_name' => strtoupper($request->secondary_school_name),
+        //                     'secondary_school_address' => strtoupper($request->secondary_school_address),
+        //                     'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+        //                     'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+        //                     'primary_school_name' => strtoupper($request->primary_school_name),
+        //                     'primary_school_address' => strtoupper($request->primary_school_address),
+        //                     'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+        //                     'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to
+        //                 ]);
 
-                    if($sql){
-                        if($request->primary_school_name){
-                            $primary_school_name_logs = "[PRIMARY SCHOOL NAME: ".strtoupper($request->primary_school_name)."]";
-                        }
-                        else{
-                            $primary_school_name_logs = NULL;
-                        }
-                        if($request->primary_school_address){
-                            $primary_school_address_logs = "[PRIMARY SCHOOL ADDRESS: ".strtoupper($request->primary_school_address)."]";
-                        }
-                        else{
-                            $primary_school_address_logs = NULL;
-                        }
-                        if($request->primary_school_inclusive_years_from){
-                            $primary_school_inclusive_years_from_logs = "[PRIMARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_from)->format('F, Y')."]";
-                        }
-                        else{
-                            $primary_school_inclusive_years_from_logs = NULL;
-                        }
-                        if($request->primary_school_inclusive_years_to){
-                            $primary_school_inclusive_years_to_logs = "[PRIMARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_to)->format('F, Y')."]";
-                        }
-                        else{
-                            $primary_school_inclusive_years_to_logs = NULL;
-                        }
-                        if($request->secondary_school_name){
-                            $secondary_school_name_logs = "[SECONDARY SCHOOL NAME: ".strtoupper($request->secondary_school_name)."]";
-                        }
-                        else{
-                            $secondary_school_name_logs = NULL;
-                        }
-                        if($request->secondary_school_address){
-                            $secondary_school_address_logs = "[SECONDARY SCHOOL ADDRESS: ".strtoupper($request->secondary_school_address)."]";
-                        }
-                        else{
-                            $secondary_school_address_logs = NULL;
-                        }
-                        if($request->secondary_school_inclusive_years_from){
-                            $secondary_school_inclusive_years_from_logs = "[SECONDARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_from)->format('F, Y')."]";
-                        }
-                        else{
-                            $secondary_school_inclusive_years_from_logs = NULL;
-                        }
-                        if($request->secondary_school_inclusive_years_to){
-                            $secondary_school_inclusive_years_to_logs = "[SECONDARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_to)->format('F, Y')."]";
-                        }
-                        else{
-                            $secondary_school_inclusive_years_to_logs = NULL;
-                        }
+        //             if($sql){
+        //                 if($request->primary_school_name){
+        //                     $primary_school_name_logs = "[PRIMARY SCHOOL NAME: ".strtoupper($request->primary_school_name)."]";
+        //                 }
+        //                 else{
+        //                     $primary_school_name_logs = NULL;
+        //                 }
+        //                 if($request->primary_school_address){
+        //                     $primary_school_address_logs = "[PRIMARY SCHOOL ADDRESS: ".strtoupper($request->primary_school_address)."]";
+        //                 }
+        //                 else{
+        //                     $primary_school_address_logs = NULL;
+        //                 }
+        //                 if($request->primary_school_inclusive_years_from){
+        //                     $primary_school_inclusive_years_from_logs = "[PRIMARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_from)->format('F, Y')."]";
+        //                 }
+        //                 else{
+        //                     $primary_school_inclusive_years_from_logs = NULL;
+        //                 }
+        //                 if($request->primary_school_inclusive_years_to){
+        //                     $primary_school_inclusive_years_to_logs = "[PRIMARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->primary_school_inclusive_years_to)->format('F, Y')."]";
+        //                 }
+        //                 else{
+        //                     $primary_school_inclusive_years_to_logs = NULL;
+        //                 }
+        //                 if($request->secondary_school_name){
+        //                     $secondary_school_name_logs = "[SECONDARY SCHOOL NAME: ".strtoupper($request->secondary_school_name)."]";
+        //                 }
+        //                 else{
+        //                     $secondary_school_name_logs = NULL;
+        //                 }
+        //                 if($request->secondary_school_address){
+        //                     $secondary_school_address_logs = "[SECONDARY SCHOOL ADDRESS: ".strtoupper($request->secondary_school_address)."]";
+        //                 }
+        //                 else{
+        //                     $secondary_school_address_logs = NULL;
+        //                 }
+        //                 if($request->secondary_school_inclusive_years_from){
+        //                     $secondary_school_inclusive_years_from_logs = "[SECONDARY SCHOOL START YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_from)->format('F, Y')."]";
+        //                 }
+        //                 else{
+        //                     $secondary_school_inclusive_years_from_logs = NULL;
+        //                 }
+        //                 if($request->secondary_school_inclusive_years_to){
+        //                     $secondary_school_inclusive_years_to_logs = "[SECONDARY SCHOOL END YEAR/MONTH: ".Carbon::parse($request->secondary_school_inclusive_years_to)->format('F, Y')."]";
+        //                 }
+        //                 else{
+        //                     $secondary_school_inclusive_years_to_logs = NULL;
+        //                 }
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $primary_school_name_logs
-                                                $primary_school_address_logs
-                                                $primary_school_inclusive_years_from_logs
-                                                $primary_school_inclusive_years_to_logs
-                                                $secondary_school_name_logs
-                                                $secondary_school_address_logs
-                                                $secondary_school_inclusive_years_from_logs
-                                                $secondary_school_inclusive_years_to_logs
-                                                ";
-                        $userlogs->save();
-                    }
-                }
-            }
-            else{
-                $secondary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_name;
-                $secondary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_address;
-                $secondary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_from;
-                $secondary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_to;
-                $primary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_name;
-                $primary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_address;
-                $primary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_from;
-                $primary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_to;
+        //                 $userlogs = new UserLogs;
+        //                 $userlogs->user_id = auth()->user()->id;
+        //                 $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+        //                                         $primary_school_name_logs
+        //                                         $primary_school_address_logs
+        //                                         $primary_school_inclusive_years_from_logs
+        //                                         $primary_school_inclusive_years_to_logs
+        //                                         $secondary_school_name_logs
+        //                                         $secondary_school_address_logs
+        //                                         $secondary_school_inclusive_years_from_logs
+        //                                         $secondary_school_inclusive_years_to_logs
+        //                                         ";
+        //                 $userlogs->save();
+        //             }
+        //         }
+        //     }
+        //     else{
+        //         $secondary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_name;
+        //         $secondary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_address;
+        //         $secondary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_from;
+        //         $secondary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->secondary_school_inclusive_years_to;
+        //         $primary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_name;
+        //         $primary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_address;
+        //         $primary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_from;
+        //         $primary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first()->primary_school_inclusive_years_to;
 
-                if($request->secondary_school_name != $secondary_school_name_orig){
-                    $secondary_school_name_new = strtoupper($request->secondary_school_name);
-                    $secondary_school_name_change = "[SECONDARY SCHOOL NAME: FROM '$secondary_school_name_orig' TO '$secondary_school_name_new']";
-                }
-                else{
-                    $secondary_school_name_change = NULL;
-                }
+        //         if($request->secondary_school_name != $secondary_school_name_orig){
+        //             $secondary_school_name_new = strtoupper($request->secondary_school_name);
+        //             $secondary_school_name_change = "[SECONDARY SCHOOL NAME: FROM '$secondary_school_name_orig' TO '$secondary_school_name_new']";
+        //         }
+        //         else{
+        //             $secondary_school_name_change = NULL;
+        //         }
 
-                if($request->secondary_school_address != $secondary_school_address_orig){
-                    $secondary_school_address_new = strtoupper($request->secondary_school_address);
-                    $secondary_school_address_change = "[SECONDARY SCHOOL ADDRESS: FROM '$secondary_school_address_orig' TO '$secondary_school_address_new']";
-                }
-                else{
-                    $secondary_school_address_change = NULL;
-                }
+        //         if($request->secondary_school_address != $secondary_school_address_orig){
+        //             $secondary_school_address_new = strtoupper($request->secondary_school_address);
+        //             $secondary_school_address_change = "[SECONDARY SCHOOL ADDRESS: FROM '$secondary_school_address_orig' TO '$secondary_school_address_new']";
+        //         }
+        //         else{
+        //             $secondary_school_address_change = NULL;
+        //         }
 
-                if($request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig){
-                    $secondary_school_inclusive_years_from_1 = Carbon::parse($secondary_school_inclusive_years_from_orig)->format('F Y');
-                    $secondary_school_inclusive_years_from_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-                    $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_1' TO '$secondary_school_inclusive_years_from_2']";
-                }
-                else{
-                    $secondary_school_inclusive_years_from_change = NULL;
-                }
+        //         if($request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig){
+        //             $secondary_school_inclusive_years_from_1 = Carbon::parse($secondary_school_inclusive_years_from_orig)->format('F Y');
+        //             $secondary_school_inclusive_years_from_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
+        //             $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_1' TO '$secondary_school_inclusive_years_from_2']";
+        //         }
+        //         else{
+        //             $secondary_school_inclusive_years_from_change = NULL;
+        //         }
 
-                if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
-                    $secondary_school_inclusive_years_to_1 = Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y');
-                    $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-                    $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_1' TO '$secondary_school_inclusive_years_to_2']";
-                }
-                else{
-                    $secondary_school_inclusive_years_to_change = NULL;
-                }
+        //         if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
+        //             $secondary_school_inclusive_years_to_1 = Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y');
+        //             $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
+        //             $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_1' TO '$secondary_school_inclusive_years_to_2']";
+        //         }
+        //         else{
+        //             $secondary_school_inclusive_years_to_change = NULL;
+        //         }
 
-                if($request->primary_school_name != $primary_school_name_orig){
-                    $primary_school_name_new = strtoupper($request->primary_school_name);
-                    $primary_school_name_change = "[PRIMARY SCHOOL NAME: FROM '$primary_school_name_orig' TO '$primary_school_name_new']";
-                }
-                else{
-                    $primary_school_name_change = NULL;
-                }
+        //         if($request->primary_school_name != $primary_school_name_orig){
+        //             $primary_school_name_new = strtoupper($request->primary_school_name);
+        //             $primary_school_name_change = "[PRIMARY SCHOOL NAME: FROM '$primary_school_name_orig' TO '$primary_school_name_new']";
+        //         }
+        //         else{
+        //             $primary_school_name_change = NULL;
+        //         }
 
-                if($request->primary_school_address != $primary_school_address_orig){
-                    $primary_school_address_new = strtoupper($request->primary_school_address);
-                    $primary_school_address_change = "[PRIMARY SCHOOL ADDRESS: FROM '$primary_school_address_orig' TO '$primary_school_address_new']";
-                }
-                else{
-                    $primary_school_address_change = NULL;
-                }
+        //         if($request->primary_school_address != $primary_school_address_orig){
+        //             $primary_school_address_new = strtoupper($request->primary_school_address);
+        //             $primary_school_address_change = "[PRIMARY SCHOOL ADDRESS: FROM '$primary_school_address_orig' TO '$primary_school_address_new']";
+        //         }
+        //         else{
+        //             $primary_school_address_change = NULL;
+        //         }
 
-                if($request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig){
-                    $primary_school_inclusive_years_from_1 = Carbon::parse($primary_school_inclusive_years_from_orig)->format('F Y');
-                    $primary_school_inclusive_years_from_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-                    $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_1' TO '$primary_school_inclusive_years_from_2']";
-                }
-                else{
-                    $primary_school_inclusive_years_from_change = NULL;
-                }
+        //         if($request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig){
+        //             $primary_school_inclusive_years_from_1 = Carbon::parse($primary_school_inclusive_years_from_orig)->format('F Y');
+        //             $primary_school_inclusive_years_from_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
+        //             $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_1' TO '$primary_school_inclusive_years_from_2']";
+        //         }
+        //         else{
+        //             $primary_school_inclusive_years_from_change = NULL;
+        //         }
 
-                if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
-                    $primary_school_inclusive_years_to_1 = Carbon::parse($primary_school_inclusive_years_to_orig)->format('F Y');
-                    $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-                    $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_1' TO '$primary_school_inclusive_years_to_2']";
-                }
-                else{
-                    $primary_school_inclusive_years_to_change = NULL;
-                }
+        //         if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
+        //             $primary_school_inclusive_years_to_1 = Carbon::parse($primary_school_inclusive_years_to_orig)->format('F Y');
+        //             $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
+        //             $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_1' TO '$primary_school_inclusive_years_to_2']";
+        //         }
+        //         else{
+        //             $primary_school_inclusive_years_to_change = NULL;
+        //         }
 
-                $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
-                ->create([
-                    'employee_id' => $emp_id,
-                    'empno' => $employee_number,
-                    'secondary_school_name' => $request->secondary_school_name,
-                    'secondary_school_address' => $request->secondary_school_address,
-                    'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-                    'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-                    'primary_school_name' => $request->primary_school_name,
-                    'primary_school_address' => $request->primary_school_address,
-                    'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-                    'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
-                ]);
+        //         $sql = EducationalAttainmentPending::where('employee_id',$request->employee_id)
+        //         ->create([
+        //             'employee_id' => $emp_id,
+        //             'empno' => $employee_number,
+        //             'secondary_school_name' => $request->secondary_school_name,
+        //             'secondary_school_address' => $request->secondary_school_address,
+        //             'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
+        //             'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
+        //             'primary_school_name' => $request->primary_school_name,
+        //             'primary_school_address' => $request->primary_school_address,
+        //             'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
+        //             'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
+        //         ]);
 
-                if($sql){
-                    $result = 'true';
-                    $id = $employee->id;
+        //         if($sql){
+        //             $result = 'true';
+        //             $id = $employee->id;
 
-                    if(
-                        $request->secondary_school_name != $secondary_school_name_orig ||
-                        $request->secondary_school_address != $secondary_school_address_orig ||
-                        $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
-                        $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
-                        $request->primary_school_name != $primary_school_name_orig ||
-                        $request->primary_school_address != $primary_school_address_orig ||
-                        $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
-                        $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
-                    ){
+        //             if(
+        //                 $request->secondary_school_name != $secondary_school_name_orig ||
+        //                 $request->secondary_school_address != $secondary_school_address_orig ||
+        //                 $request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig ||
+        //                 $request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig ||
+        //                 $request->primary_school_name != $primary_school_name_orig ||
+        //                 $request->primary_school_address != $primary_school_address_orig ||
+        //                 $request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig ||
+        //                 $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
+        //             ){
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $secondary_school_name_change
-                                                $secondary_school_address_change
-                                                $secondary_school_inclusive_years_from_change
-                                                $secondary_school_inclusive_years_to_change
-                                                $primary_school_name_change
-                                                $primary_school_address_change
-                                                $primary_school_inclusive_years_from_change
-                                                $primary_school_inclusive_years_to_change
-                                                ";
-                        $userlogs->save();
-                    }
-                }
-                else{
-                    $result = 'false';
-                    $id = '';
-                }
-                $data = array('result' => $result, 'id' => $id);
-                return response()->json($data);
-            }
-        }
+        //                 $userlogs = new UserLogs;
+        //                 $userlogs->user_id = auth()->user()->id;
+        //                 $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE EDUCATIONAL INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+        //                                         $secondary_school_name_change
+        //                                         $secondary_school_address_change
+        //                                         $secondary_school_inclusive_years_from_change
+        //                                         $secondary_school_inclusive_years_to_change
+        //                                         $primary_school_name_change
+        //                                         $primary_school_address_change
+        //                                         $primary_school_inclusive_years_from_change
+        //                                         $primary_school_inclusive_years_to_change
+        //                                         ";
+        //                 $userlogs->save();
+        //             }
+        //         }
+        //         else{
+        //             $result = 'false';
+        //             $id = '';
+        //         }
+        //         $data = array('result' => $result, 'id' => $id);
+        //         return response()->json($data);
+        //     }
+        // }
     }
 
     public function updateMedicalHistory(Request $request){
@@ -2434,149 +2433,149 @@ class EmployeesController extends Controller
             }
         }
         // EMPLOYEE MEDICAL
-        else{
-            $employee = MedicalHistory::where('employee_id', $request->employee_id)->first();
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        // else{
+        //     $employee = MedicalHistory::where('employee_id', $request->employee_id)->first();
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        //     $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
-            if(!$employee){
-                if(
-                   $request->past_medical_condition
-                || $request->allergies
-                || $request->medication
-                || $request->psychological_history
-                ){
-                    $sql = MedicalHistoryPending::where('employee_id',$request->employee_id)
-                    ->create([
-                        'employee_id' => $emp_id,
-                        'empno' => $employee_number,
-                        'past_medical_condition' => strtoupper($request->past_medical_condition),
-                        'allergies' => strtoupper($request->allergies),
-                        'medication' => strtoupper($request->medication),
-                        'psychological_history' => strtoupper($request->psychological_history)
-                    ]);
+        //     if(!$employee){
+        //         if(
+        //            $request->past_medical_condition
+        //         || $request->allergies
+        //         || $request->medication
+        //         || $request->psychological_history
+        //         ){
+        //             $sql = MedicalHistoryPending::where('employee_id',$request->employee_id)
+        //             ->create([
+        //                 'employee_id' => $emp_id,
+        //                 'empno' => $employee_number,
+        //                 'past_medical_condition' => strtoupper($request->past_medical_condition),
+        //                 'allergies' => strtoupper($request->allergies),
+        //                 'medication' => strtoupper($request->medication),
+        //                 'psychological_history' => strtoupper($request->psychological_history)
+        //             ]);
 
-                    if($sql){
-                        if($request->past_medical_condition){
-                            $past_medical_condition_logs = "[PAST MEDICAL CONDITION: ".strtoupper($request->past_medical_condition)."]";
-                        }
-                        else{
-                            $past_medical_condition_logs = NULL;
-                        }
+        //             if($sql){
+        //                 if($request->past_medical_condition){
+        //                     $past_medical_condition_logs = "[PAST MEDICAL CONDITION: ".strtoupper($request->past_medical_condition)."]";
+        //                 }
+        //                 else{
+        //                     $past_medical_condition_logs = NULL;
+        //                 }
 
-                        if($request->allergies){
-                            $allergies_logs = "[ALLERGIES: ".strtoupper($request->allergies)."]";
-                        }
-                        else{
-                            $allergies_logs = NULL;
-                        }
+        //                 if($request->allergies){
+        //                     $allergies_logs = "[ALLERGIES: ".strtoupper($request->allergies)."]";
+        //                 }
+        //                 else{
+        //                     $allergies_logs = NULL;
+        //                 }
 
-                        if($request->medication){
-                            $medication_logs = "[MEDICATION: ".strtoupper($request->medication)."]";
-                        }
-                        else{
-                            $medication_logs = NULL;
-                        }
+        //                 if($request->medication){
+        //                     $medication_logs = "[MEDICATION: ".strtoupper($request->medication)."]";
+        //                 }
+        //                 else{
+        //                     $medication_logs = NULL;
+        //                 }
 
-                        if($request->psychological_history){
-                            $psychological_history_logs = "[PSYCHOLOGICAL HISTORY: ".strtoupper($request->psychological_history)."]";
-                        }
-                        else{
-                            $psychological_history_logs = NULL;
-                        }
+        //                 if($request->psychological_history){
+        //                     $psychological_history_logs = "[PSYCHOLOGICAL HISTORY: ".strtoupper($request->psychological_history)."]";
+        //                 }
+        //                 else{
+        //                     $psychological_history_logs = NULL;
+        //                 }
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $past_medical_condition_logs
-                                                $allergies_logs
-                                                $medication_logs
-                                                $psychological_history_logs
-                                                ";
-                        $userlogs->save();
-                    }
-                }
-            }
-            else{
-                $past_medical_condition_orig = MedicalHistory::where('employee_id',$request->id)->first()->past_medical_condition;
-                $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
-                $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
-                $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
+        //                 $userlogs = new UserLogs;
+        //                 $userlogs->user_id = auth()->user()->id;
+        //                 $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+        //                                         $past_medical_condition_logs
+        //                                         $allergies_logs
+        //                                         $medication_logs
+        //                                         $psychological_history_logs
+        //                                         ";
+        //                 $userlogs->save();
+        //             }
+        //         }
+        //     }
+        //     else{
+        //         $past_medical_condition_orig = MedicalHistory::where('employee_id',$request->id)->first()->past_medical_condition;
+        //         $allergies_orig = MedicalHistory::where('employee_id',$request->id)->first()->allergies;
+        //         $medication_orig = MedicalHistory::where('employee_id',$request->id)->first()->medication;
+        //         $psychological_history_orig = MedicalHistory::where('employee_id',$request->id)->first()->psychological_history;
 
-                if($request->past_medical_condition != $past_medical_condition_orig){
-                    $past_medical_condition_new = strtoupper($request->past_medical_condition);
-                    $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
-                }
-                else{
-                    $past_medical_condition_change = NULL;
-                }
+        //         if($request->past_medical_condition != $past_medical_condition_orig){
+        //             $past_medical_condition_new = strtoupper($request->past_medical_condition);
+        //             $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
+        //         }
+        //         else{
+        //             $past_medical_condition_change = NULL;
+        //         }
 
-                if($request->allergies != $allergies_orig){
-                    $allergies_new = strtoupper($request->allergies);
-                    $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
-                }
-                else{
-                    $allergies_change = NULL;
-                }
+        //         if($request->allergies != $allergies_orig){
+        //             $allergies_new = strtoupper($request->allergies);
+        //             $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
+        //         }
+        //         else{
+        //             $allergies_change = NULL;
+        //         }
 
-                if($request->medication != $medication_orig){
-                    $medication_new = strtoupper($request->medication);
-                    $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
-                }
-                else{
-                    $medication_change = NULL;
-                }
+        //         if($request->medication != $medication_orig){
+        //             $medication_new = strtoupper($request->medication);
+        //             $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
+        //         }
+        //         else{
+        //             $medication_change = NULL;
+        //         }
 
-                if($request->psychological_history != $psychological_history_orig){
-                    $psychological_history_new = strtoupper($request->psychological_history);
-                    $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
-                }
-                else{
-                    $psychological_history_change = NULL;
-                }
+        //         if($request->psychological_history != $psychological_history_orig){
+        //             $psychological_history_new = strtoupper($request->psychological_history);
+        //             $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
+        //         }
+        //         else{
+        //             $psychological_history_change = NULL;
+        //         }
 
-                $sql = MedicalHistoryPending::where('employee_id',$request->employee_id)
-                    ->create([
-                        'employee_id' => $emp_id,
-                        'empno' => $employee_number,
-                        'past_medical_condition' => strtoupper($request->past_medical_condition),
-                        'allergies' => strtoupper($request->allergies),
-                        'medication' => strtoupper($request->medication),
-                        'psychological_history' => strtoupper($request->psychological_history)
-                    ]);
+        //         $sql = MedicalHistoryPending::where('employee_id',$request->employee_id)
+        //             ->create([
+        //                 'employee_id' => $emp_id,
+        //                 'empno' => $employee_number,
+        //                 'past_medical_condition' => strtoupper($request->past_medical_condition),
+        //                 'allergies' => strtoupper($request->allergies),
+        //                 'medication' => strtoupper($request->medication),
+        //                 'psychological_history' => strtoupper($request->psychological_history)
+        //             ]);
 
-                    if($sql){
+        //             if($sql){
 
-                        $result = 'true';
-                        $id = $employee->id;
+        //                 $result = 'true';
+        //                 $id = $employee->id;
 
-                        if(
-                            $request->past_medical_condition != $past_medical_condition_orig ||
-                            $request->allergies != $allergies_orig ||
-                            $request->medication != $medication_orig ||
-                            $request->psychological_history != $psychological_history_orig
-                        ){
+        //                 if(
+        //                     $request->past_medical_condition != $past_medical_condition_orig ||
+        //                     $request->allergies != $allergies_orig ||
+        //                     $request->medication != $medication_orig ||
+        //                     $request->psychological_history != $psychological_history_orig
+        //                 ){
 
-                            $userlogs = new UserLogs;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                    $past_medical_condition_change
-                                                    $allergies_change
-                                                    $medication_change
-                                                    $psychological_history_change
-                                                    ";
-                            $userlogs->save();
-                        }
-                    }
-                    else{
-                        $result = 'false';
-                        $id = '';
-                    }
-                    $data = array('result' => $result, 'id' => $id);
-                    return response()->json($data);
-            }
-        }
+        //                     $userlogs = new UserLogs;
+        //                     $userlogs->user_id = auth()->user()->id;
+        //                     $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE MEDICAL HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+        //                                             $past_medical_condition_change
+        //                                             $allergies_change
+        //                                             $medication_change
+        //                                             $psychological_history_change
+        //                                             ";
+        //                     $userlogs->save();
+        //                 }
+        //             }
+        //             else{
+        //                 $result = 'false';
+        //                 $id = '';
+        //             }
+        //             $data = array('result' => $result, 'id' => $id);
+        //             return response()->json($data);
+        //     }
+        // }
     }
 
     public function updateCompensationBenefits(Request $request){
