@@ -37,7 +37,7 @@
             <tr>
                 <th>FILENAME</th>
                 <th>BRANCH</th>
-                <th>ACTION</th>
+                {{-- <th>ACTION</th> --}}
             </tr>
         </thead>
         <tbody></tbody>
@@ -57,13 +57,6 @@
 <script>
 
 $('#loading').hide();
-
-// $('#month_submit').on('click', function() {
-//     var selectedMonth = $('#month_report').val().split('-')[1];
-//     var selectedYear = $('#month_report').val().split('-')[0];
-//     var url = '/reports_data?selectedMonth='+selectedMonth+'&selectedYear='+selectedYear;
-//     table.ajax.url(url).load();
-// });
 
 var table;
 $(document).ready(function(){
