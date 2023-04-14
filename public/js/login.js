@@ -9,3 +9,12 @@ function togglePassword(){
         password.type = "password";
     }
 }
+
+$("#show_pass").change(function(){
+    if($("#show_pass").is(":checked")){
+        $('#password').attr('type', 'text');
+    }
+    else{
+        $('#password').attr('type', 'password');
+    }
+});

@@ -33,6 +33,14 @@
                             @enderror
                         </div>
                         <div class="row mb-3">
+                            <div class="col-md-6" style="zoom:90%;">
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" id="show_pass" name="show_pass">
+                                    <label class="form-check-label" for="show_pass">
+                                        SHOW PASSWORD
+                                    </label>
+                                </div>
+                            </div>
                             <div class="col-md-6">
                                 <div class="form-check" style="zoom: 90%;">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
