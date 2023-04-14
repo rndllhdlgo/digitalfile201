@@ -251,47 +251,37 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);
                     $('.past_med_div').show();
-                    console.log('past_med_show');
                 }
                 else{
                     $('.past_med_div').hide();
-                    console.log('past_med_hide');
                 }
                 if(value.allergies){
                     $('.allergies_div').show();
                     $('#allergies').val(value.allergies);
-                    console.log('allergies_show');
                 }
                 else{
                     $('.allergies_div').hide();
-                    console.log('allergies_hide');
                 }
                 if(value.medication){
                     $('.medication_div').show();
                     $('#medication').val(value.medication);
-                    console.log('medication_show');
                 }
                 else{
                     $('.medication_div').hide();
-                    console.log('medication_div');
                 }
                 if(value.psychological_history){
                     $('.psych_div').show();
                     $('#psychological_history').val(value.psychological_history);
-                    console.log('psych_div_show');
                 }
                 else{
                     $('.psych_div').hide();
-                    console.log('psych_div_hide');
                 }
 
                 if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
                     $('#checkbox7').prop('disabled',true);
-                    console.log('d');
                 }
                 else{
                     $('#checkbox7').prop('disabled',false);
-                    console.log('e');
                 }
 
                 // Compensation Benefits
@@ -301,17 +291,78 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employee_bonus').val(value.employee_bonus);
                 $('#employee_insurance').val(value.employee_insurance);
 
+                // $('.children_table_orig').dataTable().fnDestroy();
+                // $('.children_table_orig').DataTable({
+                //     columnDefs: [
+                //         {
+                //             "render": function(data, type, row, meta){
+                //                     return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                //             },
+                //             "defaultContent": '',
+                //             "data": null,
+                //             "targets": [4],
+                //         },
+                //     ],
+                //     searching: false,
+                //     paging: false,
+                //     ordering: false,
+                //     info: false,
+                //     autoWidth: false,
+                //     language:{
+                //         emptyTable: "No data available in table",
+                //         processing: "Loading...",
+                //     },
+                //     serverSide: true,
+                //     ajax: {
+                //         url: '/employees/children_data',
+                //         async: false,
+                //         data:{
+                //             id: value.id,
+                //         }
+                //     },
+                //     columns: [
+                //         { data: 'child_name', width: '22.5%'},
+                //         { data: 'child_birthday', width: '22.5%'},
+                //         { data:  null, defaultContent : "", width: '22.5%'},
+                //         // { data:  '', width: '22.5%'},
+                //         { data: 'child_gender', width: '22.5%'}
+                //     ],
+                //     initComplete: function(){
+                //         if(!$('.children_table_orig').DataTable().data().any()){
+                //             $('#children_table_orig').hide();
+                //         }
+                //         else{
+                //             $('#children_table_orig').show();
+                //         }
+                //     }
+                // });
+
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
                     columnDefs: [
                         {
                             "render": function(data, type, row, meta){
-                                    return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
                             },
                             "defaultContent": '',
                             "data": null,
                             "targets": [4],
                         },
+                        {
+                            // new column definition for age
+                            data: null,
+                            render: function(data, type, row, meta) {
+                                var today = new Date();
+                                var birthDate = new Date(row.child_birthday);
+                                var age = today.getFullYear() - birthDate.getFullYear();
+                                var m = today.getMonth() - birthDate.getMonth();
+                                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                                    age--;
+                                }
+                                return age;
+                            },
+                            targets: [2] // index of new column
+                        }
                     ],
                     searching: false,
                     paging: false,
@@ -332,9 +383,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'child_name', width: '22.5%'},
-                        { data: 'child_birthday', width: '22.5%'},
+                        {
+                            data: 'child_birthday', width: '22.5%',
+                            "render":function(data,type,row){
+                                return formatDate(row.child_birthday);
+                            }
+                        },
                         { data:  null, defaultContent : "", width: '22.5%'},
-                        // { data:  '', width: '22.5%'},
                         { data: 'child_gender', width: '22.5%'}
                     ],
                     initComplete: function(){
@@ -346,6 +401,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         }
                     }
                 });
+
 
                 $('.college_table_orig').dataTable().fnDestroy();
                 $('.college_table_orig').DataTable({
