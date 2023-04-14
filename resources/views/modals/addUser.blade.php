@@ -17,7 +17,6 @@
                                     <option value="" disabled selected>SELECT USER LEVEL </option>
                                     <option value="ADMIN">ADMIN</option>
                                     <option value="ENCODER">ENCODER</option>
-                                    {{-- <option value="EMPLOYEE">EMPLOYEE</option> --}}
                                 </select>
                                 <label for="user_level" class="formlabel form-label"><i class="fas fa-user-cog"></i> USER LEVEL <span class="span_user_level"></span></label>
                             </div>

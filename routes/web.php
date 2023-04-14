@@ -30,19 +30,12 @@ Route::get('/index_reload_data','HomeController@index_reload_data');
 
 // Pages Controller
 Route::any('/employees', 'PagesController@employees');
-Route::any('/memos', 'PagesController@memos');
-Route::any('/evaluation', 'PagesController@evaluation');
-Route::any('/contracts', 'PagesController@contracts');
 Route::any('/users', 'PagesController@users');
 Route::any('/maintenance', 'PagesController@maintenance');
 Route::any('/updates', 'PagesController@updates');
 
 Route::get('/getCities','PagesController@getCities');
 Route::get('/getRegion','PagesController@getRegion');
-
-// Route::get('/index/data','PagesController@index_data');
-// Route::get('/index_reload_data','PagesController@index_reload_data');
-
 Route::any('/setJobPosition','PagesController@setJobPosition');
 Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/setJobRequirements','PagesController@setJobRequirements');
