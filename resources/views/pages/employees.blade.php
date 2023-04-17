@@ -93,6 +93,9 @@
                             <td>
                                 <input type="search" class="form-control filter-input" data-column="19" style="border:1px solid #683817"/>
                             </td>
+                            <td>
+                                <input type="search" class="form-control filter-input" data-column="20" style="border:1px solid #683817"/>
+                            </td>
                         </tr>
                         <tr>
                             <th> EMPLOYEE NO.</th>
@@ -109,6 +112,7 @@
                             <th> GENDER</th>
                             <th> CIVIL STATUS</th>
                             <th> BIRTHDAY</th>
+                            <th> AGE</th>
                             <th> PROVINCE</th>
                             <th> CITY</th>
                             <th> REGION</th>

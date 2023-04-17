@@ -940,6 +940,15 @@ class EmployeesController extends Controller
         $emergency_contact_name_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_name;
         $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
         $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
+        $blood_type_orig = PersonalInformationTable::where('id', $request->id)->first()->blood_type;
+
+        if($request->blood_type != $blood_type_orig){
+            $blood_type_new = strtoupper($request->blood_type);
+            $blood_type_change = "[BLOOD TYPE: FROM '$blood_type_orig' TO '$blood_type_new']";
+        }
+        else{
+            $blood_type_change = NULL;
+        }
 
         if($request->first_name != $first_name_orig){
             $first_name_new = strtoupper($request->first_name);
@@ -1264,6 +1273,7 @@ class EmployeesController extends Controller
                     $request->emergency_contact_name != $emergency_contact_name_orig ||
                     $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
                     $request->emergency_contact_number != $emergency_contact_number_orig ||
+                    $request->blood_type != $blood_type_orig ||
                     $request->employee_image_change == 'CHANGED'
                 ){
                     $employee_logs = new LogsTable;
@@ -1301,6 +1311,7 @@ class EmployeesController extends Controller
                                             $emergency_contact_name_change
                                             $emergency_contact_relationship_change
                                             $emergency_contact_number_change
+                                            $blood_type_change
                                             $employee_image_update
                                             ";
                     $employee_logs->save();
@@ -1804,7 +1815,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if(
-                    $request->employee_number != $employee_number_orig ||
+                    // $request->employee_number != $employee_number_orig ||
                     $request->date_hired != $date_hired_orig ||
                     $request->employee_company != $employee_company_orig ||
                     $request->employee_branch != $employee_branch_orig ||
@@ -1827,7 +1838,7 @@ class EmployeesController extends Controller
                     $userlogs->employee_id = $request->id;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
-                                        $employee_number_change
+
                                         $date_hired_change
                                         $employee_company_change
                                         $employee_branch_change
@@ -1848,7 +1859,7 @@ class EmployeesController extends Controller
                     $userlogs = new History;
                     $userlogs->employee_id = $request->id;
                     $userlogs->history = "UPDATED DETAILS
-                                        $employee_number_change
+
                                         $date_hired_change
                                         $employee_company_change
                                         $employee_branch_change
@@ -1869,7 +1880,7 @@ class EmployeesController extends Controller
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
-                                            $employee_number_change
+
                                             $date_hired_change
                                             $employee_company_change
                                             $employee_branch_change

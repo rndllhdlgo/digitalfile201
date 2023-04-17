@@ -177,7 +177,7 @@ $('#viewSummary').on('click', function(){
             id: $('#employee_position').val()
         },
         success: function(data){
-            if (data.length > 0) {
+            if(data.length > 0){
                 var job_description = data[0].job_description;
                 var job_description_details = job_description.split('•');
                 for(var i=0; i < job_description_details.length; i++){

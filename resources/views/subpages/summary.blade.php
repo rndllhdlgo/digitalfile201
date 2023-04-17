@@ -175,6 +175,28 @@
                         <hr>
                     </div>
 
+                    {{-- <div class="column_children" style="padding:5px">
+                        <div class="row ">
+                            <h5 class="summary_title">CHILDREN INFORMATION</h5>
+                        </div>
+
+                        <div class="row mb-3">
+                            <h6><b>COLLEGE</b></h6><br>
+                            <div class="col">
+                                <b>SCHOOL NAME:</b><br>
+                                <span class=""></span>
+                            </div>
+                            <div class="col">
+                                <b>DEGREE:</b><br>
+                                <span class=""></span>
+                            </div>
+                            <div class="col text-center">
+                                <b>INCLUSIVE YEARS:</b><br>
+                                <span class=""></span>
+                            </div>
+                        </div>
+                    </div> --}}
+
                     <div class="column_five" style="padding:5px;">
                         <div class="row ">
                             <h5 class="summary_title">WORK INFORMATION</h5>

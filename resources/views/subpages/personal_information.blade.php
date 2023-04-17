@@ -375,11 +375,11 @@
                         <table class="table table-bordered table-hover table-striped">
                             <thead class="thead-educational">
                                 <tr>
-                                    <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
-                                    <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
-                                    <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
+                                    <th style="width:22.5%">NAME</th>
+                                    <th style="width:22.5%">BIRTHDAY</th>
+                                    <th style="width:22.5%">AGE</th>
+                                    <th style="width:22.5%">GENDER</th>
+                                    <th style="width:10%;">ACTION</th>
                                 </tr>
                                 <tbody>
                                     <tr>

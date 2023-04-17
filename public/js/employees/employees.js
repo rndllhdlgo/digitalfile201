@@ -86,9 +86,12 @@ $(document).ready(function(){
                     if (data == null) {
                         return '';
                     }
-                    return data.toUpperCase();
+                    if (typeof data === 'string') {
+                        return data.toUpperCase();
+                    }
+                    return data;
                 }
-            }
+            },
         ],
         columns:[
             {
@@ -135,6 +138,22 @@ $(document).ready(function(){
                 "render":function(data,type,row){
                     if(row.birthday){
                         return formatDate(row.birthday);
+                    }
+                    return '';
+                }
+            },
+            {
+                data: 'age',
+                "render":function(data,type,row){
+                    if(row.birthday){
+                        var today = new Date();
+                        var birthDate = new Date(row.birthday);
+                        var age = today.getFullYear() - birthDate.getFullYear();
+                        var m = today.getMonth() - birthDate.getMonth();
+                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                            age--;
+                        }
+                        return age;
                     }
                     return '';
                 }
@@ -203,7 +222,7 @@ $(document).ready(function(){
 
     setInterval(() => {
         if($('.popover-header').is(':visible')){
-            for(var i=0; i<=18; i++){
+            for(var i=0; i<=19; i++){
                 if(employeesTable.column(i).visible()){
                     $('#filter-'+i).prop('checked', true);
                 }
