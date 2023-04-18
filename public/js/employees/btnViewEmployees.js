@@ -279,9 +279,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
                     $('#checkbox7').prop('disabled',true);
+                    $('.checkbox7').addClass('btnDisabled').attr('disabled',true);
                 }
+
                 else{
                     $('#checkbox7').prop('disabled',false);
+                    $('.checkbox7').removeClass('btnDisabled').attr('disabled',false);
                 }
 
                 // Compensation Benefits
@@ -402,7 +405,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
 
-
                 $('.college_table_orig').dataTable().fnDestroy();
                 $('.college_table_orig').DataTable({
                     columnDefs: [
@@ -507,10 +509,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
                             $('#training_table_orig').hide();
                             $('.training_div').hide();
+                            $('.checkbox5').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#training_table_orig').show();
                             $('.training_div').show();
+                            $('.checkbox5').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
                 });
@@ -566,10 +570,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
                             $('#vocational_table_orig').hide();
                             $('.vocational_div').hide();
+                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
+
                         }
                         else{
                             $('#vocational_table_orig').show();
                             $('.vocational_div').show();
+                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
+
                         }
                     }
                 });
@@ -637,11 +645,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             $('#job_history_table_orig').hide();
                             $('#checkbox6').prop('disabled',true);
                             $('.column_nine').hide();
+                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#job_history_table_orig').show();
                             $('#checkbox6').prop('disabled',false);
                             $('.column_nine').show();
+                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
                 });
@@ -729,6 +739,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     });
 
                     if(current_user_level != 'EMPLOYEE'){
+                        if(value.employee_number){
+                            var trim_empno = (value.employee_number).substring(2);
+                        }
                         $('.memo_table_data').dataTable().fnDestroy();
                         $('.memo_table_data').DataTable({
                             columnDefs: [
@@ -1143,9 +1156,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 job_history_change = '';
                 $('th').removeClass("sorting_asc");
 
-                if(value.employee_number){
-                    var trim_empno = (value.employee_number).substring(2);
-                }
                 if(value.barangay_clearance_file){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();

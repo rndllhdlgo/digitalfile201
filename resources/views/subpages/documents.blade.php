@@ -11,7 +11,7 @@
                     <thead class="thead-educational">
                         <tr>
                             <th style="width:35%"> FILE TITLE</th>
-                            <th style="width:45%"> ATTACH FILE</th>
+                            <th style="width:45%"> ATTACHMENT</th>
                             <th style="width:20%"> ACTION</th>
                         </tr>
                     </thead>
@@ -128,7 +128,7 @@
                 <thead class="thead-educational">
                     <tr>
                         <th style="width:35%"> FILE TITLE</th>
-                        <th style="width:45%"> ATTACH FILE</th>
+                        <th style="width:45%"> ATTACHMENT</th>
                         <th style="width:20%"> ACTION</th>
                     </tr>
                 </thead>

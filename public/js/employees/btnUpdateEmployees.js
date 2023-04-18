@@ -29,7 +29,6 @@ $('#btnUpdate').on('click',function(){
     var spouse_name = $('#spouse_name').val();
     var spouse_contact_number = $('#spouse_contact_number').val();
     var spouse_profession = $('#spouse_profession').val();
-    console.log(spouse_name, spouse_contact_number, spouse_profession);
     var father_name = $('#father_name').val();
     var father_contact_number = $('#father_contact_number').val();
     var father_profession = $('#father_profession').val();

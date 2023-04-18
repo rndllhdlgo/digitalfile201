@@ -32,19 +32,19 @@
                 </div>
                 <div class="form-check" id="train_voc_div">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox5">
-                    <label for="checkbox5">
+                    <label for="checkbox5" class="checkbox5">
                         TRAININGS/VOCATIONALS
                     </label>
                 </div>
                 <div class="form-check" id="job_checkbox">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox6">
-                    <label for="checkbox6">
+                    <label for="checkbox6" class="checkbox6">
                         JOB HISTORY
                     </label>
                 </div>
                 <div class="form-check" id="med_checkbox">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox7">
-                    <label for="checkbox7">
+                    <label for="checkbox7" class="checkbox7">
                         MEDICAL HISTORY
                     </label>
                 </div>
