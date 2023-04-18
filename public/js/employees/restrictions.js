@@ -14,12 +14,12 @@ function numbersOnly(input){
 }
 
 function contactNumberOnly(input){
-    var contact_number = /[^. 0-9]/g; 
+    var contact_number = /[^. 0-9]/g;
     input.value = input.value.replace(contact_number,"");
 }
 
 function telephoneNumberField(input){
-    var telephoneNumberField = /[^- +()0-9]/g; 
+    var telephoneNumberField = /[^- +()0-9]/g;
     input.value = input.value.replace(telephoneNumberField,"");
 }
 
@@ -60,7 +60,7 @@ $('#email_address').on('keyup',function(){
         $('#email_validation').show();
     }
 });
-    
+
 var company_email_address = document.querySelector('#company_email_address');
 var company_email_validation = document.querySelector('#company_email_validation');
 let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
@@ -87,13 +87,9 @@ $(function(){
     if(day < 10)
         day = '0' + day.toString();
 
-    var maxDate = year + '-' + month + '-' + day;    
+    var maxDate = year + '-' + month + '-' + day;
     $('#child_birthday').attr('max', maxDate);
     $('#date_hired').attr('max', maxDate);
-    // $('#evaluation_date').attr('max', maxDate);
-    // $('#contracts_date').attr('max', maxDate);
-    // $('#resignation_date').attr('max', maxDate);
-    // $('#termination_date').attr('max', maxDate);
 });
 
 //Disable Birthday Under 18

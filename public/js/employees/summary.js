@@ -223,7 +223,7 @@ $('#viewSummary').on('click', function(){
         $('.suffix').html($('#suffix').val());
     }
     else{
-        $('#suffix_div').css('visibility','hidden');
+        $('#suffix_div').css('display','none');
         $('.suffix').hide();
     }
     $('.nickname').html($('#nickname').val());
@@ -239,7 +239,7 @@ $('#viewSummary').on('click', function(){
         $('.height').html($('#height').val());
     }
     else{
-        $('#height_div').css("visibility", "hidden");
+        $('#height_div').css("display", "none");
         $('.height').hide();
     }
     $('.weight').html($('#weight').val());
@@ -247,7 +247,7 @@ $('#viewSummary').on('click', function(){
         $('.weight').html($('#weight').val());
     }
     else{
-        $('#weight_div').css("visibility", "hidden");
+        $('#weight_div').css("display", "none");
         $('.weight').hide();
     }
     $('.religion').html($('#religion').val());
