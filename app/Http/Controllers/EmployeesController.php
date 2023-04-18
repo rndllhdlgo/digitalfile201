@@ -3456,11 +3456,15 @@ class EmployeesController extends Controller
 
     public function history_data(Request $request){
         $employee_work_history_logs = History::selectRaw(
-            'history_logs.id,
+            'users.id AS user_id,
+            history_logs.id,
+            users.name AS username,
+            users.user_level,
             history_logs.history,
             history_logs.created_at AS date,
             DATE_FORMAT(history_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
         ->where('employee_id',$request->id)
+        ->join('users', 'users.id','user_id')
         ->orderBy('history_logs.id', 'DESC')
         ->get();
         return DataTables::of($employee_work_history_logs)->make(true);

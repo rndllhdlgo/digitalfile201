@@ -1101,14 +1101,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 { data: 'datetime'},
                                 {
                                     data: 'date',
-                                    width: '20%',
                                     "render": function(data, type, row){
                                         return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
                                     }
                                 },
+                                { data: 'username'},
+                                { data: 'user_level'},
                                 {
                                     data: 'history',
-                                    width: '80%',
                                     "render":function(data,type,row){
                                         var history = row.history.replaceAll(" [","<br>[");
                                         return history;

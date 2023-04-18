@@ -16,18 +16,6 @@
             </div>
         </div>
 
-        {{-- <div class="col">
-            <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_shift" placeholder=" " style="background-color:white;" autocomplete="off">
-                    <option value="" disabled selected>SELECT SHIFT </option>
-                        @foreach($shifts as $shift)
-                            <option value="{{$shift->id}}">{{$shift->shift_code}} {{$shift->shift_working_hours}}  WITH BREAK: {{$shift->shift_break_time}}</option>
-                        @endforeach
-                </select>
-                <label for="employee_shift" class="formlabel form-label"><i class="fas fa-clock"></i> SHIFT <span class="span_employee_shift span_all"></span></label>
-            </div>
-        </div> --}}
-
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="text" id="employee_shift" placeholder=" " style="background-color:white;" readonly>
@@ -72,19 +60,6 @@
                 <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT <span class="span_employee_department span_all"></span></label>
             </div>
         </div>
-
-        {{-- <div class="col">
-            <div class="f-outline">
-                <input type="hidden" id="employee_supervisor_orig">
-                <select class="form-select forminput form-control required_field"  id="employee_supervisor" placeholder=" " style="background-color:white;" autocomplete="off">
-                    <option value="" disabled selected>SELECT SUPERVISOR </option>
-                        @foreach($supervisors as $supervisor)
-                            <option value="{{$supervisor->id}}">{{$supervisor->supervisor_name}}</option>
-                        @endforeach
-                </select>
-                <label for="employee_supervisor" class="formlabel form-label"><i class="fas fa-user-tie"></i> SUPERVISOR <span class="span_employee_supervisor span_all"></span></label>
-            </div>
-        </div> --}}
     </div>
 
     <div class="row mb-3">
@@ -325,11 +300,19 @@
                     <td>
                         <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #0d1a80"/>
                     </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #0d1a80"/>
+                    </td>
+                    <td>
+                        <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #0d1a80"/>
+                    </td>
                 </tr>
                 <tr>
                     <th>DATE & TIME</th>
                     <th style="width:20%">DATE & TIME</th>
-                    <th>HISTORY</th>
+                    <th style="width:15%">USER NAME</th>
+                    <th style="width:15%">USER LEVEL</th>
+                    <th style="width:50%">ACTIVITY</th>
                 </tr>
             </thead>
             <tbody title="CLICK TO VIEW">
