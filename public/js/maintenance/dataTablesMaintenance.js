@@ -39,7 +39,13 @@
         },
         order: [],
         columns: [
-            {data: 'deptdesc'}
+            // {data: 'deptdesc'}
+            {
+                "data": "deptdesc",
+                "render": function ( data, type, row ) {
+                    return data.toUpperCase();
+                }
+            }
         ],
         initComplete: function(){
             $('#loading').hide();
@@ -63,7 +69,13 @@
         },
         order: [],
         columns: [
-            {data: 'entity03_desc'}
+            // {data: 'entity03_desc'}
+            {
+                "data": "entity03_desc",
+                "render": function ( data, type, row ) {
+                    return data.toUpperCase();
+                }
+            }
         ],
         initComplete: function(){
             $('#loading').hide();
