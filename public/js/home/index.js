@@ -26,14 +26,16 @@ $(document).ready(function(){
             { data: 'datetime' },
             {
                 data: 'date',
+                width: '15%',
                 "render": function(data, type, row){
                     return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
                 }
             },
-            { data: 'username' },
-            { data: 'role' },
+            { data: 'username',width: '15%',},
+            { data: 'role' ,width: '15%',},
             {
                 data: 'activity',
+                width: '55%',
                 "render":function(data,type,row){
                     activity = row.activity.replaceAll(" [","<br>[").replaceAll(" (","<br>(");
                     return activity;

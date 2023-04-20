@@ -263,13 +263,13 @@ $('#addEmployeeBtn').on('click',function(){
     $('#tab1').addClass('tabactive');
     $('#spouse_contact_number').val('');
 
-    $('#employee_shift').chosen();
-    $('#employee_shift_chosen').css({
-        'width':'100%',
-        'font-weight':'500',
-        'font-size':'13px',
-        'font-family':'Arial, Helvetica, sans-serif'
-    });
+    // $('#employee_shift').chosen();
+    // $('#employee_shift_chosen').css({
+    //     'width':'100%',
+    //     'font-weight':'500',
+    //     'font-size':'13px',
+    //     'font-family':'Arial, Helvetica, sans-serif'
+    // });
 
     $('#employee_company').chosen();
     $('#employee_company_chosen').css({

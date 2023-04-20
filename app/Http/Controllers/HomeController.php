@@ -39,6 +39,46 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // $employee = WorkInformationTable::where('employee_number', 30369)->first();
+        //         if(!$employee){
+        //             $employee = new WorkInformationTable;
+        //             $employee->employee_id = 613;
+        //             $employee->employee_number = '30369';
+        //             $employee->employee_company = '002';
+        //             $employee->employee_department = '010';
+        //             $employee->employee_branch = '001';
+        //             $employee->employment_status = 'PROBATIONARY';
+        //             $employee->employment_origin = null;
+        //             $employee->employee_position = '61';
+        //             $employee->date_hired = '2012-07-26';
+        //             $employee->save();
+        //             return 'wala';
+        //         }
+        //         else{
+        //             return 'meron';
+        //         }
+
+        // $emp = PersonalInformationTable::where('empno', 30369)->first();
+        // $emp_work = WorkInformationTable::where('employee_number', $emp->empno)->first();
+
+        // if(!$emp_work){
+        //     $employee = new WorkInformationTable;
+        //     $employee->employee_id = 613;
+        //     $employee->employee_number = $emp->empno;
+        //     $employee->employee_company = '002';
+        //     $employee->employee_department = '010';
+        //     $employee->employee_branch = '001';
+        //     $employee->employment_status = 'PROBATIONARY';
+        //     $employee->employment_origin = null;
+        //     $employee->employee_position = '61';
+        //     $employee->date_hired = '2012-07-26';
+        //     $employee->save();
+        //     return 'wala';
+        // }
+        // else{
+        //     return 'meron';
+        // }
+
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
