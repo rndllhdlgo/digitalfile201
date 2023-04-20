@@ -196,6 +196,7 @@ Route::any('/cropImage','TryController@cropImage_blade');
 Route::any('/cropImageSave','TryController@cropImage_save');
 Route::any('/reports','TryController@reports');
 Route::any('/reports_data','TryController@reports_data');
+Route::any('/status','TryController@status');
 
 
 Route::any('/users_page','PagesController@users_page');

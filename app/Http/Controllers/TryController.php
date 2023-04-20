@@ -150,4 +150,8 @@ class TryController extends Controller
         // return the filtered data as DataTables JSON response
         return DataTables::of($data)->make(true);
     }
+
+    public function status(){
+        return view('try.status');
+    }
 }
