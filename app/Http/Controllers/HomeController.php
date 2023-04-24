@@ -79,6 +79,18 @@ class HomeController extends Controller
         //     return 'meron';
         // }
 
+        // $empno = 'PL';
+        // if(strpos($empno, 'ID') !== false ||
+        // strpos($empno, 'PL') !== false ||
+        // strpos($empno, 'AP') !== false ||
+        // strpos($empno, 'MJ') !== false ||
+        // strpos($empno, 'NU') !== false){
+        // return 'meron';
+        // }
+        // else{
+        //     return 'wala';
+        // }
+
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
