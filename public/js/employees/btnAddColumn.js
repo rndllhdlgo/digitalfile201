@@ -266,8 +266,8 @@ $(document).ready(function(){
         else{
             var job_history_table = "<tr class='job_history_tr'>"+
                                         "<td class='td_1 text-uppercase' style='width:15%;'>" + job_company_name + "</td>" +
-                                        "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
-                                        "<td class='td_3' style='width:15%'>" + job_position + "</td>" +
+                                        "<td class='td_2 text-uppercase' style='width:15%'>" + job_description + "</td>" +
+                                        "<td class='td_3 text-uppercase' style='width:15%'>" + job_position + "</td>" +
                                         "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" +
                                         "<td class='td_5' style='width:15%'>" + job_inclusive_years_from + "</td>" +
                                         "<td class='td_6' style='width:15%'>" + job_inclusive_years_to + "</td>" +
