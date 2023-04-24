@@ -115,7 +115,6 @@ $('#btnUpdate').on('click',function(){
                         var employee_id = $('#employee_id').val(data.id);
                         var employee_number = $('#employee_number').val();
                         var date_hired = $('#date_hired').val();
-                        // var employee_shift = $('#employee_shift').val();
                         var employee_company = $('#employee_company').val();
                         var employee_branch = $('#employee_branch').val();
                         var employee_department = $('#employee_department').val();
@@ -141,7 +140,6 @@ $('#btnUpdate').on('click',function(){
                                 employee_id:data.id,
                                 employee_number:employee_number,
                                 date_hired:date_hired,
-                                // employee_shift:employee_shift,
                                 employee_company:employee_company,
                                 employee_branch:employee_branch,
                                 employee_department:employee_department,
@@ -177,7 +175,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                empno:$('#employee_number').val(),
+                                employee_number:$('#employee_number').val(),
                                 secondary_school_name:secondary_school_name,
                                 secondary_school_address:secondary_school_address,
                                 secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
@@ -460,9 +458,9 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        if(current_user_level != 'EMPLOYEE'){
-                            $('#documents_form').submit();
-                        }
+                        // if(current_user_level != 'EMPLOYEE'){
+                        //     $('#documents_form').submit();
+                        // }
 
                         $('#loading').hide();
                         // if(current_user_level == 'EMPLOYEE'){
@@ -509,7 +507,7 @@ $('#btnUpdate').on('click',function(){
                         //     });
                         // }
                         Swal.fire('UPDATE SUCCESS','','success');
-                        setTimeout(function(){window.location.reload();}, 2000);
+                        // setTimeout(function(){window.location.reload();}, 2000);
 
                         // Swal.fire({
                         //     title: 'UPDATE SUCESS',

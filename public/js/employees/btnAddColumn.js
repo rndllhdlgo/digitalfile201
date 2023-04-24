@@ -211,7 +211,7 @@ $(document).ready(function(){
         if($('#btnSave').is(":visible")){
             var vocational_table = "<tr class='vocational_tr'>"+
                                         "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" +
-                                        "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" +
+                                        "<td class='td_2 text-uppercase' style='width:30%'>" + vocational_course + "</td>" +
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" +
                                         "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" +
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
@@ -221,7 +221,7 @@ $(document).ready(function(){
         else{
             var vocational_table = "<tr class='vocational_tr'>"+
                                         "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" +
-                                        "<td class='td_2' style='width:30%'>" + vocational_course + "</td>" +
+                                        "<td class='td_2 text-uppercase' style='width:30%'>" + vocational_course + "</td>" +
                                         "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" +
                                         "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" +
                                         "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +

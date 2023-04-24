@@ -60,7 +60,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#hidden_id').val(value.id);
                 $('#documents_form').attr("action",'/employees/updateDocuments');
                 $('#current_employee').val(value.employee_number);
-                //Personal Information
+                //Personal Info
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
@@ -121,7 +121,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#region').val(value.region);
                 $('#region_summary').val(value.region);
                 $('#region_content').html(value.region);
-
+                $('#blood_type').val(value.blood_type);
                 $('#height').val(value.height);
                 $('#weight').val(value.weight);
                 $('#religion').val(value.religion);
@@ -160,11 +160,28 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
-                //Work Information
-                $('#employee_number').val(value.employee_number);
-                var removeValue = value.employee_number+"_";
-                $('#employee_number').attr('readonly',true);
-                $('#employee_number').css('cursor','not-allowed');
+                //Work Info
+                if(value.employee_number){
+                    $('#employee_number').val(value.employee_number);
+                    var removeValue = value.employee_number+"_";
+                    $('#employee_number').attr('readonly',true);
+                    $('#employee_number').css('cursor','not-allowed');
+                }
+                else{
+                    $('#employee_number').attr('readonly',false);
+                    $('#employee_number').css('cursor','');
+                }
+                // setInterval(() => {
+                //     if(!$('#employee_number').val()){
+                //         $('#btnUpdate').prop('disabled',true);
+                //         $('#empno_required').show();
+                //     }
+                //     else{
+                //         $('#btnUpdate').prop('disabled',false);
+                //         $('#empno_required').hide();
+                //     }
+                // }, 0);
+
                 $('#date_hired').val(value.date_hired);
 
                 $('#employee_shift').val(value.desc);
@@ -230,7 +247,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#tin_number').val(value.tin_number);
                 $('#account_number').val(value.account_number);
 
-                //Education Trainings
                 if(value.secondary_school_name){
                     $('.secondary_div').show();
                     $('#secondary_school_name').val(value.secondary_school_name);
@@ -247,7 +263,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
                 $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
 
-                // Medical History
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);
                     $('.past_med_div').show();
@@ -287,7 +302,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.checkbox7').removeClass('btnDisabled').attr('disabled',false);
                 }
 
-                // Compensation Benefits
                 $('#employee_salary').val(value.employee_salary);
                 $('#employee_incentives').val(value.employee_incentives);
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
@@ -1114,14 +1128,16 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 { data: 'datetime'},
                                 {
                                     data: 'date',
+                                    width: '15%',
                                     "render": function(data, type, row){
                                         return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
                                     }
                                 },
-                                { data: 'username'},
-                                { data: 'user_level'},
+                                { data: 'username', width: '15%'},
+                                { data: 'user_level', width: '15%'},
                                 {
                                     data: 'history',
+                                    width: '55%',
                                     "render":function(data,type,row){
                                         var history = row.history.replaceAll(" [","<br>[");
                                         return history;

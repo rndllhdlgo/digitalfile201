@@ -5,6 +5,7 @@
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" >
                 <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
+                {{-- <p id="empno_required" class="validation"><i class="fas fa-exclamation-triangle"></i> Please fill up this field!</p> --}}
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
             </div>
         </div>
@@ -133,7 +134,6 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    {{-- <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p> --}}
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)<span class="span_hmo_number span_all"></span></label>
                 </div>
             </div>
