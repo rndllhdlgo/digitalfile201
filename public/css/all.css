@@ -326,13 +326,14 @@ input[type=search]:focus{
 }
 
 #image_preview{
-    height: 210px !important;
-    width:210px !important;
+    /* height: 210px !important; */
+    /* width:210px !important; */
+    width: 210px !important;
     cursor:pointer;
     display: none;
     justify-content: center;
     margin-top: 6px !important;
-    margin-left: 3px !important;
+    /* margin-left: 3px !important; */
 }
 #update_image_preview{
     height: 210px !important;
