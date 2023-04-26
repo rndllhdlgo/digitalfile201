@@ -8,7 +8,7 @@ use App\Http\Controllers\MaintenanceController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UpdatesController;
-
+use Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -19,7 +19,9 @@ use App\Http\Controllers\UpdatesController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/testmail', function () {
+    return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
+});
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);

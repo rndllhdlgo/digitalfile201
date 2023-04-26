@@ -834,7 +834,16 @@ class EmployeesController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new JobHistoryTable;
             $employee->employee_id = $request->employee_id;
-            $employee->empno = $request->empno;
+            if(strpos($request->empno, 'ID') !== false ||
+                strpos($request->empno, 'PL') !== false ||
+                strpos($request->empno, 'AP') !== false ||
+                strpos($request->empno, 'MJ') !== false ||
+                strpos($request->empno, 'NU') !== false){
+                $employee->empno = substr($request->empno, 2);
+            }
+            else{
+                $employee->empno = $request->empno;
+            }
             $employee->job_company_name = $request->job_company_name;
             $employee->job_description = $request->job_description;
             $employee->job_position = $request->job_position;
@@ -2391,10 +2400,20 @@ class EmployeesController extends Controller
                 ){
                     $employee = new MedicalHistory;
                     $employee->employee_id = $request->employee_id;
-                    $employee->past_medical_condition = $request->past_medical_condition;
-                    $employee->allergies = $request->allergies;
-                    $employee->medication = $request->medication;
-                    $employee->psychological_history = $request->psychological_history;
+                    if(strpos($request->empno, 'ID') !== false ||
+                        strpos($request->empno, 'PL') !== false ||
+                        strpos($request->empno, 'AP') !== false ||
+                        strpos($request->empno, 'MJ') !== false ||
+                        strpos($request->empno, 'NU') !== false){
+                        $employee->empno = substr($request->empno, 2);
+                    }
+                    else{
+                        $employee->empno = $request->empno;
+                    }
+                    $employee->past_medical_condition = strtoupper($request->past_medical_condition);
+                    $employee->allergies = strtoupper($request->allergies);
+                    $employee->medication = strtoupper($request->medication);
+                    $employee->psychological_history = strtoupper($request->psychological_history);
                     $save = $employee->save();
                 }
             }
@@ -2440,10 +2459,10 @@ class EmployeesController extends Controller
 
                 $sql = MedicalHistory::where('employee_id',$request->employee_id)
                         ->update([
-                            'past_medical_condition' => $request->past_medical_condition,
-                            'allergies' => $request->allergies,
-                            'medication' => $request->medication,
-                            'psychological_history' => $request->psychological_history,
+                            'past_medical_condition' => strtoupper($request->past_medical_condition),
+                            'allergies' => strtoupper($request->allergies),
+                            'medication' => strtoupper($request->medication),
+                            'psychological_history' => strtoupper($request->psychological_history),
                         ]);
 
                 if($sql){
@@ -2648,7 +2667,7 @@ class EmployeesController extends Controller
                 $employee->employee_incentives = $request->employee_incentives;
                 $employee->employee_overtime_pay = $request->employee_overtime_pay;
                 $employee->employee_bonus = $request->employee_bonus;
-                $employee->employee_insurance = $request->employee_insurance;
+                $employee->employee_insurance = strtoupper($request->employee_insurance);
                 $employee->save();
             }
         }
@@ -2707,7 +2726,7 @@ class EmployeesController extends Controller
                 'employee_incentives' => $request->employee_incentives,
                 'employee_overtime_pay' => $request->employee_overtime_pay,
                 'employee_bonus' => $request->employee_bonus,
-                'employee_insurance' => $request->employee_insurance
+                'employee_insurance' => strtoupper($request->employee_insurance)
             ]);
 
             if($sql){
@@ -2903,597 +2922,594 @@ class EmployeesController extends Controller
     // }
 
     public function updateDocuments(Request $request){
-        if(auth()->user()->user_level != 'EMPLOYEE'){
-            $date = Carbon::now();
-            $timestamp = date("ymdHis", strtotime($date));
-            $work_empno = WorkInformationTable::where('employee_id', $request->employee_id)->first();
-            $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-            $employee = Document::where('employee_id',$request->employee_id)->first();
-        if($work_empno){
-            $employee_number = $work_info->employee_number;
+        $date = Carbon::now();
+        $timestamp = date("ymdHis", strtotime($date));
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee = Document::where('employee_id',$request->employee_id)->first();
 
-                if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
-                    $MemoCountBefore = MemoTable::where('employee_id', $request->employee_id)->count();
-                    foreach($request->file('memo_file') as $key => $value){
-                        $memoFileName = $employee_number.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
-                        $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$memoFileName);
+        if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
+            $MemoCountBefore = MemoTable::where('employee_id', $request->employee_id)->count();
+            foreach($request->file('memo_file') as $key => $value){
+                $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
+                $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$memoFileName);
 
-                        $memo = new MemoTable;
-                        $memo->employee_id = $request->employee_id;
-                        $memo->memo_subject = $request->memo_subject[$key];
-                        $memo->memo_date = $request->memo_date[$key];
-                        $memo->memo_penalty = $request->memo_penalty[$key];
-                        $memo->memo_file = $memoFileName;
-                        $memo->save();
-                    }
+                $memo = new MemoTable;
+                $memo->employee_id = $request->employee_id;
+                $memo->memo_subject = strtoupper($request->memo_subject[$key]);
+                $memo->memo_date = $request->memo_date[$key];
+                $memo->memo_penalty = $request->memo_penalty[$key];
+                $memo->memo_file = $memoFileName;
+                $memo->save();
+            }
 
-                    $MemoCountAfter = MemoTable::where('employee_id', $request->employee_id)->count();
+            $MemoCountAfter = MemoTable::where('employee_id', $request->employee_id)->count();
 
-                    if($MemoCountBefore != $MemoCountAfter){
-                        $memo_update = "[MEMO HAS BEEN CHANGED]";
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS
-                                                $memo_update";
-                        $employee_logs->save();
+            if($MemoCountBefore != $MemoCountAfter){
+                $memo_update = "[MEMO HAS BEEN CHANGED]";
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS
+                                        $memo_update";
+                $employee_logs->save();
 
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $memo_update";
-                        $userlogs->save();
-                    }
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $memo_update";
+                $userlogs->save();
+            }
+        }
+
+        if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
+            $EvaluationCountBefore = EvaluationTable::where('employee_id', $request->employee_id)->count();
+            foreach($request->file('evaluation_file') as $key => $value){
+                $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
+                $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
+
+                $evaluation = new EvaluationTable;
+                $evaluation->employee_id = $request->employee_id;
+                $evaluation->evaluation_reason = strtoupper($request->evaluation_reason[$key]);
+                $evaluation->evaluation_date = $request->evaluation_date[$key];
+                $evaluation->evaluation_evaluated_by = strtoupper($request->evaluation_evaluated_by[$key]);
+                $evaluation->evaluation_file = $evaluationFileName;
+                $evaluation->save();
+            }
+            $EvaluationCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
+
+            if($EvaluationCountBefore != $EvaluationCountAfter){
+                $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS
+                                        $evaluation_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $evaluation_update";
+                $userlogs->save();
+            }
+        }
+
+        if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
+            $ContractsCountBefore = ContractTable::where('employee_id',$request->employee_id)->count();
+            foreach($request->file('contracts_file') as $key => $value){
+                $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
+                $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
+
+                $contracts = new ContractTable;
+                $contracts->employee_id = $request->employee_id;
+                $contracts->contracts_type = $request->contracts_type[$key];
+                $contracts->contracts_date = $request->contracts_date[$key];
+                $contracts->contracts_file = $contractsFileName;
+                $contracts->save();
+            }
+            $ContractsCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
+
+            if($ContractsCountBefore != $ContractsCountAfter){
+                $contracts_update = "[CONTRACTS HAS BEEN CHANGED]";
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS
+                                        $contracts_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $contracts_update";
+                $userlogs->save();
+            }
+        }
+
+        if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
+            $ResignationCountBefore = ResignationTable::where('employee_id',$request->employee_id)->count();
+            foreach($request->file('resignation_file') as $key => $value){
+                $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'.'.$request->resignation_file[$key]->extension();
+                $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
+
+                $resignation = new ResignationTable;
+                $resignation->employee_id = $request->employee_id;
+                $resignation->resignation_reason = $request->resignation_reason[$key];
+                $resignation->resignation_date = $request->resignation_date[$key];
+                $resignation->resignation_file = $resignationFileName;
+                $resignation->save();
+            }
+            $ResignationCountAfter = ResignationTable::where('employee_id',$request->employee_id)->count();
+
+            if($ResignationCountBefore != $ResignationCountAfter){
+                $resignation_update = "[RESIGNATION HAS BEEN CHANGED]";
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS
+                                        $resignation_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $resignation_update";
+                $userlogs->save();
+            }
+        }
+
+        if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
+            $TerminationCountBefore = TerminationTable::where('employee_id',$request->employee_id)->count();
+            foreach($request->file('termination_file') as $key => $value){
+                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+                $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
+
+                $termination = new TerminationTable;
+                $termination->employee_id = $request->employee_id;
+                $termination->termination_reason = $request->termination_reason[$key];
+                $termination->termination_date = $request->termination_date[$key];
+                $termination->termination_file = $terminationFileName;
+                $termination->save();
+            }
+            $TerminationCountAfter = TerminationTable::where('employee_id',$request->employee_id)->count();
+
+            if($TerminationCountBefore != $TerminationCountAfter){
+                $termination_update = "[TERMINATION HAS BEEN CHANGED]";
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS
+                                        $termination_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $termination_update";
+                $userlogs->save();
+            }
+        }
+
+        if(!$employee){
+            $document = new Document;
+            $document->employee_id = $request->employee_id;
+            if($request->hasFile('barangay_clearance_file')){
+                $barangayClearanceFile = $request->file('barangay_clearance_file');
+                $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+                $barangayClearanceFilename = $employee_details->empno.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
+                $barangayClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
+                $document->barangay_clearance_file = $barangayClearanceFilename;
+            }
+
+            if($request->hasFile('birthcertificate_file')){
+                $birthcertificateFile = $request->file('birthcertificate_file');
+                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                $birthcertificateFilename = $employee_details->empno.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
+                $birthcertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
+                $document->birthcertificate_file = $birthcertificateFilename;
+            }
+
+            if($request->hasFile('diploma_file')){
+                $diplomaFile = $request->file('diploma_file');
+                $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+                $diplomaFilename = $employee_details->empno.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
+                $diplomaFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$diplomaFilename);
+                $document->diploma_file = $diplomaFilename;
+            }
+
+            if($request->hasFile('medical_certificate_file')){
+                $medicalCertificateFile = $request->file('medical_certificate_file');
+                $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+                $medicalCertificateFilename = $employee_details->empno.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
+                $medicalCertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$medicalCertificateFilename);
+                $document->medical_certificate_file = $medicalCertificateFilename;
+            }
+
+            if($request->hasFile('nbi_clearance_file')){
+                $nbiFile = $request->file('nbi_clearance_file');
+                $nbiExtension = $nbiFile->getClientOriginalExtension();
+                $nbiFilename = $employee_details->empno.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
+                $nbiFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$nbiFilename);
+                $document->nbi_clearance_file = $nbiFilename;
+            }
+
+            if($request->hasFile('pag_ibig_file')){
+                $pagibigFile = $request->file('pag_ibig_file');
+                $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+                $pagibigFilename = $employee_details->empno.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
+                $pagibigFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
+                $document->pag_ibig_file = $pagibigFilename;
+            }
+
+            if($request->hasFile('philhealth_file')){
+                $philhealthFile = $request->file('philhealth_file');
+                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                $philhealthFilename = $employee_details->empno.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
+                $philhealthFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
+                $document->philhealth_file = $philhealthFilename;
+            }
+
+            if($request->hasFile('police_clearance_file')){
+                $policeClearanceFile = $request->file('police_clearance_file');
+                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                $policeClearanceFilename = $employee_details->empno.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
+                $policeClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
+                $document->police_clearance_file = $policeClearanceFilename;
+            }
+
+            if($request->hasFile('resume_file')){
+                $resumeFile = $request->file('resume_file');
+                $resumeExtension = $resumeFile->getClientOriginalExtension();
+                $resumeFilename = $employee_details->empno.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
+                $resumeFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resumeFilename);
+                $document->resume_file = $resumeFilename;
+            }
+
+            if($request->hasFile('sss_file')){
+                $sssFile = $request->file('sss_file');
+                $sssExtension = $sssFile->getClientOriginalExtension();
+                $sssFilename = $employee_details->empno.'_SSS_File_'.$timestamp.'.'.$sssExtension;
+                $sssFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
+                $document->sss_file = $sssFilename;
+            }
+
+            if($request->hasFile('tor_file')){
+                $torFile = $request->file('tor_file');
+                $torExtension = $torFile->getClientOriginalExtension();
+                $torFilename = $employee_details->empno.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
+                $torFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$torFilename);
+                $document->transcript_of_records_file = $torFilename;
+            }
+
+            $document->save();
+
+            sleep(2);
+            return Redirect::to(url()->previous());
+        }
+        else{
+            $document_orig = Document::where('employee_id', $request->employee_id)->first();
+
+            if($request->hasFile('barangay_clearance_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename);
                 }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->barangay_clearance_file);
 
-                if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
-                    $EvaluationCountBefore = EvaluationTable::where('employee_id', $request->employee_id)->count();
-                    foreach($request->file('evaluation_file') as $key => $value){
-                        $evaluationFileName =  $employee_number.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
-                        $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
+                $barangayClearanceFile = $request->file('barangay_clearance_file');
+                $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
+                $barangayClearanceFilename = $employee_details->empno.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
+                $barangayClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
+                $barangay_clearance_file = $barangayClearanceFilename;
+            }
+            else{
+                $barangay_clearance_file = $request->barangay_clearance_filename;
+            }
 
-                        $evaluation = new EvaluationTable;
-                        $evaluation->employee_id = $request->employee_id;
-                        $evaluation->evaluation_reason = $request->evaluation_reason[$key];
-                        $evaluation->evaluation_date = $request->evaluation_date[$key];
-                        $evaluation->evaluation_evaluated_by = $request->evaluation_evaluated_by[$key];
-                        $evaluation->evaluation_file = $evaluationFileName;
-                        $evaluation->save();
-                    }
-                    $EvaluationCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
-
-                    if($EvaluationCountBefore != $EvaluationCountAfter){
-                        $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS
-                                                $evaluation_update";
-                        $employee_logs->save();
-
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $evaluation_update";
-                        $userlogs->save();
-                    }
+            if($request->hasFile('birthcertificate_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->birthcertificate_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->birthcertificate_filename);
                 }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->birthcertificate_file);
 
-                if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
-                    $ContractsCountBefore = ContractTable::where('employee_id',$request->employee_id)->count();
-                    foreach($request->file('contracts_file') as $key => $value){
-                        $contractsFileName = $employee_number.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
-                        $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
+                $birthcertificateFile = $request->file('birthcertificate_file');
+                $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
+                $birthcertificateFilename = $employee_details->empno.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
+                $birthcertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
+                $birthcertificate_file = $birthcertificateFilename;
+            }
+            else{
+                $birthcertificate_file = $request->birthcertificate_filename;
+            }
 
-                        $contracts = new ContractTable;
-                        $contracts->employee_id = $request->employee_id;
-                        $contracts->contracts_type = $request->contracts_type[$key];
-                        $contracts->contracts_date = $request->contracts_date[$key];
-                        $contracts->contracts_file = $contractsFileName;
-                        $contracts->save();
-                    }
-                    $ContractsCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
-
-                    if($ContractsCountBefore != $ContractsCountAfter){
-                        $contracts_update = "[CONTRACTS HAS BEEN CHANGED]";
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS
-                                                $contracts_update";
-                        $employee_logs->save();
-
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $contracts_update";
-                        $userlogs->save();
-                    }
+            if($request->hasFile('diploma_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->diploma_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->diploma_filename);
                 }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->diploma_file);
 
-                if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-                    $ResignationCountBefore = ResignationTable::where('employee_id',$request->employee_id)->count();
-                    foreach($request->file('resignation_file') as $key => $value){
-                        $resignationFileName = $employee_number.'_Resignation_File_'.$timestamp.'.'.$request->resignation_file[$key]->extension();
-                        $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
+                $diplomaFile = $request->file('diploma_file');
+                $diplomaExtension = $diplomaFile->getClientOriginalExtension();
+                $diplomaFilename = $employee_details->empno.'_Diploma_File'.$timestamp.'.'.$diplomaExtension;
+                $diplomaFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$diplomaFilename);
+                $diploma_file = $diplomaFilename;
+            }
+            else{
+                $diploma_file = $request->diploma_filename;
+            }
 
-                        $resignation = new ResignationTable;
-                        $resignation->employee_id = $request->employee_id;
-                        $resignation->resignation_reason = $request->resignation_reason[$key];
-                        $resignation->resignation_date = $request->resignation_date[$key];
-                        $resignation->resignation_file = $resignationFileName;
-                        $resignation->save();
-                    }
-                    $ResignationCountAfter = ResignationTable::where('employee_id',$request->employee_id)->count();
-
-                    if($ResignationCountBefore != $ResignationCountAfter){
-                        $resignation_update = "[RESIGNATION HAS BEEN CHANGED]";
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS
-                                                $resignation_update";
-                        $employee_logs->save();
-
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $resignation_update";
-                        $userlogs->save();
-                    }
+            if($request->hasFile('medical_certificate_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->medical_certificate_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->medical_certificate_filename);
                 }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->medical_certificate_file);
 
-                if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-                    $TerminationCountBefore = TerminationTable::where('employee_id',$request->employee_id)->count();
-                    foreach($request->file('termination_file') as $key => $value){
-                        $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
-                        $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
+                $medicalCertificateFile = $request->file('medical_certificate_file');
+                $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
+                $medicalCertificateFilename = $employee_details->empno.'_Medical_Certificate_File'.$timestamp.'.'.$medicalCertificateExtension;
+                $medicalCertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$medicalCertificateFilename);
+                $medical_certificate_file = $medicalCertificateFilename;
+            }
+            else{
+                $medical_certificate_file = $request->medical_certificate_filename;
+            }
 
-                        $termination = new TerminationTable;
-                        $termination->employee_id = $request->employee_id;
-                        $termination->termination_reason = $request->termination_reason[$key];
-                        $termination->termination_date = $request->termination_date[$key];
-                        $termination->termination_file = $terminationFileName;
-                        $termination->save();
-                    }
-                    $TerminationCountAfter = TerminationTable::where('employee_id',$request->employee_id)->count();
-
-                    if($TerminationCountBefore != $TerminationCountAfter){
-                        $termination_update = "[TERMINATION HAS BEEN CHANGED]";
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS
-                                                $termination_update";
-                        $employee_logs->save();
-
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $termination_update";
-                        $userlogs->save();
-                    }
+            if($request->hasFile('nbi_clearance_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->nbi_clearance_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->nbi_clearance_filename);
                 }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->nbi_clearance_file);
 
-                if(!$employee){
-                    $document = new Document;
-                    $document->employee_id = $request->employee_id;
-                    if($request->hasFile('barangay_clearance_file')){
-                        $barangayClearanceFile = $request->file('barangay_clearance_file');
-                        $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-                        $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
-                        $barangayClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
-                        $document->barangay_clearance_file = $barangayClearanceFilename;
-                    }
+                $nbiFile = $request->file('nbi_clearance_file');
+                $nbiExtension = $nbiFile->getClientOriginalExtension();
+                $nbiFilename = $employee_details->empno.'_NBI_Clearance_File'.$timestamp.'.'.$nbiExtension;
+                $nbiFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$nbiFilename);
+                $nbi_clearance_file = $nbiFilename;
+            }
+            else{
+                $nbi_clearance_file = $request->nbi_clearance_filename;
+            }
 
-                    if($request->hasFile('birthcertificate_file')){
-                        $birthcertificateFile = $request->file('birthcertificate_file');
-                        $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                        $birthcertificateFilename = $employee_number.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
-                        $birthcertificateFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
-                        $document->birthcertificate_file = $birthcertificateFilename;
-                    }
-
-                    if($request->hasFile('diploma_file')){
-                        $diplomaFile = $request->file('diploma_file');
-                        $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                        $diplomaFilename = $employee_number.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
-                        $diplomaFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$diplomaFilename);
-                        $document->diploma_file = $diplomaFilename;
-                    }
-
-                    if($request->hasFile('medical_certificate_file')){
-                        $medicalCertificateFile = $request->file('medical_certificate_file');
-                        $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                        $medicalCertificateFilename = $employee_number.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
-                        $medicalCertificateFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$medicalCertificateFilename);
-                        $document->medical_certificate_file = $medicalCertificateFilename;
-                    }
-
-                    if($request->hasFile('nbi_clearance_file')){
-                        $nbiFile = $request->file('nbi_clearance_file');
-                        $nbiExtension = $nbiFile->getClientOriginalExtension();
-                        $nbiFilename = $employee_number.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
-                        $nbiFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$nbiFilename);
-                        $document->nbi_clearance_file = $nbiFilename;
-                    }
-
-                    if($request->hasFile('pag_ibig_file')){
-                        $pagibigFile = $request->file('pag_ibig_file');
-                        $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                        $pagibigFilename = $employee_number.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
-                        $pagibigFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
-                        $document->pag_ibig_file = $pagibigFilename;
-                    }
-
-                    if($request->hasFile('philhealth_file')){
-                        $philhealthFile = $request->file('philhealth_file');
-                        $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                        $philhealthFilename = $employee_number.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
-                        $philhealthFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
-                        $document->philhealth_file = $philhealthFilename;
-                    }
-
-                    if($request->hasFile('police_clearance_file')){
-                        $policeClearanceFile = $request->file('police_clearance_file');
-                        $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                        $policeClearanceFilename = $employee_number.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
-                        $policeClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
-                        $document->police_clearance_file = $policeClearanceFilename;
-                    }
-
-                    if($request->hasFile('resume_file')){
-                        $resumeFile = $request->file('resume_file');
-                        $resumeExtension = $resumeFile->getClientOriginalExtension();
-                        $resumeFilename = $employee_number.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
-                        $resumeFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resumeFilename);
-                        $document->resume_file = $resumeFilename;
-                    }
-
-                    if($request->hasFile('sss_file')){
-                        $sssFile = $request->file('sss_file');
-                        $sssExtension = $sssFile->getClientOriginalExtension();
-                        $sssFilename = $employee_number.'_SSS_File_'.$timestamp.'.'.$sssExtension;
-                        $sssFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
-                        $document->sss_file = $sssFilename;
-                    }
-
-                    if($request->hasFile('tor_file')){
-                        $torFile = $request->file('tor_file');
-                        $torExtension = $torFile->getClientOriginalExtension();
-                        $torFilename = $employee_number.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
-                        $torFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$torFilename);
-                        $document->transcript_of_records_file = $torFilename;
-                    }
-                    $document->save();
-
-                    sleep(2);
-                    return Redirect::to(url()->previous());
+            if($request->hasFile('pag_ibig_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->pag_ibig_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->pag_ibig_filename);
                 }
-                else{
-                    $document_orig = Document::where('employee_id', $request->employee_id)->first();
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->pag_ibig_file);
 
-                    if($request->hasFile('barangay_clearance_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->barangay_clearance_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->barangay_clearance_file);
+                $pagibigFile = $request->file('pag_ibig_file');
+                $pagibigExtension = $pagibigFile->getClientOriginalExtension();
+                $pagibigFilename = $employee_details->empno.'_Pag_ibig_File'.$timestamp.'.'.$pagibigExtension;
+                $pagibigFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
+                $pag_ibig_file = $pagibigFilename;
+            }
+            else{
+                $pag_ibig_file = $request->pag_ibig_filename;
+            }
 
-                        $barangayClearanceFile = $request->file('barangay_clearance_file');
-                        $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
-                        $barangayClearanceFilename = $employee_number.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
-                        $barangayClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
-                        $barangay_clearance_file = $barangayClearanceFilename;
-                    }
-                    else{
-                        $barangay_clearance_file = $request->barangay_clearance_filename;
-                    }
-
-                    if($request->hasFile('birthcertificate_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->birthcertificate_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->birthcertificate_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->birthcertificate_file);
-
-                        $birthcertificateFile = $request->file('birthcertificate_file');
-                        $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
-                        $birthcertificateFilename = $employee_number.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
-                        $birthcertificateFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
-                        $birthcertificate_file = $birthcertificateFilename;
-                    }
-                    else{
-                        $birthcertificate_file = $request->birthcertificate_filename;
-                    }
-
-                    if($request->hasFile('diploma_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->diploma_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->diploma_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->diploma_file);
-
-                        $diplomaFile = $request->file('diploma_file');
-                        $diplomaExtension = $diplomaFile->getClientOriginalExtension();
-                        $diplomaFilename = $employee_number.'_Diploma_File'.$timestamp.'.'.$diplomaExtension;
-                        $diplomaFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$diplomaFilename);
-                        $diploma_file = $diplomaFilename;
-                    }
-                    else{
-                        $diploma_file = $request->diploma_filename;
-                    }
-
-                    if($request->hasFile('medical_certificate_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->medical_certificate_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->medical_certificate_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->medical_certificate_file);
-
-                        $medicalCertificateFile = $request->file('medical_certificate_file');
-                        $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
-                        $medicalCertificateFilename = $employee_number.'_Medical_Certificate_File'.$timestamp.'.'.$medicalCertificateExtension;
-                        $medicalCertificateFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$medicalCertificateFilename);
-                        $medical_certificate_file = $medicalCertificateFilename;
-                    }
-                    else{
-                        $medical_certificate_file = $request->medical_certificate_filename;
-                    }
-
-                    if($request->hasFile('nbi_clearance_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->nbi_clearance_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->nbi_clearance_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->nbi_clearance_file);
-
-                        $nbiFile = $request->file('nbi_clearance_file');
-                        $nbiExtension = $nbiFile->getClientOriginalExtension();
-                        $nbiFilename = $employee_number.'_NBI_Clearance_File'.$timestamp.'.'.$nbiExtension;
-                        $nbiFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$nbiFilename);
-                        $nbi_clearance_file = $nbiFilename;
-                    }
-                    else{
-                        $nbi_clearance_file = $request->nbi_clearance_filename;
-                    }
-
-                    if($request->hasFile('pag_ibig_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->pag_ibig_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->pag_ibig_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->pag_ibig_file);
-
-                        $pagibigFile = $request->file('pag_ibig_file');
-                        $pagibigExtension = $pagibigFile->getClientOriginalExtension();
-                        $pagibigFilename = $employee_number.'_Pag_ibig_File'.$timestamp.'.'.$pagibigExtension;
-                        $pagibigFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
-                        $pag_ibig_file = $pagibigFilename;
-                    }
-                    else{
-                        $pag_ibig_file = $request->pag_ibig_filename;
-                    }
-
-                    if($request->hasFile('philhealth_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->philhealth_file);
-
-                        $philhealthFile = $request->file('philhealth_file');
-                        $philhealthExtension = $philhealthFile->getClientOriginalExtension();
-                        $philhealthFilename = $employee_number.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
-                        $philhealthFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
-                        $philhealth_file = $philhealthFilename;
-                    }
-                    else{
-                        $philhealth_file = $request->philhealth_filename;
-                    }
-
-                    if($request->hasFile('police_clearance_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->police_clearance_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->police_clearance_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->police_clearance_file);
-
-                        $policeClearanceFile = $request->file('police_clearance_file');
-                        $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
-                        $policeClearanceFilename = $employee_number.'_Police_Clearance_File'.$timestamp.'.'.$policeClearanceExtension;
-                        $policeClearanceFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
-                        $police_clearance_file = $policeClearanceFilename;
-                    }
-                    else{
-                        $police_clearance_file = $request->police_clearance_filename;
-                    }
-
-                    if($request->hasFile('resume_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->resume_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->resume_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->resume_file);
-
-                        $resumeFile = $request->file('resume_file');
-                        $resumeExtension = $resumeFile->getClientOriginalExtension();
-                        $resumeFilename = $employee_number.'_Resume_File'.$timestamp.'.'.$resumeExtension;
-                        $resumeFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resumeFilename);
-                        $resume_file = $resumeFilename;
-                    }
-                    else{
-                        $resume_file = $request->resume_filename;
-                    }
-
-                    if($request->hasFile('sss_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->sss_file);
-
-                        $sssFile = $request->file('sss_file');
-                        $sssExtension = $sssFile->getClientOriginalExtension();
-                        $sssFilename = $employee_number.'_SSS_File_'.$timestamp.'.'.$sssExtension;
-                        $sssFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
-                        $sss_file = $sssFilename;
-                    }
-                    else{
-                        $sss_file = $request->sss_filename;
-                    }
-
-                    if($request->hasFile('tor_file')){
-                        if(file_exists('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->transcript_of_records_filename)){
-                            unlink('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->transcript_of_records_filename);
-                        }
-                        Storage::delete('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->transcript_of_records_file);
-
-                        $torFile = $request->file('tor_file');
-                        $torExtension = $torFile->getClientOriginalExtension();
-                        $torFilename = $employee_number.'_Transcript_of_Records_File'.$timestamp.'.'.$torExtension;
-                        $torFile->storeAs('public/documents/'.$employee_number.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$torFilename);
-                        $transcript_of_records_file = $torFilename;
-                    }
-                    else{
-                        $transcript_of_records_file = $request->transcript_of_records_filename;
-                    }
-
-                    Document::where('employee_id',$request->employee_id)
-                        ->update([
-                            'barangay_clearance_file' => $barangay_clearance_file,
-                            'birthcertificate_file' => $birthcertificate_file,
-                            'diploma_file' => $diploma_file,
-                            'medical_certificate_file' => $medical_certificate_file,
-                            'nbi_clearance_file' => $nbi_clearance_file,
-                            'pag_ibig_file' => $pag_ibig_file,
-                            'philhealth_file' => $philhealth_file,
-                            'police_clearance_file' => $police_clearance_file,
-                            'resume_file' => $resume_file,
-                            'sss_file' => $sss_file,
-                            'transcript_of_records_file' => $transcript_of_records_file
-                        ]);
-
-                    if($request->hasFile('barangay_clearance_file')){
-                        $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
-                    }
-
-                    else{
-                        $barangay_clearance_update = NULL;
-                    }
-
-                    if($request->hasFile('birthcertificate_file')){
-                        $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $birthcertificate_update = NULL;
-                    }
-
-                    if($request->hasFile('diploma_file')){
-                        $diploma_update = "[DIPLOMA FILE HAVE BEEN CHANGED]";
-                    }
-                    else{
-                        $diploma_update = NULL;
-                    }
-
-                    if($request->hasFile('medical_certificate_file')){
-                        $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $medical_certificate_update = NULL;
-                    }
-
-                    if($request->hasFile('nbi_clearance_file')){
-                        $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $nbi_clearance_update = NULL;
-                    }
-
-                    if($request->hasFile('pag_ibig_file')){
-                        $pag_ibig_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $pag_ibig_update = NULL;
-                    }
-
-                    if($request->hasFile('philhealth_file')){
-                        $philhealth_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $philhealth_update = NULL;
-                    }
-
-                    if($request->hasFile('police_clearance_file')){
-                        $police_clearance_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $police_clearance_update = NULL;
-                    }
-
-                    if($request->hasFile('resume_file')){
-                        $resume_update = "[RESUME FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $resume_update = NULL;
-                    }
-
-                    if($request->hasFile('sss_file')){
-                        $sss_update = "[SSS FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $sss_update = NULL;
-                    }
-
-                    if($request->hasFile('tor_file')){
-                        $tor_update = "[TRANSCRIPT OF RECORDS FILE HAS BEEN CHANGED]";
-                    }
-                    else{
-                        $tor_update = NULL;
-                    }
-
-
-                    if(
-                    $request->hasFile('barangay_clearance_file')
-                    || $request->hasFile('birthcertificate_file')
-                    || $request->hasFile('diploma_file')
-                    || $request->hasFile('medical_certificate_file')
-                    || $request->hasFile('nbi_clearance_file')
-                    || $request->hasFile('pag_ibig_file')
-                    || $request->hasFile('philhealth_file')
-                    || $request->hasFile('police_clearance_file')
-                    || $request->hasFile('resume_file')
-                    || $request->hasFile('sss_file')
-                    || $request->hasFile('tor_file')
-
-                    ){
-                        $employee_logs = new LogsTable;
-                        $employee_logs->employee_id = $employee_details->id;
-                        $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS
-                                                $barangay_clearance_update
-                                                $birthcertificate_update
-                                                $diploma_update
-                                                $medical_certificate_update
-                                                $nbi_clearance_update
-                                                $pag_ibig_update
-                                                $philhealth_update
-                                                $police_clearance_update
-                                                $resume_update
-                                                $sss_update
-                                                $tor_update";
-                        $employee_logs->save();
-
-                        $userlogs = new UserLogs;
-                        $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                                $barangay_clearance_update
-                                                $birthcertificate_update
-                                                $diploma_update
-                                                $medical_certificate_update
-                                                $nbi_clearance_update
-                                                $pag_ibig_update
-                                                $philhealth_update
-                                                $police_clearance_update
-                                                $resume_update
-                                                $sss_update
-                                                $tor_update";
-                        $userlogs->save();
-                    }
+            if($request->hasFile('philhealth_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->philhealth_filename);
                 }
-            }//Empno End
-                sleep(2);
-                return Redirect::to(url()->previous());
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->philhealth_file);
+
+                $philhealthFile = $request->file('philhealth_file');
+                $philhealthExtension = $philhealthFile->getClientOriginalExtension();
+                $philhealthFilename = $employee_details->empno.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
+                $philhealthFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
+                $philhealth_file = $philhealthFilename;
+            }
+            else{
+                $philhealth_file = $request->philhealth_filename;
+            }
+
+            if($request->hasFile('police_clearance_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->police_clearance_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->police_clearance_filename);
+                }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->police_clearance_file);
+
+                $policeClearanceFile = $request->file('police_clearance_file');
+                $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
+                $policeClearanceFilename = $employee_details->empno.'_Police_Clearance_File'.$timestamp.'.'.$policeClearanceExtension;
+                $policeClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
+                $police_clearance_file = $policeClearanceFilename;
+            }
+            else{
+                $police_clearance_file = $request->police_clearance_filename;
+            }
+
+            if($request->hasFile('resume_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->resume_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->resume_filename);
+                }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->resume_file);
+
+                $resumeFile = $request->file('resume_file');
+                $resumeExtension = $resumeFile->getClientOriginalExtension();
+                $resumeFilename = $employee_details->empno.'_Resume_File'.$timestamp.'.'.$resumeExtension;
+                $resumeFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resumeFilename);
+                $resume_file = $resumeFilename;
+            }
+            else{
+                $resume_file = $request->resume_filename;
+            }
+
+            if($request->hasFile('sss_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->sss_filename);
+                }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->sss_file);
+
+                $sssFile = $request->file('sss_file');
+                $sssExtension = $sssFile->getClientOriginalExtension();
+                $sssFilename = $employee_details->empno.'_SSS_File_'.$timestamp.'.'.$sssExtension;
+                $sssFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
+                $sss_file = $sssFilename;
+            }
+            else{
+                $sss_file = $request->sss_filename;
+            }
+
+            if($request->hasFile('tor_file')){
+                if(file_exists('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->transcript_of_records_filename)){
+                    unlink('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$request->transcript_of_records_filename);
+                }
+                Storage::delete('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name.'/'.$document_orig->transcript_of_records_file);
+
+                $torFile = $request->file('tor_file');
+                $torExtension = $torFile->getClientOriginalExtension();
+                $torFilename = $employee_details->empno.'_Transcript_of_Records_File'.$timestamp.'.'.$torExtension;
+                $torFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$torFilename);
+                $transcript_of_records_file = $torFilename;
+            }
+            else{
+                $transcript_of_records_file = $request->transcript_of_records_filename;
+            }
+
+            Document::where('employee_id',$request->employee_id)
+                ->update([
+                    'barangay_clearance_file' => $barangay_clearance_file,
+                    'birthcertificate_file' => $birthcertificate_file,
+                    'diploma_file' => $diploma_file,
+                    'medical_certificate_file' => $medical_certificate_file,
+                    'nbi_clearance_file' => $nbi_clearance_file,
+                    'pag_ibig_file' => $pag_ibig_file,
+                    'philhealth_file' => $philhealth_file,
+                    'police_clearance_file' => $police_clearance_file,
+                    'resume_file' => $resume_file,
+                    'sss_file' => $sss_file,
+                    'transcript_of_records_file' => $transcript_of_records_file
+                ]);
+
+            if($request->hasFile('barangay_clearance_file')){
+                $barangay_clearance_update = "[BARANGAY CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+
+            else{
+                $barangay_clearance_update = NULL;
+            }
+
+            if($request->hasFile('birthcertificate_file')){
+                $birthcertificate_update = "[BIRTHCERTIFICATE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $birthcertificate_update = NULL;
+            }
+
+            if($request->hasFile('diploma_file')){
+                $diploma_update = "[DIPLOMA FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $diploma_update = NULL;
+            }
+
+            if($request->hasFile('medical_certificate_file')){
+                $medical_certificate_update = "[MEDICAL CERTIFICATE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $medical_certificate_update = NULL;
+            }
+
+            if($request->hasFile('nbi_clearance_file')){
+                $nbi_clearance_update = "[NBI CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $nbi_clearance_update = NULL;
+            }
+
+            if($request->hasFile('pag_ibig_file')){
+                $pag_ibig_update = "[PAG-IBIG FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $pag_ibig_update = NULL;
+            }
+
+            if($request->hasFile('philhealth_file')){
+                $philhealth_update = "[PHILHEALTH FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $philhealth_update = NULL;
+            }
+
+            if($request->hasFile('police_clearance_file')){
+                $police_clearance_update = "[POLICE CLEARANCE FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $police_clearance_update = NULL;
+            }
+
+            if($request->hasFile('resume_file')){
+                $resume_update = "[RESUME FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $resume_update = NULL;
+            }
+
+            if($request->hasFile('sss_file')){
+                $sss_update = "[SSS FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $sss_update = NULL;
+            }
+
+            if($request->hasFile('tor_file')){
+                $tor_update = "[TRANSCRIPT OF RECORDS FILE HAS BEEN CHANGED]";
+            }
+            else{
+                $tor_update = NULL;
+            }
+
+
+            if(
+            $request->hasFile('barangay_clearance_file')
+            || $request->hasFile('birthcertificate_file')
+            || $request->hasFile('diploma_file')
+            || $request->hasFile('medical_certificate_file')
+            || $request->hasFile('nbi_clearance_file')
+            || $request->hasFile('pag_ibig_file')
+            || $request->hasFile('philhealth_file')
+            || $request->hasFile('police_clearance_file')
+            || $request->hasFile('resume_file')
+            || $request->hasFile('sss_file')
+            || $request->hasFile('tor_file')
+
+            ){
+                $employee_logs = new LogsTable;
+                $employee_logs->employee_id = $employee_details->id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS
+                                        $barangay_clearance_update
+                                        $birthcertificate_update
+                                        $diploma_update
+                                        $medical_certificate_update
+                                        $nbi_clearance_update
+                                        $pag_ibig_update
+                                        $philhealth_update
+                                        $police_clearance_update
+                                        $resume_update
+                                        $sss_update
+                                        $tor_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                                        $barangay_clearance_update
+                                        $birthcertificate_update
+                                        $diploma_update
+                                        $medical_certificate_update
+                                        $nbi_clearance_update
+                                        $pag_ibig_update
+                                        $philhealth_update
+                                        $police_clearance_update
+                                        $resume_update
+                                        $sss_update
+                                        $tor_update";
+                $userlogs->save();
+            }
+
+            sleep(2);
+            return Redirect::to(url()->previous());
         }
     }
 
