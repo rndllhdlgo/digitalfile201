@@ -1676,243 +1676,509 @@ class EmployeesController extends Controller
     }
 
     public function updateWorkInformation(Request $request){
-        // $emp = PersonalInformationTable::where('empno', $request->employee_number)->first();
-        $employee = WorkInformationTable::where('employee_number', substr($request->employee_number,2))->first();
-            if(!$employee){
-                $employee = new WorkInformationTable;
-                $employee->employee_id = $request->employee_id;
-                $employee->employee_number = $request->employee_number;
-                $employee->employee_company = $request->employee_company;
-                $employee->employee_department = $request->employee_department;
-                $employee->employee_branch = $request->employee_branch;
-                $employee->employment_status = $request->employment_status;
-                $employee->employment_origin = $request->employment_origin;
-                $employee->employee_position = $request->employee_position;
-                $employee->date_hired = $request->date_hired;
-                $employee->save();
+        if(!$employee_number_orig = WorkInformationTable::where('employee_number', substr($request->employee_number,2))->first()){
+            $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employee_position_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employment_status_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $employment_origin_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $company_email_address_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $company_contact_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $hmo_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $sss_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $pag_ibig_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $philhealth_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+            $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
+
+            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+
+            $employee = new WorkInformationTable;
+            $employee->employee_id = $request->employee_id;
+            $employee->employee_number = $request->employee_number;
+            $employee->employee_company = $request->employee_company;
+            $employee->employee_department = $request->employee_department;
+            $employee->employee_branch = $request->employee_branch;
+            $employee->employment_status = $request->employment_status;
+            $employee->employment_origin = $request->employment_origin;
+            $employee->employee_position = $request->employee_position;
+            $employee->date_hired = $request->date_hired;
+            $employee->save();
+
+            if($request->employee_number != $employee_number_orig){
+                $employee_number_new = $request->employee_number;
+                if($employee_number_orig === null){
+                    $employee_number_orig = 'N/A';
+                }
+                $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
             }
             else{
-                $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
-                // $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
-                $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first()->date_hired;
-                $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_company;
-                $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_branch;
-                $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_department;
-                $employee_position_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_position;
-                $employment_status_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employment_status;
-                $employment_origin_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employment_origin;
-                $company_email_address_orig = WorkInformationTable::where('employee_id', $request->id)->first()->company_email_address;
-                $company_contact_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->company_contact_number;
-                $hmo_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->hmo_number;
-                $sss_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->sss_number;
-                $pag_ibig_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->pag_ibig_number;
-                $philhealth_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->philhealth_number;
-                $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->tin_number;
-                $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->account_number;
+                $employee_number_change = NULL;
+            }
 
-                // if(substr($request->employee_number,2) != $employee_number_orig){
-                //     $employee_number_new = $request->employee_number;
-                //     $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
-                // }
-                // else{
-                //     $employee_number_change = NULL;
-                // }
+            if($request->date_hired != $date_hired_orig){
+                $date_hired1 = ($date_hired_orig !== null) ? Carbon::parse($date_hired_orig)->format('F d, Y') : 'N/A';
+                $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
+                $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
+            }
+            else{
+                $date_hired_change = null;
+            }
 
-                if($request->date_hired != $date_hired_orig){
-                    $date_hired1 = Carbon::parse($date_hired_orig)->format('F d, Y');
-                    $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
-                    $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
-                }
-                else{
-                    $date_hired_change = NULL;
-                }
+            if($request->employee_company != $employee_company_orig){
+                $employee_company_orig = ($employee_company_orig !== null) ? Company::where('entity', $employee_company_orig)->first()->company_name : 'N/A';
+                $employee_company_new = Company::where('entity', $request->employee_company)->first()->company_name;
+                $employee_company_change = "[COMPANY: FROM '$employee_company_orig' TO '$employee_company_new']";
+            }
+            else{
+                $employee_company_change = null;
+            }
 
-                if($request->employee_company != $employee_company_orig){
-                    $employee_company_orig = Company::where('entity', $employee_company_orig)->first()->company_name;
-                    $employee_company_new = Company::where('entity', $request->employee_company)->first()->company_name;
-                    $employee_company_change = "[COMPANY: FROM '$employee_company_orig' TO '$employee_company_new']";
-                }
-                else{
-                    $employee_company_change = NULL;
-                }
+            if($request->employee_branch != $employee_branch_orig){
+                $employee_branch_orig = ($employee_branch_orig !== null) ? Branch::where('entity03', $employee_branch_orig)->first()->entity03_desc : 'N/A';
+                $employee_branch_new = Branch::where('entity03', $request->employee_branch)->first()->entity03_desc;
+                $employee_branch_change = "[BRANCH: FROM '$employee_branch_orig' TO '$employee_branch_new']";
+            }
+            else{
+                $employee_branch_change = NULL;
+            }
 
-                if($request->employee_branch != $employee_branch_orig){
-                    $employee_branch_orig = Branch::where('entity03', $employee_branch_orig)->first()->entity03_desc;
-                    $employee_branch_new = Branch::where('entity03', $request->employee_branch)->first()->entity03_desc;
-                    $employee_branch_change = "[BRANCH: FROM '$employee_branch_orig' TO '$employee_branch_new']";
-                }
-                else{
-                    $employee_branch_change = NULL;
-                }
+            if($request->employee_department != $employee_department_orig){
+                $employee_department_orig = ($employee_department_orig !== null) ? Department::where('deptcode', $employee_department_orig)->first()->deptdesc : 'N/A';
+                $employee_department_new = Department::where('deptcode', $request->employee_department)->first()->deptdesc;
+                $employee_department_change = "[DEPARTMENT: FROM '$employee_department_orig' TO '$employee_department_new']";
+            }
+            else{
+                $employee_department_change = null;
+            }
 
-                if($request->employee_department != $employee_department_orig){
-                    $employee_department_orig = Department::where('deptcode', $employee_department_orig)->first()->deptdesc;
-                    $employee_department_new = Department::where('deptcode', $request->employee_department)->first()->deptdesc;
-                    $employee_department_change = "[DEPARTMENT: FROM '$employee_department_orig' TO '$employee_department_new']";
-                }
-                else{
-                    $employee_department_change = NULL;
-                }
+            if($request->employee_position != $employee_position_orig){
+                $employee_position_orig = ($employee_position_orig !== null) ? Position::where('id', $employee_position_orig)->first()->job_position_name : 'N/A';
+                $employee_position_new = Position::where('id', $request->employee_position)->first()->job_position_name;
+                $employee_position_change = "[POSITION: FROM '$employee_position_orig' TO '$employee_position_new']";
+            }
+            else{
+                $employee_position_change = null;
+            }
 
-                if($request->employee_position != $employee_position_orig){
-                    $employee_position_orig = Position::where('id', $employee_position_orig)->first()->job_position_name;
-                    $employee_position_new = Position::where('id', $request->employee_position)->first()->job_position_name;
-                    $employee_position_change = "[POSITION: FROM '$employee_position_orig' TO '$employee_position_new']";
+            if($request->employment_status != $employment_status_orig){
+                $employment_status_new = $request->employment_status;
+                if($employment_status_orig === null){
+                    $employment_status_orig = 'N/A';
                 }
-                else{
-                    $employee_position_change = NULL;
-                }
-
-                if($request->employment_status != $employment_status_orig){
-                    $employment_status_new = $request->employment_status;
                     $employment_status_change = "[EMPLOYMENT STATUS: FROM '$employment_status_orig' TO '$employment_status_new']";
-                }
-                else{
-                    $employment_status_change = NULL;
-                }
+            }
+            else{
+                $employment_status_change = null;
+            }
 
-                if($request->employment_origin != $employment_origin_orig){
-                    $employment_origin_new = $request->employment_origin;
+            if($request->employment_origin != $employment_origin_orig){
+                $employment_origin_new = $request->employment_origin;
+                if($employment_origin_orig === null){
+                    $employment_origin_orig = 'N/A';
+                }
                     $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM '$employment_origin_orig' TO '$employment_origin_new']";
-                }
-                else{
-                    $employment_origin_change = NULL;
-                }
+            }
+            else{
+                $employment_origin_change = null;
+            }
 
-                if($request->company_email_address != $company_email_address_orig){
-                    $company_email_address_new = $request->company_email_address;
-                    $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$company_email_address_orig' TO '$company_email_address_new']";
+            if($request->company_email_address != $company_email_address_orig){
+                $company_email_address_new = $request->company_email_address;
+                if($company_email_address_orig === null){
+                    $company_email_address_orig = 'N/A';
                 }
-                else{
-                    $company_email_address_change = NULL;
-                }
+                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$company_email_address_orig' TO '$company_email_address_new']";
+            }
+            else{
+                $company_email_address_change = null;
+            }
 
-                if($request->company_contact_number != $company_contact_number_orig){
-                    $company_contact_number_new = $request->company_contact_number;
-                    $company_contact_number_change = "[WORK CONTACT NO.: FROM '$company_contact_number_orig' TO '$company_contact_number_new']";
+            if($request->company_contact_number != $company_contact_number_orig){
+                $company_contact_number_new = $request->company_contact_number;
+                if($company_contact_number_orig === null){
+                    $company_contact_number_orig = 'N/A';
                 }
-                else{
-                    $company_contact_number_change = NULL;
-                }
+                $company_contact_number_change = "[WORK CONTACT NO.: FROM '$company_contact_number_orig' TO '$company_contact_number_new']";
+            }
+            else{
+                $company_contact_number_change = null;
+            }
 
-                if($request->hmo_number != $hmo_number_orig){
-                    $hmo_number_new = $request->hmo_number;
-                    $hmo_number_change = "[HMO NO.: FROM '$hmo_number_orig' TO '$hmo_number_new']";
+            if($request->hmo_number != $hmo_number_orig){
+                $hmo_number_new = $request->hmo_number;
+                if($hmo_number_orig === null){
+                    $hmo_number_orig = 'N/A';
                 }
-                else{
-                    $hmo_number_change = NULL;
-                }
+                $hmo_number_change = "[HMO NO.: FROM '$hmo_number_orig' TO '$hmo_number_new']";
+            }
+            else{
+                $hmo_number_change = NULL;
+            }
 
-                if($request->sss_number != $sss_number_orig){
-                    $sss_number_new = $request->sss_number;
-                    $sss_number_change = "[SSS NO.: FROM '$sss_number_orig' TO '$sss_number_new']";
+            if($request->sss_number != $sss_number_orig){
+                $sss_number_new = $request->sss_number;
+                if($sss_number_orig === null){
+                    $sss_number_orig = 'N/A';
                 }
-                else{
-                    $sss_number_change = NULL;
-                }
+                $sss_number_change = "[SSS NO.: FROM '$sss_number_orig' TO '$sss_number_new']";
+            }
+            else{
+                $sss_number_change = NULL;
+            }
 
-                if($request->pag_ibig_number != $pag_ibig_number_orig){
-                    $pag_ibig_number_new = $request->pag_ibig_number;
-                    $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$pag_ibig_number_orig' TO '$pag_ibig_number_new']";
+            if($request->pag_ibig_number != $pag_ibig_number_orig){
+                $pag_ibig_number_new = $request->pag_ibig_number;
+                if($pag_ibig_number_orig === null){
+                    $pag_ibig_number_orig = 'N/A';
                 }
-                else{
-                    $pag_ibig_number_change = NULL;
+                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$pag_ibig_number_orig' TO '$pag_ibig_number_new']";
+            }
+            else{
+                $pag_ibig_number_change = NULL;
+            }
+
+            if($request->philhealth_number !== $philhealth_number_orig){
+                $philhealth_number_new = $request->philhealth_number;
+                if($philhealth_number_orig === null){
+                    $philhealth_number_orig = 'N/A';
                 }
+                $philhealth_number_change = "[PHILHEALTH NO.: FROM '$philhealth_number_orig' TO '$philhealth_number_new']";
+            }
+            else{
+                $philhealth_number_change = NULL;
+            }
 
-                if($request->philhealth_number != $philhealth_number_orig){
-                    $philhealth_number_new = $request->philhealth_number;
-                    $philhealth_number_change = "[PHILHEALTH NO.: FROM '$philhealth_number_orig' TO '$philhealth_number_new']";
+            if($request->tin_number !== $tin_number_orig){
+                $tin_number_new = $request->tin_number;
+                if($tin_number_orig === null){
+                    $tin_number_orig = 'N/A';
                 }
-                else{
-                    $philhealth_number_change = NULL;
+                $tin_number_change = "[TIN NO.: FROM '$tin_number_orig' TO '$tin_number_new']";
+            }
+            else{
+                $tin_number_change = NULL;
+            }
+
+            if($request->account_number !== $account_number_orig){
+                $account_number_new = $request->account_number;
+                if($account_number_orig === null){
+                    $account_number_orig = 'N/A';
                 }
+                $account_number_change = "[ACCOUNT NO.: FROM '$account_number_orig' TO '$account_number_new']";
+            }
+            else{
+                $account_number_change = NULL;
+            }
 
-                if($request->tin_number != $tin_number_orig){
-                    $tin_number_new = $request->tin_number;
-                    $tin_number_change = "[TIN NO.: FROM '$tin_number_orig' TO '$tin_number_new']";
-                }
-                else{
-                    $tin_number_change = NULL;
-                }
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number)
+                                    $employee_number_change
+                                    $date_hired_change
+                                    $employee_company_change
+                                    $employee_branch_change
+                                    $employee_department_change
+                                    $employee_position_change
+                                    $employment_status_change
+                                    $employment_origin_change
+                                    $company_contact_number_change
+                                    $hmo_number_change
+                                    $sss_number_change
+                                    $pag_ibig_number_change
+                                    $philhealth_number_change
+                                    $tin_number_change
+                                    $account_number_change";
+            $userlogs->save();
 
-                if($request->account_number != $account_number_orig){
-                    $account_number_new = $request->account_number;
-                    $account_number_change = "[ACCOUNT NO.: FROM '$account_number_orig' TO '$account_number_new']";
-                }
-                else{
-                    $account_number_change = NULL;
-                }
+            $userlogs = new LogsTable;
+            $userlogs->employee_id = $request->id;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
+                                $employee_number_change
+                                $date_hired_change
+                                $employee_company_change
+                                $employee_branch_change
+                                $employee_department_change
+                                $employee_position_change
+                                $employment_status_change
+                                $employment_origin_change
+                                $company_email_address_change
+                                $company_contact_number_change
+                                $hmo_number_change
+                                $sss_number_change
+                                $pag_ibig_number_change
+                                $philhealth_number_change
+                                $tin_number_change
+                                $account_number_change ";
+            $userlogs->save();
 
-                if(auth()->user()->user_level != 'EMPLOYEE'){
-                    $sql = WorkInformationTable::where('employee_id',$request->employee_id)
-                        ->update([
-                            'employee_number' => substr($request->employee_number, 2),
-                            'date_hired' => $request->date_hired,
-                            'employee_company' => $request->employee_company,
-                            'employee_branch' => $request->employee_branch,
-                            'employee_department' => $request->employee_department,
-                            'employee_position' => $request->employee_position,
-                            'employment_status' => $request->employment_status,
-                            'employment_origin' => $request->employment_origin,
-                            'company_email_address' => $request->company_email_address,
-                            'company_contact_number' => $request->company_contact_number,
-                            'hmo_number' => $request->hmo_number,
-                            'sss_number' => $request->sss_number,
-                            'pag_ibig_number' => $request->pag_ibig_number,
-                            'philhealth_number' => $request->philhealth_number,
-                            'tin_number' => $request->tin_number,
-                            'account_number' => $request->account_number,
-                        ]);
+            $userlogs = new History;
+            $userlogs->employee_id = $request->id;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->history = "UPDATED DETAILS
+                                $employee_number_change
+                                $date_hired_change
+                                $employee_company_change
+                                $employee_branch_change
+                                $employee_department_change
+                                $employee_position_change
+                                $employment_status_change
+                                $employment_origin_change
+                                $company_email_address_change
+                                $company_contact_number_change
+                                $hmo_number_change
+                                $sss_number_change
+                                $pag_ibig_number_change
+                                $philhealth_number_change
+                                $tin_number_change
+                                $account_number_change";
+            $userlogs->save();
+        }
+        else{
+            $employee = WorkInformationTable::where('employee_id',$request->employee_id)->first();
+            $employee_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_number;
+            $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first()->date_hired;
+            $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_company;
+            $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_branch;
+            $employee_department_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_department;
+            $employee_position_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employee_position;
+            $employment_status_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employment_status;
+            $employment_origin_orig = WorkInformationTable::where('employee_id', $request->id)->first()->employment_origin;
+            $company_email_address_orig = WorkInformationTable::where('employee_id', $request->id)->first()->company_email_address;
+            $company_contact_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->company_contact_number;
+            $hmo_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->hmo_number;
+            $sss_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->sss_number;
+            $pag_ibig_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->pag_ibig_number;
+            $philhealth_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->philhealth_number;
+            $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->tin_number;
+            $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->account_number;
 
-                    if($sql){
+            // if(substr($request->employee_number,2) != $employee_number_orig){
+            //     $employee_number_new = $request->employee_number;
+            //     $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
+            // }
+            // else{
+            //     $employee_number_change = NULL;
+            // }
 
-                        $result = 'true';
-                        $id = $employee->id;
+            if($request->date_hired != $date_hired_orig){
+                $date_hired1 = Carbon::parse($date_hired_orig)->format('F d, Y');
+                $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
+                $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
+            }
+            else{
+                $date_hired_change = NULL;
+            }
 
-                        if(
-                            // $request->employee_number != $employee_number_orig ||
-                            $request->date_hired != $date_hired_orig ||
-                            $request->employee_company != $employee_company_orig ||
-                            $request->employee_branch != $employee_branch_orig ||
-                            $request->employee_position != $employee_position_orig ||
-                            $request->employment_status != $employment_status_orig ||
-                            $request->employment_origin != $employment_origin_orig ||
-                            $request->company_email_address != $company_email_address_orig ||
-                            $request->company_contact_number != $company_contact_number_orig ||
-                            $request->hmo_number != $hmo_number_orig ||
-                            $request->sss_number != $sss_number_orig ||
-                            $request->pag_ibig_number != $pag_ibig_number_orig ||
-                            $request->philhealth_number != $philhealth_number_orig ||
-                            $request->tin_number != $tin_number_orig ||
-                            $request->account_number != $account_number_orig ||
-                            $request->employee_department != $employee_department_orig
-                            ){
-                            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-                            $userlogs = new LogsTable;
-                            $userlogs->employee_id = $request->id;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
-                                                $date_hired_change
-                                                $employee_company_change
-                                                $employee_branch_change
-                                                $employee_department_change
-                                                $employee_position_change
-                                                $employment_status_change
-                                                $employment_origin_change
-                                                $company_email_address_change
-                                                $company_contact_number_change
-                                                $hmo_number_change
-                                                $sss_number_change
-                                                $pag_ibig_number_change
-                                                $philhealth_number_change
-                                                $tin_number_change
-                                                $account_number_change ";
-                            $userlogs->save();
+            if($request->employee_company != $employee_company_orig){
+                $employee_company_orig = Company::where('entity', $employee_company_orig)->first()->company_name;
+                $employee_company_new = Company::where('entity', $request->employee_company)->first()->company_name;
+                $employee_company_change = "[COMPANY: FROM '$employee_company_orig' TO '$employee_company_new']";
+            }
+            else{
+                $employee_company_change = NULL;
+            }
 
-                            $userlogs = new History;
-                            $userlogs->employee_id = $request->id;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->history = "UPDATED DETAILS
+            if($request->employee_branch != $employee_branch_orig){
+                $employee_branch_orig = Branch::where('entity03', $employee_branch_orig)->first()->entity03_desc;
+                $employee_branch_new = Branch::where('entity03', $request->employee_branch)->first()->entity03_desc;
+                $employee_branch_change = "[BRANCH: FROM '$employee_branch_orig' TO '$employee_branch_new']";
+            }
+            else{
+                $employee_branch_change = NULL;
+            }
+
+            if($request->employee_department != $employee_department_orig){
+                $employee_department_orig = Department::where('deptcode', $employee_department_orig)->first()->deptdesc;
+                $employee_department_new = Department::where('deptcode', $request->employee_department)->first()->deptdesc;
+                $employee_department_change = "[DEPARTMENT: FROM '$employee_department_orig' TO '$employee_department_new']";
+            }
+            else{
+                $employee_department_change = NULL;
+            }
+
+            if($request->employee_position != $employee_position_orig){
+                $employee_position_orig = Position::where('id', $employee_position_orig)->first()->job_position_name;
+                $employee_position_new = Position::where('id', $request->employee_position)->first()->job_position_name;
+                $employee_position_change = "[POSITION: FROM '$employee_position_orig' TO '$employee_position_new']";
+            }
+            else{
+                $employee_position_change = NULL;
+            }
+
+            if($request->employment_status != $employment_status_orig){
+                $employment_status_new = $request->employment_status;
+                $employment_status_change = "[EMPLOYMENT STATUS: FROM '$employment_status_orig' TO '$employment_status_new']";
+            }
+            else{
+                $employment_status_change = NULL;
+            }
+
+            if($request->employment_origin != $employment_origin_orig){
+                $employment_origin_new = $request->employment_origin;
+                $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM '$employment_origin_orig' TO '$employment_origin_new']";
+            }
+            else{
+                $employment_origin_change = NULL;
+            }
+
+            if($request->company_email_address != $company_email_address_orig){
+                $company_email_address_new = $request->company_email_address;
+                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$company_email_address_orig' TO '$company_email_address_new']";
+            }
+            else{
+                $company_email_address_change = NULL;
+            }
+
+            if($request->company_contact_number != $company_contact_number_orig){
+                $company_contact_number_new = $request->company_contact_number;
+                $company_contact_number_change = "[WORK CONTACT NO.: FROM '$company_contact_number_orig' TO '$company_contact_number_new']";
+            }
+            else{
+                $company_contact_number_change = NULL;
+            }
+
+            if($request->hmo_number != $hmo_number_orig){
+                $hmo_number_new = $request->hmo_number;
+                $hmo_number_change = "[HMO NO.: FROM '$hmo_number_orig' TO '$hmo_number_new']";
+            }
+            else{
+                $hmo_number_change = NULL;
+            }
+
+            if($request->sss_number != $sss_number_orig){
+                $sss_number_new = $request->sss_number;
+                $sss_number_change = "[SSS NO.: FROM '$sss_number_orig' TO '$sss_number_new']";
+            }
+            else{
+                $sss_number_change = NULL;
+            }
+
+            if($request->pag_ibig_number != $pag_ibig_number_orig){
+                $pag_ibig_number_new = $request->pag_ibig_number;
+                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$pag_ibig_number_orig' TO '$pag_ibig_number_new']";
+            }
+            else{
+                $pag_ibig_number_change = NULL;
+            }
+
+            if($request->philhealth_number != $philhealth_number_orig){
+                $philhealth_number_new = $request->philhealth_number;
+                $philhealth_number_change = "[PHILHEALTH NO.: FROM '$philhealth_number_orig' TO '$philhealth_number_new']";
+            }
+            else{
+                $philhealth_number_change = NULL;
+            }
+
+            if($request->tin_number != $tin_number_orig){
+                $tin_number_new = $request->tin_number;
+                $tin_number_change = "[TIN NO.: FROM '$tin_number_orig' TO '$tin_number_new']";
+            }
+            else{
+                $tin_number_change = NULL;
+            }
+
+            if($request->account_number != $account_number_orig){
+                $account_number_new = $request->account_number;
+                $account_number_change = "[ACCOUNT NO.: FROM '$account_number_orig' TO '$account_number_new']";
+            }
+            else{
+                $account_number_change = NULL;
+            }
+
+            if(auth()->user()->user_level != 'EMPLOYEE'){
+                $sql = WorkInformationTable::where('employee_id',$request->employee_id)
+                    ->update([
+                        'employee_number' => substr($request->employee_number, 2),
+                        'date_hired' => $request->date_hired,
+                        'employee_company' => $request->employee_company,
+                        'employee_branch' => $request->employee_branch,
+                        'employee_department' => $request->employee_department,
+                        'employee_position' => $request->employee_position,
+                        'employment_status' => $request->employment_status,
+                        'employment_origin' => $request->employment_origin,
+                        'company_email_address' => $request->company_email_address,
+                        'company_contact_number' => $request->company_contact_number,
+                        'hmo_number' => $request->hmo_number,
+                        'sss_number' => $request->sss_number,
+                        'pag_ibig_number' => $request->pag_ibig_number,
+                        'philhealth_number' => $request->philhealth_number,
+                        'tin_number' => $request->tin_number,
+                        'account_number' => $request->account_number,
+                    ]);
+
+                if($sql){
+
+                    $result = 'true';
+                    $id = $employee->id;
+
+                    if(
+                        // $request->employee_number != $employee_number_orig ||
+                        $request->date_hired != $date_hired_orig ||
+                        $request->employee_company != $employee_company_orig ||
+                        $request->employee_branch != $employee_branch_orig ||
+                        $request->employee_position != $employee_position_orig ||
+                        $request->employment_status != $employment_status_orig ||
+                        $request->employment_origin != $employment_origin_orig ||
+                        $request->company_email_address != $company_email_address_orig ||
+                        $request->company_contact_number != $company_contact_number_orig ||
+                        $request->hmo_number != $hmo_number_orig ||
+                        $request->sss_number != $sss_number_orig ||
+                        $request->pag_ibig_number != $pag_ibig_number_orig ||
+                        $request->philhealth_number != $philhealth_number_orig ||
+                        $request->tin_number != $tin_number_orig ||
+                        $request->account_number != $account_number_orig ||
+                        $request->employee_department != $employee_department_orig
+                        ){
+                        $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+                        $userlogs = new LogsTable;
+                        $userlogs->employee_id = $request->id;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
+                                            $date_hired_change
+                                            $employee_company_change
+                                            $employee_branch_change
+                                            $employee_department_change
+                                            $employee_position_change
+                                            $employment_status_change
+                                            $employment_origin_change
+                                            $company_email_address_change
+                                            $company_contact_number_change
+                                            $hmo_number_change
+                                            $sss_number_change
+                                            $pag_ibig_number_change
+                                            $philhealth_number_change
+                                            $tin_number_change
+                                            $account_number_change ";
+                        $userlogs->save();
+
+                        $userlogs = new History;
+                        $userlogs->employee_id = $request->id;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->history = "UPDATED DETAILS
+                                            $date_hired_change
+                                            $employee_company_change
+                                            $employee_branch_change
+                                            $employee_department_change
+                                            $employee_position_change
+                                            $employment_status_change
+                                            $employment_origin_change
+                                            $company_email_address_change
+                                            $company_contact_number_change
+                                            $hmo_number_change
+                                            $sss_number_change
+                                            $pag_ibig_number_change
+                                            $philhealth_number_change
+                                            $tin_number_change
+                                            $account_number_change";
+                        $userlogs->save();
+
+                        $userlogs = new UserLogs;
+                        $userlogs->user_id = auth()->user()->id;
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
                                                 $date_hired_change
                                                 $employee_company_change
                                                 $employee_branch_change
@@ -1928,61 +2194,41 @@ class EmployeesController extends Controller
                                                 $philhealth_number_change
                                                 $tin_number_change
                                                 $account_number_change";
-                            $userlogs->save();
-
-                            $userlogs = new UserLogs;
-                            $userlogs->user_id = auth()->user()->id;
-                            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
-                                                    $date_hired_change
-                                                    $employee_company_change
-                                                    $employee_branch_change
-                                                    $employee_department_change
-                                                    $employee_position_change
-                                                    $employment_status_change
-                                                    $employment_origin_change
-                                                    $company_email_address_change
-                                                    $company_contact_number_change
-                                                    $hmo_number_change
-                                                    $sss_number_change
-                                                    $pag_ibig_number_change
-                                                    $philhealth_number_change
-                                                    $tin_number_change
-                                                    $account_number_change";
-                            $userlogs->save();
-                        }
+                        $userlogs->save();
                     }
-                    else{
-                        $result = 'false';
-                        $id = '';
-                    }
-                    $data = array('result' => $result, 'id' => $id);
-                    return response()->json($data);
                 }
-                // else{
-                //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-                //     $sql = WorkInformationTablePending::where('employee_id',$request->employee_id)
-                //         ->create([
-                //             'employee_id' => $emp_id,
-                //             'employee_number' => $request->employee_number,
-                //             'date_hired' => $request->date_hired,
-                //             // 'employee_shift' => $request->employee_shift,
-                //             'employee_company' => $request->employee_company,
-                //             'employee_branch' => $request->employee_branch,
-                //             'employee_department' => $request->employee_department,
-                //             'employee_position' => $request->employee_position,
-                //             'employment_status' => $request->employment_status,
-                //             'employment_origin' => $request->employment_origin,
-                //             'company_email_address' => $request->company_email_address,
-                //             'company_contact_number' => $request->company_contact_number,
-                //             'hmo_number' => $request->hmo_number,
-                //             'sss_number' => $request->sss_number,
-                //             'pag_ibig_number' => $request->pag_ibig_number,
-                //             'philhealth_number' => $request->philhealth_number,
-                //             'tin_number' => $request->tin_number,
-                //             'account_number' => $request->account_number,
-                //         ]);
-                // }
+                else{
+                    $result = 'false';
+                    $id = '';
+                }
+                $data = array('result' => $result, 'id' => $id);
+                return response()->json($data);
             }
+            // else{
+            //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+            //     $sql = WorkInformationTablePending::where('employee_id',$request->employee_id)
+            //         ->create([
+            //             'employee_id' => $emp_id,
+            //             'employee_number' => $request->employee_number,
+            //             'date_hired' => $request->date_hired,
+            //             // 'employee_shift' => $request->employee_shift,
+            //             'employee_company' => $request->employee_company,
+            //             'employee_branch' => $request->employee_branch,
+            //             'employee_department' => $request->employee_department,
+            //             'employee_position' => $request->employee_position,
+            //             'employment_status' => $request->employment_status,
+            //             'employment_origin' => $request->employment_origin,
+            //             'company_email_address' => $request->company_email_address,
+            //             'company_contact_number' => $request->company_contact_number,
+            //             'hmo_number' => $request->hmo_number,
+            //             'sss_number' => $request->sss_number,
+            //             'pag_ibig_number' => $request->pag_ibig_number,
+            //             'philhealth_number' => $request->philhealth_number,
+            //             'tin_number' => $request->tin_number,
+            //             'account_number' => $request->account_number,
+            //         ]);
+            // }
+        }
     }
 
     public function updateEducationalAttainment(Request $request){

@@ -171,16 +171,17 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#employee_number').attr('readonly',false);
                     $('#employee_number').css('cursor','');
                 }
-                // setInterval(() => {
-                //     if(!$('#employee_number').val()){
-                //         $('#btnUpdate').prop('disabled',true);
-                //         $('#empno_required').show();
-                //     }
-                //     else{
-                //         $('#btnUpdate').prop('disabled',false);
-                //         $('#empno_required').hide();
-                //     }
-                // }, 0);
+
+                setInterval(() => {
+                    if(!$('#employee_number').val()){
+                        $('#empno_required').show();
+                        $('#btnUpdate').prop('disabled',true);
+                    }
+                    else{
+                        $('#empno_required').hide();
+                        $('#btnUpdate').prop('disabled',false);
+                    }
+                }, 0);
 
                 $('#date_hired').val(value.date_hired);
 
