@@ -16,8 +16,8 @@ $('#btnUpdate').on('click',function(){
     var gender = $('#gender').val();
     var address = $('#address').val();
     var ownership = $('#ownership').val();
-    var province = $('#province option:selected').text();
-    var city = $('#city option:selected').text();
+    var province = $('#province option:selected').text() === "SELECT PROVINCE" ? province = null : $('#province option:selected').text();
+    var city = $('#city option:selected').text() === "SELECT CITY" ? city = null : $('#city option:selected').text();
     var region = $('#region').val();
     var height = $('#height').val();
     var weight = $('#weight').val();

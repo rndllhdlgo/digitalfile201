@@ -75,22 +75,22 @@ $('#company_email_address').on('keyup',function(){
 });
 
 //Disable future dates/ Date Hired Function
-$(function(){
-    var dtToday = new Date();
+// $(function(){
+//     var dtToday = new Date();
 
-    var month = dtToday.getMonth() + 1;
-    var day = dtToday.getDate();
-    var year = dtToday.getFullYear();
+//     var month = dtToday.getMonth() + 1;
+//     var day = dtToday.getDate();
+//     var year = dtToday.getFullYear();
 
-    if(month < 10)
-        month = '0' + month.toString();
-    if(day < 10)
-        day = '0' + day.toString();
+//     if(month < 10)
+//         month = '0' + month.toString();
+//     if(day < 10)
+//         day = '0' + day.toString();
 
-    var maxDate = year + '-' + month + '-' + day;
-    $('#child_birthday').attr('max', maxDate);
-    $('#date_hired').attr('max', maxDate);
-});
+//     var maxDate = year + '-' + month + '-' + day;
+//     $('#child_birthday').attr('max', maxDate);
+//     $('#date_hired').attr('max', maxDate);
+// });
 
 //Disable Birthday Under 18
 $(function(){

@@ -16,6 +16,7 @@ use App\Models\EmployeeStatus;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 use App\User;
+use App\Models\Tr;
 use Auth;
 use Mail;
 use DataTables;
@@ -39,6 +40,36 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        // $try = Tr::where('id', 1)->first();
+        // $try_val = explode(',', $try->employment_status);
+        // if(in_array('Jan', $try_val) !== false){
+        //     return implode(', ',$try_val);
+        // }
+        // else{
+        //     return 'False';
+        // }
+
+        // $months_arr = ['Jan','Feb','March'];
+        // $months_str = implode(',', $months_arr);
+        // if(strpos($months_str, 'Jan') !== false){
+        //     return 'The string contains "Jan"';
+        // }
+        // else{
+        //     return 'The string does not contain "Jan"';
+        // }
+
+        // $months = 'jan,feb,apr,may';
+        // $months_array = explode(',', $months);
+        // return $months_array;
+
+        // if(in_array('jan', $months_array)){
+        //     return $months_array[1].' The string contains "jan"';
+        // }
+        // else{
+        //     return 'The string does not contain "jan"';
+        // }
+
         // $employee = WorkInformationTable::where('employee_number', 30369)->first();
         //         if(!$employee){
         //             $employee = new WorkInformationTable;
