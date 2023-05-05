@@ -20,6 +20,7 @@ use App\Models\Tr;
 use Auth;
 use Mail;
 use DataTables;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -40,6 +41,17 @@ class HomeController extends Controller
      */
     public function index()
     {
+
+        // $companies = WorkInformationTable::all();
+        // $filteredCompany = [];
+
+        // foreach ($companies as $company) {
+        //     if(strpos($company->employee_company, '004') !== false) {
+        //         $filteredCompany[] = $company;
+        //     }
+        // }
+
+        // return $filteredCompany;
 
         // $try = Tr::where('id', 1)->first();
         // $try_val = explode(',', $try->employment_status);

@@ -322,7 +322,6 @@ $('#viewSummary').on('click', function(){
     $('.employee_company').html($('#employee_company option:selected').text());
     $('.employee_department').html($('#employee_department option:selected').text());
     $('.employee_branch').html($('#employee_branch option:selected').text());
-    // $('.employee_branch').html($('#employee_branch option:selected').text() === "SELECT BRANCH" ? "NO BRANCH SELECTED" : $('#employee_branch option:selected').text());
 
     $('.employee_shift').html($('#employee_shift option:selected').text());
     $('.employee_supervisor').html($('#employee_supervisor option:selected').text());
