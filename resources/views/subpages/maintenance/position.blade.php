@@ -1,6 +1,6 @@
-<div id="shift_div" class="tab-pane fade" style="border-radius:0px;">
+<div id="position_div" class="tab-pane fade" style="border-radius:0px;">
     <br>
-    <table class="table table-striped table-hover table-bordered w-100 shiftTable" id="shiftTable">
+    <table class="table table-striped table-hover table-bordered w-100 positionTable" id="positionTable">
         <thead class="text-white" style="background-color:#0d1a80;">
                 <tr>
                     <td>
@@ -14,13 +14,14 @@
                     </td>
                 </tr>
                 <tr>
-                    <th><i class="fas fa-id-card"></i> SHIFT CODE</th>
-                    <th><i class="fa-solid fa-clock"></i> WORKING HOURS</th>
-                    <th><i class="fa-solid fa-clock"></i> BREAK TIME</th>
+                    <th><i class="fas fa-id-card"></i> JOB POSITION</th>
+                    <th><i class="fas fa-id-card"></i> JOB DESCRIPTION</th>
+                    <th><i class="fas fa-id-card"></i> JOB REQUIREMENTS/SKILLS</th>
                 </tr>
         </thead>
-            <tbody>
+            <tbody title="CLICK TO EDIT">
             </tbody>
     </table>
-    <hr class="hr-design">
+
+    @include('modals.addPosition')
 </div>

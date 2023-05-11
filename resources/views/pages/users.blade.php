@@ -15,7 +15,6 @@
             <thead class="text-white" style="background-color:#0d1a80;">
                 <tr>
                     <td>
-                        {{-- <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/> --}}
                         <select class="form-control filter-select form-select" data-column="0" style="border:1px solid #808080">
                             <option value="" selected></option>
                             @foreach($user_level as $user_levels)

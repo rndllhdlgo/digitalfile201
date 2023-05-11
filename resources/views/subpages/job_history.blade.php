@@ -40,12 +40,12 @@
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control job_field" id="job_inclusive_years_from">
+                            <input type="month" class="forminput form-control job_field max_month" id="job_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control job_field" id="job_inclusive_years_to">
+                            <input type="month" class="forminput form-control job_field max_month" id="job_inclusive_years_to">
                         </div>
                     </td>
                     <td>
@@ -55,7 +55,6 @@
             </tbody>
         </table>
 
-   {{-- Job Data Table --}}
         <table id="job_history_table" class="table table-bordered table-hover table-striped job_history_table" style="margin-top: -17px;">
             <thead class="job_history_table_thead" style="display: none;">
                 <tr>

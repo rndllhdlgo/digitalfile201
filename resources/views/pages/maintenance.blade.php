@@ -28,9 +28,6 @@
         <li class="nav-item">
             <a class="nav-link pill" id="shift_tab" data-bs-toggle="tab" href="#shift_div"> SHIFT</a>
         </li>
-        {{-- <li class="nav-item">
-            <a class="nav-link pill" id="job_position_and_description_tab" data-bs-toggle="tab" href="#job_position_and_description_div"> JOB POSITION</a>
-        </li> --}}
         <li class="nav-item">
             <a class="nav-link pill" id="position_tab" data-bs-toggle="tab" href="#position_div"> JOB POSITION</a>
         </li>

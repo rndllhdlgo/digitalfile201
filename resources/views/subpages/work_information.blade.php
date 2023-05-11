@@ -113,8 +113,8 @@
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                <p class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
-                <p id="duplicate_company_email_address" class="validation"><i class="fas fa-exclamation-triangle"></i> Email Already Exist!</p>
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL <span class="span_company_email_address span_all">(Optional)</span></label>
             </div>
         </div>

@@ -8,7 +8,7 @@
 		border-collapse: collapse;
 		background: white;
 	}
-	
+
 </style>
 <br>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -16,7 +16,7 @@
 		google.charts.load('current', {packages:["orgchart"]});
 		google.charts.setOnLoadCallback(drawChart);
 		let employee = <?= $employees ?>;
-        
+
 		function drawChart() {
 			var data = new google.visualization.DataTable();
 			var options = {
@@ -33,7 +33,7 @@
 				]);
 			});
 			// For each orgchart box, provide the name, manager, and tooltip to show.
-			
+
 			// Create the chart.
 			var chart = new google.visualization.OrgChart(document.getElementById('chart_div'));
 			// Draw the chart, setting the allowHtml option to true for the tooltips.

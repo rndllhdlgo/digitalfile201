@@ -25,7 +25,7 @@
 
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
-<body>
+    <body>
         <div id="loading">
             <strong style="font-size: 40px; color:#0d1a80 !important;">PLEASE WAIT...</strong><br>
             <div style="zoom: 400%;" class="spinner-border"></div><br>
@@ -47,7 +47,6 @@
             @yield('content')
         </div>
 
-        {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
         <script src="/js/inc/mdb.min.js"></script>
         <script src="/js/inc/bootstrap.bundle.min.js"></script>
         <script src="/js/inc/jquery.dataTables.min.js"></script>
@@ -59,10 +58,10 @@
         <script src="/js/inc/moment.js"></script>
         <script src="/js/inc/datetime.js"></script>
         <script src="/js/inc/printThis.js"></script>
-        <script src="/js/global/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+        <script src="/js/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 
         @if(Request::is('/'))
-            <script src="/js/home/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('login'))
@@ -72,17 +71,11 @@
         @if(Request::is('employees'))
             <script src="/js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnClose.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnSaveEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/inputFieldEffect.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/checkDuplicate.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/logs.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/history.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
 
         @if(Request::is('users'))
@@ -103,9 +96,5 @@
         @if(Request::is('updates'))
             <script src="/js/updates/updates.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
         @endif
-        @if(Request::is('/') || Request::is('employees') || Request::is('users') || Request::is('maintenance') || Request::is('updates'))
-            <script src="/js/global/btnClear.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/global/navPill.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-</body>
+    </body>
 </html>

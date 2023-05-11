@@ -13,6 +13,8 @@
     <tbody></tbody>
 </table>
 
+<textarea class="form-control text-uppercase separated" id="allergies" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+
 <script>
     var table;
     $(document).ready(function(){

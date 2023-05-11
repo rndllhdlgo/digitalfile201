@@ -28,12 +28,12 @@
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control college_field" id="college_inclusive_years_from">
+                                <input type="month" class="forminput form-control college_field max_month" id="college_inclusive_years_from">
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control college_field" id="college_inclusive_years_to">
+                                <input type="month" class="forminput form-control college_field max_month" id="college_inclusive_years_to">
                             </div>
                         </td>
 
@@ -99,12 +99,12 @@
 
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_from">
+                        <input type="month" class="forminput form-control secondary_field max_month" id="secondary_school_inclusive_years_from">
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field" id="secondary_school_inclusive_years_to">
+                        <input type="month" class="forminput form-control secondary_field max_month" id="secondary_school_inclusive_years_to">
                     </div>
                 </td>
             </tr>
@@ -139,12 +139,12 @@
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_from">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field" id="primary_school_inclusive_years_to">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_to">
                         </div>
                     </td>
                 </tr>
@@ -181,12 +181,12 @@
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control training_field" id="training_inclusive_years_from">
+                                <input type="month" class="forminput form-control training_field max_month" id="training_inclusive_years_from">
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control training_field" id="training_inclusive_years_to">
+                                <input type="month" class="forminput form-control training_field max_month" id="training_inclusive_years_to">
                             </div>
                         </td>
 
@@ -254,12 +254,12 @@
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control vocational_field" id="vocational_inclusive_years_from">
+                            <input type="month" class="forminput form-control vocational_field max_month" id="vocational_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control vocational_field" id="vocational_inclusive_years_to">
+                            <input type="month" class="forminput form-control vocational_field max_month" id="vocational_inclusive_years_to">
                         </div>
                     </td>
 

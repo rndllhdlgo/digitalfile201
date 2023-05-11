@@ -24,7 +24,7 @@
                         <div class="f-outline">
                             <input class="forminput form-control multiple_field memo_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all span_memo">(Optional)</span></label>
-                        </div> 
+                        </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">

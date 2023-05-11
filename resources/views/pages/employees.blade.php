@@ -8,14 +8,6 @@
                 <div class="col">
                     <h4 style="color: #0d1a80;" class="my-header">EMPLOYEE MASTER FILE <span id="head_title"></span></h4>
                 </div>
-                {{-- <div class="col">
-                    @if(Auth::user()->user_level == 'ADMIN' || 'ENCODER')
-                        <button type="button" class="btn btn-success float-end" id="addEmployeeBtn" title="ADD EMPLOYEE" style="font-weight: bold;"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
-                        <div class="btn-group float-end" role="group">
-                            <button type="button" id="addEmployeeBtn" class="btn btn-success" title="ADD EMPLOYEE"><i class="fas fa-user-plus"></i> ADD EMPLOYEE</button>
-                        </div>
-                    @endif
-                </div> --}}
             </div>
 
             <div class="row">
@@ -132,64 +124,21 @@
                 <h4 style="color: #0d1a80;" id="fillAll">EMPLOYEE INFORMATION</h4>
                 <br>
                 <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
-
-                {{-- @if(Auth::user()->user_level != 'EMPLOYEE') --}}
-                    {{-- <button type="button" class="btn btn-danger  mx-1 float-end grow" id="btnCancel" title="BACK" style="font-weight: bold;"><i class="fa-solid fa-arrow-left-long"></i> BACK</button> --}}
-                {{-- @endif --}}
-                {{-- <button type="button" class="btn btn-warning mx-1 float-end center grow btnDisabled" id="btnClear" title="CLEAR" style="font-weight: bold;"><i class="fas fa-eraser"></i> CLEAR</button> --}}
-                {{-- <button type="button" class="btn btn-success mx-1 float-end center grow btnDisabled" id="btnSave" title="SAVE" style="font-weight: bold;"><i class="fas fa-save"></i> SAVE</button> --}}
-                {{-- <button type="button" class="btn btn-success mx-1 float-end grow btnDisabled" id="btnUpdate" title="UPDATE" style="font-weight: bold;"><i class="fas fa-save"></i> UPDATE</button> --}}
-                {{-- <button type="button" class="btn btn-primary mx-1 float-end grow" id="btnSummary" title="VIEW SUMMARY" style="font-weight: bold;"><i class="fas fa-eye"></i> VIEW SUMMARY</button> --}}
                 <div class="btn-group float-end" role="group">
-                    <button type="button" id="btnSave" class="btn btn-success btnDisabled" title="SAVE"><i class="fas fa-save"></i> SAVE</button>
-                    <button type="button" id="btnClear" class="btn btn-warning btnDisabled" title="CLEAR"><i class="fas fa-eraser"></i> CLEAR</button>
                     <button type="button" id="btnSummary" class="btn btn-primary btnDisabled" title="VIEW" style="border-top-left-radius: 10px !important; border-bottom-left-radius:10px !important;"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
                     <button type="button" id="btnUpdate" class="btn btn-success btnDisabled" title="UPDATE"><i class="fas fa-save"></i> UPDATE</button>
-                    @if(Auth::user()->user_level != 'EMPLOYEE')
-                        <button type="button" class="btn btn-danger" id="btnCancel" title="BACK"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
-                    @endif
+                    <button type="button" class="btn btn-danger" id="btnCancel" title="BACK"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
                 </div>
             <br>
             <br>
             <hr>
-
-            <div class="toast-container position-fixed top-0 end-0 p-3">
-                <div id="clearAll" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="row border border-success">
-                        <div class="col-1 bg-success">
-                            <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
-                        </div>
-                        <div class="col bg-white">
-                            <span style="font-size: 17px;">Success</span><br>
-                            <span style="font-size: 14px;">Successfully cleared all pages of the Form</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="toast-container position-fixed top-0 end-0 p-3">
-                <div id="clearCurrent" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="row border border-success">
-                        <div class="col-1 bg-success">
-                            <i class="fa-solid fa-check fa-2x text-white" style="margin-left: -10px;margin-top:10px;"></i>
-                        </div>
-                        <div class="col bg-white">
-                            <span style="font-size: 17px;">Success</span><br>
-                            <span style="font-size: 14px;">Successfully cleared current page of the Form.</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
                 <ul class="nav nav-tabs" style="border-color:#0d1a80;" role="tablist">
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab1" data-bs-toggle="tab" href="#personal_info"> PERSONAL INFO</a>
                     </li>
-                    @if(Auth::user()->user_level != 'EMPLOYEE')
-                        <li class="nav-item">
-                            <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_info"> WORK INFO</a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab2" data-bs-toggle="tab" href="#work_info"> WORK INFO</a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab3" data-bs-toggle="tab" href="#education_trainings"> EDUCATION/TRAININGS</a>
                     </li>
@@ -199,20 +148,18 @@
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab5" data-bs-toggle="tab" href="#medical_history"> MEDICAL HISTORY</a>
                     </li>
-                    @if(Auth::user()->user_level != 'EMPLOYEE')
-                        <li class="nav-item">
-                            <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">BENEFITS</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
-                        </li>
-                    @endif
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab6" data-bs-toggle="tab" href="#documents"> DOCUMENTS </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">BENEFITS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
+                    </li>
                 </ul>
 
                 <form method="POST" enctype="multipart/form-data" action="/employees/saveDocuments" id="documents_form">
