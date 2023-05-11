@@ -42,103 +42,104 @@ class HomeController extends Controller
     public function index()
     {
 
-        // $companies = WorkInformationTable::all();
-        // $filteredCompany = [];
+        // if(){
+        //     // $companies = WorkInformationTable::all();
+        //     // $filteredCompany = [];
 
-        // foreach ($companies as $company) {
-        //     if(strpos($company->employee_company, '004') !== false) {
-        //         $filteredCompany[] = $company;
-        //     }
-        // }
+        //     // foreach ($companies as $company) {
+        //     //     if(strpos($company->employee_company, '004') !== false) {
+        //     //         $filteredCompany[] = $company;
+        //     //     }
+        //     // }
 
-        // return $filteredCompany;
+        //     // return $filteredCompany;
 
-        // $try = Tr::where('id', 1)->first();
-        // $try_val = explode(',', $try->employment_status);
-        // if(in_array('Jan', $try_val) !== false){
-        //     return implode(', ',$try_val);
-        // }
-        // else{
-        //     return 'False';
-        // }
+        //     // $try = Tr::where('id', 1)->first();
+        //     // $try_val = explode(',', $try->employment_status);
+        //     // if(in_array('Jan', $try_val) !== false){
+        //     //     return implode(', ',$try_val);
+        //     // }
+        //     // else{
+        //     //     return 'False';
+        //     // }
 
-        // $months_arr = ['Jan','Feb','March'];
-        // $months_str = implode(',', $months_arr);
-        // if(strpos($months_str, 'Jan') !== false){
-        //     return 'The string contains "Jan"';
-        // }
-        // else{
-        //     return 'The string does not contain "Jan"';
-        // }
+        //     // $months_arr = ['Jan','Feb','March'];
+        //     // $months_str = implode(',', $months_arr);
+        //     // if(strpos($months_str, 'Jan') !== false){
+        //     //     return 'The string contains "Jan"';
+        //     // }
+        //     // else{
+        //     //     return 'The string does not contain "Jan"';
+        //     // }
 
-        // $months = 'jan,feb,apr,may';
-        // $months_array = explode(',', $months);
-        // return $months_array;
+        //     // $months = 'jan,feb,apr,may';
+        //     // $months_array = explode(',', $months);
+        //     // return $months_array;
 
-        // if(in_array('jan', $months_array)){
-        //     return $months_array[1].' The string contains "jan"';
-        // }
-        // else{
-        //     return 'The string does not contain "jan"';
-        // }
+        //     // if(in_array('jan', $months_array)){
+        //     //     return $months_array[1].' The string contains "jan"';
+        //     // }
+        //     // else{
+        //     //     return 'The string does not contain "jan"';
+        //     // }
 
-        // $employee = WorkInformationTable::where('employee_number', 30369)->first();
-        //         if(!$employee){
-        //             $employee = new WorkInformationTable;
-        //             $employee->employee_id = 613;
-        //             $employee->employee_number = '30369';
-        //             $employee->employee_company = '002';
-        //             $employee->employee_department = '010';
-        //             $employee->employee_branch = '001';
-        //             $employee->employment_status = 'PROBATIONARY';
-        //             $employee->employment_origin = null;
-        //             $employee->employee_position = '61';
-        //             $employee->date_hired = '2012-07-26';
-        //             $employee->save();
-        //             return 'wala';
-        //         }
-        //         else{
-        //             return 'meron';
-        //         }
+        //     // $employee = WorkInformationTable::where('employee_number', 30369)->first();
+        //     //         if(!$employee){
+        //     //             $employee = new WorkInformationTable;
+        //     //             $employee->employee_id = 613;
+        //     //             $employee->employee_number = '30369';
+        //     //             $employee->employee_company = '002';
+        //     //             $employee->employee_department = '010';
+        //     //             $employee->employee_branch = '001';
+        //     //             $employee->employment_status = 'PROBATIONARY';
+        //     //             $employee->employment_origin = null;
+        //     //             $employee->employee_position = '61';
+        //     //             $employee->date_hired = '2012-07-26';
+        //     //             $employee->save();
+        //     //             return 'wala';
+        //     //         }
+        //     //         else{
+        //     //             return 'meron';
+        //     //         }
 
-        // $emp = PersonalInformationTable::where('empno', 30369)->first();
-        // $emp_work = WorkInformationTable::where('employee_number', $emp->empno)->first();
+        //     // $emp = PersonalInformationTable::where('empno', 30369)->first();
+        //     // $emp_work = WorkInformationTable::where('employee_number', $emp->empno)->first();
 
-        // if(!$emp_work){
-        //     $employee = new WorkInformationTable;
-        //     $employee->employee_id = 613;
-        //     $employee->employee_number = $emp->empno;
-        //     $employee->employee_company = '002';
-        //     $employee->employee_department = '010';
-        //     $employee->employee_branch = '001';
-        //     $employee->employment_status = 'PROBATIONARY';
-        //     $employee->employment_origin = null;
-        //     $employee->employee_position = '61';
-        //     $employee->date_hired = '2012-07-26';
-        //     $employee->save();
-        //     return 'wala';
-        // }
-        // else{
-        //     return 'meron';
-        // }
+        //     // if(!$emp_work){
+        //     //     $employee = new WorkInformationTable;
+        //     //     $employee->employee_id = 613;
+        //     //     $employee->employee_number = $emp->empno;
+        //     //     $employee->employee_company = '002';
+        //     //     $employee->employee_department = '010';
+        //     //     $employee->employee_branch = '001';
+        //     //     $employee->employment_status = 'PROBATIONARY';
+        //     //     $employee->employment_origin = null;
+        //     //     $employee->employee_position = '61';
+        //     //     $employee->date_hired = '2012-07-26';
+        //     //     $employee->save();
+        //     //     return 'wala';
+        //     // }
+        //     // else{
+        //     //     return 'meron';
+        //     // }
 
-        // $empno = 'PL';
-        // if(strpos($empno, 'ID') !== false ||
-        // strpos($empno, 'PL') !== false ||
-        // strpos($empno, 'AP') !== false ||
-        // strpos($empno, 'MJ') !== false ||
-        // strpos($empno, 'NU') !== false){
-        // return 'meron';
-        // }
-        // else{
-        //     return 'wala';
+        //     // $empno = 'PL';
+        //     // if(strpos($empno, 'ID') !== false ||
+        //     // strpos($empno, 'PL') !== false ||
+        //     // strpos($empno, 'AP') !== false ||
+        //     // strpos($empno, 'MJ') !== false ||
+        //     // strpos($empno, 'NU') !== false){
+        //     // return 'meron';
+        //     // }
+        //     // else{
+        //     //     return 'wala';
+        //     // }
         // }
 
         if(Auth::user()->user_level == 'EMPLOYEE'){
             return redirect('/employees');
         }
 
-        // $employees = PersonalInformationTable::all()->count();
         $active = WorkInformationTable::whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
         $inactive = WorkInformationTable::whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
         $regular = WorkInformationTable::where('employment_status','Regular')->count();
@@ -188,7 +189,6 @@ class HomeController extends Controller
             ->join('users', 'users.id', '=', 'user_id')
             ->orderBy('user_logs.id', 'DESC')
             ->get();
-
         return DataTables::of($list)->make(true);
     }
 }

@@ -19,23 +19,6 @@ class UsersController extends Controller
         return DataTables::of($users)->make(true);
     }
 
-    // public function saveUser(Request $request){
-
-    //     //check email duplication
-    //     if(User::where('email',$request->email)->count() > 0){
-    //         return response('duplicate');
-    //     }
-    //     $users = new User;
-    //     $users->user_level = $request->user_level;
-    //     $users->name = ucwords($request->name);
-    //     $users->email = $request->email;
-    //     $users->status = $request->status;
-    //     $users->password = Hash::make($request->password);
-    //     $sql = $users->save();//To save data
-
-    //     return $sql ? 'true' : 'false';
-    // }
-
     public function saveUser(Request $request){
 
         $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
@@ -178,11 +161,10 @@ class UsersController extends Controller
         else{
             $result = 'true';
 
-            $status = "FROM: [$status2] TO [$status1]";
+            $status = "FROM '$status2' TO '$status1'";
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "USER UPDATED: User successfully updated details of $name with UserID#$request->id with the following CHANGES: $status.";
             $userlogs->activity = "USER UPDATED: User successfully updated status of [$name] $status.";
             $userlogs->save();
         }

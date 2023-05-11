@@ -133,10 +133,6 @@ class TryController extends Controller
         return view('try.reports');
     }
 
-    // public function reports_data(){
-    //     return DataTables::of(Report::all())->make(true);
-    // }
-
     public function reports_data(Request $request){
         $selectedMonth = $request->selectedMonth;
         $selectedYear = $request->selectedYear;
