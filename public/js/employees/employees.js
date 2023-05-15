@@ -28,15 +28,6 @@ $(document).ready(function(){
         var filter = 'inactive';
     }
 
-    // else if(current_location == '/employees?employment_status=part_time'){
-    //     $('#head_title').html('- PART TIME');
-    //     var filter = 'part_time';
-    // }
-    // else if(current_location == '/employees?employment_status=intern'){
-    //     $('#head_title').html('- INTERN');
-    //     var filter = 'intern';
-    // }
-
     else if(current_location == '/employees?employment_status=male'){
         $('#head_title').html('- MALE');
         var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18,19];
@@ -71,8 +62,6 @@ $(document).ready(function(){
                 filter:filter
             },
         },
-        // order:[1,'asc'],
-        // order:[0,'desc'],
         order:[],
         columnDefs: [
             {
@@ -247,8 +236,6 @@ $(document).ready(function(){
     });
 });
 
-
-
 $('.filter-input').on('keyup search', function(){
     employeesTable.column($(this).data('column')).search($(this).val()).draw();
 });
@@ -262,14 +249,6 @@ $('#addEmployeeBtn').on('click',function(){
     $('#navigation').show();
     $('#tab1').addClass('tabactive');
     $('#spouse_contact_number').val('');
-
-    // $('#employee_shift').chosen();
-    // $('#employee_shift_chosen').css({
-    //     'width':'100%',
-    //     'font-weight':'500',
-    //     'font-size':'13px',
-    //     'font-family':'Arial, Helvetica, sans-serif'
-    // });
 
     $('#employee_company').chosen();
     $('#employee_company_chosen').css({
@@ -424,7 +403,6 @@ function changeEmploymentStatus(){
         $('#benefits_summary').show();
         $('#resignation_div').hide();
         $('#termination_div').hide();
-
     }
     else if($('#employment_status').val() == 'RESIGNED'){
             $('#resignation_div').show();
@@ -442,11 +420,6 @@ function changeEmploymentStatus(){
             $('#benefits_summary').hide();
     }
     else{
-        // $('#sss_number').val('');
-        // $('#pag_ibig_number').val('');
-        // $('#philhealth_number').val('');
-        // $('#tin_number').val('');
-        // $('#account_number').val('');
         $('#resignation_div').hide();
         $('#termination_div').hide();
 
@@ -455,7 +428,6 @@ function changeEmploymentStatus(){
     }
 }
 
-//Calculate Age Function
 $('#birthday').on('change',function(){
     var today = new Date();
     var birthDate = new Date($('#birthday').val());
@@ -507,7 +479,6 @@ $(document).on('click','#image_close, #image_close_trash',function(){
             $('#filename_delete').val($('#filename').val());
             $('#filename').val('');
             $('#employee_image').val('');
-            // $('#image_preview').attr('src','');
             $('#image_preview').hide();
             $('#image_close').hide();
             $('#image_user').show();
@@ -515,7 +486,6 @@ $(document).on('click','#image_close, #image_close_trash',function(){
             $('#image_instruction').show();
             $('.top-container').hide();
             $('.bottom-container').hide();
-            // $('.column1').css('height','280px');
             $('#employee_image').addClass('required_field');
 
             $.ajax({
@@ -531,60 +501,6 @@ $(document).on('click','#image_close, #image_close_trash',function(){
         }
     });
 });
-
-//Region,Province,City DropDown Function
-// $('#region').on('change', function(){
-//     $('#province').val('');
-//     $('#city').val('');
-//     $('#city').find('option').remove().end()
-//     $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
-//     $.ajax({
-//         type: 'GET',
-//         url: '/setprovince',
-//         data:{
-//             'regCode': $('#region').val()
-//         },
-//         success: function(data){
-//             $('#province').find('option').remove().end()
-//             $('#province').append($('<option value="" selected disabled>SELECT PROVINCE</option>'));
-//             var list = $.map(data, function(value, index){
-//                 return [value];
-//             });
-//             list.forEach(value => {
-//                 $('#province').append($('<option>', {
-//                     value: value.provCode,
-//                     text: value.provDesc.toUpperCase(),
-//                     class:'province'
-//                 }));
-//             });
-//         }
-//     });
-// });
-
-// $('#province').on('change', function(){
-//     $('#city').val('');
-//     $.ajax({
-//         type: 'GET',
-//         url: '/setcity',
-//         data:{
-//             'provCode': $('#province').val()
-//         },
-//         success: function(data){
-//             $('#city').find('option').remove().end()
-//             $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
-//             var list = $.map(data, function(value, index){
-//                 return [value];
-//             });
-//             list.forEach(value => {
-//                 $('#city').append($('<option>', {
-//                     value: value.citymunCode,
-//                     text: value.citymunDesc.toUpperCase(),
-//                     class:'city'
-//                 }));
-//             });
-//         }
-//     });
-// });
 
 $(document).on('change', '#province', function(){
     if($(this).val()){
@@ -650,7 +566,6 @@ $('#viewJobDescriptionBtn').on('click',function(){
             var job_requirements_details = job_requirements.split('•');
             for(var i=0; i < job_description_details.length; i++){
                 if(job_description_details[i]){
-                    // $('.job_description_div').append('<li>' + job_description_details[i].replace(/\"/g,'') + '</li>');
                     $('.job_description_div').append('<li>' + job_description_details[i] + '</li>');
                 }
             }
@@ -685,177 +600,173 @@ $('#viewJobDescriptionBtn').on('click',function(){
     $('#viewJobDescriptionModal').modal('show');
 });
 
+$(document).ready(function() {
+    var cellphone_number = $('#cellphone_number');
+    var emergency_contact_number = $('#emergency_contact_number');
 
-//Fill All Function
-// $('#fillAll').on('click', function(){
-//     $('#first_name').val('RENDELLX');
-//     $('#middle_name').val('MENDEZX');
-//     $('#last_name').val('HIDALGOX');
-//     $('#nickname').val('DELLX');
-//     $('#address').val('519 WEST ANTIPOLO STREET GAGALANGIN TONDO MANILA, 169X');
-//     $('#gender').val('FEMALE');
-//     $('#height').val('153CMX');
-//     $('#weight').val('55KGSX');
-//     $('#religion').val('CATHOLICX');
-//     $('#civil_status').val('WIDOWED');
-//     $('#email_address').val('RENDELLHIDALGO11X@GMAIL.COM');
-//     $('#cellphone_number').val('09322003711');
-//     $('#father_name').val('REYNALDO HIDALGOX');
-//     $('#father_contact_number').val('09322003711');
-//     $('#father_profession').val('UTILITY WORKERX');
-//     $('#mother_name').val('MARLYN HIDALGOX');
-//     $('#mother_contact_number').val('09324207231');
-//     $('#mother_profession').val('HOUSE WIFEX');
-//     $('#emergency_contact_name').val('MARLYN HIDALGOX');
-//     $('#emergency_contact_relationship').val('MOTHERX');
-//     $('#emergency_contact_number').val('09324207231');
-//     $('#birthday').val('2000-02-11');
-//     $('#birthday').change();
-//     $('#ownership').val('OWNED');
+    $("#cellphone_number, #emergency_contact_number").on("keyup", function(){
+        if(cellphone_number.val() === emergency_contact_number.val()){
+            $('#same_value').show();
+        }
+        else{
+            $('#same_value').hide();
+        }
+    });
+});
+
+$('.employee_history_table tbody').on('click', 'tr', function(){
+    var data =  $('.employee_history_table').DataTable().row(this).data();
+    Swal.fire({
+        title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+        html: `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.history.replaceAll(" [","<li>[") + `</li></ol>`,
+        width: 850,
+    });
+});
+
+$('.logs_table_data tbody').on('click', 'tr', function(){
+    var data =  $('.logs_table_data').DataTable().row(this).data();
+    Swal.fire({
+        title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+        html: `<h4 style="color:#0d1a80 !important;">` + data.username + ` [` + data.user_level + `]` + `</h4>` + `<br>` + `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.logs.replaceAll(" [","<li>[") + `</li></ol>`,
+        width: 850,
+    });
+    // Swal.fire({
+    //     title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+    //     html: `<h4>` + data.username + ` [` + data.role + `]` + `</h4>` + `<br>` + `<b>` +  data.activity.replaceAll(" [","<br>[") + `</br>`,
+    //     icon: 'info',
+    //     customClass: 'swal-wide',
+    //     showCancelButton: true,
+    //     confirmButtonText: 'VIEW DETAILS',
+    //     cancelButtonText: 'BACK'
+    // })
+    // .then((result) => {
+    //     if(result.isConfirmed){
+    //         // var transaction_number = activity.substr(-15,14);
+    //         window.location.href = '/employees?employee_number=';
+    //     }
+    // });
+});
+
+$('#employee_number').on('keyup',function(){
+    $.ajax({
+        url: "/employee_number/checkDuplicate",
+        data:{
+            employee_number : $('#employee_number').val(),
+        },
+        success: function(data){
+            if(data == 'duplicate_employee_number'){
+                $('#check_duplicate').show();
+                $('#employee_number').addClass('duplicate_field');
+            }
+            else{
+                $('#check_duplicate').hide();
+                $('#employee_number').removeClass('duplicate_field');
+            }
+        }
+    });
+});
+
+$('#email_address').on('keyup',function(){
+    if(email_address_orig != $('#email_address').val()){
+        $.ajax({
+            url: "/email_address/checkDuplicate",
+            data:{
+                email_address : $('#email_address').val(),
+            },
+            success: function(data){
+                if(data == 'duplicate_email_address'){
+                    $('#email_address').next('.validation').show();
+                }
+                else{
+                    $('#email_address').next('.validation').hide();
+                }
+            }
+        });
+    }
+});
+
+$('#company_email_address').on('keyup',function(){
+    if(company_email_address_orig != $('#company_email_address').val()){
+        $.ajax({
+            url: "/company_email_address/checkDuplicate",
+            data:{
+                company_email_address : $('#company_email_address').val(),
+            },
+            success: function(data){
+                if(data == 'duplicate_company_email_address'){
+                    $('#company_email_address').next('.validation').show();
+                }
+                else{
+                    $('#company_email_address').next('.validation').hide();
+                }
+            }
+        });
+    }
+});
+
+// Region,Province,City DropDown Function
+// $('#region').on('change', function(){
+//     $('#province').val('');
+//     $('#city').val('');
+//     $('#city').find('option').remove().end()
+//     $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setprovince',
+//         data:{
+//             'regCode': $('#region').val()
+//         },
+//         success: function(data){
+//             $('#province').find('option').remove().end()
+//             $('#province').append($('<option value="" selected disabled>SELECT PROVINCE</option>'));
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 $('#province').append($('<option>', {
+//                     value: value.provCode,
+//                     text: value.provDesc.toUpperCase(),
+//                     class:'province'
+//                 }));
+//             });
+//         }
+//     });
 // });
 
-// $('#note_required').on('click',function(){
-//     //Personal Info
-//     $('#first_name').val('Rendell');
-//     $('#middle_name').val('Mendez');
-//     $('#last_name').val('Hidalgo');
-//     $('#nickname').val('Dell');
-//     $('#address').val('sample');
-//     $('#gender').val('MALE');
-//     $('#height').val('153cm');
-//     $('#weight').val('55kgs');
-//     $('#religion').val('Catholic');
-//     $('#civil_status').val('SINGLE');
-//     $('#email_address').val('rendellhidalgo11@gmail.com');
-//     $('#cellphone_number').val('09322003718');
-//     $('#father_name').val('Reynaldo Hidalgo');
-//     $('#father_contact_number').val('09322003718');
-//     $('#father_profession').val('Utility Worker');
-//     $('#mother_name').val('Marlyn Hidalgo');
-//     $('#mother_contact_number').val('09324207239');
-//     $('#mother_profession').val('House Wife');
-//     $('#emergency_contact_name').val('Marlyn Hidalgo');
-//     $('#emergency_contact_relationship').val('Mother');
-//     $('#emergency_contact_number').val('09322003718');
-//     $('#birthday').val('2013-02-11');
-//     $('#birthday').change();
-//     $('#ownership').val('RENT');
-
-//     //Work Info
-//     $('#employee_number').val('50008');
-//     $('#employee_company').val('4');
-//     $('#employee_department').val('1');
-//     $('#employee_branch').val('3');
-//     $('#employment_status').val('Probationary');
-//     $('#employee_shift').val('1');
-//     // $('#employee_supervisor').val('1');
-//     $('#employee_position').val('2');
-//     $('#company_email_address').val('rdhidalgo@ideaserv.com.ph');
-//     $('#company_contact_number').val('09322003718');
-//     $('#sss_number').val('35-2192659-2');
-//     $('#pag_ibig_number').val('121305024402');
-//     $('#philhealth_number').val('022005294391');
-//     $('#tin_number').val('398-758-866');
-//     $('#account_number').val('5');
-//     $('#birthday').val('2013-02-11');
-
-//     // //Education/Trainings
-//     $('#college_name').val('Universidad De Manila');
-//     $('#college_degree').val('BTVTE Major in CPT');
-//     $('#college_inclusive_years_from').val('2018-06');
-//     $('#college_inclusive_years_to').val('2022-07');
-//     $('#collegeAdd').click();
-//     $('#secondary_school_name').val('Florentino Torres High School');
-//     $('#secondary_school_address').val('Torres');
-//     $('#secondary_school_inclusive_years_from').val('2012-06');
-//     $('#secondary_school_inclusive_years_to').val('2016-04');
-//     $('#primary_school_name').val('Lakandula Elementary School');
-//     $('#primary_school_address').val('Lakandula');
-//     $('#primary_school_inclusive_years_from').val('2006-06');
-//     $('#primary_school_inclusive_years_to').val('2012-04');
-//     $('#training_name').val('A');
-//     $('#training_title').val('A');
-//     $('#training_inclusive_years_from').val('2020-01');
-//     $('#training_inclusive_years_to').val('2020-02');
-//     $('#trainingAdd').click();
-//     $('#vocational_name').val('A');
-//     $('#vocational_course').val('A');
-//     $('#vocational_inclusive_years_from').val('2020-01');
-//     $('#vocational_inclusive_years_to').val('2020-02');
-//     $('#vocationalAdd').click();
-
-//     // Job History
-//     $('#job_company_name').val('A');
-//     $('#job_description').val('A');
-//     $('#job_position').val('A');
-//     $('#job_contact_number').val('1');
-//     $('#job_inclusive_years_from').val('2022-01');
-//     $('#job_inclusive_years_to').val('2023-01');
-//     $('#jobHistoryAdd').click();
-//     // Medical History
-//     $('#past_medical_condition').val('• A');
-//     $('#allergies').val('• A');
-//     $('#medication').val('• A');
-//     $('#psychological_history').val('• A');
-//     // Compensation/Benefits
-//     $('#employee_salary').val('₱15,000');
-//     $('#employee_incentives').val('₱1.00');
-//     $('#employee_overtime_pay').val('₱1.00');
-//     $('#employee_bonus').val('₱1.00');
-//     $('#employee_insurance').val('• A');
+// $('#province').on('change', function(){
+//     $('#city').val('');
+//     $.ajax({
+//         type: 'GET',
+//         url: '/setcity',
+//         data:{
+//             'provCode': $('#province').val()
+//         },
+//         success: function(data){
+//             $('#city').find('option').remove().end()
+//             $('#city').append($('<option value="" selected disabled>SELECT CITY</option>'));
+//             var list = $.map(data, function(value, index){
+//                 return [value];
+//             });
+//             list.forEach(value => {
+//                 $('#city').append($('<option>', {
+//                     value: value.citymunCode,
+//                     text: value.citymunDesc.toUpperCase(),
+//                     class:'city'
+//                 }));
+//             });
+//         }
+//     });
 // });
 
-$("input[type='date']").keydown(function (event) { event.preventDefault(); });
-
-setInterval(() => {
-    if($('#btnSave').is(":visible")){
-        $('#employee_history_div').hide();
-        $('#resign').hide();
-        $('#terminate').hide();
-        $('#retired').hide();
-    }
-    else{
-        $('#employee_history_div').show();
-        $('#resign').show();
-        $('#terminate').show();
-        $('#retired').show();
-    }
-}, 0);
-
-setInterval(() => {
-    // Check all required field function
-    if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length
-    // || $('#first_name').val().length < 2
-    // || $('#middle_name').val().length < 2
-    // || $('#last_name').val().length < 2
-    // || $('#father_name').val().length < 2
-    // || $('#mother_name').val().length < 2
-    // || $('#emergency_contact_name').val().length < 2
-    // || $('#cellphone_number').val().length < 11
-    // && $('#father_contact_number').val().length < 11
-    // && $('#mother_contact_number').val().length < 11
-    // || $('#emergency_contact_number').val().length < 11
-    // && $('#company_contact_number').val().length < 11
-    // || !email_address.value.match(regExp)
-    // && !company_email_address.value.match(regExp)
-    // || $('#employee_number').hasClass('duplicate_field')
-    // || $('#email_address').hasClass('duplicate_field')
-    // || $('#telephone_number').hasClass('duplicate_field')
-    // || $('#cellphone_number').hasClass('duplicate_field')
-    // || $('#father_contact_number').hasClass('duplicate_field')
-    // || $('#mother_contact_number').hasClass('duplicate_field')
-    // || $('#spouse_contact_number').hasClass('duplicate_field')
-    // || $('#emergency_contact_number').hasClass('duplicate_field')
-    // || $('#company_email_address').hasClass('duplicate_field')
-    // || $('#company_contact_number').hasClass('duplicate_field')
-    )
-    {
-        $('#btnSave').prop("disabled",true);
-    }
-    else{
-        $('#btnSave').prop("disabled",false);
-    }
-}, 0);
+// setInterval(() => {
+//     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length)
+//     {
+//         $('#btnSave').prop("disabled",true);
+//     }
+//     else{
+//         $('#btnSave').prop("disabled",false);
+//     }
+// }, 0);
 
 // setInterval(() => {
 //     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
@@ -867,79 +778,26 @@ setInterval(() => {
 //     }
 // }, 0);
 
+// setInterval(() => {
+//     if($('#btnSave').is(":visible")){
+//         $('#employee_history_div').hide();
+//         $('#resign').hide();
+//         $('#terminate').hide();
+//         $('#retired').hide();
+//     }
+//     else{
+//         $('#employee_history_div').show();
+//         $('#resign').show();
+//         $('#terminate').show();
+//         $('#retired').show();
+//     }
+// }, 0);
 
-setInterval(() => {
-    if($('#btnSave').is(":visible")){
-        $('#tab9').hide();
-    }
-    else{
-        $('#tab9').show();
-    }
-}, 0);
-
-$(document).ready(function() {
-    // Get current date
-    var currentDate = new Date();
-
-    // Set the maximum value for the month to the current month
-    $('#college_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#college_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#secondary_school_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#secondary_school_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#primary_school_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#primary_school_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#training_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#training_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#vocational_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#vocational_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#job_inclusive_years_from').attr('max', currentDate.toISOString().substring(0, 7));
-    $('#job_inclusive_years_to').attr('max', currentDate.toISOString().substring(0, 7));
-});
-
-$(document).ready(function(){
-    $('#btnPdf').click(function(){
-        $('#see_more').click();
-        $('#print_file').printThis({
-            importCSS: true
-            // header: '<img src="/images/ideaserv_systems_logo.png" style="width:150px; height:100px;"/>',
-        });
-    });
-});
-// $('#btnPdf').on('click', function() {
-//     var printContents = $('#print_file').html();
-//     var originalContents = $('body').html();
-//     $('body').html(printContents);
-//     window.print();
-//     $('body').html(originalContents);
-//   });
-
-function formatPesoInput(selector){
-    $(selector).on('keyup', function(){
-      let inputVal = $(this).val().replace(/[^\d]/g, '');
-      inputVal = inputVal.replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      inputVal = '₱' + inputVal;
-      $(this).val(inputVal);
-    });
-}
-
-$(document).ready(function() {
-    formatPesoInput('#employee_salary');
-    formatPesoInput('#employee_incentives');
-    formatPesoInput('#employee_overtime_pay');
-    formatPesoInput('#employee_bonus');
-});
-
-$(document).ready(function() {
-    var cellphone_number = $('#cellphone_number');
-    var emergency_contact_number = $('#emergency_contact_number');
-
-    $("#cellphone_number, #emergency_contact_number").on("keyup", function(){
-        if (cellphone_number.val() === emergency_contact_number.val()) {
-        console.log('The two input fields have the same value.');
-        $('#same_value').show();
-        } else {
-        console.log('The two input fields have different values.');
-        $('#same_value').hide();
-        }
-    });
-});
+// setInterval(() => {
+//     if($('#btnSave').is(":visible")){
+//         $('#tab9').hide();
+//     }
+//     else{
+//         $('#tab9').show();
+//     }
+// }, 0);

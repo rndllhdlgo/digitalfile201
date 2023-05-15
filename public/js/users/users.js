@@ -16,7 +16,7 @@ $(document).ready(function(){
         },
         order: [],
         columns:[
-            {data: 'user_level'},//data column name
+            {data: 'user_level'},
             {data: 'name'},
             {data: 'email'},
             {
@@ -114,3 +114,30 @@ function checkclearform(){
         $('#btnUserClear').prop("disabled",false);
     }
 }
+
+$('#btnUserClear').on('click',function(){
+    Swal.fire({
+        title: 'Do you want to clear the form?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((clear) => {
+        if(clear.isConfirmed){
+            $('#user_level').val('');
+            $('#name').val('');
+            $('#email').val('');
+            $('#password').val('');
+            $('#confirm').val('');
+            $('#status').val('');
+        }
+        else if(clear.isDenied){
+        }
+    });
+});

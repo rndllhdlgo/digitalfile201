@@ -1,6 +1,5 @@
 var college_change,training_change,vocational_change,job_history_change;
-setInterval(checkforblankMultiple,0);
-function checkforblankMultiple(){
+setInterval(() => {
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
         $('#childrenAdd').prop('disabled',true);
     }
@@ -75,11 +74,9 @@ function checkforblankMultiple(){
     else{
         $('#btnAddTerminationRow').prop('disabled',false);
     }
-}
-
+}, 0);
 
 $(document).ready(function(){
-
     $('#childrenAdd').click(function(){
         var child_name = $('#child_name').val().trim();
         var child_birthday = $('#child_birthday').val();
@@ -472,65 +469,3 @@ $(document).ready(function(){
             $(this).parent().parent().remove();
         });
     }
-
-// setInterval(() => {
-//     if($('#college_name').val() || $('#college_degree').val() || $('#college_inclusive_years').val()){
-//         $('.college_field').addClass('required_field');
-//         $('.span_college').hide();
-//     }
-//     else{
-//         $('.span_college').show();
-//         $('.college_field').removeClass('required_field');
-//         $('.college_field').removeClass('border border-danger');
-//     }
-
-//     if($('#secondary_school_name').val() || $('#secondary_school_address').val() || $('#secondary_school_inclusive_years').val()){
-//         $('.secondary_field').addClass('required_field');
-//         $('.span_secondary').hide();
-//     }
-//     else{
-//         $('.span_secondary').show();
-//         $('.secondary_field').removeClass('required_field');
-//         $('.secondary_field').removeClass('border border-danger');
-//     }
-
-//     if($('#training_name').val() || $('#training_title').val() || $('#training_inclusive_years').val()){
-//         $('.training_field').addClass('required_field');
-//         $('.span_training').hide();
-//     }
-//     else{
-//         $('.span_training').show();
-//         $('.training_field').removeClass('required_field');
-//         $('.training_field').removeClass('border border-danger');
-//     }
-
-//     if($('#vocational_name').val() || $('#vocational_course').val() || $('#vocational_inclusive_years_from').val() || $('#vocational_inclusive_years_to').val()){
-//         $('.vocational_field').addClass('required_field');
-//         $('.span_vocational').hide();
-//     }
-//     else{
-//         $('.span_vocational').show();
-//         $('.vocational_field').removeClass('required_field');
-//         $('.vocational_field').removeClass('border border-danger');
-//     }
-
-//     if($('#job_company_name').val() || $('#job_description').val() || $('#job_position').val() || $('#job_contact_number').val() || $('#job_inclusive_years').val()){
-//         $('.job_field').addClass('required_field');
-//         $('.span_job').hide();
-//     }
-//     else{
-//         $('.span_job').show();
-//         $('.job_field').removeClass('required_field');
-//         $('.job_field').removeClass('border border-danger');
-//     }
-
-//     if($('#child_name').val() || $('#child_birthday').val() || $('#child_gender').val()){
-//         $('.child_field').addClass('required_field');
-//         $('.span_child').hide();
-//     }
-//     else{
-//         $('.span_child').show();
-//         $('.child_field').removeClass('required_field');
-//         $('.child_field').removeClass('border border-danger');
-//     }
-// }, 0);

@@ -1,5 +1,3 @@
-//Display Upload Preview// Validation //Display filename
-
 $(document).on('click','#image_button',function(){
     $('#employee_image').click();
 });
@@ -14,7 +12,6 @@ $(document).on('click','#image_crop',function(){
     cropper.destroy();
 });
 
-//Personal Information Tab
 function ImageValidation(employee_image) {
     var imageData = document.getElementById('employee_image');
     var imageUploadPath = imageData.value;

@@ -14,6 +14,7 @@ use App\Imports\TestImport;
 use App\Models\Import;
 use App\Models\Export;
 use App\Models\Report;
+use App\Models\Status;
 use Carbon\Carbon;
 use DataTables;
 
@@ -103,21 +104,6 @@ class TryController extends Controller
         return view('try.cropImage');
     }
 
-    // public function cropImage_save(Request $request){
-    //     $croppedImage = $request->input('cropped_image');
-    //     $croppedImage = str_replace('data:image/jpeg;base64,', '', $croppedImage);
-    //     $croppedImage = str_replace(' ', '+', $croppedImage);
-    //     $croppedImage = base64_decode($croppedImage);
-
-    //     $filename = uniqid() . '.jpg';
-    //     Storage::disk('public')->put('employee_images/' . $filename, $croppedImage);
-
-    //     return response()->json([
-    //         'success' => true,
-    //         'filename' => $filename,
-    //     ]);
-    // }
-
     public function cropImage_save(Request $request){
         $imageData = $request->input('employee_image');
         $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
@@ -149,5 +135,9 @@ class TryController extends Controller
 
     public function status(){
         return view('try.status');
+    }
+
+    public function status_data(Request $request){
+        return DataTables::of(Status::all())->make(true);
     }
 }

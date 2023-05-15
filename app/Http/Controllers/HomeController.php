@@ -43,97 +43,105 @@ class HomeController extends Controller
     {
 
         // if(){
-        //     // $companies = WorkInformationTable::all();
-        //     // $filteredCompany = [];
+        //     // $names = ['Dell', 'Ced', 'Mae'];
+        //     // $result = [];
 
-        //     // foreach ($companies as $company) {
-        //     //     if(strpos($company->employee_company, '004') !== false) {
-        //     //         $filteredCompany[] = $company;
-        //     //     }
+        //     // foreach ($names as $value) {
+        //     //     $result[] = $value;
         //     // }
 
-        //     // return $filteredCompany;
+        //     // return $result;
+        //     //     // $companies = WorkInformationTable::all();
+        //     //     // $filteredCompany = [];
 
-        //     // $try = Tr::where('id', 1)->first();
-        //     // $try_val = explode(',', $try->employment_status);
-        //     // if(in_array('Jan', $try_val) !== false){
-        //     //     return implode(', ',$try_val);
-        //     // }
-        //     // else{
-        //     //     return 'False';
-        //     // }
+        //     //     // foreach ($companies as $company) {
+        //     //     //     if(strpos($company->employee_company, '004') !== false) {
+        //     //     //         $filteredCompany[] = $company;
+        //     //     //     }
+        //     //     // }
 
-        //     // $months_arr = ['Jan','Feb','March'];
-        //     // $months_str = implode(',', $months_arr);
-        //     // if(strpos($months_str, 'Jan') !== false){
-        //     //     return 'The string contains "Jan"';
-        //     // }
-        //     // else{
-        //     //     return 'The string does not contain "Jan"';
-        //     // }
+        //     //     // return $filteredCompany;
 
-        //     // $months = 'jan,feb,apr,may';
-        //     // $months_array = explode(',', $months);
-        //     // return $months_array;
+        //     //     // $try = Tr::where('id', 1)->first();
+        //     //     // $try_val = explode(',', $try->employment_status);
+        //     //     // if(in_array('Jan', $try_val) !== false){
+        //     //     //     return implode(', ',$try_val);
+        //     //     // }
+        //     //     // else{
+        //     //     //     return 'False';
+        //     //     // }
 
-        //     // if(in_array('jan', $months_array)){
-        //     //     return $months_array[1].' The string contains "jan"';
-        //     // }
-        //     // else{
-        //     //     return 'The string does not contain "jan"';
-        //     // }
+        //     //     // $months_arr = ['Jan','Feb','March'];
+        //     //     // $months_str = implode(',', $months_arr);
+        //     //     // if(strpos($months_str, 'Jan') !== false){
+        //     //     //     return 'The string contains "Jan"';
+        //     //     // }
+        //     //     // else{
+        //     //     //     return 'The string does not contain "Jan"';
+        //     //     // }
 
-        //     // $employee = WorkInformationTable::where('employee_number', 30369)->first();
-        //     //         if(!$employee){
-        //     //             $employee = new WorkInformationTable;
-        //     //             $employee->employee_id = 613;
-        //     //             $employee->employee_number = '30369';
-        //     //             $employee->employee_company = '002';
-        //     //             $employee->employee_department = '010';
-        //     //             $employee->employee_branch = '001';
-        //     //             $employee->employment_status = 'PROBATIONARY';
-        //     //             $employee->employment_origin = null;
-        //     //             $employee->employee_position = '61';
-        //     //             $employee->date_hired = '2012-07-26';
-        //     //             $employee->save();
-        //     //             return 'wala';
-        //     //         }
-        //     //         else{
-        //     //             return 'meron';
-        //     //         }
+        //     //     // $months = 'jan,feb,apr,may';
+        //     //     // $months_array = explode(',', $months);
+        //     //     // return $months_array;
 
-        //     // $emp = PersonalInformationTable::where('empno', 30369)->first();
-        //     // $emp_work = WorkInformationTable::where('employee_number', $emp->empno)->first();
+        //     //     // if(in_array('jan', $months_array)){
+        //     //     //     return $months_array[1].' The string contains "jan"';
+        //     //     // }
+        //     //     // else{
+        //     //     //     return 'The string does not contain "jan"';
+        //     //     // }
 
-        //     // if(!$emp_work){
-        //     //     $employee = new WorkInformationTable;
-        //     //     $employee->employee_id = 613;
-        //     //     $employee->employee_number = $emp->empno;
-        //     //     $employee->employee_company = '002';
-        //     //     $employee->employee_department = '010';
-        //     //     $employee->employee_branch = '001';
-        //     //     $employee->employment_status = 'PROBATIONARY';
-        //     //     $employee->employment_origin = null;
-        //     //     $employee->employee_position = '61';
-        //     //     $employee->date_hired = '2012-07-26';
-        //     //     $employee->save();
-        //     //     return 'wala';
-        //     // }
-        //     // else{
-        //     //     return 'meron';
-        //     // }
+        //     //     // $employee = WorkInformationTable::where('employee_number', 30369)->first();
+        //     //     //         if(!$employee){
+        //     //     //             $employee = new WorkInformationTable;
+        //     //     //             $employee->employee_id = 613;
+        //     //     //             $employee->employee_number = '30369';
+        //     //     //             $employee->employee_company = '002';
+        //     //     //             $employee->employee_department = '010';
+        //     //     //             $employee->employee_branch = '001';
+        //     //     //             $employee->employment_status = 'PROBATIONARY';
+        //     //     //             $employee->employment_origin = null;
+        //     //     //             $employee->employee_position = '61';
+        //     //     //             $employee->date_hired = '2012-07-26';
+        //     //     //             $employee->save();
+        //     //     //             return 'wala';
+        //     //     //         }
+        //     //     //         else{
+        //     //     //             return 'meron';
+        //     //     //         }
 
-        //     // $empno = 'PL';
-        //     // if(strpos($empno, 'ID') !== false ||
-        //     // strpos($empno, 'PL') !== false ||
-        //     // strpos($empno, 'AP') !== false ||
-        //     // strpos($empno, 'MJ') !== false ||
-        //     // strpos($empno, 'NU') !== false){
-        //     // return 'meron';
-        //     // }
-        //     // else{
-        //     //     return 'wala';
-        //     // }
+        //     //     // $emp = PersonalInformationTable::where('empno', 30369)->first();
+        //     //     // $emp_work = WorkInformationTable::where('employee_number', $emp->empno)->first();
+
+        //     //     // if(!$emp_work){
+        //     //     //     $employee = new WorkInformationTable;
+        //     //     //     $employee->employee_id = 613;
+        //     //     //     $employee->employee_number = $emp->empno;
+        //     //     //     $employee->employee_company = '002';
+        //     //     //     $employee->employee_department = '010';
+        //     //     //     $employee->employee_branch = '001';
+        //     //     //     $employee->employment_status = 'PROBATIONARY';
+        //     //     //     $employee->employment_origin = null;
+        //     //     //     $employee->employee_position = '61';
+        //     //     //     $employee->date_hired = '2012-07-26';
+        //     //     //     $employee->save();
+        //     //     //     return 'wala';
+        //     //     // }
+        //     //     // else{
+        //     //     //     return 'meron';
+        //     //     // }
+
+        //     //     // $empno = 'PL';
+        //     //     // if(strpos($empno, 'ID') !== false ||
+        //     //     // strpos($empno, 'PL') !== false ||
+        //     //     // strpos($empno, 'AP') !== false ||
+        //     //     // strpos($empno, 'MJ') !== false ||
+        //     //     // strpos($empno, 'NU') !== false){
+        //     //     // return 'meron';
+        //     //     // }
+        //     //     // else{
+        //     //     //     return 'wala';
+        //     //     // }
         // }
 
         if(Auth::user()->user_level == 'EMPLOYEE'){
