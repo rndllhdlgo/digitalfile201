@@ -245,13 +245,13 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="12" onkeyup="telephoneNumberField(this)" >
+                        <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="telephoneNumberField(this)" >
                         <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. <span class="span_telephone_number span_all">(Optional)</span> </label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field number_validation" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control required_field number_validation" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO. <span class="span_cellphone_number span_all"></span> </label>
                     </div>
                 </div>
@@ -269,7 +269,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL) <span class="span_spouse_number span_all"></span> </label>
                     </div>
                 </div>
@@ -291,7 +291,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL) <span class="span_father_contact_number span_all"></span> </label>
                     </div>
                 </div>
@@ -313,7 +313,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL) <span class="span_mother_contact_number span_all"></span></label>
                     </div>
                 </div>
@@ -341,7 +341,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <p id="same_value" class="validation"><i class="fas fa-exclamation-triangle"></i> SAME VALUE ON CELLPHONE NUMBER!</p>
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all"></span> </label>
                     </div>
