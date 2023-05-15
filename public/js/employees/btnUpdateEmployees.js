@@ -1,3 +1,34 @@
+var employee_image;
+function employee_image_save(){
+    var extension = "jpeg";
+    var date = new Date();
+
+    employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
+                    date.getFullYear().toString().slice(-2) +
+                    ("0" + (date.getMonth() + 1)).slice(-2) +
+                    ("0" + date.getDate()).slice(-2) +
+                    ("0" + date.getHours()).slice(-2) +
+                    ("0" + date.getMinutes()).slice(-2) +
+                    ("0" + date.getSeconds()).slice(-2) + '.' + extension;
+
+    var croppedImageData = $('#image_preview').attr('src');
+    $.ajax({
+        url: '/employees/insertImage',
+        method: 'post',
+        data: {
+                employee_image: employee_image,
+                image_data: croppedImageData
+              },
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        },
+        success: function(response){
+            console.log(response);
+            $('#filename').val(response);
+        }
+    });
+}
+
 $('#btnUpdate').on('click',function(){
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
         var completed = '1';
@@ -209,10 +240,6 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        var employee_salary = $('#employee_salary').val();
-                        var employee_incentives = $('#employee_incentives').val();
-                        var employee_overtime_pay = $('#employee_overtime_pay').val();
-                        var employee_bonus = $('#employee_bonus').val();
                         var employee_insurance = $('#employee_insurance').val()
 
                         $.ajax({
@@ -224,10 +251,6 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                employee_salary:employee_salary,
-                                employee_incentives:employee_incentives,
-                                employee_overtime_pay:employee_overtime_pay,
-                                employee_bonus:employee_bonus,
                                 employee_insurance:employee_insurance
                             }
                         });
@@ -458,80 +481,324 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        // if(current_user_level != 'EMPLOYEE'){
                         //     $('#documents_form').submit();
-                        // }
+
+                        var formData = new FormData($('#documents_form').get(0));
+                        $.ajax({
+                            url: '/employees/updateDocuments',
+                            type: 'POST',
+                            data: formData,
+                            processData: false,
+                            contentType: false,
+                            headers: {
+                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                            },
+                            success: function(response) {
+                                console.log(response);
+                            }
+                        });
 
                         $('#loading').hide();
-                        // if(current_user_level == 'EMPLOYEE'){
-                        //     // Swal.fire({
-                        //     //     icon: 'success',
-                        //     //     title: 'REQUEST SUCCESS',
-                        //     //     text: 'You have requested that your information be updated, Please wait for HR to approve it.'
-                        //     // });
-
-                        //     // Swal.fire({
-                        //     //     title: 'REQUEST SUCCESS',
-                        //     //     text: 'You have requested that your information be updated, Please wait for HR to approve it.',
-                        //     //     icon: 'success',
-                        //     //     timer: 5000,
-                        //     //     timerProgressBar: true,
-                        //     //     showConfirmButton: false,
-                        //     //     allowOutsideClick: false
-                        //     // }).then((result) => {
-                        //     //     if (result.dismiss === Swal.DismissReason.timer || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
-                        //     //         window.location.href = '/logout';
-                        //     //     }
-                        //     // });
-                        //     $('#employee_information').hide();
-                        //     Swal.fire({
-                        //         title: 'REQUEST SUCCESS',
-                        //         html: '<div style="font-family: Century Gothic, cursive;">You have requested to update your information. Please wait for HR to approve it.<br><br>For the meantime, you will not be able to request another update if you have pending updates.</div>',
-                        //         icon: 'success',
-                        //         showCancelButton: false,
-                        //         allowOutsideClick: false,
-                        //         allowEscapeKey: false,
-                        //         confirmButtonColor: '#3085d6',
-                        //         cancelButtonColor: '#d33',
-                        //         confirmButtonText: 'LOGOUT'
-                        //     }).then((result) => {
-                        //         if (result.isConfirmed) {
-                        //             window.location.href = '/logout';
-                        //         }
-                        //     });
-                        // }
-                        // else{
-                        //     Swal.fire({
-                        //         icon: 'success',
-                        //         title: 'UPDATE SUCCESS'
-                        //     });
-                        // }
                         Swal.fire('UPDATE SUCCESS','','success');
-                        // setTimeout(function(){window.location.reload();}, 2000);
 
-                        // Swal.fire({
-                        //     title: 'UPDATE SUCESS',
-                        //     // html:college_warning,
-                        //     allowOutsideClick: false,
-                        //     allowEscapeKey: false,
-                        //     showDenyButton: true,
-                        //     confirmButtonText: 'RELOAD PAGE',
-                        //     denyButtonText: 'CANCEL',
-                        //     customClass: {
-                        //     actions: 'my-actions',
-                        //     confirmButton: 'order-2',
-                        //     denyButton: 'order-3',
-                        //     }
-                        // }).then((update) => {
-                        //     if (update.isConfirmed) {
-                        //         window.location.reload();
+                        // $.ajax({
+                        //     url:"/reload_image",
+                        //     type:"get",
+                        //     async: false,
+                        //     success:function(reload_image){
+                        //         console.log('reload_image');
+                        //         $('.column1').html(reload_image);
                         //     }
                         // });
+
+                        // setTimeout(() => {
+                        //     $.ajax({
+                        //         url:"/summary_reload",
+                        //         type:"get",
+                        //         async: false,
+                        //         success:function(summary_reload){
+                        //             console.log('reload');
+                        //             $('#summary_reload').html(summary_reload)
+                        //         }
+                        //     });
+                        // }, 0);
+
+                        setTimeout(() => {
+                            if(job_history_change == 'CHANGED'){
+                                console.log('job');
+                                $('.job_history_table_orig').dataTable().fnDestroy();
+                                $('.job_history_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                    return '<button type="button" class="btn btn-danger btn_delete_job center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [6],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    ordering: false,
+                                    info: false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "No data available in table",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/job_history_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'job_company_name',width : '15%'},
+                                        { data: 'job_description',width : '15%'},
+                                        { data: 'job_position', width: '15%'},
+                                        { data: 'job_contact_number', width : '15%'},
+                                        {
+                                            data: 'job_inclusive_years_from',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                                            },
+                                            width : '15%'
+                                        },
+                                        {
+                                            data: 'job_inclusive_years_to',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                                            },
+                                            width : '15%'
+                                        }
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.job_history_table_orig').DataTable().data().any()){
+                                            $('#job_history_table_orig').hide();
+                                            $('#checkbox6').prop('disabled',true);
+                                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
+                                        }
+                                        else{
+                                            $('#job_history_table_orig').show();
+                                            $('#checkbox6').prop('disabled',false);
+                                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
+                                        }
+                                    }
+                                });
+                            }
+
+                            if(college_change == 'CHANGED'){
+                                console.log('college');
+                                $('.college_table_orig').dataTable().fnDestroy();
+                                $('.college_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                    return '<button type="button" class="btn btn-danger btn_delete_college center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    info: false,
+                                    ordering:false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "No data available in table",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/college_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'college_name',width: '30%'},
+                                        { data: 'college_degree', width: '30%'},
+                                        {
+                                            data: 'college_inclusive_years_from',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
+                                            },
+                                            width: '15%'},
+                                        {
+                                            data: 'college_inclusive_years_to',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
+                                            },
+                                            width: '15%'}
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.college_table_orig').DataTable().data().any()){
+                                            $('#college_table_orig').hide();
+                                        }
+                                        else{
+                                            $('#college_table_orig').show();
+                                        }
+                                    }
+                                });
+                            }
+
+                            if(training_change == 'CHANGED'){
+                                console.log('training');
+                                $('.training_table_orig').dataTable().fnDestroy();
+                                $('.training_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                    return '<button type="button" class="btn btn-danger btn_delete_training center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    ordering: false,
+                                    info: false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "No data available in table",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/training_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'training_name',width: '30%'},
+                                        { data: 'training_title', width: '30%'},
+                                        {
+                                            data: 'training_inclusive_years_from',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
+                                            },
+                                            width: '15%'},
+                                        {
+                                            data: 'training_inclusive_years_to',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
+                                            },
+                                            width: '15%'}
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.training_table_orig').DataTable().data().any()){
+                                            $('#training_table_orig').hide();
+                                            $('.checkbox5').addClass('btnDisabled').attr('disabled',true);
+                                        }
+                                        else{
+                                            $('#training_table_orig').show();
+                                            $('.checkbox5').removeClass('btnDisabled').attr('disabled',false);
+                                        }
+                                    }
+                                });
+                            }
+
+                            if(vocational_change == 'CHANGED'){
+                                console.log('vocational');
+                                $('.vocational_table_orig').dataTable().fnDestroy();
+                                $('.vocational_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                    return '<button type="button" class="btn btn-danger btn_delete_vocational center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    ordering: false,
+                                    info: false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "No data available in table",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/vocational_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'vocational_name', width: '30%'},
+                                        { data: 'vocational_course', width: '30%'},
+                                        {
+                                            data: 'vocational_inclusive_years_from',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
+                                            },
+                                            width: '15%'
+                                        },
+                                        {
+                                            data: 'vocational_inclusive_years_to',
+                                            "render":function(data,type,row){
+                                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
+                                            },
+                                            width: '15%'
+                                        }
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.vocational_table_orig').DataTable().data().any()){
+                                            $('#vocational_table_orig').hide();
+                                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
+                                        }
+                                        else{
+                                            $('#vocational_table_orig').show();
+                                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
+                                        }
+                                    }
+                                });
+                            }
+                        }, 2000);
+
+                        setTimeout(() => {
+                            Swal.fire({
+                                title: 'Are you finished editing?',
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                showDenyButton: true,
+                                confirmButtonText: 'Yes',
+                                denyButtonText: 'No',
+                                customClass: {
+                                    actions: 'my-actions',
+                                    confirmButton: 'order-2',
+                                    denyButton: 'order-3',
+                                }
+                            }).then((edit) => {
+                                if(edit.isConfirmed){
+                                    $('#loading').show();
+                                    setTimeout(function() {
+                                        window.location.reload();
+                                    }, 2000);
+                                }
+                                else if(edit.isDenied){
+                                }
+                            });
+                        }, 2000);
                     }
                     else{
                         $('#loading').hide();
                         Swal.fire('UPDATE FAILED','','error');
-                        setTimeout(function(){window.location.reload();}, 2000);
                     }
                 }
             });

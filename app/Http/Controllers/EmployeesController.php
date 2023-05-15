@@ -742,9 +742,9 @@ class EmployeesController extends Controller
             else{
                 $employee->empno = $request->empno;
             }
-            $employee->job_company_name = $request->job_company_name;
-            $employee->job_description = $request->job_description;
-            $employee->job_position = $request->job_position;
+            $employee->job_company_name = strtoupper($request->job_company_name);
+            $employee->job_description = strtoupper($request->job_description);
+            $employee->job_position = strtoupper($request->job_position);
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
@@ -3777,5 +3777,9 @@ class EmployeesController extends Controller
 
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
+    }
+
+    public function reload_image(Request $request){
+        return view('render.reloadImage')->render();
     }
 }

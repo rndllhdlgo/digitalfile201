@@ -475,27 +475,20 @@ $(document).on('click','#image_close, #image_close_trash',function(){
         denyButton: 'order-3',
         }
     }).then((save) => {
-        if (save.isConfirmed) {
-            $('#filename_delete').val($('#filename').val());
-            $('#filename').val('');
-            $('#employee_image').val('');
-            $('#image_preview').hide();
-            $('#image_close').hide();
-            $('#image_user').show();
-            $('#image_button').show();
-            $('#image_instruction').show();
-            $('.top-container').hide();
-            $('.bottom-container').hide();
-            $('#employee_image').addClass('required_field');
-
+        if(save.isConfirmed){
+            var img_delete = $('#filename').val();
             $.ajax({
                 url:"/upload_picture",
                 type:"get",
                 async: false,
                 success:function(image_upload_div){
-                    $('.column1').html(image_upload_div)
+                    $('.column1').html(image_upload_div);
                 }
             });
+
+            $('#filename_delete').val(img_delete);
+            $('#filename').val('');
+
             employee_image_change = 'CHANGED';
             console.log(employee_image_change);
         }

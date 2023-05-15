@@ -18,10 +18,10 @@ var barangay_clearance_change,
     police_clearance_file_change,
     resume_file_change,
     sss_file_change,
-    tor_file_change;
+    tor_file_change,
+    memo_change;
+var email_address_orig,company_email_address_orig;
 
-var memo_change;
-var email_address_orig;
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
 
@@ -60,7 +60,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#hidden_id').val(value.id);
                 $('#documents_form').attr("action",'/employees/updateDocuments');
                 $('#current_employee').val(value.employee_number);
-                //Personal Info
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
@@ -160,7 +159,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
 
-                //Work Info
                 if(value.employee_number){
                     $('#employee_number').val(value.employee_number);
                     var removeValue = value.employee_number+"_";
@@ -184,7 +182,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }, 0);
 
                 $('#date_hired').val(value.date_hired);
-
                 $('#employee_shift').val(value.desc);
 
                 $('#employee_company').val(value.employee_company);
@@ -240,6 +237,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employment_origin').val(value.employment_origin);
 
                 $('#company_email_address').val(value.company_email_address);
+                company_email_address_orig = value.company_email_address;
                 $('#company_contact_number').val(value.company_contact_number);
                 $('#hmo_number').val(value.hmo_number);
                 $('#sss_number').val(value.sss_number);
@@ -297,7 +295,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#checkbox7').prop('disabled',true);
                     $('.checkbox7').addClass('btnDisabled').attr('disabled',true);
                 }
-
                 else{
                     $('#checkbox7').prop('disabled',false);
                     $('.checkbox7').removeClass('btnDisabled').attr('disabled',false);
@@ -308,52 +305,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employee_overtime_pay').val(value.employee_overtime_pay);
                 $('#employee_bonus').val(value.employee_bonus);
                 $('#employee_insurance').val(value.employee_insurance);
-
-                // $('.children_table_orig').dataTable().fnDestroy();
-                // $('.children_table_orig').DataTable({
-                //     columnDefs: [
-                //         {
-                //             "render": function(data, type, row, meta){
-                //                     return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
-                //             },
-                //             "defaultContent": '',
-                //             "data": null,
-                //             "targets": [4],
-                //         },
-                //     ],
-                //     searching: false,
-                //     paging: false,
-                //     ordering: false,
-                //     info: false,
-                //     autoWidth: false,
-                //     language:{
-                //         emptyTable: "No data available in table",
-                //         processing: "Loading...",
-                //     },
-                //     serverSide: true,
-                //     ajax: {
-                //         url: '/employees/children_data',
-                //         async: false,
-                //         data:{
-                //             id: value.id,
-                //         }
-                //     },
-                //     columns: [
-                //         { data: 'child_name', width: '22.5%'},
-                //         { data: 'child_birthday', width: '22.5%'},
-                //         { data:  null, defaultContent : "", width: '22.5%'},
-                //         // { data:  '', width: '22.5%'},
-                //         { data: 'child_gender', width: '22.5%'}
-                //     ],
-                //     initComplete: function(){
-                //         if(!$('.children_table_orig').DataTable().data().any()){
-                //             $('#children_table_orig').hide();
-                //         }
-                //         else{
-                //             $('#children_table_orig').show();
-                //         }
-                //     }
-                // });
 
                 $('.children_table_orig').dataTable().fnDestroy();
                 $('.children_table_orig').DataTable({
@@ -367,7 +318,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             "targets": [4],
                         },
                         {
-                            // new column definition for age
                             data: null,
                             render: function(data, type, row, meta) {
                                 var today = new Date();
@@ -523,12 +473,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
                             $('#training_table_orig').hide();
-                            $('.training_div').hide();
                             $('.checkbox5').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#training_table_orig').show();
-                            $('.training_div').show();
                             $('.checkbox5').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
@@ -584,15 +532,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
                             $('#vocational_table_orig').hide();
-                            $('.vocational_div').hide();
                             $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
-
                         }
                         else{
                             $('#vocational_table_orig').show();
-                            $('.vocational_div').show();
                             $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
-
                         }
                     }
                 });
@@ -659,99 +603,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){
                             $('#job_history_table_orig').hide();
                             $('#checkbox6').prop('disabled',true);
-                            $('.column_nine').hide();
                             $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#job_history_table_orig').show();
                             $('#checkbox6').prop('disabled',false);
-                            $('.column_nine').show();
                             $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
                 });
-
-                    $.ajax({
-                        method: 'GET',
-                        url: '/job_history_summary/data',
-                        data: {
-                            id: value.id,
-                        },
-                        success: function (data) {
-                            for(var job_content = 0; job_content < data.length; job_content++){
-                                var job_company_name = data[job_content].job_company_name;
-                                var job_description = data[job_content].job_description;
-                                var job_position = data[job_content].job_position;
-                                var job_contact_number = data[job_content].job_contact_number;
-                                var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
-                                var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
-
-                                var job_years = $('<div class="col-3">').append($('<b><span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " -> </b>")));
-                                var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
-                                $('#job_history_summary_div').append(job_years,job_details);
-                            }
-                        }
-                    });
-
-                    $.ajax({
-                        method: 'GET',
-                        url: '/college_summary/data',
-                        data: {
-                            id: value.id,
-                        },
-                        success: function (data) {
-                            for(var college_content = 0; college_content < data.length; college_content++){
-                                var college_name = data[college_content].college_name;
-                                var college_degree = data[college_content].college_degree;
-                                var college_from = data[college_content].college_inclusive_years_from;
-                                var college_to = data[college_content].college_inclusive_years_to;
-
-                                var college_school_name = $('.college_school_name').append(college_name + "<br>");
-                                var college_school_degree = $('.college_school_degree').append(college_degree + "<br>");
-                                var college_years = $('.college_years').append(moment(college_from).format('MMM. YYYY') + "<b> -> </b>" + moment(college_to).format('MMM. YYYY') + "<br>");
-                            }
-                        }
-                    });
-
-                    $.ajax({
-                        method: 'GET',
-                        url: '/training_summary/data',
-                        data: {
-                            id: value.id,
-                        },
-                        success: function (data){
-                            for(var training_content = 0; training_content < data.length; training_content++){
-                                var training_name = data[training_content].training_name;
-                                var training_title = data[training_content].training_title;
-                                var training_from = data[training_content].training_inclusive_years_from;
-                                var training_to = data[training_content].training_inclusive_years_to;
-
-                                var training_school_name = $('.training_school_name').append(training_name + "<br>");
-                                var training_school_title = $('.training_title').append(training_title + "<br>");
-                                var training_years = $('.training_years').append(moment(training_from).format('MMM. YYYY') + "<b> -> </b>" + moment(training_to).format('MMM. YYYY') + "<br>");
-                            }
-                        }
-                    });
-
-                    $.ajax({
-                        method: 'GET',
-                        url: '/vocational_summary/data',
-                        data: {
-                            id: value.id,
-                        },
-                        success: function (data) {
-                            for(var vocational_content = 0; vocational_content < data.length; vocational_content++){
-                                var vocational_name = data[vocational_content].vocational_name;
-                                var vocational_course= data[vocational_content].vocational_course;
-                                var vocational_from = data[vocational_content].vocational_inclusive_years_from;
-                                var vocational_to = data[vocational_content].vocational_inclusive_years_to;
-
-                                var vocational_school_name = $('.vocational_school_name').append(vocational_name + "<br>");
-                                var vocational_school_course = $('.vocational_course').append(vocational_course + "<br>");
-                                var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMM. YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMM. YYYY') + "<br>");
-                            }
-                        }
-                    });
 
                     if(current_user_level != 'EMPLOYEE'){
                         if(value.employee_number){
@@ -905,7 +765,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                     "render":function(data,type,row){
                                         return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('LL');
                                     },
-                                    width: '33.4%'},
+                                    width: '33.4%'
+                                },
                                 {
                                     data: 'contracts_file',
                                     "render": function(data, type, row){
@@ -1082,19 +943,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             logs_table_data.column($(this).data('column')).search($(this).val()).draw();
                         });
 
-                        setInterval(function(){
-                            if($('#loading').is(':hidden') && standby == false){
-                                $.ajax({
-                                    url: "/logs_reload",
-                                    success: function(data){
-                                        if(data != data_update){
-                                            data_update = data;
-                                            $('.logs_table_data').DataTable().ajax.reload(null, false);
-                                        }
-                                    }
-                                });
-                            }
-                        }, 1000);
+                        // setInterval(function(){
+                        //     if($('#loading').is(':hidden') && standby == false){
+                        //         $.ajax({
+                        //             url: "/logs_reload",
+                        //             success: function(data){
+                        //                 if(data != data_update){
+                        //                     data_update = data;
+                        //                     $('.logs_table_data').DataTable().ajax.reload(null, false);
+                        //                 }
+                        //             }
+                        //         });
+                        //     }
+                        // }, 1000);
 
                         var employee_history_table;
                         $('.employee_history_table').dataTable().fnDestroy();
@@ -1152,19 +1013,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             employee_history_table.column($(this).data('column')).search($(this).val()).draw();
                         });
 
-                        setInterval(function(){
-                            if($('#loading').is(':hidden') && standby == false){
-                                $.ajax({
-                                    url: "/employee_history_reload",
-                                    success: function(data){
-                                        if(data != data_update){
-                                            data_update = data;
-                                            $('.employee_history_table').DataTable().ajax.reload(null, false);
-                                        }
-                                    }
-                                });
-                            }
-                        }, 1000);
+                        // setInterval(function(){
+                        //     if($('#loading').is(':hidden') && standby == false){
+                        //         $.ajax({
+                        //             url: "/employee_history_reload",
+                        //             success: function(data){
+                        //                 if(data != data_update){
+                        //                     data_update = data;
+                        //                     $('.employee_history_table').DataTable().ajax.reload(null, false);
+                        //                 }
+                        //             }
+                        //         });
+                        //     }
+                        // }, 1000);
                     }
 
                 college_change = '';
@@ -1191,7 +1052,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
                     $('#birthcertificate_file').removeClass('required_field');
-
                 }
 
                 if(value.diploma_file){
@@ -1286,7 +1146,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#addEmployeeBtn').hide();
                 $('#employees_list').hide();
                 $('#tab1').click();
-                $('#btnClear').hide();
                 $('#btnSave').hide();
             });
         }
@@ -1370,11 +1229,6 @@ $('#diploma_delete_button').on('click',function(){
         }
     }).then((save) => {
         if (save.isConfirmed) {
-            // $('#diploma_filename').val('');
-            // $('.diploma_span').hide();
-            // $('.diploma_div').show();
-            // $('#diploma_delete_button').hide();
-            // $('#diploma_view').show();
             $('.diploma_span').hide();
             $('.diploma_div').show();
             $('#diploma_delete_button').hide();
@@ -1633,7 +1487,6 @@ $('#tor_delete_button').on('click',function(){
     });
 });
 
-
 $(document).on('click','.btn_delete_children',function(){
     var id = $(this).attr("id");
     var data = $('.children_table_orig').DataTable().row(id).data();
@@ -1671,7 +1524,6 @@ $(document).on('click','.btn_delete_job',function(){
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
     job_history_change = 'CHANGED';
-    console.log(job_history_change);
 });
 
 $(document).on('click','.btn_memo_delete',function(){
