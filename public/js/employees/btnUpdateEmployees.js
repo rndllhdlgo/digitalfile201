@@ -1,15 +1,30 @@
 var employee_image;
 function employee_image_save(){
-    var extension = "jpeg";
+    // {
+    //     var extension = "jpeg";
+    //     var date = new Date();
+
+    //     employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
+    //                     date.getFullYear().toString().slice(-2) +
+    //                     ("0" + (date.getMonth() + 1)).slice(-2) +
+    //                     ("0" + date.getDate()).slice(-2) +
+    //                     ("0" + date.getHours()).slice(-2) +
+    //                     ("0" + date.getMinutes()).slice(-2) +
+    //                     ("0" + date.getSeconds()).slice(-2) + '.' + extension;
+    // }
+
+    var file = $('#employee_image')[0].files[0];
+    var extension = file.name.split('.').pop().toLowerCase();
     var date = new Date();
 
     employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
-                    date.getFullYear().toString().slice(-2) +
-                    ("0" + (date.getMonth() + 1)).slice(-2) +
-                    ("0" + date.getDate()).slice(-2) +
-                    ("0" + date.getHours()).slice(-2) +
-                    ("0" + date.getMinutes()).slice(-2) +
-                    ("0" + date.getSeconds()).slice(-2) + '.' + extension;
+                date.getFullYear().toString().slice(-2) +
+                ("0" + (date.getMonth() + 1)).slice(-2) +
+                ("0" + date.getDate()).slice(-2) +
+                ("0" + date.getHours()).slice(-2) +
+                ("0" + date.getMinutes()).slice(-2) +
+                ("0" + date.getSeconds()).slice(-2) + '.' + extension;
+
 
     var croppedImageData = $('#image_preview').attr('src');
     $.ajax({
@@ -30,6 +45,7 @@ function employee_image_save(){
 }
 
 $('#btnUpdate').on('click',function(){
+    // alert(job_history_id);
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
         var completed = '1';
     }
@@ -287,7 +303,8 @@ $('#btnUpdate').on('click',function(){
                                     employee_id : data.id,
                                     child_name : $(this).children('.td_1').html(),
                                     child_birthday: $(this).children('.td_2').html(),
-                                    child_gender  : $(this).children('.td_4').html()
+                                    child_gender  : $(this).children('.td_4').html(),
+                                    children_change:children_change
                                 },
                             });
                         });
@@ -349,7 +366,7 @@ $('#btnUpdate').on('click',function(){
                                     job_contact_number : $(this).children('.td_4').html(),
                                     job_inclusive_years_from : $(this).children('.td_5').html(),
                                     job_inclusive_years_to : $(this).children('.td_6').html(),
-                                    job_history_change:job_history_change,
+                                    job_history_change:job_history_change
                                 },
                             });
                         });
@@ -398,16 +415,21 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/job_history_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: job_history_id.toString()
-                            }
-                        });
+                        if(job_history_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/job_history_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: job_history_id.toString(),
+                                    employee_id: data.id,
+                                    job_history_change:job_history_change
+                                }
+                            });
+                            job_history_id = [];
+                        }
 
                         $.ajax({
                             type: 'POST',
@@ -501,16 +523,6 @@ $('#btnUpdate').on('click',function(){
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
 
-                        // $.ajax({
-                        //     url:"/reload_image",
-                        //     type:"get",
-                        //     async: false,
-                        //     success:function(reload_image){
-                        //         console.log('reload_image');
-                        //         $('.column1').html(reload_image);
-                        //     }
-                        // });
-
                         // setTimeout(() => {
                         //     $.ajax({
                         //         url:"/summary_reload",
@@ -524,6 +536,72 @@ $('#btnUpdate').on('click',function(){
                         // }, 0);
 
                         setTimeout(() => {
+                            if(children_change == 'CHANGED'){
+                                $('.children_table_orig').dataTable().fnDestroy();
+                                $('.children_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                return '<button type="button" class="btn btn-danger btn_delete_children center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        },
+                                        {
+                                            data: null,
+                                            render: function(data, type, row, meta) {
+                                                var today = new Date();
+                                                var birthDate = new Date(row.child_birthday);
+                                                var age = today.getFullYear() - birthDate.getFullYear();
+                                                var m = today.getMonth() - birthDate.getMonth();
+                                                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                                                    age--;
+                                                }
+                                                return age;
+                                            },
+                                            targets: [2] // index of new column
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    ordering: false,
+                                    info: false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "No data available in table",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/children_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'child_name', width: '22.5%'},
+                                        {
+                                            data: 'child_birthday', width: '22.5%',
+                                            "render":function(data,type,row){
+                                                return formatDate(row.child_birthday);
+                                            }
+                                        },
+                                        { data:  null, defaultContent : "", width: '22.5%'},
+                                        { data: 'child_gender', width: '22.5%'}
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.children_table_orig').DataTable().data().any()){
+                                            $('#children_table_orig').hide();
+                                        }
+                                        else{
+                                            $('#children_table_orig').show();
+                                        }
+                                    }
+                                });
+                            }
+
                             if(job_history_change == 'CHANGED'){
                                 console.log('job');
                                 $('.job_history_table_orig').dataTable().fnDestroy();

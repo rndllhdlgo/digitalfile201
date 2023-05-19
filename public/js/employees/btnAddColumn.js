@@ -1,4 +1,4 @@
-var college_change,training_change,vocational_change,job_history_change;
+var children_change,college_change,training_change,vocational_change,job_history_change;
 setInterval(() => {
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
         $('#childrenAdd').prop('disabled',true);
@@ -104,6 +104,8 @@ $(document).ready(function(){
             $('.dataTables_empty').closest('tr').remove();
             $('#children_table_orig_tbody').append(children_table);
             $('#children_table_orig').show();
+            children_change = 'CHANGED';
+            console.log('CHILDREN' + children_change);
         }
 
         $('#child_name').val("");
@@ -146,7 +148,7 @@ $(document).ready(function(){
             $('#college_table_orig').show();
             $('#college_table_orig tr:last').remove();
             college_change = 'CHANGED';
-            console.log(college_change);
+            console.log('COLLEGE' + college_change);
         }
 
         $('#college_name').val("");
@@ -187,7 +189,7 @@ $(document).ready(function(){
             $('#training_table_orig_tbody').append(training_table);
             $('#training_table_orig').show();
             training_change = 'CHANGED';
-            console.log(training_change);
+            console.log('TRAINING' + training_change);
         }
 
         $('#training_name').val("");
@@ -227,7 +229,7 @@ $(document).ready(function(){
             $('#vocational_table_orig_tbody').append(vocational_table);
             $('#vocational_table_orig').show();
             vocational_change = 'CHANGED';
-            console.log(vocational_change);
+            console.log('VOCATIONAL' + vocational_change);
         }
 
         $('#vocational_name').val("");
@@ -274,7 +276,7 @@ $(document).ready(function(){
             $('#job_history_table_tbody').append(job_history_table);
             $('#job_history_table_orig').show();
             job_history_change = 'CHANGED';
-            console.log(job_history_change);
+            console.log('JOB' + job_history_change);
         }
 
         $('#job_company_name').val("");

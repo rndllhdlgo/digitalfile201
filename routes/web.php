@@ -19,9 +19,9 @@ use Mail;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/testmail', function () {
-    return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
-});
+// Route::get('/testmail', function () {
+//     return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
+// });
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
@@ -48,12 +48,6 @@ Route::any('/employees/insertImage','EmployeesController@insertImage');
 Route::any('/employees/status','EmployeesController@employee_status');
 Route::any('/employees/fetch','EmployeesController@employeeFetch');
 
-Route::any('/employees/savePersonalInformation','EmployeesController@savePersonalInformation');
-Route::any('/employees/saveWorkInformation','EmployeesController@saveWorkInformation');
-Route::any('/employees/saveCompensationBenefits','EmployeesController@saveCompensationBenefits');
-Route::any('/employees/saveEducationalAttainment','EmployeesController@saveEducationalAttainment');
-Route::any('/employees/saveMedicalHistory','EmployeesController@saveMedicalHistory');
-
 Route::any('/employees/updatePersonalInformation','EmployeesController@updatePersonalInformation');
 Route::any('/employees/updateWorkInformation','EmployeesController@updateWorkInformation');
 Route::any('/employees/updateCompensationBenefits','EmployeesController@updateCompensationBenefits');
@@ -70,14 +64,9 @@ Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
 
 Route::any('/email_address/checkDuplicate','EmployeesController@duplicate_personal_info');
 Route::any('/cellphone_number/checkDuplicate','EmployeesController@duplicate_personal_info');
-
 Route::any('/employee_number/checkDuplicate','EmployeesController@duplicate_work_info');
 Route::any('/company_email_address/checkDuplicate','EmployeesController@duplicate_work_info');
 
-Route::any('/employees/childrenDataTable','EmployeesController@childrenDataTable');
-Route::any('/employees/collegeDataTable','EmployeesController@collegeDataTable');
-
-Route::any('/employees/saveDocuments','EmployeesController@saveDocuments');
 Route::any('/job_history_summary/data','EmployeesController@job_history_summary_data');
 Route::any('/college_summary/data','EmployeesController@college_summary_data');
 Route::any('/training_summary/data','EmployeesController@training_summary_data');
@@ -89,53 +78,16 @@ Route::any('/users/saveUser','UsersController@saveUser');
 Route::any('/users/updateUser','UsersController@updateUser');
 
 // Maintenance Controller
-Route::get('/maintenance/companyData','MaintenanceController@companyData');
-Route::any('/maintenance/companySave','MaintenanceController@companySave');
-Route::any('/maintenance/companyUpdate','MaintenanceController@companyUpdate');
-
+Route::any('/maintenance/companyData','MaintenanceController@companyData');
 Route::any('/maintenance/branchData','MaintenanceController@branchData');
-Route::any('/maintenance/branchSave','MaintenanceController@branchSave');
-Route::any('/maintenance/branchUpdate','MaintenanceController@branchUpdate');
-
-Route::any('/maintenance/supervisorData','MaintenanceController@supervisorData');
-Route::any('/maintenance/supervisorSave','MaintenanceController@supervisorSave');
-Route::any('/maintenance/supervisorUpdate','MaintenanceController@supervisorUpdate');
-
 Route::any('/maintenance/shiftData','MaintenanceController@shiftData');
-Route::any('/maintenance/shiftSave','MaintenanceController@shiftSave');
-Route::any('/maintenance/shiftUpdate','MaintenanceController@shiftUpdate');
-
-Route::any('/maintenance/jobPositionData','MaintenanceController@jobPositionData');
-Route::any('/maintenance/jobPositionSave','MaintenanceController@jobPositionSave');
-Route::any('/maintenance/jobPositionUpdate','MaintenanceController@jobPositionUpdate');
-
-Route::any('/maintenance/jobPositionAndDescriptionData','MaintenanceController@jobPositionAndDescriptionData');
-Route::any('/maintenance/jobPositionAndDescriptionSave','MaintenanceController@jobPositionAndDescriptionSave');
-Route::any('/maintenance/jobPositionAndDescriptionUpdate','MaintenanceController@jobPositionAndDescriptionUpdate');
-
-Route::any('/maintenance/jobDescriptionData','MaintenanceController@jobDescriptionData');
-Route::any('/maintenance/jobDescriptionSave','MaintenanceController@jobDescriptionSave');
-Route::any('/maintenance/jobDescriptionUpdate','MaintenanceController@jobDescriptionUpdate');
-
 Route::any('/maintenance/departmentData','MaintenanceController@departmentData');
-Route::any('/maintenance/departmentSave','MaintenanceController@departmentSave');
-Route::any('/maintenance/departmentUpdate','MaintenanceController@departmentUpdate');
-
-Route::any('/maintenance/department/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/company_name/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/branch_name/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/shift_code/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/supervisor_name/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/job_position_name/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/company_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/department_new/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/branch_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/shift_details_code/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/supervisor_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
-Route::any('/maintenance/job_position_name_new/checkDuplicate','MaintenanceController@checkDuplicate');
+Route::any('/maintenance/positionData','MaintenanceController@positionData');
+Route::any('/maintenance/positionSave','MaintenanceController@positionSave');
+Route::any('/maintenance/positionUpdate','MaintenanceController@positionUpdate');
+Route::any('/position/checkDuplicate','MaintenanceController@checkDuplicate');
 
 // Updates Controller
-
 Route::any('/employees/college_data','EmployeesController@college_data');
 Route::any('/employees/college_delete','EmployeesController@college_delete');
 
@@ -150,7 +102,6 @@ Route::any('/employees/vocational_delete','EmployeesController@vocational_delete
 
 Route::any('/employees/job_history_data','EmployeesController@job_history_data');
 Route::any('/employees/job_history_delete','EmployeesController@job_history_delete');
-
 
 Route::any('/employees/viewLogs','EmployeesController@viewLogs');
 Route::any('/employees/saveLogs','EmployeesController@saveLogs');
@@ -199,17 +150,12 @@ Route::any('/cropImageSave','TryController@cropImage_save');
 Route::any('/reports','TryController@reports');
 Route::any('/reports_data','TryController@reports_data');
 Route::any('/status','TryController@status');
-
-
+Route::any('/status_data','TryController@status_data');
 Route::any('/users_page','PagesController@users_page');
-
 Route::any('/saveUser','UsersController@saveUser');
-
 Route::get('/change/validate','UsersController@change_validate');
 Route::any('/change/password','UsersController@change_password');
-
 Route::any('/users/status', 'UsersController@users_status');
-
 Route::get('/logs_reload', 'EmployeesController@logs_reload');
 Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
 

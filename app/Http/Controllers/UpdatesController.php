@@ -28,7 +28,7 @@ use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
-use App\Models\LogsTable;
+use App\Models\EmployeeLogs;
 use App\Models\History;
 // Maintenance
 use App\Models\Shift;

@@ -33,7 +33,7 @@ use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
-use App\Models\LogsTable;
+use App\Models\EmployeeLogs;
 use App\Models\History;
 // Maintenance
 use App\Models\Shift;
@@ -54,10 +54,10 @@ class EmployeesController extends Controller
     }
 
     public function logs_reload(){
-        if(LogsTable::count() == 0){
+        if(EmployeeLogs::count() == 0){
             return 'NULL';
         }
-        $data_update = LogsTable::latest('updated_at')->first()->updated_at;
+        $data_update = employee_logs::latest('updated_at')->first()->updated_at;
         return $data_update;
     }
 
@@ -504,12 +504,45 @@ class EmployeesController extends Controller
     }
 
     public function saveChildren(Request $request){
-        $children = new ChildrenTable;
-        $children->employee_id = $request->employee_id;
-        $children->child_name = $request->child_name;
-        $children->child_birthday = $request->child_birthday;
-        $children->child_gender = $request->child_gender;
-        $children->save();
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+        $employee = new ChildrenTable;
+        $employee->employee_id = $request->employee_id;
+        $employee->child_name = strtoupper($request->child_name);
+        $employee->child_birthday = $request->child_birthday;
+        $employee->child_gender = $request->child_gender;
+        $sql = $employee->save();
+
+        if($request->children_change == 'CHANGED'){
+            $children_update = "[CHILDREN INFO: LIST OF CHILDREN INFO HAVE BEEN CHANGED]";
+        }
+        else{
+            $children_update = NULL;
+        }
+
+        if($sql){
+            $result = 'true';
+            $id = $employee->id;
+
+            if($request->children_change == 'CHANGED'){
+                $employee_logs = new EmployeeLogs;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS $children_update";
+                $employee_logs->save();
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
+                $userlogs->save();
+            }
+        }
+        else{
+            $result = 'false';
+            $id = '';
+        }
+        $data = array('result' => $result, 'id' => $id);
+        return response()->json($data);
     }
 
     public function saveCollege(Request $request){
@@ -547,7 +580,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if($request->college_change == 'CHANGED'){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
@@ -618,7 +651,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if($request->training_change == 'CHANGED'){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
@@ -689,7 +722,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if($request->vocational_change == 'CHANGED'){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
@@ -762,7 +795,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if($request->job_history_change == 'CHANGED'){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->employee_id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS $job_history_update";
@@ -781,24 +814,24 @@ class EmployeesController extends Controller
             $data = array('result' => $result, 'id' => $id);
             return response()->json($data);
         }
-        else{
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $employee = new JobHistoryTablePending;
-            $employee->employee_id = $emp_id;
-            $employee->empno = $request->empno;
-            $employee->job_company_name = $request->job_company_name;
-            $employee->job_description = $request->job_description;
-            $employee->job_position = $request->job_position;
-            $employee->job_contact_number = $request->job_contact_number;
-            $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
-            $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-            $employee->save();
+        // else{
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $employee = new JobHistoryTablePending;
+        //     $employee->employee_id = $emp_id;
+        //     $employee->empno = $request->empno;
+        //     $employee->job_company_name = $request->job_company_name;
+        //     $employee->job_description = $request->job_description;
+        //     $employee->job_position = $request->job_position;
+        //     $employee->job_contact_number = $request->job_contact_number;
+        //     $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
+        //     $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
+        //     $employee->save();
 
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-            $userlogs->save();
-        }
+        //     $userlogs = new UserLogs;
+        //     $userlogs->user_id = auth()->user()->id;
+        //     $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE JOB HISTORY INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+        //     $userlogs->save();
+        // }
     }
 
     public function updatePersonalInformation(Request $request){
@@ -1204,7 +1237,7 @@ class EmployeesController extends Controller
                     $request->blood_type != $blood_type_orig ||
                     $request->employee_image_change == 'CHANGED'
                 ){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL INFORMATION DETAILS
@@ -1783,7 +1816,7 @@ class EmployeesController extends Controller
                                     $account_number_change";
             $userlogs->save();
 
-            $userlogs = new LogsTable;
+            $userlogs = new EmployeeLogs;
             $userlogs->employee_id = $request->id;
             $userlogs->user_id = auth()->user()->id;
             $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
@@ -2024,7 +2057,7 @@ class EmployeesController extends Controller
                         $request->employee_department != $employee_department_orig
                         ){
                         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-                        $userlogs = new LogsTable;
+                        $userlogs = new EmployeeLogs;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
                         $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
@@ -2245,7 +2278,7 @@ class EmployeesController extends Controller
                                                 ";
                         $userlogs->save();
 
-                        $employee_logs = new LogsTable;
+                        $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
                         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
@@ -2367,7 +2400,7 @@ class EmployeesController extends Controller
                             $request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig
                         ){
 
-                            $employee_logs = new LogsTable;
+                            $employee_logs = new EmployeeLogs;
                             $employee_logs->employee_id = $request->id;
                             $employee_logs->user_id = auth()->user()->id;
                             $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
@@ -2706,7 +2739,7 @@ class EmployeesController extends Controller
                         $psychological_history_change = NULL;
                     }
 
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
@@ -2785,7 +2818,7 @@ class EmployeesController extends Controller
                         $request->medication != $medication_orig ||
                         $request->psychological_history != $psychological_history_orig
                     ){
-                        $employee_logs = new LogsTable;
+                        $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
                         $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
@@ -2993,7 +3026,7 @@ class EmployeesController extends Controller
                 $id = $employee->id;
 
                 if($request->employee_insurance != $employee_insurance_orig){
-                    $employee_logs = new LogsTable;
+                    $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
                     $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $employee_insurance_change";
@@ -3041,7 +3074,7 @@ class EmployeesController extends Controller
 
             if($MemoCountBefore != $MemoCountAfter){
                 $memo_update = "[MEMO HAS BEEN CHANGED]";
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS
@@ -3074,7 +3107,7 @@ class EmployeesController extends Controller
 
             if($EvaluationCountBefore != $EvaluationCountAfter){
                 $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS
@@ -3106,7 +3139,7 @@ class EmployeesController extends Controller
 
             if($ContractsCountBefore != $ContractsCountAfter){
                 $contracts_update = "[CONTRACTS HAS BEEN CHANGED]";
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS
@@ -3138,7 +3171,7 @@ class EmployeesController extends Controller
 
             if($ResignationCountBefore != $ResignationCountAfter){
                 $resignation_update = "[RESIGNATION HAS BEEN CHANGED]";
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS
@@ -3170,7 +3203,7 @@ class EmployeesController extends Controller
 
             if($TerminationCountBefore != $TerminationCountAfter){
                 $termination_update = "[TERMINATION HAS BEEN CHANGED]";
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS
@@ -3566,7 +3599,7 @@ class EmployeesController extends Controller
             || $request->hasFile('tor_file')
 
             ){
-                $employee_logs = new LogsTable;
+                $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
                 $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS
@@ -3675,17 +3708,17 @@ class EmployeesController extends Controller
     }
 
     public function logs_data(Request $request){
-        $logs = LogsTable::selectRaw(
+        $logs = EmployeeLogs::selectRaw(
                         'users.id AS user_id,
-                        logs_tables.id,
+                        employee_logs.id,
                         users.name AS username,
                         users.user_level,
-                        logs_tables.created_at AS date,
-                        DATE_FORMAT(logs_tables.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
-                        logs_tables.logs')
+                        employee_logs.created_at AS date,
+                        DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
+                        employee_logs.logs')
             ->where('employee_id',$request->id)
             ->join('users', 'users.id','user_id')
-            ->orderBy('logs_tables.id', 'DESC')
+            ->orderBy('employee_logs.id', 'DESC')
             ->get();
         return DataTables::of($logs)->make(true);
     }
@@ -3719,9 +3752,34 @@ class EmployeesController extends Controller
     }
 
     public function job_history_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $job_history_id = explode(",", $request->id);
-        foreach($job_history_id as $id){
-            JobHistoryTable::where('id', $id)->delete();
+        if($job_history_id){
+            foreach($job_history_id as $id){
+                JobHistoryTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->job_history_change == 'CHANGED'){
+            $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
+        }
+        else{
+            $job_history_update = NULL;
+        }
+
+        if($request->job_history_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS $job_history_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
+            $userlogs->save();
         }
     }
 
@@ -3777,9 +3835,5 @@ class EmployeesController extends Controller
 
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
-    }
-
-    public function reload_image(Request $request){
-        return view('render.reloadImage')->render();
     }
 }

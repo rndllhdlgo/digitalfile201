@@ -955,7 +955,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         //             }
                         //         });
                         //     }
-                        // }, 1000);
+                        // }, 5000);
 
                         var employee_history_table;
                         $('.employee_history_table').dataTable().fnDestroy();
@@ -1500,6 +1500,7 @@ $(document).on('click','.btn_delete_college',function(){
     college_id.push(data.id);
     $(this).parent().parent().remove();
     college_change = 'CHANGED';
+    console.log('COLLEGE DELETE' + college_change);
 });
 
 $(document).on('click','.btn_delete_training',function(){
@@ -1524,6 +1525,7 @@ $(document).on('click','.btn_delete_job',function(){
     job_history_id.push(data.id);
     $(this).parent().parent().remove();
     job_history_change = 'CHANGED';
+    console.log('JOB ' + job_history_change + ' ' + job_history_id);
 });
 
 $(document).on('click','.btn_memo_delete',function(){
