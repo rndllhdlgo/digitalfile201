@@ -1492,6 +1492,7 @@ $(document).on('click','.btn_delete_children',function(){
     var data = $('.children_table_orig').DataTable().row(id).data();
     children_id.push(data.id);
     $(this).parent().parent().remove();
+    children_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_delete_college',function(){
