@@ -511,7 +511,7 @@ class EmployeesController extends Controller
         $employee->child_name = strtoupper($request->child_name);
         $employee->child_birthday = $request->child_birthday;
         $employee->child_gender = $request->child_gender;
-        $sql = $employee->save();
+        $employee->save();
 
         if($request->children_change == 'CHANGED'){
             $children_update = "[CHILDREN INFO: LIST OF CHILDREN INFO HAVE BEEN CHANGED]";
@@ -520,29 +520,18 @@ class EmployeesController extends Controller
             $children_update = NULL;
         }
 
-        if($sql){
-            $result = 'true';
-            $id = $employee->id;
+        if($request->children_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS $children_update";
+            $employee_logs->save();
 
-            if($request->children_change == 'CHANGED'){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $request->employee_id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS $children_update";
-                $employee_logs->save();
-
-                $userlogs = new UserLogs;
-                $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
-                $userlogs->save();
-            }
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
+            $userlogs->save();
         }
-        else{
-            $result = 'false';
-            $id = '';
-        }
-        $data = array('result' => $result, 'id' => $id);
-        return response()->json($data);
     }
 
     public function saveCollege(Request $request){
@@ -566,7 +555,7 @@ class EmployeesController extends Controller
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
             $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
             if($request->college_change == 'CHANGED'){
                 $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
@@ -575,46 +564,35 @@ class EmployeesController extends Controller
                 $college_update = NULL;
             }
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
+            if($request->college_change == 'CHANGED'){
+                $employee_logs = new EmployeeLogs;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
+                $employee_logs->save();
 
-                if($request->college_change == 'CHANGED'){
-                    $employee_logs = new EmployeeLogs;
-                    $employee_logs->employee_id = $request->employee_id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
-                    $employee_logs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
-                    $userlogs->save();
-                }
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
+                $userlogs->save();
             }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
-        else{
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $employee = new CollegeTablePending;
-            $employee->employee_id = $emp_id;
-            $employee->empno = $request->empno;
-            $employee->college_name = strtoupper($request->college_name);
-            $employee->college_degree = strtoupper($request->college_degree);
-            $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
-            $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
-            $employee->save();
+        // else{
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $employee = new CollegeTablePending;
+        //     $employee->employee_id = $emp_id;
+        //     $employee->empno = $request->empno;
+        //     $employee->college_name = strtoupper($request->college_name);
+        //     $employee->college_degree = strtoupper($request->college_degree);
+        //     $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
+        //     $employee->college_inclusive_years_to = $request->college_inclusive_years_to;
+        //     $employee->save();
 
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-            $userlogs->save();
-        }
+        //     $userlogs = new UserLogs;
+        //     $userlogs->user_id = auth()->user()->id;
+        //     $userlogs->activity = "USER SUCCESSFULLY REQUESTED UPDATES FOR THE COLLEGE ATTAINMENT INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+        //     $userlogs->save();
+        // }
     }
 
     public function saveTraining(Request $request){
@@ -637,7 +615,7 @@ class EmployeesController extends Controller
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
             $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
             if($request->training_change == 'CHANGED'){
                 $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
@@ -646,46 +624,35 @@ class EmployeesController extends Controller
                 $training_update = NULL;
             }
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
+            if($request->training_change == 'CHANGED'){
+                $employee_logs = new EmployeeLogs;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
+                $employee_logs->save();
 
-                if($request->training_change == 'CHANGED'){
-                    $employee_logs = new EmployeeLogs;
-                    $employee_logs->employee_id = $request->employee_id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
-                    $employee_logs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
-                    $userlogs->save();
-                }
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
+                $userlogs->save();
             }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
-        else{
-            $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
-            $employee = new TrainingTablePending;
-            $employee->employee_id = $emp_id;
-            $employee->empno = $request->empno;
-            $employee->training_name = strtoupper($request->training_name);
-            $employee->training_title = strtoupper($request->training_title);
-            $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
-            $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
-            $employee->save();
+        // else{
+        //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
+        //     $employee = new TrainingTablePending;
+        //     $employee->employee_id = $emp_id;
+        //     $employee->empno = $request->empno;
+        //     $employee->training_name = strtoupper($request->training_name);
+        //     $employee->training_title = strtoupper($request->training_title);
+        //     $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
+        //     $employee->training_inclusive_years_to = $request->training_inclusive_years_to;
+        //     $employee->save();
 
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
-            $userlogs->save();
-        }
+        //     $userlogs = new UserLogs;
+        //     $userlogs->user_id = auth()->user()->id;
+        //     $userlogs->activity = "USER HAS REQUESTED UPDATES FOR THE TRAINING INFORMATION DETAILS OF THIS EMPLOYEE ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)";
+        //     $userlogs->save();
+        // }
     }
 
     public function saveVocational(Request $request){
@@ -708,7 +675,7 @@ class EmployeesController extends Controller
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
             $employee->vocational_inclusive_years_to = $request->vocational_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
             if($request->vocational_change == 'CHANGED'){
                 $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
@@ -717,29 +684,18 @@ class EmployeesController extends Controller
                 $vocational_update = NULL;
             }
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
+            if($request->vocational_change == 'CHANGED'){
+                $employee_logs = new EmployeeLogs;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
+                $employee_logs->save();
 
-                if($request->vocational_change == 'CHANGED'){
-                    $employee_logs = new EmployeeLogs;
-                    $employee_logs->employee_id = $request->employee_id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
-                    $employee_logs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
-                    $userlogs->save();
-                }
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
+                $userlogs->save();
             }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
         else{
             $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
@@ -781,7 +737,7 @@ class EmployeesController extends Controller
             $employee->job_contact_number = $request->job_contact_number;
             $employee->job_inclusive_years_from = $request->job_inclusive_years_from;
             $employee->job_inclusive_years_to = $request->job_inclusive_years_to;
-            $sql = $employee->save();
+            $employee->save();
 
             if($request->job_history_change == 'CHANGED'){
                 $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
@@ -790,29 +746,18 @@ class EmployeesController extends Controller
                 $job_history_update = NULL;
             }
 
-            if($sql){
-                $result = 'true';
-                $id = $employee->id;
+            if($request->job_history_change == 'CHANGED'){
+                $employee_logs = new EmployeeLogs;
+                $employee_logs->employee_id = $request->employee_id;
+                $employee_logs->user_id = auth()->user()->id;
+                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS $job_history_update";
+                $employee_logs->save();
 
-                if($request->job_history_change == 'CHANGED'){
-                    $employee_logs = new EmployeeLogs;
-                    $employee_logs->employee_id = $request->employee_id;
-                    $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS $job_history_update";
-                    $employee_logs->save();
-
-                    $userlogs = new UserLogs;
-                    $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
-                    $userlogs->save();
-                }
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S JOB HISTORY INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
+                $userlogs->save();
             }
-            else{
-                $result = 'false';
-                $id = '';
-            }
-            $data = array('result' => $result, 'id' => $id);
-            return response()->json($data);
         }
         // else{
         //     $emp_id = PersonalInformationTablePending::where('empno',auth()->user()->emp_number)->first()->id;
@@ -3724,30 +3669,130 @@ class EmployeesController extends Controller
     }
 
     public function college_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $college_id = explode(",", $request->id);
-        foreach($college_id as $id){
-            CollegeTable::where('id', $id)->delete();
+        if($college_id){
+            foreach($college_id as $id){
+                CollegeTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->college_change == 'CHANGED'){
+            $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
+        }
+        else{
+            $college_update = NULL;
+        }
+
+        if($request->college_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS $college_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
+            $userlogs->save();
         }
     }
 
     public function children_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $children_id = explode(",", $request->id);
-        foreach($children_id as $id){
-            ChildrenTable::where('id', $id)->delete();
+        if($children_id){
+            foreach($children_id as $id){
+                ChildrenTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->children_change == 'CHANGED'){
+            $children_update = "[CHILDREN INFO: LIST OF CHILDREN INFO HAVE BEEN CHANGED]";
+        }
+        else{
+            $children_update = NULL;
+        }
+
+        if($request->children_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS $children_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CHILDREN INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
+            $userlogs->save();
         }
     }
 
     public function training_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $training_id = explode(",", $request->id);
-        foreach($training_id as $id){
-            TrainingTable::where('id', $id)->delete();
+        if($training_id){
+            foreach($training_id as $id){
+                TrainingTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->training_change == 'CHANGED'){
+            $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
+        }
+        else{
+            $training_update = NULL;
+        }
+
+        if($request->training_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS $training_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TRAINING INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
+            $userlogs->save();
         }
     }
 
     public function vocational_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $vocational_id = explode(",", $request->id);
-        foreach($vocational_id as $id){
-            VocationalTable::where('id', $id)->delete();
+        if($vocational_id){
+            foreach($vocational_id as $id){
+                VocationalTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->vocational_change == 'CHANGED'){
+            $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
+        }
+        else{
+            $vocational_update = NULL;
+        }
+
+        if($request->vocational_change == 'CHANGED'){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS $vocational_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S VOCATIONAL INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
+            $userlogs->save();
         }
     }
 

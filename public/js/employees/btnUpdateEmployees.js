@@ -38,14 +38,12 @@ function employee_image_save(){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success: function(response){
-            console.log(response);
             $('#filename').val(response);
         }
     });
 }
 
 $('#btnUpdate').on('click',function(){
-    // alert(job_history_id);
     if($('.required_field').filter(function(){ return !!this.value; }).length < $(".required_field").length){
         var completed = '1';
     }
@@ -371,49 +369,69 @@ $('#btnUpdate').on('click',function(){
                             });
                         });
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/children_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: children_id.toString()
-                            }
-                        });
+                        if(children_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/children_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: children_id.toString(),
+                                    employee_id: data.id,
+                                    children_change:children_change
+                                }
+                            });
+                            children_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/college_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: college_id.toString()
-                            }
-                        });
+                        if(college_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/college_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: college_id.toString(),
+                                    employee_id: data.id,
+                                    college_change:college_change
+                                }
+                            });
+                            college_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/training_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: training_id.toString()
-                            }
-                        });
+                        if(training_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/training_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: training_id.toString(),
+                                    employee_id: data.id,
+                                    training_change:training_change
+                                }
+                            });
+                            training_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/vocational_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: vocational_id.toString()
-                            }
-                        });
+                        if(vocational_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/vocational_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: vocational_id.toString(),
+                                    employee_id:data.id,
+                                    vocational_change:vocational_change
+                                }
+                            });
+                            vocational_id = [];
+                        }
 
                         if(job_history_id.length > 0){
                             $.ajax({
@@ -516,7 +534,6 @@ $('#btnUpdate').on('click',function(){
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
                             success: function(response) {
-                                console.log(response);
                             }
                         });
 
@@ -603,7 +620,6 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(job_history_change == 'CHANGED'){
-                                console.log('job');
                                 $('.job_history_table_orig').dataTable().fnDestroy();
                                 $('.job_history_table_orig').DataTable({
                                     columnDefs: [
@@ -669,7 +685,6 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(college_change == 'CHANGED'){
-                                console.log('college');
                                 $('.college_table_orig').dataTable().fnDestroy();
                                 $('.college_table_orig').DataTable({
                                     columnDefs: [
@@ -727,7 +742,6 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(training_change == 'CHANGED'){
-                                console.log('training');
                                 $('.training_table_orig').dataTable().fnDestroy();
                                 $('.training_table_orig').DataTable({
                                     columnDefs: [
@@ -787,7 +801,6 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(vocational_change == 'CHANGED'){
-                                console.log('vocational');
                                 $('.vocational_table_orig').dataTable().fnDestroy();
                                 $('.vocational_table_orig').DataTable({
                                     columnDefs: [

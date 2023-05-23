@@ -3,6 +3,7 @@
 @section('content')
 <br>
 <button id="export-btn">Export to SQL</button>
+<input type="file" id="fileInput">
 
 <table class="table table-striped" id="statusTable">
     <thead class="thead-educational">
@@ -59,5 +60,17 @@
     });
 
     $('#loading').hide();
+
+    $(document).ready(function() {
+        $('#fileInput').click(function() {
+            // Show the loading element when the file input is clicked
+            $('#loading').show();
+        });
+
+        $('#fileInput').change(function() {
+            // Hide the loading element when the file selection is made
+            $('#loading').hide();
+        });
+    });
 </script>
 @endsection
