@@ -10,8 +10,6 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-app/Http/Controllers/EmployeesController copy.php
-app/Fileupload.php
 app/Http/Controllers/FileuploadController.php
 app/Http/Controllers/PagesController copy.php
 public/js/btnClear copy.js
