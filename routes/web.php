@@ -10,6 +10,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UpdatesController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\UpdateController;
 // use Mail;
 /*
 |--------------------------------------------------------------------------
@@ -50,12 +51,6 @@ Route::any('/employees/insertImage','EmployeesController@insertImage');
 Route::any('/employees/status','EmployeesController@employee_status');
 Route::any('/employees/fetch','EmployeesController@employeeFetch');
 
-Route::any('/employees/updatePersonalInformation','EmployeesController@updatePersonalInformation');
-Route::any('/employees/updateWorkInformation','EmployeesController@updateWorkInformation');
-Route::any('/employees/updateCompensationBenefits','EmployeesController@updateCompensationBenefits');
-Route::any('/employees/updateEducationalAttainment','EmployeesController@updateEducationalAttainment');
-Route::any('/employees/updateJobHistory','EmployeesController@updateJobHistory');
-Route::any('/employees/updateMedicalHistory','EmployeesController@updateMedicalHistory');
 Route::any('/upload_picture','EmployeesController@upload_picture');
 
 Route::any('/employees/saveChildren','EmployeesController@saveChildren');
@@ -90,8 +85,6 @@ Route::any('/employees/saveSample','EmployeesController@saveSample');
 
 Route::any('/employees/logs_delete','EmployeesController@logs_delete');
 
-Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
-
 Route::any('/employees/logs_data','EmployeesController@logs_data');
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 
@@ -121,7 +114,7 @@ Route::any('/users/status', 'UsersController@users_status');
 Route::get('/logs_reload', 'EmployeesController@logs_reload');
 Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
 
-// Updates Controller
+// Updates Controller1
 Route::get('/update_list', 'UpdatesController@update_list');
 Route::get('/update_fetch', 'UpdatesController@update_fetch');
 Route::get('/updates/college_data', 'UpdatesController@college_data');
@@ -136,6 +129,15 @@ Route::any('/update_training', 'UpdatesController@update_training');
 Route::any('/update_vocational', 'UpdatesController@update_vocational');
 Route::any('/update_job_history', 'UpdatesController@update_job_history');
 Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
+
+// Update Controller2
+Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
+Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
+Route::any('/employees/updateCompensationBenefits','UpdateController@updateCompensationBenefits');
+Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
+Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
+Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');
+Route::any('/employees/updateDocuments','UpdateController@updateDocuments');
 
 // Delete Controller
 Route::any('/employees/college_delete','DeleteController@college_delete');
