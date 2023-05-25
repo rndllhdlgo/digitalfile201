@@ -13,6 +13,8 @@ use App\Models\VocationalTable;
 use App\Models\JobHistoryTable;
 use App\Models\MemoTable;
 use App\Models\EvaluationTable;
+use App\Models\ContractTable;
+use App\Models\ResignationTable;
 
 use App\Models\EmployeeLogs;
 use App\Models\UserLogs;
@@ -38,7 +40,7 @@ class DeleteController extends Controller{
             $college_update = NULL;
         }
 
-        if($request->college_change == 'CHANGED'){
+        if($college_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $request->employee_id;
             $employee_logs->user_id = auth()->user()->id;
@@ -70,7 +72,7 @@ class DeleteController extends Controller{
             $children_update = NULL;
         }
 
-        if($request->children_change == 'CHANGED'){
+        if($children_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $request->employee_id;
             $employee_logs->user_id = auth()->user()->id;
@@ -102,7 +104,7 @@ class DeleteController extends Controller{
             $training_update = NULL;
         }
 
-        if($request->training_change == 'CHANGED'){
+        if($training_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $request->employee_id;
             $employee_logs->user_id = auth()->user()->id;
@@ -134,7 +136,7 @@ class DeleteController extends Controller{
             $vocational_update = NULL;
         }
 
-        if($request->vocational_change == 'CHANGED'){
+        if($vocational_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $request->employee_id;
             $employee_logs->user_id = auth()->user()->id;
@@ -166,7 +168,7 @@ class DeleteController extends Controller{
             $job_history_update = NULL;
         }
 
-        if($request->job_history_change == 'CHANGED'){
+        if($job_history_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $request->employee_id;
             $employee_logs->user_id = auth()->user()->id;
@@ -198,7 +200,7 @@ class DeleteController extends Controller{
             $memo_update = NULL;
         }
 
-        if($request->memo_change == 'CHANGED'){
+        if($memo_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $employee_details->id;
             $employee_logs->user_id = auth()->user()->id;
@@ -230,7 +232,7 @@ class DeleteController extends Controller{
             $evaluation_update = NULL;
         }
 
-        if($request->evaluation_change == 'CHANGED'){
+        if($evaluation_update){
             $employee_logs = new EmployeeLogs;
             $employee_logs->employee_id = $employee_details->id;
             $employee_logs->user_id = auth()->user()->id;
@@ -240,6 +242,102 @@ class DeleteController extends Controller{
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $evaluation_update";
+            $userlogs->save();
+        }
+    }
+
+    public function contracts_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $contracts_id = explode(",", $request->id);
+        if($contracts_id){
+            foreach($contracts_id as $id){
+                ContractTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->contracts_change == 'CHANGED'){
+            $contracts_update = "[CONTRACT: LIST OF CONTRACT HAVE BEEN CHANGED]";
+        }
+        else{
+            $contracts_update = NULL;
+        }
+
+        if($contracts_update){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACT DETAILS $contracts_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $contracts_update";
+            $userlogs->save();
+        }
+    }
+
+    public function resignation_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $resignation_id = explode(",", $request->id);
+        if($resignation_id){
+            foreach($resignation_id as $id){
+                ResignationTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->resignation_change == 'CHANGED'){
+            $resignation_update = "[RESIGNATION: LIST OF RESIGNATION HAVE BEEN CHANGED]";
+        }
+        else{
+            $resignation_update = NULL;
+        }
+
+        if($resignation_update){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $resignation_update";
+            $userlogs->save();
+        }
+    }
+
+    public function termination_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $termination_id = explode(",", $request->id);
+        if($termination_id){
+            foreach($termination_id as $id){
+                TerminationTable::where('id', $id)->delete();
+            }
+        }
+
+        if($request->termination_change == 'CHANGED'){
+            $termination_update = "[TERMINATION: LIST OF TERMINATION HAVE BEEN CHANGED]";
+        }
+        else{
+            $termination_update = NULL;
+        }
+
+        if($termination_update){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $termination_update";
             $userlogs->save();
         }
     }

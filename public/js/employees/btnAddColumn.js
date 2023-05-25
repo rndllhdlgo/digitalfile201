@@ -1,5 +1,5 @@
 var children_change,college_change,training_change,vocational_change,job_history_change;
-var memo_change,evaluation_change;
+var memo_change, evaluation_change, contracts_change, resignation_change, termination_change;
 
 setInterval(() => {
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
@@ -107,7 +107,6 @@ $(document).ready(function(){
             $('#children_table_orig_tbody').append(children_table);
             $('#children_table_orig').show();
             children_change = 'CHANGED';
-            console.log('CHILDREN' + children_change);
         }
 
         $('#child_name').val("");
@@ -229,7 +228,6 @@ $(document).ready(function(){
             $('#vocational_table_orig_tbody').append(vocational_table);
             $('#vocational_table_orig').show();
             vocational_change = 'CHANGED';
-            console.log('VOCATIONAL ' + vocational_change);
         }
 
         $('#vocational_name').val("");
@@ -296,43 +294,39 @@ $(document).ready(function(){
         $('#memo_date').attr('id','');
         $('#memo_penalty').attr('id','');
         $('#memo_file').attr('id','');
-        $('#memoTable').find('tbody').prepend('<tr>'+
-                    '<td class="pb-3 pt-3">'+
-                        '<div class="f-outline">' +
-                            '<input class="forminput form-control multiple_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">'+
-                            '<label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>'+
-                        '</div>'+
-                    '</td>'+
-
-                    '<td class="pb-3 pt-3">'+
-                        '<div class="f-outline">'+
-                            '<input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                            '<label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>'+
-                        '</div>'+
-                    '</td>'+
-
-                    '<td class="pb-3 pt-3">'+
-                        '<div class="f-outline">'+
-                            '<select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">'+
-                                '<option value="" disabled selected>SELECT PENALTY</option>'+
-                                '<option value="Verbal">Verbal</option>'+
-                                '<option value="Written">Written</option>'+
-                                '<option value="2nd Offense">2nd Offense</option>'+
-                                '<option value="3rd Offense">3rd Offense</option>'+
-                                '<option value="Final">Final</option>'+
-                            '</select>'+
-                            '<label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>'+
-                        '</div>'+
-                    '</td>'+
-
-                    '<td>'+
-                        '<input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">'+
-                    '</td>'+
-
-                    '<td>'+
-                        '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
-                    '</td>'+
-                '</tr>');
+        $('#memoTable').find('tbody').prepend(`<tr>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="memo_subject" class="formlabel form-label"><span class="span_memo_subject span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control multiple_field" type="date" name="memo_date[]" id="memo_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <label for="memo_date" class="formlabel form-label"><span class="span_memo_date span_all">(Optional)</span></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <select class="form-select forminput multiple_field form-control" name="memo_penalty[]" id="memo_penalty" placeholder=" " style="background-color:white;">
+                                <option value="" disabled selected>SELECT PENALTY</option>
+                                <option value="Verbal">Verbal</option>
+                                <option value="Written">Written</option>
+                                <option value="2nd Offense">2nd Offense</option>
+                                <option value="3rd Offense">3rd Offense</option>
+                                <option value="Final">Final</option>
+                            </select>
+                            <label for="memo_penalty" class="formlabel form-label"><span class="span_memo_penalty span_all">(Optional)</span> </label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                    </td>
+                </tr>`);
                 $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_memo").click(function(){
@@ -346,32 +340,32 @@ $(document).ready(function(){
         $('#evaluation_date').attr('id','');
         $('#evaluation_evaluated_by').attr('id','');
         $('#evaluation_file').attr('id','');
-        $('#evaluationTable').find('tbody').prepend('<tr>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
-                                    '<label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field" type="date" name="evaluation_date[]" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                                    '<label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
-                                    '<label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td>'+
-                                '<input  type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">'+
-                            '</td>'+
-                            '<td>'+
-                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
-                            '</td>'+
-                        '</tr>');
+        $('#evaluationTable').find('tbody').prepend(`<tr>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                <label for="evaluation_reason" class="formlabel form-label"><span class="span_evaluation_reason span_all">(Optional)</span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field" type="date" name="evaluation_date[]" id="evaluation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="evaluation_date" class="formlabel form-label"><span class="span_evaluation_date span_all">(Optional)</span></label>
+                            </div>
+                        </td>
+                        <td class="pb-3 pt-3">
+                            <div class="f-outline">
+                                <input class="forminput form-control multiple_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                <label for="evaluation_evaluated_by" class="formlabel form-label"><span class="span_evaluation_evaluated_by span_all">(Optional)</span></label>
+                            </div>
+                        </td>
+                        <td>
+                            <input type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        </td>
+                    </tr>`);
                     $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_evaluation").click(function(){
@@ -380,29 +374,30 @@ $(document).ready(function(){
     }
 
     function addContractsRow(){
+        contracts_change = 'CHANGED';
         $('#contracts_type').attr('id','');
         $('#contracts_date').attr('id','');
         $('#contracts_file').attr('id','');
-        $('#contractsTable').find('tbody').prepend('<tr>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">'+
-                                    '<input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
-                                    '<label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">'+
-                                    '<input class="forminput form-control multiple_field" type="date" name="contracts_date[]" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                                    '<label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">'+
-                            '</td>'+
-                            '<td>'+
-                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
-                            '</td>'+
-                        '</tr>');
+        $('#contractsTable').find('tbody').prepend(`<tr>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <label for="contracts_type" class="formlabel form-label"><span class="span_contracts_type span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field" type="date" name="contracts_date[]" id="contracts_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                    <label for="contracts_date" class="formlabel form-label"><span class="span_contracts_date span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <input type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            </td>
+                        </tr>`);
                         $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_evaluation").click(function(){
@@ -411,29 +406,30 @@ $(document).ready(function(){
     }
 
     function addResignationRow(){
+        resignation_change = 'CHANGED';
         $('#resignation_reason').attr('id','');
         $('#resignation_date').attr('id','');
         $('#resignation_file').attr('id','');
-        $('#resignationTable').find('tbody').prepend('<tr>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
-                                    '<label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                                    '<label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">'+
-                            '</td>'+
-                            '<td>'+
-                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
-                            '</td>'+
-                        '</tr>');
+        $('#resignationTable').find('tbody').prepend(`<tr>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                    <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <input type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            </td>
+                        </tr>`);
                         $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_resignation").click(function(){
             $(this).parent().parent().remove();
@@ -441,29 +437,30 @@ $(document).ready(function(){
     }
 
     function addTerminationRow(){
+        termination_change = 'CHANGED';
         $('#termination_reason').attr('id','');
         $('#termination_date').attr('id','');
         $('#termination_file').attr('id','');
-        $('#terminationTable').find('tbody').prepend('<tr>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >'+
-                                    '<label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<div class="f-outline">' +
-                                    '<input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">'+
-                                    '<label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>'+
-                                '</div>'+
-                            '</td>'+
-                            '<td class="pb-3 pt-3">'+
-                                '<input  type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">'+
-                            '</td>'+
-                            '<td>'+
-                                '<button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>'+
-                            '</td>'+
-                        '</tr>');
+        $('#terminationTable').find('tbody').prepend(`<tr>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <div class="f-outline">
+                                    <input class="forminput form-control multiple_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                    <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all">(Optional)</span></label>
+                                </div>
+                            </td>
+                            <td class="pb-3 pt-3">
+                                <input type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            </td>
+                        </tr>`);
                         $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_termination").click(function(){
             $(this).parent().parent().remove();

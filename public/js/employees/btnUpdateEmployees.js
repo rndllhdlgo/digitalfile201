@@ -470,38 +470,53 @@ $('#btnUpdate').on('click',function(){
                             evaluation_id = [];
                         }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/contracts_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: contracts_id.toString()
-                            }
-                        });
+                        if(contracts_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/contracts_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: contracts_id.toString(),
+                                    employee_id: data.id,
+                                    contracts_change: contracts_change
+                                }
+                            });
+                            contracts_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/resignation_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: resignation_id.toString()
-                            }
-                        });
+                        if(resignation_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/resignation_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: resignation_id.toString(),
+                                    employee_id: data.id,
+                                    resignation_change: resignation_change
+                                }
+                            });
+                            resignation_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/termination_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: termination_id.toString()
-                            }
-                        });
+                        if(termination_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/termination_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: termination_id.toString(),
+                                    employee_id: data.id,
+                                    termination_change: termination_change
+                                }
+                            });
+                            termination_id = [];
+                        }
 
                         $('#memo_subject').attr('name','');
                         $('#memo_date').attr('name','');
@@ -529,6 +544,15 @@ $('#btnUpdate').on('click',function(){
                         if(evaluation_change){
                             formData.append('evaluation_change', evaluation_change);
                         }
+                        if(contracts_change){
+                            formData.append('contracts_change', contracts_change);
+                        }
+                        if(resignation_change){
+                            formData.append('resignation_change', resignation_change);
+                        }
+                        if(termination_change){
+                            formData.append('termination_change', termination_change);
+                        }
 
                         $.ajax({
                             url: '/employees/updateDocuments',
@@ -539,7 +563,7 @@ $('#btnUpdate').on('click',function(){
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                             },
-                            success: function(response) {
+                            success: function(response){
                             }
                         });
 
@@ -552,7 +576,6 @@ $('#btnUpdate').on('click',function(){
                         //         type:"get",
                         //         async: false,
                         //         success:function(summary_reload){
-                        //             console.log('reload');
                         //             $('#summary_reload').html(summary_reload)
                         //         }
                         //     });

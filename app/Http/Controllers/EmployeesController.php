@@ -3023,7 +3023,7 @@ class EmployeesController extends Controller
                 $memo_update = NULL;
             }
 
-            if($request->memo_change == 'CHANGED'){
+            if($memo_update){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
@@ -3059,7 +3059,7 @@ class EmployeesController extends Controller
                 $evaluation_update = NULL;
             }
 
-            if($request->evaluation_change == 'CHANGED'){
+            if($evaluation_update){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
@@ -3074,9 +3074,9 @@ class EmployeesController extends Controller
         }
 
         if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
-            $ContractsCountBefore = ContractTable::where('employee_id',$request->employee_id)->count();
             foreach($request->file('contracts_file') as $key => $value){
-                $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'.'.$request->contracts_file[$key]->extension();
+                $count = Str::random(2);
+                $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'_'.$count.'.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
 
                 $contracts = new ContractTable;
@@ -3086,29 +3086,32 @@ class EmployeesController extends Controller
                 $contracts->contracts_file = $contractsFileName;
                 $contracts->save();
             }
-            $ContractsCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
 
-            if($ContractsCountBefore != $ContractsCountAfter){
-                $contracts_update = "[CONTRACTS HAS BEEN CHANGED]";
+            if($request->contracts_change == 'CHANGED'){
+                $contracts_update = "[CONTRACT: LIST OF CONTRACTS HAVE BEEN CHANGED]";
+            }
+            else{
+                $contracts_update = NULL;
+            }
+
+            if($contracts_update){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS
-                                        $contracts_update";
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS $contracts_update";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $contracts_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $contracts_update";
                 $userlogs->save();
             }
         }
 
         if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
-            $ResignationCountBefore = ResignationTable::where('employee_id',$request->employee_id)->count();
             foreach($request->file('resignation_file') as $key => $value){
-                $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'.'.$request->resignation_file[$key]->extension();
+                $count = Str::random(2);
+                $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'_'.$count.'.'.$request->resignation_file[$key]->extension();
                 $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
 
                 $resignation = new ResignationTable;
@@ -3118,29 +3121,32 @@ class EmployeesController extends Controller
                 $resignation->resignation_file = $resignationFileName;
                 $resignation->save();
             }
-            $ResignationCountAfter = ResignationTable::where('employee_id',$request->employee_id)->count();
 
-            if($ResignationCountBefore != $ResignationCountAfter){
-                $resignation_update = "[RESIGNATION HAS BEEN CHANGED]";
+            if($request->resignation_change == 'CHANGED'){
+                $resignation_update = "[RESIGNATION: LIST OF RESIGNATION HAVE BEEN CHANGED]";
+            }
+            else{
+                $resignation_update = NULL;
+            }
+
+            if($resignation_update){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS
-                                        $resignation_update";
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $resignation_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $resignation_update";
                 $userlogs->save();
             }
         }
 
         if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
-            $TerminationCountBefore = TerminationTable::where('employee_id',$request->employee_id)->count();
             foreach($request->file('termination_file') as $key => $value){
-                $terminationFileName = time().rand(1,100).'_Termination_File.'.$request->termination_file[$key]->extension();
+                $count = Str::random(2);
+                $terminationFileName = $employee_details->empno.'_Termination_File_'.$timestamp.'_'.$count.'.'.$request->termination_file[$key]->extension();
                 $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
 
                 $termination = new TerminationTable;
@@ -3150,21 +3156,24 @@ class EmployeesController extends Controller
                 $termination->termination_file = $terminationFileName;
                 $termination->save();
             }
-            $TerminationCountAfter = TerminationTable::where('employee_id',$request->employee_id)->count();
 
-            if($TerminationCountBefore != $TerminationCountAfter){
-                $termination_update = "[TERMINATION HAS BEEN CHANGED]";
+            if($request->termination_change == 'CHANGED'){
+                $termination_update = "[TERMINATION: LIST OF TERMINATION HAVE BEEN CHANGED]";
+            }
+            else{
+                $termination_update = NULL;
+            }
+
+            if($termination_update){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS
-                                        $termination_update";
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $termination_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $termination_update";
                 $userlogs->save();
             }
         }
@@ -3672,27 +3681,6 @@ class EmployeesController extends Controller
             ->orderBy('employee_logs.id', 'DESC')
             ->get();
         return DataTables::of($logs)->make(true);
-    }
-
-    public function contracts_delete(Request $request){
-        $contracts_id = explode(",", $request->id);
-        foreach($contracts_id as $id){
-            ContractTable::where('id', $id)->delete();
-        }
-    }
-
-    public function resignation_delete(Request $request){
-        $resignation_id = explode(",", $request->id);
-        foreach($resignation_id as $id){
-            ResignationTable::where('id', $id)->delete();
-        }
-    }
-
-    public function termination_delete(Request $request){
-        $termination_id = explode(",", $request->id);
-        foreach($termination_id as $id){
-            TerminationTable::where('id', $id)->delete();
-        }
     }
 
     public function duplicate_personal_info(Request $request){

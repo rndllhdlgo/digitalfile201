@@ -9,7 +9,7 @@ use App\Http\Controllers\PagesController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\UpdatesController;
 use App\Http\Controllers\DeleteController;
-use Mail;
+// use Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -107,17 +107,10 @@ Route::any('/employees/history_data','EmployeesController@history_data');
 Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
 
 Route::any('/employees/memo_data','EmployeesController@memo_data');
-
 Route::any('/employees/evaluation_data','EmployeesController@evaluation_data');
-
 Route::any('/employees/contracts_data','EmployeesController@contracts_data');
-Route::any('/employees/contracts_delete','EmployeesController@contracts_delete');
-
 Route::any('/employees/resignation_data','EmployeesController@resignation_data');
-Route::any('/employees/resignation_delete','EmployeesController@resignation_delete');
-
 Route::any('/employees/termination_data','EmployeesController@termination_data');
-Route::any('/employees/termination_delete','EmployeesController@termination_delete');
 
 Route::any('/employees/logs_data','EmployeesController@logs_data');
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
@@ -172,3 +165,6 @@ Route::any('/employees/vocational_delete','DeleteController@vocational_delete');
 Route::any('/employees/job_history_delete','DeleteController@job_history_delete');
 Route::any('/employees/memo_delete','DeleteController@memo_delete');
 Route::any('/employees/evaluation_delete','DeleteController@evaluation_delete');
+Route::any('/employees/contracts_delete','DeleteController@contracts_delete');
+Route::any('/employees/resignation_delete','DeleteController@resignation_delete');
+Route::any('/employees/termination_delete','DeleteController@termination_delete');

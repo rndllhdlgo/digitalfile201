@@ -20,7 +20,6 @@ $('#barangay_clearance_delete_button').on('click',function(){
             $('#barangay_clearance_file').addClass('required_field');
             $('#barangay_clearance_file').click();
             barangay_clearance_change = 'CHANGED';
-            console.log(barangay_clearance_change);
         }
         else if(save.isDenied){
 
@@ -50,7 +49,6 @@ $('#birthcertificate_delete_button').on('click',function(){
             $('#birthcertificate_file').addClass('required_field');
             $('#birthcertificate_file').click();
             birthcertificate_change = 'CHANGED';
-            console.log(birthcertificate_change);
         }
         else if(save.isDenied){
         }
@@ -78,7 +76,6 @@ $('#diploma_delete_button').on('click',function(){
             $('#diploma_view').show();
             $('#diploma_file').click();
             diploma_change = 'CHANGED';
-            console.log(diploma_change);
         }
         else if(save.isDenied){
         }
@@ -107,7 +104,6 @@ $('#medical_certificate_delete_button').on('click',function(){
             $('#medical_certificate_file').addClass('required_field');
             $('#medical_certificate_file').click();
             medical_certificate_change = 'CHANGED';
-            console.log(medical_certificate_change);
         }
         else if(save.isDenied){
         }
@@ -135,7 +131,6 @@ $('#nbi_clearance_delete_button').on('click',function(){
             $('#nbi_clearance_view').show();
             $('#nbi_clearance_file').click();
             nbi_clearance_change = 'CHANGED';
-            console.log(nbi_clearance_change);
         }
         else if(save.isDenied){
         }
@@ -164,7 +159,6 @@ $('#pag_ibig_delete_button').on('click',function(){
             $('#pag_ibig_file').addClass('required_field');
             $('#pag_ibig_file').click();
             pag_ibig_file_change = 'CHANGED';
-            console.log(pag_ibig_file_change);
         }
         else if(save.isDenied){
         }
@@ -193,7 +187,6 @@ $('#philhealth_delete_button').on('click',function(){
             $('#philhealth_file').addClass('required_field');
             $('#philhealth_file').click();
             philhealth_file_change = 'CHANGED';
-            console.log(philhealth_file_change);
         }
         else if(save.isDenied){
         }
@@ -222,8 +215,6 @@ $('#police_clearance_delete_button').on('click',function(){
             $('#police_clearance_file').addClass('required_field');
             $('#police_clearance_file').click();
             police_clearance_file_change = 'CHANGED';
-            console.log(police_clearance_file_change);
-
         }
         else if(save.isDenied){
         }
@@ -252,7 +243,6 @@ $('#resume_delete_button').on('click',function(){
             $('#resume_file').addClass('required_field');
             $('#resume_file').click();
             resume_file_change = 'CHANGED';
-            console.log(resume_file_change);
         }
         else if(save.isDenied){
         }
@@ -282,7 +272,6 @@ $('#sss_delete_button').on('click',function(){
             $('#sss_file').addClass('required_field');
             $('#sss_file').click();
             sss_file_change = 'CHANGED';
-            console.log(sss_file_change);
         }
         else if(save.isDenied){
         }
@@ -310,7 +299,6 @@ $('#tor_delete_button').on('click',function(){
             $('#tor_view').show();
             $('#tor_file').click();
             tor_file_change = 'CHANGED';
-            console.log(tor_file_change);
         }
         else if(save.isDenied){
         }
@@ -371,7 +359,6 @@ $(document).on('click','.btn_evaluation_delete',function(){
     evaluation_id.push(data.id);
     $(this).parent().parent().remove();
     evaluation_change = 'CHANGED';
-    console.log(evaluation_change + " DELETE");
 });
 
 $(document).on('click','.btn_contracts_delete',function(){
@@ -379,6 +366,7 @@ $(document).on('click','.btn_contracts_delete',function(){
     var data = $('.contracts_table_data').DataTable().row(id).data();
     contracts_id.push(data.id);
     $(this).parent().parent().remove();
+    contracts_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_resignation_delete',function(){
@@ -386,6 +374,7 @@ $(document).on('click','.btn_resignation_delete',function(){
     var data = $('.resignation_table_data').DataTable().row(id).data();
     resignation_id.push(data.id);
     $(this).parent().parent().remove();
+    resignation_change = 'CHANGED';
 });
 
 $(document).on('click','.btn_termination_delete',function(){
@@ -393,4 +382,5 @@ $(document).on('click','.btn_termination_delete',function(){
     var data = $('.termination_table_data').DataTable().row(id).data();
     termination_id.push(data.id);
     $(this).parent().parent().remove();
+    termination_change = 'CHANGED';
 });

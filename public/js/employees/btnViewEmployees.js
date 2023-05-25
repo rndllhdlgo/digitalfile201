@@ -58,7 +58,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             employee_data.forEach(value => {
 
                 $('#hidden_id').val(value.id);
-                // $('#documents_form').attr("action",'/employees/updateDocuments');
                 $('#current_employee').val(value.employee_number);
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
