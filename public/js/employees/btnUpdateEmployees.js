@@ -1,18 +1,5 @@
 var employee_image;
 function employee_image_save(){
-    // {
-    //     var extension = "jpeg";
-    //     var date = new Date();
-
-    //     employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
-    //                     date.getFullYear().toString().slice(-2) +
-    //                     ("0" + (date.getMonth() + 1)).slice(-2) +
-    //                     ("0" + date.getDate()).slice(-2) +
-    //                     ("0" + date.getHours()).slice(-2) +
-    //                     ("0" + date.getMinutes()).slice(-2) +
-    //                     ("0" + date.getSeconds()).slice(-2) + '.' + extension;
-    // }
-
     var file = $('#employee_image')[0].files[0];
     var extension = file.name.split('.').pop().toLowerCase();
     var date = new Date();
@@ -269,6 +256,7 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
+                        // Save Multiple
                         $('.college_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
@@ -369,6 +357,7 @@ $('#btnUpdate').on('click',function(){
                             });
                         });
 
+                        // Delete Multiple
                         if(children_id.length > 0){
                             $.ajax({
                                 type: 'POST',
@@ -449,27 +438,37 @@ $('#btnUpdate').on('click',function(){
                             job_history_id = [];
                         }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/memo_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: memo_id.toString()
-                            }
-                        });
+                        if(memo_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/memo_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: memo_id.toString(),
+                                    employee_id: data.id,
+                                    memo_change:memo_change
+                                }
+                            });
+                            memo_id = [];
+                        }
 
-                        $.ajax({
-                            type: 'POST',
-                            url: '/employees/evaluation_delete',
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id: evaluation_id.toString()
-                            }
-                        });
+                        if(evaluation_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/evaluation_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id: evaluation_id.toString(),
+                                    employee_id: data.id,
+                                    evaluation_change:evaluation_change
+                                }
+                            });
+                            evaluation_id = [];
+                        }
 
                         $.ajax({
                             type: 'POST',
@@ -524,6 +523,13 @@ $('#btnUpdate').on('click',function(){
                         //     $('#documents_form').submit();
 
                         var formData = new FormData($('#documents_form').get(0));
+                        if(memo_change){
+                            formData.append('memo_change', memo_change);
+                        }
+                        if(evaluation_change){
+                            formData.append('evaluation_change', evaluation_change);
+                        }
+
                         $.ajax({
                             url: '/employees/updateDocuments',
                             type: 'POST',
@@ -860,6 +866,64 @@ $('#btnUpdate').on('click',function(){
                                     }
                                 });
                             }
+
+                            // if(memo_change == 'CHANGED'){
+                            //     $('.memo_table_data').dataTable().fnDestroy();
+                            //     $('.memo_table_data').DataTable({
+                            //         columnDefs: [
+                            //             {
+                            //                 "render": function(data, type, row, meta){
+                            //                         return '<button type="button" class="btn btn-danger btn_memo_delete center" id="'+ meta.row +'"><i class="fa-solid fa-trash-can"></i> </button>';
+                            //                 },
+                            //                 "defaultContent": '',
+                            //                 "data": null,
+                            //                 "targets": [4],
+                            //             }
+                            //         ],
+                            //         searching: false,
+                            //         paging: false,
+                            //         info: false,
+                            //         ordering:false,
+                            //         autoWidth: false,
+                            //         language:{
+                            //             emptyTable: "No data available in table",
+                            //             processing: "Loading...",
+                            //         },
+                            //         serverSide: true,
+                            //         ajax: {
+                            //             url: '/employees/memo_data',
+                            //             async: false,
+                            //             data:{
+                            //                 id: data.id,
+                            //             }
+                            //         },
+                            //         columns: [
+                            //             { data: 'memo_subject',width: '22.5%'},
+                            //             {
+                            //                 data: 'memo_date',
+                            //                 "render":function(data,type,row){
+                            //                     return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('LL');
+                            //                 },
+                            //                 width: '22.5%'},
+                            //             { data: 'memo_penalty', width: '22.5%'},
+                            //             {
+                            //                 data: 'memo_file',
+                            //                 "render": function(data, type, row){
+                            //                     return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.memo_file}" target="_blank">${row.memo_file}</a>`;
+                            //                 },
+                            //                 width: '22.5%'
+                            //             }
+                            //         ],
+                            //         initComplete: function(){
+                            //             if(!$('.memo_table_data').DataTable().data().any()){
+                            //                 $('#memo_table_data').hide();
+                            //             }
+                            //             else{
+                            //                 $('#memo_table_data').show();
+                            //             }
+                            //         }
+                            //     });
+                            // }
                         }, 2000);
 
                         setTimeout(() => {

@@ -1,4 +1,6 @@
 var children_change,college_change,training_change,vocational_change,job_history_change;
+var memo_change,evaluation_change;
+
 setInterval(() => {
     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
         $('#childrenAdd').prop('disabled',true);
@@ -290,8 +292,6 @@ $(document).ready(function(){
 
     function addMemoRow(){
         memo_change = 'CHANGED';
-        console.log(memo_change);
-
         $('#memo_subject').attr('id','');
         $('#memo_date').attr('id','');
         $('#memo_penalty').attr('id','');
@@ -341,6 +341,7 @@ $(document).ready(function(){
     }
 
     function addEvaluationRow(){
+        evaluation_change = 'CHANGED';
         $('#evaluation_reason').attr('id','');
         $('#evaluation_date').attr('id','');
         $('#evaluation_evaluated_by').attr('id','');

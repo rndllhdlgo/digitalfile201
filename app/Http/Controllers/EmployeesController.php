@@ -45,6 +45,7 @@ use App\Models\Requests;
 
 use App\Models\EmployeeStatus;
 use DataTables;
+use Str;
 
 class EmployeesController extends Controller
 {
@@ -3001,10 +3002,10 @@ class EmployeesController extends Controller
         $employee = Document::where('employee_id',$request->employee_id)->first();
 
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
-            $MemoCountBefore = MemoTable::where('employee_id', $request->employee_id)->count();
-            foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'.'.$request->memo_file[$key]->extension();
-                $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$memoFileName);
+            foreach ($request->file('memo_file') as $key => $value) {
+                $count = Str::random(2);
+                $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'_'.$count.'.'.$request->memo_file[$key]->extension();
+                $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name, $memoFileName);
 
                 $memo = new MemoTable;
                 $memo->employee_id = $request->employee_id;
@@ -3015,29 +3016,31 @@ class EmployeesController extends Controller
                 $memo->save();
             }
 
-            $MemoCountAfter = MemoTable::where('employee_id', $request->employee_id)->count();
+            if($request->memo_change == 'CHANGED'){
+                $memo_update = "[MEMO: LIST OF MEMO HAVE BEEN CHANGED]";
+            }
+            else{
+                $memo_update = NULL;
+            }
 
-            if($MemoCountBefore != $MemoCountAfter){
-                $memo_update = "[MEMO HAS BEEN CHANGED]";
+            if($request->memo_change == 'CHANGED'){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS
-                                        $memo_update";
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $memo_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $memo_update";
                 $userlogs->save();
             }
         }
 
         if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
-            $EvaluationCountBefore = EvaluationTable::where('employee_id', $request->employee_id)->count();
             foreach($request->file('evaluation_file') as $key => $value){
-                $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'.'.$request->evaluation_file[$key]->extension();
+                $count = Str::random(2);
+                $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'_'.$count.'.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
 
                 $evaluation = new EvaluationTable;
@@ -3048,21 +3051,24 @@ class EmployeesController extends Controller
                 $evaluation->evaluation_file = $evaluationFileName;
                 $evaluation->save();
             }
-            $EvaluationCountAfter = EvaluationTable::where('employee_id',$request->employee_id)->count();
 
-            if($EvaluationCountBefore != $EvaluationCountAfter){
-                $evaluation_update = "[EVALUATION HAS BEEN CHANGED]";
+            if($request->evaluation_change == 'CHANGED'){
+                $evaluation_update = "[EVALUATION: LIST OF EVALUATION HAVE BEEN CHANGED]";
+            }
+            else{
+                $evaluation_update = NULL;
+            }
+
+            if($request->evaluation_change == 'CHANGED'){
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS
-                                        $evaluation_update";
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
                 $employee_logs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $evaluation_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $evaluation_update";
                 $userlogs->save();
             }
         }
@@ -3666,25 +3672,6 @@ class EmployeesController extends Controller
             ->orderBy('employee_logs.id', 'DESC')
             ->get();
         return DataTables::of($logs)->make(true);
-    }
-
-    public function memo_delete(Request $request){
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-
-        $memo_id = explode(",", $request->id);
-        if($memo_id){
-            foreach($memo_id as $id){
-                MemoTable::where('id', $id)->delete();
-            }
-        }
-    }
-
-    public function evaluation_delete(Request $request){
-        $evaluation_id = explode(",", $request->id);
-        foreach($evaluation_id as $id){
-            EvaluationTable::where('id', $id)->delete();
-        }
     }
 
     public function contracts_delete(Request $request){

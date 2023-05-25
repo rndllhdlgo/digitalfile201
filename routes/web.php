@@ -105,13 +105,10 @@ Route::any('/employees/logs_delete','EmployeesController@logs_delete');
 Route::any('/employees/history_data','EmployeesController@history_data');
 
 Route::any('/employees/updateDocuments','EmployeesController@updateDocuments');
-Route::any('/employees/updateDocumentsLogs','EmployeesController@updateDocuments');
 
 Route::any('/employees/memo_data','EmployeesController@memo_data');
-Route::any('/employees/memo_delete','EmployeesController@memo_delete');
 
 Route::any('/employees/evaluation_data','EmployeesController@evaluation_data');
-Route::any('/employees/evaluation_delete','EmployeesController@evaluation_delete');
 
 Route::any('/employees/contracts_data','EmployeesController@contracts_data');
 Route::any('/employees/contracts_delete','EmployeesController@contracts_delete');
@@ -173,3 +170,5 @@ Route::any('/employees/children_delete','DeleteController@children_delete');
 Route::any('/employees/training_delete','DeleteController@training_delete');
 Route::any('/employees/vocational_delete','DeleteController@vocational_delete');
 Route::any('/employees/job_history_delete','DeleteController@job_history_delete');
+Route::any('/employees/memo_delete','DeleteController@memo_delete');
+Route::any('/employees/evaluation_delete','DeleteController@evaluation_delete');

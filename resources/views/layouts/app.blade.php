@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="/css/inc/jquery.dataTables.min.css">
         <link rel="stylesheet" href="/css/inc/buttons.dataTables.min.css">
         <link href="/fontawesome-free-6.2.0-web/css/all.min.css" rel="stylesheet" type="text/css"/>
-        <link href="font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
         <link rel="stylesheet" href="/css/inc/sweetalert2.min.css">
 
         <script src="/js/inc/chosen.jquery.min.js"></script>
@@ -73,6 +73,7 @@
             <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+            <script src="/js/employees/btnDelete.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
             <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
