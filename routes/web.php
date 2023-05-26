@@ -12,19 +12,10 @@ use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\UpdateController;
 // use Mail;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 // Route::get('/testmail', function () {
 //     return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
 // });
+
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::get('/logout',[LoginController::class,'logout']);
@@ -46,18 +37,20 @@ Route::any('/setJobDescription','PagesController@setJobDescription');
 Route::any('/setJobRequirements','PagesController@setJobRequirements');
 
 // Employees Controller
+Route::any('/employees/logs_data','EmployeesController@logs_data');
+Route::any('/employees/employee_logs','EmployeesController@employee_logs');
 Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
-Route::any('/employees/insertImage','EmployeesController@insertImage');
 Route::any('/employees/status','EmployeesController@employee_status');
 Route::any('/employees/fetch','EmployeesController@employeeFetch');
-
 Route::any('/upload_picture','EmployeesController@upload_picture');
 
-Route::any('/employees/saveChildren','EmployeesController@saveChildren');
-Route::any('/employees/saveCollege','EmployeesController@saveCollege');
-Route::any('/employees/saveTraining','EmployeesController@saveTraining');
-Route::any('/employees/saveVocational','EmployeesController@saveVocational');
-Route::any('/employees/saveJobHistory','EmployeesController@saveJobHistory');
+// Save Controller
+Route::any('/employees/insertImage','SaveController@insertImage');
+Route::any('/employees/saveChildren','SaveController@saveChildren');
+Route::any('/employees/saveCollege','SaveController@saveCollege');
+Route::any('/employees/saveTraining','SaveController@saveTraining');
+Route::any('/employees/saveVocational','SaveController@saveVocational');
+Route::any('/employees/saveJobHistory','SaveController@saveJobHistory');
 
 Route::any('/email_address/checkDuplicate','EmployeesController@duplicate_personal_info');
 Route::any('/cellphone_number/checkDuplicate','EmployeesController@duplicate_personal_info');
@@ -79,14 +72,44 @@ Route::any('/maintenance/positionSave','MaintenanceController@positionSave');
 Route::any('/maintenance/positionUpdate','MaintenanceController@positionUpdate');
 Route::any('/position/checkDuplicate','MaintenanceController@checkDuplicate');
 
-Route::any('/employees/viewLogs','EmployeesController@viewLogs');
-Route::any('/employees/saveLogs','EmployeesController@saveLogs');
-Route::any('/employees/saveSample','EmployeesController@saveSample');
+// Update Controller2
+Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
+Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
+Route::any('/employees/updateCompensationBenefits','UpdateController@updateCompensationBenefits');
+Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
+Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
+Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');
+Route::any('/employees/updateDocuments','UpdateController@updateDocuments');
 
-Route::any('/employees/logs_delete','EmployeesController@logs_delete');
+// Delete Controller
+Route::any('/employees/college_delete','DeleteController@college_delete');
+Route::any('/employees/children_delete','DeleteController@children_delete');
+Route::any('/employees/training_delete','DeleteController@training_delete');
+Route::any('/employees/vocational_delete','DeleteController@vocational_delete');
+Route::any('/employees/job_history_delete','DeleteController@job_history_delete');
+Route::any('/employees/memo_delete','DeleteController@memo_delete');
+Route::any('/employees/evaluation_delete','DeleteController@evaluation_delete');
+Route::any('/employees/contracts_delete','DeleteController@contracts_delete');
+Route::any('/employees/resignation_delete','DeleteController@resignation_delete');
+Route::any('/employees/termination_delete','DeleteController@termination_delete');
 
-Route::any('/employees/logs_data','EmployeesController@logs_data');
-Route::any('/employees/employee_logs','EmployeesController@employee_logs');
+// Data Controller
+Route::any('/employees/college_data','DataController@college_data');
+Route::any('/employees/children_data','DataController@children_data');
+Route::any('/employees/training_data','DataController@training_data');
+Route::any('/employees/vocational_data','DataController@vocational_data');
+Route::any('/employees/job_history_data','DataController@job_history_data');
+Route::any('/employees/memo_data','DataController@memo_data');
+Route::any('/employees/evaluation_data','DataController@evaluation_data');
+Route::any('/employees/contracts_data','DataController@contracts_data');
+Route::any('/employees/resignation_data','DataController@resignation_data');
+Route::any('/employees/termination_data','DataController@termination_data');
+Route::any('/job_history_summary/data','DataController@job_history_summary_data');
+Route::any('/college_summary/data','DataController@college_summary_data');
+Route::any('/training_summary/data','DataController@training_summary_data');
+Route::any('/vocational_summary/data','DataController@vocational_summary_data');
+Route::any('/employees/history_data','DataController@history_data');
+Route::any('/employees/logs_data','DataController@logs_data');
 
 // Try Controllers
 Route::any('/evaluation','TryController@evaluation_blade');
@@ -129,45 +152,3 @@ Route::any('/update_training', 'UpdatesController@update_training');
 Route::any('/update_vocational', 'UpdatesController@update_vocational');
 Route::any('/update_job_history', 'UpdatesController@update_job_history');
 Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
-
-// Update Controller2
-Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
-Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
-Route::any('/employees/updateCompensationBenefits','UpdateController@updateCompensationBenefits');
-Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
-Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
-Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');
-Route::any('/employees/updateDocuments','UpdateController@updateDocuments');
-
-// Delete Controller
-Route::any('/employees/college_delete','DeleteController@college_delete');
-Route::any('/employees/children_delete','DeleteController@children_delete');
-Route::any('/employees/training_delete','DeleteController@training_delete');
-Route::any('/employees/vocational_delete','DeleteController@vocational_delete');
-Route::any('/employees/job_history_delete','DeleteController@job_history_delete');
-Route::any('/employees/memo_delete','DeleteController@memo_delete');
-Route::any('/employees/evaluation_delete','DeleteController@evaluation_delete');
-Route::any('/employees/contracts_delete','DeleteController@contracts_delete');
-Route::any('/employees/resignation_delete','DeleteController@resignation_delete');
-Route::any('/employees/termination_delete','DeleteController@termination_delete');
-
-// Data Controller
-Route::any('/employees/college_data','DataController@college_data');
-Route::any('/employees/children_data','DataController@children_data');
-Route::any('/employees/training_data','DataController@training_data');
-Route::any('/employees/vocational_data','DataController@vocational_data');
-Route::any('/employees/job_history_data','DataController@job_history_data');
-
-Route::any('/employees/memo_data','DataController@memo_data');
-Route::any('/employees/evaluation_data','DataController@evaluation_data');
-Route::any('/employees/contracts_data','DataController@contracts_data');
-Route::any('/employees/resignation_data','DataController@resignation_data');
-Route::any('/employees/termination_data','DataController@termination_data');
-
-Route::any('/job_history_summary/data','DataController@job_history_summary_data');
-Route::any('/college_summary/data','DataController@college_summary_data');
-Route::any('/training_summary/data','DataController@training_summary_data');
-Route::any('/vocational_summary/data','DataController@vocational_summary_data');
-
-Route::any('/employees/history_data','DataController@history_data');
-Route::any('/employees/logs_data','DataController@logs_data');
