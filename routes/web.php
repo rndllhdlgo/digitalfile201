@@ -39,9 +39,9 @@ Route::any('/setJobRequirements','PagesController@setJobRequirements');
 // Employees Controller
 Route::any('/employees/logs_data','EmployeesController@logs_data');
 Route::any('/employees/employee_logs','EmployeesController@employee_logs');
-Route::any('/employees/listOfEmployees','EmployeesController@listOfEmployees');
+Route::any('/employees/data','EmployeesController@employees_data');
 Route::any('/employees/status','EmployeesController@employee_status');
-Route::any('/employees/fetch','EmployeesController@employeeFetch');
+Route::any('/employees/fetch','EmployeesController@employee_fetch');
 Route::any('/upload_picture','EmployeesController@upload_picture');
 
 // Save Controller

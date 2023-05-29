@@ -436,6 +436,16 @@ input[type=search]:focus{
     border-color: #0d1a80;
 }
 
+/* tbody tr:nth-child(even),
+.even{
+    background-color: #e5e5e5 !important;
+    }
+
+tbody tr:nth-child(odd),
+.odd{
+    background-color: #ffffff !important;
+} */
+
 #loading{
     color: #0d1a80 !important;
     line-height: 35vh;

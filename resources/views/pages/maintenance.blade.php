@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 
 <br>
@@ -38,7 +37,6 @@
         @include('subpages.maintenance.department')
         @include('subpages.maintenance.branch')
         @include('subpages.maintenance.shift')
-        @include('subpages.maintenance.job_position_and_description')
         @include('subpages.maintenance.position')
     </div>
 @endsection

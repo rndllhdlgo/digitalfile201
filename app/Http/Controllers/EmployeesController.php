@@ -70,7 +70,7 @@ class EmployeesController extends Controller
         return $data_update;
     }
 
-    public function listOfEmployees(Request $request){
+    public function employees_data(Request $request){
         if($request->filter == 'regular'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
@@ -381,7 +381,7 @@ class EmployeesController extends Controller
         ->make(true);
     }
 
-    public function employeeFetch(Request $request){
+    public function employee_fetch(Request $request){
         $employees = PersonalInformationTable::select(
                     'personal_information_tables.id',
                     'desc',
