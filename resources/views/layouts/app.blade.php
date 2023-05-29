@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{env('APP_NAME')}}</title>
+        <link rel="icon" href="/images/ideaserv_systems_logo.png">
         @include('cdn.head')
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
@@ -17,6 +18,7 @@
                 Please DO NOT interrupt or cancel this process.
             </strong>
         </div>
+
         @if(!Auth::guest())
             <script>$('#loading').show();</script>
             @include('inc.navbar')
@@ -24,12 +26,10 @@
         @else
             @include('inc.guest')
         @endif
-
         <div class="container-fluid">
             @yield('content')
         </div>
 
         @include('cdn.body')
-        @include('cdn.script')
     </body>
 </html>
