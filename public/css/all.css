@@ -436,16 +436,6 @@ input[type=search]:focus{
     border-color: #0d1a80;
 }
 
-tbody tr:nth-child(even),
-.even{
-    background-color: #e5e5e5 !important;
-    }
-
-tbody tr:nth-child(odd),
-.odd{
-    background-color: #ffffff !important;
-}
-
 #loading{
     color: #0d1a80 !important;
     line-height: 35vh;
@@ -642,4 +632,16 @@ label{
     background-color: rgb(182, 181, 181) !important;
     padding:5px !important;
     width: auto !important;
+}
+
+.dtfc-fixed-left{
+    background-color: white !important;
+    color: black !important;
+    z-index: 999 !important;
+}
+
+.fixedCol{
+    background-color: #0d1a80 !important;
+    color: white !important;
+    z-index: 999 !important;
 }

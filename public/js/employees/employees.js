@@ -1,5 +1,8 @@
 var employeesTable,employee_image_change;
 $(document).ready(function(){
+    setTimeout(() => {
+        $('#filter1').keyup();
+    }, 1300);
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
         var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
@@ -45,11 +48,11 @@ $(document).ready(function(){
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
     employeesTable = $('table.employeesTable').DataTable({
-        // scrollX:        true,
-        // scrollCollapse: true,
-        // fixedColumns:{
-        //     left: 3,
-        // },
+        scrollX:        true,
+        scrollCollapse: true,
+        fixedColumns:{
+            left: 2,
+        },
         dom:'lf<"breakspace">trip',
         language:{
             info: "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
@@ -136,22 +139,22 @@ $(document).ready(function(){
                     return '';
                 }
             },
-            {
-                data: 'age',
-                "render":function(data,type,row){
-                    if(row.birthday){
-                        var today = new Date();
-                        var birthDate = new Date(row.birthday);
-                        var age = today.getFullYear() - birthDate.getFullYear();
-                        var m = today.getMonth() - birthDate.getMonth();
-                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                            age--;
-                        }
-                        return age;
-                    }
-                    return '';
-                }
-            },
+            // {
+            //     data: 'age',
+            //     "render":function(data,type,row){
+            //         if(row.birthday){
+            //             var today = new Date();
+            //             var birthDate = new Date(row.birthday);
+            //             var age = today.getFullYear() - birthDate.getFullYear();
+            //             var m = today.getMonth() - birthDate.getMonth();
+            //             if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            //                 age--;
+            //             }
+            //             return age;
+            //         }
+            //         return '';
+            //     }
+            // },
             {data: 'province'},
             {data: 'city'},
             {data: 'region'},
@@ -216,7 +219,7 @@ $(document).ready(function(){
 
     setInterval(() => {
         if($('.popover-header').is(':visible')){
-            for(var i=0; i<=19; i++){
+            for(var i=0; i<=18; i++){
                 if(employeesTable.column(i).visible()){
                     $('#filter-'+i).prop('checked', true);
                 }

@@ -23,94 +23,89 @@
             <hr class="hr-design">
             <div class="table-responsive container-fluid pt-2">
                 <table class="table table-striped table-hover table-bordered w-100 employeesTable" id="employeesTable">
-                    <thead class="text-white" style="background-color:#0d1a80;">
-                        <tr style="background-color: #0d1a80;">
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="7" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="8" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="9" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="10" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="11" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="12" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="13" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="14" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="15" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="16" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="17" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="18" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="19" style="border:1px solid #683817"/>
-                            </td>
-                            <td>
-                                <input type="search" class="form-control filter-input" data-column="20" style="border:1px solid #683817"/>
-                            </td>
-                        </tr>
+                    <thead class="text-white" style="background-color:#0d1a80;" title="CLICK TO SORT">
                         <tr>
-                            <th> EMPLOYEE NO.</th>
-                            <th> FULL NAME</th>
-                            <th> POSITION</th>
-                            <th> BRANCH</th>
-                            <th> EMP. STATUS</th>
-                            <th> COMPANY</th>
-                            <th> DEPARTMENT</th>
-                            <th> DATE HIRED</th>
-                            <th> EMAIL ADDRESS</th>
-                            <th> CELLPHONE NUMBER</th>
-                            <th> TELEPHONE NUMBER</th>
-                            <th> GENDER</th>
-                            <th> CIVIL STATUS</th>
-                            <th> BIRTHDAY</th>
-                            <th> AGE</th>
-                            <th> PROVINCE</th>
-                            <th> CITY</th>
-                            <th> REGION</th>
-                            <th> BLOOD TYPE</th>
-                            <th> RELIGION</th>
-                            <th> STATUS</th>
+                            <th class="fixedCol">
+                                <input type="search" id="filter1" class="form-control filter-input" data-column="0" style="border:1px solid #683817" title="SEARCH"/>
+                                EMPLOYEE NO.
+                            </th>
+                            <th class="fixedCol">
+                                <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #683817" title="SEARCH"/>
+                                FULL NAME
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #683817" title="SEARCH"/>
+                                POSITION
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="3" style="border:1px solid #683817" title="SEARCH"/>
+                                BRANCH
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="4" style="border:1px solid #683817" title="SEARCH"/>
+                                EMP. STATUS
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="5" style="border:1px solid #683817" title="SEARCH"/>
+                                COMPANY
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="6" style="border:1px solid #683817" title="SEARCH"/>
+                                DEPARTMENT
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="7" style="border:1px solid #683817" title="SEARCH"/>
+                                DATE HIRED
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="8" style="border:1px solid #683817" title="SEARCH"/>
+                                EMAIL ADDRESS
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="9" style="border:1px solid #683817" title="SEARCH"/>
+                                CELLPHONE NUMBER
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="10" style="border:1px solid #683817" title="SEARCH"/>
+                                TELEPHONE NUMBER
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="11" style="border:1px solid #683817" title="SEARCH"/>
+                                GENDER
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="12" style="border:1px solid #683817" title="SEARCH"/>
+                                CIVIL STATUS
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="13" style="border:1px solid #683817" title="SEARCH"/>
+                                BIRTHDAY
+                            </th>
+                            {{-- <th> AGE</th> --}}
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="14" style="border:1px solid #683817" title="SEARCH"/>
+                                PROVINCE
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="15" style="border:1px solid #683817" title="SEARCH"/>
+                                CITY
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="16" style="border:1px solid #683817" title="SEARCH"/>
+                                REGION
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="17" style="border:1px solid #683817" title="SEARCH"/>
+                                BLOOD TYPE
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="18" style="border:1px solid #683817" title="SEARCH"/>
+                                RELIGION
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="19" style="border:1px solid #683817" title="SEARCH"/>
+                                STATUS
+                            </th>
                         </tr>
                     </thead>
                         <tbody title="CLICK TO EDIT">

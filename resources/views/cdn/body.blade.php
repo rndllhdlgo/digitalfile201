@@ -1,7 +1,8 @@
 <script src="/js/inc/mdb.min.js"></script>
 <script src="/js/inc/bootstrap.bundle.min.js"></script>
-<script src="/js/inc/jquery.dataTables.min.js"></script>
+<script src="/js/inc2/jquery.dataTables.min.js"></script>
 <script src="/js/inc/dataTables.buttons.min.js"></script>
+<script src="/js/inc2/dataTables.fixedColumns.min.js"></script>
 <script src="/js/inc/buttons.html5.min.js"></script>
 <script src="/js/inc/jszip.min.js"></script>
 <script src="/js/inc/sweetalert2.all.min.js"></script>
