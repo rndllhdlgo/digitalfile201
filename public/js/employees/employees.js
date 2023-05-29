@@ -45,7 +45,12 @@ $(document).ready(function(){
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
     employeesTable = $('table.employeesTable').DataTable({
-        dom:'l<"breakspace">trip',
+        // scrollX:        true,
+        // scrollCollapse: true,
+        // fixedColumns:{
+        //     left: 3,
+        // },
+        dom:'lf<"breakspace">trip',
         language:{
             info: "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
             lengthMenu:"Show _MENU_ Employees",

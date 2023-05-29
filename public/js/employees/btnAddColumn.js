@@ -85,29 +85,17 @@ $(document).ready(function(){
         var child_age = $('#child_age').val();
         var child_gender = $('#child_gender').val();
 
-        if($('#btnSave').is(":visible")){
-            var children_table = "<tr class='children_tr'>"+
-                                    "<td class='td_1 text-uppercase' style='width:22.5%;'>" + child_name + "</td>" +
-                                    "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
-                                    "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
-                                    "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" +
-                                    "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                                "<tr>";
-            $('#children_table tbody').append(children_table);
-        }
-        else{
-            var children_table = "<tr class='children_tr'>"+
-                                    "<td class='td_1 text-uppercase' style='width:22.5%;'>" + child_name + "</td>" +
-                                    "<td class='td_2' style='width:22.5%;'>" + child_birthday + "</td>" +
-                                    "<td class='td_3' style='width:22.5%;'>" + child_age + "</td>" +
-                                    "<td class='td_4' style='width:22.5%;'>" + child_gender + "</td>" +
-                                    "<td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                                "<tr>";
-            $('.dataTables_empty').closest('tr').remove();
-            $('#children_table_orig_tbody').append(children_table);
-            $('#children_table_orig').show();
-            children_change = 'CHANGED';
-        }
+        var children_table =`<tr class='children_tr'>
+                                <td class='td_1 text-uppercase' style='width:22.5%;'>${child_name}</td>
+                                <td class='td_2' style='width:22.5%;'>${child_birthday}</td>
+                                <td class='td_3' style='width:22.5%;'>${child_age}</td>
+                                <td class='td_4' style='width:22.5%;'>${child_gender}</td>
+                                <td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                            <tr>`;
+        $('.dataTables_empty').closest('tr').remove();
+        $('#children_table_orig_tbody').append(children_table);
+        $('#children_table_orig').show();
+        children_change = 'CHANGED';
 
         $('#child_name').val("");
         $('#child_birthday').val("");
@@ -125,31 +113,19 @@ $(document).ready(function(){
         var college_inclusive_years_from = $('#college_inclusive_years_from').val();
         var college_inclusive_years_to = $('#college_inclusive_years_to').val();
 
-        if($('#btnSave').is(":visible")){
-            var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-uppercase' style='width: 30%;'>" + college_name + "</td>" +
-                                    "<td class='td_2 text-uppercase' style='width: 30%;'>" + college_degree + "</td>" +
-                                    "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
-                                    "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
-                                    "<td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                                "<tr>";
-            $('#college_table tbody').append(college_table);
-            $('#college_table tr:last').remove();
-        }
-        else{
-            var college_table = "<tr class='college_tr'>"+
-                                    "<td class='td_1 text-uppercase' style='width: 30%;'>" + college_name + "</td>" +
-                                    "<td class='td_2 text-uppercase' style='width: 30%;'>" + college_degree + "</td>" +
-                                    "<td class='td_3' style='width: 15%;'>" + college_inclusive_years_from + "</td>" +
-                                    "<td class='td_4' style='width: 15%;'>" + college_inclusive_years_to + "</td>" +
-                                    "<td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>"+
-                                "<tr>";
-            $('.dataTables_empty').closest('tr').remove();
-            $('#college_table_orig_tbody').append(college_table);
-            $('#college_table_orig').show();
-            $('#college_table_orig tr:last').remove();
-            college_change = 'CHANGED';
-        }
+        var college_table = `<tr class='college_tr'>
+                                <td class='td_1 text-uppercase' style='width: 30%;'>${college_name}</td>
+                                <td class='td_2 text-uppercase' style='width: 30%;'>${college_degree}</td>
+                                <td class='td_3' style='width: 15%;'>${college_inclusive_years_from}</td>
+                                <td class='td_4' style='width: 15%;'>${college_inclusive_years_to}</td>
+                                <td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                            <tr>`;
+
+        $('.dataTables_empty').closest('tr').remove();
+        $('#college_table_orig_tbody').append(college_table);
+        $('#college_table_orig').show();
+        $('#college_table_orig tr:last').remove();
+        college_change = 'CHANGED';
 
         $('#college_name').val("");
         $('#college_degree').val("");
@@ -167,29 +143,17 @@ $(document).ready(function(){
         var training_inclusive_years_from = $('#training_inclusive_years_from').val();
         var training_inclusive_years_to = $('#training_inclusive_years_to').val();
 
-        if($('#btnSave').is(":visible")){
-            var training_table =   "<tr class='training_tr'>" +
-                                        "<td class='td_1 text-uppercase' style='width:30%;'>" + training_name + "</td>" +
-                                        "<td class='td_2' style='width:30%;'>" + training_title + "</td>" +
-                                        "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+
-                                        "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+
-                                        "<td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('#training_table tbody').append(training_table);
-        }
-        else{
-            var training_table =   "<tr class='training_tr'>" +
-                                        "<td class='td_1 text-uppercase' style='width:30%;'>" + training_name + "</td>" +
-                                        "<td class='td_2' style='width:30%;'>" + training_title + "</td>" +
-                                        "<td class='td_3' style='width:15%;'>" + training_inclusive_years_from + "</td>"+
-                                        "<td class='td_4' style='width:15%;'>" + training_inclusive_years_to + "</td>"+
-                                        "<td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('.dataTables_empty').closest('tr').remove();
-            $('#training_table_orig_tbody').append(training_table);
-            $('#training_table_orig').show();
-            training_change = 'CHANGED';
-        }
+        var training_table = `<tr class='training_tr'>
+                                    <td class='td_1 text-uppercase' style='width:30%;'>${training_name}</td>
+                                    <td class='td_2' style='width:30%;'>${training_title}</td>
+                                    <td class='td_3' style='width:15%;'>${training_inclusive_years_from}</td>
+                                    <td class='td_4' style='width:15%;'>${training_inclusive_years_to}</td>
+                                    <td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                </tr>`;
+        $('.dataTables_empty').closest('tr').remove();
+        $('#training_table_orig_tbody').append(training_table);
+        $('#training_table_orig').show();
+        training_change = 'CHANGED';
 
         $('#training_name').val("");
         $('#training_title').val("");
@@ -206,29 +170,17 @@ $(document).ready(function(){
         var vocational_inclusive_years_from = $('#vocational_inclusive_years_from').val();
         var vocational_inclusive_years_to = $('#vocational_inclusive_years_to').val();
 
-        if($('#btnSave').is(":visible")){
-            var vocational_table = "<tr class='vocational_tr'>"+
-                                        "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" +
-                                        "<td class='td_2 text-uppercase' style='width:30%'>" + vocational_course + "</td>" +
-                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" +
-                                        "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('#vocational_table tbody').append(vocational_table);
-        }
-        else{
-            var vocational_table = "<tr class='vocational_tr'>"+
-                                        "<td class='td_1 text-uppercase' style='width:30%'>" + vocational_name +"</td>" +
-                                        "<td class='td_2 text-uppercase' style='width:30%'>" + vocational_course + "</td>" +
-                                        "<td class='td_3' style='width:15%'>" + vocational_inclusive_years_from + "</td>" +
-                                        "<td class='td_4' style='width:15%'>" + vocational_inclusive_years_to + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('.dataTables_empty').closest('tr').remove();
-            $('#vocational_table_orig_tbody').append(vocational_table);
-            $('#vocational_table_orig').show();
-            vocational_change = 'CHANGED';
-        }
+        var vocational_table = `<tr class='vocational_tr'>
+                                    <td class='td_1 text-uppercase' style='width:30%'>${vocational_name}</td>
+                                    <td class='td_2 text-uppercase' style='width:30%'>${vocational_course}</td>
+                                    <td class='td_3' style='width:15%'>${vocational_inclusive_years_from}</td>
+                                    <td class='td_4' style='width:15%'>${vocational_inclusive_years_to}</td>
+                                    <td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                </tr>`;
+        $('.dataTables_empty').closest('tr').remove();
+        $('#vocational_table_orig_tbody').append(vocational_table);
+        $('#vocational_table_orig').show();
+        vocational_change = 'CHANGED';
 
         $('#vocational_name').val("");
         $('#vocational_course').val("");
@@ -248,33 +200,19 @@ $(document).ready(function(){
         var job_inclusive_years_from = $('#job_inclusive_years_from').val().trim();
         var job_inclusive_years_to = $('#job_inclusive_years_to').val().trim();
 
-        if($('#btnSave').is(":visible")){
-            var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-uppercase' style='width:15%;'>" + job_company_name + "</td>" +
-                                        "<td class='td_2' style='width:15%'>" + job_description + "</td>" +
-                                        "<td class='td_3' style='width:15%'>" + job_position + "</td>" +
-                                        "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" +
-                                        "<td class='td_5' style='width:15%'>" + job_inclusive_years_from + "</td>" +
-                                        "<td class='td_6' style='width:15%'>" + job_inclusive_years_to + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('#job_history_table').append(job_history_table);
-        }
-        else{
-            var job_history_table = "<tr class='job_history_tr'>"+
-                                        "<td class='td_1 text-uppercase' style='width:15%;'>" + job_company_name + "</td>" +
-                                        "<td class='td_2 text-uppercase' style='width:15%'>" + job_description + "</td>" +
-                                        "<td class='td_3 text-uppercase' style='width:15%'>" + job_position + "</td>" +
-                                        "<td class='td_4' style='width:15%'>" + job_contact_number + "</td>" +
-                                        "<td class='td_5' style='width:15%'>" + job_inclusive_years_from + "</td>" +
-                                        "<td class='td_6' style='width:15%'>" + job_inclusive_years_to + "</td>" +
-                                        "<td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>" +
-                                    "</tr>";
-            $('.dataTables_empty').closest('tr').remove();
-            $('#job_history_table_tbody').append(job_history_table);
-            $('#job_history_table_orig').show();
-            job_history_change = 'CHANGED';
-        }
+        var job_history_table = `<tr class='job_history_tr'>
+                                    <td class='td_1 text-uppercase' style='width:15%;'>${job_company_name}</td>
+                                    <td class='td_2 text-uppercase' style='width:15%'>${job_description}</td>
+                                    <td class='td_3 text-uppercase' style='width:15%'>${job_position}</td>
+                                    <td class='td_4' style='width:15%'>${job_contact_number}</td>
+                                    <td class='td_5' style='width:15%'>${job_inclusive_years_from}</td>
+                                    <td class='td_6' style='width:15%'>${job_inclusive_years_to}</td>
+                                    <td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                </tr>`;
+        $('.dataTables_empty').closest('tr').remove();
+        $('#job_history_table_tbody').append(job_history_table);
+        $('#job_history_table_orig').show();
+        job_history_change = 'CHANGED';
 
         $('#job_company_name').val("");
         $('#job_description').val("");

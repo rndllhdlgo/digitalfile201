@@ -5,24 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>{{env('APP_NAME')}}</title>
-        <link rel="icon" href="/images/ideaserv_systems_logo.png">
-
-        <script src="/js/inc/jquery.min.js"></script>
-        <link rel="stylesheet" href="/css/inc/mdb.min.css">
-        <link rel="stylesheet" href="/css/inc/bootstrap.min.css">
-        <link rel="stylesheet" href="/css/inc/bootstrap-icons.css">
-        <link rel="stylesheet" href="/css/inc/jquery.dataTables.min.css">
-        <link rel="stylesheet" href="/css/inc/buttons.dataTables.min.css">
-        <link href="/fontawesome-free-6.2.0-web/css/all.min.css" rel="stylesheet" type="text/css"/>
-        <link href="/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-        <link rel="stylesheet" href="/css/inc/sweetalert2.min.css">
-
-        <script src="/js/inc/chosen.jquery.min.js"></script>
-        <link href="/css/inc/chosen.css" rel="stylesheet" type="text/css"/>
-        <link href="/cropper/cropper.min.css" rel="stylesheet">
-        <script src="/cropper/cropper.min.js"></script>
-        <link href="/css/all.css" rel="stylesheet">
-
+        @include('cdn.head')
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>
     <body>
@@ -34,7 +17,6 @@
                 Please DO NOT interrupt or cancel this process.
             </strong>
         </div>
-
         @if(!Auth::guest())
             <script>$('#loading').show();</script>
             @include('inc.navbar')
@@ -47,55 +29,7 @@
             @yield('content')
         </div>
 
-        <script src="/js/inc/mdb.min.js"></script>
-        <script src="/js/inc/bootstrap.bundle.min.js"></script>
-        <script src="/js/inc/jquery.dataTables.min.js"></script>
-        <script src="/js/inc/dataTables.buttons.min.js"></script>
-        <script src="/js/inc/buttons.html5.min.js"></script>
-        <script src="/js/inc/jszip.min.js"></script>
-        <script src="/js/inc/sweetalert2.all.min.js"></script>
-        <script src="/js/inc/chosen.jquery.js"></script>
-        <script src="/js/inc/moment.js"></script>
-        <script src="/js/inc/datetime.js"></script>
-        <script src="/js/inc/printThis.js"></script>
-        <script src="/js/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-
-        @if(Request::is('/'))
-            <script src="/js/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-
-        @if(Request::is('login'))
-            <script src="/js/login.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-
-        @if(Request::is('employees'))
-            <script src="/js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/btnDelete.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-
-        @if(Request::is('users'))
-            <script src="/js/users/users.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/users/btnSaveUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/users/btnUpdateUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/users/btnViewUsers.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-
-        @if(Request::is('maintenance'))
-            <script src="/js/maintenance/maintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/maintenance/btnSaveMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/maintenance/btnUpdateMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/maintenance/btnViewMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-            <script src="/js/maintenance/dataTablesMaintenance.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
-
-        @if(Request::is('updates'))
-            <script src="/js/updates/updates.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-        @endif
+        @include('cdn.body')
+        @include('cdn.script')
     </body>
 </html>
