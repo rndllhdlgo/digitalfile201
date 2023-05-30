@@ -1,10 +1,4 @@
 var employeesTable,employee_image_change;
-$(document).ready(function() {
-    setTimeout(() => {
-        $('#filter1').keyup();
-    }, 1300);
-});
-
 $(document).ready(function(){
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
@@ -203,6 +197,9 @@ $(document).ready(function(){
             }
             else{
                 $('#employees_list').show();
+                setTimeout(() => {
+                    $('#filter1').keyup();
+                }, 0);
                 $('#loading').hide();
             }
         }

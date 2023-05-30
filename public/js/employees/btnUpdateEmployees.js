@@ -233,7 +233,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
-                                empno:$('#employee_number').val(),
+                                employee_number:$('#employee_number').val(),
                                 past_medical_condition:past_medical_condition,
                                 allergies:allergies,
                                 medication:medication,
@@ -252,6 +252,7 @@ $('#btnUpdate').on('click',function(){
                             data:{
                                 id:id,
                                 employee_id:data.id,
+                                employee_number:$('#employee_number').val(),
                                 employee_insurance:employee_insurance
                             }
                         });
