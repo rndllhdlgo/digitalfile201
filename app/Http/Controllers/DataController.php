@@ -5,16 +5,16 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Children;
 use App\Models\College;
+use App\Models\Contract;
+use App\Models\Evaluation;
+use App\Models\EmployeeLogs;
 use App\Models\Training;
 use App\Models\Vocational;
 use App\Models\JobHistory;
 use App\Models\Memo;
-use App\Models\Evaluation;
-use App\Models\Contract;
 use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\WorkLogs;
-use App\Models\EmployeeLogs;
 
 use DataTables;
 
