@@ -327,7 +327,7 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
+                        <div class="row mb-3 primary_div" style="display:none;">
                             <h6><b>PRIMARY SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>

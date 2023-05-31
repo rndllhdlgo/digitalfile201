@@ -256,10 +256,25 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.secondary_div').hide();
                 }
 
-                $('#primary_school_name').val(value.primary_school_name);
-                $('#primary_school_address').val(value.primary_school_address);
-                $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
-                $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
+                if(value.primary_school_name){
+                    $('.primary_div').show();
+                    $('#primary_school_name').val(value.primary_school_name);
+                    $('#primary_school_address').val(value.primary_school_address);
+                    $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
+                    $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
+                }
+                else{
+                    $('.primary_div').hide();
+                }
+
+                if(!value.secondary_school_name && !value.primary_school_name){
+                    $('#checkbox4').prop('disabled',true);
+                    $('.checkbox4').addClass('btnDisabled').attr('disabled',true);
+                }
+                else{
+                    $('#checkbox4').prop('disabled',false);
+                    $('.checkbox4').removeClass('btnDisabled').attr('disabled',false);
+                }
 
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);
@@ -337,7 +352,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     info: false,
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
+                        emptyTable: "NO DATA AVAILABLE",
                         processing: "Loading...",
                     },
                     serverSide: true,
@@ -387,7 +402,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     ordering:false,
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
+                        emptyTable: "NO DATA AVAILABLE",
                         processing: "Loading...",
                     },
                     serverSide: true,
@@ -442,7 +457,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     info: false,
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
+                        emptyTable: "NO DATA AVAILABLE",
                         processing: "Loading...",
                     },
                     serverSide: true,
@@ -499,7 +514,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     info: false,
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
+                        emptyTable: "NO DATA AVAILABLE",
                         processing: "Loading...",
                     },
                     serverSide: true,
@@ -567,7 +582,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     info: false,
                     autoWidth: false,
                     language:{
-                        emptyTable: "No data available in table",
+                        emptyTable: "NO DATA AVAILABLE",
                         processing: "Loading...",
                     },
                     serverSide: true,
@@ -634,7 +649,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             ordering:false,
                             autoWidth: false,
                             language:{
-                                emptyTable: "No data available in table",
+                                emptyTable: "NO DATA AVAILABLE",
                                 processing: "Loading...",
                             },
                             serverSide: true,
@@ -690,7 +705,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             ordering:false,
                             autoWidth: false,
                             language:{
-                                emptyTable: "No data available in table",
+                                emptyTable: "NO DATA AVAILABLE",
                                 processing: "Loading...",
                             },
                             serverSide: true,
@@ -746,7 +761,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             ordering:false,
                             autoWidth: false,
                             language:{
-                                emptyTable: "No data available in table",
+                                emptyTable: "NO DATA AVAILABLE",
                                 processing: "Loading...",
                             },
                             serverSide: true,
@@ -802,7 +817,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             ordering:false,
                             autoWidth: false,
                             language:{
-                                emptyTable: "No data available in table",
+                                emptyTable: "NO DATA AVAILABLE",
                                 processing: "Loading...",
                             },
                             serverSide: true,
@@ -852,7 +867,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             ordering:false,
                             autoWidth: false,
                             language:{
-                                emptyTable: "No data available in table",
+                                emptyTable: "NO DATA AVAILABLE",
                                 processing: "Loading...",
                             },
                             serverSide: true,

@@ -616,7 +616,7 @@ $('#btnUpdate').on('click',function(){
                                     info: false,
                                     autoWidth: false,
                                     language:{
-                                        emptyTable: "No data available in table",
+                                        emptyTable: "NO DATA AVAILABLE",
                                         processing: "Loading...",
                                     },
                                     serverSide: true,
@@ -668,7 +668,7 @@ $('#btnUpdate').on('click',function(){
                                     info: false,
                                     autoWidth: false,
                                     language:{
-                                        emptyTable: "No data available in table",
+                                        emptyTable: "NO DATA AVAILABLE",
                                         processing: "Loading...",
                                     },
                                     serverSide: true,
@@ -733,7 +733,7 @@ $('#btnUpdate').on('click',function(){
                                     ordering:false,
                                     autoWidth: false,
                                     language:{
-                                        emptyTable: "No data available in table",
+                                        emptyTable: "NO DATA AVAILABLE",
                                         processing: "Loading...",
                                     },
                                     serverSide: true,
@@ -790,7 +790,7 @@ $('#btnUpdate').on('click',function(){
                                     info: false,
                                     autoWidth: false,
                                     language:{
-                                        emptyTable: "No data available in table",
+                                        emptyTable: "NO DATA AVAILABLE",
                                         processing: "Loading...",
                                     },
                                     serverSide: true,
@@ -849,7 +849,7 @@ $('#btnUpdate').on('click',function(){
                                     info: false,
                                     autoWidth: false,
                                     language:{
-                                        emptyTable: "No data available in table",
+                                        emptyTable: "NO DATA AVAILABLE",
                                         processing: "Loading...",
                                     },
                                     serverSide: true,

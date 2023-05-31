@@ -495,7 +495,6 @@ $(document).on('click','#image_close, #image_close_trash',function(){
             $('#filename').val('');
 
             employee_image_change = 'CHANGED';
-            console.log(employee_image_change);
         }
     });
 });

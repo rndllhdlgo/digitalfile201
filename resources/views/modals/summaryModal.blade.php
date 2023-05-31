@@ -26,23 +26,23 @@
                 </div>
                 <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox4">
-                    <label class="form-check-label" for="checkbox4">
+                    <label for="checkbox4" class="checkbox4">
                         EDUCATIONAL ATTAINMENTS
                     </label>
                 </div>
-                <div class="form-check" id="train_voc_div">
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox5">
                     <label for="checkbox5" class="checkbox5">
                         TRAININGS/VOCATIONALS
                     </label>
                 </div>
-                <div class="form-check" id="job_checkbox">
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox6">
                     <label for="checkbox6" class="checkbox6">
                         JOB HISTORY
                     </label>
                 </div>
-                <div class="form-check" id="med_checkbox">
+                <div class="form-check">
                     <input class="form-check-input" type="checkbox" value="" id="checkbox7">
                     <label for="checkbox7" class="checkbox7">
                         MEDICAL HISTORY

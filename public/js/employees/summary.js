@@ -5,8 +5,12 @@ $('#btnSummary').on('click',function(){
 });
 
 $('#viewSummary').on('click', function(){
-    $('ul.job_desc_div, ul.job_req_div, .job_desc_div, .job_req_div').empty();
-    
+    $('.job_desc_div, .job_req_div').empty();
+    $('.college_school_name, .college_school_degree, .college_years').empty();
+    $('.training_school_name, .training_title, .training_years').empty();
+    $('.vocational_school_name, .vocational_course, .vocational_years').empty();
+    $('.job_history_summary_div').empty();
+
         $.ajax({
             method: 'GET',
             url: '/job_history_summary/data',

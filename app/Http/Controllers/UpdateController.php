@@ -455,7 +455,7 @@ class UpdateController extends Controller
                     $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL INFORMATION DETAILS
+                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL DETAILS
                                             $first_name_change
                                             $middle_name_change
                                             $last_name_change
@@ -494,7 +494,7 @@ class UpdateController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL INFORMATION DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -1013,7 +1013,7 @@ class UpdateController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number)
+            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number)
                                     $employee_number_change
                                     $date_hired_change
                                     $employee_company_change
@@ -1034,7 +1034,7 @@ class UpdateController extends Controller
             $userlogs = new EmployeeLogs;
             $userlogs->employee_id = $request->id;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
+            $userlogs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
                                 $employee_number_change
                                 $date_hired_change
                                 $employee_company_change
@@ -1271,7 +1271,7 @@ class UpdateController extends Controller
                         $userlogs = new EmployeeLogs;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->logs = "USER HAS UPDATED THE WORK INFORMATION DETAILS OF THIS EMPLOYEE
+                        $userlogs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
                                             $date_hired_change
                                             $employee_company_change
                                             $employee_branch_change
@@ -1292,7 +1292,7 @@ class UpdateController extends Controller
                         $userlogs = new History;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->history = "UPDATED DETAILS
+                        $userlogs->history = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
                                             $date_hired_change
                                             $employee_company_change
                                             $employee_branch_change
@@ -1312,7 +1312,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
                                                 $date_hired_change
                                                 $employee_company_change
                                                 $employee_branch_change
@@ -1470,7 +1470,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "WALA PA USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1485,7 +1485,7 @@ class UpdateController extends Controller
                         $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "WALA PA USER UPDATES DETAILS OF THIS EMPLOYEE:
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE'S EDUCATION DETAILS:
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1605,7 +1605,7 @@ class UpdateController extends Controller
                         $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "MERON NA USER UPDATES DETAILS OF THIS EMPLOYEE:
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1619,7 +1619,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "MERON NA USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -2012,7 +2012,7 @@ class UpdateController extends Controller
                         $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "MERON NA USER UPDATES DETAILS OF THIS EMPLOYEE:
+                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
                                                 $past_medical_condition_change
                                                 $allergies_change
                                                 $medication_change
@@ -2022,7 +2022,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "MERON NA USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $past_medical_condition_change
                                                 $allergies_change
                                                 $medication_change
@@ -2234,12 +2234,12 @@ class UpdateController extends Controller
                     $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "MERON NA USER UPDATES DETAILS OF THIS EMPLOYEE: $employee_insurance_change";
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $employee_insurance_change";
                     $employee_logs->save();
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "MERON NA USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
+                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
                     $userlogs->save();
                 }
             }
