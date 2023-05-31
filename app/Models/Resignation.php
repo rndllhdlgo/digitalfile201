@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class EvaluationTable extends Model
+class Resignation extends Model
 {
     protected $guarded = [];
+    protected $table = 'resignation';
 }

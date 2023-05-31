@@ -75,7 +75,7 @@ Route::any('/position/checkDuplicate','MaintenanceController@checkDuplicate');
 // Update Controller2
 Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
 Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
-Route::any('/employees/updateCompensationBenefits','UpdateController@updateCompensationBenefits');
+Route::any('/employees/updateBenefits','UpdateController@updateBenefits');
 Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
 Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
 Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');

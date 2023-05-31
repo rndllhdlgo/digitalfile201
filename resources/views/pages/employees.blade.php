@@ -116,7 +116,7 @@
         </div>
 
         <div id="employee_information" style="display: none;">
-                <h4 style="color: #0d1a80;" id="fillAll">EMPLOYEE INFORMATION</h4>
+                <h4 style="color: #0d1a80;" id="fill">EMPLOYEE INFORMATION</h4>
                 <br>
                 <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
                 <div class="btn-group float-end" role="group">

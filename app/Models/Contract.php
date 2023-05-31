@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WorkInformation extends Model
+class Contract extends Model
 {
     protected $guarded = [];
+    protected $table = 'contract';
 }

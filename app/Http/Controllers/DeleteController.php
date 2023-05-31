@@ -6,15 +6,15 @@ use Illuminate\Http\Request;
 use App\Models\PersonalInformationTable;
 use App\Models\WorkInformationTable;
 
-use App\Models\CollegeTable;
-use App\Models\ChildrenTable;
-use App\Models\TrainingTable;
-use App\Models\VocationalTable;
-use App\Models\JobHistoryTable;
-use App\Models\MemoTable;
-use App\Models\EvaluationTable;
-use App\Models\ContractTable;
-use App\Models\ResignationTable;
+use App\Models\College;
+use App\Models\Children;
+use App\Models\Training;
+use App\Models\Vocational;
+use App\Models\JobHistory;
+use App\Models\Memo;
+use App\Models\Evaluation;
+use App\Models\Contract;
+use App\Models\Resignation;
 
 use App\Models\EmployeeLogs;
 use App\Models\UserLogs;
@@ -29,7 +29,7 @@ class DeleteController extends Controller{
         $college_id = explode(",", $request->id);
         if($college_id){
             foreach($college_id as $id){
-                CollegeTable::where('id', $id)->delete();
+                College::where('id', $id)->delete();
             }
         }
 
@@ -61,7 +61,7 @@ class DeleteController extends Controller{
         $children_id = explode(",", $request->id);
         if($children_id){
             foreach($children_id as $id){
-                ChildrenTable::where('id', $id)->delete();
+                Children::where('id', $id)->delete();
             }
         }
 
@@ -93,7 +93,7 @@ class DeleteController extends Controller{
         $training_id = explode(",", $request->id);
         if($training_id){
             foreach($training_id as $id){
-                TrainingTable::where('id', $id)->delete();
+                Training::where('id', $id)->delete();
             }
         }
 
@@ -125,7 +125,7 @@ class DeleteController extends Controller{
         $vocational_id = explode(",", $request->id);
         if($vocational_id){
             foreach($vocational_id as $id){
-                VocationalTable::where('id', $id)->delete();
+                Vocational::where('id', $id)->delete();
             }
         }
 
@@ -157,7 +157,7 @@ class DeleteController extends Controller{
         $job_history_id = explode(",", $request->id);
         if($job_history_id){
             foreach($job_history_id as $id){
-                JobHistoryTable::where('id', $id)->delete();
+                JobHistory::where('id', $id)->delete();
             }
         }
 
@@ -189,7 +189,7 @@ class DeleteController extends Controller{
         $memo_id = explode(",", $request->id);
         if($memo_id){
             foreach($memo_id as $id){
-                MemoTable::where('id', $id)->delete();
+                Memo::where('id', $id)->delete();
             }
         }
 
@@ -221,7 +221,7 @@ class DeleteController extends Controller{
         $evaluation_id = explode(",", $request->id);
         if($evaluation_id){
             foreach($evaluation_id as $id){
-                EvaluationTable::where('id', $id)->delete();
+                Evaluation::where('id', $id)->delete();
             }
         }
 
@@ -253,7 +253,7 @@ class DeleteController extends Controller{
         $contracts_id = explode(",", $request->id);
         if($contracts_id){
             foreach($contracts_id as $id){
-                ContractTable::where('id', $id)->delete();
+                Contract::where('id', $id)->delete();
             }
         }
 
@@ -285,7 +285,7 @@ class DeleteController extends Controller{
         $resignation_id = explode(",", $request->id);
         if($resignation_id){
             foreach($resignation_id as $id){
-                ResignationTable::where('id', $id)->delete();
+                Resignation::where('id', $id)->delete();
             }
         }
 
@@ -317,7 +317,7 @@ class DeleteController extends Controller{
         $termination_id = explode(",", $request->id);
         if($termination_id){
             foreach($termination_id as $id){
-                TerminationTable::where('id', $id)->delete();
+                Termination::where('id', $id)->delete();
             }
         }
 

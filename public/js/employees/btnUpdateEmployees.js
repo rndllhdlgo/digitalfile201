@@ -244,7 +244,7 @@ $('#btnUpdate').on('click',function(){
                         var employee_insurance = $('#employee_insurance').val()
 
                         $.ajax({
-                            url:"/employees/updateCompensationBenefits",
+                            url:"/employees/updateBenefits",
                             type:"POST",
                             headers:{
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')

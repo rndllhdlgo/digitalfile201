@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MemoTable extends Model
+class College extends Model
 {
     protected $guarded = [];
+    protected $table = 'college';
 }

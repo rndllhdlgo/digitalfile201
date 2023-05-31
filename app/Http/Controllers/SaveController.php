@@ -9,32 +9,32 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 use App\Models\UserLogs;
-use App\Models\ChildrenTable;
-use App\Models\CollegeTable;
+use App\Models\Children;
+use App\Models\College;
 use App\Models\CollegeTablePending;
-use App\Models\TrainingTable;
+use App\Models\Training;
 use App\Models\TrainingTablePending;
-use App\Models\VocationalTable;
+use App\Models\Vocational;
 use App\Models\VocationalTablePending;
-use App\Models\JobHistoryTable;
+use App\Models\JobHistory;
 use App\Models\JobHistoryTablePending;
-use App\Models\MemoTable;
-use App\Models\EvaluationTable;
-use App\Models\ContractTable;
-use App\Models\ResignationTable;
-use App\Models\TerminationTable;
+use App\Models\Memo;
+use App\Models\Evaluation;
+use App\Models\Contract;
+use App\Models\Resignation;
+use App\Models\Termination;
 use App\Models\PersonalInformationTable;
 use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
 use App\Models\WorkInformationTablePending;
-use App\Models\CompensationBenefits;
+use App\Models\Benefits;
 use App\Models\EducationalAttainment;
 use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
 use App\Models\EmployeeLogs;
-use App\Models\History;
+use App\Models\WorkLogs;
 // Maintenance
 use App\Models\Shift;
 use App\Models\Company;
@@ -62,7 +62,7 @@ class SaveController extends Controller
     public function saveChildren(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-        $employee = new ChildrenTable;
+        $employee = new Children;
         $employee->employee_id = $request->employee_id;
         $employee->child_name = strtoupper($request->child_name);
         $employee->child_birthday = $request->child_birthday;
@@ -94,7 +94,7 @@ class SaveController extends Controller
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            $employee = new CollegeTable;
+            $employee = new College;
             $employee->employee_id = $request->employee_id;
             if(strpos($request->empno, 'ID') !== false ||
                 strpos($request->empno, 'PL') !== false ||
@@ -155,7 +155,7 @@ class SaveController extends Controller
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            $employee = new TrainingTable;
+            $employee = new Training;
             $employee->employee_id = $request->employee_id;
             if(strpos($request->empno, 'ID') !== false ||
                 strpos($request->empno, 'PL') !== false ||
@@ -215,7 +215,7 @@ class SaveController extends Controller
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            $employee = new VocationalTable;
+            $employee = new Vocational;
             $employee->employee_id = $request->employee_id;
             if(strpos($request->empno, 'ID') !== false ||
                 strpos($request->empno, 'PL') !== false ||
@@ -275,7 +275,7 @@ class SaveController extends Controller
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         if(auth()->user()->user_level != 'EMPLOYEE'){
-            $employee = new JobHistoryTable;
+            $employee = new JobHistory;
             $employee->employee_id = $request->employee_id;
             if(strpos($request->empno, 'ID') !== false ||
                 strpos($request->empno, 'PL') !== false ||

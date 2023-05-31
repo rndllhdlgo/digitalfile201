@@ -4,7 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CompensationBenefits extends Model
+class Training extends Model
 {
     protected $guarded = [];
+    protected $table = 'trainings';
 }

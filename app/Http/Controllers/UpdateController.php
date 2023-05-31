@@ -9,32 +9,32 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 use App\Models\UserLogs;
-use App\Models\ChildrenTable;
-use App\Models\CollegeTable;
+use App\Models\Children;
+use App\Models\College;
 use App\Models\CollegeTablePending;
-use App\Models\TrainingTable;
+use App\Models\Training;
 use App\Models\TrainingTablePending;
-use App\Models\VocationalTable;
+use App\Models\Vocational;
 use App\Models\VocationalTablePending;
-use App\Models\JobHistoryTable;
+use App\Models\JobHistory;
 use App\Models\JobHistoryTablePending;
-use App\Models\MemoTable;
-use App\Models\EvaluationTable;
-use App\Models\ContractTable;
-use App\Models\ResignationTable;
-use App\Models\TerminationTable;
+use App\Models\Memo;
+use App\Models\Evaluation;
+use App\Models\Contract;
+use App\Models\Resignation;
+use App\Models\Termination;
 use App\Models\PersonalInformationTable;
 use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
 use App\Models\WorkInformationTablePending;
-use App\Models\CompensationBenefits;
+use App\Models\Benefits;
 use App\Models\EducationalAttainment;
 use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
 use App\Models\EmployeeLogs;
-use App\Models\History;
+use App\Models\WorkLogs;
 // Maintenance
 use App\Models\Shift;
 use App\Models\Company;
@@ -1053,7 +1053,7 @@ class UpdateController extends Controller
                                 $account_number_change ";
             $userlogs->save();
 
-            $userlogs = new History;
+            $userlogs = new WorkLogs;
             $userlogs->employee_id = $request->id;
             $userlogs->user_id = auth()->user()->id;
             $userlogs->history = "UPDATED DETAILS
@@ -1289,7 +1289,7 @@ class UpdateController extends Controller
                                             $account_number_change ";
                         $userlogs->save();
 
-                        $userlogs = new History;
+                        $userlogs = new WorkLogs;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
                         $userlogs->history = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
@@ -2178,14 +2178,14 @@ class UpdateController extends Controller
         // }
     }
 
-    public function updateCompensationBenefits(Request $request){
-        if(!$employee = CompensationBenefits::where('employee_id',$request->employee_id)->first()){
+    public function updateBenefits(Request $request){
+        if(!$employee = Benefits::where('employee_id',$request->employee_id)->first()){
             $employee_details = PersonalInformationTable::where('id', $request->id)->first();
 
             if($request->employee_insurance){
-                $employee_insurance_orig = CompensationBenefits::where('employee_id', $request->employee_id)->first();
+                $employee_insurance_orig = Benefits::where('employee_id', $request->employee_id)->first();
 
-                $employee = new CompensationBenefits;
+                $employee = new Benefits;
                 $employee->employee_id = $request->employee_id;
                 $employee->employee_insurance = strtoupper($request->employee_insurance);
                 $employee->save();
@@ -2201,7 +2201,7 @@ class UpdateController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
                                         $employee_insurance_change";
                 $userlogs->save();
 
@@ -2216,7 +2216,7 @@ class UpdateController extends Controller
         else{
             $employee_details = PersonalInformationTable::where('id', $request->id)->first();
             $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-            $employee_insurance_orig = CompensationBenefits::where('employee_id',$request->id)->first()->employee_insurance;
+            $employee_insurance_orig = Benefits::where('employee_id',$request->id)->first()->employee_insurance;
 
             if($request->employee_insurance != $employee_insurance_orig){
                 $employee_insurance_new = $request->employee_insurance;
@@ -2226,7 +2226,7 @@ class UpdateController extends Controller
                 $employee_insurance_change = NULL;
             }
 
-            $sql = CompensationBenefits::where('employee_id',$request->employee_id)
+            $sql = Benefits::where('employee_id',$request->employee_id)
             ->update(['employee_insurance' => strtoupper($request->employee_insurance)]);
 
             if($sql){
@@ -2259,7 +2259,7 @@ class UpdateController extends Controller
                 $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'_'.$count.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name, $memoFileName);
 
-                $memo = new MemoTable;
+                $memo = new Memo;
                 $memo->employee_id = $request->employee_id;
                 $memo->memo_subject = strtoupper($request->memo_subject[$key]);
                 $memo->memo_date = $request->memo_date[$key];
@@ -2295,7 +2295,7 @@ class UpdateController extends Controller
                 $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'_'.$count.'.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
 
-                $evaluation = new EvaluationTable;
+                $evaluation = new Evaluation;
                 $evaluation->employee_id = $request->employee_id;
                 $evaluation->evaluation_reason = strtoupper($request->evaluation_reason[$key]);
                 $evaluation->evaluation_date = $request->evaluation_date[$key];
@@ -2331,7 +2331,7 @@ class UpdateController extends Controller
                 $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'_'.$count.'.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
 
-                $contracts = new ContractTable;
+                $contracts = new Contract;
                 $contracts->employee_id = $request->employee_id;
                 $contracts->contracts_type = $request->contracts_type[$key];
                 $contracts->contracts_date = $request->contracts_date[$key];
@@ -2366,7 +2366,7 @@ class UpdateController extends Controller
                 $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'_'.$count.'.'.$request->resignation_file[$key]->extension();
                 $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
 
-                $resignation = new ResignationTable;
+                $resignation = new Resignation;
                 $resignation->employee_id = $request->employee_id;
                 $resignation->resignation_reason = $request->resignation_reason[$key];
                 $resignation->resignation_date = $request->resignation_date[$key];
@@ -2401,7 +2401,7 @@ class UpdateController extends Controller
                 $terminationFileName = $employee_details->empno.'_Termination_File_'.$timestamp.'_'.$count.'.'.$request->termination_file[$key]->extension();
                 $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
 
-                $termination = new TerminationTable;
+                $termination = new Termination;
                 $termination->employee_id = $request->employee_id;
                 $termination->termination_reason = $request->termination_reason[$key];
                 $termination->termination_date = $request->termination_date[$key];

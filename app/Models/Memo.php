@@ -1,10 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MultipleUpload extends Model
+class Memo extends Model
 {
     protected $guarded = [];
+    protected $table = 'memo';
 }

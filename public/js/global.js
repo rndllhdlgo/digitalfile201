@@ -759,3 +759,29 @@ $('#position_tab').on('click',function(){
 
     $('#addPositionBtn').show();
 });
+
+$('#fill').on('click',function(){
+    $('#college_name').val('A');
+    $('#college_degree').val('A');
+    $('#college_inclusive_years_from').val('2023-05');
+    $('#college_inclusive_years_to').val('2023-05');
+    $('#collegeAdd').click();
+    $('#training_name').val('A');
+    $('#training_title').val('A');
+    $('#training_inclusive_years_from').val('2023-05');
+    $('#training_inclusive_years_to').val('2023-05');
+    $('#trainingAdd').click();
+    $('#vocational_name').val('A');
+    $('#vocational_course').val('A');
+    $('#vocational_inclusive_years_from').val('2023-05');
+    $('#vocational_inclusive_years_to').val('2023-05');
+    $('#vocationalAdd').click();
+    $('#job_company_name').val('A');
+    $('#job_description').val('A');
+    $('#job_position').val('A');
+    $('#job_contact_number').val('1');
+    $('#job_inclusive_years_from').val('2023-05');
+    $('#job_inclusive_years_to').val('2023-05');
+    $('#jobHistoryAdd').click();
+    $('#employee_insurance').val('• A');
+});

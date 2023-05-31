@@ -29,7 +29,7 @@ use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
 use App\Models\EmployeeLogs;
-use App\Models\History;
+use App\Models\WorkLogs;
 // Maintenance
 use App\Models\Shift;
 use App\Models\Company;

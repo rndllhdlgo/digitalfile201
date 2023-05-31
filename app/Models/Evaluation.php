@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Donut extends Model
+class Evaluation extends Model
 {
     protected $guarded = [];
-    protected $table = 'donut';
+    protected $table = 'evaluation';
 }

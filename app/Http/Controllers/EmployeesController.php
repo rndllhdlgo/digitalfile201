@@ -9,32 +9,32 @@ use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
 use App\Models\UserLogs;
-use App\Models\ChildrenTable;
-use App\Models\CollegeTable;
+use App\Models\Children;
+use App\Models\College;
 use App\Models\CollegeTablePending;
-use App\Models\TrainingTable;
+use App\Models\Training;
 use App\Models\TrainingTablePending;
-use App\Models\VocationalTable;
+use App\Models\Vocational;
 use App\Models\VocationalTablePending;
-use App\Models\JobHistoryTable;
+use App\Models\JobHistory;
 use App\Models\JobHistoryTablePending;
-use App\Models\MemoTable;
-use App\Models\EvaluationTable;
-use App\Models\ContractTable;
-use App\Models\ResignationTable;
-use App\Models\TerminationTable;
+use App\Models\Memo;
+use App\Models\Evaluation;
+use App\Models\Contract;
+use App\Models\Resignation;
+use App\Models\Termination;
 use App\Models\PersonalInformationTable;
 use App\Models\PersonalInformationTablePending;
 use App\Models\WorkInformationTable;
 use App\Models\WorkInformationTablePending;
-use App\Models\CompensationBenefits;
+use App\Models\Benefits;
 use App\Models\EducationalAttainment;
 use App\Models\EducationalAttainmentPending;
 use App\Models\MedicalHistory;
 use App\Models\MedicalHistoryPending;
 use App\Models\Document;
 use App\Models\EmployeeLogs;
-use App\Models\History;
+use App\Models\WorkLogs;
 // Maintenance
 use App\Models\Shift;
 use App\Models\Company;
@@ -63,10 +63,10 @@ class EmployeesController extends Controller
     }
 
     public function employee_history_reload(){
-        if(History::count() == 0){
+        if(WorkLogs::count() == 0){
             return 'NULL';
         }
-        $data_update = History::latest('updated_at')->first()->updated_at;
+        $data_update = WorkLogs::latest('updated_at')->first()->updated_at;
         return $data_update;
     }
 
@@ -459,17 +459,13 @@ class EmployeesController extends Controller
                     'documents.resume_file',
                     'documents.sss_file',
                     'documents.transcript_of_records_file',
-                    'compensation_benefits.employee_salary',
-                    'compensation_benefits.employee_incentives',
-                    'compensation_benefits.employee_overtime_pay',
-                    'compensation_benefits.employee_bonus',
-                    'compensation_benefits.employee_insurance')
+                    'benefits.employee_insurance')
         ->where('personal_information_tables.id',$request->id)
         ->leftJoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
         ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')
         ->leftJoin('documents','documents.employee_id','personal_information_tables.id')
-        ->leftJoin('compensation_benefits','compensation_benefits.employee_id','personal_information_tables.id')
+        ->leftJoin('benefits','benefits.employee_id','personal_information_tables.id')
         ->leftJoin('shift','shift.shift','personal_information_tables.shift')
         ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
         ->get();
