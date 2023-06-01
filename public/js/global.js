@@ -785,3 +785,7 @@ $('#fill').on('click',function(){
     $('#jobHistoryAdd').click();
     $('#employee_insurance').val('• A');
 });
+
+$(document).ready(function(){
+    $('.filter-input').attr('title', 'SEARCH');
+});

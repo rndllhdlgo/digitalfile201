@@ -42,6 +42,7 @@ $(document).ready(function(){
     var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
     employeesTable = $('table.employeesTable').DataTable({
+        scrollY:        "484px",
         scrollX:        true,
         scrollCollapse: true,
         fixedColumns:{
@@ -88,6 +89,9 @@ $(document).ready(function(){
             {
                 data: 'employee_number',
                 "render": function(data, type, row){
+                    if(row.employee_number == null){
+                        return '';
+                    }
                     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
                 },
             },
@@ -204,6 +208,11 @@ $(document).ready(function(){
             }
         }
     });
+
+    $('th input').on('click', function(e){
+        e.stopPropagation();
+    });
+
     $('div.breakspace').html('<br><br>');
 
     $('body').on('click', '.checkboxFilter', function(){
