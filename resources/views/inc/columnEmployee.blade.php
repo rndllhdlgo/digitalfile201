@@ -125,7 +125,7 @@
             </div>
         </div>
     </div>
-    {{-- <div class="row">
+    <div class="row">
         <div class="col">
             <div class="checkbox">
                 <label>
@@ -133,12 +133,12 @@
                 </label>
             </div>
         </div>
-    </div> --}}
+    </div>
     <div class="row">
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-14" data-column="14" /> PROVINCE
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-15" data-column="15" /> PROVINCE
                 </label>
             </div>
         </div>
@@ -147,7 +147,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-15" data-column="15" /> CITY
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-16" data-column="16" /> CITY
                 </label>
             </div>
         </div>
@@ -156,7 +156,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-16" data-column="16" /> REGION
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-17" data-column="17" /> REGION
                 </label>
             </div>
         </div>
@@ -165,7 +165,7 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-17" data-column="17" /> BLOOD TYPE
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-18" data-column="18" /> BLOOD TYPE
                 </label>
             </div>
         </div>
@@ -174,16 +174,16 @@
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-18" data-column="18" /> RELIGION
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-19" data-column="19" /> RELIGION
                 </label>
             </div>
         </div>
     </div>
-    <div class="row" id="stat_toggle">
+    <div class="row">
         <div class="col">
             <div class="checkbox">
                 <label>
-                    <input checked type="checkbox" class="checkboxFilter" id="filter-19" data-column="19" disabled/> STATUS
+                    <input checked type="checkbox" class="checkboxFilter" id="filter-20" data-column="20" disabled/> STATUS
                 </label>
             </div>
         </div>

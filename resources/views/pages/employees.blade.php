@@ -10,6 +10,8 @@
                 </div>
             </div>
 
+            <hr class="hr-design">
+
             <div class="row">
                 <div class="col ml-2">
                     <a href="#" id="filter" class="text-default" title="Toggle Visible Columns" data-bs-toggle="popover" data-bs-placement="bottom" data-bs-content='@include('inc.columnEmployee')'>
@@ -20,7 +22,6 @@
                 </div>
             </div>
 
-            <hr class="hr-design">
             <div class="table-responsive container-fluid pt-2">
                 <table class="table table-striped table-hover table-bordered employeesTable" id="employeesTable" style="width:100%">
                     <thead class="text-white" style="background-color:#0d1a80;" title="CLICK TO SORT">
@@ -81,29 +82,32 @@
                                 <input type="search" class="form-control filter-input" data-column="13" style="border:1px solid #683817"/>
                                 BIRTHDAY
                             </th>
-                            {{-- <th> AGE</th> --}}
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="14" style="border:1px solid #683817"/>
-                                PROVINCE
+                                AGE
                             </th>
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="15" style="border:1px solid #683817"/>
-                                CITY
+                                PROVINCE
                             </th>
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="16" style="border:1px solid #683817"/>
-                                REGION
+                                CITY
                             </th>
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="17" style="border:1px solid #683817"/>
-                                BLOOD TYPE
+                                REGION
                             </th>
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="18" style="border:1px solid #683817"/>
-                                RELIGION
+                                BLOOD TYPE
                             </th>
                             <th>
                                 <input type="search" class="form-control filter-input" data-column="19" style="border:1px solid #683817"/>
+                                RELIGION
+                            </th>
+                            <th>
+                                <input type="search" class="form-control filter-input" data-column="20" style="border:1px solid #683817"/>
                                 STATUS
                             </th>
                         </tr>

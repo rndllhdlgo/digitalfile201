@@ -59,6 +59,7 @@ $(document).ready(function(){
         iDisplayLength: iLength,
         processing:true,
         serverSide:false,
+        autoWidth:false,
         ajax: {
             url: '/employees/data',
             data:{
@@ -89,11 +90,11 @@ $(document).ready(function(){
             {
                 data: 'employee_number',
                 "render": function(data, type, row){
-                    if(row.employee_number == null){
+                    if(row.employee_number == null || row.employee_number == ''){
                         return '';
                     }
                     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-                },
+                }
             },
             {
                 data: null,
@@ -137,22 +138,22 @@ $(document).ready(function(){
                     return '';
                 }
             },
-            // {
-            //     data: 'age',
-            //     "render":function(data,type,row){
-            //         if(row.birthday){
-            //             var today = new Date();
-            //             var birthDate = new Date(row.birthday);
-            //             var age = today.getFullYear() - birthDate.getFullYear();
-            //             var m = today.getMonth() - birthDate.getMonth();
-            //             if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            //                 age--;
-            //             }
-            //             return age;
-            //         }
-            //         return '';
-            //     }
-            // },
+            {
+                data: null,
+                "render":function(data,type,row){
+                    if(row.birthday){
+                        var today = new Date();
+                        var birthDate = new Date(row.birthday);
+                        var age = today.getFullYear() - birthDate.getFullYear();
+                        var m = today.getMonth() - birthDate.getMonth();
+                        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+                            age--;
+                        }
+                        return age;
+                    }
+                    return '';
+                }
+            },
             {data: 'province'},
             {data: 'city'},
             {data: 'region'},
@@ -167,8 +168,8 @@ $(document).ready(function(){
                     else{
                         return '';
                     }
-                },
-            },
+                }
+            }
         ],
         initComplete: function(){
             if(current_user_level == 'EMPLOYEE'){
@@ -209,10 +210,6 @@ $(document).ready(function(){
         }
     });
 
-    $('th input').on('click', function(e){
-        e.stopPropagation();
-    });
-
     $('div.breakspace').html('<br><br>');
 
     $('body').on('click', '.checkboxFilter', function(){
@@ -225,7 +222,7 @@ $(document).ready(function(){
 
     setInterval(() => {
         if($('.popover-header').is(':visible')){
-            for(var i=0; i<=18; i++){
+            for(var i=0; i<=19; i++){
                 if(employeesTable.column(i).visible()){
                     $('#filter-'+i).prop('checked', true);
                 }
@@ -233,6 +230,9 @@ $(document).ready(function(){
                     $('#filter-'+i).prop('checked', false);
                 }
             }
+            $('th input').on('click', function(e){
+                e.stopPropagation();
+            });
         }
     }, 0);
 
@@ -807,3 +807,8 @@ $('#company_email_address').on('keyup',function(){
 //         $('#tab9').show();
 //     }
 // }, 0);
+
+// $(document).on('change' ,'#select_all', function() {
+//     var isChecked = $(this).prop('checked');
+//     $('.checkboxFilter').prop('checked', isChecked);
+// });

@@ -655,3 +655,11 @@ label{
     color: white !important;
     z-index: 999 !important;
 }
+
+.dataTables_wrapper .dataTable td {
+    white-space: nowrap !important;
+}
+
+.dataTables_wrapper .dataTable th {
+    white-space: nowrap !important;
+}
