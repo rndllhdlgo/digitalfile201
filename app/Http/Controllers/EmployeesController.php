@@ -328,7 +328,6 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
-                // 'department.deptdesc AS employee_department',
                 'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
@@ -347,7 +346,6 @@ class EmployeesController extends Controller
                 ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
                 ->leftjoin('positions','positions.id','work_information_tables.employee_position')
                 ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                // ->leftjoin('department','department.deptcode','work_information_tables.employee_department')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')

@@ -62,6 +62,7 @@ class SaveController extends Controller
     public function saveChildren(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $employee = new Children;
         $employee->employee_id = $request->employee_id;
         $employee->child_name = strtoupper($request->child_name);
@@ -96,17 +97,6 @@ class SaveController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new College;
             $employee->employee_id = $request->employee_id;
-            if(strpos($request->empno, 'ID') !== false ||
-                strpos($request->empno, 'PL') !== false ||
-                strpos($request->empno, 'AP') !== false ||
-                strpos($request->empno, 'MJ') !== false ||
-                strpos($request->empno, 'NU') !== false){
-                $employee->empno = substr($request->empno, 2);
-            }
-            else{
-                $employee->empno = $request->empno;
-            }
-
             $employee->college_name = strtoupper($request->college_name);
             $employee->college_degree = strtoupper($request->college_degree);
             $employee->college_inclusive_years_from = $request->college_inclusive_years_from;
@@ -157,16 +147,6 @@ class SaveController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new Training;
             $employee->employee_id = $request->employee_id;
-            if(strpos($request->empno, 'ID') !== false ||
-                strpos($request->empno, 'PL') !== false ||
-                strpos($request->empno, 'AP') !== false ||
-                strpos($request->empno, 'MJ') !== false ||
-                strpos($request->empno, 'NU') !== false){
-                $employee->empno = substr($request->empno, 2);
-            }
-            else{
-                $employee->empno = $request->empno;
-            }
             $employee->training_name = strtoupper($request->training_name);
             $employee->training_title = strtoupper($request->training_title);
             $employee->training_inclusive_years_from = $request->training_inclusive_years_from;
@@ -217,16 +197,6 @@ class SaveController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new Vocational;
             $employee->employee_id = $request->employee_id;
-            if(strpos($request->empno, 'ID') !== false ||
-                strpos($request->empno, 'PL') !== false ||
-                strpos($request->empno, 'AP') !== false ||
-                strpos($request->empno, 'MJ') !== false ||
-                strpos($request->empno, 'NU') !== false){
-                $employee->empno = substr($request->empno, 2);
-            }
-            else{
-                $employee->empno = $request->empno;
-            }
             $employee->vocational_name = strtoupper($request->vocational_name);
             $employee->vocational_course = strtoupper($request->vocational_course);
             $employee->vocational_inclusive_years_from = $request->vocational_inclusive_years_from;
@@ -277,16 +247,6 @@ class SaveController extends Controller
         if(auth()->user()->user_level != 'EMPLOYEE'){
             $employee = new JobHistory;
             $employee->employee_id = $request->employee_id;
-            if(strpos($request->empno, 'ID') !== false ||
-                strpos($request->empno, 'PL') !== false ||
-                strpos($request->empno, 'AP') !== false ||
-                strpos($request->empno, 'MJ') !== false ||
-                strpos($request->empno, 'NU') !== false){
-                $employee->empno = substr($request->empno, 2);
-            }
-            else{
-                $employee->empno = $request->empno;
-            }
             $employee->job_company_name = strtoupper($request->job_company_name);
             $employee->job_description = strtoupper($request->job_description);
             $employee->job_position = strtoupper($request->job_position);

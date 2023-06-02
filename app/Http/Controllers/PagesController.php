@@ -34,7 +34,6 @@ class PagesController extends Controller
         $jobDescriptions = Position::select('id','job_description')->get();
         $jobRequirements = Position::select('id','job_requirements')->get();
         $departments = Department::select('deptcode','deptdesc')->get();
-
         $provinces = Province::orderBy('provDesc', 'asc')->get();
         return view('pages.employees', compact('provinces','companies','branches','supervisors','jobPositions','jobDescriptions','jobRequirements','departments'));
     }

@@ -455,7 +455,7 @@ class UpdateController extends Controller
                     $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL DETAILS
+                    $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS
                                             $first_name_change
                                             $middle_name_change
                                             $last_name_change
@@ -494,7 +494,7 @@ class UpdateController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -815,6 +815,8 @@ class UpdateController extends Controller
 
     public function updateWorkInformation(Request $request){
         if(!$employee_number_orig = WorkInformationTable::where('employee_number', substr($request->employee_number,2))->first()){
+            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+
             $date_hired_orig = WorkInformationTable::where('employee_id', $request->id)->first();
             $employee_company_orig = WorkInformationTable::where('employee_id', $request->id)->first();
             $employee_branch_orig = WorkInformationTable::where('employee_id', $request->id)->first();
@@ -830,8 +832,6 @@ class UpdateController extends Controller
             $philhealth_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
             $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
             $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first();
-
-            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
 
             $employee = new WorkInformationTable;
             $employee->employee_id = $request->employee_id;
@@ -1013,7 +1013,7 @@ class UpdateController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number)
+            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number)
                                     $employee_number_change
                                     $date_hired_change
                                     $employee_company_change
@@ -1034,7 +1034,7 @@ class UpdateController extends Controller
             $userlogs = new EmployeeLogs;
             $userlogs->employee_id = $request->id;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
+            $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS
                                 $employee_number_change
                                 $date_hired_change
                                 $employee_company_change
@@ -1056,7 +1056,7 @@ class UpdateController extends Controller
             $userlogs = new WorkLogs;
             $userlogs->employee_id = $request->id;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->history = "UPDATED DETAILS
+            $userlogs->history = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS
                                 $employee_number_change
                                 $date_hired_change
                                 $employee_company_change
@@ -1093,14 +1093,6 @@ class UpdateController extends Controller
             $philhealth_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->philhealth_number;
             $tin_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->tin_number;
             $account_number_orig = WorkInformationTable::where('employee_id', $request->id)->first()->account_number;
-
-            // if(substr($request->employee_number,2) != $employee_number_orig){
-            //     $employee_number_new = $request->employee_number;
-            //     $employee_number_change = "[EMPLOYEE NUMBER: FROM '$employee_number_orig' TO '$employee_number_new']";
-            // }
-            // else{
-            //     $employee_number_change = NULL;
-            // }
 
             if($request->date_hired != $date_hired_orig){
                 $date_hired1 = Carbon::parse($date_hired_orig)->format('F d, Y');
@@ -1250,7 +1242,6 @@ class UpdateController extends Controller
 
                 if($sql){
                     if(
-                        // $request->employee_number != $employee_number_orig ||
                         $request->date_hired != $date_hired_orig ||
                         $request->employee_company != $employee_company_orig ||
                         $request->employee_branch != $employee_branch_orig ||
@@ -1271,7 +1262,7 @@ class UpdateController extends Controller
                         $userlogs = new EmployeeLogs;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
+                        $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS
                                             $date_hired_change
                                             $employee_company_change
                                             $employee_branch_change
@@ -1292,7 +1283,7 @@ class UpdateController extends Controller
                         $userlogs = new WorkLogs;
                         $userlogs->employee_id = $request->id;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->history = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS
+                        $userlogs->history = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS
                                             $date_hired_change
                                             $employee_company_change
                                             $employee_branch_change
@@ -1312,7 +1303,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
+                        $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number_orig)
                                                 $date_hired_change
                                                 $employee_company_change
                                                 $employee_branch_change
@@ -1470,7 +1461,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
+                        $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1485,7 +1476,7 @@ class UpdateController extends Controller
                         $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE'S EDUCATION DETAILS:
+                        $employee_logs->logs = "USER UPDATES THIS EMPLOYEE'S EDUCATION DETAILS:
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1880,16 +1871,6 @@ class UpdateController extends Controller
 
                     $employee = new MedicalHistory;
                     $employee->employee_id = $request->employee_id;
-                    if(strpos($request->employee_number, 'ID') !== false ||
-                        strpos($request->employee_number, 'PL') !== false ||
-                        strpos($request->employee_number, 'AP') !== false ||
-                        strpos($request->employee_number, 'MJ') !== false ||
-                        strpos($request->employee_number, 'NU') !== false){
-                        $employee->employee_number = substr($request->employee_number, 2);
-                    }
-                    else{
-                        $employee->employee_number = $request->employee_number;
-                    }
                     $employee->past_medical_condition = strtoupper($request->past_medical_condition);
                     $employee->allergies = strtoupper($request->allergies);
                     $employee->medication = strtoupper($request->medication);
@@ -2012,7 +1993,7 @@ class UpdateController extends Controller
                         $employee_logs = new EmployeeLogs;
                         $employee_logs->employee_id = $request->id;
                         $employee_logs->user_id = auth()->user()->id;
-                        $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                        $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS:
                                                 $past_medical_condition_change
                                                 $allergies_change
                                                 $medication_change
@@ -2022,7 +2003,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                        $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $past_medical_condition_change
                                                 $allergies_change
                                                 $medication_change
@@ -2201,14 +2182,14 @@ class UpdateController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
                                         $employee_insurance_change";
                 $userlogs->save();
 
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $request->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE:
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS:
                                         $employee_insurance_change";
                 $employee_logs->save();
             }
@@ -2234,12 +2215,12 @@ class UpdateController extends Controller
                     $employee_logs = new EmployeeLogs;
                     $employee_logs->employee_id = $request->id;
                     $employee_logs->user_id = auth()->user()->id;
-                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $employee_insurance_change";
+                    $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
                     $employee_logs->save();
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
                     $userlogs->save();
                 }
             }
