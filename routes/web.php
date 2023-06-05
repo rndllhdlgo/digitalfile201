@@ -112,6 +112,8 @@ Route::any('/employees/history_data','DataController@history_data');
 Route::any('/employees/logs_data','DataController@logs_data');
 
 // Try Controllers
+Route::any('/chart_blade','TryController@chart_blade');
+Route::any('/chart_data','TryController@getDataForChart');
 Route::any('/evaluation','TryController@evaluation_blade');
 Route::any('/evaluationSave','TryController@evaluation_save');
 Route::any('/chosen','TryController@chosen_blade');

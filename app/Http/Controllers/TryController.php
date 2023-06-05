@@ -15,6 +15,7 @@ use App\Models\Import;
 use App\Models\Export;
 use App\Models\Report;
 use App\Models\Status;
+use App\Models\PersonalInformationTable;
 use Carbon\Carbon;
 use DataTables;
 
@@ -139,5 +140,25 @@ class TryController extends Controller
 
     public function status_data(Request $request){
         return DataTables::of(Status::all())->make(true);
+    }
+
+    public function chart_blade(){
+        return view('try.chart');
+    }
+
+    public function getDataForChart(){
+        $data = Tr::select('gender')
+            ->groupBy('gender')
+            ->selectRaw('gender, COUNT(*) as count')
+            ->get()
+            ->toArray();
+
+        $formattedData = [['Gender', 'Count']];
+
+        foreach ($data as $item) {
+            $formattedData[] = [$item['gender'], $item['count']];
+        }
+
+        return response()->json($formattedData);
     }
 }

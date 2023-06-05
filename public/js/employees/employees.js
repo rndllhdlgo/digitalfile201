@@ -230,10 +230,10 @@ $(document).ready(function(){
                     $('#filter-'+i).prop('checked', false);
                 }
             }
-            $('th input').on('click', function(e){
-                e.stopPropagation();
-            });
         }
+        $('th input').on('click', function(e){
+            e.stopPropagation();
+        });
     }, 0);
 
     $('#filter').popover({
