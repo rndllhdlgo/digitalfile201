@@ -7,7 +7,7 @@
                     <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #0d1a80"/>
                 </td>
                 <td>
-                    <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #0d1a80"/>
+                    <input type="search" class="form-control filter-input keyup" data-column="1" style="border:1px solid #0d1a80"/>
                 </td>
                 <td>
                     <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #0d1a80"/>

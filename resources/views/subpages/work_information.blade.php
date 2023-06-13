@@ -4,8 +4,7 @@
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" >
-                <p id="check_duplicate" class="validation"><i class="fas fa-exclamation-triangle"></i> Employee Number already exists!</p>
-                <p id="empno_required" class="validation"><i class="fas fa-exclamation-triangle"></i> Please fill this field!</p>
+                <p id="empno_required" class="validation"><i class="fas fa-exclamation-triangle"></i> PLEASE FILL THIS FIELD!</p>
                 <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
             </div>
         </div>
@@ -113,7 +112,6 @@
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
-                <p class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL <span class="span_company_email_address span_all">(Optional)</span></label>
             </div>
@@ -122,8 +120,6 @@
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
-                {{-- <p id="company_contact_number_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Number! </p> --}}
-                <p id="duplicate_company_contact_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Contact Number Already Exist!</p>
                 <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.<span class="span_company_contact_number span_all"> (Optional)</span></label>
             </div>
         </div>
@@ -140,14 +136,12 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <p id="duplicate_sss_number" class="validation"><i class="fas fa-exclamation-triangle"></i> SSS Number Already Exist!</p>
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)<span class="span_sss_number span_all"></span></label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <p id="duplicate_pag_ibig_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Pag-ibig Number Already Exist!</p>
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)<span class="span_pag-ibig_number span_all"></span></label>
                 </div>
             </div>
@@ -157,7 +151,6 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <p id="duplicate_philhealth_number" class="validation"><i class="fas fa-exclamation-triangle"></i> Philhealth Number Already Exist!</p>
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)<span class="span_philhealth_number span_all"></span></label>
                 </div>
             </div>
@@ -165,7 +158,6 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <p id="duplicate_tin_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)<span class="span_tin_number span_all"></span></label>
                 </div>
             </div>
@@ -173,7 +165,6 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <p id="duplicate_account_number" class="validation"><i class="fas fa-exclamation-triangle"></i> TIN Number Already Exist!</p>
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)<span class="span_account_number span_all"></span></label>
                 </div>
             </div>
@@ -295,7 +286,7 @@
                         <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #0d1a80"/>
                     </td>
                     <td>
-                        <input type="search" class="form-control filter-input" data-column="1" style="border:1px solid #0d1a80"/>
+                        <input type="search" class="form-control filter-input keyup" data-column="1" style="border:1px solid #0d1a80"/>
                     </td>
                     <td>
                         <input type="search" class="form-control filter-input" data-column="2" style="border:1px solid #0d1a80"/>

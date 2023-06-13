@@ -2,6 +2,7 @@
 
 @section('content')
 <br>
+
         <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list" style="display:none;">
             <div class="row">

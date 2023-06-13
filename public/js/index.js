@@ -78,4 +78,28 @@ $(document).ready(function(){
             width: 850,
         });
     });
+    // $('#user_activity_table tbody').on('click', 'tr', function(){
+    //     var data = user_activity_table.row(this).data();
+    //     if(data.activity.includes('UPDATED') == true){
+    //         Swal.fire({
+    //             title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+    //             html: `<h4>` + data.username + ` [`+ data.role +`] ` + `</h4>` + `<br>` + `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.activity.replaceAll(" [","<li>[").replaceAll(" (","<br>(") + `</li></ol>`,
+    //             width: 850,
+    //             showCancelButton: true,
+    //             confirmButtonText: 'VIEW EMPLOYEE',
+    //             denyButtonText: `Don't save`,
+    //         }).then((result) => {
+    //             if(result.isConfirmed){
+    //                 window.location.href= '/employees';
+    //             }
+    //         });
+    //     }
+    //     else{
+    //         Swal.fire({
+    //             title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
+    //             html: `<h4>` + data.username + ` [`+ data.role +`] ` + `</h4>` + `<br>` + `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.activity.replaceAll(" [","<li>[").replaceAll(" (","<br>(") + `</li></ol>`,
+    //             width: 850,
+    //         });
+    //     }
+    // });
 });

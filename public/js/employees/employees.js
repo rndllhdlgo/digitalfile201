@@ -653,63 +653,6 @@ $('.logs_table_data tbody').on('click', 'tr', function(){
     // });
 });
 
-$('#employee_number').on('keyup',function(){
-    $.ajax({
-        url: "/employee_number/checkDuplicate",
-        data:{
-            employee_number : $('#employee_number').val(),
-        },
-        success: function(data){
-            if(data == 'duplicate_employee_number'){
-                $('#check_duplicate').show();
-                $('#employee_number').addClass('duplicate_field');
-            }
-            else{
-                $('#check_duplicate').hide();
-                $('#employee_number').removeClass('duplicate_field');
-            }
-        }
-    });
-});
-
-$('#email_address').on('keyup',function(){
-    if(email_address_orig != $('#email_address').val()){
-        $.ajax({
-            url: "/email_address/checkDuplicate",
-            data:{
-                email_address : $('#email_address').val(),
-            },
-            success: function(data){
-                if(data == 'duplicate_email_address'){
-                    $('#email_address').next('.validation').show();
-                }
-                else{
-                    $('#email_address').next('.validation').hide();
-                }
-            }
-        });
-    }
-});
-
-$('#company_email_address').on('keyup',function(){
-    if(company_email_address_orig != $('#company_email_address').val()){
-        $.ajax({
-            url: "/company_email_address/checkDuplicate",
-            data:{
-                company_email_address : $('#company_email_address').val(),
-            },
-            success: function(data){
-                if(data == 'duplicate_company_email_address'){
-                    $('#company_email_address').next('.validation').show();
-                }
-                else{
-                    $('#company_email_address').next('.validation').hide();
-                }
-            }
-        });
-    }
-});
-
 // Region,Province,City DropDown Function
 // $('#region').on('change', function(){
 //     $('#province').val('');

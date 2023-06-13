@@ -52,7 +52,7 @@ var company_email_address = document.querySelector('#company_email_address');
 var company_email_validation = document.querySelector('#company_email_validation');
 let regExpr = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-$('#company_email_address').on('keyup',function(){
+$('#company_email_address').on('focusout',function(){
     if(company_email_address.value.match(regExp)){
         $('#company_email_validation').hide();
     }

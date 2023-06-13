@@ -492,7 +492,7 @@ $('#tab2').on('click',function(){
     $('#evaluation').hide();
     $('#compensation_benefits').hide();
     $('#logs').hide();
-
+    $('.keyup').keyup();
 });
 
 $('#tab3').on('click',function(){
@@ -654,6 +654,7 @@ $('#tab9').on('click',function(){
     $('#evaluation').hide();
     $('#compensation_benefits').hide();
     $('#logs').show();
+    $('.keyup').keyup();
 });
 
 //Maintenance

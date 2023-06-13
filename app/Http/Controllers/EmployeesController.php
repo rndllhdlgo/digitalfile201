@@ -375,6 +375,9 @@ class EmployeesController extends Controller
             else if($employee->entity == 005){
                 return 'NU'.$employee->employee_number;
             }
+            else{
+                return $employee->employee_number;
+            }
         })
         ->make(true);
     }
@@ -484,23 +487,11 @@ class EmployeesController extends Controller
             else if($employee->entity == 005){
                 return 'NU'.$employee->employee_number;
             }
+            else{
+                return $employee->employee_number;
+            }
         })
         ->toJson();
-    }
-
-    public function duplicate_personal_info(Request $request){
-        if(PersonalInformationTable::where('email_address',$request->email_address)->count() > 0){
-            return 'duplicate_email_address';
-        }
-    }
-
-    public function duplicate_work_info(Request $request){
-        if(WorkInformationTable::where('employee_number',$request->employee_number)->count() > 0){
-            return 'duplicate_employee_number';
-        }
-        else if(WorkInformationTable::where('company_email_address',$request->company_email_address)->count() > 0){
-            return 'duplicate_company_email_address';
-        }
     }
 
     public function upload_picture(Request $request){

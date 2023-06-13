@@ -122,37 +122,6 @@
                     </div>
                 </div>
             </div>
-
-                {{-- <div class="col">
-                    <div class="f-outline">
-                        <select class="form-select forminput form-control required_field"  id="region" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT REGION</option>
-                                @foreach($regions as $region)
-                                    <option class="region" value="{{$region->regCode}}">{{$region->regDesc}}</option>
-                                @endforeach
-                        </select>
-                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_region span_all"></span> </label>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="f-outline">
-                        <select class="form-select forminput form-control required_field"  id="province" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT PROVINCE</option>
-                        </select>
-                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
-                    </div>
-                </div>
-
-                <div class="col">
-                    <div class="f-outline">
-                        <select class="form-select forminput form-control required_field"  id="city" placeholder=" " style="background-color:white;">
-                            <option value="" disabled selected>SELECT CITY</option>
-                        </select>
-                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
-                    </div>
-                </div> --}}
-
             <div class="row mb-3">
                 <div class="col-3">
                     <div class="f-outline">
@@ -165,7 +134,6 @@
                         <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
                     </div>
                 </div>
-
                 <div class="col-3">
                     <div class="f-outline">
                         <select class="form-select forminput form-control required_field" name="city" id="city">
