@@ -11,6 +11,8 @@ use App\Http\Controllers\UpdatesController;
 use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\UpdateController;
+use App\Http\Controllers\PdfController;
+
 // use Mail;
 // Route::get('/testmail', function () {
 //     return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
@@ -52,11 +54,6 @@ Route::middleware(['session'])->group(function(){
     Route::any('/employees/saveTraining','SaveController@saveTraining');
     Route::any('/employees/saveVocational','SaveController@saveVocational');
     Route::any('/employees/saveJobHistory','SaveController@saveJobHistory');
-
-    Route::any('/email_address/checkDuplicate','EmployeesController@duplicate_personal_info');
-    Route::any('/cellphone_number/checkDuplicate','EmployeesController@duplicate_personal_info');
-    Route::any('/employee_number/checkDuplicate','EmployeesController@duplicate_work_info');
-    Route::any('/company_email_address/checkDuplicate','EmployeesController@duplicate_work_info');
 
     // Users Controller
     Route::any('/users/listOfUsers','UsersController@listOfUsers');
@@ -139,6 +136,8 @@ Route::middleware(['session'])->group(function(){
     Route::any('/users/status', 'UsersController@users_status');
     Route::get('/logs_reload', 'EmployeesController@logs_reload');
     Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
+    Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
+    Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');
