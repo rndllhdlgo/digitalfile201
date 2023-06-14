@@ -50,6 +50,8 @@ use Str;
 class UpdateController extends Controller
 {
     public function updatePersonalInformation(Request $request){
+        $employee_number = PersonalInformationTable::where('empno', $request->current_employee_number)->first()->empno;
+
         if($request->filename_delete){
             if(file_exists('storage/employee_images/'.$request->filename_delete)){
                 unlink('storage/employee_images/'.$request->filename_delete);
@@ -494,7 +496,7 @@ class UpdateController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig with Employee No.$employee_number)
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -1610,7 +1612,7 @@ class UpdateController extends Controller
 
                         $userlogs = new UserLogs;
                         $userlogs->user_id = auth()->user()->id;
-                        $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S EDUCATION INFORMATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                        $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                                 $secondary_school_name_change
                                                 $secondary_school_address_change
                                                 $secondary_school_inclusive_years_from_change
@@ -1926,7 +1928,7 @@ class UpdateController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number)
                                             $past_medical_condition_change
                                             $allergies_change
                                             $medication_change
@@ -2503,7 +2505,6 @@ class UpdateController extends Controller
             }
 
             $document->save();
-            // return response()->json(['message' => 'Document updated successfully']);
         }
         else{
             $document_orig = Document::where('employee_id', $request->employee_id)->first();
@@ -2795,7 +2796,7 @@ class UpdateController extends Controller
                 $employee_logs = new EmployeeLogs;
                 $employee_logs->employee_id = $employee_details->id;
                 $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS
+                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS
                                         $barangay_clearance_update
                                         $birthcertificate_update
                                         $diploma_update
@@ -2811,7 +2812,7 @@ class UpdateController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER SUCCESSFULLY UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
                                         $barangay_clearance_update
                                         $birthcertificate_update
                                         $diploma_update

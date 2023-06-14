@@ -4,7 +4,7 @@ function employee_image_save(){
     var extension = file.name.split('.').pop().toLowerCase();
     var date = new Date();
 
-    employee_image = $('#employee_number').val() + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
+    employee_image = $('#employee_number').val().substring(2) + '_' + $('#last_name').val().toUpperCase() + '_' + $('#first_name').val().toUpperCase() + '_' +
                 date.getFullYear().toString().slice(-2) +
                 ("0" + (date.getMonth() + 1)).slice(-2) +
                 ("0" + date.getDate()).slice(-2) +
@@ -39,6 +39,7 @@ $('#btnUpdate').on('click',function(){
     }
 
     var id = $('#hidden_id').val();
+    var current_employee_number = $('#current_employee_number').val();
     var first_name = $('#first_name').val();
     var middle_name = $('#middle_name').val();
     var last_name = $('#last_name').val();
@@ -106,6 +107,7 @@ $('#btnUpdate').on('click',function(){
                 data:{
                     id:id,
                     completed:completed,
+                    current_employee_number:current_employee_number,
                     employee_image:employee_image,
                     filename_delete:$('#filename_delete').val(),
                     employee_image_change:employee_image_change,
@@ -536,7 +538,6 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_reason').attr('name','');
                         $('#termination_date').attr('name','');
                         $('#termination_file').attr('name','');
-                        //     $('#documents_form').submit();
 
                         var formData = new FormData($('#documents_form').get(0));
                         if(memo_change){

@@ -58,7 +58,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             employee_data.forEach(value => {
 
                 $('#hidden_id').val(value.id);
-                $('#current_employee').val(value.employee_number);
+                $('#current_employee_number').val(value.employee_number.substring(2));
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);

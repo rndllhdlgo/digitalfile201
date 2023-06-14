@@ -55,7 +55,8 @@ class UsersController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER ADDED: User successfully added a new user with the following details NAME:[$name] USER LEVEL: [$users->user_level].";
+            // $userlogs->activity = "USER ADDED: User successfully added a new user with the following details NAME:[$name] USER LEVEL: [$users->user_level].";
+            $userlogs->activity = "USER ADDED A NEW USER WITH THE FOLLOWING DETAILS [USER FULL NAME: $name] [USER LEVEL: $users->user_level]";
             $userlogs->save();
         }
 
@@ -97,7 +98,7 @@ class UsersController extends Controller
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER UPDATED: User successfully updated details of [$users->name] with the following CHANGES: $email_change $name_change $users_level_change.";
+                $userlogs->activity = "USER UPDATED DETAILS OF ($users->name) [$email_change] [$name_change] [$users_level_change]";
                 $userlogs->save();
 
                 return $sql ? 'true':'false';
@@ -133,7 +134,7 @@ class UsersController extends Controller
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "CHANGE PASSWORD: User successfully changed own account password.";
+            $userlogs->activity = "USER CHANGED OWN ACCOUNT PASSWORD.";
             $userlogs->save();
         }
 
@@ -150,6 +151,7 @@ class UsersController extends Controller
             $status2 = 'ACTIVE';
         }
         $name = strtoupper($request->name);
+        $user_level = strtoupper($request->user_level);
 
         $users = User::find($request->id);
         $users->status = $request->status;
@@ -161,11 +163,11 @@ class UsersController extends Controller
         else{
             $result = 'true';
 
-            $status = "FROM '$status2' TO '$status1'";
+            $status = "[FROM '$status2' TO '$status1']";
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER UPDATED: User successfully updated status of [$name] $status.";
+            $userlogs->activity = "USER UPDATED STATUS OF USER ($name $user_level)  $status.";
             $userlogs->save();
         }
         return response($result);

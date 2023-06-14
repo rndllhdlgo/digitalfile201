@@ -39,7 +39,13 @@ $(document).ready(function(){
         var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
     }
 
-    var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
+    // if(window.location.search.includes('employee_number') == true){
+    //     var aLengthMenu = [[-1, 10, 25, 50], ["All", 10, 25, 50]];
+    // }
+    // else{
+    //     var aLengthMenu = [[10, 25, 50, -1], [10, 25, 50, "All"]];
+    // }
+    // var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
 
     employeesTable = $('table.employeesTable').DataTable({
         scrollY:        "484px",
@@ -55,8 +61,9 @@ $(document).ready(function(){
             emptyTable:"No Employees Data Found!",
             loadingRecords: "Loading Employee Records...",
         },
+        // aLengthMenu: aLengthMenu,
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        iDisplayLength: iLength,
+        // iDisplayLength: iLength,
         processing:true,
         serverSide:false,
         autoWidth:false,
@@ -172,6 +179,17 @@ $(document).ready(function(){
             }
         ],
         initComplete: function(){
+            // if(window.location.search.includes('employee_number') == true){
+            //     var url = new URL(window.location.href);
+            //     var employee_number = url.searchParams.get("employee_number");
+            //     $('.'+employee_number).closest('tr').click();
+            // }
+            // else{
+            //     $('#employees_list').show();
+            //     $('#filter1').keyup();
+            //     $('#loading').hide();
+            // }
+
             if(current_user_level == 'EMPLOYEE'){
                 $.ajax({
                     url: "/employees/status",
@@ -202,9 +220,7 @@ $(document).ready(function(){
             }
             else{
                 $('#employees_list').show();
-                setTimeout(() => {
-                    $('#filter1').keyup();
-                }, 0);
+                $('#filter1').keyup();
                 $('#loading').hide();
             }
         }

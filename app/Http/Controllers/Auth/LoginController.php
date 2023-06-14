@@ -56,7 +56,7 @@ class LoginController extends Controller
 
         $userlogs = new UserLogs;
         $userlogs->user_id = auth()->user()->id;
-        $userlogs->activity = 'LOG-IN: User successfully logged in!';
+        $userlogs->activity = 'LOG-IN: USER SUCCESSFULLY LOGGED IN!';
         $userlogs->save();
     }
 
@@ -64,7 +64,7 @@ class LoginController extends Controller
         if(!Auth::guest()){
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = 'LOG-OUT: User successfully logged out!';
+            $userlogs->activity = 'LOG-OUT: USER SUCCESSFULLY LOGGED OUT!';
             $userlogs->save();
             Auth::logout();
         }

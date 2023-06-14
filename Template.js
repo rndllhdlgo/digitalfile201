@@ -223,3 +223,9 @@ $('.check_duplicate').on('keyup', function(){
 });
 
 {{-- {{App\Models\WorkInformationTable::whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count()}} --}}
+
+if(window.location.search.includes('employee_number') == true){
+    var url = new URL(window.location.href);
+    var employee_number = url.searchParams.get("employee_number");
+    $('.'+employee_number).closest('tr').click();
+}

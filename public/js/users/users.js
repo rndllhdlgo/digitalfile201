@@ -53,6 +53,7 @@ $(document).ready(function(){
                 data:{
                     id: data.id,
                     name: data.name,
+                    user_level: data.user_level,
                     status: status
                 },
                 success: function(data){
