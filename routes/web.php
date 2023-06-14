@@ -138,6 +138,8 @@ Route::middleware(['session'])->group(function(){
     Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
     Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
     Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
+    Route::any('/pdf/image', 'TryController@pdf_blade');
+    Route::any('/save_pdf', 'TryController@save_pdf');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');

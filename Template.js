@@ -229,3 +229,10 @@ if(window.location.search.includes('employee_number') == true){
     var employee_number = url.searchParams.get("employee_number");
     $('.'+employee_number).closest('tr').click();
 }
+
+$(document).ready(function(){
+    $('#submit').on('click',function(){
+        var file = $('#pdf_image')[0].files[0];
+        console.log(file);
+    });
+});

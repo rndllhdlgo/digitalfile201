@@ -15,12 +15,22 @@ use App\Models\Import;
 use App\Models\Export;
 use App\Models\Report;
 use App\Models\Status;
+use App\Models\PdfToImage;
 use App\Models\PersonalInformationTable;
 use Carbon\Carbon;
+use Spatie\PdfToText\Pdf;
+use thiagoalessio\TesseractOCR\TesseractOCR;
+use Spatie\PdfToImage\Pdf as Jpg;
+use Imagick;
 use DataTables;
+use Str;
 
 class TryController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function evaluation_blade(){
         $tries = Tr::select('id','sample_name')->get();
         return view('try.evaluation', compact('tries'));
@@ -123,14 +133,8 @@ class TryController extends Controller
     public function reports_data(Request $request){
         $selectedMonth = $request->selectedMonth;
         $selectedYear = $request->selectedYear;
-
-        // format the selected month and year as a date string
         $selectedDate = Carbon::createFromDate($selectedYear, $selectedMonth)->format('Y-m');
-
-        // retrieve the data from your database and filter by date
         $data = Report::where('date', 'like', $selectedDate.'%')->get();
-
-        // return the filtered data as DataTables JSON response
         return DataTables::of($data)->make(true);
     }
 
@@ -160,5 +164,48 @@ class TryController extends Controller
         }
 
         return response()->json($formattedData);
+    }
+
+    public function pdf_blade(){
+        return view('try.pdfImage');
+    }
+
+    public function save_pdf(Request $request){
+        $pdf_file = $request->file('pdf_file');
+
+        // Check if a file was uploaded
+        if($pdf_file && $pdf_file->getClientOriginalExtension() === 'pdf'){
+            // Create a new Imagick instance
+            $imagick = new Imagick();
+            // Read the PDF file
+            $imagick->readImage($pdf_file->getPathname());
+            // Convert each page of the PDF to an image
+            $imagick->setImageFormat('png');
+
+            // foreach ($imagick as $page) {
+            //     // Save each page as a separate image
+            //     $page->writeImage(storage_path('app/public/' . uniqid() . '.png'));
+            // }
+
+            foreach($imagick as $page){
+                // Save each page as a separate image
+                $imagePath = storage_path('app/public/' . Str::random(4) . '.png');
+                $page->writeImage($imagePath);
+                // Remove the base storage path from the image file path
+                $imagePath = str_replace(storage_path('app/public/'), '', $imagePath);
+                // Save the image details to the database
+                $pdfToImage = new PdfToImage();
+                $pdfToImage->pdf_file = $imagePath;
+                $pdfToImage->save();
+            }
+
+            // Destroy the Imagick instance
+            $imagick->destroy();
+
+            return 'success';
+        }
+        else{
+            return 'Invalid File Format';
+        }
     }
 }
