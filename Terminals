@@ -2,11 +2,9 @@ chown www-data:www-data public/storage/name_of_your_folder/ - Change Owner
 chmod 777 -R storage/ - File Permission Denied
 update-alternatives --config php - Update PHP version
 php artisan storage:link - To link storage to public folder
-php artisan make:controller ControllerName
-php artisan make:model ModelName -m
+php artisan make:controller ControllerName --resource
 php artisan cache:clear - The /var/www/html/digital201/bootstrap/cache directory must be present and writable.
 php artisan make:model ModelName -m
-php artisan make:migration add_phone_number_to_users_table --table=users
 php artisan migrate
 php artisan make:middleware MiddlewareName
 source .bash_aliases
@@ -20,3 +18,9 @@ config/app.php
     ...,
     'DataTables' => Yajra\DataTables\Facades\DataTables::class,
 ]
+
+php artisan make:migration create_table_name --create=table_name
+php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_table.php
+php artisan make:migration add_column_to_table --table=your_table_name
+$table->string('new_column')->nullable();
+$table->string('new_column')->after('existing_column');
