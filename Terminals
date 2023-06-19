@@ -24,3 +24,9 @@ php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_ta
 php artisan make:migration add_column_to_table --table=your_table_name
 $table->string('new_column')->nullable();
 $table->string('new_column')->after('existing_column');
+$table->bigIncrements('id');
+$table->bigInteger('company_id');
+$table->string('date', 50); // Set default length to 50 characters
+$table->string('type', 20); // Set default length to 20 characters
+$table->integer('seqno');
+$table->unique(['date', 'type', 'seqno'], 'unique_date_type_seqno');

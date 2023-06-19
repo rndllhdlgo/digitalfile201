@@ -172,34 +172,10 @@ class TryController extends Controller
 
     public function save_pdf(Request $request){
         $pdf_file = $request->file('pdf_file');
-
-        // Check if a file was uploaded
         if($pdf_file && $pdf_file->getClientOriginalExtension() === 'pdf'){
-            // Create a new Imagick instance
             $imagick = new Imagick();
-            // Read the PDF file
             $imagick->readImage($pdf_file->getPathname());
-            // Convert each page of the PDF to an image
             $imagick->setImageFormat('png');
-
-            // foreach ($imagick as $page) {
-            //     // Save each page as a separate image
-            //     $page->writeImage(storage_path('app/public/' . uniqid() . '.png'));
-            // }
-
-            foreach($imagick as $page){
-                // Save each page as a separate image
-                $imagePath = storage_path('app/public/' . Str::random(4) . '.png');
-                $page->writeImage($imagePath);
-                // Remove the base storage path from the image file path
-                $imagePath = str_replace(storage_path('app/public/'), '', $imagePath);
-                // Save the image details to the database
-                $pdfToImage = new PdfToImage();
-                $pdfToImage->pdf_file = $imagePath;
-                $pdfToImage->save();
-            }
-
-            // Destroy the Imagick instance
             $imagick->destroy();
 
             return 'success';
@@ -208,4 +184,46 @@ class TryController extends Controller
             return 'Invalid File Format';
         }
     }
+    // public function save_pdf(Request $request){
+    //     $pdf_file = $request->file('pdf_file');
+
+    //     // Check if a file was uploaded
+    //     if($pdf_file && $pdf_file->getClientOriginalExtension() === 'pdf'){
+    //         // Create a new Imagick instance
+    //         $imagick = new Imagick();
+    //         // Read the PDF file
+    //         $imagick->readImage($pdf_file->getPathname());
+    //         // Convert each page of the PDF to an image
+    //         // Count the number of pages of the PDF
+    //         // $numPages = $imagick->getNumberImages();
+    //         // return $numPages;
+
+    //         $imagick->setImageFormat('png');
+
+    //         // foreach ($imagick as $page) {
+    //         //     // Save each page as a separate image
+    //         //     $page->writeImage(storage_path('app/public/' . uniqid() . '.png'));
+    //         // }
+
+    //         foreach($imagick as $page){
+    //             // Save each page as a separate image
+    //             $imagePath = storage_path('app/public/' . Str::random(4) . '.png');
+    //             $page->writeImage($imagePath);
+    //             // Remove the base storage path from the image file path
+    //             $imagePath = str_replace(storage_path('app/public/'), '', $imagePath);
+    //             // Save the image details to the database
+    //             $pdfToImage = new PdfToImage();
+    //             $pdfToImage->pdf_file = $imagePath;
+    //             $pdfToImage->save();
+    //         }
+
+    //         // Destroy the Imagick instance
+    //         $imagick->destroy();
+
+    //         return 'success';
+    //     }
+    //     else{
+    //         return 'Invalid File Format';
+    //     }
+    // }
 }

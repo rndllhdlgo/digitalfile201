@@ -236,3 +236,61 @@ $(document).ready(function(){
         console.log(file);
     });
 });
+
+else if(stripos($text, $request->client_name) === false){
+    return 'CLIENT NAME not found';
+}
+else if(stripos($text, $request->branch_name) === false){
+    return 'BRANCH NAME not found';
+}
+else if(stripos($text, $request->purchase_order) === false){
+    return 'PURCHASE ORDER not found';
+}
+else if(stripos($text, $request->sales_order) === false){
+    return 'SALES ORDER not found';
+}
+else if(stripos($text, $request->delivery_receipt) === false){
+    return 'DELIVERY RECEIPT not found';
+}
+
+else if(stripos($text, $request->client_name) === false){
+    return 'CLIENT NAME not found';
+}
+else if(stripos($text, $request->branch_name) === false){
+    return 'BRANCH NAME not found';
+}
+else if(stripos($text, $request->purchase_order) === false){
+    return 'PURCHASE ORDER not found';
+}
+else if(stripos($text, $request->sales_order) === false){
+    return 'SALES ORDER not found';
+}
+
+else if(stripos($text, $request->client_name) === false){
+    return 'CLIENT NAME not found';
+}
+else if(stripos($text, $request->branch_name) === false){
+    return 'BRANCH NAME not found';
+}
+else if(stripos($text, $request->purchase_order) === false){
+    return 'PURCHASE ORDER not found';
+}
+else if(stripos($text, $request->sales_order) === false){
+    return 'SALES ORDER not found';
+}
+
+$row = Table1::where('column_name', 'specific_value')->first();
+
+if ($row) {
+    // Create a new row in Table2 with the same values as the found row in Table1
+    Table2::create($row->toArray());
+}
+
+$products_array = Product::where('product_update_status', '=', '0')
+                            ->get()
+                            ->toArray();
+$product_ids = array_map(function($item){
+    return $item['id'];
+}, $products_array);
+// return $product_ids;
+ProductRevert::whereIn('id', $product_ids)->delete();
