@@ -3,8 +3,7 @@ var companyTable = $('#companyTable').DataTable({
     language:{
         "info": "\"Showing _START_ to _END_ of _TOTAL_ Companies\"",
         "lengthMenu":"Show _MENU_ Companies",
-        "emptyTable":"No Companies Data Found!",
-        "loadingRecords": "Loading Companies Records...",
+        "emptyTable":"NO DATA AVAILABLE!",
     },
     aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
     processing:true,
@@ -88,6 +87,7 @@ var shiftTable = $('table.shiftTable').DataTable({
             lengthMenu: "Show _MENU_ Shifts",
             emptyTable: "No Shifts Data Found!",
         },
+        aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         processing:true,
         serverSide:false,
         ajax: {
@@ -148,47 +148,60 @@ var supervisorTable = $('#supervisorTable').DataTable({
 $('div.breakspace').html('<br><br>');
 
 var positionTable = $('table.positionTable').DataTable({
+    scrollY:        "484px",
+    scrollX:        true,
+    scrollCollapse: true,
+    fixedColumns:{
+        left: 1,
+    },
     dom: 'lf<"breakspace">trip',
-        language: {
-            info: "\"Showing _START_ to _END_ of _TOTAL_ JOB POSITIONS\"",
-            lengthMenu: "Show _MENU_ JOB POSITIONS",
-            emptyTable: "No Job Positions Data Found!",
-        },
-        processing:true,
-        serverSide:false,
-        ajax: {
-            url: '/maintenance/positionData',
-        },
-        order: [],
-        columns: [
-            {data: 'job_position_name'},
-            {
-                data: 'job_description',
-                "render":function(data,type,row){
-                var job_description = '';
-                if (row.job_description !== null && row.job_description !== undefined) {
-                    job_description = row.job_description.replace(/• /g,"<br>• ").replace(/<br>/, '');
-                }
-                    return job_description;
-                },
+    language: {
+        info: "\"Showing _START_ to _END_ of _TOTAL_ JOB POSITIONS\"",
+        lengthMenu: "Show _MENU_ JOB POSITIONS",
+        emptyTable: "No Job Positions Data Found!",
+    },
+    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    processing:true,
+    serverSide:false,
+    ajax: {
+        url: '/maintenance/positionData',
+    },
+    order: [],
+    columns: [
+        {data: 'job_position_name'},
+        {
+            data: 'job_description',
+            "render":function(data,type,row){
+            var job_description = '';
+            if (row.job_description !== null && row.job_description !== undefined) {
+                job_description = row.job_description.replace(/• /g,"<br>• ").replace(/<br>/, '');
+            }
+                return job_description;
             },
-            {
-                data: 'job_requirements',
-                "render":function(data,type,row){
-                var job_requirements = '';
-                if (row.job_requirements !== null && row.job_requirements !== undefined) {
-                    job_requirements = row.job_requirements.replace(/• /g,"<br>• ").replace(/<br>/, '');
-                }
-                    return job_requirements;
-                },
+        },
+        {
+            data: 'job_requirements',
+            "render":function(data,type,row){
+            var job_requirements = '';
+            if (row.job_requirements !== null && row.job_requirements !== undefined) {
+                job_requirements = row.job_requirements.replace(/• /g,"<br>• ").replace(/<br>/, '');
+            }
+                return job_requirements;
             },
-        ],
-        initComplete: function(){
-            $('#loading').hide();
-        }
-    });
+        },
+    ],
+    initComplete: function(){
+        $('#loading').hide();
+    }
+});
     $('div.breakspace').html('<br><br>');
 
 $('.filter-input').on('keyup search', function(){
     positionTable.column($(this).data('column')).search($(this).val()).draw();
 });
+
+setInterval(() => {
+    $('th input').on('click', function(e){
+        e.stopPropagation();
+    });
+}, 0);

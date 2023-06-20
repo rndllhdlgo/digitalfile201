@@ -757,7 +757,7 @@ $('#position_tab').on('click',function(){
     $('#supervisor_div').hide();
     $('#department_div').hide();
     $('#position_div').show();
-
+    $('#filter1').keyup();
     $('#addPositionBtn').show();
 });
 
