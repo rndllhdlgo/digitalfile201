@@ -22,6 +22,7 @@ config/app.php
 php artisan make:migration create_table_name --create=table_name
 php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_table.php
 php artisan make:migration add_column_to_table --table=your_table_name
+php artisan make:migration add_cover_image_to_employees --table=your_table_name
 $table->string('new_column')->nullable();
 $table->string('new_column')->after('existing_column');
 $table->bigIncrements('id');

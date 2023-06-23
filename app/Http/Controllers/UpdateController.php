@@ -50,8 +50,6 @@ use Str;
 class UpdateController extends Controller
 {
     public function updatePersonalInformation(Request $request){
-        $employee_number = PersonalInformationTable::where('empno', $request->current_employee_number)->first()->empno;
-
         if($request->filename_delete){
             if(file_exists('storage/employee_images/'.$request->filename_delete)){
                 unlink('storage/employee_images/'.$request->filename_delete);
@@ -78,11 +76,9 @@ class UpdateController extends Controller
         $email_address_orig = PersonalInformationTable::where('id', $request->id)->first()->email_address;
         $telephone_number_orig = PersonalInformationTable::where('id', $request->id)->first()->telephone_number;
         $cellphone_number_orig = PersonalInformationTable::where('id', $request->id)->first()->cellphone_number;
-
         $spouse_name_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_name;
         $spouse_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_contact_number;
         $spouse_profession_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_profession;
-
         $father_name_orig = PersonalInformationTable::where('id', $request->id)->first()->father_name;
         $father_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->father_contact_number;
         $father_profession_orig = PersonalInformationTable::where('id', $request->id)->first()->father_profession;
@@ -496,7 +492,7 @@ class UpdateController extends Controller
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig with Employee No.$employee_number)
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -2504,7 +2500,19 @@ class UpdateController extends Controller
                 $document->transcript_of_records_file = $torFilename;
             }
 
-            $document->save();
+            if($request->hasFile('barangay_clearance_file')
+            || $request->hasFile('birthcertificate_file')
+            || $request->hasFile('diploma_file')
+            || $request->hasFile('medical_certificate_file')
+            || $request->hasFile('nbi_clearance_file')
+            || $request->hasFile('pag_ibig_file')
+            || $request->hasFile('philhealth_file')
+            || $request->hasFile('police_clearance_file')
+            || $request->hasFile('resume_file')
+            || $request->hasFile('sss_file')
+            || $request->hasFile('tor_file')){
+                $document->save();
+            }
         }
         else{
             $document_orig = Document::where('employee_id', $request->employee_id)->first();

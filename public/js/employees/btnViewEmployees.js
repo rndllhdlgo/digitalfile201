@@ -20,7 +20,6 @@ var barangay_clearance_change,
     sss_file_change,
     tor_file_change,
     memo_change;
-var email_address_orig,company_email_address_orig;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
@@ -58,7 +57,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             employee_data.forEach(value => {
 
                 $('#hidden_id').val(value.id);
-                $('#current_employee_number').val(value.employee_number.substring(2));
                 if(value.employee_image){
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
@@ -137,8 +135,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }
 
                 $('#email_address').val(value.email_address);
-                email_address_orig = value.email_address;
-
                 $('#telephone_number').val(value.telephone_number);
                 $('#cellphone_number').val(value.cellphone_number);
 
@@ -164,60 +160,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#employee_number').attr('readonly',true);
                     $('#employee_number').css('cursor','not-allowed');
                 }
-                else{
-                    $('#employee_number').attr('readonly',false);
-                    $('#employee_number').css('cursor','');
-                }
-
-                setInterval(() => {
-                    if(!$('#employee_number').val()){
-                        $('#empno_required').show();
-                        $('#btnUpdate').prop('disabled',true);
-                    }
-                    else{
-                        $('#empno_required').hide();
-                        $('#btnUpdate').prop('disabled',false);
-                    }
-                }, 0);
 
                 $('#date_hired').val(value.date_hired);
                 $('#employee_shift').val(value.desc);
-
                 $('#employee_company').val(value.employee_company);
-                $('#employee_company').chosen();
-                $('#employee_company_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
-
                 $('#employee_branch').val(value.employee_branch);
-                $('#employee_branch').chosen();
-                $('#employee_branch_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
-
                 $('#employee_department').val(value.employee_department);
-                $('#employee_department').chosen();
-                $('#employee_department_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
-
                 $('#employee_position').val(value.employee_position);
-                $('#employee_position').chosen();
-                $('#employee_position_chosen').css({
-                    'width':'100%',
-                    'font-weight':'500',
-                    'font-size':'13px',
-                    'font-family':'Arial, Helvetica, sans-serif'
-                });
 
                 if(value.employment_status){
                     $('#employment_status').val(value.employment_status);

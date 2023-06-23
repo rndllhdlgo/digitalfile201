@@ -74,6 +74,7 @@ class EmployeesController extends Controller
         if($request->filter == 'regular'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -83,6 +84,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -98,9 +100,9 @@ class EmployeesController extends Controller
                 'stat'
                 )
                 ->where('work_information_tables.employment_status','Regular')
-                ->join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->join('positions','positions.id','work_information_tables.employee_position')
-                ->join('entity03','entity03.entity03','work_information_tables.employee_branch')
+                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
                 ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
@@ -109,6 +111,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'probationary'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -118,6 +121,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -144,6 +148,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'agency'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -153,6 +158,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -179,6 +185,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'male'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -188,6 +195,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -214,6 +222,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'female'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -223,6 +232,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -249,6 +259,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'active'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -258,6 +269,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -284,6 +296,7 @@ class EmployeesController extends Controller
         else if($request->filter == 'inactive'){
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -293,6 +306,7 @@ class EmployeesController extends Controller
                 'work_information_tables.employment_status',
                 'companies.company_name AS employee_company',
                 'entity',
+                'work_information_tables.employee_department',
                 'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
@@ -319,6 +333,7 @@ class EmployeesController extends Controller
         else{
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
+                'empno',
                 'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
@@ -350,7 +365,7 @@ class EmployeesController extends Controller
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
-            }
+        }
         return DataTables::of($employees)
         ->addColumn('employee_department', function (PersonalInformationTable $employee){
             $dept = Department::select('deptdesc')->where('deptcode',$employee->employee_department)->first();
@@ -376,7 +391,7 @@ class EmployeesController extends Controller
                 return 'NU'.$employee->employee_number;
             }
             else{
-                return $employee->employee_number;
+                return $employee->empno;
             }
         })
         ->make(true);
@@ -385,6 +400,7 @@ class EmployeesController extends Controller
     public function employee_fetch(Request $request){
         $employees = PersonalInformationTable::select(
                     'personal_information_tables.id',
+                    'personal_information_tables.empno',
                     'desc',
                     'employee_image',
                     'first_name',
@@ -488,7 +504,7 @@ class EmployeesController extends Controller
                 return 'NU'.$employee->employee_number;
             }
             else{
-                return $employee->employee_number;
+                return $employee->empno;
             }
         })
         ->toJson();

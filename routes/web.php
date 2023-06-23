@@ -140,6 +140,8 @@ Route::middleware(['session'])->group(function(){
     Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
     Route::any('/pdf/image', 'TryController@pdf_blade');
     Route::any('/save_pdf', 'TryController@save_pdf');
+    Route::any('/receipt', 'TryController@receipt');
+    Route::any('/save_receipt', 'TryController@save_receipt');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');

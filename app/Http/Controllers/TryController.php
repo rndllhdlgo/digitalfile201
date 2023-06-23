@@ -15,6 +15,7 @@ use App\Models\Import;
 use App\Models\Export;
 use App\Models\Report;
 use App\Models\Status;
+use App\Models\Receipt;
 use App\Models\PdfToImage;
 use App\Models\PersonalInformationTable;
 use Carbon\Carbon;
@@ -226,4 +227,85 @@ class TryController extends Controller
     //         return 'Invalid File Format';
     //     }
     // }
+
+    public function receipt(){
+        // $gender_array = Tr::where('gender', '=', 'MALE')
+        //                     ->get()
+        //                     ->toArray();
+
+        // $gender_ids = array_map(function($item){
+        //     return $item['id'];
+        // }, $gender_array);
+        // return $gender_ids;
+        return view('try.receipt');
+    }
+    public function save_receipt(Request $request){
+        if(Receipt::where('receipt', $request->receipt)->count() > 0) {
+            return 'RECEIPT Already Exist';
+        }
+
+        $file = $request->file('pdf_file');
+        if($file->getClientOriginalExtension() === 'pdf'){
+            $imagick = new \Imagick(); // Create a new Imagick object
+            $imagick->readImage($file->getPathname() . '[0]'); // Read the image file, using only the first page
+            $imagick->setImageFormat('png'); // Set the output image format to JPEG
+            $imagick->setImageType(\Imagick::IMGTYPE_GRAYSCALE);
+            $imagick->despeckleImage();
+            $imagick->unsharpMaskImage(0, 0.5, 1, 0);
+            $imagick->contrastImage(1);
+            $imagePath = storage_path("app/public/{$request->receipt}.png"); // Set the path for the output image
+            $imagick->writeImage($imagePath); // Write the modified image to the specified path
+            $text = str_replace(' ', '', (new TesseractOCR($imagePath))->run());
+            // return $text;
+            // $imagick->brightnessContrastImage(15, 15); // Adjust the brightness and contrast of the image
+            // $imagick->setImageType(\Imagick::IMGTYPE_GRAYSCALE); // Convert the image to grayscale
+
+            if(stripos($text, $request->receipt) === false){
+                return 'Input Receipt No. does not match with the uploaded document.';
+            }
+            else{
+                // $filename = $request->receipt.'.'.$fileExtension;
+                // $file->storeAs('public/receipt',$filename);
+
+                // Receipt::create([
+                //     'receipt' => $request->receipt,
+                //     'pdf_file' => $filename
+                // ]);
+                return 'success';
+            }
+        }
+        else if (in_array(strtolower($file->getClientOriginalExtension()), ['jpg', 'jpeg', 'png', 'gif'])) {
+            $x = 0;
+            $imagick = new \Imagick();
+            $imagick->readImage($file->getPathname() . '[0]');
+            $imagick->unsharpMaskImage(0, 0.5, 1, 0.05);
+            $imagePath = $file->getPathname();
+            $imagick->writeImage($imagePath);
+            $text = (new TesseractOCR($imagePath))->run();
+
+            if(stripos(str_replace(' ', '', $text), $request->receipt) !== false){
+                $x++;
+            }
+
+            $imagick = new \Imagick();
+            $imagick->readImage($file->getPathname() . '[0]');
+            $imagePath = $file->getPathname();
+            $imagick->writeImage($imagePath);
+            $text = (new TesseractOCR($imagePath))->run();
+            // return str_replace(' ', '', $text);
+
+            if(stripos(str_replace(' ', '', $text), $request->receipt) !== false){
+                $x++;
+            }
+
+            if($x == 0){
+                return str_replace(' ', '', $text);
+                return 'Input Receipt No. does not match with the uploaded document.';
+            }
+            return 'success';
+        }
+        else{
+            return 'Invalid file format';
+        }
+    }
 }

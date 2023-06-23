@@ -572,17 +572,6 @@ $('#btnUpdate').on('click',function(){
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
 
-                        // setTimeout(() => {
-                        //     $.ajax({
-                        //         url:"/summary_reload",
-                        //         type:"get",
-                        //         async: false,
-                        //         success:function(summary_reload){
-                        //             $('#summary_reload').html(summary_reload)
-                        //         }
-                        //     });
-                        // }, 0);
-
                         setTimeout(() => {
                             if(children_change == 'CHANGED'){
                                 $('.children_table_orig').dataTable().fnDestroy();

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddCoverImageToEmployees extends Migration
+class CreateReceiptsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddCoverImageToEmployees extends Migration
      */
     public function up()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->string('cover_image');
+        Schema::create('receipts', function (Blueprint $table) {
+            $table->id();
+            $table->string('receipt');
+            $table->string('pdf_file');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddCoverImageToEmployees extends Migration
      */
     public function down()
     {
-        Schema::table('employees', function (Blueprint $table) {
-            $table->dropColumn('cover_image');
-        });
+        Schema::dropIfExists('receipts');
     }
 }

@@ -97,9 +97,6 @@ $(document).ready(function(){
             {
                 data: 'employee_number',
                 "render": function(data, type, row){
-                    if(row.employee_number == null || row.employee_number == ''){
-                        return '';
-                    }
                     return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
                 }
             },
