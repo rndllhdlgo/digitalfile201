@@ -57,89 +57,50 @@ class UpdateController extends Controller
         }
         $employee = PersonalInformationTable::find($request->id);
         $employee->employee_image = $request->employee_image == '' ? '' : $request->employee_image;
-        $first_name_orig = PersonalInformationTable::where('id', $request->id)->first()->first_name;
-        $middle_name_orig = PersonalInformationTable::where('id', $request->id)->first()->middle_name;
-        $last_name_orig = PersonalInformationTable::where('id', $request->id)->first()->last_name;
-        $suffix_orig = PersonalInformationTable::where('id', $request->id)->first()->suffix;
-        $nickname_orig = PersonalInformationTable::where('id', $request->id)->first()->nickname;
-        $birthday_orig = PersonalInformationTable::where('id', $request->id)->first()->birthday;
-        $gender_orig = PersonalInformationTable::where('id', $request->id)->first()->gender;
-        $address_orig = PersonalInformationTable::where('id', $request->id)->first()->address;
-        $ownership_orig = PersonalInformationTable::where('id', $request->id)->first()->ownership;
-        $province_orig = PersonalInformationTable::where('id', $request->id)->first()->province;
-        $city_orig = PersonalInformationTable::where('id', $request->id)->first()->city;
-        $region_orig = PersonalInformationTable::where('id', $request->id)->first()->region;
-        $height_orig = PersonalInformationTable::where('id', $request->id)->first()->height;
-        $weight_orig = PersonalInformationTable::where('id', $request->id)->first()->weight;
-        $religion_orig = PersonalInformationTable::where('id', $request->id)->first()->religion;
-        $civil_status_orig = PersonalInformationTable::where('id', $request->id)->first()->civil_status;
-        $email_address_orig = PersonalInformationTable::where('id', $request->id)->first()->email_address;
-        $telephone_number_orig = PersonalInformationTable::where('id', $request->id)->first()->telephone_number;
-        $cellphone_number_orig = PersonalInformationTable::where('id', $request->id)->first()->cellphone_number;
-        $spouse_name_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_name;
-        $spouse_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_contact_number;
-        $spouse_profession_orig = PersonalInformationTable::where('id', $request->id)->first()->spouse_profession;
-        $father_name_orig = PersonalInformationTable::where('id', $request->id)->first()->father_name;
-        $father_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->father_contact_number;
-        $father_profession_orig = PersonalInformationTable::where('id', $request->id)->first()->father_profession;
-        $mother_name_orig = PersonalInformationTable::where('id', $request->id)->first()->mother_name;
-        $mother_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->mother_contact_number;
-        $mother_profession_orig = PersonalInformationTable::where('id', $request->id)->first()->mother_profession;
-        $emergency_contact_name_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_name;
-        $emergency_contact_relationship_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_relationship;
-        $emergency_contact_number_orig = PersonalInformationTable::where('id', $request->id)->first()->emergency_contact_number;
-        $blood_type_orig = PersonalInformationTable::where('id', $request->id)->first()->blood_type;
+        $data = PersonalInformationTable::where('id', $request->id)->select('first_name', 'middle_name', 'last_name', 'suffix', 'nickname', 'birthday', 'gender', 'address', 'ownership', 'province', 'city', 'region', 'blood_type', 'height', 'weight', 'religion', 'civil_status', 'email_address', 'telephone_number', 'cellphone_number', 'spouse_name', 'spouse_contact_number', 'spouse_profession', 'father_name', 'father_contact_number', 'father_profession', 'mother_name', 'mother_contact_number', 'mother_profession', 'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number')->first();
 
-        if($request->blood_type != $blood_type_orig){
-            $blood_type_new = $request->blood_type;
-            $blood_type_change = "[BLOOD TYPE: FROM '$blood_type_orig' TO '$blood_type_new']";
-        }
-        else{
-            $blood_type_change = NULL;
-        }
-
-        if($request->first_name != $first_name_orig){
+        if($request->first_name != $data->first_name){
             $first_name_new = strtoupper($request->first_name);
-            $first_name_change = "[FIRST NAME: FROM '$first_name_orig' TO '$first_name_new']";
+            $first_name_change = "[FIRST NAME: FROM '$data->first_name' TO '$first_name_new']";
         }
         else{
             $first_name_change = NULL;
         }
 
-        if($request->middle_name != $middle_name_orig){
+        if($request->middle_name != $data->middle_name){
             $middle_name_new = strtoupper($request->middle_name);
-            $middle_name_change = "[MIDDLE NAME: FROM '$middle_name_orig' TO '$middle_name_new']";
+            $middle_name_change = "[MIDDLE NAME: FROM '$data->middle_name' TO '$middle_name_new']";
         }
         else{
             $middle_name_change = NULL;
         }
 
-        if($request->last_name != $last_name_orig){
+        if($request->last_name != $data->last_name){
             $last_name_new = strtoupper($request->last_name);
-            $last_name_change = "[LAST NAME: FROM '$last_name_orig' TO '$last_name_new']";
+            $last_name_change = "[LAST NAME: FROM '$data->last_name' TO '$last_name_new']";
         }
         else{
             $last_name_change = NULL;
         }
 
-        if($request->suffix != $suffix_orig){
+        if($request->suffix != $data->suffix){
             $suffix_new = strtoupper($request->suffix);
-            $suffix_change = "[SUFFIX: FROM '$suffix_orig' TO '$suffix_new']";
+            $suffix_change = "[SUFFIX: FROM '$data->suffix' TO '$suffix_new']";
         }
         else{
             $suffix_change = NULL;
         }
 
-        if($request->nickname != $nickname_orig){
+        if($request->nickname != $data->nickname){
             $nickname_new = strtoupper($request->nickname);
-            $nickname_change = "[NICKNAME: FROM '$nickname_orig' TO '$nickname_new']";
+            $nickname_change = "[NICKNAME: FROM '$data->nickname' TO '$nickname_new']";
         }
         else{
             $nickname_change = NULL;
         }
 
-        if($request->birthday != $birthday_orig){
-            $birthday1 = Carbon::parse($birthday_orig)->format('F d, Y');
+        if($request->birthday != $data->birthday){
+            $birthday1 = Carbon::parse($data->birthday)->format('F d, Y');
             $birthday2 = Carbon::parse($request->birthday)->format('F d, Y');
             $birthday_change = "[BIRTHDAY: FROM '$birthday1' TO '$birthday2']";
         }
@@ -147,226 +108,234 @@ class UpdateController extends Controller
             $birthday_change = NULL;
         }
 
-        if($request->gender != $gender_orig){
+        if($request->gender != $data->gender){
             $gender_new = $request->gender;
-            $gender_orig = $gender_orig ? $gender_orig : 'N/A';
-            $gender_change = "[GENDER: FROM '$gender_orig' TO '$gender_new']";
+            $data->gender = $data->gender ? $data->gender : 'N/A';
+            $gender_change = "[GENDER: FROM '$data->gender' TO '$gender_new']";
         }
         else{
             $gender_change = NULL;
         }
 
-        if($request->address != $address_orig){
+        if($request->address != $data->address){
             $address_new = $request->address;
-            $address_orig = $address_orig ? $address_orig : 'N/A';
-            $address_change = "[ADDRESS: FROM '$address_orig' TO '$address_new']";
+            $data->address = $data->address ? $data->address : 'N/A';
+            $address_change = "[ADDRESS: FROM '$data->address' TO '$address_new']";
         }
         else{
             $address_change = NULL;
         }
 
-        if($request->ownership != $ownership_orig){
+        if($request->ownership != $data->ownership){
             $ownership_new = $request->ownership;
-            $ownership_orig = $ownership_orig ? $ownership_orig : 'N/A';
-            $ownership_change = "[OWNERSHIP: FROM '$ownership_orig' TO '$ownership_new']";
+            $data->ownership = $data->ownership ? $data->ownership : 'N/A';
+            $ownership_change = "[OWNERSHIP: FROM '$data->ownership' TO '$ownership_new']";
         }
         else{
             $ownership_change = NULL;
         }
 
-        if($request->province != $province_orig){
+        if($request->province != $data->province){
             $province_new = $request->province;
-            $province_orig = $province_orig ? $province_orig : 'N/A';
-            $province_change = "[PROVINCE: FROM '$province_orig' TO '$province_new']";
+            $data->province = $data->province ? $data->province : 'N/A';
+            $province_change = "[PROVINCE: FROM '$data->province' TO '$province_new']";
         }
         else{
             $province_change = NULL;
         }
 
-        if($request->city != $city_orig){
+        if($request->city != $data->city){
             $city_new = $request->city;
-            $city_orig = $city_orig ? $city_orig : 'N/A';
-            $city_change = "[CITY: FROM '$city_orig' TO '$city_new']";
+            $data->city = $data->city ? $data->city : 'N/A';
+            $city_change = "[CITY: FROM '$data->city' TO '$city_new']";
         }
         else{
             $city_change = NULL;
         }
 
-        if($request->region != $region_orig){
+        if($request->region != $data->region){
             $region_new = $request->region;
-            $region_orig = $region_orig ? $region_orig : 'N/A';
-            $region_change = "[REGION: FROM '$region_orig' TO '$region_new']";
+            $data->region = $data->region ? $data->region : 'N/A';
+            $region_change = "[REGION: FROM '$data->region' TO '$region_new']";
         }
         else{
             $region_change = NULL;
         }
 
-        if($request->height != $height_orig){
+        if($request->blood_type != $data->blood_type){
+            $blood_type_new = $request->blood_type;
+            $blood_type_change = "[BLOOD TYPE: FROM '$data->blood_type' TO '$blood_type_new']";
+        }
+        else{
+            $blood_type_change = NULL;
+        }
+
+        if($request->height != $data->height){
             $height_new = $request->height;
-            $height_orig = $height_orig ? $height_orig : 'N/A';
-            $height_change = "[HEIGHT: FROM '$height_orig' TO '$height_new']";
+            $data->height = $data->height ? $data->height : 'N/A';
+            $height_change = "[HEIGHT: FROM '$data->height' TO '$height_new']";
         }
         else{
             $height_change = NULL;
         }
 
-        if($request->weight != $weight_orig){
+        if($request->weight != $data->weight){
             $weight_new = $request->weight;
-            $weight_orig = $weight_orig ? $weight_orig : 'N/A';
-            $weight_change = "[WEIGHT: FROM '$weight_orig' TO '$weight_new']";
+            $data->weight = $data->weight ? $data->weight : 'N/A';
+            $weight_change = "[WEIGHT: FROM '$data->weight' TO '$weight_new']";
         }
         else{
             $weight_change = NULL;
         }
 
-        if($request->religion != $religion_orig){
+        if($request->religion != $data->religion){
             $religion_new = strtoupper($request->religion);
-            $religion_orig = $religion_orig ? $religion_orig : 'N/A';
-            $religion_change = "[RELIGION: FROM '$religion_orig' TO '$religion_new']";
+            $data->religion = $data->religion ? $data->religion : 'N/A';
+            $religion_change = "[RELIGION: FROM '$data->religion' TO '$religion_new']";
         }
         else{
             $religion_change = NULL;
         }
 
-        if($request->civil_status != $civil_status_orig){
+        if($request->civil_status != $data->civil_status){
             $civil_status_new = $request->civil_status;
-            $civil_status_orig = $civil_status_orig ? $civil_status_orig : 'N/A';
-            $civil_status_change = "[CIVIL STATUS: FROM '$civil_status_orig' TO '$civil_status_new']";
+            $data->civil_status = $data->civil_status ? $data->civil_status : 'N/A';
+            $civil_status_change = "[CIVIL STATUS: FROM '$data->civil_status' TO '$civil_status_new']";
         }
         else{
             $civil_status_change = NULL;
         }
 
-        if($request->email_address != $email_address_orig){
+        if($request->email_address != $data->email_address){
             $email_address_new = $request->email_address;
-            $email_address_orig = $email_address_orig ? $email_address_orig : 'N/A';
-            $email_address_change = "[EMAIL ADDRESS: FROM '$email_address_orig' TO '$email_address_new']";
+            $data->email_address = $data->email_address ? $data->email_address : 'N/A';
+            $email_address_change = "[EMAIL ADDRESS: FROM '$data->email_address' TO '$email_address_new']";
         }
         else{
             $email_address_change = NULL;
         }
 
-        if($request->telephone_number != $telephone_number_orig){
+        if($request->telephone_number != $data->telephone_number){
             $telephone_number_new = $request->telephone_number;
-            $telephone_number_orig = $telephone_number_orig ? $telephone_number_orig : 'N/A';
-            $telephone_number_change = "[TELEPHONE NUMBER: FROM '$telephone_number_orig' TO '$telephone_number_new']";
+            $data->telephone_number = $data->telephone_number ? $data->telephone_number : 'N/A';
+            $telephone_number_change = "[TELEPHONE NUMBER: FROM '$data->telephone_number' TO '$telephone_number_new']";
         }
         else{
             $telephone_number_change = NULL;
         }
 
-        if($request->cellphone_number != $cellphone_number_orig){
+        if($request->cellphone_number != $data->cellphone_number){
             $cellphone_number_new = $request->cellphone_number;
-            $cellphone_number_orig = $cellphone_number_orig ? $cellphone_number_orig : 'N/A';
-            $cellphone_number_change = "[CELLPHONE NUMBER: FROM '$cellphone_number_orig' TO '$cellphone_number_new']";
+            $data->cellphone_number = $data->cellphone_number ? $data->cellphone_number : 'N/A';
+            $cellphone_number_change = "[CELLPHONE NUMBER: FROM '$data->cellphone_number' TO '$cellphone_number_new']";
         }
         else{
             $cellphone_number_change = NULL;
         }
 
-        if($request->spouse_name != $spouse_name_orig){
+        if($request->spouse_name != $data->spouse_name){
             $spouse_name_new = strtoupper($request->spouse_name);
-            $spouse_name_orig = $spouse_name_orig ? $spouse_name_orig : 'N/A';
-            $spouse_name_change = "[SPOUSE NAME: FROM '$spouse_name_orig' TO '$spouse_name_new']";
+            $data->spouse_name = $data->spouse_name ? $data->spouse_name : 'N/A';
+            $spouse_name_change = "[SPOUSE NAME: FROM '$data->spouse_name' TO '$spouse_name_new']";
         }
         else{
             $spouse_name_change = NULL;
         }
 
-        if($request->spouse_contact_number != $spouse_contact_number_orig){
+        if($request->spouse_contact_number != $data->spouse_contact_number){
             $spouse_contact_number_new = $request->spouse_contact_number;
-            $spouse_contact_number_orig = $spouse_contact_number_orig ? $spouse_contact_number_orig : 'N/A';
-            $spouse_contact_number_change = "[SPOUSE CONTACT NUMBER: FROM '$spouse_contact_number_orig' TO '$spouse_contact_number_new']";
+            $data->spouse_contact_number = $data->spouse_contact_number ? $data->spouse_contact_number : 'N/A';
+            $spouse_contact_number_change = "[SPOUSE CONTACT NUMBER: FROM '$data->spouse_contact_number' TO '$spouse_contact_number_new']";
         }
         else{
             $spouse_contact_number_change = NULL;
         }
 
-        if($request->spouse_profession != $spouse_profession_orig){
+        if($request->spouse_profession != $data->spouse_profession){
             $spouse_profession_new = strtoupper($request->spouse_profession);
-            $spouse_profession_orig = $spouse_profession_orig ? $spouse_profession_orig : 'N/A';
-            $spouse_profession_change = "[SPOUSE PROFESSION: FROM '$spouse_profession_orig' TO '$spouse_profession_new']";
+            $data->spouse_profession = $data->spouse_profession ? $data->spouse_profession : 'N/A';
+            $spouse_profession_change = "[SPOUSE PROFESSION: FROM '$data->spouse_profession' TO '$spouse_profession_new']";
         }
         else{
             $spouse_profession_change = NULL;
         }
 
-        if($request->father_name != $father_name_orig){
+        if($request->father_name != $data->father_name){
             $father_name_new = strtoupper($request->father_name);
-            $father_name_orig = $father_name_orig ? $father_name_orig : 'N/A';
-            $father_name_change = "[FATHER'S NAME: FROM '$father_name_orig' TO '$father_name_new']";
+            $data->father_name = $data->father_name ? $data->father_name : 'N/A';
+            $father_name_change = "[FATHER'S NAME: FROM '$data->father_name' TO '$father_name_new']";
         }
         else{
             $father_name_change = NULL;
         }
 
-        if($request->father_contact_number != $father_contact_number_orig){
+        if($request->father_contact_number != $data->father_contact_number){
             $father_contact_number_new = $request->father_contact_number;
-            $father_contact_number_orig = $father_contact_number_orig ? $father_contact_number_orig : 'N/A';
-            $father_contact_number_change = "[FATHER'S CONTACT NUMBER: FROM '$father_contact_number_orig' TO '$father_contact_number_new']";
+            $data->father_contact_number = $data->father_contact_number ? $data->father_contact_number : 'N/A';
+            $father_contact_number_change = "[FATHER'S CONTACT NUMBER: FROM '$data->father_contact_number' TO '$father_contact_number_new']";
         }
         else{
             $father_contact_number_change = NULL;
         }
 
-        if($request->father_profession != $father_profession_orig){
+        if($request->father_profession != $data->father_profession){
             $father_profession_new = strtoupper($request->father_profession);
-            $father_profession_orig = $father_profession_orig ? $father_profession_orig : 'N/A';
-            $father_profession_change = "[FATHER'S PROFESSION: FROM '$father_profession_orig' TO '$father_profession_new']";
+            $data->father_profession = $data->father_profession ? $data->father_profession : 'N/A';
+            $father_profession_change = "[FATHER'S PROFESSION: FROM '$data->father_profession' TO '$father_profession_new']";
         }
         else{
             $father_profession_change = NULL;
         }
 
-        if($request->mother_name != $mother_name_orig){
+        if($request->mother_name != $data->mother_name){
             $mother_name_new = strtoupper($request->mother_name);
-            $mother_name_orig = $mother_name_orig ? $mother_name_orig : 'N/A';
-            $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$mother_name_orig' TO '$mother_name_new']";
+            $data->mother_name = $data->mother_name ? $data->mother_name : 'N/A';
+            $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$data->mother_name' TO '$mother_name_new']";
         }
         else{
             $mother_name_change = NULL;
         }
 
-        if($request->mother_contact_number != $mother_contact_number_orig){
+        if($request->mother_contact_number != $data->mother_contact_number){
             $mother_contact_number_new = $request->mother_contact_number;
-            $mother_contact_number_orig = $mother_contact_number_orig ? $mother_contact_number_orig : 'N/A';
-            $mother_contact_number_change = "[MOTHER'S CONTACT NUMBER: FROM '$mother_contact_number_orig' TO '$mother_contact_number_new']";
+            $data->mother_contact_number = $data->mother_contact_number ? $data->mother_contact_number : 'N/A';
+            $mother_contact_number_change = "[MOTHER'S CONTACT NUMBER: FROM '$data->mother_contact_number' TO '$mother_contact_number_new']";
         }
         else{
             $mother_contact_number_change = NULL;
         }
 
-        if($request->mother_profession != $mother_profession_orig){
+        if($request->mother_profession != $data->mother_profession){
             $mother_profession_new = strtoupper($request->mother_profession);
-            $mother_profession_orig = $mother_profession_orig ? $mother_profession_orig : 'N/A';
-            $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$mother_profession_orig' TO '$mother_profession_new']";
+            $data->mother_profession = $data->mother_profession ? $data->mother_profession : 'N/A';
+            $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$data->mother_profession' TO '$mother_profession_new']";
         }
         else{
             $mother_profession_change = NULL;
         }
 
-        if($request->emergency_contact_name != $emergency_contact_name_orig){
+        if($request->emergency_contact_name != $data->emergency_contact_name){
             $emergency_contact_name_new = strtoupper($request->emergency_contact_name);
-            $emergency_contact_name_orig = $emergency_contact_name_orig ? $emergency_contact_name_orig : 'N/A';
-            $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$emergency_contact_name_orig' TO '$emergency_contact_name_new']";
+            $data->emergency_contact_name = $data->emergency_contact_name ? $data->emergency_contact_name : 'N/A';
+            $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$data->emergency_contact_name' TO '$emergency_contact_name_new']";
         }
         else{
             $emergency_contact_name_change = NULL;
         }
 
-        if($request->emergency_contact_relationship != $emergency_contact_relationship_orig){
+        if($request->emergency_contact_relationship != $data->emergency_contact_relationship){
             $emergency_contact_relationship_new = strtoupper($request->emergency_contact_relationship);
-            $emergency_contact_relationship_orig = $emergency_contact_relationship_orig ? $emergency_contact_relationship_orig : 'N/A';
-            $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$emergency_contact_relationship_orig' TO '$emergency_contact_relationship_new']";
+            $data->emergency_contact_relationship = $data->emergency_contact_relationship ? $data->emergency_contact_relationship : 'N/A';
+            $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$data->emergency_contact_relationship' TO '$emergency_contact_relationship_new']";
         }
         else{
             $emergency_contact_relationship_change = NULL;
         }
 
-        if($request->emergency_contact_number != $emergency_contact_number_orig){
+        if($request->emergency_contact_number != $data->emergency_contact_number){
             $emergency_contact_number_new = $request->emergency_contact_number;
-            $emergency_contact_number_orig = $emergency_contact_number_orig ? $emergency_contact_number_orig : 'N/A';
-            $emergency_contact_number_change = "[EMERGENCY CONTACT NUMBER: FROM '$emergency_contact_number_orig' TO '$emergency_contact_number_new']";
+            $data->emergency_contact_number = $data->emergency_contact_number ? $data->emergency_contact_number : 'N/A';
+            $emergency_contact_number_change = "[EMERGENCY CONTACT NUMBER: FROM '$data->emergency_contact_number' TO '$emergency_contact_number_new']";
         }
         else{
             $emergency_contact_number_change = NULL;
@@ -416,38 +385,38 @@ class UpdateController extends Controller
                 $id = $employee->id;
 
                 if(
-                    $request->first_name != $first_name_orig ||
-                    $request->middle_name != $middle_name_orig ||
-                    $request->last_name != $last_name_orig ||
-                    $request->suffix != $suffix_orig ||
-                    $request->nickname != $nickname_orig ||
-                    $request->birthday != $birthday_orig ||
-                    $request->gender != $gender_orig ||
-                    $request->address != $address_orig ||
-                    $request->ownership != $ownership_orig ||
-                    $request->province != $province_orig ||
-                    $request->city != $city_orig ||
-                    $request->region != $region_orig ||
-                    $request->height != $height_orig ||
-                    $request->weight != $weight_orig ||
-                    $request->religion != $religion_orig ||
-                    $request->civil_status != $civil_status_orig ||
-                    $request->email_address != $email_address_orig ||
-                    $request->telephone_number != $telephone_number_orig ||
-                    $request->cellphone_number != $cellphone_number_orig ||
-                    $request->father_name != $father_name_orig ||
-                    $request->father_contact_number != $father_contact_number_orig ||
-                    $request->father_profession != $father_profession_orig ||
-                    $request->spouse_name != $spouse_name_orig ||
-                    $request->spouse_contact_number != $spouse_contact_number_orig ||
-                    $request->spouse_profession != $spouse_profession_orig ||
-                    $request->mother_name != $mother_name_orig ||
-                    $request->mother_contact_number != $mother_contact_number_orig ||
-                    $request->mother_profession != $mother_profession_orig ||
-                    $request->emergency_contact_name != $emergency_contact_name_orig ||
-                    $request->emergency_contact_relationship != $emergency_contact_relationship_orig ||
-                    $request->emergency_contact_number != $emergency_contact_number_orig ||
-                    $request->blood_type != $blood_type_orig ||
+                    $request->first_name != $data->first_name ||
+                    $request->middle_name != $data->middle_name ||
+                    $request->last_name != $data->last_name ||
+                    $request->suffix != $data->suffix ||
+                    $request->nickname != $data->nickname ||
+                    $request->birthday != $data->birthday ||
+                    $request->gender != $data->gender ||
+                    $request->address != $data->address ||
+                    $request->ownership != $data->ownership ||
+                    $request->province != $data->province ||
+                    $request->city != $data->city ||
+                    $request->region != $data->region ||
+                    $request->blood_type != $data->blood_type ||
+                    $request->height != $data->height ||
+                    $request->weight != $data->weight ||
+                    $request->religion != $data->religion ||
+                    $request->civil_status != $data->civil_status ||
+                    $request->email_address != $data->email_address ||
+                    $request->telephone_number != $data->telephone_number ||
+                    $request->cellphone_number != $data->cellphone_number ||
+                    $request->father_name != $data->father_name ||
+                    $request->father_contact_number != $data->father_contact_number ||
+                    $request->father_profession != $data->father_profession ||
+                    $request->spouse_name != $data->spouse_name ||
+                    $request->spouse_contact_number != $data->spouse_contact_number ||
+                    $request->spouse_profession != $data->spouse_profession ||
+                    $request->mother_name != $data->mother_name ||
+                    $request->mother_contact_number != $data->mother_contact_number ||
+                    $request->mother_profession != $data->mother_profession ||
+                    $request->emergency_contact_name != $data->emergency_contact_name ||
+                    $request->emergency_contact_relationship != $data->emergency_contact_relationship ||
+                    $request->emergency_contact_number != $data->emergency_contact_number ||
                     $request->employee_image_change == 'CHANGED'
                 ){
                     $employee_logs = new EmployeeLogs;
@@ -466,6 +435,7 @@ class UpdateController extends Controller
                                             $province_change
                                             $city_change
                                             $region_change
+                                            $blood_type_change
                                             $height_change
                                             $weight_change
                                             $religion_change
@@ -485,14 +455,13 @@ class UpdateController extends Controller
                                             $emergency_contact_name_change
                                             $emergency_contact_relationship_change
                                             $emergency_contact_number_change
-                                            $blood_type_change
                                             $employee_image_update
                                             ";
                     $employee_logs->save();
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($first_name_orig $middle_name_orig $last_name_orig)
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($data->first_name $data->middle_name $data->last_name)
                                         $first_name_change
                                         $middle_name_change
                                         $last_name_change
@@ -505,6 +474,7 @@ class UpdateController extends Controller
                                         $province_change
                                         $city_change
                                         $region_change
+                                        $blood_type_change
                                         $height_change
                                         $weight_change
                                         $religion_change
@@ -524,7 +494,6 @@ class UpdateController extends Controller
                                         $emergency_contact_name_change
                                         $emergency_contact_relationship_change
                                         $emergency_contact_number_change
-                                        $blood_type_change
                                         $employee_image_update
                                         ";
                     $userlogs->save();
