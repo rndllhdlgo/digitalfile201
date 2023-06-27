@@ -12,6 +12,7 @@ use App\Http\Controllers\DeleteController;
 use App\Http\Controllers\DataController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\PdfController;
+use App\Http\Controllers\SendMailController;
 
 // use Mail;
 // Route::get('/testmail', function () {
@@ -143,6 +144,8 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/save_pdf', 'TryController@save_pdf');
     Route::any('/receipt', 'TryController@receipt');
     Route::any('/save_receipt', 'TryController@save_receipt');
+    Route::any('/sendEmail', 'SendMailController@sendEmail');
+    Route::any('/email', 'SendMailController@email');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');
