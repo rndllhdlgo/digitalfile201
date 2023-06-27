@@ -4,6 +4,7 @@ update-alternatives --config php - Update PHP version
 php artisan storage:link - To link storage to public folder
 php artisan make:controller ControllerName --resource
 php artisan cache:clear - The /var/www/html/digital201/bootstrap/cache directory must be present and writable.
+php artisan config:clear
 php artisan make:model ModelName -m
 php artisan migrate
 php artisan make:middleware MiddlewareName

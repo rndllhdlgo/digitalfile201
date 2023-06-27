@@ -20,8 +20,9 @@ use App\Http\Controllers\PdfController;
 
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
-Route::get('/logout',[LoginController::class,'logout']);
-Route::middleware(['session'])->group(function(){
+Route::middleware(['session','check_device'])->group(function(){
+    Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+    Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/', 'HomeController@index');
     Route::get('/org', 'HomeController@org');
     Route::get('/index/data','HomeController@index_data');
