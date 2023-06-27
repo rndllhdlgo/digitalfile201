@@ -15,7 +15,7 @@ use App\Http\Controllers\PdfController;
 
 // use Mail;
 // Route::get('/testmail', function () {
-//     return Mail::raw('Hello World!', function($msg) {$msg->to('emorej046@gmail.com')->subject('Test Email'); });
+//     return Mail::raw('Hello World!', function($msg) {$msg->to('rendellhidalgo11@gmail.com')->subject('Test Email'); });
 // });
 
 //Home Controller

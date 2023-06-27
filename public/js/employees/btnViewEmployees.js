@@ -973,7 +973,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#barangay_clearance_filename').val(value.barangay_clearance_file);
                     $('.barangay_clearance_div').hide();
                     $('.barangay_clearance_span').show();
-                    $('.barangay_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
                     $('#barangay_clearance_file').removeClass('required_field');
@@ -983,7 +988,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#birthcertificate_filename').val(value.birthcertificate_file);
                     $('.birthcertificate_div').hide();
                     $('.birthcertificate_span').show();
-                    $('.birthcertificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.birthcertificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.birthcertificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
                     $('#birthcertificate_file').removeClass('required_field');
@@ -993,7 +1003,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#diploma_filename').val(value.diploma_file);
                     $('.diploma_div').hide();
                     $('.diploma_span').show();
-                    $('.diploma_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.diploma_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.diploma_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#diploma_view').hide();
                     $('#diploma_delete_button').show();
                 }
@@ -1002,7 +1017,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#medical_certificate_filename').val(value.medical_certificate_file);
                     $('.medical_certificate_div').hide();
                     $('.medical_certificate_span').show();
-                    $('.medical_certificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.medical_certificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.medical_certificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
                     $('#medical_certificate_file').removeClass('required_field');
@@ -1012,7 +1032,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#nbi_clearance_filename').val(value.nbi_clearance_file);
                     $('.nbi_clearance_div').hide();
                     $('.nbi_clearance_span').show();
-                    $('.nbi_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#nbi_clearance_view').hide();
                     $('#nbi_clearance_delete_button').show();
                 }
@@ -1021,7 +1046,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#pag_ibig_filename').val(value.pag_ibig_file);
                     $('.pag_ibig_div').hide();
                     $('.pag_ibig_span').show();
-                    $('.pag_ibig_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.pag_ibig_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.pag_ibig_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
                     $('#pag_ibig_file').removeClass('required_field');
@@ -1031,7 +1061,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#philhealth_filename').val(value.philhealth_file);
                     $('.philhealth_div').hide();
                     $('.philhealth_span').show();
-                    $('.philhealth_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.philhealth_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.philhealth_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#philhealth_view').hide();
                     $('#philhealth_delete_button').show();
                     $('#philhealth_file').removeClass('required_field');
@@ -1041,7 +1076,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#police_clearance_filename').val(value.police_clearance_file);
                     $('.police_clearance_div').hide();
                     $('.police_clearance_span').show();
-                    $('.police_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.police_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.police_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#police_clearance_view').hide();
                     $('#police_clearance_delete_button').show();
                     $('#police_clearance_file').removeClass('required_field');
@@ -1051,7 +1091,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#resume_filename').val(value.resume_file);
                     $('.resume_div').hide();
                     $('.resume_span').show();
-                    $('.resume_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.resume_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.resume_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#resume_view').hide();
                     $('#resume_delete_button').show();
                     $('#resume_file').removeClass('required_field');
@@ -1061,7 +1106,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#sss_filename').val(value.sss_file);
                     $('.sss_div').hide();
                     $('.sss_span').show();
-                    $('.sss_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.sss_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.sss_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#sss_view').hide();
                     $('#sss_delete_button').show();
                     $('#sss_file').removeClass('required_field');
@@ -1071,7 +1121,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#transcript_of_records_filename').val(value.transcript_of_records_file);
                     $('.transcript_of_records_div').hide();
                     $('.transcript_of_records_span').show();
-                    $('.transcript_of_records_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                    if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                    }
+                    else{
+                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                    }
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
