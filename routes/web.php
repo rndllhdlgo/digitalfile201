@@ -143,9 +143,12 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/pdf/image', 'TryController@pdf_blade');
     Route::any('/save_pdf', 'TryController@save_pdf');
     Route::any('/receipt', 'TryController@receipt');
+    Route::any('/splitPdf', 'TryController@splitPdf');
     Route::any('/save_receipt', 'TryController@save_receipt');
     Route::any('/sendEmail', 'SendMailController@sendEmail');
     Route::any('/email', 'SendMailController@email');
+    Route::any('/responsive', 'TryController@responsive');
+    Route::any('/imageToPdf', 'TryController@imageToPdf');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');

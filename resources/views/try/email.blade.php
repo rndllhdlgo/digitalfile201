@@ -4,7 +4,7 @@
     <title>Test Email</title>
 </head>
 <body>
-    <h1>Hello!</h1>
     <p>{{ $content }}</p>
+    <p>{{ $email }}</p>
 </body>
 </html>
