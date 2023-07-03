@@ -24,7 +24,7 @@
                                 <span class="barangay_clearance_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button barangay_clearance_div">
                                     <label class="input-group-text barangay_clearance_label text-white" for="barangay_clearance_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control barangay_clearance_file input-file-text required_field" id="barangay_clearance_file"  onchange="barangayClearanceValidation(barangay_clearance_file)" accept=".pdf" name="barangay_clearance_file">
+                                    <input type="file" class="form-control barangay_clearance_file input-file-text required_field" id="barangay_clearance_file" name="barangay_clearance_file" onchange="fileValidation('barangay_clearance_file', 'barangay_clearance_preview', 'barangay_clearance_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -41,7 +41,7 @@
                                 <span class="birthcertificate_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button birthcertificate_div">
                                     <label class="input-group-text birthcertificate_label text-white" for="birthcertificate_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control birthcertificate_file input-file-text required_field" id="birthcertificate_file" name="birthcertificate_file" onchange="BirthCertificateValidation(birthcertificate_file)" accept=".pdf">
+                                    <input type="file" class="form-control birthcertificate_file input-file-text required_field" id="birthcertificate_file" name="birthcertificate_file" onchange="fileValidation('birthcertificate_file', 'birthcertificate_preview', 'birthcertificate_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -58,7 +58,7 @@
                                 <span class="diploma_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button diploma_div">
                                     <label class="input-group-text diploma_label text-white" for="diploma_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control diploma_file" id="diploma_file" onchange="diplomaValidation(diploma_file)" accept=".pdf" name="diploma_file" style="border-color:#0d1a80 !important;">
+                                    <input type="file" class="form-control diploma_file" id="diploma_file" name="diploma_file" onchange="fileValidation('diploma_file', 'diploma_preview', 'diploma_view')" accept=".pdf" style="border-color:#0d1a80 !important;">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -75,7 +75,7 @@
                                 <span class="medical_certificate_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button medical_certificate_div">
                                     <label class="input-group-text medical_certificate_label text-white" for="medical_certificate_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control medical_certificate_file input-file-text required_field" id="medical_certificate_file" onchange="medicalCertificateValidation(medical_certificate_file)" accept=".pdf" name="medical_certificate_file">
+                                    <input type="file" class="form-control medical_certificate_file input-file-text required_field" id="medical_certificate_file" name="medical_certificate_file" onchange="fileValidation('medical_certificate_file', 'medical_certificate_preview', 'medical_certificate_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -93,7 +93,7 @@
                                 <span class="nbi_clearance_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button nbi_clearance_div">
                                     <label class="input-group-text nbi_label text-white" for="nbi_clearance_file">CHOOSE FILE</label>
-                                    <input type="file" id="nbi_clearance_file" class="form-control nbi_clearance_file" name="nbi_clearance_file" onchange="nbiValidation(nbi_clearance_file)" accept=".pdf" name="nbi_clearance_file" style="border-color: #0d1a80 !important;">
+                                    <input type="file" id="nbi_clearance_file" class="form-control nbi_clearance_file" name="nbi_clearance_file" onchange="fileValidation('nbi_clearance_file', 'nbi_preview', 'nbi_clearance_view')" accept=".pdf" style="border-color: #0d1a80 !important;">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -110,11 +110,11 @@
                                 <span class="pag_ibig_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button pag_ibig_div">
                                     <label class="input-group-text pag_ibig_label text-white" for="pag_ibig_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control pag_ibig_file input-file-text required_field" id="pag_ibig_file" onchange="pagibigValidation(pag_ibig_file)" accept=".pdf" name="pag_ibig_file">
+                                    <input type="file" class="form-control pag_ibig_file input-file-text required_field" id="pag_ibig_file" name="pag_ibig_file" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="pag_ibig_delete_button"   class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="pag_ibig_delete_button" class="btn btn-success grow" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="pag_ibig_view"     class="btn btn-success grow btnDisabled btnView" title="VIEW" onclick="$('#pag_ibig_preview').click();" disabled><i class="fas fa-eye"></i></button>
                                 <img src="" alt=""    id="pag_ibig_preview"  class="hiddenDocumentPreview"data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
@@ -141,7 +141,7 @@
                                 <span class="philhealth_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button philhealth_div">
                                     <label class="input-group-text philhealth_label text-white" for="philhealth_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control philhealth_file input-file-text required_field" id="philhealth_file" onchange="philhealthValidation(philhealth_file)" accept=".pdf" name="philhealth_file">
+                                    <input type="file" class="form-control philhealth_file input-file-text required_field" id="philhealth_file" name="philhealth_file" onchange="fileValidation('philhealth_file', 'philhealth_preview', 'philhealth_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -159,7 +159,7 @@
                                 <span class="police_clearance_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button police_clearance_div">
                                     <label class="input-group-text police_clearance_label text-white" for="police_clearance_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control police_clearance_file input-file-text required_field" id="police_clearance_file" onchange="policeClearanceValidation(police_clearance_file)" accept=".pdf" name="police_clearance_file">
+                                    <input type="file" class="form-control police_clearance_file input-file-text required_field" id="police_clearance_file" name="police_clearance_file" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -177,7 +177,7 @@
                                 <span class="resume_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button resume_div">
                                     <label class="input-group-text resume_label text-white" for="resume_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control resume_file input-file-text required_field" id="resume_file" onchange="resumeValidation(resume_file)" accept=".pdf" name="resume_file">
+                                    <input type="file" class="form-control resume_file input-file-text required_field" id="resume_file" name="resume_file" onchange="fileValidation('resume_file', 'resume_preview', 'resume_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -195,7 +195,7 @@
                                 <span class="sss_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button sss_div">
                                     <label class="input-group-text sss_label text-white" for="sss_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control sss_file input-file-text required_field" id="sss_file" onchange="sssValidation(sss_file)" accept=".pdf" name="sss_file">
+                                    <input type="file" class="form-control sss_file input-file-text required_field" id="sss_file" name="sss_file" onchange="fileValidation('sss_file', 'sss_preview', 'sss_view')" accept=".pdf">
                                 </div>
                             </td>
                             <td class="text-center">
@@ -204,6 +204,7 @@
                                 <img src="" alt=""    id="sss_preview"  class="hiddenDocumentPreview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
                         </tr>
+
                         <tr>
                             <td><p class="file_title"><b>TRANSCRIPT OF RECORDS <br> (Optional)</b></p></td>
                             <td>
@@ -212,7 +213,7 @@
                                 <span class="transcript_of_records_span" style="display: none;"></span>
                                 <div class="input-group custom-file-button transcript_of_records_div">
                                     <label class="input-group-text tor_label text-white" for="tor_file">CHOOSE FILE</label>
-                                    <input type="file" class="form-control tor_file" id="tor_file" onchange="torValidation(tor_file)" accept=".pdf" name="tor_file" style="border-color: #0d1a80 !important;">
+                                    <input type="file" class="form-control tor_file" id="tor_file" name="tor_file" onchange="fileValidation('tor_file', 'tor_preview', 'tor_view')" accept=".pdf" style="border-color: #0d1a80 !important;">
                                 </div>
                             </td>
                             <td class="text-center">

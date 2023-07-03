@@ -1223,13 +1223,13 @@ class UpdateController extends Controller
                 $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'_'.$count.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name, $memoFileName);
 
-                $memo = new Memo;
-                $memo->employee_id = $request->employee_id;
-                $memo->memo_subject = strtoupper($request->memo_subject[$key]);
-                $memo->memo_date = $request->memo_date[$key];
-                $memo->memo_penalty = $request->memo_penalty[$key];
-                $memo->memo_file = $memoFileName;
-                $memo->save();
+                Memo::create([
+                    'employee_id' => $request->employee_id,
+                    'memo_subject' => strtoupper($request->memo_subject[$key]),
+                    'memo_date' => $request->memo_date[$key],
+                    'memo_penalty' => $request->memo_penalty[$key],
+                    'memo_file' => $memoFileName
+                ]);
             }
 
             if($request->memo_change == 'CHANGED'){
@@ -1240,11 +1240,11 @@ class UpdateController extends Controller
             }
 
             if($memo_update){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
-                $employee_logs->save();
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
@@ -1259,13 +1259,13 @@ class UpdateController extends Controller
                 $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'_'.$count.'.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
 
-                $evaluation = new Evaluation;
-                $evaluation->employee_id = $request->employee_id;
-                $evaluation->evaluation_reason = strtoupper($request->evaluation_reason[$key]);
-                $evaluation->evaluation_date = $request->evaluation_date[$key];
-                $evaluation->evaluation_evaluated_by = strtoupper($request->evaluation_evaluated_by[$key]);
-                $evaluation->evaluation_file = $evaluationFileName;
-                $evaluation->save();
+                $evaluation = Evaluation::create([
+                    'employee_id' => $request->employee_id,
+                    'evaluation_reason' => strtoupper($request->evaluation_reason[$key]),
+                    'evaluation_date' => $request->evaluation_date[$key],
+                    'evaluation_evaluated_by' => strtoupper($request->evaluation_evaluated_by[$key]),
+                    'evaluation_file' => $evaluationFileName
+                ]);
             }
 
             if($request->evaluation_change == 'CHANGED'){
@@ -1276,11 +1276,11 @@ class UpdateController extends Controller
             }
 
             if($evaluation_update){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
-                $employee_logs->save();
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
@@ -1295,12 +1295,12 @@ class UpdateController extends Controller
                 $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'_'.$count.'.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
 
-                $contracts = new Contract;
-                $contracts->employee_id = $request->employee_id;
-                $contracts->contracts_type = $request->contracts_type[$key];
-                $contracts->contracts_date = $request->contracts_date[$key];
-                $contracts->contracts_file = $contractsFileName;
-                $contracts->save();
+                $contracts = Contract::create([
+                    'employee_id' => $request->employee_id,
+                    'contracts_type' => $request->contracts_type[$key],
+                    'contracts_date' => $request->contracts_date[$key],
+                    'contracts_file' => $contractsFileName
+                ]);
             }
 
             if($request->contracts_change == 'CHANGED'){
@@ -1311,11 +1311,11 @@ class UpdateController extends Controller
             }
 
             if($contracts_update){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS $contracts_update";
-                $employee_logs->save();
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS $contracts_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
@@ -1330,12 +1330,12 @@ class UpdateController extends Controller
                 $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'_'.$count.'.'.$request->resignation_file[$key]->extension();
                 $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
 
-                $resignation = new Resignation;
-                $resignation->employee_id = $request->employee_id;
-                $resignation->resignation_reason = $request->resignation_reason[$key];
-                $resignation->resignation_date = $request->resignation_date[$key];
-                $resignation->resignation_file = $resignationFileName;
-                $resignation->save();
+                $resignation = Resignation::create([
+                    'employee_id' => $request->employee_id,
+                    'resignation_reason' => $request->resignation_reason[$key],
+                    'resignation_date' => $request->resignation_date[$key],
+                    'resignation_file' => $resignationFileName
+                ]);
             }
 
             if($request->resignation_change == 'CHANGED'){
@@ -1346,11 +1346,11 @@ class UpdateController extends Controller
             }
 
             if($resignation_update){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
-                $employee_logs->save();
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
@@ -1365,12 +1365,12 @@ class UpdateController extends Controller
                 $terminationFileName = $employee_details->empno.'_Termination_File_'.$timestamp.'_'.$count.'.'.$request->termination_file[$key]->extension();
                 $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
 
-                $termination = new Termination;
-                $termination->employee_id = $request->employee_id;
-                $termination->termination_reason = $request->termination_reason[$key];
-                $termination->termination_date = $request->termination_date[$key];
-                $termination->termination_file = $terminationFileName;
-                $termination->save();
+                $termination = Termination::create([
+                    'employee_id' => $request->employee_id,
+                    'termination_reason' => $request->termination_reason[$key],
+                    'termination_date' => $request->termination_date[$key],
+                    'termination_file' => $terminationFileName
+                ]);
             }
 
             if($request->termination_change == 'CHANGED'){
@@ -1381,11 +1381,11 @@ class UpdateController extends Controller
             }
 
             if($termination_update){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
-                $employee_logs->save();
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
@@ -1395,14 +1395,11 @@ class UpdateController extends Controller
         }
 
         if(!$employee){
-            $document = new Document;
-            $document->employee_id = $request->employee_id;
             if($request->hasFile('barangay_clearance_file')){
                 $barangayClearanceFile = $request->file('barangay_clearance_file');
                 $barangayClearanceExtension = $barangayClearanceFile->getClientOriginalExtension();
                 $barangayClearanceFilename = $employee_details->empno.'_Barangay_Clearance_File_'.$timestamp.'.'.$barangayClearanceExtension;
                 $barangayClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$barangayClearanceFilename);
-                $document->barangay_clearance_file = $barangayClearanceFilename;
             }
 
             if($request->hasFile('birthcertificate_file')){
@@ -1410,7 +1407,6 @@ class UpdateController extends Controller
                 $birthcertificateExtension = $birthcertificateFile->getClientOriginalExtension();
                 $birthcertificateFilename = $employee_details->empno.'_Birth_Certificate_File_'.$timestamp.'.'.$birthcertificateExtension;
                 $birthcertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$birthcertificateFilename);
-                $document->birthcertificate_file = $birthcertificateFilename;
             }
 
             if($request->hasFile('diploma_file')){
@@ -1418,7 +1414,6 @@ class UpdateController extends Controller
                 $diplomaExtension = $diplomaFile->getClientOriginalExtension();
                 $diplomaFilename = $employee_details->empno.'_Diploma_File_'.$timestamp.'.'.$diplomaExtension;
                 $diplomaFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$diplomaFilename);
-                $document->diploma_file = $diplomaFilename;
             }
 
             if($request->hasFile('medical_certificate_file')){
@@ -1426,7 +1421,6 @@ class UpdateController extends Controller
                 $medicalCertificateExtension = $medicalCertificateFile->getClientOriginalExtension();
                 $medicalCertificateFilename = $employee_details->empno.'_Medical_Certificate_File_'.$timestamp.'.'.$medicalCertificateExtension;
                 $medicalCertificateFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$medicalCertificateFilename);
-                $document->medical_certificate_file = $medicalCertificateFilename;
             }
 
             if($request->hasFile('nbi_clearance_file')){
@@ -1434,7 +1428,6 @@ class UpdateController extends Controller
                 $nbiExtension = $nbiFile->getClientOriginalExtension();
                 $nbiFilename = $employee_details->empno.'_NBI_Clearance_File_'.$timestamp.'.'.$nbiExtension;
                 $nbiFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$nbiFilename);
-                $document->nbi_clearance_file = $nbiFilename;
             }
 
             if($request->hasFile('pag_ibig_file')){
@@ -1442,7 +1435,6 @@ class UpdateController extends Controller
                 $pagibigExtension = $pagibigFile->getClientOriginalExtension();
                 $pagibigFilename = $employee_details->empno.'_Pag_ibig_File_'.$timestamp.'.'.$pagibigExtension;
                 $pagibigFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$pagibigFilename);
-                $document->pag_ibig_file = $pagibigFilename;
             }
 
             if($request->hasFile('philhealth_file')){
@@ -1450,7 +1442,6 @@ class UpdateController extends Controller
                 $philhealthExtension = $philhealthFile->getClientOriginalExtension();
                 $philhealthFilename = $employee_details->empno.'_Philhealth_File_'.$timestamp.'.'.$philhealthExtension;
                 $philhealthFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$philhealthFilename);
-                $document->philhealth_file = $philhealthFilename;
             }
 
             if($request->hasFile('police_clearance_file')){
@@ -1458,7 +1449,6 @@ class UpdateController extends Controller
                 $policeClearanceExtension = $policeClearanceFile->getClientOriginalExtension();
                 $policeClearanceFilename = $employee_details->empno.'_Police_Clearance_File_'.$timestamp.'.'.$policeClearanceExtension;
                 $policeClearanceFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$policeClearanceFilename);
-                $document->police_clearance_file = $policeClearanceFilename;
             }
 
             if($request->hasFile('resume_file')){
@@ -1466,7 +1456,6 @@ class UpdateController extends Controller
                 $resumeExtension = $resumeFile->getClientOriginalExtension();
                 $resumeFilename = $employee_details->empno.'_Resume_File_'.$timestamp.'.'.$resumeExtension;
                 $resumeFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resumeFilename);
-                $document->resume_file = $resumeFilename;
             }
 
             if($request->hasFile('sss_file')){
@@ -1474,7 +1463,6 @@ class UpdateController extends Controller
                 $sssExtension = $sssFile->getClientOriginalExtension();
                 $sssFilename = $employee_details->empno.'_SSS_File_'.$timestamp.'.'.$sssExtension;
                 $sssFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$sssFilename);
-                $document->sss_file = $sssFilename;
             }
 
             if($request->hasFile('tor_file')){
@@ -1482,21 +1470,23 @@ class UpdateController extends Controller
                 $torExtension = $torFile->getClientOriginalExtension();
                 $torFilename = $employee_details->empno.'_Transcript_of_Records_File_'.$timestamp.'.'.$torExtension;
                 $torFile->storeAs('public/documents/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$torFilename);
-                $document->transcript_of_records_file = $torFilename;
             }
 
-            if($request->hasFile('barangay_clearance_file')
-            || $request->hasFile('birthcertificate_file')
-            || $request->hasFile('diploma_file')
-            || $request->hasFile('medical_certificate_file')
-            || $request->hasFile('nbi_clearance_file')
-            || $request->hasFile('pag_ibig_file')
-            || $request->hasFile('philhealth_file')
-            || $request->hasFile('police_clearance_file')
-            || $request->hasFile('resume_file')
-            || $request->hasFile('sss_file')
-            || $request->hasFile('tor_file')){
-                $document->save();
+            if($request->hasFile('barangay_clearance_file') || $request->hasFile('birthcertificate_file') || $request->hasFile('diploma_file') || $request->hasFile('medical_certificate_file') || $request->hasFile('nbi_clearance_file') || $request->hasFile('pag_ibig_file') || $request->hasFile('philhealth_file') || $request->hasFile('police_clearance_file') || $request->hasFile('resume_file') || $request->hasFile('sss_file') || $request->hasFile('tor_file')){
+                $document = Document::create([
+                    'employee_id' => $request->employee_id,
+                    'barangay_clearance_file' => $barangayClearanceFilename,
+                    'birthcertificate_file' => $birthcertificateFilename,
+                    'diploma_file' => $diplomaFilename,
+                    'medical_certificate_file' => $medicalCertificateFilename,
+                    'nbi_clearance_file' => $nbiFilename,
+                    'pag_ibig_file' => $pagibigFilename,
+                    'philhealth_file' => $philhealthFilename,
+                    'police_clearance_file' => $policeClearanceFilename,
+                    'resume_file' => $resumeFilename,
+                    'sss_file' => $sssFilename,
+                    'transcript_of_records_file' => $torFilename
+                ]);
             }
         }
         else{
@@ -1771,52 +1761,16 @@ class UpdateController extends Controller
                 $tor_update = NULL;
             }
 
-
-            if(
-            $request->hasFile('barangay_clearance_file')
-            || $request->hasFile('birthcertificate_file')
-            || $request->hasFile('diploma_file')
-            || $request->hasFile('medical_certificate_file')
-            || $request->hasFile('nbi_clearance_file')
-            || $request->hasFile('pag_ibig_file')
-            || $request->hasFile('philhealth_file')
-            || $request->hasFile('police_clearance_file')
-            || $request->hasFile('resume_file')
-            || $request->hasFile('sss_file')
-            || $request->hasFile('tor_file')
-
-            ){
-                $employee_logs = new EmployeeLogs;
-                $employee_logs->employee_id = $employee_details->id;
-                $employee_logs->user_id = auth()->user()->id;
-                $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS
-                                        $barangay_clearance_update
-                                        $birthcertificate_update
-                                        $diploma_update
-                                        $medical_certificate_update
-                                        $nbi_clearance_update
-                                        $pag_ibig_update
-                                        $philhealth_update
-                                        $police_clearance_update
-                                        $resume_update
-                                        $sss_update
-                                        $tor_update";
-                $employee_logs->save();
+            if($request->hasFile('barangay_clearance_file') || $request->hasFile('birthcertificate_file') || $request->hasFile('diploma_file') || $request->hasFile('medical_certificate_file') || $request->hasFile('nbi_clearance_file') || $request->hasFile('pag_ibig_file') || $request->hasFile('philhealth_file') || $request->hasFile('police_clearance_file') || $request->hasFile('resume_file') || $request->hasFile('sss_file') || $request->hasFile('tor_file')){
+                $userlogs = new EmployeeLogs;
+                $userlogs->employee_id = $employee_details->id;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
+                $userlogs->save();
 
                 $userlogs = new UserLogs;
                 $userlogs->user_id = auth()->user()->id;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number)
-                                        $barangay_clearance_update
-                                        $birthcertificate_update
-                                        $diploma_update
-                                        $medical_certificate_update
-                                        $nbi_clearance_update
-                                        $pag_ibig_update
-                                        $philhealth_update
-                                        $police_clearance_update
-                                        $resume_update
-                                        $sss_update
-                                        $tor_update";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
                 $userlogs->save();
             }
         }

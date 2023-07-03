@@ -10,3 +10,7 @@ php artisan ui bootstrap
 php artisan ui bootstrap --auth
 composer require yajra/laravel-datatables-oracle
 php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvider"
+
+composer require jenssegers/agent - Check Device
+Folder config/app = Jenssegers\Agent\AgentServiceProvider::class,
+to alias = 'Agent' => Jenssegers\Agent\Facades\Agent::class,

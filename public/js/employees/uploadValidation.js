@@ -338,6 +338,65 @@ function terminationValidation(termination_file) {
     }
 }
 
+function fileValidation(fileInputId, previewId, viewId){
+    console.log(fileInputId);
+    console.log(previewId);
+    console.log(viewId);
+
+    var fileData = $("#" + fileInputId)[0];
+    var uploadPath = fileData.value;
+    var fileExtension = uploadPath.substring(uploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var fileSize = $("#" + fileInputId).get(0).files[0].size;
+
+    if(fileExtension != "pdf" && fileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE AND EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf) and with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $("#" + fileInputId).val('');
+        $("#" + previewId).attr('src', '');
+        $("#" + viewId).prop('disabled', true);
+    }
+    else if(fileExtension != "pdf"){
+        Swal.fire({
+            title: 'UNSUPPORTED FILE TYPE',
+            icon: 'error',
+            text: 'Please upload file with an extension of (.pdf).',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $("#" + fileInputId).val('');
+        $("#" + previewId).attr('src', '');
+        $("#" + viewId).prop('disabled', true);
+    }
+    else if(fileSize > 5242880 * 2){
+        Swal.fire({
+            title: 'EXCEEDED MAXIMUM FILE SIZE (10MB)!',
+            icon: 'error',
+            text: 'Please upload valid file with size not greater than 10MB.',
+            allowOutsideClick: false,
+            allowEscapeKey: false
+        });
+        $("#" + fileInputId).val('');
+        $("#" + previewId).attr('src', '');
+        $("#" + viewId).prop('disabled', true);
+    }
+    else{
+        if(fileData.files && fileData.files[0]){
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#" + previewId).attr('src', e.target.result);
+            };
+            reader.readAsDataURL(fileData.files[0]);
+            $("#" + viewId).prop('disabled', false);
+        }
+    }
+}
+
+
 //Documents Tab
 function BirthCertificateValidation(birthcertificate_file) {
     var birthcertData = document.getElementById('birthcertificate_file');
@@ -356,7 +415,6 @@ function BirthCertificateValidation(birthcertificate_file) {
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
         $('#birthcertificate_view').prop('disabled',true);
-        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(birthcertExtension != "pdf"){
         Swal.fire({
@@ -369,7 +427,6 @@ function BirthCertificateValidation(birthcertificate_file) {
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
         $('#birthcertificate_view').prop('disabled',true);
-        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else if(birthcertFileSize > 5242880 * 2){
         Swal.fire({
@@ -382,7 +439,6 @@ function BirthCertificateValidation(birthcertificate_file) {
         $('#birthcertificate_file').val('');
         $('#birthcertificate_preview').attr('src','');
         $('#birthcertificate_view').prop('disabled',true);
-        // $('.birthcertificate_label').html('<i class="fas fa-upload"></i>&nbspChoose File');
     }
     else {
         if (birthcertData.files && birthcertData.files[0]) {
@@ -394,7 +450,6 @@ function BirthCertificateValidation(birthcertificate_file) {
                 $('#birthcertificate_view').prop('disabled',false);
                 $('#birthcertificate_replace').prop('disabled',false);
                 $('#birthcertificate_button').hide();
-                // $('.birthcertificate_label').html('<i class="fa-solid fa-file-pen"></i>&nbspReplace File');
         }
     }
 }
