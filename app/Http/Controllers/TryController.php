@@ -22,6 +22,7 @@ use Carbon\Carbon;
 use Spatie\PdfToText\Pdf;
 use thiagoalessio\TesseractOCR\TesseractOCR;
 use Spatie\PdfToImage\Pdf as Jpg;
+use Dompdf\Dompdf;
 use Imagick;
 use DataTables;
 use Str;
@@ -185,6 +186,72 @@ class TryController extends Controller
             return 'Invalid File Format';
         }
     }
+
+    public function imageToPdf(Request $request)
+    {
+        // Get the uploaded image file
+        $imageFile = $request->file('fileInput');
+
+        // Create a unique filename for the PDF
+        $pdfFilename = time() . '_' . $imageFile->getClientOriginalName() . '.pdf';
+
+        // Move the uploaded image to a temporary location
+        $imagePath = $imageFile->storeAs('temp', $imageFile->getClientOriginalName());
+
+        // Initialize Dompdf
+        $dompdf = new Dompdf();
+
+        // Load HTML or image file
+        $dompdf->loadHtml('<img src="' . $imagePath . '">');
+
+        // (Optional) Set PDF options
+        $dompdf->setPaper('A4', 'portrait');
+
+        // Render the PDF
+        $dompdf->render();
+
+        // Save the generated PDF to a temporary location
+        $pdfPath = storage_path('app/temp/' . $pdfFilename);
+        file_put_contents($pdfPath, $dompdf->output());
+
+        // Remove the temporary image file
+        unlink(storage_path('app/' . $imagePath));
+
+       // Return the PDF file path
+        return response()->json([
+            'pdf_path' => $pdfPath,
+        ]);
+    }
+
+    // public function splitPdf(Request $request){
+    //     $pdfFile = $request->file('pdf_file');
+    //     // Generate a unique filename for the uploaded PDF
+    //     $filename = uniqid('pdf_') . '.' . $pdfFile->getClientOriginalExtension();
+    //     // Store the uploaded PDF in the storage/app/public directory
+    //     $pdfFile->storeAs('public', $filename);
+    //     // Construct the full path to the uploaded PDF file
+    //     $pdfPath = storage_path('app/public/' . $filename);
+    //     // Set the output directory path for the split pages
+    //     $outputPath = storage_path('app/public/split_pages/');
+
+    //     if(!file_exists($outputPath)){
+    //         mkdir($outputPath, 0777, true);
+    //     }
+
+    //     $imagick = new Imagick();
+    //     $imagick->readImage($pdfPath);
+
+    //     foreach ($imagick as $key => $pdfPage) {
+    //         $pdfPage->setImageFormat('png');
+    //         $pdfPage->writeImage($outputPath . 'page_' . ($key + 1) . '.png');
+    //     }
+
+    //     $imagick->clear();
+    //     $imagick->destroy();
+
+    //     return 'PDF pages split and saved as images.';
+    // }
+
     // public function save_pdf(Request $request){
     //     $pdf_file = $request->file('pdf_file');
 
@@ -307,5 +374,9 @@ class TryController extends Controller
         else{
             return 'Invalid file format';
         }
+    }
+
+    public function responsive(){
+        return view('try.responsive');
     }
 }

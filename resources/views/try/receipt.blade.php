@@ -12,7 +12,7 @@
 </div>
 <div class="row">
     <div class="col">
-        <input type="file" id="pdf_file" name="pdf_file" class="form-control requiredField" accept="image/*, .pdf"/>
+        <input type="file" id="fileInput" name="fileInput" class="form-control requiredField" accept="image/*, .pdf"/>
     </div>
 </div>
 <br>
@@ -22,43 +22,87 @@
 <script>
     $('#loading').hide();
 
-$('#btnSave').on('click', function(){
-    var receipt = $('#receipt').val();
-    var pdf_file = $('#pdf_file').prop('files')[0];
-    var formData = new FormData();
-    formData.append('receipt', receipt);
-    formData.append('pdf_file', pdf_file);
+    $('#btnSave').on('click', function(){
+        var formData = new FormData();
+        var fileInput = $('#fileInput').prop('files')[0];
 
-    $.ajax({
-        url: '/save_receipt',
-        method: 'post',
-        data: formData,
-        contentType : false,
-        processData : false,
-        async: false,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        success: function(response){
-            $('#loading').hide();
-            if(response != 'success'){
-                Swal.fire({
-                    title: 'SAVE FAILED',
-                    html: "<b>"+response+"</b>",
-                    icon: 'error',
-                });
-                return false;
+        formData.append('fileInput', fileInput);
+
+        $.ajax({
+            url: '/imageToPdf',
+            method: 'post',
+            data: formData,
+            contentType : false,
+            processData : false,
+            async: false,
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            success: function(response){
+                $('#loading').hide();
+                console.log(response);
             }
-            else{
-                Swal.fire({
-                    title: 'SAVE SUCCESS',
-                    icon: 'success',
-                    timer: 2000
-                });
-            }
-        }
+        });
     });
-});
+// $('#btnSave').on('click', function(){
+//     var formData = new FormData();
+//     var fileInput = $('#fileInput').prop('files')[0];
+
+//     formData.append('fileInput', fileInput);
+
+//     $.ajax({
+//         url: '/splitPdf',
+//         method: 'post',
+//         data: formData,
+//         contentType : false,
+//         processData : false,
+//         async: false,
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response){
+//             $('#loading').hide();
+//             console.log(response);
+//         }
+//     });
+// });
+// $('#btnSave').on('click', function(){
+//     var receipt = $('#receipt').val();
+//     var pdf_file = $('#pdf_file').prop('files')[0];
+//     var formData = new FormData();
+//     formData.append('receipt', receipt);
+//     formData.append('pdf_file', pdf_file);
+
+//     $.ajax({
+//         url: '/save_receipt',
+//         method: 'post',
+//         data: formData,
+//         contentType : false,
+//         processData : false,
+//         async: false,
+//         headers: {
+//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         },
+//         success: function(response){
+//             $('#loading').hide();
+//             if(response != 'success'){
+//                 Swal.fire({
+//                     title: 'SAVE FAILED',
+//                     html: "<b>"+response+"</b>",
+//                     icon: 'error',
+//                 });
+//                 return false;
+//             }
+//             else{
+//                 Swal.fire({
+//                     title: 'SAVE SUCCESS',
+//                     icon: 'success',
+//                     timer: 2000
+//                 });
+//             }
+//         }
+//     });
+// });
 </script>
 
 @endsection
