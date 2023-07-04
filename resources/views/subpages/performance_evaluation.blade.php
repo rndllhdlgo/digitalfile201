@@ -3,7 +3,7 @@
     <!-- Memo -->
         <h5 class="table-title">MEMO</h5>
         <table id="memoTable" class="table table-bordered table-hover table-striped align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:22.5%"> MEMO SUBJECT</th>
                     <th style="width:22.5%"> MEMO DATE</th>
@@ -41,7 +41,7 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" class="form-control form_file memo_field" name="memo_file[]" id="memo_file" onchange="memoValidation(memo_file)" accept=".pdf">
+                        <input type="file" class="form-control form_file memo_field" name="memo_file[]" id="memo_file" onchange="fileValidation('memo_file')" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -67,7 +67,7 @@
     <!-- Evaluation -->
         <h5 class="table-title">EVALUATION</h5>
         <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:22.5%"> EVALUATION REASON</th>
                     <th style="width:22.5%"> EVALUATION DATE</th>
@@ -97,7 +97,7 @@
                         </div>
                     </td>
                     <td>
-                        <input type="file" class="form-control form_file evaluation_field" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                        <input type="file" class="form-control form_file evaluation_field" name="evaluation_file[]" id="evaluation_file" onchange="fileValidation('evaluation_file')" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -123,7 +123,7 @@
     <!-- Contracts -->
         <h5 class="table-title">CONTRACT</h5>
         <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:18%"> CONTRACT TYPE</th>
                     <th style="width:30%"> CONTRACT DATE</th>
@@ -146,7 +146,7 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <input type="file" class="form-control form_file contracts_field" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                        <input type="file" class="form-control form_file contracts_field" name="contracts_file[]" id="contracts_file" onchange="fileValidation('contracts_file')" accept=".pdf">
                     </td>
                     <td>
                         <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>

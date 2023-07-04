@@ -2,7 +2,7 @@
     <br>
         <h5 class="table-title" style="border-bottom: 3px solid black !important;">JOB HISTORY</h5>
             <table id="job_history_table_orig" class="table table-bordered table-hover table-striped job_history_table_orig">
-                <thead class="thead-educational">
+                <thead class="thead-design">
                     <tr>
                         <th style="border:none;"> COMPANY NAME</th>
                         <th style="border:none;"> JOB DESCRIPTION</th>

@@ -8,7 +8,7 @@
             <div class="modal-body">
                 <div class="container">
                     <table class="table table-bordered w-100" id="requestTable">
-                        <thead class="thead-educational">
+                        <thead class="thead-design">
                             <tr>
                                 <th>FIELD NAME</th>
                                 <th>ORIGINAL VALUE</th>

@@ -25,7 +25,7 @@
 
         <h5 class="table-title">COLLEGE EDUCATION</h5>
         <table class="table table-striped table-bordered table-hover align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                     <th style="width: 30%;">DEGREE</th>

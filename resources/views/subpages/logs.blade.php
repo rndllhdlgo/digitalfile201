@@ -1,7 +1,7 @@
 <div id="logs" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <table class="table table-striped table-bordered table-hover w-100 logs_table_data" id="logs_table_data">
-        <thead class="thead-educational">
+        <thead class="thead-design">
             <tr>
                 <td class="d-none">
                     <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #0d1a80"/>

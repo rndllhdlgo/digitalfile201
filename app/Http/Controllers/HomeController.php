@@ -154,14 +154,16 @@ class HomeController extends Controller
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();
         $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
         $agency = WorkInformationTable::where('employment_status','Agency')->count();
-        $male = PersonalInformationTable::join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-            ->where('personal_information_tables.gender', 'Male')
-            ->whereNotIn('work_information_tables.employment_status', ['RESIGNED','TERMINATED','RETIRED'])
-            ->count();
-        $female = PersonalInformationTable::join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-            ->where('personal_information_tables.gender', 'Female')
-            ->whereNotIn('work_information_tables.employment_status', ['RESIGNED','TERMINATED','RETIRED'])
-            ->count();
+        $male = PersonalInformationTable::where('gender','Male')->count();
+        $female = PersonalInformationTable::where('gender','Female')->count();
+        // $male = PersonalInformationTable::join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        //     ->where('personal_information_tables.gender', 'Male')
+        //     ->whereNotIn('work_information_tables.employment_status', ['RESIGNED','TERMINATED','RETIRED'])
+        //     ->count();
+        // $female = PersonalInformationTable::join('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        //     ->where('personal_information_tables.gender', 'Female')
+        //     ->whereNotIn('work_information_tables.employment_status', ['RESIGNED','TERMINATED','RETIRED'])
+        //     ->count();
         $intern = WorkInformationTable::where('employment_status','Intern')->count();
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
         return view('pages.index', compact('active','inactive','regular','probationary','part_time','agency','intern','user_level','male','female'));

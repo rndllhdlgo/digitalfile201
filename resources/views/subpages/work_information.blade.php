@@ -174,7 +174,7 @@
     <div id="resignation_div" style="display: none;">
         <!-- Resignation -->
             <table id="resignationTable" class="table table-bordered table-hover table-striped align-middle">
-                <thead class="thead-educational">
+                <thead class="thead-design">
                     <tr>
                         <th colspan="4">RESIGNATION</th>
                     </tr>
@@ -200,7 +200,7 @@
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
-                            <input type="file" class="form-control form_file resignation_field" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                            <input type="file" class="form-control form_file resignation_field" name="resignation_file[]" id="resignation_file" onchange="fileValidation('resignation_file')" accept=".pdf">
                         </td>
                         <td>
                             <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -227,7 +227,7 @@
     <div id="termination_div" style="display: none;">
         <!-- Termination -->
             <table id="terminationTable" class="table table-bordered table-hover table-striped align-middle">
-                <thead class="thead-educational">
+                <thead class="thead-design">
                     <tr>
                         <th colspan="4">TERMINATION</th>
                     </tr>
@@ -253,7 +253,7 @@
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
-                            <input type="file" class="form-control form_file termination_field" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                            <input type="file" class="form-control form_file termination_field" name="termination_file[]" id="termination_file" onchange="fileValidation('termination_file')" accept=".pdf">
                         </td>
                         <td>
                             <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
@@ -279,7 +279,7 @@
 
     <div id="employee_history_div">
         <table class="table table-striped table-bordered table-hover w-100 employee_history_table" id="employee_history_table">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <td class="d-none">
                         <input type="search" class="form-control filter-input" data-column="0" style="border:1px solid #0d1a80"/>

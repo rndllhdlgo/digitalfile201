@@ -5,7 +5,7 @@
 <input type="file" id="fileInput">
 
 <table class="table table-striped" id="statusTable">
-    <thead class="thead-educational">
+    <thead class="thead-design">
         <tr>
             <th>ID</th>
             <th>STATUS</th>

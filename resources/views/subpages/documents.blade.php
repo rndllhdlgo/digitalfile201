@@ -8,7 +8,7 @@
         <div class="document_first_table">
             <h5 class="table-title">REQUIREMENTS</h5>
                 <table class="table table-striped table-bordered table-hover align-middle">
-                    <thead class="thead-educational">
+                    <thead class="thead-design">
                         <tr>
                             <th style="width:35%"> FILE TITLE</th>
                             <th style="width:45%"> ATTACHMENT</th>
@@ -82,9 +82,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="medical_certificate_delete_button"   class="btn btn-success " style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
-                                <button type="button" id="medical_certificate_view"     class="btn btn-success  btnDisabled " title="VIEW" onclick="$('#medical_certificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" alt=""    id="medical_certificate_preview"  class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <button type="button" id="medical_certificate_delete_button" class="btn btn-success" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="medical_certificate_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#medical_certificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
+                                <img src="" id="medical_certificate_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
                             </td>
                         </tr>
 
@@ -128,7 +128,7 @@
         <div class="document_second_table">
             <br>
                 <table class="table table-striped table-bordered table-hover align-middle" style="margin-top: 15px;">
-                    <thead class="thead-educational">
+                    <thead class="thead-design">
                         <tr>
                             <th style="width:35%"> FILE TITLE</th>
                             <th style="width:45%"> ATTACHMENT</th>

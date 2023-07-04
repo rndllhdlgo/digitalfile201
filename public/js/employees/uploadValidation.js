@@ -88,7 +88,7 @@ function ImageValidation(employee_image) {
 }
 
 function fileValidation(fileInputId, previewId, viewId){
-    // console.log(fileInputId);
+    console.log(fileInputId);
     // console.log(previewId);
     // console.log(viewId);
 
@@ -134,13 +134,18 @@ function fileValidation(fileInputId, previewId, viewId){
         $("#" + viewId).prop('disabled', true);
     }
     else{
-        if(fileData.files && fileData.files[0]){
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                $("#" + previewId).attr('src', e.target.result);
-            };
-            reader.readAsDataURL(fileData.files[0]);
-            $("#" + viewId).prop('disabled', false);
+        if(fileInputId == 'memo_file' || fileInputId == 'evaluation_file' || fileInputId == 'contracts_file' || fileInputId == 'resignation_file' || fileInputId == 'termination_file'){
+            return false;
+        }
+        else{
+            if(fileData.files && fileData.files[0]){
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    $("#" + previewId).attr('src', e.target.result);
+                };
+                reader.readAsDataURL(fileData.files[0]);
+                $("#" + viewId).prop('disabled', false);
+            }
         }
     }
 }

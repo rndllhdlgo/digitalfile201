@@ -1,82 +1,82 @@
 var children_change,college_change,training_change,vocational_change,job_history_change;
 var memo_change, evaluation_change, contracts_change, resignation_change, termination_change;
 
-setInterval(() => {
-    if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
-        $('#childrenAdd').prop('disabled',true);
-    }
-    else{
-        $('#childrenAdd').prop('disabled',false);
-        $('#childrenAdd').css('display','block');
-    }
+// setInterval(() => {
+//     if(!$('#child_name').val() || !$('#child_birthday').val() || !$('#child_gender').val()){
+//         $('#childrenAdd').prop('disabled',true);
+//     }
+//     else{
+//         $('#childrenAdd').prop('disabled',false);
+//         $('#childrenAdd').css('display','block');
+//     }
 
-    if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years_from').val() || !$('#college_inclusive_years_to').val()){
-        $('#collegeAdd').prop('disabled',true);
-    }
-    else{
-        $('#collegeAdd').prop('disabled',false);
-        $('#collegeAdd').css('display','block');
-    }
+//     if(!$('#college_name').val() || !$('#college_degree').val() || !$('#college_inclusive_years_from').val() || !$('#college_inclusive_years_to').val()){
+//         $('#collegeAdd').prop('disabled',true);
+//     }
+//     else{
+//         $('#collegeAdd').prop('disabled',false);
+//         $('#collegeAdd').css('display','block');
+//     }
 
-    if(!$('#training_name').val() || !$('#training_title').val() || !$('#training_inclusive_years_from').val() || !$('#training_inclusive_years_to').val()){
-        $('#trainingAdd').prop('disabled',true);
-    }
-    else{
-        $('#trainingAdd').prop('disabled',false);
-        $('#trainingAdd').css('display','block');
-    }
+//     if(!$('#training_name').val() || !$('#training_title').val() || !$('#training_inclusive_years_from').val() || !$('#training_inclusive_years_to').val()){
+//         $('#trainingAdd').prop('disabled',true);
+//     }
+//     else{
+//         $('#trainingAdd').prop('disabled',false);
+//         $('#trainingAdd').css('display','block');
+//     }
 
-    if(!$('#vocational_name').val() || !$('#vocational_course').val() || !$('#vocational_inclusive_years_from').val() || !$('#vocational_inclusive_years_to').val()){
-        $('#vocationalAdd').prop('disabled',true);
-    }
-    else{
-        $('#vocationalAdd').prop('disabled',false);
-        $('#vocationalAdd').css('display','block');
-    }
+//     if(!$('#vocational_name').val() || !$('#vocational_course').val() || !$('#vocational_inclusive_years_from').val() || !$('#vocational_inclusive_years_to').val()){
+//         $('#vocationalAdd').prop('disabled',true);
+//     }
+//     else{
+//         $('#vocationalAdd').prop('disabled',false);
+//         $('#vocationalAdd').css('display','block');
+//     }
 
-    if(!$('#job_company_name').val() || !$('#job_description').val() || !$('#job_position').val() || !$('#job_contact_number').val() || !$('#job_inclusive_years_from').val() || !$('#job_inclusive_years_to').val()){
-        $('#jobHistoryAdd').prop('disabled',true);
-    }
-    else{
-        $('#jobHistoryAdd').prop('disabled',false);
-        $('#jobHistoryAdd').css('display','block');
-    }
+//     if(!$('#job_company_name').val() || !$('#job_description').val() || !$('#job_position').val() || !$('#job_contact_number').val() || !$('#job_inclusive_years_from').val() || !$('#job_inclusive_years_to').val()){
+//         $('#jobHistoryAdd').prop('disabled',true);
+//     }
+//     else{
+//         $('#jobHistoryAdd').prop('disabled',false);
+//         $('#jobHistoryAdd').css('display','block');
+//     }
 
-    if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
-        $('#btnAddMemoRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddMemoRow').prop('disabled',false);
-    }
+//     if(!$('#memo_subject').val() || !$('#memo_date').val() || !$('#memo_penalty').val() || !$('#memo_file').val()){
+//         $('#btnAddMemoRow').prop('disabled',true);
+//     }
+//     else{
+//         $('#btnAddMemoRow').prop('disabled',false);
+//     }
 
-    if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
-        $('#btnAddEvaluationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddEvaluationRow').prop('disabled',false);
-    }
+//     if(!$('#evaluation_reason').val() || !$('#evaluation_date').val() || !$('#evaluation_evaluated_by').val() || !$('#evaluation_file').val()){
+//         $('#btnAddEvaluationRow').prop('disabled',true);
+//     }
+//     else{
+//         $('#btnAddEvaluationRow').prop('disabled',false);
+//     }
 
-    if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
-        $('#btnAddContractRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddContractRow').prop('disabled',false);
-    }
+//     if(!$('#contracts_type').val() || !$('#contracts_date').val() || !$('#contracts_file').val()){
+//         $('#btnAddContractRow').prop('disabled',true);
+//     }
+//     else{
+//         $('#btnAddContractRow').prop('disabled',false);
+//     }
 
-    if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
-        $('#btnAddResignationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddResignationRow').prop('disabled',false);
-    }
+//     if(!$('#resignation_reason').val() || !$('#resignation_date').val() || !$('#resignation_file').val()){
+//         $('#btnAddResignationRow').prop('disabled',true);
+//     }
+//     else{
+//         $('#btnAddResignationRow').prop('disabled',false);
+//     }
 
-    if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
-        $('#btnAddTerminationRow').prop('disabled',true);
-    }
-    else{
-        $('#btnAddTerminationRow').prop('disabled',false);
-    }
-}, 0);
+//     if(!$('#termination_reason').val() || !$('#termination_date').val() || !$('#termination_file').val()){
+//         $('#btnAddTerminationRow').prop('disabled',true);
+//     }
+//     else{
+//         $('#btnAddTerminationRow').prop('disabled',false);
+//     }
+// }, 0);
 
 $(document).ready(function(){
     $('#childrenAdd').click(function(){
@@ -259,13 +259,13 @@ $(document).ready(function(){
                         </div>
                     </td>
                     <td>
-                        <input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="memoValidation(memo_file)" accept=".pdf">
+                        <input type="file" class="form-control form_file" id="memo_file" name="memo_file[]" onchange="fileValidation('memo_file')" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>`);
-                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_memo center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_memo").click(function(){
             $(this).parent().parent().remove();
@@ -298,13 +298,13 @@ $(document).ready(function(){
                             </div>
                         </td>
                         <td>
-                            <input type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="evaluationValidation(evaluation_file)" accept=".pdf">
+                            <input type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="fileValidation('evaluation_file')" accept=".pdf">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>`);
-                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_evaluation").click(function(){
             $(this).parent().parent().remove();
@@ -330,13 +330,13 @@ $(document).ready(function(){
                                 </div>
                             </td>
                             <td class="pb-3 pt-3">
-                                <input type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="contractsValidation(contracts_file)" accept=".pdf">
+                                <input type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="fileValidation('contracts_file')" accept=".pdf">
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_evaluation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_evaluation").click(function(){
             $(this).parent().parent().remove();
@@ -362,13 +362,13 @@ $(document).ready(function(){
                                 </div>
                             </td>
                             <td class="pb-3 pt-3">
-                                <input type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="resignationValidation(resignation_file)" accept=".pdf">
+                                <input type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="fileValidation('resignation_file')" accept=".pdf">
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_resignation center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_resignation").click(function(){
             $(this).parent().parent().remove();
         });
@@ -393,13 +393,13 @@ $(document).ready(function(){
                                 </div>
                             </td>
                             <td class="pb-3 pt-3">
-                                <input type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="terminationValidation(termination_file)" accept=".pdf">
+                                <input type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="fileValidation('termination_file')" accept=".pdf">
                             </td>
                             <td>
-                                <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                                <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_termination center grow" title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_termination").click(function(){
             $(this).parent().parent().remove();
         });

@@ -322,7 +322,7 @@
                 <div class="col">
                     <h5 class="table-title">CHILDREN INFORMATION</h5>
                         <table class="table table-bordered table-hover table-striped">
-                            <thead class="thead-educational">
+                            <thead class="thead-design">
                                 <tr>
                                     <th style="width:22.5%">NAME</th>
                                     <th style="width:22.5%">BIRTHDAY</th>

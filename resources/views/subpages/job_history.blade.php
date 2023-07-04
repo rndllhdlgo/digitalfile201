@@ -2,7 +2,7 @@
     <hr class="hr-design">
    <h5 class="table-title">JOB HISTORY</h5>
         <table class="table table-striped table-bordered align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:15%; "> COMPANY NAME</th>
                     <th style="width:15%; "> JOB DESCRIPTION</th>

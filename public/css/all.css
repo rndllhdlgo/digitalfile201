@@ -140,7 +140,7 @@ html::-webkit-scrollbar-track:hover{
 }
 
 /* Table Design */
-.thead-educational{
+.thead-design{
     background-color:#0d1a80;
     color:white !important;
     font-weight: bold !important;
@@ -151,7 +151,6 @@ tr{
 }
 thead{
     font-size: 16px;
-    /* font-weight: bold !important; */
     font-weight:600;
 }
 td{
@@ -379,12 +378,6 @@ input[type=search]:focus{
     border:none;
     cursor: pointer;
     font-weight: bold;
-}
-
-.pie-chart{
-    width:800px;
-    height:800x;
-    margin:0 auto;
 }
 
 .custom_btn input[type=file]{

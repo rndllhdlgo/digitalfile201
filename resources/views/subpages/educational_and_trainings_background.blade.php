@@ -3,7 +3,7 @@
     <hr class="hr-design">
         <h5 class="table-title">COLLEGE EDUCATION</h5>
             <table class="table table-striped table-bordered table-hover align-middle">
-                <thead class="thead-educational">
+                <thead class="thead-design">
                     <tr>
                         <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                         <th style="width: 30%;">DEGREE</th>
@@ -75,7 +75,7 @@
     {{-- Secondary Table --> --}}
     <h5 class="table-title">SECONDARY EDUCATION</h5>
     <table class="table table-striped table-bordered table-hover align-middle">
-        <thead class="thead-educational">
+        <thead class="thead-design">
             <tr>
                 <th style="width:30%"> NAME OF SCHOOL</th>
                 <th style="width:30%"> SCHOOL ADDRESS</th>
@@ -115,7 +115,7 @@
     {{-- Primary Table --}}
     <h5 class="table-title">PRIMARY EDUCATION</h5>
     <table class="table table-striped table-bordered table-hover align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:30%"> NAME OF SCHOOL</th>
                     <th style="width:30%"> SCHOOL ADDRESS</th>
@@ -155,7 +155,7 @@
 
         <h5 class="table-title">TRAININGS</h5>
         <table class="table table-striped table-bordered table-hover align-middle ">
-                <thead class="thead-educational">
+                <thead class="thead-design">
                     <tr>
                         <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
                         <th style="width: 30%;"> TRAINING TITLE</th>
@@ -228,7 +228,7 @@
     {{-- Vocational Table --}}
         <h5 class="table-title">VOCATIONAL</h5>
         <table class="table table-striped table-bordered table-hover align-middle">
-            <thead class="thead-educational">
+            <thead class="thead-design">
                 <tr>
                     <th style="width:30%;"> NAME OF VOCATIONAL SCHOOL</th>
                     <th style="width:30%;"> COURSE</th>
