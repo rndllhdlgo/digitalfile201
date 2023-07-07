@@ -149,6 +149,8 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/email', 'SendMailController@email');
     Route::any('/responsive', 'TryController@responsive');
     Route::any('/imageToPdf', 'TryController@imageToPdf');
+    Route::any('/dynamic', 'TryController@dynamic');
+    Route::any('/dynamicColumns', 'TryController@dynamicColumns');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');

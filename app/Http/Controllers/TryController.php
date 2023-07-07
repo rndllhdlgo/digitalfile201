@@ -379,4 +379,13 @@ class TryController extends Controller
     public function responsive(){
         return view('try.responsive');
     }
+
+    public function dynamic(){
+        return view('try.dynamicColumns');
+    }
+
+    public function dynamicColumns(){
+        $tableColumns = ['first', 'second', 'third','fourth'];
+        return $tableColumns;
+    }
 }

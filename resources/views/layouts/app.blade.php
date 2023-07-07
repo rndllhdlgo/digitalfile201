@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        @if(Request::is('login'))
+            <meta http-equiv="refresh" content="300;url={{ url('/login') }}">
+        @endif
         <title>{{env('APP_NAME')}}</title>
         <link rel="icon" href="/images/ideaserv_systems_logo.png">
         @include('cdn.head')
