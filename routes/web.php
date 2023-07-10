@@ -13,6 +13,7 @@ use App\Http\Controllers\DataController;
 use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\QrController;
 
 // use Mail;
 // Route::get('/testmail', function () {
@@ -151,6 +152,9 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/imageToPdf', 'TryController@imageToPdf');
     Route::any('/dynamic', 'TryController@dynamic');
     Route::any('/dynamicColumns', 'TryController@dynamicColumns');
+    Route::any('/qr', 'QrController@qr');
+    Route::any('/qrshow', 'QrController@qrshow');
+
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');
