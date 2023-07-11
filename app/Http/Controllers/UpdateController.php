@@ -1475,17 +1475,17 @@ class UpdateController extends Controller
             if($request->hasFile('barangay_clearance_file') || $request->hasFile('birthcertificate_file') || $request->hasFile('diploma_file') || $request->hasFile('medical_certificate_file') || $request->hasFile('nbi_clearance_file') || $request->hasFile('pag_ibig_file') || $request->hasFile('philhealth_file') || $request->hasFile('police_clearance_file') || $request->hasFile('resume_file') || $request->hasFile('sss_file') || $request->hasFile('tor_file')){
                 $document = Document::create([
                     'employee_id' => $request->employee_id,
-                    'barangay_clearance_file' => $barangayClearanceFilename,
-                    'birthcertificate_file' => $birthcertificateFilename,
-                    'diploma_file' => $diplomaFilename,
-                    'medical_certificate_file' => $medicalCertificateFilename,
-                    'nbi_clearance_file' => $nbiFilename,
-                    'pag_ibig_file' => $pagibigFilename,
-                    'philhealth_file' => $philhealthFilename,
-                    'police_clearance_file' => $policeClearanceFilename,
-                    'resume_file' => $resumeFilename,
-                    'sss_file' => $sssFilename,
-                    'transcript_of_records_file' => $torFilename
+                    'barangay_clearance_file' => !empty($barangayClearanceFilename) ? $barangayClearanceFilename : null,
+                    'birthcertificate_file' => !empty($birthcertificateFilename) ? $birthcertificateFilename : null,
+                    'diploma_file' => !empty($diplomaFilename) ? $diplomaFilename : null,
+                    'medical_certificate_file' => !empty($medicalCertificateFilename) ? $medicalCertificateFilename : null,
+                    'nbi_clearance_file' => !empty($nbiFilename) ? $nbiFilename : null,
+                    'pag_ibig_file' => !empty($pagibigFilename) ? $pagibigFilename : null,
+                    'philhealth_file' => !empty($philhealthFilename) ? $philhealthFilename : null,
+                    'police_clearance_file' => !empty($policeClearanceFilename) ? $policeClearanceFilename : null,
+                    'resume_file' => !empty($resumeFilename) ? $resumeFilename : null,
+                    'sss_file' => !empty($sssFilename) ? $sssFilename : null,
+                    'transcript_of_records_file' => !empty($torFilename) ? $torFilename : null
                 ]);
             }
         }

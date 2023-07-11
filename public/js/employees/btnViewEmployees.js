@@ -185,7 +185,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#employment_origin').val(value.employment_origin);
 
                 $('#company_email_address').val(value.company_email_address);
-                company_email_address_orig = value.company_email_address;
                 $('#company_contact_number').val(value.company_contact_number);
                 $('#hmo_number').val(value.hmo_number);
                 $('#sss_number').val(value.sss_number);
@@ -621,7 +620,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'memo_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.memo_file}" target="_blank">${row.memo_file.replace(removeValue, '')}</a>`;
+                                            if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                                                return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
+                                            }
+                                            return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '22.5%'
                                 }
@@ -677,7 +679,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'evaluation_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.evaluation_file}" target="_blank">${row.evaluation_file.replace(removeValue, '')}</a>`;
+                                        if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                                            return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file.replace(removeValue, '')}</a>`;
+                                        }
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '22.5%'
                                 }
@@ -733,7 +738,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'contracts_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.contracts_file}" target="_blank">${row.contracts_file.replace(removeValue, '')}</a>`;
+                                        if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                                            return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file.replace(removeValue, '')}</a>`;
+                                        }
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
@@ -783,7 +791,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'resignation_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.resignation_file}" target="_blank">${row.resignation_file.replace(removeValue, '')}</a>`;
+                                        if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                                            return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file.replace(removeValue, '')}</a>`;
+                                        }
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
@@ -833,7 +844,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 {
                                     data: 'termination_file',
                                     "render": function(data, type, row){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.termination_file}" target="_blank">${row.termination_file.replace(removeValue, '')}</a>`;
+                                        if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
+                                            return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file.replace(removeValue, '')}</a>`;
+                                        }
+                                        return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file.replace(removeValue, '')}</a>`;
                                     },
                                     width: '35.5%'
                                 }
@@ -894,11 +908,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                     data: 'logs',
                                     width: '55%',
                                     "render":function(data,type,row){
-                                        logs = row.logs.replaceAll(" [", "<br>[");
-                                        return logs;
-                                    },
-                                },
-                            ],
+                                        return logs = row.logs.replaceAll(" [", "<br>[");
+                                    }
+                                }
+                            ]
                         });
                         $('div.breakspace').html('<br><br>');
 
@@ -950,11 +963,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                     data: 'history',
                                     width: '55%',
                                     "render":function(data,type,row){
-                                        var history = row.history.replaceAll(" [","<br>[");
-                                        return history;
+                                        return history = row.history.replaceAll(" [","<br>[");
                                     },
-                                },
-                            ],
+                                }
+                            ]
                         });
                         $('div.breakspace').html('<br><br>');
 
@@ -974,10 +986,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.barangay_clearance_div').hide();
                     $('.barangay_clearance_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" title="DOWNLOAD FILE" download>${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" target="_blank"> ${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.barangay_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.barangay_clearance_file}" title="DOWNLOAD FILE" download>${value.barangay_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     $('#barangay_clearance_view').hide();
                     $('#barangay_clearance_delete_button').show();
@@ -989,10 +1001,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.birthcertificate_div').hide();
                     $('.birthcertificate_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.birthcertificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                        $('.birthcertificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" title="DOWNLOAD FILE" download> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.birthcertificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" target="_blank"> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
+                        $('.birthcertificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.birthcertificate_file}" title="DOWNLOAD FILE" download> ${value.birthcertificate_file.replace(removeValue, '')}</a>`);
                     }
                     $('#birthcertificate_view').hide();
                     $('#birthcertificate_delete_button').show();
@@ -1004,10 +1016,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.diploma_div').hide();
                     $('.diploma_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.diploma_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                        $('.diploma_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.diploma_file}" title="DOWNLOAD FILE" download> ${value.diploma_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.diploma_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.diploma_file}" target="_blank"> ${value.diploma_file.replace(removeValue, '')}</a>`);
+                        $('.diploma_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.diploma_file}" title="DOWNLOAD FILE" download> ${value.diploma_file.replace(removeValue, '')}</a>`);
                     }
                     $('#diploma_view').hide();
                     $('#diploma_delete_button').show();
@@ -1018,10 +1030,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.medical_certificate_div').hide();
                     $('.medical_certificate_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.medical_certificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                        $('.medical_certificate_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" title="DOWNLOAD FILE" download> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.medical_certificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" target="_blank"> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
+                        $('.medical_certificate_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.medical_certificate_file}" title="DOWNLOAD FILE" download> ${value.medical_certificate_file.replace(removeValue, '')}</a>`);
                     }
                     $('#medical_certificate_view').hide();
                     $('#medical_certificate_delete_button').show();
@@ -1033,10 +1045,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.nbi_clearance_div').hide();
                     $('.nbi_clearance_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" title="DOWNLOAD FILE" download> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" target="_blank"> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.nbi_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.nbi_clearance_file}" title="DOWNLOAD FILE" download> ${value.nbi_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     $('#nbi_clearance_view').hide();
                     $('#nbi_clearance_delete_button').show();
@@ -1047,10 +1059,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.pag_ibig_div').hide();
                     $('.pag_ibig_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.pag_ibig_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                        $('.pag_ibig_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" title="DOWNLOAD FILE" download> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.pag_ibig_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" target="_blank"> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
+                        $('.pag_ibig_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.pag_ibig_file}" title="DOWNLOAD FILE" download> ${value.pag_ibig_file.replace(removeValue, '')}</a>`);
                     }
                     $('#pag_ibig_view').hide();
                     $('#pag_ibig_delete_button').show();
@@ -1062,10 +1074,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.philhealth_div').hide();
                     $('.philhealth_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.philhealth_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                        $('.philhealth_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.philhealth_file}" title="DOWNLOAD FILE" download> ${value.philhealth_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.philhealth_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.philhealth_file}" target="_blank"> ${value.philhealth_file.replace(removeValue, '')}</a>`);
+                        $('.philhealth_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.philhealth_file}" title="DOWNLOAD FILE" download> ${value.philhealth_file.replace(removeValue, '')}</a>`);
                     }
                     $('#philhealth_view').hide();
                     $('#philhealth_delete_button').show();
@@ -1077,10 +1089,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.police_clearance_div').hide();
                     $('.police_clearance_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.police_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.police_clearance_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" title="DOWNLOAD FILE" download> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.police_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" target="_blank"> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
+                        $('.police_clearance_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.police_clearance_file}" title="DOWNLOAD FILE" download> ${value.police_clearance_file.replace(removeValue, '')}</a>`);
                     }
                     $('#police_clearance_view').hide();
                     $('#police_clearance_delete_button').show();
@@ -1092,10 +1104,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.resume_div').hide();
                     $('.resume_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.resume_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                        $('.resume_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.resume_file}" title="DOWNLOAD FILE" download> ${value.resume_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.resume_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.resume_file}" target="_blank"> ${value.resume_file.replace(removeValue, '')}</a>`);
+                        $('.resume_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.resume_file}" title="DOWNLOAD FILE" download> ${value.resume_file.replace(removeValue, '')}</a>`);
                     }
                     $('#resume_view').hide();
                     $('#resume_delete_button').show();
@@ -1107,10 +1119,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.sss_div').hide();
                     $('.sss_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.sss_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                        $('.sss_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.sss_file}" title="DOWNLOAD FILE" download> ${value.sss_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.sss_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.sss_file}" target="_blank"> ${value.sss_file.replace(removeValue, '')}</a>`);
+                        $('.sss_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.sss_file}" title="DOWNLOAD FILE" download> ${value.sss_file.replace(removeValue, '')}</a>`);
                     }
                     $('#sss_view').hide();
                     $('#sss_delete_button').show();
@@ -1122,10 +1134,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('.transcript_of_records_div').hide();
                     $('.transcript_of_records_span').show();
                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${trim_empno}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" title="DOWNLOAD FILE" download> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
                     }
                     else{
-                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" target="_blank"> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
+                        $('.transcript_of_records_span').html(`<a href="/storage/documents/${value.employee_number}_${value.last_name}_${value.first_name}/${value.transcript_of_records_file}" title="DOWNLOAD FILE" download> ${value.transcript_of_records_file.replace(removeValue, '')}</a>`);
                     }
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
