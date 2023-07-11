@@ -861,9 +861,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                                 }
                             }
                         });
-                    }
 
-                    if(current_user_level != 'EMPLOYEE'){
                         var logs_table_data;
                         $('.logs_table_data').dataTable().fnDestroy();
                         logs_table_data = $('.logs_table_data').DataTable({
