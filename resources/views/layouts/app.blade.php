@@ -11,6 +11,8 @@
         <link rel="icon" href="/images/ideaserv_systems_logo.png">
         @include('cdn.head')
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     </head>
     <body>
         <div id="loading">

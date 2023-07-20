@@ -388,4 +388,8 @@ class TryController extends Controller
         $tableColumns = ['first', 'second', 'third','fourth'];
         return $tableColumns;
     }
+
+    public function exportTable(){
+        return view('try.exportExcel');
+    }
 }
