@@ -73,6 +73,20 @@ $('.filter-select').on('change', function(){
 });
 
 $('#addUserBtn').on('click',function(){
+    if(current_email == 'Y'){
+        addUserBtn();
+        $('#usersModal').modal('show');
+    }
+    else{
+        Swal.fire({
+            title: "EMAIL SERVER UNAVAILABLE",
+            html: "Email server is temporarily down. <br>Please contact administrator.",
+            icon: "error"
+        });
+    }
+});
+
+function addUserBtn(){
     $('#user_level').val('');
     $('#name').val('');
     $('#email').val('');
@@ -80,11 +94,10 @@ $('#addUserBtn').on('click',function(){
     $('#confirm').val('');
     $('#status').val('');
     $('#usersModal').modal('show');
-    // $('#addUserModal').modal('show');
     $('.modal-title').html('<i class="fas fa-user-plus"></i> ADD NEW USER');
     $('#btnUserSave').show();
     $('#btnUserUpdate').hide();
-});
+}
 
 function lettersOnly(input){
     var letters_only = /[^- ñ a-z]/gi;

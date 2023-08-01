@@ -77,4 +77,5 @@
 <input type="hidden" id="current_user" value="{{auth()->user()->id}}" readonly>
 <input type="hidden" id="current_user_level" value="{{auth()->user()->user_level}}" readonly>
 <input type="hidden" id="current_employee_number" readonly>
+<input type="hidden" id="current_email" value="{{ env('MAIL_ENABLED') }}" readonly>
 {{-- <input type="hidden" id="current_employee_number" value="{{auth()->user()->emp_number}}" readonly> --}}
