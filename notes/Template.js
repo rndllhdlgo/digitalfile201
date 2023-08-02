@@ -294,3 +294,75 @@ $product_ids = array_map(function($item){
 }, $products_array);
 // return $product_ids;
 ProductRevert::whereIn('id', $product_ids)->delete();
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+
+
+$(document).on("click",'#exportButton', function() {
+    // Get the header rows
+    var headerRows = [];
+    $("#tblReportsX thead tr").each(function() {
+      var headerRow = [];
+      $(this)
+        .find("th")
+        .each(function() {
+          var colspan = $(this).attr("colspan");
+          if (colspan && colspan > 1) {
+            for (var i = 0; i < colspan; i++) {
+              headerRow.push($(this).text());
+            }
+          } else {
+            headerRow.push($(this).text());
+          }
+        });
+      headerRows.push(headerRow);
+    });
+
+    // Get the data rows
+    var dataRows = [];
+    $("#tblReportsX tbody tr").each(function() {
+      var dataRow = [];
+      $(this)
+        .find("td")
+        .each(function() {
+          dataRow.push($(this).text());
+        });
+      dataRows.push(dataRow);
+    });
+
+    // Combine the header rows and data rows
+    var allRows = headerRows.concat(dataRows);
+
+    // Convert data to a worksheet
+    var worksheet = XLSX.utils.aoa_to_sheet(allRows);
+
+    // Calculate and set cell merges for header rows
+    var merges = [];
+    for (var i = 0; i < headerRows.length; i++) {
+      var row = headerRows[i];
+      for (var j = 0; j < row.length; j++) {
+        var cellValue = row[j];
+        var colspan = 1;
+        while (row[j + 1] === cellValue) {
+          colspan++;
+          j++;
+        }
+        if (colspan > 1) {
+          merges.push({ s: { r: i, c: j - colspan + 1 }, e: { r: i, c: j } });
+        }
+      }
+    }
+    worksheet["!merges"] = merges;
+
+    // Create a workbook and add the worksheet to it
+    var workbook = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+    // Generate the Excel file
+    var excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
+
+    // Save the file using FileSaver.js or your preferred method
+    saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "data.xlsx");
+});

@@ -74,8 +74,16 @@ $('.filter-select').on('change', function(){
 
 $('#addUserBtn').on('click',function(){
     if(current_email == 'Y'){
-        addUserBtn();
+        $('#user_level').val('');
+        $('#name').val('');
+        $('#email').val('');
+        $('#password').val('');
+        $('#confirm').val('');
+        $('#status').val('');
         $('#usersModal').modal('show');
+        $('.modal-title').html('<i class="fas fa-user-plus"></i> ADD NEW USER');
+        $('#btnUserSave').show();
+        $('#btnUserUpdate').hide();
     }
     else{
         Swal.fire({
@@ -85,19 +93,6 @@ $('#addUserBtn').on('click',function(){
         });
     }
 });
-
-function addUserBtn(){
-    $('#user_level').val('');
-    $('#name').val('');
-    $('#email').val('');
-    $('#password').val('');
-    $('#confirm').val('');
-    $('#status').val('');
-    $('#usersModal').modal('show');
-    $('.modal-title').html('<i class="fas fa-user-plus"></i> ADD NEW USER');
-    $('#btnUserSave').show();
-    $('#btnUserUpdate').hide();
-}
 
 function lettersOnly(input){
     var letters_only = /[^- ñ a-z]/gi;

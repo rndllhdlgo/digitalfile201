@@ -10,7 +10,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control required_field" type="date" id="date_hired" placeholder=" " style="background-color:white;">
+                <input class="forminput form-control required_field future_date" type="date" id="date_hired" placeholder=" " style="background-color:white;">
                 <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label>
             </div>
         </div>

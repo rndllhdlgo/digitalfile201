@@ -33,3 +33,5 @@ $table->string('type', 20); // Set default length to 20 characters
 $table->integer('seqno');
 $table->unique(['date', 'type', 'seqno'], 'unique_date_type_seqno');
 !$A$2:$A$999 - Excel Formula
+
+Count Employee: 656

@@ -155,6 +155,7 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/qr', 'QrController@qr');
     Route::any('/qrshow', 'QrController@qrshow');
     Route::any('/exportTable', 'TryController@exportTable');
+    Route::any('/data', 'TryController@data');
 
 
     // Updates Controller1

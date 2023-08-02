@@ -37,6 +37,8 @@
 <script>
     $(document).ready(function() {
       // Initialize DataTable
+      var filename = $('#exportExcelTable').attr('id');
+
       var dataTable = $("#exportExcelTable").DataTable();
         $('#loading').hide();
       // Add click event to the export button
@@ -44,40 +46,38 @@
         // Get the header rows
         var headerRows = [];
         $("#exportExcelTable thead tr").each(function() {
-          var headerRow = [];
-          $(this)
-            .find("th")
-            .each(function() {
-              var colspan = $(this).attr("colspan");
-              if (colspan && colspan > 1) {
-                for (var i = 0; i < colspan; i++) {
-                  headerRow.push($(this).text());
-                }
-              } else {
-                headerRow.push($(this).text());
-              }
-            });
-          headerRows.push(headerRow);
+            var headerRow = [];
+              $(this).find("th").each(function(){
+                  var colspan = $(this).attr("colspan");
+                  if (colspan && colspan > 1) {
+                    for (var i = 0; i < colspan; i++) {
+                      headerRow.push($(this).text());
+                    }
+                  } else {
+                    headerRow.push($(this).text());
+                  }
+              });
+              headerRows.push(headerRow);
         });
-    
+        console.log(headerRows);
         // Get the data rows
         var dataRows = [];
         $("#exportExcelTable tbody tr").each(function() {
           var dataRow = [];
-          $(this)
-            .find("td")
-            .each(function() {
+          $(this).find("td").each(function(){
               dataRow.push($(this).text());
-            });
+          });
           dataRows.push(dataRow);
         });
-    
+        console.log(dataRows);
+
         // Combine the header rows and data rows
         var allRows = headerRows.concat(dataRows);
-    
+        console.log(allRows);
         // Convert data to a worksheet
         var worksheet = XLSX.utils.aoa_to_sheet(allRows);
-    
+        console.log(worksheet);
+
         // Calculate and set cell merges for header rows
         var merges = [];
         for (var i = 0; i < headerRows.length; i++) {
@@ -95,16 +95,16 @@
           }
         }
         worksheet["!merges"] = merges;
-    
+
         // Create a workbook and add the worksheet to it
         var workbook = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(workbook, worksheet, "Sheet1");
-    
+
         // Generate the Excel file
         var excelBuffer = XLSX.write(workbook, { bookType: "xlsx", type: "array" });
-    
+
         // Save the file using FileSaver.js or your preferred method
-        saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), "data.xlsx");
+        saveAs(new Blob([excelBuffer], { type: "application/octet-stream" }), `${filename}.xlsx`);
       });
     });
     </script>

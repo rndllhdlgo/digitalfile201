@@ -788,6 +788,15 @@ $('#fill').on('click',function(){
     $('#employee_insurance').val('• A');
 });
 
+function getCurrentDate(){
+    const today = new Date();
+    const year = today.getFullYear();
+    const month = String(today.getMonth() + 1).padStart(2, '0');
+    const day = String(today.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+}
+$('.future_date').attr('max', getCurrentDate());
+
 $(document).ready(function(){
     $('.filter-input').attr('title', 'SEARCH');
 });
