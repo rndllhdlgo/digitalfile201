@@ -186,40 +186,9 @@ $(document).ready(function(){
             //     $('#filter1').keyup();
             //     $('#loading').hide();
             // }
-
-            if(current_user_level == 'EMPLOYEE'){
-                $.ajax({
-                    url: "/employees/status",
-                    success: function(data){
-                        if(data == 'PENDING'){
-                            $('#loading').hide();
-                            Swal.fire({
-                                title: "PENDING UPDATE",
-                                html: '<div style="font-family: Century Gothic, cursive;">You have a pending update. Please contact HR for the status of your request update.</div>',
-                                icon: "warning",
-                                showCancelButton: false,
-                                allowOutsideClick: false,
-                                allowEscapeKey: false,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'LOGOUT'
-                            }).then((result) => {
-                                if (result.isConfirmed) {
-                                    window.location.href = '/logout';
-                                }
-                            });
-                        }
-                        else{
-                            $('.'+current_employee_number).closest('tr').click();
-                        }
-                    }
-                });
-            }
-            else{
-                $('#employees_list').show();
-                $('#filter1').keyup();
-                $('#loading').hide();
-            }
+            $('#employees_list').show();
+            $('#filter1').keyup();
+            $('#loading').hide();
         }
     });
 

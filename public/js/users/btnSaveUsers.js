@@ -2,7 +2,7 @@ $('#btnUserSave').on('click',function(){
     var user_level = $('#user_level').val();
     var name = $('#name').val();
     var email = $('#email').val();
-    
+
     if(user_level && name && email){
         Swal.fire({
             title: 'Do you want to save?',
@@ -37,7 +37,7 @@ $('#btnUserSave').on('click',function(){
                             Swal.fire("USER ADD SUCCESSFULLY","","success");
                             setTimeout(function(){$('#usersTable').DataTable().reload()}, 2000);
                         }
-                        else if(data == 'duplicate_email'){ 
+                        else if(data == 'duplicate_email'){
                             Swal.fire("DUPLICATE EMAIL", "Email address already exists!", "error");
                             return false;
                         }
@@ -49,7 +49,7 @@ $('#btnUserSave').on('click',function(){
                     },
                 });
             }
-        });   
+        });
     }
     else{
         Swal.fire("REQUIRED", "Please fill all required fields!", "error");

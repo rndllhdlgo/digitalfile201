@@ -902,8 +902,6 @@ $('#btnUpdate').on('click',function(){
                                         window.location.reload();
                                     }, 2000);
                                 }
-                                else if(edit.isDenied){
-                                }
                             });
                         }, 2000);
                     }
