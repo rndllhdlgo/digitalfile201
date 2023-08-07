@@ -1,5 +1,7 @@
-var children_change,college_change,training_change,vocational_change,job_history_change;
+var children_change, college_change, training_change, vocational_change, job_history_change;
 var memo_change, evaluation_change, contracts_change, resignation_change, termination_change;
+var tblChildren, tblCollege, tblTraining, tblVocational, tblJob;
+var tblMemo, tblEvaluation, tblContracts, tblResignation, tblTermination;
 
 $(document).ready(function(){
     $('#childrenAdd').click(function(){
@@ -19,6 +21,7 @@ $(document).ready(function(){
         $('#children_table_orig_tbody').append(children_table);
         $('#children_table_orig').show();
         children_change = 'CHANGED';
+        tblChildren = 'tblChildren';
 
         $('#child_name').val("");
         $('#child_birthday').val("");
@@ -49,6 +52,7 @@ $(document).ready(function(){
         $('#college_table_orig').show();
         $('#college_table_orig tr:last').remove();
         college_change = 'CHANGED';
+        tblCollege = 'tblCollege';
 
         $('#college_name').val("");
         $('#college_degree').val("");
@@ -77,6 +81,7 @@ $(document).ready(function(){
         $('#training_table_orig_tbody').append(training_table);
         $('#training_table_orig').show();
         training_change = 'CHANGED';
+        tblTraining = 'tblTraining';
 
         $('#training_name').val("");
         $('#training_title').val("");
@@ -104,6 +109,7 @@ $(document).ready(function(){
         $('#vocational_table_orig_tbody').append(vocational_table);
         $('#vocational_table_orig').show();
         vocational_change = 'CHANGED';
+        tblVocational = 'tblVocational';
 
         $('#vocational_name').val("");
         $('#vocational_course').val("");
@@ -136,6 +142,7 @@ $(document).ready(function(){
         $('#job_history_table_tbody').append(job_history_table);
         $('#job_history_table_orig').show();
         job_history_change = 'CHANGED';
+        tblJob = 'tblJob';
 
         $('#job_company_name').val("");
         $('#job_description').val("");
@@ -151,6 +158,7 @@ $(document).ready(function(){
 
     function addMemoRow(){
         memo_change = 'CHANGED';
+        tblMemo = 'tblMemo';
         $('#memo_subject').attr('id','');
         $('#memo_date').attr('id','');
         $('#memo_penalty').attr('id','');
@@ -197,6 +205,7 @@ $(document).ready(function(){
 
     function addEvaluationRow(){
         evaluation_change = 'CHANGED';
+        tblEvaluation = 'tblEvaluation';
         $('#evaluation_reason').attr('id','');
         $('#evaluation_date').attr('id','');
         $('#evaluation_evaluated_by').attr('id','');
@@ -236,6 +245,7 @@ $(document).ready(function(){
 
     function addContractsRow(){
         contracts_change = 'CHANGED';
+        tblContracts = 'tblContracts';
         $('#contracts_type').attr('id','');
         $('#contracts_date').attr('id','');
         $('#contracts_file').attr('id','');
@@ -259,15 +269,16 @@ $(document).ready(function(){
                                 <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
-        $(".btn_evaluation").click(function(){
+        $(".btn_contracts").click(function(){
             $(this).parent().parent().remove();
         });
     }
 
     function addResignationRow(){
         resignation_change = 'CHANGED';
+        tblResignation = 'tblResignation';
         $('#resignation_reason').attr('id','');
         $('#resignation_date').attr('id','');
         $('#resignation_file').attr('id','');
@@ -299,6 +310,7 @@ $(document).ready(function(){
 
     function addTerminationRow(){
         termination_change = 'CHANGED';
+        tblTermination = 'tblTermination';
         $('#termination_reason').attr('id','');
         $('#termination_date').attr('id','');
         $('#termination_file').attr('id','');

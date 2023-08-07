@@ -280,6 +280,12 @@ $('#btnSection').on('click',function(){
     $('#summaryModal').modal('hide');
 });
 
-// $(document).on('click','#close_summary',function(){
-//     window.location.href = "/employees?employee_number="+$('#current_employee').val();
-// });
+// Print in summary
+$(document).ready(function(){
+    $('#btnPdf').click(function(){
+        $('#see_more').click();
+        $('#print_file').printThis({
+            importCSS: true
+        });
+    });
+});

@@ -39,14 +39,6 @@ $(document).ready(function(){
         var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
     }
 
-    // if(window.location.search.includes('employee_number') == true){
-    //     var aLengthMenu = [[-1, 10, 25, 50], ["All", 10, 25, 50]];
-    // }
-    // else{
-    //     var aLengthMenu = [[10, 25, 50, -1], [10, 25, 50, "All"]];
-    // }
-    // var iLength = current_user_level == 'EMPLOYEE' ? -1 : 10;
-
     employeesTable = $('table.employeesTable').DataTable({
         scrollY:        "484px",
         scrollX:        true,
@@ -61,9 +53,7 @@ $(document).ready(function(){
             emptyTable:"No Employees Data Found!",
             loadingRecords: "Loading Employee Records...",
         },
-        // aLengthMenu: aLengthMenu,
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-        // iDisplayLength: iLength,
         processing:true,
         serverSide:false,
         autoWidth:false,
@@ -94,12 +84,7 @@ $(document).ready(function(){
             },
         ],
         columns:[
-            {
-                data: 'employee_number',
-                "render": function(data, type, row){
-                    return "<span class="+row.employee_number+">"+row.employee_number+"</span>";
-                }
-            },
+            {data: 'employee_number'},
             {
                 data: null,
                 "render": function(data,type,row){
@@ -176,22 +161,11 @@ $(document).ready(function(){
             }
         ],
         initComplete: function(){
-            // if(window.location.search.includes('employee_number') == true){
-            //     var url = new URL(window.location.href);
-            //     var employee_number = url.searchParams.get("employee_number");
-            //     $('.'+employee_number).closest('tr').click();
-            // }
-            // else{
-            //     $('#employees_list').show();
-            //     $('#filter1').keyup();
-            //     $('#loading').hide();
-            // }
             $('#employees_list').show();
             $('#filter1').keyup();
             $('#loading').hide();
         }
     });
-
     $('div.breakspace').html('<br><br>');
 
     $('body').on('click', '.checkboxFilter', function(){
@@ -492,5 +466,26 @@ $('.logs_table_data tbody').on('click', 'tr', function(){
         title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
         html: `<h4 style="color:#0d1a80 !important;">` + data.username + ` [` + data.user_level + `]` + `</h4>` + `<br>` + `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.logs.replaceAll(" [","<li>[") + `</li></ol>`,
         width: 850,
+    });
+});
+
+$('#btnCancel').on('click', function() {
+    Swal.fire({
+        title: 'Do you want to exit?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((cancel) => {
+        if(cancel.isConfirmed){
+            setTimeout(function(){location.href= "/employees";}, 1000);
+            $('#loading').show();
+        }
     });
 });

@@ -77,12 +77,12 @@ class SaveController extends Controller
             $children_update = NULL;
         }
 
-        if($children_update == 'CHANGED'){
-            $employee_logs = new EmployeeLogs;
-            $employee_logs->employee_id = $request->employee_id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update";
-            $employee_logs->save();
+        if($children_update){
+            $user_logs = new EmployeeLogs;
+            $user_logs->employee_id = $request->employee_id;
+            $user_logs->user_id = auth()->user()->id;
+            $user_logs->logs = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update";
+            $user_logs->save();
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
@@ -142,11 +142,11 @@ class SaveController extends Controller
         }
 
         if($training_update){
-            $employee_logs = new EmployeeLogs;
-            $employee_logs->employee_id = $request->employee_id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update";
-            $employee_logs->save();
+            $user_logs = new EmployeeLogs;
+            $user_logs->employee_id = $request->employee_id;
+            $user_logs->user_id = auth()->user()->id;
+            $user_logs->logs = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update";
+            $user_logs->save();
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
@@ -174,11 +174,11 @@ class SaveController extends Controller
         }
 
         if($vocational_update){
-            $employee_logs = new EmployeeLogs;
-            $employee_logs->employee_id = $request->employee_id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update";
-            $employee_logs->save();
+            $user_logs = new EmployeeLogs;
+            $user_logs->employee_id = $request->employee_id;
+            $user_logs->user_id = auth()->user()->id;
+            $user_logs->logs = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update";
+            $user_logs->save();
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;
@@ -208,11 +208,11 @@ class SaveController extends Controller
         }
 
         if($job_history_update){
-            $employee_logs = new EmployeeLogs;
-            $employee_logs->employee_id = $request->employee_id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update";
-            $employee_logs->save();
+            $user_logs = new EmployeeLogs;
+            $user_logs->employee_id = $request->employee_id;
+            $user_logs->user_id = auth()->user()->id;
+            $user_logs->logs = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update";
+            $user_logs->save();
 
             $userlogs = new UserLogs;
             $userlogs->user_id = auth()->user()->id;

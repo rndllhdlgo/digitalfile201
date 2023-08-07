@@ -110,7 +110,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL <span class="span_company_email_address span_all">(Optional)</span></label>
             </div>
@@ -195,7 +195,7 @@
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field resignation_field" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <input class="forminput form-control multiple_field resignation_field future_date" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all span_resignation"></span></label>
                             </div>
                         </td>
@@ -248,7 +248,7 @@
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field termination_field" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <input class="forminput form-control multiple_field termination_field future_date" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all span_termination"></span></label>
                             </div>
                         </td>
@@ -320,14 +320,10 @@
                 </div>
                 <div class="modal-body">
                     <strong>JOB DESCRIPTION</strong>
-                    <ul class="job_description_div" style="zoom: 110%;color:black;">
-
-                    </ul>
+                    <ul class="job_description_div" style="zoom: 110%;color:black;"></ul>
 
                     <strong>JOB REQUIREMENTS/SKILLS</strong>
-                    <ul class="job_requirements_div" style="zoom:110%;color:black">
-
-                    </ul>
+                    <ul class="job_requirements_div" style="zoom:110%;color:black"></ul>
                 </div>
                 <div class="modal-footer">
                 </div>

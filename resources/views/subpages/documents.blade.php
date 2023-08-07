@@ -28,9 +28,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="barangay_clearance_delete_button" style="display: none;"> <i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="barangay_clearance_delete_button" style="display: none;" onclick="replaceFile('.barangay_clearance_span','.barangay_clearance_div','#barangay_clearance_delete_button','#barangay_clearance_view','#barangay_clearance_file','barangay_clearance')"> <i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success btnDisabled" id="barangay_clearance_view" title="VIEW" onclick="$('#barangay_clearance_preview').click();" disabled> <i class="fas fa-eye"></i></button>
-                                <img src="" class="hidePrev" id="barangay_clearance_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" class="hidePrev" id="barangay_clearance_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'BARANGAY CLEARANCE')">
                             </td>
                         </tr>
 
@@ -46,9 +46,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success " id="birthcertificate_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success " id="birthcertificate_delete_button" style="display: none;" onclick="replaceFile('.birthcertificate_span','.birthcertificate_div','#birthcertificate_delete_button','#birthcertificate_view','#birthcertificate_file','birthcertificate')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success btnDisabled" id="birthcertificate_view" title="VIEW" onclick="$('#birthcertificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" class="hidePrev" id="birthcertificate_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" class="hidePrev" id="birthcertificate_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'BIRTH CERTIFICATE')">
                             </td>
                         </tr>
 
@@ -64,9 +64,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="diploma_delete_button" class="btn btn-success" style="display: none;"> <i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="diploma_delete_button" class="btn btn-success" style="display: none;" onclick="replaceFile('.diploma_span','.diploma_div','#diploma_delete_button','#diploma_view','#diploma_file','diploma')"> <i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="diploma_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#diploma_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="diploma_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="diploma_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'DIPLOMA')">
                             </td>
                         </tr>
 
@@ -82,9 +82,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="medical_certificate_delete_button" class="btn btn-success" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="medical_certificate_delete_button" class="btn btn-success" style="display: none;" onclick="replaceFile('.medical_certificate_span','.medical_certificate_div','#medical_certificate_delete_button','#medical_certificate_view','#medical_certificate_file','medical_certificate')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="medical_certificate_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#medical_certificate_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="medical_certificate_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="medical_certificate_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'MEDICAL CERTIFICATE')">
                             </td>
                         </tr>
 
@@ -100,11 +100,12 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="nbi_clearance_delete_button" class="btn btn-success" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="nbi_clearance_delete_button" class="btn btn-success" style="display: none;" onclick="replaceFile('.nbi_clearance_span','.nbi_clearance_div','#nbi_clearance_delete_button','#nbi_clearance_view','#nbi_clearance_file','nbi_clearance')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="nbi_clearance_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#nbi_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="nbi_preview"  class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="nbi_preview"  class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'NBI CLEARANCE')">
                             </td>
                         </tr>
+
                         <tr>
                             <td><p class="file_title"><b>PAG-IBIG FORM</b></p></td>
                             <td>
@@ -117,9 +118,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" id="pag_ibig_delete_button" class="btn btn-success " style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" id="pag_ibig_delete_button" class="btn btn-success" style="display: none;" onclick="replaceFile('.pag_ibig_span','.pag_ibig_div','#pag_ibig_delete_button','#pag_ibig_view','#pag_ibig_file','pag_ibig_file')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="pag_ibig_view" class="btn btn-success  btnDisabled " title="VIEW" onclick="$('#pag_ibig_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="pag_ibig_preview"  class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="pag_ibig_preview"  class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this,'PAG-IBIG FORM')">
                             </td>
                         </tr>
                     </tbody>
@@ -148,9 +149,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="philhealth_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="philhealth_delete_button" style="display: none;" onclick="replaceFile('.philhealth_span','.philhealth_div','#philhealth_delete_button','#philhealth_view','#philhealth_file','philhealth_file')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success  btnDisabled" id="philhealth_view" title="VIEW" onclick="$('#philhealth_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" class="hidePrev" id="philhealth_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" class="hidePrev" id="philhealth_preview" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'PHILHEALTH FORM')">
                             </td>
                         </tr>
 
@@ -166,9 +167,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="police_clearance_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="police_clearance_delete_button" style="display: none;" onclick="replaceFile('.police_clearance_span','.police_clearance_div','#police_clearance_delete_button','#police_clearance_view','#police_clearance_file','police_clearance_file')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="police_clearance_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#police_clearance_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="police_clearance_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="police_clearance_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'POLICE CLEARANCE')">
                             </td>
                         </tr>
 
@@ -184,9 +185,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="resume_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="resume_delete_button" style="display: none;" onclick="replaceFile('.resume_span','.resume_div','#resume_delete_button','#resume_view','#resume_file','resume')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" class="btn btn-success btnDisabled" id="resume_view" title="VIEW" onclick="$('#resume_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="resume_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="resume_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'RESUME')">
                             </td>
                         </tr>
 
@@ -202,9 +203,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="sss_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="sss_delete_button" style="display: none;" onclick="replaceFile('.sss_span','.sss_div','#sss_delete_button','#sss_view','#sss_file','sss_file')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="sss_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#sss_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="sss_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="sss_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'SSS FORM')">
                             </td>
                         </tr>
 
@@ -220,9 +221,9 @@
                                 </div>
                             </td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-success" id="tor_delete_button" style="display: none;"><i class="fa-solid fa-file-pen"></i></button>
+                                <button type="button" class="btn btn-success" id="tor_delete_button" style="display: none;" onclick="replaceFile('.transcript_of_records_span','.transcript_of_records_div','#tor_delete_button','#tor_view','#tor_file','tor')"><i class="fa-solid fa-file-pen"></i></button>
                                 <button type="button" id="tor_view" class="btn btn-success btnDisabled" title="VIEW" onclick="$('#tor_preview').click();" disabled><i class="fas fa-eye"></i></button>
-                                <img src="" id="tor_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this)">
+                                <img src="" id="tor_preview" class="hidePrev" data-bs-toggle="modal" data-bs-target="#preview_document" onclick="documentPreview(this, 'TRANSCRIPT OF RECORDS')">
                             </td>
                         </tr>
                     </tbody>
@@ -234,7 +235,7 @@
         <div class="modal-dialog modal-dialog-scrollable modal-fullscreen-xxl-down">
             <div class="modal-content" >
                 <div class="modal-header">
-                    <h4 class="modal-title"></h4>
+                    <h4 class="modal_title"></h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" title="CLOSE"></button>
                 </div>
                 <div class="modal-body">

@@ -2,7 +2,6 @@
 
 @section('content')
 <br>
-
         <input type="hidden" name="hidden_id" id="hidden_id">
         <div id="employees_list" style="display:none;">
             <div class="row">
@@ -113,7 +112,7 @@
                             </th>
                         </tr>
                     </thead>
-                        <tbody title="CLICK TO EDIT">
+                        <tbody title="CLICK TO VIEW">
                         </tbody>
                 </table>
             </div>
@@ -121,7 +120,7 @@
         </div>
 
         <div id="employee_information" style="display: none;">
-                <h4 style="color: #0d1a80;" id="fill">EMPLOYEE INFORMATION</h4>
+                <h4 style="color: #0d1a80;">EMPLOYEE INFORMATION</h4>
                 <br>
                 <span class="alert class alert-warning" id="note_required"><i class="fa-solid fa-triangle-exclamation fa-lg"></i> <b> NOTE:</b> All fields are <b>required</b> unless specified <b>optional</b>.</span>
                 <div class="btn-group float-end" role="group">

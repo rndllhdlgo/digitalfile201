@@ -23,14 +23,8 @@ function telephoneNumberField(input){
     input.value = input.value.replace(telephoneNumberField,"");
 }
 
-$('.required_field, .optional_field, .multiple_field').keypress(function(e) {
-    if (e.which == 13) {
-        return false;
-    }
-});
-
-$('#email_address, #company_email_address').keypress(function(e) {
-    if (e.which == 32) {
+$('.preventSpace').keypress(function(e) {
+    if(e.which == 32){
         return false;
     }
 });
@@ -39,7 +33,7 @@ var email_address = document.querySelector('#email_address');
 var email_validation = document.querySelector('#email_validation');
 let regExp = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
 
-$('#email_address').on('keyup',function(){
+$('#email_address').on('focusout',function(){
     if(email_address.value.match(regExp)){
         $('#email_validation').hide();
     }

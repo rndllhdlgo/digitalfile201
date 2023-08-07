@@ -205,10 +205,10 @@
             <div class="row mb-3 mt-3">
                 <div class="col-6">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>
-                        <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email_address span_all"></span> </label>
+                        <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email_address"></span></label>
                     </div>
                 </div>
                 <div class="col-3">

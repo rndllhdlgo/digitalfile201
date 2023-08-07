@@ -19,38 +19,6 @@ use App\Models\WorkInformationTable;
 
 class DeleteController extends Controller{
 
-    public function college_delete(Request $request){
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-
-        $college_id = explode(",", $request->id);
-        if($college_id){
-            foreach($college_id as $id){
-                College::where('id', $id)->delete();
-            }
-        }
-
-        if($request->college_change == 'CHANGED'){
-            $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
-        }
-        else{
-            $college_update = NULL;
-        }
-
-        if($college_update){
-            $employee_logs = new EmployeeLogs;
-            $employee_logs->employee_id = $request->employee_id;
-            $employee_logs->user_id = auth()->user()->id;
-            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update";
-            $employee_logs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
-            $userlogs->save();
-        }
-    }
-
     public function children_delete(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
@@ -83,6 +51,38 @@ class DeleteController extends Controller{
         }
     }
 
+    public function college_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $college_id = explode(",", $request->id);
+        if($college_id){
+            foreach($college_id as $id){
+                College::where('id', $id)->delete();
+            }
+        }
+
+        if($request->college_change == 'CHANGED'){
+            $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
+        }
+        else{
+            $college_update = NULL;
+        }
+
+        if($college_update){
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update";
+            $employee_logs->save();
+
+            $userlogs = new UserLogs;
+            $userlogs->user_id = auth()->user()->id;
+            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
+            $userlogs->save();
+        }
+    }
+
     public function training_delete(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
@@ -95,7 +95,7 @@ class DeleteController extends Controller{
         }
 
         if($request->training_change == 'CHANGED'){
-            $training_update = "[TRAINING: LIST OF TRAINING/S HAVE BEEN CHANGED]";
+            $training_update = "[TRAINING: LIST OF TRAINING HAVE BEEN CHANGED]";
         }
         else{
             $training_update = NULL;
@@ -127,7 +127,7 @@ class DeleteController extends Controller{
         }
 
         if($request->vocational_change == 'CHANGED'){
-            $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL/S HAVE BEEN CHANGED]";
+            $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL HAVE BEEN CHANGED]";
         }
         else{
             $vocational_update = NULL;

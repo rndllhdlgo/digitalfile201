@@ -15,37 +15,37 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control college_field text-uppercase" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="college_name" class="formlabel form-label"><span class="span_college_name span_all span_college">(Optional)</span></label>
+                                <input class="forminput form-control text-uppercase" type="search" id="college_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="college_name" class="formlabel form-label"><span>(Optional)</span></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control college_field text-uppercase" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="college_degree" class="formlabel form-label"><span class="span_college_degree span_all span_college">(Optional)</span></label>
+                                <input class="forminput form-control text-uppercase" type="text" id="college_degree" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="college_degree" class="formlabel form-label"><span>(Optional)</span></label>
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control college_field max_month" id="college_inclusive_years_from">
+                                <input type="month" class="forminput form-control max_month" id="college_inclusive_years_from">
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control college_field max_month" id="college_inclusive_years_to">
+                                <input type="month" class="forminput form-control max_month" id="college_inclusive_years_to">
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
-                            <button type="button" id="collegeAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                            <button type="button" id="collegeAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
         <table id="college_table" class="table table-bordered table-hover table-striped align-middle college_table" style="margin-top: -17px;">
-            <thead class="college_table_thead" style="display:none;">
+            <thead style="display:none;">
                 <tr>
                     <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                     <th style="width: 30%;">DEGREE</th>
@@ -58,7 +58,7 @@
         </table>
 
         <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
-            <thead class="college_table_orig_thead">
+            <thead>
                 <tr class="college_table_orig_tr">
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>

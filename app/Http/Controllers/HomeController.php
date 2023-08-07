@@ -43,16 +43,9 @@ class HomeController extends Controller
     {
 
         // if(){
-            // $names = ['Dell', 'Ced', 'Mae'];
-            // $result = [];
-
-            // foreach ($names as $value) {
-            //     $result[] = $value;
-            // }
-
-            // return $result;
-            //     // $companies = WorkInformationTable::all();
-            //     // $filteredCompany = [];
+            // $companies = WorkInformationTable::all();
+            // $companies = WorkInformationTable::all();
+            // $filteredCompany = [];
 
             // foreach ($companies as $company) {
             //     if(strpos($company->employee_company, '004') !== false) {

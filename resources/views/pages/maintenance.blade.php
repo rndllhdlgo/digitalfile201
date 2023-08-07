@@ -7,7 +7,6 @@
         <h4 style="color: #0d1a80;" class="my-header">MAINTENANCE <span id="maintenance-span"></span> </h4>
     </div>
     <div class="col">
-        <button type="button" class="btn btn-success float-end grow" id="addJobPositionAndDescriptionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD JOB POSITION</button>
         <button type="button" class="btn btn-success float-end grow" id="addPositionBtn" title="ADD JOB POSITION" style="font-weight: bold;display:none;"><i class="fas fa-plus"></i> ADD JOB POSITION</button>
     </div>
 </div>
