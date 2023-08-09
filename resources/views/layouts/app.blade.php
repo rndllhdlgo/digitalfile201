@@ -7,7 +7,7 @@
         @if(Request::is('login'))
             <meta http-equiv="refresh" content="300;url={{ url('/login') }}">
         @endif
-        <title>{{env('APP_NAME')}}</title>
+        <title></title>
         <link rel="icon" href="/images/ideaserv_systems_logo.png">
         @include('cdn.head')
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">

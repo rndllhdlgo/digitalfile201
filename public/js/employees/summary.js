@@ -285,7 +285,15 @@ $(document).ready(function(){
     $('#btnPdf').click(function(){
         $('#see_more').click();
         $('#print_file').printThis({
-            importCSS: true
+            importCSS: true,
+            beforePrint:function(){
+                var printTitleName = $('#employee_number').val() + '_' + $('#last_name').val() + ', ' + $('#first_name').val() + ' ' + ($('#middle_name').val() ? $('#middle_name').val() : '');
+                $('title').text(printTitleName);
+            },
+            afterPrint:function(){
+                var headerText = $('.my-header').text();
+                $('title').text('201 FILING SYSTEM | ' + headerText);
+            }
         });
     });
 });

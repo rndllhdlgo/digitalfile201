@@ -259,7 +259,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         },
                         {
                             data: null,
-                            render: function(data, type, row, meta) {
+                            render: function(data, type, row){
                                 var today = new Date();
                                 var birthDate = new Date(row.child_birthday);
                                 var age = today.getFullYear() - birthDate.getFullYear();
@@ -345,13 +345,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'college_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
+                                return "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
                         {
                             data: 'college_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
+                                return "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
                     ],
@@ -400,13 +400,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'training_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
+                                return "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'},
                         {
                             data: 'training_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
+                                return "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'}
                     ],
@@ -457,14 +457,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'vocational_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
+                                return "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
                             },
                             width: '15%'
                         },
                         {
                             data: 'vocational_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
+                                return "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
                             },
                             width: '15%'
                         }
@@ -527,14 +527,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'job_inclusive_years_from',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                                return "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
                             },
                             width : '15%'
                         },
                         {
                             data: 'job_inclusive_years_to',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                                return "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
                             },
                             width : '15%'
                         }
@@ -587,7 +587,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'memo_date',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('LL');
+                                return moment(row.memo_date).format('LL');
                             },
                             width: '22.5%'},
                         { data: 'memo_penalty', width: '22.5%'},
@@ -646,7 +646,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'evaluation_date',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('LL');
+                                return moment(row.evaluation_date).format('LL');
                             },
                             width: '22.5%'},
                         { data: 'evaluation_evaluated_by', width: '22.5%'},
@@ -705,7 +705,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         {
                             data: 'contracts_date',
                             "render":function(data,type,row){
-                                return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('LL');
+                                return moment(row.contracts_date).format('LL');
                             },
                             width: '33.4%'
                         },
@@ -761,7 +761,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'resignation_reason',width: '20%'},
-                        { data: 'resignation_date', width: '33.4%'},
+                        { data: 'resignation_date',
+                            "render":function(data,type,row){
+                                return moment(row.resignation_date).format('LL');
+                            },
+                            width: '33.4%'},
                         {
                             data: 'resignation_file',
                             "render": function(data, type, row){
@@ -814,7 +818,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     },
                     columns: [
                         { data: 'termination_reason',width: '20%'},
-                        { data: 'termination_date', width: '33.4%'},
+                        { data: 'termination_date',
+                            "render":function(data,type,row){
+                                return moment(row.termination_date).format('LL');
+                            },
+                         width: '33.4%'},
                         {
                             data: 'termination_file',
                             "render": function(data, type, row){

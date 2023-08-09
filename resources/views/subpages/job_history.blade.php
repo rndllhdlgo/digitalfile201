@@ -16,47 +16,47 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                            <label for="job_company_name" class="formlabel form-label"><span class="span_job_company_name span_all span_job">(Optional)</span> </label>
+                            <input class="forminput form-control text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="job_company_name" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                            <label for="job_description" class="formlabel form-label"><span class="span_job_position span_all span_job">(Optional)</span></label>
+                            <input class="forminput form-control text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <label for="job_description" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field text-uppercase" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off" >
-                            <label for="job_position" class="formlabel form-label"><span class="span_job_position span_all span_job">(Optional)</span></label>
+                            <input class="forminput form-control text-uppercase" type="search" id="job_position" placeholder=" " style="background-color:white;" autocomplete="off">
+                            <label for="job_position" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control job_field" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" >
-                            <label for="job_contact_number" class="formlabel form-label"><span class="span_job_contact_number span_all span_job">(Optional)</span></label>
+                            <input class="forminput form-control" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" >
+                            <label for="job_contact_number" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control job_field max_month" id="job_inclusive_years_from">
+                            <input type="month" class="forminput form-control max_month" id="job_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control job_field max_month" id="job_inclusive_years_to">
+                            <input type="month" class="forminput form-control max_month" id="job_inclusive_years_to">
                         </div>
                     </td>
                     <td>
-                        <button type="button" id="jobHistoryAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="jobHistoryAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
 
         <table id="job_history_table" class="table table-bordered table-hover table-striped job_history_table" style="margin-top: -17px;">
-            <thead class="job_history_table_thead" style="display: none;">
+            <thead style="display: none;">
                 <tr>
                     <th></th>
                     <th></th>
@@ -71,7 +71,7 @@
         </table>
 
         <table id="job_history_table_orig" class="table table-bordered table-hover table-striped job_history_table_orig" style="display: none; margin-top:-36px;">
-            <thead class="job_history_table_orig_thead">
+            <thead>
                 <tr>
                     <th style="border:none;"> </th>
                     <th style="border:none;"> </th>

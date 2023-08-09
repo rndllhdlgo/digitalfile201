@@ -26,9 +26,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success grow btnDisabled" id="positionSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
-                <button type="button" class="btn btn-success grow btnDisabled" id="positionUpdate"><i class="fas fa-save"></i> <b>UPDATE</b></button>
-                <button type="button" class="btn btn-success grow btnCancel"><b>CANCEL</b></button>
+                <button type="button" class="btn btn-success btnDisabled" id="positionSave"><i class="fas fa-save"></i> <b>SAVE</b></button>
+                <button type="button" class="btn btn-success btnDisabled" id="positionUpdate"><i class="fas fa-save"></i> <b>UPDATE</b></button>
+                <button type="button" class="btn btn-success btnCancel"><b>CANCEL</b></button>
             </div>
         </div>
     </div>

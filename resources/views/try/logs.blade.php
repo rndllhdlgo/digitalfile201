@@ -54,7 +54,7 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <button type="button" id="sampleAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="sampleAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>

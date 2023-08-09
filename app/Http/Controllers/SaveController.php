@@ -94,6 +94,7 @@ class SaveController extends Controller
     public function saveCollege(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $employee = new College;
         $employee->employee_id = $request->employee_id;
         $employee->college_name = strtoupper($request->college_name);
@@ -126,6 +127,7 @@ class SaveController extends Controller
     public function saveTraining(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $employee = new Training;
         $employee->employee_id = $request->employee_id;
         $employee->training_name = strtoupper($request->training_name);
@@ -158,6 +160,7 @@ class SaveController extends Controller
     public function saveVocational(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $employee = new Vocational;
         $employee->employee_id = $request->employee_id;
         $employee->vocational_name = strtoupper($request->vocational_name);
@@ -190,6 +193,7 @@ class SaveController extends Controller
     public function saveJobHistory(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
         $employee = new JobHistory;
         $employee->employee_id = $request->employee_id;
         $employee->job_company_name = strtoupper($request->job_company_name);

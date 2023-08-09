@@ -43,9 +43,9 @@
                             </div>
                         </div>
                     </div>
-                        <button type="button" class="btn btn-warning mx-1 grow btnDisabled" id="btnUserClear" title="CLEAR"><i class="fas fa-eraser"></i></button>
-                        <button type="button" class="btn btn-success mx-1 grow float-end btnRequired btnDisabled" id="btnUserSave" title="SAVE"><i class="fas fa-save"></i></button>
-                        <button type="button" class="btn btn-success mx-1 grow float-end btnRequired" id="btnUserUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
+                        <button type="button" class="btn btn-warning mx-1 btnDisabled" id="btnUserClear" title="CLEAR"><i class="fas fa-eraser"></i></button>
+                        <button type="button" class="btn btn-success mx-1 float-end btnRequired btnDisabled" id="btnUserSave" title="SAVE"><i class="fas fa-save"></i></button>
+                        <button type="button" class="btn btn-success mx-1 float-end btnRequired" id="btnUserUpdate" title="SAVE UPDATE"><i class="fas fa-save"></i></button>
             </div>
         </div>
     </div>

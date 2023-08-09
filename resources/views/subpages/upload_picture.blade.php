@@ -1,7 +1,7 @@
 <input type="hidden" id="filename">
 <input type="hidden" id="filename_delete">
 
-<i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
+<i class="fas fa-times float-end" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
 
 <div class="text-center mt-4">
     <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>

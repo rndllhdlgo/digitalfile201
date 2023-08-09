@@ -25,7 +25,6 @@
                                 <label for="college_degree" class="formlabel form-label"><span>(Optional)</span></label>
                             </div>
                         </td>
-
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
                                 <input type="month" class="forminput form-control max_month" id="college_inclusive_years_from">
@@ -36,7 +35,6 @@
                                 <input type="month" class="forminput form-control max_month" id="college_inclusive_years_to">
                             </div>
                         </td>
-
                         <td class="pb-3 pt-3">
                             <button type="button" id="collegeAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                         </td>
@@ -59,7 +57,7 @@
 
         <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
             <thead>
-                <tr class="college_table_orig_tr">
+                <tr>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
@@ -86,25 +84,25 @@
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control secondary_field text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="secondary_school_name" class="formlabel form-label"><span class="span_secondary_school_name span_all span_secondary">(Optional)</span></label>
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                        <label for="secondary_school_name" class="formlabel form-label">(Optional)</label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control secondary_field text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="secondary_school_address" class="formlabel form-label"><span class="span_secondary_school_address span_all span_secondary">(Optional)</span></label>
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                        <label for="secondary_school_address" class="formlabel form-label">(Optional)</label>
                     </div>
                 </td>
 
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field max_month" id="secondary_school_inclusive_years_from">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_from">
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control secondary_field max_month" id="secondary_school_inclusive_years_to">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_to">
                     </div>
                 </td>
             </tr>
@@ -127,13 +125,13 @@
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                            <label for="primary_school_name" class="formlabel form-label"><span class="span_primary_school_name span_all"></span></label>
+                            <label for="primary_school_name" class="formlabel form-label"></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" >
-                            <label for="primary_school_address" class="formlabel form-label"><span class="span_primary_school_address span_all"></span></label>
+                            <label for="primary_school_address" class="formlabel form-label"></label>
                         </div>
                     </td>
 
@@ -167,38 +165,38 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control training_field text-uppercase" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="training_name" class="formlabel form-label"><span class="span_training_name span_all span_training">(Optional)</span></label>
+                                <input class="forminput form-control text-uppercase" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                                <label for="training_name" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control training_field text-uppercase" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="training_title" class="formlabel form-label"><span class="span_training_title span_all span_training">(Optional)</span></label>
+                                <input class="forminput form-control text-uppercase" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                                <label for="training_title" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control training_field max_month" id="training_inclusive_years_from">
+                                <input type="month" class="forminput form-control max_month" id="training_inclusive_years_from">
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input type="month" class="forminput form-control training_field max_month" id="training_inclusive_years_to">
+                                <input type="month" class="forminput form-control max_month" id="training_inclusive_years_to">
                             </div>
                         </td>
 
                         <td>
-                            <button type="button" id="trainingAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                            <button type="button" id="trainingAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>
             </table>
 
         <table id="training_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
-            <thead class="training_table_thead"  style="display: none;">
+            <thead style="display: none;">
                 <tr>
                     <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
                     <th style="width: 30%;"> TRAINING TITLE</th>
@@ -211,7 +209,7 @@
         </table>
 
         <table id="training_table_orig" class="table table-bordered table-hover table-striped align-middle training_table_orig" style="display: none; margin-top:-36px;">
-            <thead class="training_table_orig_thead">
+            <thead>
                 <tr>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>
@@ -240,38 +238,38 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control vocational_field text-uppercase" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                            <label for="vocational_name" class="formlabel form-label"><span class="span_vocational_name span_all span_vocational">(Optional)</span></label>
+                            <input class="forminput form-control text-uppercase" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                            <label for="vocational_name" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control vocational_field text-uppercase" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                            <label for="vocational_course" class="formlabel form-label"><span class="span_vocational_course span_all span_vocational">(Optional)</span></label>
+                            <input class="forminput form-control text-uppercase" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                            <label for="vocational_course" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control vocational_field max_month" id="vocational_inclusive_years_from">
+                            <input type="month" class="forminput form-control max_month" id="vocational_inclusive_years_from">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control vocational_field max_month" id="vocational_inclusive_years_to">
+                            <input type="month" class="forminput form-control max_month" id="vocational_inclusive_years_to">
                         </div>
                     </td>
 
                     <td>
-                        <button type="button" id="vocationalAdd" class="btn btn-success center grow btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
+                        <button type="button" id="vocationalAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
         </table>
     {{-- Vocational Data Table --}}
         <table id="vocational_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
-            <thead class="vocational_table_thead"  style="display: none;">
+            <thead style="display: none;">
                 <tr>
                     <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
                     <th style="width:30%;"><i class="fas fa-certificate"></i> COURSE</th>
@@ -284,7 +282,7 @@
         </table>
 
         <table id="vocational_table_orig" class="table table-bordered table-hover table-striped align-middle vocational_table_orig" style="display: none; margin-top:-36px;">
-            <thead class="vocational_table_orig_thead">
+            <thead>
                 <tr>
                     <th style="border: none;"></th>
                     <th style="border: none;"></th>

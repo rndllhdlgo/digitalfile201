@@ -6,7 +6,7 @@
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
 
-            <i class="fas fa-times float-end grow" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
+            <i class="fas fa-times float-end" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
 
             <div class="text-center mt-4">
                 <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
@@ -43,7 +43,7 @@
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="firstNameField(this)" >
                         <p id="first_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME <span class="span_first_name span_all"></span> </label>
+                        <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME</label>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                         <p id="middle_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME (Optional) <span class="span_middle_name span_all"></span></label>
+                        <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME (Optional)</label>
                     </div>
                 </div>
 
@@ -59,14 +59,14 @@
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="last_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                         <p id="last_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME <span class="span_last_name span_all"></span> </label>
+                        <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME</label>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control optional_field text-uppercase" type="search" id="suffix" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX <span class="span_suffix span_all">(Optional)</span></label>
+                        <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX (Optional)</label>
                     </div>
                 </div>
             </div>
@@ -75,19 +75,19 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME (Optional) <span class="span_nickname span_all"></span></label>
+                        <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME (Optional)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="date" id="birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY <span class="span_birthday span_all"></span> </label>
+                        <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY </label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="text" id="age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
-                        <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i><span class="span_age span_all"> AGE </span> </label>
+                        <label for="age" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i>AGE</label>
                     </div>
                 </div>
                 <div class="col">
@@ -97,7 +97,7 @@
                             <option value="MALE">MALE</option>
                             <option value="FEMALE">FEMALE</option>
                         </select>
-                        <label for="gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER <span class="span_gender span_all"></span> </label>
+                        <label for="gender" class="formlabel form-label"><i class="fas fa-venus-mars" aria-hidden="true" ></i> GENDER</label>
                     </div>
                 </div>
             </div>
@@ -106,7 +106,7 @@
                 <div class="col-9">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field" type="search" id="address" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR, LOT/HOUSE #, STREET, SUBDIVISION, BARANGAY  <span class="span_unit span_all"></span> </label>
+                        <label for="address" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> ROOM #/ FLOOR, LOT/HOUSE #, STREET, SUBDIVISION, BARANGAY</label>
                     </div>
                 </div>
 
@@ -118,7 +118,7 @@
                             <option value="RENT">RENT</option>
                             <option value="STAY IN">STAY IN</option>
                         </select>
-                        <label for="ownership" class="formlabel form-label"><i class="fa-solid fa-house"></i> OWNERSHIP <span class="span_ownership span_all"></span> </label>
+                        <label for="ownership" class="formlabel form-label"><i class="fa-solid fa-house"></i> OWNERSHIP</label>
                     </div>
                 </div>
             </div>
@@ -131,7 +131,7 @@
                                 <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
                             @endforeach
                         </select>
-                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE <span class="span_province span_all"></span> </label>
+                        <label for="province" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> PROVINCE</label>
                     </div>
                 </div>
                 <div class="col-3">
@@ -140,14 +140,14 @@
                             <option value="" selected disabled>SELECT CITY</option>
 
                         </select>
-                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY <span class="span_city span_all"></span> </label>
+                        <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY</label>
                     </div>
                 </div>
 
                 <div class="col-3">
                     <div class="f-outline">
                         <input type="text" class="forminput form-control required_field" name="region" id="region" style="background-color: white !important;" placeholder=" " disabled>
-                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION <span class="span_street span_all"></span> </label>
+                        <label for="region" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> REGION</label>
                     </div>
                 </div>
                 <div class="col-3">
@@ -172,19 +172,19 @@
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="height" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT (in cm.) <span class="span_height span_all"></span></label>
+                        <label for="height" class="formlabel form-label"><i class="fas fa-address-card"></i> HEIGHT (in cm.)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="weight" placeholder=" " style="background-color:white;" autocomplete="off" >
-                        <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT (in kg.)<span class="span_weight span_all"></span></label>
+                        <label for="weight" class="formlabel form-label"><i class="fas fa-address-card"></i> WEIGHT (in kg.)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field" type="search" id="religion" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="religion" class="formlabel form-label"><i class="fas fa-address-card"></i> RELIGION <span class="span_religion span_all"></span></label>
+                        <label for="religion" class="formlabel form-label"><i class="fas fa-address-card"></i> RELIGION</label>
                     </div>
                 </div>
                 <div class="col">
@@ -197,7 +197,7 @@
                             <option value="WIDOWED">WIDOWED</option>
                             <option value="SEPARATED">SEPARATED</option>
                         </select>
-                        <label for="civil_status" class="formlabel form-label"><i class="fas fa-user-friends" ></i> CIVIL STATUS <span class="span_civil_status span_all"></span> </label>
+                        <label for="civil_status" class="formlabel form-label"><i class="fas fa-user-friends" ></i> CIVIL STATUS</label>
                     </div>
                 </div>
             </div>
@@ -208,19 +208,19 @@
                         <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off">
                         <p class="validation"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST!</p>
                         <p id="email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address!</p>
-                        <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS <span class="span_email_address"></span></label>
+                        <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
                         <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="telephoneNumberField(this)" >
-                        <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. <span class="span_telephone_number span_all">(Optional)</span> </label>
+                        <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. (Optional)</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
                         <input class="forminput form-control required_field number_validation" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
-                        <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO. <span class="span_cellphone_number span_all"></span> </label>
+                        <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO.</label>
                     </div>
                 </div>
             </div>
@@ -232,19 +232,19 @@
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase name_validation" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                             <p id="spouse_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters </p>
-                            <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> SPOUSE NAME <span class="span_spouse_name span_all"></span> </label>
+                            <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> SPOUSE NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
-                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL) <span class="span_spouse_number span_all"></span> </label>
+                        <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional) <span class="span_spouse_profession span_all"></span> </label>
+                        <input class="forminput form-control text-uppercase" type="search" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                        <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional)</label>
                     </div>
                 </div>
             </div>
@@ -254,19 +254,19 @@
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                             <p id="father_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                            <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> FATHER'S NAME <span class="span_father_name span_all"></span> </label>
+                            <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> FATHER'S NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
-                        <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL) <span class="span_father_contact_number span_all"></span> </label>
+                        <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase optional_field" type="search" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL) <span class="span_father_profession span_all"></span> </label>
+                        <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL)</label>
                     </div>
                 </div>
             </div>
@@ -276,19 +276,19 @@
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                         <p id="mother_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                        <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> MOTHER'S MAIDEN NAME <span class="span_mother_name span_all"></span> </label>
+                        <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> MOTHER'S MAIDEN NAME</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
-                        <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL) <span class="span_mother_contact_number span_all"></span></label>
+                        <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase optional_field" type="search" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL) <span class="span_mother_profession span_all"></span></label>
+                        <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL)`</label>
                     </div>
                 </div>
             </div>
@@ -298,20 +298,20 @@
                         <div class="f-outline">
                             <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
                             <p id="emergency_contact_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                            <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> INCASE OF EMERGENCY NAME <span class="span_emergency_contact_name span_all"></span> </label>
+                            <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> INCASE OF EMERGENCY NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control text-uppercase required_field" type="search" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                        <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> RELATIONSHIP <span class="span_emergency_contact_relationship span_all"></span> </label>
+                        <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> RELATIONSHIP</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
                         <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="contactNumberOnly(this)">
                         <p id="same_value" class="validation"><i class="fas fa-exclamation-triangle"></i> SAME VALUE ON CELLPHONE NUMBER!</p>
-                        <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO. <span class="span_emergency_contact_number span_all"></span> </label>
+                        <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO.</label>
                     </div>
                 </div>
             </div>
@@ -334,14 +334,14 @@
                                     <tr>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
-                                                <input type="search" class="forminput form-control optional_field child_field text-uppercase name_validation" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <input type="search" class="forminput form-control optional_field text-uppercase name_validation" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
                                                 <p id="child_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
-                                                <label for="child_name" class="formlabel form-label"><span class="span_child_name span_all span_child">(Optional)</span></label>
+                                                <label for="child_name" class="formlabel form-label">(Optional)</label>
                                             </div>
                                         </td>
                                         <td class="pb-3 pt-3">
-                                            <input class="forminput form-control optional_field child_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                                            <label for="child_birthday" class="formlabel form-label"><span class="span_child_birthday span_all span_child">(Optional)</span></label>
+                                            <input class="forminput form-control optional_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
+                                            <label for="child_birthday" class="formlabel form-label">(Optional)</label>
                                         </td>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
@@ -351,16 +351,16 @@
                                         </td>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
-                                                <select class="form-select forminput form-control optional_field child_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
                                                     <option value="" disabled selected>SELECT GENDER </option>
                                                     <option value="MALE">MALE</option>
                                                     <option value="FEMALE">FEMALE</option>
                                                 </select>
-                                                <label for="child_gender" class="formlabel form-label"><span class="span_child_gender span_all span_child">(Optional)</span></label>
+                                                <label for="child_gender" class="formlabel form-label">(Optional)</label>
                                             </div>
                                         </td>
                                         <td class="pb-3 pt-3">
-                                            <button type="button" id="childrenAdd" class="btn btn-success center grow btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
+                                            <button type="button" id="childrenAdd" class="btn btn-success center btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -368,7 +368,7 @@
                         </table>
 
                         <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
-                            <thead class="children_table_thead" style="display: none;">
+                            <thead style="display: none;">
                                 <tr>
                                     <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
                                     <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
@@ -382,7 +382,7 @@
                         </table>
 
                         <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-36px;">
-                            <thead class="children_table_orig_thead">
+                            <thead>
                                 <tr>
                                     <th style="border:none;"></th>
                                     <th style="border:none;"></th>

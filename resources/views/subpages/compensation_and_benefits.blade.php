@@ -5,7 +5,7 @@
         <tbody>
             <tr>
                 <td>
-                    <textarea class="form-control text-uppercase separated textarea_insurance" id="employee_insurance" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
+                    <textarea class="form-control text-uppercase" id="employee_insurance" rows="5" style="resize: none;" placeholder="(Press 'ENTER' to separate multiple inputs.)"></textarea>
                 </td>
             </tr>
         </tbody>

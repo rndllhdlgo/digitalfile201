@@ -4,14 +4,14 @@
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field" type="search" id="employee_number" placeholder=" " style="background-color:white;" autocomplete="off" >
-                <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO. <span class="span_employee_number span_all"></span></label>
+                <label for="employee_number" class="formlabel form-label"><i class="fas fa-id-card"></i> EMPLOYEE NO.</label>
             </div>
         </div>
 
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control required_field future_date" type="date" id="date_hired" placeholder=" " style="background-color:white;">
-                <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED <span class="span_date_hired span_all"></span></label>
+                <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED</label>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
                             <option value="{{$company->entity}}">{{$company->company_name}}</option>
                         @endforeach
                 </select>
-                <label for="employee_company" class="formlabel form-label"><i class="fa-solid fa-building"></i> COMPANY <span class="span_employee_company span_all"></span></label>
+                <label for="employee_company" class="formlabel form-label"><i class="fa-solid fa-building"></i> COMPANY</label>
             </div>
         </div>
 
@@ -44,7 +44,7 @@
                             <option value="{{$branch->entity03}}">{{$branch->entity03_desc}}</option>
                         @endforeach
                 </select>
-                <label for="employee_branch" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH <span class="span_employee_branch span_all"></span></label>
+                <label for="employee_branch" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH</label>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
                             <option value="{{$department->deptcode}}">{{$department->deptdesc}}</option>
                         @endforeach
                 </select>
-                <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT <span class="span_employee_department span_all"></span></label>
+                <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT</label>
             </div>
         </div>
     </div>
@@ -70,12 +70,12 @@
                             <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
                         @endforeach
                 </select>
-                <label for="employee_position" class="formlabel form-label"><i class="fas fa-user-tie"></i> POSITION <span class="span_employee_supervisor span_all"></span></label>
+                <label for="employee_position" class="formlabel form-label"><i class="fas fa-user-tie"></i> POSITION</label>
             </div>
         </div>
 
         <div class="col">
-            <button type="button" class="btn btn-sm btn-primary grow p-1 w-100 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
+            <button type="button" class="btn btn-sm btn-primary p-1 w-100 btnDisabled" id="viewJobDescriptionBtn"><i class="fa-solid fa-eye"></i> View Job Description</button>
         </div>
 
         <div class="col">
@@ -91,7 +91,7 @@
                     <option class="" value="TERMINATED" id="terminate" rank="4">TERMINATED</option>
                     <option class="" value="RESIGNED" id="resign" rank="5">RESIGNED</option>
                 </select>
-                <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS <span class="span_employment_status span_all"></span></label>
+                <label for="employment_status" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT STATUS</label>
             </div>
         </div>
     </div>
@@ -104,7 +104,7 @@
                     <option value="DIRECT HIRED">DIRECT HIRED</option>
                     <option value="REHIRED">REHIRED</option>
                 </select>
-                <label for="employment_origin" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT ORIGIN <span class="span_employment_origin span_all"></span></label>
+                <label for="employment_origin" class="formlabel form-label"><i class="fas fa-info"></i> EMPLOYMENT ORIGIN</label>
             </div>
         </div>
 
@@ -112,14 +112,14 @@
             <div class="f-outline">
                 <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
                 <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
-                <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL <span class="span_company_email_address span_all">(Optional)</span></label>
+                <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>
 
         <div class="col">
             <div class="f-outline">
                 <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
-                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.<span class="span_company_contact_number span_all"> (Optional)</span></label>
+                <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.(Optional)</label>
             </div>
         </div>
     </div>
@@ -129,19 +129,19 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)<span class="span_hmo_number span_all"></span></label>
+                    <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)<span class="span_sss_number span_all"></span></label>
+                    <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)<span class="span_pag-ibig_number span_all"></span></label>
+                    <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)</label>
                 </div>
             </div>
         </div>
@@ -150,21 +150,21 @@
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)<span class="span_philhealth_number span_all"></span></label>
+                    <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)<span class="span_tin_number span_all"></span></label>
+                    <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
                     <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
-                    <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)<span class="span_account_number span_all"></span></label>
+                    <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)</label>
                 </div>
             </div>
         </div>
@@ -190,20 +190,20 @@
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
                                 <input class="forminput form-control multiple_field resignation_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="resignation_reason" class="formlabel form-label"><span class="span_resignation_reason span_all span_resignation"></span></label>
+                                <label for="resignation_reason" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
                                 <input class="forminput form-control multiple_field resignation_field future_date" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="resignation_date" class="formlabel form-label"><span class="span_resignation_date span_all span_resignation"></span></label>
+                                <label for="resignation_date" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <input type="file" class="form-control form_file resignation_field" name="resignation_file[]" id="resignation_file" onchange="fileValidation('resignation_file')" accept=".pdf">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -243,20 +243,20 @@
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
                                 <input class="forminput form-control multiple_field termination_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
-                                <label for="termination_reason" class="formlabel form-label"><span class="span_termination_reason span_all span_termination"></span></label>
+                                <label for="termination_reason" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
                                 <input class="forminput form-control multiple_field termination_field future_date" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="termination_date" class="formlabel form-label"><span class="span_termination_date span_all span_termination"></span></label>
+                                <label for="termination_date" class="formlabel form-label"></label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <input type="file" class="form-control form_file termination_field" name="termination_file[]" id="termination_file" onchange="fileValidation('termination_file')" accept=".pdf">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success center grow btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>
