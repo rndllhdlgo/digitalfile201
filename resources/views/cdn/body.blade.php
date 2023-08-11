@@ -13,10 +13,6 @@
     <script src="/js/index.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 @endif
 
-@if(Request::is('login'))
-    <script src="/js/login.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-@endif
-
 @if(Request::is('employees'))
     <script src="/js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Schema;
 use Carbon\Carbon;
 
 use App\Models\UserLogs;
@@ -513,4 +514,41 @@ class EmployeesController extends Controller
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
     }
+
+    public function checkDuplicate(Request $request){
+        $columnName = $request->input('inputColumn');
+        $inputValue = $request->input('inputValue');
+
+        if(Schema::hasColumn('work_information_tables', $columnName)){
+            if(WorkInformationTable::where($columnName, $inputValue)->count() > 0){
+                return 'true';
+            }
+            else{
+                return 'false';
+            }
+        }
+        else if(Schema::hasColumn('personal_information_tables', $columnName)){
+            if(PersonalInformationTable::where($columnName, $inputValue)->count() > 0){
+                return 'true';
+            }
+            else{
+                return 'false';
+            }
+        }
+        else{
+            return 'column_not_found';
+        }
+    }
+
+    // public function checkDuplicate(Request $request){
+    //     $columnName = $request->input('inputColumn');
+    //     if (Schema::hasColumn('work_information_tables', 'hours')) {
+    //         // The 'hours' column exists in the 'work_information_tables' table
+    //     } else {
+    //         // The 'hours' column does not exist in the 'work_information_tables' table
+    //     }
+    //     if(WorkInformationTable::where($columnName,$request->inputValue)->count() > 0){
+    //         return 'true';
+    //     }
+    // }
 }

@@ -1,5 +1,4 @@
 var children_id, college_id, training_id, job_history_id, memo_id, evaluation_id, contracts_id, resignation_id, termination_id = [];
-
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
 
@@ -1121,6 +1120,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
+                $('#btnUpdate').prop('disabled',true);
                 $('#loading').hide();
                 $('#employee_information').show();
                 $('#employees_list').hide();

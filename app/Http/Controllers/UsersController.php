@@ -20,47 +20,50 @@ class UsersController extends Controller
     }
 
     public function saveUser(Request $request){
+        try{
+            $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+            $pass = array();
+            $charLength = strlen($char) - 1;
+                for($i = 0; $i < 8; $i++){
+                    $n = rand(0, $charLength);
+                    $pass[] = $char[$n];
+                }
+            $password = implode($pass);
 
-        $char = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
-        $pass = array();
-        $charLength = strlen($char) - 1;
-            for($i = 0; $i < 8; $i++){
-                $n = rand(0, $charLength);
-                $pass[] = $char[$n];
+            $name = strtoupper($request->name);
+
+            if(User::where('email',$request->email)->count() > 0){
+                return response('duplicate_email');
             }
-        $password = implode($pass);
 
-        $name = strtoupper($request->name);
+            $users = new User;
+            $users->name = $name;
+            $users->email = strtolower($request->email);
+            $users->password = Hash::make($password);
+            $users->user_level = $request->user_level;
+            $users->status = 'ACTIVE';
+            $sql = $users->save();
+            $id = $users->id;
 
-        if(User::where('email',$request->email)->count() > 0){
-            return response('duplicate_email');
+            if(!$sql){
+                $result = 'false';
+            }
+            else{
+                $result = 'true';
+
+                Password::broker()->sendResetLink(['email'=>strtolower($request->email)]);
+
+                $userlogs = new UserLogs;
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->activity = "USER ADDED A NEW USER WITH THE FOLLOWING DETAILS [USER FULL NAME: $name] [USER LEVEL: $users->user_level]";
+                $userlogs->save();
+            }
+
+            return response($result);
         }
-
-        $users = new User;
-        $users->name = $name;
-        $users->email = strtolower($request->email);
-        $users->password = Hash::make($password);
-        $users->user_level = $request->user_level;
-        $users->status = 'ACTIVE';
-        $sql = $users->save();
-        $id = $users->id;
-
-        if(!$sql){
-            $result = 'false';
+        catch(\Exception $e){
+            return response('false');
         }
-        else{
-            $result = 'true';
-
-            Password::broker()->sendResetLink(['email'=>strtolower($request->email)]);
-
-            $userlogs = new UserLogs;
-            $userlogs->user_id = auth()->user()->id;
-            // $userlogs->activity = "USER ADDED: User successfully added a new user with the following details NAME:[$name] USER LEVEL: [$users->user_level].";
-            $userlogs->activity = "USER ADDED A NEW USER WITH THE FOLLOWING DETAILS [USER FULL NAME: $name] [USER LEVEL: $users->user_level]";
-            $userlogs->save();
-        }
-
-        return response($result);
     }
 
     public function updateUser(Request $request){

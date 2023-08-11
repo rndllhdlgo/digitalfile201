@@ -17,16 +17,6 @@ $(document).ready(function() {
     }
 });
 
-// Check length value
-$(document).on('keyup','.name_validation',function(){
-    if($(this).val().length < 2){
-        $(this).next('.validation').show();
-    }
-    else{
-        $(this).next('.validation').hide();
-    }
-});
-
 $(document).ready(function(){
     setInterval(() => {
         if($('#current_datetime').is(":visible")){

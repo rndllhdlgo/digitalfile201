@@ -110,15 +110,14 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" >
-                <p id="company_email_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Please Enter Valid Email Address! </p>
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('company_email_address'); emailCheck('company_email_address');" onclick="duplicateCheck('company_email_address');">
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11"  onkeyup="contactNumberOnly(this)">
+                <input class="forminput form-control optional_field numberInput" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" maxlength="11" onkeyup="duplicateCheck('company_contact_number');" onclick="duplicateCheck('company_contact_number')">
                 <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.(Optional)</label>
             </div>
         </div>
@@ -128,19 +127,19 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('hmo_number')" onclick="duplicateCheck('hmo_number')">
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('sss_number')" onclick="duplicateCheck('sss_number')">
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('pag_ibig_number')" onclick="duplicateCheck('pag_ibig_number')">
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)</label>
                 </div>
             </div>
@@ -149,21 +148,21 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('philhealth_number')" onclick="duplicateCheck('philhealth_number')">
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('tin_number')" onclick="duplicateCheck('tin_number')">
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)">
+                    <input class="forminput form-control optional_field" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('account_number')" onclick="duplicateCheck('account_number')">
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)</label>
                 </div>
             </div>

@@ -147,7 +147,6 @@ function fileValidation(fileInputId, previewId, viewId){
 }
 
 function documentPreview(newDocumentSrc, modal_title){
-    console.log(modal_title);
     $('.modal_title').html(modal_title);
     var newDocumentSrcNow = newDocumentSrc.src;
     var largeDocument = document.getElementById('document_display');

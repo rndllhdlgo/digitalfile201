@@ -15,11 +15,6 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\QrController;
 
-// use Mail;
-// Route::get('/testmail', function () {
-//     return Mail::raw('Hello World!', function($msg) {$msg->to('rendellhidalgo11@gmail.com')->subject('Test Email'); });
-// });
-
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::middleware(['session','check_device'])->group(function(){
@@ -49,6 +44,7 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/employees/status','EmployeesController@employee_status');
     Route::any('/employees/fetch','EmployeesController@employee_fetch');
     Route::any('/upload_picture','EmployeesController@upload_picture');
+    Route::any('/checkDuplicate','EmployeesController@checkDuplicate');
 
     // Save Controller
     Route::any('/employees/insertImage','SaveController@insertImage');
@@ -112,6 +108,22 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/employees/history_data','DataController@history_data');
     Route::any('/employees/logs_data','DataController@logs_data');
 
+    // Updates Controller1
+    Route::get('/update_list', 'UpdatesController@update_list');
+    Route::get('/update_fetch', 'UpdatesController@update_fetch');
+    Route::get('/updates/college_data', 'UpdatesController@college_data');
+    Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
+    Route::get('/updates/training_data', 'UpdatesController@training_data');
+    Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');
+    Route::any('/update_personal_information', 'UpdatesController@update_personal_information');
+    Route::any('/update_educational_attainment', 'UpdatesController@update_educational_attainment');
+    Route::any('/update_medical_history', 'UpdatesController@update_medical_history');
+    Route::any('/update_college', 'UpdatesController@update_college');
+    Route::any('/update_training', 'UpdatesController@update_training');
+    Route::any('/update_vocational', 'UpdatesController@update_vocational');
+    Route::any('/update_job_history', 'UpdatesController@update_job_history');
+    Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
+
     // Try Controllers
     Route::any('/chart_blade','TryController@chart_blade');
     Route::any('/chart_data','TryController@getDataForChart');
@@ -156,21 +168,4 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/qrshow', 'QrController@qrshow');
     Route::any('/exportTable', 'TryController@exportTable');
     Route::any('/data', 'TryController@data');
-
-
-    // Updates Controller1
-    Route::get('/update_list', 'UpdatesController@update_list');
-    Route::get('/update_fetch', 'UpdatesController@update_fetch');
-    Route::get('/updates/college_data', 'UpdatesController@college_data');
-    Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
-    Route::get('/updates/training_data', 'UpdatesController@training_data');
-    Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');
-    Route::any('/update_personal_information', 'UpdatesController@update_personal_information');
-    Route::any('/update_educational_attainment', 'UpdatesController@update_educational_attainment');
-    Route::any('/update_medical_history', 'UpdatesController@update_medical_history');
-    Route::any('/update_college', 'UpdatesController@update_college');
-    Route::any('/update_training', 'UpdatesController@update_training');
-    Route::any('/update_vocational', 'UpdatesController@update_vocational');
-    Route::any('/update_job_history', 'UpdatesController@update_job_history');
-    Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
 });

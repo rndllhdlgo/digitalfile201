@@ -16,13 +16,13 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="alphaNumeric(this)">
                             <label for="job_company_name" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="alphaNumeric(this)">
                             <label for="job_description" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
@@ -34,7 +34,7 @@
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="numbersOnly(this)" >
+                            <input class="forminput form-control" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('job_contact_number');">
                             <label for="job_contact_number" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>

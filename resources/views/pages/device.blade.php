@@ -14,7 +14,6 @@
                 <img src="/images/banner.png" class="img-fluid" alt="Banner Image">
                 <div class="alert alert-info mt-5 text-center" role="alert">
                     <p>Sorry, this website is currently not available on mobile devices.</p>
-                    <p>We will keep you posted once it works on other devices. Thank you.</p>
                 </div>
             </div>
         </div>
