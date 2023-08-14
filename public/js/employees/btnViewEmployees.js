@@ -302,9 +302,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.children_table_orig').DataTable().data().any()){
                             $('#children_table_orig').hide();
+                            $('#haveChildren').prop('checked', false);
                         }
                         else{
                             $('#children_table_orig').show();
+                            $('#haveChildren').prop('checked', true);
+                            $('#haveChildren').change();
                         }
                     }
                 });

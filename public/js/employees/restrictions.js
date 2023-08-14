@@ -109,24 +109,39 @@ function emailCheck(emailId) {
 
 var orig_values = {};
 
-function updateCheck(inputElementId) {
-    var inputElement = $(`#${inputElementId}`);
+function updateCheck(inputElementId){
+    var element = $(`#${inputElementId}`);
 
-    if (!inputElement.length) {
-        return; // Exit if the input element doesn't exist
+    if(!element.length){
+        return; // Exit if the element doesn't exist
     }
 
-    var input_value = inputElement.val();
+    var value;
 
-    if (!(inputElementId in orig_values)) {
-        orig_values[inputElementId] = input_value;
+    if(element.is('input, textarea')){
+        value = element.val();
+    }
+    else if(element.is('select')){
+        value = element.find('option:selected').val();
     }
 
-    var isAnyValueChanged = Object.keys(orig_values).some(function (id) {
+    if(!(inputElementId in orig_values)){
+        orig_values[inputElementId] = value;
+    }
+
+    var isAnyValueChanged = Object.keys(orig_values).some(function(id){
         var originalValue = orig_values[id];
-        var currentValue = $(`#${id}`).val();
+        var currentValue;
+        var currentElement = $(`#${id}`);
 
-        if (originalValue === null || currentValue === null) {
+        if(currentElement.is('input, textarea')){
+            currentValue = currentElement.val();
+        }
+        else if(currentElement.is('select')){
+            currentValue = currentElement.find('option:selected').val();
+        }
+
+        if(originalValue === null || currentValue === null){
             return false; // Skip comparison if any value is null
         }
 
@@ -135,3 +150,9 @@ function updateCheck(inputElementId) {
 
     $('#btnUpdate').prop('disabled', !isAnyValueChanged);
 }
+
+setInterval(() => {
+    if(tblChange == 'CHANGED_ROW' || employee_image_change == 'CHANGED'){
+        $('#btnUpdate').prop('disabled', false);
+    }
+}, 0);

@@ -9,6 +9,7 @@ $(document).on('click','#image_crop',function(){
     $('#image_preview').attr('src', croppedImageDataURL);
     $('#image_close').show();
     $('.top-container').hide();
+    employee_image_change = 'CHANGED';
     cropper.destroy();
 });
 

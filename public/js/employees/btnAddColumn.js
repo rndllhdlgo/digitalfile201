@@ -2,7 +2,7 @@ var children_change, college_change, training_change, vocational_change, job_his
 var memo_change, evaluation_change, contracts_change, resignation_change, termination_change;
 var tblChildren, tblCollege, tblTraining, tblVocational, tblJob;
 var tblMemo, tblEvaluation, tblContracts, tblResignation, tblTermination;
-
+var tblChange;
 $(document).ready(function(){
     $('#childrenAdd').click(function(){
         var child_name = $('#child_name').val().trim();
@@ -15,21 +15,39 @@ $(document).ready(function(){
                                 <td class='td_2' style='width:22.5%;'>${child_birthday}</td>
                                 <td class='td_3' style='width:22.5%;'>${child_age}</td>
                                 <td class='td_4' style='width:22.5%;'>${child_gender}</td>
-                                <td style='width:10%;'> <button class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                <td style='width:10%;'> <button type="button" class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                             <tr>`;
         $('.dataTables_empty').closest('tr').remove();
         $('#children_table_orig_tbody').append(children_table);
         $('#children_table_orig').show();
         children_change = 'CHANGED';
         tblChildren = 'tblChildren';
-
+        tblChange = 'CHANGED_ROW';
         $('#child_name').val("");
         $('#child_birthday').val("");
         $('#child_age').val("");
         $('#child_gender').val("");
 
         $('.btn_children').click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     });
 
@@ -44,7 +62,7 @@ $(document).ready(function(){
                                 <td class='td_2 text-uppercase' style='width: 30%;'>${college_degree}</td>
                                 <td class='td_3' style='width: 15%;'>${college_inclusive_years_from}</td>
                                 <td class='td_4' style='width: 15%;'>${college_inclusive_years_to}</td>
-                                <td style='width: 10%;'> <button class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                <td style='width: 10%;'> <button type="button" class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                             <tr>`;
 
         $('.dataTables_empty').closest('tr').remove();
@@ -53,6 +71,7 @@ $(document).ready(function(){
         $('#college_table_orig tr:last').remove();
         college_change = 'CHANGED';
         tblCollege = 'tblCollege';
+        tblChange = 'CHANGED_ROW';
 
         $('#college_name').val("");
         $('#college_degree').val("");
@@ -60,7 +79,25 @@ $(document).ready(function(){
         $('#college_inclusive_years_to').val("");
 
         $('.btn_college').click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     });
 
@@ -72,23 +109,43 @@ $(document).ready(function(){
 
         var training_table = `<tr class='training_tr'>
                                     <td class='td_1 text-uppercase' style='width:30%;'>${training_name}</td>
-                                    <td class='td_2' style='width:30%;'>${training_title}</td>
+                                    <td class='td_2 text-uppercase' style='width:30%;'>${training_title}</td>
                                     <td class='td_3' style='width:15%;'>${training_inclusive_years_from}</td>
                                     <td class='td_4' style='width:15%;'>${training_inclusive_years_to}</td>
-                                    <td style='width:10%;'> <button class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                    <td style='width:10%;'> <button type="button" class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                                 </tr>`;
         $('.dataTables_empty').closest('tr').remove();
         $('#training_table_orig_tbody').append(training_table);
         $('#training_table_orig').show();
         training_change = 'CHANGED';
         tblTraining = 'tblTraining';
+        tblChange = 'CHANGED_ROW';
 
         $('#training_name').val("");
         $('#training_title').val("");
         $('#training_inclusive_years_from').val("");
         $('#training_inclusive_years_to').val("");
+
         $('.btn_training').click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     });
 
@@ -103,13 +160,14 @@ $(document).ready(function(){
                                     <td class='td_2 text-uppercase' style='width:30%'>${vocational_course}</td>
                                     <td class='td_3' style='width:15%'>${vocational_inclusive_years_from}</td>
                                     <td class='td_4' style='width:15%'>${vocational_inclusive_years_to}</td>
-                                    <td style='width:10%'> <button class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                    <td style='width:10%'> <button type="button" class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                                 </tr>`;
         $('.dataTables_empty').closest('tr').remove();
         $('#vocational_table_orig_tbody').append(vocational_table);
         $('#vocational_table_orig').show();
         vocational_change = 'CHANGED';
         tblVocational = 'tblVocational';
+        tblChange = 'CHANGED_ROW';
 
         $('#vocational_name').val("");
         $('#vocational_course').val("");
@@ -117,7 +175,25 @@ $(document).ready(function(){
         $('#vocational_inclusive_years_to').val("");
 
         $('.btn_vocational').click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     });
 
@@ -136,13 +212,14 @@ $(document).ready(function(){
                                     <td class='td_4' style='width:15%'>${job_contact_number}</td>
                                     <td class='td_5' style='width:15%'>${job_inclusive_years_from}</td>
                                     <td class='td_6' style='width:15%'>${job_inclusive_years_to}</td>
-                                    <td style='width:10%'> <button class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                    <td style='width:10%'> <button type="button" class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                                 </tr>`;
         $('.dataTables_empty').closest('tr').remove();
         $('#job_history_table_tbody').append(job_history_table);
         $('#job_history_table_orig').show();
         job_history_change = 'CHANGED';
         tblJob = 'tblJob';
+        tblChange = 'CHANGED_ROW';
 
         $('#job_company_name').val("");
         $('#job_description').val("");
@@ -150,8 +227,27 @@ $(document).ready(function(){
         $('#job_contact_number').val("");
         $('#job_inclusive_years_from').val("");
         $('#job_inclusive_years_to').val("");
+
         $('.btn_job').click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     });
 });
@@ -159,6 +255,8 @@ $(document).ready(function(){
     function addMemoRow(){
         memo_change = 'CHANGED';
         tblMemo = 'tblMemo';
+        tblChange = 'CHANGED_ROW';
+
         $('#memo_subject').attr('id','');
         $('#memo_date').attr('id','');
         $('#memo_penalty').attr('id','');
@@ -196,16 +294,36 @@ $(document).ready(function(){
                         <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>`);
-                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_memo").click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     }
 
     function addEvaluationRow(){
         evaluation_change = 'CHANGED';
         tblEvaluation = 'tblEvaluation';
+        tblChange = 'CHANGED_ROW';
+
         $('#evaluation_reason').attr('id','');
         $('#evaluation_date').attr('id','');
         $('#evaluation_evaluated_by').attr('id','');
@@ -236,16 +354,36 @@ $(document).ready(function(){
                             <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>`);
-                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_evaluation").click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     }
 
     function addContractsRow(){
         contracts_change = 'CHANGED';
         tblContracts = 'tblContracts';
+        tblChange = 'CHANGED_ROW';
+
         $('#contracts_type').attr('id','');
         $('#contracts_date').attr('id','');
         $('#contracts_file').attr('id','');
@@ -269,16 +407,36 @@ $(document).ready(function(){
                                 <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
         $(".btn_contracts").click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     }
 
     function addResignationRow(){
         resignation_change = 'CHANGED';
         tblResignation = 'tblResignation';
+        tblChange = 'CHANGED_ROW';
+
         $('#resignation_reason').attr('id','');
         $('#resignation_date').attr('id','');
         $('#resignation_file').attr('id','');
@@ -302,15 +460,35 @@ $(document).ready(function(){
                                 <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_resignation").click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     }
 
     function addTerminationRow(){
         termination_change = 'CHANGED';
         tblTermination = 'tblTermination';
+        tblChange = 'CHANGED_ROW';
+
         $('#termination_reason').attr('id','');
         $('#termination_date').attr('id','');
         $('#termination_file').attr('id','');
@@ -334,8 +512,26 @@ $(document).ready(function(){
                                 <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                             </td>
                         </tr>`);
-                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+                        $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
         $(".btn_termination").click(function(){
-            $(this).parent().parent().remove();
+            Swal.fire({
+                title: 'Do you want to delete this row?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                allowOutsideClick: false,
+                allowEscapeKey: false,
+                showDenyButton: true,
+                confirmButtonText: 'Yes',
+                denyButtonText: 'No',
+                customClass: {
+                actions: 'my-actions',
+                confirmButton: 'order-2',
+                denyButton: 'order-3',
+                }
+            }).then((save) => {
+                if(save.isConfirmed){
+                    $(this).parent().parent().remove();
+                }
+            });
         });
     }

@@ -211,35 +211,33 @@ $('.filter-input').on('keyup search', function(){
 });
 
 function changeCivilStatus(){
-    var status = $('#civil_status');
-    if($('#civil_status').val() == "MARRIED"){
-        $('#spouse').show();
-        $('#spouse_name').addClass('required_field');
-        $('.children_information').hide();
-        $('#children_table').hide();
-
-        $('#spouse_summary_div').show();
+    if($('#civil_status').val() == 'MARRIED'
+    || $('#civil_status').val() == 'WIDOWED'
+    || $('#civil_status').val() == 'SEPARATED'
+    ){
+        $('.haveChildren').show();
     }
-    else if($('#civil_status').val() == "SOLO PARENT"){
-        $('#spouse').hide();
-        $('.children_information').show();
-        $('#spouse_name').val("");
-        $('#spouse_contact_number').val("");
-        $('#spouse_profession').val("");
-
-        $('#spouse_summary_div').hide();
+    else if($('#civil_status').val() == 'SOLO PARENT'){
+        $('.haveChildren').show();
+        $('#haveChildren').prop('checked', true);
+        $('#haveChildren').change();
     }
     else{
-        $('.children_information').hide();
-        $('#spouse').hide();
-        $('#spouse_name').removeClass('required_field');
-        $('#spouse_profession').removeClass('required_field');
+        $('.haveChildren').hide();
+        $('#haveChildren').prop('checked', false);
     }
 }
 
-function changeEmploymentStatus(){
-    var employment_status = $('#employment_status');
+$('#haveChildren').on('change', function() {
+    if($(this).is(':checked')){
+        $('.children_information').show();
+    }
+    else{
+        $('.children_information').hide();
+    }
+});
 
+function changeEmploymentStatus(){
     if($('#employment_status').val() == "REGULAR"
     || $('#employment_status').val() == 'PROBATIONARY'
     || $('#employment_status').val() == 'PART TIME'
