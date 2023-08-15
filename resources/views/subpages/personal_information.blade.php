@@ -202,7 +202,7 @@
                 <div class="col haveChildren" style="display: none;">
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" value="" id="haveChildren">
-                        <label class="form-check-label" for="haveChildren">HAVE CHILDREN?</label>
+                        <label for="haveChildren">HAVE CHILDREN?</label>
                     </div>
                 </div>
             </div>

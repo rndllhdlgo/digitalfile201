@@ -216,21 +216,30 @@ function changeCivilStatus(){
     || $('#civil_status').val() == 'SEPARATED'
     ){
         $('.haveChildren').show();
+        $('#haveChildren').prop('checked', false).prop('disabled', false);
+        $('#haveChildren').change();
     }
     else if($('#civil_status').val() == 'SOLO PARENT'){
         $('.haveChildren').show();
-        $('#haveChildren').prop('checked', true);
+        $('#haveChildren').prop('checked', true).prop('disabled',true);
         $('#haveChildren').change();
     }
     else{
         $('.haveChildren').hide();
-        $('#haveChildren').prop('checked', false);
+        $('.children_information').hide();
     }
 }
 
 $('#haveChildren').on('change', function() {
     if($(this).is(':checked')){
         $('.children_information').show();
+
+        setTimeout(() => {
+            var targetPosition = $(".children_information").offset().top;
+            $('html, body').animate({
+                scrollTop: targetPosition
+              }, 500);
+        }, 500);
     }
     else{
         $('.children_information').hide();
