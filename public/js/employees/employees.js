@@ -444,20 +444,6 @@ $('#viewJobDescriptionBtn').on('click',function(){
     $('#viewJobDescriptionModal').modal('show');
 });
 
-$(document).ready(function() {
-    var cellphone_number = $('#cellphone_number');
-    var emergency_contact_number = $('#emergency_contact_number');
-
-    $("#cellphone_number, #emergency_contact_number").on("keyup", function(){
-        if(cellphone_number.val() === emergency_contact_number.val()){
-            $('#same_value').show();
-        }
-        else{
-            $('#same_value').hide();
-        }
-    });
-});
-
 $('.employee_history_table tbody').on('click', 'tr', function(){
     var data =  $('.employee_history_table').DataTable().row(this).data();
     Swal.fire({

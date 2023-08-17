@@ -27,7 +27,7 @@
                         <div class="col">
                             <div class="f-outline">
                                 <input type="hidden" id="name_orig">
-                                <input class="forminput form-control required_field" type="text" id="name" name="name" placeholder=" " autocomplete="off" onkeyup="lettersOnly(this)">
+                                <input class="forminput form-control required_field" type="text" id="name" name="name" placeholder=" " autocomplete="off">
                                 <label for="name" class="formlabel form-label"><i class="fas fa-address-card"></i> FULL NAME <span class="span_name"></span></label>
                             </div>
                         </div>

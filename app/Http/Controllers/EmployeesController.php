@@ -539,16 +539,4 @@ class EmployeesController extends Controller
             return 'column_not_found';
         }
     }
-
-    // public function checkDuplicate(Request $request){
-    //     $columnName = $request->input('inputColumn');
-    //     if (Schema::hasColumn('work_information_tables', 'hours')) {
-    //         // The 'hours' column exists in the 'work_information_tables' table
-    //     } else {
-    //         // The 'hours' column does not exist in the 'work_information_tables' table
-    //     }
-    //     if(WorkInformationTable::where($columnName,$request->inputValue)->count() > 0){
-    //         return 'true';
-    //     }
-    // }
 }

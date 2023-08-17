@@ -41,31 +41,28 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                        <input class="forminput form-control text-uppercase required_field name_validation letterNumber" type="search" id="first_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="first_name" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME</label>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                        <input class="forminput form-control text-uppercase" type="search" id="middle_name letterNumber" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME (Optional)</label>
                     </div>
                 </div>
 
                  <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="last_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                        <input class="forminput form-control text-uppercase required_field name_validation letterNumber" type="search" id="last_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="last_name" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME</label>
                     </div>
                 </div>
 
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control optional_field text-uppercase" type="search" id="suffix" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control optional_field text-uppercase letterNumber" type="search" id="suffix" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="suffix" class="formlabel form-label"><i class="fas fa-address-card"></i> SUFFIX (Optional)</label>
                     </div>
                 </div>
@@ -74,7 +71,7 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control text-uppercase letterNumber" type="search" id="nickname" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="nickname" class="formlabel form-label"><i class="fas fa-address-card"></i> NICKNAME (Optional)</label>
                     </div>
                 </div>
@@ -210,7 +207,7 @@
             <div class="row mb-3 mt-3">
                 <div class="col-6">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onchange="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
+                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
                         <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS</label>
                     </div>
                 </div>
@@ -222,7 +219,7 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field numberInput" type="search" id="cellphone_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                        <input class="forminput form-control required_field numberSlice" type="search" id="cellphone_number" maxlength="12" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO.</label>
                     </div>
                 </div>
@@ -233,20 +230,19 @@
             <div class="row mb-2 mt-3" id="spouse" style="display: none;">
                 <div class="col">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase name_validation" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                            <p id="spouse_name_validation" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters </p>
+                            <input class="forminput form-control text-uppercase name_validation letterNumber" type="search" id="spouse_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                             <label for="spouse_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true" ></i> SPOUSE NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control numberSlice" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input class="forminput form-control text-uppercase letterNumber" type="search" id="spouse_profession" placeholder=" " style="background-color:white;" autocomplete="off">
                         <label for="spouse_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (Optional)</label>
                     </div>
                 </div>
@@ -255,20 +251,19 @@
             <div class="row mb-3 mt-3">
                 <div class="col-4">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                            <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                            <input class="forminput form-control text-uppercase required_field name_validation letterNumber" type="search" id="father_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                             <label for="father_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> FATHER'S NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control numberSlice" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase optional_field" type="search" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control text-uppercase optional_field letterNumber" type="search" id="father_profession" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="father_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL)</label>
                     </div>
                 </div>
@@ -277,20 +272,19 @@
             <div class="row mb-3">
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                        <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                        <input class="forminput form-control text-uppercase required_field name_validation letterNumber" type="search" id="mother_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="mother_name" class="formlabel form-label"><i class="fas fa-id-card" aria-hidden="true"></i> MOTHER'S MAIDEN NAME</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control numberSlice" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase optional_field" type="search" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control text-uppercase optional_field letterNumber" type="search" id="mother_profession" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="mother_profession" class="formlabel form-label"><i class="fas fa-user-tie"></i> PROFESSION (OPTIONAL)`</label>
                     </div>
                 </div>
@@ -299,21 +293,19 @@
             <div class="row mb-3">
                 <div class="col">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase required_field name_validation" type="search" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
-                            <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                            <input class="forminput form-control text-uppercase required_field name_validation letterNumber" type="search" id="emergency_contact_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                             <label for="emergency_contact_name" class="formlabel form-label"><i class="fa fa-id-card" aria-hidden="true"></i> INCASE OF EMERGENCY NAME</label>
                         </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase required_field" type="search" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control text-uppercase required_field letterNumber" type="search" id="emergency_contact_relationship" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="emergency_contact_relationship" class="formlabel form-label"><i class="fas fa-user-friends"></i> RELATIONSHIP</label>
                     </div>
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
-                        <p id="same_value" class="validation"><i class="fas fa-exclamation-triangle"></i> EMERGENCY CONTACT & CELLPHONE NO. MUST BE DIFFERENT.</p>
+                        <input class="forminput form-control required_field numberSlice" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO.</label>
                     </div>
                 </div>
@@ -337,8 +329,7 @@
                                     <tr>
                                         <td class="pb-3 pt-3">
                                             <div class="f-outline">
-                                                <input type="search" class="forminput form-control optional_field text-uppercase name_validation" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
-                                                <p class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>
+                                                <input type="search" class="forminput form-control optional_field text-uppercase name_validation letterNumber" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
                                                 <label for="child_name" class="formlabel form-label">(Optional)</label>
                                             </div>
                                         </td>

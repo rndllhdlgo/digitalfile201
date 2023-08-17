@@ -264,7 +264,7 @@ $(document).ready(function(){
         $('#memoTable').find('tbody').prepend(`<tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control multiple_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                            <input class="forminput form-control multiple_field text-uppercase" type="search" name="memo_subject[]" id="memo_subject" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="memo_subject" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
@@ -331,7 +331,7 @@ $(document).ready(function(){
         $('#evaluationTable').find('tbody').prepend(`<tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                <input class="forminput form-control multiple_field" type="search" name="evaluation_reason[]" id="evaluation_reason" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="evaluation_reason" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
@@ -343,7 +343,7 @@ $(document).ready(function(){
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                <input class="forminput form-control multiple_field text-uppercase" type="search" name="evaluation_evaluated_by[]" id="evaluation_evaluated_by" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="evaluation_evaluated_by" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
@@ -390,7 +390,7 @@ $(document).ready(function(){
         $('#contractsTable').find('tbody').prepend(`<tr>
                             <td class="pb-3 pt-3">
                                 <div class="f-outline">
-                                    <input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <input class="forminput form-control multiple_field" type="search" name="contracts_type[]" id="contracts_type" placeholder=" " style="background-color:white;" autocomplete="off">
                                     <label for="contracts_type" class="formlabel form-label">(Optional)</label>
                                 </div>
                             </td>
@@ -443,7 +443,7 @@ $(document).ready(function(){
         $('#resignationTable').find('tbody').prepend(`<tr>
                             <td class="pb-3 pt-3">
                                 <div class="f-outline">
-                                    <input class="forminput form-control multiple_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <input class="forminput form-control multiple_field text-uppercase" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off">
                                     <label for="resignation_reason" class="formlabel form-label">(Optional)</label>
                                 </div>
                             </td>
@@ -495,7 +495,7 @@ $(document).ready(function(){
         $('#terminationTable').find('tbody').prepend(`<tr>
                             <td class="pb-3 pt-3">
                                 <div class="f-outline">
-                                    <input class="forminput form-control multiple_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)">
+                                    <input class="forminput form-control multiple_field text-uppercase" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off">
                                     <label for="termination_reason" class="formlabel form-label">(Optional)</label>
                                 </div>
                             </td>

@@ -1,41 +1,47 @@
-function lettersOnly(input){
-    var letters_only = /[^- ñ a-z]/gi;
-    input.value = input.value.replace(letters_only,"");
-}
+$('.name_validation').keyup(function(){
+    var inputValue = $(this).val();
+    var validationId = `validation_${$(this).attr('id')}`;
+    var validationElement = $(`#${validationId}`);
 
-function alphaNumeric(input){
-    var alphaNumeric = /[^- ñ a-z 0-9]/gi;
-    input.value = input.value.replace(alphaNumeric,"");
-}
+    if(inputValue.length < 2){
+        if(!validationElement.length){
+            $(this).after(`<p id="${validationId}" class="validation"><i class="fas fa-exclamation-triangle"></i> Must be at least 2 characters.</p>`);
+            $(`#${validationId}`).show();
+        }
+    }
+    else{
+        validationElement.remove();
+    }
+});
 
-function numbersOnly(input){
-    var numbers_only = /[^- 0-9]/g;
-    input.value = input.value.replace(numbers_only,"");
-}
-
-function contactNumberOnly(input){
-    var contact_number = /[^. 0-9]/g;
-    input.value = input.value.replace(contact_number,"");
-}
-
-function telephoneNumberField(input){
-    var telephoneNumberField = /[^- +()0-9]/g;
-    input.value = input.value.replace(telephoneNumberField,"");
-}
-
-$('.preventSpace').keypress(function(e) {
+$('.preventSpace').keypress(function(e){
     if(e.which == 32){
         return false;
     }
 });
 
-$('.numberInput').on('input', function(){
-    var inputtedValue = $(this).val();
-    var formattedValue = inputtedValue.replace(/[^0-9]/g, '')// Remove non-numeric characters
-    if(formattedValue.length > 4){
-        formattedValue = formattedValue.slice(0, 4) + '-' + formattedValue.slice(4);
-    }
-    $(this).val(formattedValue);
+$('.letterNumber').keyup(function() {
+    var inputValue = $(this).val();
+    var cleanedValue = inputValue.replace(/[^a-zA-Z0-9\s]/g, '');
+    $(this).val(cleanedValue);
+});
+
+$('.numberDash').on('keyup', function(){
+    var numberDash = $(this).val();
+    var numberDashValue = numberDash.replace(/[^0-9-]/g, '');
+    $(this).val(numberDashValue);
+});
+
+$('.numberSlice').keyup(function(){
+    let inputValue = $(this).val();
+        inputValue = inputValue.replace(/-/g, '');
+        if(inputValue.length > 4){
+            inputValue = inputValue.slice(0, 4) + '-' + inputValue.slice(4);
+        }
+        if(inputValue.length > 12){
+            inputValue = inputValue.slice(0, 12);
+        }
+        $(this).val(inputValue);
 });
 
 var orig_value = '';
@@ -43,7 +49,6 @@ var current_input = '';
 var codeExecuted = false;
 
 function duplicateCheck(inputId){
-    console.log(inputId);
     var inputValue = $(`#${inputId}`).val();
     var validationId = `validation_${inputId}`;
 
@@ -152,7 +157,10 @@ function updateCheck(inputElementId){
 }
 
 setInterval(() => {
-    if(tblChange == 'CHANGED_ROW' || employee_image_change == 'CHANGED'){
+    if(tblChange == 'CHANGED_ROW'
+    || employee_image_change == 'CHANGED'
+    || document_change == 'CHANGED'
+    ){
         $('#btnUpdate').prop('disabled', false);
     }
 }, 0);

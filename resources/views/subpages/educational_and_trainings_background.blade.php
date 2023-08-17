@@ -84,25 +84,25 @@
             <tr>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="secondary_school_name" class="formlabel form-label">(Optional)</label>
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="secondary_school_address" class="formlabel form-label">(Optional)</label>
                     </div>
                 </td>
 
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_from">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_from" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
                     </div>
                 </td>
                 <td class="pb-3 pt-3">
                     <div class="f-outline">
-                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_to">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_to" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
                     </div>
                 </td>
             </tr>
@@ -124,25 +124,25 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                             <label for="primary_school_name" class="formlabel form-label"></label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" >
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                             <label for="primary_school_address" class="formlabel form-label"></label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_from">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_from" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_to">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_to" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
                         </div>
                     </td>
                 </tr>
@@ -165,14 +165,14 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                                <input class="forminput form-control text-uppercase" type="search" id="training_name" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="training_name" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
 
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                                <input class="forminput form-control text-uppercase" type="search" id="training_title" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="training_title" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
@@ -238,14 +238,14 @@
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                            <input class="forminput form-control text-uppercase" type="search" id="vocational_name" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="vocational_name" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
 
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="lettersOnly(this)" >
+                            <input class="forminput form-control text-uppercase" type="search" id="vocational_course" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="vocational_course" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>

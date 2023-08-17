@@ -1,3 +1,4 @@
+var document_change;
 $(document).on('click','#image_button',function(){
     $('#employee_image').click();
 });
@@ -143,6 +144,7 @@ function fileValidation(fileInputId, previewId, viewId){
                 reader.readAsDataURL(fileData.files[0]);
                 $("#" + viewId).prop('disabled', false);
             }
+            document_change = 'CHANGED';
         }
     }
 }
