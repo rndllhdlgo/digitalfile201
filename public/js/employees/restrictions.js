@@ -32,23 +32,24 @@ $('.numberDash').on('keyup', function(){
     $(this).val(numberDashValue);
 });
 
-var orig_value = '';
-function duplicateCheck(inputId){
+var orig_value = {};
+
+function duplicateCheck(inputId) {
     var inputValue = $(`#${inputId}`).val();
     var validationId = `validation_${inputId}`;
 
-    if(orig_value === ''){
-        orig_value = inputValue;
+    if(!(inputId in orig_value)){
+        orig_value[inputId] = inputValue;
     }
 
-    if(orig_value.toUpperCase() !== inputValue.toUpperCase()){
+    if(orig_value[inputId].toUpperCase() !== inputValue.toUpperCase()){
         $.ajax({
             url: "/checkDuplicate",
             data: {
                 inputColumn: inputId,
                 inputValue: inputValue,
             },
-            success: function(response){
+            success: function (response) {
                 var validationElement = $(`#${validationId}`);
                 if(response === 'true'){
                     if(validationElement.length === 0){
