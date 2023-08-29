@@ -516,8 +516,8 @@ class EmployeesController extends Controller
     }
 
     public function checkDuplicate(Request $request){
-        $columnName = $request->input('inputColumn');
-        $inputValue = $request->input('inputValue');
+        $columnName = $request->inputColumn;
+        $inputValue = $request->inputValue;
 
         if(Schema::hasColumn('work_information_tables', $columnName)){
             if(WorkInformationTable::where($columnName, $inputValue)->count() > 0){

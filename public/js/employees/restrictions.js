@@ -32,42 +32,16 @@ $('.numberDash').on('keyup', function(){
     $(this).val(numberDashValue);
 });
 
-$('.numberSlice').keyup(function(){
-    let inputValue = $(this).val();
-        inputValue = inputValue.replace(/-/g, '');
-        if(inputValue.length > 4){
-            inputValue = inputValue.slice(0, 4) + '-' + inputValue.slice(4);
-        }
-        if(inputValue.length > 12){
-            inputValue = inputValue.slice(0, 12);
-        }
-        $(this).val(inputValue);
-});
-
 var orig_value = '';
-var current_input = '';
-var codeExecuted = false;
-
 function duplicateCheck(inputId){
     var inputValue = $(`#${inputId}`).val();
     var validationId = `validation_${inputId}`;
 
-    if(current_input === ''){
-        current_input = inputId;
-    }
-
-    if(current_input !== inputId){
-        current_input = '';
-        current_input = inputId;
-        orig_value = '';
-    }
-
     if(orig_value === ''){
         orig_value = inputValue;
-        codeExecuted = true;
     }
 
-    if(orig_value !== inputValue && inputValue.trim() !== ''){
+    if(orig_value.toUpperCase() !== inputValue.toUpperCase()){
         $.ajax({
             url: "/checkDuplicate",
             data: {

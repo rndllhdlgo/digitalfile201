@@ -110,7 +110,12 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" 
+                onclick="updateCheck(this.id);
+                duplicateCheck(this.id);"
+                onkeyup="updateCheck(this.id);
+                duplicateCheck(this.id);
+                emailCheck(this.id);">
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>

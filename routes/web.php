@@ -125,6 +125,8 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
 
     // Try Controllers
+
+    Route::any('/querySample','TryController@querySample');
     Route::any('/chart_blade','TryController@chart_blade');
     Route::any('/chart_data','TryController@getDataForChart');
     Route::any('/evaluation','TryController@evaluation_blade');

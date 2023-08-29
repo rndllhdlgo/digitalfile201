@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 
 use App\Models\MultipleSave;
 use App\Models\Tr;
+use App\Models\Example;
 use App\Models\Company;
 use App\Imports\TestImport;
 use App\Models\Import;
@@ -31,6 +32,24 @@ class TryController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+    }
+
+    public function querySample(){
+        // 1 $query = Example::find(1);
+        // 2 try{
+        //     $query = Example::findOrFail(3);
+        //     // Do something with the $user record
+        //     return $query;
+        // }
+        // catch(\Illuminate\Database\Eloquent\ModelNotFoundException $e){
+        //     // Handle the exception (user not found)
+        //     // For example, return an error response or redirect
+        //     return response('error');
+        // }
+        // 3 $query = Example::select('fullname')->get();
+        // 4 $query = Example::where('fullname', '=','Mario')->get();
+        $query = Example::select('fullname','age')->where('fullname', '=','Mario')->where('age', 18)->get();
+        return $query;
     }
 
     public function evaluation_blade(){

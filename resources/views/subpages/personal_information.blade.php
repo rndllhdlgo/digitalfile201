@@ -207,7 +207,12 @@
             <div class="row mb-3 mt-3">
                 <div class="col-6">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
+                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off"
+                        onclick="updateCheck(this.id);
+                        duplicateCheck(this.id);"
+                        onkeyup="updateCheck(this.id);
+                        duplicateCheck(this.id);
+                        emailCheck(this.id);">
                         <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS</label>
                     </div>
                 </div>
@@ -219,7 +224,7 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field numberSlice" type="search" id="cellphone_number" maxlength="12" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                        <input class="forminput form-control required_field" type="search" id="cellphone_number" maxlength="12" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id); duplicateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO.</label>
                     </div>
                 </div>
@@ -236,7 +241,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control numberSlice" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -257,7 +262,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control numberSlice" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -278,7 +283,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control numberSlice" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -305,7 +310,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field numberSlice" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
+                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id);">
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO.</label>
                     </div>
                 </div>
