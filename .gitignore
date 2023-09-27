@@ -73,5 +73,4 @@ resources/views/charts/sales_monthly.blade.php
 resources/views/charts/technologies.blade.php
 app/Models/MultipleSave.php
 resources/views/try/evaluation.blade.php
-app/Models/Tr.php
 app/Models/Try.php

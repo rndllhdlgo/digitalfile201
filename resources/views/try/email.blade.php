@@ -5,6 +5,6 @@
 </head>
 <body>
     <p>{{ $content }}</p>
-    <p>{{ $email }}</p>
+    {{-- <p>{{ $email }}</p> --}}
 </body>
 </html>

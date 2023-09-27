@@ -76,17 +76,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -100,11 +92,42 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->where('work_information_tables.employment_status','Regular')
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
+                ->whereHas('work_information', function ($query) {
+                    $query->where('employment_status','Regular');
+                })
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -113,17 +136,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -137,11 +152,42 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->where('work_information_tables.employment_status','Probationary')
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
+                ->whereHas('work_information', function ($query) {
+                    $query->where('employment_status','Probationary');
+                })
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -150,17 +196,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -174,11 +212,42 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->where('work_information_tables.employment_status','Agency')
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
+                ->whereHas('work_information', function ($query) {
+                    $query->where('employment_status','Agency');
+                })
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -187,17 +256,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -211,11 +272,40 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
                 ->where('personal_information_tables.gender','Male')
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -224,17 +314,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -248,11 +330,40 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
                 ->where('personal_information_tables.gender','Female')
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -261,17 +372,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -285,11 +388,42 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
+                ->whereHas('work_information', function ($query) {
+                    $query->whereNotIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
+                })
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -298,17 +432,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -322,11 +448,42 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
+                ->whereHas('work_information', function ($query) {
+                    $query->whereIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
+                })
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
@@ -335,17 +492,9 @@ class EmployeesController extends Controller
             $employees = PersonalInformationTable::select(
                 'personal_information_tables.id',
                 'empno',
-                'work_information_tables.employee_number',
                 'first_name',
                 'middle_name',
                 'last_name',
-                'positions.job_position_name AS employee_position',
-                'entity03.entity03_desc AS employee_branch',
-                'work_information_tables.employment_status',
-                'companies.company_name AS employee_company',
-                'entity',
-                'work_information_tables.employee_department',
-                'work_information_tables.date_hired',
                 'email_address',
                 'cellphone_number',
                 'telephone_number',
@@ -359,43 +508,138 @@ class EmployeesController extends Controller
                 'blood_type',
                 'stat'
                 )
-                ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
-                ->leftjoin('positions','positions.id','work_information_tables.employee_position')
-                ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
-                ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+                ->with([
+                    'work_information' => function ($query){
+                        $query->select('employee_id',
+                            'employee_number',
+                            'employee_position',
+                            'employee_branch',
+                            'employment_status',
+                            'employee_company',
+                            'employee_department',
+                            'date_hired'
+                        )
+                        ->with([
+                            'position' => function ($query){
+                                $query->select('id','job_position_name');
+                            }
+                        ])
+                        ->with([
+                            'branch' => function ($query){
+                                $query->select('entity03','entity03_desc');
+                            }
+                        ])
+                        ->with([
+                            'company' => function ($query){
+                                $query->select('entity','company_name');
+                            }
+                        ])
+                        ->with([
+                            'department' => function ($query){
+                                $query->select('deptcode','deptdesc');
+                            }
+                        ]);
+                    }
+                ])
                 ->orderBy('stat','DESC')
                 ->orderBy('last_name','ASC')
                 ->get();
         }
         return DataTables::of($employees)
-        ->addColumn('employee_department', function (PersonalInformationTable $employee){
-            $dept = Department::select('deptdesc')->where('deptcode',$employee->employee_department)->first();
-            if($dept){
-                return $dept->deptdesc;
-            }
-            return 'NONE';
-        })
-        ->addColumn('employee_number', function (PersonalInformationTable $employee){
-            if($employee->entity == 001){
-                return 'ID'.$employee->employee_number;
-            }
-            else if($employee->entity == 002){
-                return 'PL'.$employee->employee_number;
-            }
-            else if($employee->entity == 003){
-                return 'AP'.$employee->employee_number;
-            }
-            else if($employee->entity == 004){
-                return 'MJ'.$employee->employee_number;
-            }
-            else if($employee->entity == 005){
-                return 'NU'.$employee->employee_number;
-            }
-            else{
-                return $employee->empno;
-            }
-        })
+        // ->addColumn('employee_department', function (PersonalInformationTable $employee){
+        //     $dept = Department::select('deptdesc')->where('deptcode',$employee->employee_department)->first();
+        //     if($dept){
+        //         return $dept->deptdesc;
+        //     }
+        //     return 'NONE';
+        // })
+        // ->addColumn('employee_number', function (PersonalInformationTable $employee){
+        //     if($employee->entity == 001){
+        //         return 'ID'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 002){
+        //         return 'PL'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 003){
+        //         return 'AP'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 004){
+        //         return 'MJ'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 005){
+        //         return 'NU'.$employee->employee_number;
+        //     }
+        //     else{
+        //         return $employee->empno;
+        //     }
+        // })
         ->make(true);
+
+        // else{
+        //     $employees = PersonalInformationTable::select(
+        //         'personal_information_tables.id',
+        //         'empno',
+        //         'work_information_tables.employee_number',
+        //         'first_name',
+        //         'middle_name',
+        //         'last_name',
+        //         'positions.job_position_name AS employee_position',
+        //         'entity03.entity03_desc AS employee_branch',
+        //         'work_information_tables.employment_status',
+        //         'companies.company_name AS employee_company',
+        //         'entity',
+        //         'work_information_tables.employee_department',
+        //         'work_information_tables.date_hired',
+        //         'email_address',
+        //         'cellphone_number',
+        //         'telephone_number',
+        //         'gender',
+        //         'civil_status',
+        //         'birthday',
+        //         'religion',
+        //         'province',
+        //         'city',
+        //         'region',
+        //         'blood_type',
+        //         'stat'
+        //         )
+        //         ->leftjoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+        //         ->leftjoin('positions','positions.id','work_information_tables.employee_position')
+        //         ->leftjoin('entity03','entity03.entity03','work_information_tables.employee_branch')
+        //         ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+        //         ->orderBy('stat','DESC')
+        //         ->orderBy('last_name','ASC')
+        //         ->get();
+        // }
+        // return DataTables::of($employees)
+        // ->addColumn('employee_department', function (PersonalInformationTable $employee){
+        //     $dept = Department::select('deptdesc')->where('deptcode',$employee->employee_department)->first();
+        //     if($dept){
+        //         return $dept->deptdesc;
+        //     }
+        //     return 'NONE';
+        // })
+        // ->addColumn('employee_number', function (PersonalInformationTable $employee){
+        //     if($employee->entity == 001){
+        //         return 'ID'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 002){
+        //         return 'PL'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 003){
+        //         return 'AP'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 004){
+        //         return 'MJ'.$employee->employee_number;
+        //     }
+        //     else if($employee->entity == 005){
+        //         return 'NU'.$employee->employee_number;
+        //     }
+        //     else{
+        //         return $employee->empno;
+        //     }
+        // })
+        // ->make(true);
     }
 
     public function employee_fetch(Request $request){

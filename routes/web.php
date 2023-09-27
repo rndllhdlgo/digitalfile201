@@ -170,4 +170,6 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/qrshow', 'QrController@qrshow');
     Route::any('/exportTable', 'TryController@exportTable');
     Route::any('/data', 'TryController@data');
+    Route::any('/print', 'TryController@print');
+    Route::any('/sql_save', 'TryController@sql_save');
 });
