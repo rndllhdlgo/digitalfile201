@@ -84,12 +84,7 @@ $(document).ready(function(){
             },
         ],
         columns:[
-            {
-                data: 'work_information.employee_number',
-                "render": function(data,type,row){
-                    return data;
-                }
-            },
+            {data: 'employee_number'},
             {
                 data: null,
                 "render": function(data,type,row){
