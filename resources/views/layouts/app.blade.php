@@ -9,6 +9,8 @@
         @endif
         <title></title>
         <link rel="icon" href="/images/ideaserv_systems_logo.png">
+        {{-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script> --}}
+        {{-- <script src="scripts/jquery.table.transpose.min.js"></script> --}}
         @include('cdn.head')
         <input type="hidden" id="APP_TIMEOUT" value="{{ env('APP_TIMEOUT') }}">
     </head>

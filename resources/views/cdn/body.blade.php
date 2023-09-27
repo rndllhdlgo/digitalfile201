@@ -6,6 +6,8 @@
 <script src="/js/inc/moment.js"></script>
 <script src="/js/inc/datetime.js"></script>
 <script src="/js/inc/printThis.js"></script>
+<script src="/js/inc/xlsx.full.min.js"></script>
+<script src="/js/inc/FileSaver.min.js"></script>
 <script src="/js/global.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 <script src="/js/tab.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 

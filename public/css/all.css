@@ -645,3 +645,17 @@ label{
 .dataTables_wrapper .dataTable th {
     white-space: nowrap !important;
 }
+
+@media print {
+    .header{
+        position: fixed;
+        width: 100%;
+        text-align: center;
+    }
+    .header {
+        top: 0;
+    }
+    .main-content {
+        page-break-before: always;
+    }
+}

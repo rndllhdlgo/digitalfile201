@@ -33,7 +33,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 return [value];
             });
             employee_data.forEach(value => {
-
                 $('#hidden_id').val(value.id);
                 // Personal Info
                 if(value.employee_image){
@@ -145,6 +144,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#date_hired').val(value.date_hired);
                 $('#employee_shift').val(value.desc);
                 $('#employee_company').val(value.employee_company);
+                console.log(value.employee_branch);
                 $('#employee_branch').val(value.employee_branch);
                 $('#employee_department').val(value.employee_department);
                 $('#employee_position').val(value.employee_position);

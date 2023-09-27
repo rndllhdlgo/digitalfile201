@@ -128,5 +128,4 @@
         <tbody title="CLICK TO VIEW">
         </tbody>
     </table>
-
 @endsection

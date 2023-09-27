@@ -27,6 +27,9 @@ use Dompdf\Dompdf;
 use Imagick;
 use DataTables;
 use Str;
+use Illuminate\Support\Facades\Mail;
+use Swift_Attachment;
+use Swift_Message;
 
 class TryController extends Controller
 {
@@ -410,5 +413,41 @@ class TryController extends Controller
 
     public function exportTable(){
         return view('try.exportExcel');
+    }
+
+    public function print(){
+        return view('try.print');
+    }
+
+    public function sql_save(){
+        $name_array = ["RENDELL", "MENDEZ", "HIDALGO"];
+        $sql_file = new Tr;
+        $sql_file->fullname = implode(", ", $name_array);
+        $sql_file->age = '18';
+        $sql_file->save();
+
+        if($sql_file){
+            $data = Tr::all();
+            $sql = '';
+            foreach($data as $record){
+                $sql .= "INSERT INTO `try` (`fullname`, `age`) VALUES ('$record->fullname', '$record->age');\n";
+            }
+
+            Storage::disk('public')->put('try.sql', $sql);
+            $sqlFilePath = public_path('storage/try.sql');
+
+            if($sqlFilePath){
+                Mail::raw('See the attached SQL file.', function($message) use ($sqlFilePath){
+                    $message
+                        ->to('hidalgorendell20@gmail.com')
+                        ->subject('SQL Export')
+                        ->attach($sqlFilePath, ['as' => 'file_title',]);
+                });
+            }
+            return 'SQL file created and data saved and sent via email.';
+        }
+        else{
+            return 'FAILED';
+        }
     }
 }
