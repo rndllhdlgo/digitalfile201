@@ -91,13 +91,13 @@ $(document).ready(function(){
                     return (row.last_name + ', ' + row.first_name + ' ' + row.middle_name).toUpperCase();
                 }
             },
-            {data: 'work_information.position.job_position_name'},
-            {data: 'work_information.branch.entity03_desc'},
-            {data: 'work_information.employment_status'},
-            {data: 'work_information.company.company_name'},
-            {data: 'work_information.department.deptdesc'},
+            {data: 'employee_position'},
+            {data: 'employee_branch'},
+            {data: 'employment_status'},
+            {data: 'employee_company'},
+            {data: 'employee_department'},
             {
-                data: 'work_information.date_hired',
+                data: 'date_hired',
                 "render":function(data,type,row){
                     if(row.date_hired){
                         return formatDate(row.date_hired);
