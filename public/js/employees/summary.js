@@ -1,6 +1,6 @@
 $('#btnSummary').on('click',function(){
     $('#summaryModalForm').modal('show');
-    $('.font_weight').css('text-transform','uppercase');
+    // $('.font_weight').css('text-transform','uppercase');
 });
 
 $('#viewSummary').on('click', function(){
@@ -26,8 +26,8 @@ $('#viewSummary').on('click', function(){
                         }
                     }
                     $('.job_desc_div p:not(:first-child)').hide();
-                    $('.job_desc_div').append('<button type="button" class="button print-only" id="see_more" style="zoom:80%;"> <span id="see_more_span"> </span> <i class="fa-solid fa-arrow-right"></i> </button>');
-                    $('#see_more_span').html('SEE MORE');
+                    // $('.job_desc_div').append('<button type="button" class="button print-only" id="see_more" style="zoom:80%;"> <span id="see_more_span"> </span> <i class="fa-solid fa-arrow-right"></i> </button>');
+                    // $('#see_more_span').html('SEE MORE');
 
                     var job_requirements = data[0].job_requirements;
                     var job_requirements_details = job_requirements.split('•');

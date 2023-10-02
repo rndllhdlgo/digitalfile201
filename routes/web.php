@@ -172,4 +172,44 @@ Route::middleware(['session','check_device'])->group(function(){
     Route::any('/data', 'TryController@data');
     Route::any('/print', 'TryController@print');
     Route::any('/sql_save', 'TryController@sql_save');
+
+});
+
+Route::get('/generateJaspher', function (Request $request){
+    if(file_exists(public_path(). '/reports/pdf/' . 'Employees.pdf')){
+        unlink(public_path(). '/reports/pdf/' . 'Employees.pdf');
+    }
+    $input = public_path() . '/reports/jrxml/' . 'Employees_A4.jrxml';
+    $output = public_path() . '/reports/pdf/' . 'Employees';
+    $options = [
+        'format' => ['pdf'],
+        'locale' => 'en',
+        'db_connection' => [
+            'driver' => 'mysql',
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'host' => env('DB_HOST'),
+            'database' => env('DB_DATABASE'),
+            'port' => env('DB_PORT', '3306')
+        ]
+    ];
+
+    $jasper = new PHPJasper\PHPJasper;
+    $jasper->process(
+            $input,
+            $output,
+            $options
+    )->execute();
+
+    // echo $jasper->process(
+    //         $input,
+    //         $output,
+    //         $options
+    // )->output();
+
+    $pdfFilePath = public_path(). '/reports/pdf/' . 'Employees.pdf';
+    $pdf = new Spatie\PdfToImage\Pdf($pdfFilePath);
+    $numPages = $pdf->getNumberOfPages();
+    // return $numPages;
+    return response()->file($pdfFilePath , ['Content-Type' => 'application/pdf']);
 });

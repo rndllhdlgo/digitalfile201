@@ -35,3 +35,6 @@ $table->unique(['date', 'type', 'seqno'], 'unique_date_type_seqno');
 !$A$2:$A$999 - Excel Formula
 
 Count Employee: 656
+
+cd /var/www/html/digital201/vendor/geekcom/phpjasper/bin/jasperstarter/bin#
+./jasperstarter --locale en process "/var/www/html/digital201/public/reports/jrxml/Employees_A4.jrxml" -o "/var/www/html/digital201/public/reports/pdf/dr" -f pdf -t mysql -u dell -p nuserv-demo -H db.apsoft.com.ph -n hrms --db-port 3306

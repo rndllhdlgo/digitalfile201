@@ -30,6 +30,7 @@ use Str;
 use Illuminate\Support\Facades\Mail;
 use Swift_Attachment;
 use Swift_Message;
+use PHPJasper\PHPJasper;
 
 class TryController extends Controller
 {
@@ -449,5 +450,25 @@ class TryController extends Controller
         else{
             return 'FAILED';
         }
+    }
+
+    public function generateJaspher(){
+        $inputJRXML = public_path('/examples/Hello.jrxml');
+        $outputDir = public_path('/examples/');
+        $jasper = new PHPJasper;
+        try{
+            echo $jasper->compile($inputJRXML)->output($outputDir);
+            echo "Compilation and execution successful.";
+            $command = $jasper->execute();
+        }
+        catch(Exception $e){
+            echo "An error occurred: " . $e->getMessage();
+        }
+
+        echo "Command for manual execution: " . $command;
+
+        // $input = public_path('/examples/Hello.jrxml');
+        // $jasper = new PHPJasper;
+        // $jasper->compile($input)->output();
     }
 }
