@@ -17,7 +17,7 @@ use App\Http\Controllers\QrController;
 
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
-Route::middleware(['session','check_device'])->group(function(){
+Route::middleware(['session','check_device','checkIpAddress'])->group(function(){
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::get('/logout',[LoginController::class,'logout']);
     Route::get('/', 'HomeController@index');

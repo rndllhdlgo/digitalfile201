@@ -15,9 +15,7 @@ class CheckIpAddress
      * @param  \Closure  $next
      * @return mixed
      */
-    public function handle($request, Closure $next)
-    {
-        // Get the user's IP address
+    public function handle($request, Closure $next){
         $userIp = $request->ip();
         $checkIp = Ipaddress::where('ipaddress', $userIp)->first();
         if(!$checkIp){
@@ -31,14 +29,17 @@ class CheckIpAddress
                 'updated_at' => now()
             ]);
         }
-        // Get the list of allowed IP addresses from the config
-        $allowedIps = Config::get('ip_whitelist.allowed_ips');
-        // return $next($request);
 
-         // Check if the user's IP address is in the allowed list
+        $allowedIps = Config::get('ip_whitelist.allowed_ips');
         if(in_array($userIp, $allowedIps)){
             return $next($request);
         }
-        abort(403, 'Unauthorized IP address');
+
+        if(env('APP_MAINTENANCE') == 'true'){
+            abort(403, 'The system is currently undergoing maintenance. We will notify you once the maintenance is complete.');
+        }
+        else{
+            abort(403, 'Unauthorized IP address');
+        }
     }
 }

@@ -69,6 +69,6 @@ class Kernel extends HttpKernel
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'session' => \App\Http\Middleware\CheckSessionid::class,
         'check_device' => \App\Http\Middleware\CheckDevice::class,
-        'checkIpAddress' => \App\Http\Middleware\CheckDevice::class,
+        'checkIpAddress' => \App\Http\Middleware\CheckIpAddress::class,
     ];
 }
