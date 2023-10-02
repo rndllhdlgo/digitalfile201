@@ -48,7 +48,7 @@
 
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control text-uppercase" type="search" id="middle_name letterNumber" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <input class="forminput form-control text-uppercase letterNumber" type="search" id="middle_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
                         <label for="middle_name" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME (Optional)</label>
                     </div>
                 </div>
@@ -158,6 +158,7 @@
                             <option value="AB-">AB-</option>
                             <option value="O">O</option>
                             <option value="O-">O-</option>
+                            <option value="UNKNOWN">UNKNOWN</option>
                         </select>
                         <label for="blood_type" class="formlabel form-label"><i class="fa-solid fa-droplet"></i> BLOOD TYPE </label>
                     </div>

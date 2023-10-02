@@ -808,7 +808,7 @@ class UpdateController extends Controller
 
                 $employee = new EducationalAttainment;
                 $employee->employee_id = $request->employee_id;
-                $employee->empno = $request->employee_number;
+                // $employee->empno = $request->employee_number;
                 $employee->secondary_school_name = strtoupper($request->secondary_school_name);
                 $employee->secondary_school_address = strtoupper($request->secondary_school_address);
                 $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
@@ -902,7 +902,6 @@ class UpdateController extends Controller
                 $userlogs->logs = "USER UPDATES THIS EMPLOYEE'S EDUCATION DETAILS: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
                 $userlogs->save();
             }
-            return 'Educ Wala pa';
         }
         else{
             $employee_details = PersonalInformationTable::where('id', $request->id)->first();
@@ -994,17 +993,15 @@ class UpdateController extends Controller
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
+                    $userlogs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
                     $userlogs->save();
 
                     $userlogs = new UserLogs;
                     $userlogs->user_id = auth()->user()->id;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
+                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
                     $userlogs->save();
                 }
             }
-
-            return 'Educ Meron na';
         }
     }
 
@@ -1075,7 +1072,6 @@ class UpdateController extends Controller
                     $userlogs->save();
                 }
             }
-            return 'Med Wala pa';
         }
         else{
             $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
@@ -1136,7 +1132,6 @@ class UpdateController extends Controller
                     $userlogs->save();
                 }
             }
-            return 'Med Meron na';
         }
     }
 

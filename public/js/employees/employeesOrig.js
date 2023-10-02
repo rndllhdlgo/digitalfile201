@@ -84,44 +84,20 @@ $(document).ready(function(){
             },
         ],
         columns:[
-            {
-                data: 'work_information.employee_number',
-                render: function(data, type, row, meta){
-                    if(data){
-                        if(row.work_information.company.entity == '001'){
-                            return 'ID'+row.work_information.employee_number.toUpperCase();
-                        }
-                        else if(row.work_information.company.entity == '002'){
-                            return 'PL'+row.work_information.employee_number.toUpperCase();
-                        }
-                        else if(row.work_information.company.entity == '003'){
-                            return 'AP'+row.work_information.employee_number.toUpperCase();
-                        }
-                        else if(row.work_information.company.entity == '004'){
-                            return 'MJ'+row.work_information.employee_number.toUpperCase();
-                        }
-                        else if(row.work_information.company.entity == '005'){
-                            return 'NU'+row.work_information.employee_number.toUpperCase();
-                        }
-                    }
-                    else{
-                        return row.empno;
-                    }
-                }
-            },
+            {data: 'employee_number'},
             {
                 data: null,
                 "render": function(data,type,row){
                     return (row.last_name + ', ' + row.first_name + ' ' + row.middle_name).toUpperCase();
                 }
             },
-            {data: 'work_information.position.job_position_name'},
-            {data: 'work_information.branch.entity03_desc'},
-            {data: 'work_information.employment_status'},
-            {data: 'work_information.company.company_name'},
-            {data: 'work_information.department.deptdesc'},
+            {data: 'employee_position'},
+            {data: 'employee_branch'},
+            {data: 'employment_status'},
+            {data: 'employee_company'},
+            {data: 'employee_department'},
             {
-                data: 'work_information.date_hired',
+                data: 'date_hired',
                 "render":function(data,type,row){
                     if(row.date_hired){
                         return formatDate(row.date_hired);
@@ -234,22 +210,6 @@ $('.filter-input').on('keyup search', function(){
     employeesTable.column($(this).data('column')).search($(this).val()).draw();
 });
 
-$('#haveChildren').on('change', function() {
-    if($(this).is(':checked')){
-        $('.children_information').show();
-
-        setTimeout(() => {
-            var targetPosition = $(".children_information").offset().top;
-            $('html, body').animate({
-                scrollTop: targetPosition
-              }, 500);
-        }, 500);
-    }
-    else{
-        $('.children_information').hide();
-    }
-});
-
 function changeCivilStatus(){
     if($('#civil_status').val() == 'MARRIED'
     || $('#civil_status').val() == 'WIDOWED'
@@ -269,6 +229,22 @@ function changeCivilStatus(){
         $('.children_information').hide();
     }
 }
+
+$('#haveChildren').on('change', function() {
+    if($(this).is(':checked')){
+        $('.children_information').show();
+
+        setTimeout(() => {
+            var targetPosition = $(".children_information").offset().top;
+            $('html, body').animate({
+                scrollTop: targetPosition
+              }, 500);
+        }, 500);
+    }
+    else{
+        $('.children_information').hide();
+    }
+});
 
 function changeEmploymentStatus(){
     if($('#employment_status').val() == "REGULAR"
