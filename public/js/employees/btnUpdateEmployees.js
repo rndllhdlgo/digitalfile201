@@ -289,7 +289,6 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
-                                    empno:$('#employee_number').val(),
                                     college_name : $(this).children('.td_1').html(),
                                     college_degree : $(this).children('.td_2').html(),
                                     college_inclusive_years_from: $(this).children('.td_3').html(),
@@ -310,7 +309,6 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
-                                    empno:$('#employee_number').val(),
                                     training_name : $(this).children('.td_1').html(),
                                     training_title :  $(this).children('.td_2').html(),
                                     training_inclusive_years_from : $(this).children('.td_3').html(),
@@ -331,7 +329,6 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
-                                    empno:$('#employee_number').val(),
                                     vocational_name : $(this).children('.td_1').html(),
                                     vocational_course : $(this).children('.td_2').html(),
                                     vocational_inclusive_years_from: $(this).children('.td_3').html(),
@@ -352,7 +349,6 @@ $('#btnUpdate').on('click',function(){
                                 },
                                 data:{
                                     employee_id : data.id,
-                                    empno:$('#employee_number').val(),
                                     job_company_name : $(this).children('.td_1').html(),
                                     job_description : $(this).children('.td_2').html(),
                                     job_position : $(this).children('.td_3').html(),
@@ -569,8 +565,6 @@ $('#btnUpdate').on('click',function(){
                             contentType: false,
                             headers: {
                                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            success: function(response){
                             }
                         });
 
@@ -642,6 +636,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
+                                $('.btn_children').parent().parent().remove();
                                 tblChildren = '';
                             }
 
@@ -700,6 +695,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
+                                $('.btn_college').parent().parent().remove();
                                 tblCollege = '';
                             }
 
@@ -760,6 +756,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
+                                $('.btn_training').parent().parent().remove();
                                 tblTraining = '';
                             }
 
@@ -822,6 +819,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
+                                $('.btn_vocational').parent().parent().remove();
                                 tblVocational = '';
                             }
 
@@ -888,6 +886,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
+                                $('.btn_job').parent().parent().remove();
                                 tblJob = '';
                             }
 
@@ -951,7 +950,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
-                                $('.btn_memo').click();
+                                $('.btn_memo').parent().parent().remove();
                                 $('#memo_subject').attr('name','memo_subject[]');
                                 $('#memo_date').attr('name','memo_date[]');
                                 $('#memo_penalty').attr('name','memo_penalty[]');
@@ -1018,7 +1017,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
-                                $('.btn_evaluation').click();
+                                $('.btn_evaluation').parent().parent().remove();
                                 $('#evaluation_reason').attr('name','evaluation_reason[]');
                                 $('#evaluation_date').attr('name','evaluation_date[]');
                                 $('#evaluation_evaluated_by').attr('name','evaluation_evaluated_by[]');
@@ -1085,7 +1084,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
-                                $('.btn_contracts').click();
+                                $('.btn_contracts').parent().parent().remove();
                                 $('#contracts_type').attr('name','contracts_type[]');
                                 $('#contracts_date').attr('name','contracts_date[]');
                                 $('#contracts_file').attr('name','contracts_file[]');
@@ -1145,7 +1144,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
-                                $('.btn_resignation').click();
+                                $('.btn_resignation').parent().parent().remove();
                                 $('#resignation_reason').attr('name','resignation_reason[]');
                                 $('#resignation_date').attr('name','resignation_date[]');
                                 $('#resignation_file').attr('name','resignation_file[]');
@@ -1205,7 +1204,7 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     }
                                 });
-                                $('.btn_termination').click();
+                                $('.btn_termination').parent().parent().remove();
                                 $('#termination_reason').attr('name','termination_reason[]');
                                 $('#termination_date').attr('name','termination_date[]');
                                 $('#termination_file').attr('name','termination_file[]');

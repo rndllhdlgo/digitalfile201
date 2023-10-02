@@ -137,6 +137,8 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#employee_number').val(value.employee_number);
                     var removeValue = value.employee_number+"_";
                     var trim_empno = (value.employee_number).substring(2);
+                    console.log(removeValue);
+                    console.log(trim_empno);
                     $('#employee_number').attr('readonly',true);
                     $('#employee_number').css('cursor','not-allowed');
                 }
@@ -596,7 +598,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             data: 'memo_file',
                             "render": function(data, type, row){
                                     if(value.employee_number.includes('ID') || value.employee_number.includes('AP') || value.employee_number.includes('PL') || value.employee_number.includes('MJ') || value.employee_number.includes('NU')){
-                                        return `<a href="/storage/evaluation/${trim_empno}_${value.last_name}_${value.first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
+                                        return `<a href="/storage/evaluation/${(value.employee_number).substring(2)}_${value.last_name}_${value.first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
                                     }
                                     return `<a href="/storage/evaluation/${value.employee_number}_${value.last_name}_${value.first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
                             },
