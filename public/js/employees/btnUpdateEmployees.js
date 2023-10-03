@@ -890,7 +890,6 @@ $('#btnUpdate').on('click',function(){
                                 tblJob = '';
                             }
 
-                            var removeValue = employee_number+"_";
                             if(tblMemo == 'tblMemo'){
                                 $('.memo_table_data').dataTable().fnDestroy();
                                 $('.memo_table_data').DataTable({
@@ -934,9 +933,9 @@ $('#btnUpdate').on('click',function(){
                                             data: 'memo_file',
                                             "render": function(data, type, row){
                                                     if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                        return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
+                                                        return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file}</a>`;
                                                     }
-                                                    return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file.replace(removeValue, '')}</a>`;
+                                                    return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file}</a>`;
                                             },
                                             width: '22.5%'
                                         }
@@ -1001,9 +1000,9 @@ $('#btnUpdate').on('click',function(){
                                             data: 'evaluation_file',
                                             "render": function(data, type, row){
                                                 if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file.replace(removeValue, '')}</a>`;
+                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file}</a>`;
                                                 }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file.replace(removeValue, '')}</a>`;
+                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file}</a>`;
                                             },
                                             width: '22.5%'
                                         }
@@ -1068,9 +1067,9 @@ $('#btnUpdate').on('click',function(){
                                             data: 'contracts_file',
                                             "render": function(data, type, row){
                                                 if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file.replace(removeValue, '')}</a>`;
+                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file}</a>`;
                                                 }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file.replace(removeValue, '')}</a>`;
+                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file}</a>`;
                                             },
                                             width: '35.5%'
                                         }
@@ -1128,9 +1127,9 @@ $('#btnUpdate').on('click',function(){
                                             data: 'resignation_file',
                                             "render": function(data, type, row){
                                                 if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file.replace(removeValue, '')}</a>`;
+                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file}</a>`;
                                                 }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file.replace(removeValue, '')}</a>`;
+                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file}</a>`;
                                             },
                                             width: '35.5%'
                                         }
@@ -1188,9 +1187,9 @@ $('#btnUpdate').on('click',function(){
                                             data: 'termination_file',
                                             "render": function(data, type, row){
                                                 if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file.replace(removeValue, '')}</a>`;
+                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file}</a>`;
                                                 }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file.replace(removeValue, '')}</a>`;
+                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file}</a>`;
                                             },
                                             width: '35.5%'
                                         }

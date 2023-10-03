@@ -53,3 +53,19 @@ AND tdate LIKE '03/__/2023'
 AND void = 0
 AND cancelled = 0
 AND refund = 0;
+
+TRUNCATE TABLE hrms.benefits;
+TRUNCATE TABLE hrms.children;
+TRUNCATE TABLE hrms.college;
+TRUNCATE TABLE hrms.contract;
+TRUNCATE TABLE hrms.documents;
+TRUNCATE TABLE hrms.educational_attainments;
+TRUNCATE TABLE hrms.employee_logs;
+TRUNCATE TABLE hrms.evaluation;
+TRUNCATE TABLE hrms.job_history;
+TRUNCATE TABLE hrms.medical_histories;
+TRUNCATE TABLE hrms.memo;
+TRUNCATE TABLE hrms.resignation;
+TRUNCATE TABLE hrms.termination;
+TRUNCATE TABLE hrms.trainings;
+TRUNCATE TABLE hrms.vocationals;
