@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class IpAddress extends Model
 {
-    protected $guarded = [];
+    protected $connection = 'checkip';
     protected $table = 'ipaddress';
+    // public $incrementing = false;
+    // public $timestamps = false;
+    protected $guarded = [];
 }

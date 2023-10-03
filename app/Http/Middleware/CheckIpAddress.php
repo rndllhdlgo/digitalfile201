@@ -20,13 +20,14 @@ class CheckIpAddress
         $checkIp = Ipaddress::where('ipaddress', $userIp)->first();
         if(!$checkIp){
             Ipaddress::Create([
-                'ipaddress' => $userIp
+                'ipaddress' => $userIp,
+                'hrms' => now()
             ]);
         }
         else{
             $checkIp->update([
                 'ipaddress' => $userIp,
-                'updated_at' => now()
+                'hrms' => now()
             ]);
         }
 
