@@ -28,9 +28,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
                     <option value="" disabled selected>SELECT COMPANY</option>
-                        @foreach($companies as $company)
-                            <option value="{{$company->entity}}">{{$company->company_name}}</option>
-                        @endforeach
+                    @foreach($companies as $company)
+                        <option value="{{$company->entity}}">{{$company->company_name}}</option>
+                    @endforeach
                 </select>
                 <label for="employee_company" class="formlabel form-label"><i class="fa-solid fa-building"></i> COMPANY</label>
             </div>
@@ -40,9 +40,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
                     <option value="" disabled selected>SELECT BRANCH</option>
-                        @foreach($branches as $branch)
-                            <option value="{{$branch->entity03}}">{{$branch->entity03_desc}}</option>
-                        @endforeach
+                    @foreach($branches as $branch)
+                        <option value="{{$branch->entity03}}">{{$branch->entity03_desc}}</option>
+                    @endforeach
                 </select>
                 <label for="employee_branch" class="formlabel form-label"><i class="fa-solid fa-building"></i> BRANCH</label>
             </div>
@@ -53,8 +53,8 @@
                 <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
                     <option value="" disabled selected>SELECT DEPARTMENT</option>
                     @foreach($departments as $department)
-                            <option value="{{$department->deptcode}}">{{$department->deptdesc}}</option>
-                        @endforeach
+                        <option value="{{$department->deptcode}}">{{$department->deptdesc}}</option>
+                    @endforeach
                 </select>
                 <label for="employee_department" class="formlabel form-label"><i class="fa-solid fa-building"></i> DEPARTMENT</label>
             </div>
@@ -66,9 +66,9 @@
             <div class="f-outline">
                 <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
                     <option value="" disabled selected>SELECT POSITION </option>
-                        @foreach($jobPositions as $jobPosition)
-                            <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
-                        @endforeach
+                    @foreach($jobPositions as $jobPosition)
+                        <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
+                    @endforeach
                 </select>
                 <label for="employee_position" class="formlabel form-label"><i class="fas fa-user-tie"></i> POSITION</label>
             </div>
@@ -110,12 +110,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" 
-                onclick="updateCheck(this.id);
-                duplicateCheck(this.id);"
-                onkeyup="updateCheck(this.id);
-                duplicateCheck(this.id);
-                emailCheck(this.id);">
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id); duplicateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>

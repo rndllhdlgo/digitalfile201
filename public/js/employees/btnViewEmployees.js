@@ -841,6 +841,75 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
 
+                var employee_history_table;
+                $('.employee_history_table').dataTable().fnDestroy();
+                employee_history_table = $('.employee_history_table').DataTable({
+                    dom:'l<"breakspace">trip',
+                    autoWidth: false,
+                    language:{
+                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
+                        lengthMenu:"Show _MENU_ User Activities",
+                        emptyTable:"No User Activities Data Found!",
+                        loadingRecords: "Loading User Activities Records...",
+                    },
+                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+                    processing:true,
+                    serverSide:false,
+                    ajax: {
+                        url: '/employees/history_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    order: [],
+                    columnDefs: [
+                        {
+                            "targets": [0],
+                            "visible": false,
+                            "searchable": true
+                        },
+                    ],
+                    columns: [
+                        { data: 'datetime'},
+                        {
+                            data: 'date',
+                            width: '15%',
+                            "render": function(data, type, row){
+                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                            }
+                        },
+                        { data: 'username', width: '15%'},
+                        { data: 'user_level', width: '15%'},
+                        {
+                            data: 'history',
+                            width: '55%',
+                            "render":function(data,type,row){
+                                return history = row.history.replaceAll(" [","<br>[");
+                            },
+                        }
+                    ]
+                });
+                $('div.breakspace').html('<br><br>');
+
+                $('.filter-input').on('keyup search', function(){
+                    employee_history_table.column($(this).data('column')).search($(this).val()).draw();
+                });
+
+                setInterval(function(){
+                    if($('#loading').is(':hidden') && standby == false){
+                        $.ajax({
+                            url: "/employee_history_reload",
+                            success: function(data){
+                                if(data != data_update){
+                                    data_update = data;
+                                    $('.employee_history_table').DataTable().ajax.reload(null, false);
+                                }
+                            }
+                        });
+                    }
+                }, 1000);
+
                 var logs_table_data;
                 $('.logs_table_data').dataTable().fnDestroy();
                 logs_table_data = $('.logs_table_data').DataTable({
@@ -896,60 +965,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     logs_table_data.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                var employee_history_table;
-                $('.employee_history_table').dataTable().fnDestroy();
-                employee_history_table = $('.employee_history_table').DataTable({
-                    dom:'l<"breakspace">trip',
-                    autoWidth: false,
-                    language:{
-                        info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
-                        lengthMenu:"Show _MENU_ User Activities",
-                        emptyTable:"No User Activities Data Found!",
-                        loadingRecords: "Loading User Activities Records...",
-                    },
-                    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-                    processing:true,
-                    serverSide:false,
-                    ajax: {
-                        url: '/employees/history_data',
-                        async: false,
-                        data:{
-                            id: value.id,
-                        }
-                    },
-                    order: [],
-                    columnDefs: [
-                        {
-                            "targets": [0],
-                            "visible": false,
-                            "searchable": true
-                        },
-                    ],
-                    columns: [
-                        { data: 'datetime'},
-                        {
-                            data: 'date',
-                            width: '15%',
-                            "render": function(data, type, row){
-                                return "<span class='d-none'>"+row.date+"</span>"+moment(row.date).format('MMM. DD, YYYY, h:mm A');
+                setInterval(function(){
+                    if($('#loading').is(':hidden') && standby == false){
+                        $.ajax({
+                            url: "/logs_reload",
+                            success: function(data){
+                                if(data != data_update){
+                                    data_update = data;
+                                    $('.logs_table_data').DataTable().ajax.reload(null, false);
+                                }
                             }
-                        },
-                        { data: 'username', width: '15%'},
-                        { data: 'user_level', width: '15%'},
-                        {
-                            data: 'history',
-                            width: '55%',
-                            "render":function(data,type,row){
-                                return history = row.history.replaceAll(" [","<br>[");
-                            },
-                        }
-                    ]
-                });
-                $('div.breakspace').html('<br><br>');
-
-                $('.filter-input').on('keyup search', function(){
-                    employee_history_table.column($(this).data('column')).search($(this).val()).draw();
-                });
+                        });
+                    }
+                }, 1000);
 
                 var children_change, college_change, training_change, vocational_change, job_history_change = '';
                 var memo_change, evaluation_change, contracts_change, resignation_change, termination_change = '';

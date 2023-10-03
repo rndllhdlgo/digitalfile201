@@ -808,7 +808,6 @@ class UpdateController extends Controller
 
                 $employee = new EducationalAttainment;
                 $employee->employee_id = $request->employee_id;
-                // $employee->empno = $request->employee_number;
                 $employee->secondary_school_name = strtoupper($request->secondary_school_name);
                 $employee->secondary_school_address = strtoupper($request->secondary_school_address);
                 $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
