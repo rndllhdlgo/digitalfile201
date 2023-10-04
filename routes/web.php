@@ -170,6 +170,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/data', 'TryController@data');
     Route::any('/print', 'TryController@print');
     Route::any('/sql_save', 'TryController@sql_save');
+    Route::any('/backup', 'BackUpController@backup');
 });
 
 Route::get('/generateJaspher', function (Request $request){

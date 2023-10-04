@@ -59,7 +59,7 @@ class EmployeesController extends Controller
         if(EmployeeLogs::count() == 0){
             return 'NULL';
         }
-        $data_update = employee_logs::latest('updated_at')->first()->updated_at;
+        $data_update = EmployeeLogs::latest('updated_at')->first()->updated_at;
         return $data_update;
     }
 
