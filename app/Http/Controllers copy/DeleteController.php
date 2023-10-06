@@ -38,16 +38,14 @@ class DeleteController extends Controller{
         }
 
         if($children_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
             $userlogs->save();
         }
@@ -72,16 +70,14 @@ class DeleteController extends Controller{
         }
 
         if($college_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
             $userlogs->save();
         }
@@ -106,16 +102,14 @@ class DeleteController extends Controller{
         }
 
         if($training_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
             $userlogs->save();
         }
@@ -140,16 +134,14 @@ class DeleteController extends Controller{
         }
 
         if($vocational_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
             $userlogs->save();
         }
@@ -174,16 +166,14 @@ class DeleteController extends Controller{
         }
 
         if($job_history_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $request->employee_id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
             $userlogs->save();
         }
@@ -208,16 +198,14 @@ class DeleteController extends Controller{
         }
 
         if($memo_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $employee_details->id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $memo_update";
             $userlogs->save();
         }
@@ -242,16 +230,14 @@ class DeleteController extends Controller{
         }
 
         if($evaluation_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $employee_details->id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $evaluation_update";
             $userlogs->save();
         }
@@ -276,16 +262,14 @@ class DeleteController extends Controller{
         }
 
         if($contracts_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $employee_details->id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACT DETAILS $contracts_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACT DETAILS $contracts_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $contracts_update";
             $userlogs->save();
         }
@@ -310,16 +294,14 @@ class DeleteController extends Controller{
         }
 
         if($resignation_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $employee_details->id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $resignation_update";
             $userlogs->save();
         }
@@ -344,16 +326,14 @@ class DeleteController extends Controller{
         }
 
         if($termination_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $employee_details->id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
-            $userlogs->save();
+            $employee_logs = new EmployeeLogs;
+            $employee_logs->employee_id = $employee_details->id;
+            $employee_logs->user_id = auth()->user()->id;
+            $employee_logs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
+            $employee_logs->save();
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $termination_update";
             $userlogs->save();
         }

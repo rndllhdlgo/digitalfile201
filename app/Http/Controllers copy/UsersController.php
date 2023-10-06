@@ -54,8 +54,7 @@ class UsersController extends Controller
                 Password::broker()->sendResetLink(['email'=>strtolower($request->email)]);
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER ADDED A NEW USER WITH THE FOLLOWING DETAILS [USER FULL NAME: $name] [USER LEVEL: $users->user_level]";
                 $userlogs->save();
             }
@@ -101,8 +100,7 @@ class UsersController extends Controller
             if($user_level_orig != $request->user_level_new || $name_orig != $request->name_new || $email_orig != $request->email_new){
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED DETAILS OF ($users->name) [$email_change] [$name_change] [$users_level_change]";
                 $userlogs->save();
 
@@ -138,8 +136,7 @@ class UsersController extends Controller
             $result = 'true';
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER CHANGED OWN ACCOUNT PASSWORD.";
             $userlogs->save();
         }
@@ -172,8 +169,7 @@ class UsersController extends Controller
             $status = "[FROM '$status2' TO '$status1']";
 
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "USER UPDATED STATUS OF USER ($name $user_level)  $status.";
             $userlogs->save();
         }

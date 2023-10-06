@@ -1,5 +1,5 @@
 var companyTable = $('#companyTable').DataTable({
-    dom: 'lf<"breakspace">trip',
+    dom: 'lftrip',
     language:{
         "info": "\"Showing _START_ to _END_ of _TOTAL_ Companies\"",
         "lengthMenu":"Show _MENU_ Companies",
@@ -16,14 +16,13 @@ var companyTable = $('#companyTable').DataTable({
         {data: 'company_name'}
     ],
     initComplete: function(){
+        $('#companyTable_filter').after('<br><br>');
         $('#loading').hide();
     }
 });
 
-$('div.breakspace').html('<br><br>');
-
 var departmentTable = $('#departmentTable').DataTable({
-    dom: 'lf<"breakspace">trip',
+    dom: 'lftrip',
     language:{
         "info": "\"Showing _START_ to _END_ of _TOTAL_ Departments\"",
         "lengthMenu":"Show _MENU_ Departments",
@@ -46,13 +45,13 @@ var departmentTable = $('#departmentTable').DataTable({
         }
     ],
     initComplete: function(){
+        $('#departmentTable_filter').after('<br><br>');
         $('#loading').hide();
     }
 });
-$('div.breakspace').html('<br><br>');
 
 var branchTable = $('#branchTable').DataTable({
-    dom: 'lf<"breakspace">trip',
+    dom: 'lftrip',
     language:{
         "info": "\"Showing _START_ to _END_ of _TOTAL_ Branches\"",
         "lengthMenu":"Show _MENU_ Branches",
@@ -75,13 +74,13 @@ var branchTable = $('#branchTable').DataTable({
         }
     ],
     initComplete: function(){
+        $('#branchTable_filter').after('<br><br>');
         $('#loading').hide();
     }
 });
-$('div.breakspace').html('<br><br>');
 
 var shiftTable = $('table.shiftTable').DataTable({
-        dom: 'lf<"breakspace">trip',
+        dom: 'lftrip',
         language: {
             info: "\"Showing _START_ to _END_ of _TOTAL_ Shifts\"",
             lengthMenu: "Show _MENU_ Shifts",
@@ -114,38 +113,14 @@ var shiftTable = $('table.shiftTable').DataTable({
             }
         ],
         initComplete: function(){
+            $('#shiftTable_filter').after('<br><br>');
             $('#loading').hide();
         }
     });
-    $('div.breakspace').html('<br><br>');
 
 $('.filter-input').on('keyup search', function(){
     shiftTable.column($(this).data('column')).search($(this).val()).draw();
 });
-
-var supervisorTable = $('#supervisorTable').DataTable({
-    dom: 'lf<"breakspace">trip',
-    language:{
-        "info": "\"Showing _START_ to _END_ of _TOTAL_ Supervisors\"",
-        "lengthMenu":"Show _MENU_ Supervisors",
-        "emptyTable":"No Supervisors Data Found!",
-        "loadingRecords": "Loading Supervisors Records...",
-    },
-    aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
-    processing:true,
-    serverSide:false,
-    ajax: {
-        url: '/maintenance/supervisorData',
-    },
-    order: [],
-    columns: [
-        {data: 'supervisor_name'}
-    ],
-    initComplete: function(){
-        $('#loading').hide();
-    }
-});
-$('div.breakspace').html('<br><br>');
 
 var positionTable = $('table.positionTable').DataTable({
     scrollY:        "484px",
@@ -154,7 +129,7 @@ var positionTable = $('table.positionTable').DataTable({
     fixedColumns:{
         left: 1,
     },
-    dom: 'lf<"breakspace">trip',
+    dom: 'lftrip',
     language: {
         info: "\"Showing _START_ to _END_ of _TOTAL_ JOB POSITIONS\"",
         lengthMenu: "Show _MENU_ JOB POSITIONS",
@@ -191,10 +166,10 @@ var positionTable = $('table.positionTable').DataTable({
         },
     ],
     initComplete: function(){
+        $('#positionTable_filter').after(`<br><br>`);
         $('#loading').hide();
     }
 });
-    $('div.breakspace').html('<br><br>');
 
 $('.filter-input').on('keyup search', function(){
     positionTable.column($(this).data('column')).search($(this).val()).draw();

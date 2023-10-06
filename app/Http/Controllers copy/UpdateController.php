@@ -47,8 +47,8 @@ use App\Models\EmployeeStatus;
 use DataTables;
 use Str;
 
-class UpdateController extends Controller{
-
+class UpdateController extends Controller
+{
     public function updatePersonalInformation(Request $request){
         if($request->filename_delete){
             if(file_exists('storage/employee_images/'.$request->filename_delete)){
@@ -386,14 +386,12 @@ class UpdateController extends Controller{
             if($first_name_change || $middle_name_change || $last_name_change || $suffix_change || $nickname_change || $birthday_change || $gender_change || $address_change || $ownership_change || $province_change || $city_change || $region_change || $blood_type_change || $height_change || $weight_change || $religion_change || $civil_status_change || $email_address_change || $telephone_number_change || $cellphone_number_change || $spouse_name_change || $spouse_contact_number_change || $spouse_profession_change || $father_name_change || $father_contact_number_change || $father_profession_change || $mother_name_change || $mother_contact_number_change || $mother_profession_change || $emergency_contact_name_change || $emergency_contact_relationship_change || $emergency_contact_number_change || $request->employee_image_change == 'CHANGED'){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $request->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS $first_name_change $middle_name_change $last_name_change $suffix_change $nickname_change $birthday_change $gender_change $address_change $ownership_change $province_change $city_change $region_change $blood_type_change $height_change $weight_change $religion_change $civil_status_change $email_address_change $telephone_number_change $cellphone_number_change $spouse_name_change $spouse_contact_number_change $spouse_profession_change $father_name_change $father_contact_number_change $father_profession_change $mother_name_change $mother_contact_number_change $mother_profession_change $emergency_contact_name_change $emergency_contact_relationship_change $emergency_contact_number_change $employee_image_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS $first_name_change $middle_name_change $last_name_change $suffix_change $nickname_change $birthday_change $gender_change $address_change $ownership_change $province_change $city_change $region_change $blood_type_change $height_change $weight_change $religion_change $civil_status_change $email_address_change $telephone_number_change $cellphone_number_change $spouse_name_change $spouse_contact_number_change $spouse_profession_change $father_name_change $father_contact_number_change $father_profession_change $mother_name_change $mother_contact_number_change $mother_profession_change $emergency_contact_name_change $emergency_contact_relationship_change $emergency_contact_number_change $employee_image_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S PERSONAL DETAILS ($data->first_name $data->middle_name $data->last_name) $first_name_change $middle_name_change $last_name_change $suffix_change $nickname_change $birthday_change $gender_change $address_change $ownership_change $province_change $city_change $region_change $blood_type_change $height_change $weight_change $religion_change $civil_status_change $email_address_change $telephone_number_change $cellphone_number_change $spouse_name_change $spouse_contact_number_change $spouse_profession_change $father_name_change $father_contact_number_change $father_profession_change $mother_name_change $mother_contact_number_change $mother_profession_change $emergency_contact_name_change $emergency_contact_relationship_change $emergency_contact_number_change $employee_image_update ";
                 $userlogs->save();
             }
@@ -603,23 +601,20 @@ class UpdateController extends Controller{
 
             if($save){
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number) $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
                 $userlogs->save();
 
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $request->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change ";
                 $userlogs->save();
 
                 $userlogs = new WorkLogs;
                 $userlogs->employee_id = $request->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->history = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
                 $userlogs->save();
             }
         }
@@ -777,21 +772,18 @@ class UpdateController extends Controller{
                     $employee_details = PersonalInformationTable::where('id', $request->id)->first();
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
                     $userlogs->save();
 
                     $userlogs = new WorkLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->history = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
                     $userlogs->save();
 
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$data->employee_number) $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change";
                     $userlogs->save();
                 }
@@ -899,16 +891,14 @@ class UpdateController extends Controller{
                 }
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
                 $userlogs->save();
 
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $request->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATES THIS EMPLOYEE'S EDUCATION DETAILS: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATES THIS EMPLOYEE'S EDUCATION DETAILS: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
                 $userlogs->save();
             }
         }
@@ -1001,14 +991,12 @@ class UpdateController extends Controller{
                 if($secondary_school_name_change || $secondary_school_address_change || $secondary_school_inclusive_years_from_change || $secondary_school_inclusive_years_to_change || $primary_school_name_change || $primary_school_address_change || $primary_school_inclusive_years_from_change || $primary_school_inclusive_years_to_change){
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATES DETAILS OF THIS EMPLOYEE: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
                     $userlogs->save();
 
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
                     $userlogs->save();
                 }
@@ -1071,16 +1059,14 @@ class UpdateController extends Controller{
                 ]);
 
                 if($save){
-                    $userlogs = new EmployeeLogs;
-                    $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATES DETAILS OF THIS EMPLOYEE: $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
-                    $userlogs->save();
+                    $employee_logs = new EmployeeLogs;
+                    $employee_logs->employee_id = $request->id;
+                    $employee_logs->user_id = auth()->user()->id;
+                    $employee_logs->logs = "USER UPDATES DETAILS OF THIS EMPLOYEE: $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
+                    $employee_logs->save();
 
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
                     $userlogs->save();
                 }
@@ -1135,14 +1121,12 @@ class UpdateController extends Controller{
                 if($past_medical_condition_change || $allergies_change || $medication_change || $psychological_history_change){
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS: $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS: $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
                     $userlogs->save();
 
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEDICAL HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $past_medical_condition_change $allergies_change $medication_change $psychological_history_change ";
                     $userlogs->save();
                 }
@@ -1173,16 +1157,14 @@ class UpdateController extends Controller{
 
                 if($save){
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $employee_insurance_change";
                     $userlogs->save();
 
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
                     $userlogs->save();
                 }
             }
@@ -1206,14 +1188,12 @@ class UpdateController extends Controller{
                 if($request->employee_insurance != $employee_insurance_orig){
                     $userlogs = new EmployeeLogs;
                     $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
+                    $userlogs->user_id = auth()->user()->id;
+                    $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
                     $userlogs->save();
 
                     $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
+                    $userlogs->user_id = auth()->user()->id;
                     $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
                     $userlogs->save();
                 }
@@ -1253,14 +1233,12 @@ class UpdateController extends Controller{
             if($memo_update){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS $memo_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S MEMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $memo_update";
                 $userlogs->save();
             }
@@ -1291,14 +1269,12 @@ class UpdateController extends Controller{
             if($evaluation_update){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS $evaluation_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EVALUATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $evaluation_update";
                 $userlogs->save();
             }
@@ -1328,14 +1304,12 @@ class UpdateController extends Controller{
             if($contracts_update){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS $contracts_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS $contracts_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CONTRACTS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $contracts_update";
                 $userlogs->save();
             }
@@ -1365,14 +1339,12 @@ class UpdateController extends Controller{
             if($resignation_update){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS $resignation_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S RESIGNATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $resignation_update";
                 $userlogs->save();
             }
@@ -1402,14 +1374,12 @@ class UpdateController extends Controller{
             if($termination_update){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS $termination_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TERMINATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $termination_update";
                 $userlogs->save();
             }
@@ -1785,14 +1755,12 @@ class UpdateController extends Controller{
             if($request->hasFile('barangay_clearance_file') || $request->hasFile('birthcertificate_file') || $request->hasFile('diploma_file') || $request->hasFile('medical_certificate_file') || $request->hasFile('nbi_clearance_file') || $request->hasFile('pag_ibig_file') || $request->hasFile('philhealth_file') || $request->hasFile('police_clearance_file') || $request->hasFile('resume_file') || $request->hasFile('sss_file') || $request->hasFile('tor_file')){
                 $userlogs = new EmployeeLogs;
                 $userlogs->employee_id = $employee_details->id;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
-                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
+                $userlogs->user_id = auth()->user()->id;
+                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
                 $userlogs->save();
 
                 $userlogs = new UserLogs;
-                $userlogs->username = auth()->user()->name;
-                $userlogs->role = auth()->user()->user_level;
+                $userlogs->user_id = auth()->user()->id;
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
                 $userlogs->save();
             }

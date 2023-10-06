@@ -949,12 +949,12 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             }
                         },
                         { data: 'username', width: '15%'},
-                        { data: 'user_level', width: '15%'},
+                        { data: 'role', width: '15%'},
                         {
-                            data: 'logs',
+                            data: 'activity',
                             width: '55%',
                             "render":function(data,type,row){
-                                return logs = row.logs.replaceAll(" [", "<br>[");
+                                return activity = row.activity.replaceAll(" [", "<br>[");
                             }
                         }
                     ]

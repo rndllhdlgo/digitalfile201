@@ -48,8 +48,7 @@ class MaintenanceController extends Controller
 
         if($save){
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "ADDED JOB POSITION: USER SUCCESSFULLY ADDED JOB POSITION: ['$request->job_position_name'].";
             $userlogs->save();
             return 'true';
@@ -68,8 +67,7 @@ class MaintenanceController extends Controller
 
         if($update){
             $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
+            $userlogs->user_id = auth()->user()->id;
             $userlogs->activity = "UPDATED POSITION: USER UPDATED DETAILS OF JOB POSITION: ['$request->job_position_name']";
             $userlogs->save();
             return 'true';

@@ -92,29 +92,19 @@ class DataController extends Controller
         return DataTables::of($work_history)->make(true);
     }
 
-    // public function logs_data(Request $request){
-    //     $employee_logs = EmployeeLogs::selectRaw(
-    //                     'users.id AS user_id,
-    //                     employee_logs.id,
-    //                     users.name AS username,
-    //                     users.user_level,
-    //                     employee_logs.created_at AS date,
-    //                     DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
-    //                     employee_logs.logs')
-    //         ->where('employee_id',$request->id)
-    //         ->join('users', 'users.id','user_id')
-    //         ->orderBy('employee_logs.id', 'DESC')
-    //         ->get();
-    //     return DataTables::of($employee_logs)->make(true);
-    // }
-
     public function logs_data(Request $request){
-        $list = EmployeeLogs::query()
-            ->selectRaw('username, role, activity, employee_logs.created_at AS date, DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
+        $employee_logs = EmployeeLogs::selectRaw(
+                        'users.id AS user_id,
+                        employee_logs.id,
+                        users.name AS username,
+                        users.user_level,
+                        employee_logs.created_at AS date,
+                        DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
+                        employee_logs.logs')
             ->where('employee_id',$request->id)
-            ->where('username', '!=', '')
+            ->join('users', 'users.id','user_id')
             ->orderBy('employee_logs.id', 'DESC')
             ->get();
-        return DataTables::of($list)->make(true);
+        return DataTables::of($employee_logs)->make(true);
     }
 }
