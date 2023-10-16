@@ -79,27 +79,12 @@ class HomeController extends Controller
         return $data_update;
     }
 
-    // public function index_data(){
-    //     $list = UserLogs::selectRaw('user_logs.id,
-    //                                  users.id AS user_id,
-    //                                  users.name AS username,
-    //                                  users.email AS email,
-    //                                  users.user_level AS role,
-    //                                  user_logs.activity AS activity,
-    //                                  user_logs.created_at AS date,
-    //                                  DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
-    //         ->join('users', 'users.id', '=', 'user_id')
-    //         ->orderBy('user_logs.id', 'DESC')
-    //         ->get();
-    //     return DataTables::of($list)->make(true);
-    // }
-
     public function index_data(Request $request){
-        $list = UserLogs::query()
+        $data = UserLogs::query()
             ->selectRaw('username, role, activity, user_logs.created_at AS date, DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
             ->where('username', '!=', '')
             ->orderBy('user_logs.id', 'DESC')
             ->get();
-        return DataTables::of($list)->make(true);
+        return DataTables::of($data)->make(true);
     }
 }

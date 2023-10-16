@@ -77,44 +77,22 @@ class DataController extends Controller
     }
 
     public function history_data(Request $request){
-        $work_history = WorkLogs::selectRaw(
-            'users.id AS user_id,
-            work_logs.id,
-            users.name AS username,
-            users.user_level,
-            work_logs.history,
-            work_logs.created_at AS date,
-            DATE_FORMAT(work_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
-        ->where('employee_id',$request->id)
-        ->join('users', 'users.id','user_id')
-        ->orderBy('work_logs.id', 'DESC')
-        ->get();
-        return DataTables::of($work_history)->make(true);
+        $data = WorkLogs::query()
+            ->selectRaw('username, role, activity, work_logs.created_at AS date, DATE_FORMAT(work_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
+            ->where('employee_id',$request->id)
+            ->where('username', '!=', '')
+            ->orderBy('work_logs.id', 'DESC')
+            ->get();
+        return DataTables::of($data)->make(true);
     }
 
-    // public function logs_data(Request $request){
-    //     $employee_logs = EmployeeLogs::selectRaw(
-    //                     'users.id AS user_id,
-    //                     employee_logs.id,
-    //                     users.name AS username,
-    //                     users.user_level,
-    //                     employee_logs.created_at AS date,
-    //                     DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime,
-    //                     employee_logs.logs')
-    //         ->where('employee_id',$request->id)
-    //         ->join('users', 'users.id','user_id')
-    //         ->orderBy('employee_logs.id', 'DESC')
-    //         ->get();
-    //     return DataTables::of($employee_logs)->make(true);
-    // }
-
     public function logs_data(Request $request){
-        $list = EmployeeLogs::query()
+        $data = EmployeeLogs::query()
             ->selectRaw('username, role, activity, employee_logs.created_at AS date, DATE_FORMAT(employee_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')
             ->where('employee_id',$request->id)
             ->where('username', '!=', '')
             ->orderBy('employee_logs.id', 'DESC')
             ->get();
-        return DataTables::of($list)->make(true);
+        return DataTables::of($data)->make(true);
     }
 }

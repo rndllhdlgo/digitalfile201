@@ -1224,13 +1224,13 @@ class UpdateController extends Controller{
     public function updateDocuments(Request $request){
         $date = Carbon::now();
         $timestamp = date("ymdHis", strtotime($date));
+        $count = Str::random(2);
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee = Document::where('employee_id',$request->employee_id)->first();
 
         if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
             foreach ($request->file('memo_file') as $key => $value) {
-                $count = Str::random(2);
                 $memoFileName = $employee_details->empno.'_Memo_File_'.$timestamp.'_'.$count.'.'.$request->memo_file[$key]->extension();
                 $request->memo_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name, $memoFileName);
 
@@ -1268,7 +1268,6 @@ class UpdateController extends Controller{
 
         if($request->evaluation_reason && $request->evaluation_date && $request->evaluation_evaluated_by && $request->hasFile('evaluation_file')){
             foreach($request->file('evaluation_file') as $key => $value){
-                $count = Str::random(2);
                 $evaluationFileName =  $employee_details->empno.'_Evaluation_File_'.$timestamp.'_'.$count.'.'.$request->evaluation_file[$key]->extension();
                 $request->evaluation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$evaluationFileName);
 
@@ -1306,7 +1305,6 @@ class UpdateController extends Controller{
 
         if($request->contracts_type && $request->contracts_date && $request->hasFile('contracts_file')){
             foreach($request->file('contracts_file') as $key => $value){
-                $count = Str::random(2);
                 $contractsFileName = $employee_details->empno.'_Contracts_File_'.$timestamp.'_'.$count.'.'.$request->contracts_file[$key]->extension();
                 $request->contracts_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$contractsFileName);
 
@@ -1343,7 +1341,6 @@ class UpdateController extends Controller{
 
         if($request->resignation_reason && $request->resignation_date && $request->hasFile('resignation_file')){
             foreach($request->file('resignation_file') as $key => $value){
-                $count = Str::random(2);
                 $resignationFileName = $employee_details->empno.'_Resignation_File_'.$timestamp.'_'.$count.'.'.$request->resignation_file[$key]->extension();
                 $request->resignation_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$resignationFileName);
 
@@ -1380,7 +1377,6 @@ class UpdateController extends Controller{
 
         if($request->termination_reason && $request->termination_date && $request->hasFile('termination_file')){
             foreach($request->file('termination_file') as $key => $value){
-                $count = Str::random(2);
                 $terminationFileName = $employee_details->empno.'_Termination_File_'.$timestamp.'_'.$count.'.'.$request->termination_file[$key]->extension();
                 $request->termination_file[$key]->storeAs('public/evaluation/'.$employee_details->empno.'_'.$employee_details->last_name.'_'.$employee_details->first_name,$terminationFileName);
 
