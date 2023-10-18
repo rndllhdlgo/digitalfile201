@@ -117,9 +117,11 @@ html::-webkit-scrollbar-track:hover{
     transition: 0.2s;
     border-radius: 5px;
 }
+
 .space{
     margin-right: 10px;
 }
+
 .active{
     background-color: white;
     color:#0d1a80 !important;
@@ -292,11 +294,6 @@ input[type=search]:focus{
     content: "";
     display: table;
     clear: both;
-  }
-
-#image_preview_summary{
-    height: 190px;
-    width: 190px;
 }
 
 .clear:after {
@@ -306,11 +303,16 @@ input[type=search]:focus{
 }
 
 #image_preview{
-    height: 210px !important;
-    width:100% !important;
+    height: 190px !important;
+    width:190px !important;
     cursor:pointer;
     display: none;
     justify-content: center;
+}
+
+#image_preview_summary{
+    height: 190px;
+    width: 190px;
 }
 
 #update_image_preview{
