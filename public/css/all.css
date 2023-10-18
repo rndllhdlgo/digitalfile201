@@ -311,8 +311,8 @@ input[type=search]:focus{
 }
 
 #image_preview_summary{
-    height: 190px;
-    width: 190px;
+    height: 190px !important;
+    width: 190px !important;
 }
 
 #update_image_preview{

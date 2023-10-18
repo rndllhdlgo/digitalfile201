@@ -147,20 +147,20 @@ $('#viewSummary').on('click', function(){
             }
         });
 
-    $(document).on('click','#see_more',function(){
-        $('#see_more').attr('id','see_less');
-        $('#see_more_span').html('SEE LESS');
-        $('.fa-arrow-right').removeClass('fa-arrow-right').addClass('fa-arrow-up');
-        $('.job_desc_div p:not(:first-child)').fadeIn();
-        $('.job_req_div p:not(:first-child)').fadeIn();
-    });
-    $(document).on('click','#see_less',function(){
-        $('#see_less').attr('id','see_more');
-        $('#see_more_span').html('SEE MORE');
-        $('.fa-arrow-up').removeClass('fa-arrow-up').addClass('fa-arrow-right');
-        $('.job_desc_div p:not(:first-child)').fadeOut();
-        $('.job_req_div p:not(:first-child)').fadeOut();
-    });
+    // $(document).on('click','#see_more',function(){
+    //     $('#see_more').attr('id','see_less');
+    //     $('#see_more_span').html('SEE LESS');
+    //     $('.fa-arrow-right').removeClass('fa-arrow-right').addClass('fa-arrow-up');
+    //     $('.job_desc_div p:not(:first-child)').fadeIn();
+    //     $('.job_req_div p:not(:first-child)').fadeIn();
+    // });
+    // $(document).on('click','#see_less',function(){
+    //     $('#see_less').attr('id','see_more');
+    //     $('#see_more_span').html('SEE MORE');
+    //     $('.fa-arrow-up').removeClass('fa-arrow-up').addClass('fa-arrow-right');
+    //     $('.job_desc_div p:not(:first-child)').fadeOut();
+    //     $('.job_req_div p:not(:first-child)').fadeOut();
+    // });
 
     // Personal Information
     $('.first_name').html($('#first_name').val());
