@@ -37,7 +37,7 @@ class CheckIpAddress
         }
 
         if(env('APP_MAINTENANCE') == 'true'){
-            abort(403, 'The system is currently undergoing maintenance. We will notify you once the maintenance is complete.');
+            abort(403, 'THIS SITE IS UNDER MAINTENANCE');
         }
         else{
             abort(403, 'Unauthorized IP address');

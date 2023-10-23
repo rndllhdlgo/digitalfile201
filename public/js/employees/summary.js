@@ -1,6 +1,5 @@
 $('#btnSummary').on('click',function(){
     $('#summaryModalForm').modal('show');
-    // $('.font_weight').css('text-transform','uppercase');
 });
 
 $('#viewSummary').on('click', function(){
@@ -26,8 +25,6 @@ $('#viewSummary').on('click', function(){
                         }
                     }
                     $('.job_desc_div p:not(:first-child)').hide();
-                    // $('.job_desc_div').append('<button type="button" class="button print-only" id="see_more" style="zoom:80%;"> <span id="see_more_span"> </span> <i class="fa-solid fa-arrow-right"></i> </button>');
-                    // $('#see_more_span').html('SEE MORE');
 
                     var job_requirements = data[0].job_requirements;
                     var job_requirements_details = job_requirements.split('•');
@@ -57,7 +54,7 @@ $('#viewSummary').on('click', function(){
 
                         var college_school_name = $('.college_school_name').append(college_name + "<br>");
                         var college_school_degree = $('.college_school_degree').append(college_degree + "<br>");
-                        var college_years = $('.college_years').append(moment(college_from).format('MMM. YYYY') + "<b> -> </b>" + moment(college_to).format('MMM. YYYY') + "<br>");
+                        var college_years = $('.college_years').append(moment(college_from).format('MMMM YYYY') + "<b> -> </b>" + moment(college_to).format('MMMM YYYY') + "<br>");
                     }
                     $('.college_div').show();
                 }
@@ -83,7 +80,7 @@ $('#viewSummary').on('click', function(){
 
                         var training_school_name = $('.training_school_name').append(training_name + "<br>");
                         var training_school_title = $('.training_title').append(training_title + "<br>");
-                        var training_years = $('.training_years').append(moment(training_from).format('MMM. YYYY') + "<b> -> </b>" + moment(training_to).format('MMM. YYYY') + "<br>");
+                        var training_years = $('.training_years').append(moment(training_from).format('MMMM YYYY') + "<b> -> </b>" + moment(training_to).format('MMMM YYYY') + "<br>");
                     }
                     $('.training_div').show();
                 }
@@ -109,7 +106,7 @@ $('#viewSummary').on('click', function(){
 
                         var vocational_school_name = $('.vocational_school_name').append(vocational_name + "<br>");
                         var vocational_school_course = $('.vocational_course').append(vocational_course + "<br>");
-                        var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMM. YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMM. YYYY') + "<br>");
+                        var vocational_years = $('.vocational_years').append(moment(vocational_from).format('MMMM YYYY') + "<b> -> </b>" + moment(vocational_to).format('MMMM YYYY') + "<br>");
                     }
                     $('.vocational_div').show();
                 }
@@ -135,7 +132,7 @@ $('#viewSummary').on('click', function(){
                         var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
                         var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
 
-                        var job_years = $('<div class="col-3">').append($('<b><span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " -> </b>")));
+                        var job_years = $('<div class="col-3">').append($('<b><span>').html(moment(job_inclusive_years_from).format('MMMM YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMMM YYYY') + " -> </b>")));
                         var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
                         $('#job_history_summary_div').append(job_years,job_details);
                     }
@@ -147,22 +144,6 @@ $('#viewSummary').on('click', function(){
             }
         });
 
-    // $(document).on('click','#see_more',function(){
-    //     $('#see_more').attr('id','see_less');
-    //     $('#see_more_span').html('SEE LESS');
-    //     $('.fa-arrow-right').removeClass('fa-arrow-right').addClass('fa-arrow-up');
-    //     $('.job_desc_div p:not(:first-child)').fadeIn();
-    //     $('.job_req_div p:not(:first-child)').fadeIn();
-    // });
-    // $(document).on('click','#see_less',function(){
-    //     $('#see_less').attr('id','see_more');
-    //     $('#see_more_span').html('SEE MORE');
-    //     $('.fa-arrow-up').removeClass('fa-arrow-up').addClass('fa-arrow-right');
-    //     $('.job_desc_div p:not(:first-child)').fadeOut();
-    //     $('.job_req_div p:not(:first-child)').fadeOut();
-    // });
-
-    // Personal Information
     $('.first_name').html($('#first_name').val());
     $('.middle_name').html($('#middle_name').val());
     $('.last_name').html($('#last_name').val());
@@ -176,11 +157,7 @@ $('#viewSummary').on('click', function(){
     $('.weight').html($('#weight').val());
     $('#civil_status_content').html($('#civil_status').val());
     $('.religion').html($('#religion').val());
-
-    // Home Address
     $('.address').html($('#address').val());
-
-    // Contact Details
     $('.email_address').html($('#email_address').val());
     $('.telephone_number').html($('#telephone_number').val());
     $('.cellphone_number').html($('#cellphone_number').val());
@@ -196,8 +173,6 @@ $('#viewSummary').on('click', function(){
     $('.emergency_contact_name').html($('#emergency_contact_name').val());
     $('.emergency_contact_relationship').html($('#emergency_contact_relationship').val());
     $('.emergency_contact_number').html($('#emergency_contact_number').val());
-
-    //Work Information
     $('.employee_number').html($('#employee_number').val());
     $('#date_hired_summary').html(moment($('#date_hired').val()).format('MMM. DD, YYYY'));
     $('#date_hired_summary').html($('#date_hired_summary').html() === 'Invalid date' ? '' : $('#date_hired_summary').html());
@@ -217,7 +192,6 @@ $('#viewSummary').on('click', function(){
     $('.pag_ibig_number').html($('#pag_ibig_number').val());
     $('.philhealth_number').html($('#philhealth_number').val());
     $('.tin_number').html($('#tin_number').val());
-
     $('.past_medical_condition').html($('#past_medical_condition').val());
     $('.past_medical_condition').attr('rows', $('.past_medical_condition').val().split('\n').length);
     $('.allergies').html($('#allergies').val());
@@ -226,15 +200,14 @@ $('#viewSummary').on('click', function(){
     $('.medication').attr('rows', $('.medication').val().split('\n').length);
     $('.psychological_history').html($('#psychological_history').val());
     $('.psychological_history').attr('rows', $('.psychological_history').val().split('\n').length);
-
     $('.secondary_school_name').html($('#secondary_school_name').val());
     $('.secondary_school_address').html($('#secondary_school_address').val());
-    $('.secondary_from').html(moment($('#secondary_school_inclusive_years_from').val()).format('MMM. YYYY') + "<b> -> </b>");
-    $('.secondary_to').html(moment($('#secondary_school_inclusive_years_to').val()).format('MMM. YYYY'));
+    $('.secondary_from').html(moment($('#secondary_school_inclusive_years_from').val()).format('MMMM YYYY') + "<b> -> </b>");
+    $('.secondary_to').html(moment($('#secondary_school_inclusive_years_to').val()).format('MMMM YYYY'));
     $('.primary_school_name').html($('#primary_school_name').val());
     $('.primary_school_address').html($('#primary_school_address').val());
-    $('.primary_from').html(moment($('#primary_school_inclusive_years_from').val()).format('MMM. YYYY') + "<b> -> </b>");
-    $('.primary_to').html(moment($('#primary_school_inclusive_years_to').val()).format('MMM. YYYY'));
+    $('.primary_from').html(moment($('#primary_school_inclusive_years_from').val()).format('MMMM YYYY') + "<b> -> </b>");
+    $('.primary_to').html(moment($('#primary_school_inclusive_years_to').val()).format('MMMM YYYY'));
 
     $('#summaryModal').modal('show');
     $('#summaryModalForm').modal('hide');
@@ -280,19 +253,15 @@ $('#btnSection').on('click',function(){
     $('#summaryModal').modal('hide');
 });
 
-// Print in summary
 $(document).ready(function(){
     $('#btnPdf').click(function(){
-        $('#see_more').click();
         $('#print_file').printThis({
             importCSS: true,
             beforePrint:function(){
-                var printTitleName = $('#employee_number').val() + '_' + $('#last_name').val() + ', ' + $('#first_name').val() + ' ' + ($('#middle_name').val() ? $('#middle_name').val() : '');
-                $('title').text(printTitleName);
+                $('title').text($('#employee_number').val() + '_' + $('#last_name').val() + ', ' + $('#first_name').val() + ' ' + ($('#middle_name').val() ? $('#middle_name').val() : ''));
             },
             afterPrint:function(){
-                var headerText = $('.my-header').text();
-                $('title').text('201 FILING SYSTEM | ' + headerText);
+                $('title').text('201 FILING SYSTEM | ' + $('.my-header').text());
             }
         });
     });

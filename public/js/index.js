@@ -1,7 +1,7 @@
 var user_activity_table;
 $(document).ready(function(){
     user_activity_table = $('table.user_activity_table').DataTable({
-        dom:'l<"breakspace">trip',
+        dom:'ltrip',
         language:{
             info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
             lengthMenu:"Show _MENU_ User Activities",
@@ -46,7 +46,6 @@ $(document).ready(function(){
             $('#loading').hide();
         }
     });
-    $('div.breakspace').html('<br><br>');
 
     $('.filter-input').on('keyup search', function(){
         user_activity_table.column($(this).data('column')).search($(this).val()).draw();
@@ -72,7 +71,6 @@ $(document).ready(function(){
 
     $('#user_activity_table tbody').on('click', 'tr', function(){
         var data = user_activity_table.row(this).data();
-
         Swal.fire({
             title: `<h5>` + moment(data.date).format('dddd, MMMM DD, YYYY, h:mm:ss A') + `</h5>`,
             html: `<h4>` + data.username + ` [`+ data.role +`] ` + `</h4>` + `<br>` + `<ol style="text-align: left !important;font-weight:600 !important;">` +  data.activity.replaceAll(" [","<li>[").replaceAll(" (","<br>(") + `</li></ol>`,

@@ -24,14 +24,6 @@ php artisan make:migration create_table_name --create=table_name
 php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_table.php
 php artisan make:migration add_column_to_table --table=your_table_name
 php artisan make:migration add_cover_image_to_employees --table=your_table_name
-$table->string('new_column')->nullable();
-$table->string('new_column')->after('existing_column');
-$table->bigIncrements('id');
-$table->bigInteger('company_id');
-$table->string('date', 50); // Set default length to 50 characters
-$table->string('type', 20); // Set default length to 20 characters
-$table->integer('seqno');
-$table->unique(['date', 'type', 'seqno'], 'unique_date_type_seqno');
 !$A$2:$A$999 - Excel Formula
 
 Count Employee: 656
@@ -40,3 +32,16 @@ cd /var/www/html/digital201/vendor/geekcom/phpjasper/bin/jasperstarter/bin#
 ./jasperstarter --locale en process "/var/www/html/digital201/public/reports/jrxml/Employees_A4.jrxml" -o "/var/www/html/digital201/public/reports/pdf/dr" -f pdf -t mysql -u dell -p nuserv-demo -H db.apsoft.com.ph -n hrms --db-port 3306
 
 file location: cd /home/dunkin/productupdate/
+
+password:dev_userdd
+ssh:devuser@conso.goldendonuts.ph
+
+gotoVS: cd /var/www/html/name_of_your_folder
+
+add -v to view details
+to delete all files: rm -r /var/www/html/digital201/public/storage/documents/*
+to delete specific file: rm /var/www/html/digital201/public/storage/documents/example.txt
+to delete specific files by extension: rm /var/www/html/digital201/public/storage/documents/*.txt
+to delete speficif files by filename: rm /var/www/html/digital201/public/storage/documents/file*
+to delete specific files by filename and extension: rm /var/www/html/digital201/public/storage/documents/file*.txt
+to delete specific folder along with files inside: rm -rv /var/www/html/digital201/public/storage/evaluation/YourFolderName

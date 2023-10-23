@@ -118,10 +118,6 @@ html::-webkit-scrollbar-track:hover{
     border-radius: 5px;
 }
 
-.space{
-    margin-right: 10px;
-}
-
 .active{
     background-color: white;
     color:#0d1a80 !important;
@@ -141,7 +137,6 @@ html::-webkit-scrollbar-track:hover{
     color:white !important;
 }
 
-/* Table Design */
 .thead-design{
     background-color:#0d1a80;
     color:white !important;
@@ -226,24 +221,6 @@ input[type=search]:focus{
     display:none;
 }
 
-#resignation_view,
-#termination_view{
-    margin-left: 7%;
-}
-
-#solo_parent_data_table,
-#college_data_table,
-#training_data_table,
-#vocational_data_table,
-#job_data_table,
-#memo_data_table,
-#evaluation_data_table,
-#contracts_data_table,
-#job_description_data_table{
-    display: none;
-    margin-top: -17px;
-}
-
 .table-title{
     font-size:16px;
     background-color:#0d1a80;
@@ -256,13 +233,14 @@ input[type=search]:focus{
     width: 230px !important;
 }
 
-.column1 {
+.column1{
     float: left;
     width: 20%;
     height: 280px;
     border:1px solid gray;
     margin-left: 1%;
 }
+
 .column2{
     float: left;
     width: 79%;
@@ -313,13 +291,6 @@ input[type=search]:focus{
 #image_preview_summary{
     height: 190px !important;
     width: 190px !important;
-}
-
-#update_image_preview{
-    height: 210px !important;
-    width:210px !important;
-    cursor:pointer;
-    display: none;
 }
 
 #preview_file{
@@ -419,16 +390,6 @@ input[type=search]:focus{
     font-weight: bold;
     border-color: #0d1a80;
 }
-
-/* tbody tr:nth-child(even),
-.even{
-    background-color: #e5e5e5 !important;
-    }
-
-tbody tr:nth-child(odd),
-.odd{
-    background-color: #ffffff !important;
-} */
 
 #loading{
     color: #0d1a80 !important;
@@ -546,6 +507,7 @@ h5{
     font-weight: bold;
 }
 
+/* For Home Page */
 .dashbox:hover{
     background-color: white !important;
     color:#0d1a80 !important;
@@ -555,36 +517,6 @@ h5{
 
 th{
     text-align: center !important;
-}
-
-@media print {
-    .page-break {
-        page-break-after: always;
-    }
-}
-
-@media print {
-    .print-only {
-      display: none;
-    }
-}
-
-#see_more{
-    border-radius: 10px !important;
-    background-color: #0d1a80 !important;
-    color: white !important;
-}
-
-#see_less{
-    border-radius: 10px !important;
-    background-color: #0d1a80 !important;
-    color: white !important;
-}
-
-#see_more:hover,
-#see_less:hover{
-    background-color: #152aca !important;
-    transition: 0.9s;
 }
 
 .cropper-crop {
@@ -649,12 +581,13 @@ label{
 }
 
 @media print {
+    .page-break {
+        page-break-after: always;
+    }
     .header{
         position: fixed;
         width: 100%;
         text-align: center;
-    }
-    .header {
         top: 0;
     }
     .main-content {
