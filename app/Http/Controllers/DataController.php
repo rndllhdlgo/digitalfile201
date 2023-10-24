@@ -19,6 +19,7 @@ use App\Models\WorkLogs;
 use App\Models\Secondary;
 use App\Models\Primary;
 use App\Models\LeaveCredits;
+use Illuminate\Support\Facades\Http;
 
 use DataTables;
 
@@ -33,8 +34,8 @@ class DataController extends Controller
     }
 
     public function leave_data(Request $request){
-        $data = LeaveCredits::select('empno', 'lv_code', 'lv_balance', 'no_days')->where('empno', $request->empno)->get();
-        return DataTables::of($data)->make(true);
+        $data = Http::get('http://tms.ideaserv.com.ph:8080/employees/leave_data?empno='.$request->empno);
+        return DataTables::of($data->json())->make(true);
     }
 
     public function secondary_data(Request $request){
