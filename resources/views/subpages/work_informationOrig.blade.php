@@ -202,7 +202,7 @@
                             <input type="file" class="form-control form_file" name="resignation_file[]" id="resignation_file" onchange="fileValidation('resignation_file')" accept=".pdf">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddResignationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddResignationRow" onclick="addResignationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>
@@ -255,7 +255,7 @@
                             <input type="file" class="form-control form_file" name="termination_file[]" id="termination_file" onchange="fileValidation('termination_file')" accept=".pdf">
                         </td>
                         <td>
-                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddTerminationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                            <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddTerminationRow" onclick="addTerminationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>
                 </tbody>

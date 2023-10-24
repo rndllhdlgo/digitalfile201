@@ -10,5 +10,19 @@
             </tr>
         </tbody>
     </table>
+
+    <hr class="hr-design">
+    <h5 class="table-title">LEAVE CREDITS</h5>
+    <table class="table table-bordered table-striped table-hover align-middle w-100" id="leave_credits">
+        <thead class="thead-design">
+            <tr>
+                <th>LEAVE TYPE</th>
+                <th>BALANCE</th>
+                <th>NO. OF DAYS</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
     <hr class="hr-design">
 </div>

@@ -42,175 +42,115 @@
                 </tbody>
             </table>
 
-            <table id="college_table" class="table table-bordered table-hover table-striped align-middle college_table" style="margin-top: -17px;">
-                <thead style="display:none;">
-                    <tr>
-                        <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
-                        <th style="width: 30%;">DEGREE</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+        <table id="college_table" class="table table-bordered table-hover table-striped align-middle college_table" style="margin-top: -17px;">
+            <thead style="display:none;">
+                <tr>
+                    <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
+                    <th style="width: 30%;">DEGREE</th>
+                    <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
+                    <th style="width: 10%;">ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
 
-            <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
-                <thead>
-                    <tr>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border-left: none;"></th>
-                    </tr>
-                </thead>
-                <tbody id="college_table_orig_tbody">
-                </tbody>
-            </table>
-            <hr class="hr-design">
-            <br>
-{{--  --}}
-        <h5 class="table-title">SECONDARY EDUCATION</h5>
-            <table class="table table-striped table-bordered table-hover align-middle">
-                <thead class="thead-design">
-                    <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="search" id="secondary_name" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="secondary_name" class="formlabel form-label"><span>(Optional)</span></label>
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="text" id="secondary_address" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="secondary_address" class="formlabel form-label"><span>(Optional)</span></label>
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input type="month" class="forminput form-control max_month" id="secondary_from">
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input type="month" class="forminput form-control max_month" id="secondary_to">
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <button type="button" id="secondaryAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+        <table id="college_table_orig" class="table table-bordered table-hover table-striped align-middle college_table_orig" style="display: none; margin-top:-36px;">
+            <thead>
+                <tr>
+                    <th style="border: none;"></th>
+                    <th style="border: none;"></th>
+                    <th style="border: none;"></th>
+                    <th style="border: none;"></th>
+                    <th style="border-left: none;"></th>
+                </tr>
+            </thead>
+            <tbody id="college_table_orig_tbody">
+            </tbody>
+        </table>
+        <hr class="hr-design">
+        <br>
+    {{-- Secondary Table --> --}}
+    <h5 class="table-title">SECONDARY EDUCATION</h5>
+    <table class="table table-striped table-bordered table-hover align-middle">
+        <thead class="thead-design">
+            <tr>
+                <th style="width:30%"> NAME OF SCHOOL</th>
+                <th style="width:30%"> SCHOOL ADDRESS</th>
+                <th style="width:30%" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="pb-3 pt-3">
+                    <div class="f-outline">
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <label for="secondary_school_name" class="formlabel form-label">(Optional)</label>
+                    </div>
+                </td>
+                <td class="pb-3 pt-3">
+                    <div class="f-outline">
+                        <input class="forminput form-control text-uppercase" type="search" id="secondary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                        <label for="secondary_school_address" class="formlabel form-label">(Optional)</label>
+                    </div>
+                </td>
 
-            <table id="secondary_table" class="table table-bordered table-hover table-striped align-middle secondary_table" style="margin-top: -17px;">
-                <thead style="display:none;">
-                    <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+                <td class="pb-3 pt-3">
+                    <div class="f-outline">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_from" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
+                    </div>
+                </td>
+                <td class="pb-3 pt-3">
+                    <div class="f-outline">
+                        <input type="month" class="forminput form-control max_month" id="secondary_school_inclusive_years_to" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <hr class="hr-design">
+    <br>
+    {{-- Primary Table --}}
+    <h5 class="table-title">PRIMARY EDUCATION</h5>
+    <table class="table table-striped table-bordered table-hover align-middle">
+            <thead class="thead-design">
+                <tr>
+                    <th style="width:30%"> NAME OF SCHOOL</th>
+                    <th style="width:30%"> SCHOOL ADDRESS</th>
+                    <th style="width:30%" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_name" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                            <label for="primary_school_name" class="formlabel form-label"></label>
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control text-uppercase required_field" type="search" id="primary_school_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id);">
+                            <label for="primary_school_address" class="formlabel form-label"></label>
+                        </div>
+                    </td>
 
-            <table id="secondary_table_orig" class="table table-bordered table-hover table-striped align-middle secondary_table_orig" style="display: none; margin-top:-36px;">
-                <thead>
-                    <tr>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border-left: none;"></th>
-                    </tr>
-                </thead>
-                <tbody id="secondary_table_orig_tbody">
-                </tbody>
-            </table>
-            <hr class="hr-design">
-            <br>
-{{--  --}}
-        <h5 class="table-title">PRIMARY EDUCATION</h5>
-            <table class="table table-striped table-bordered table-hover align-middle">
-                <thead class="thead-design">
-                    <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="search" id="primary_name" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="primary_name" class="formlabel form-label"></label>
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input class="forminput form-control text-uppercase" type="text" id="primary_address" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="primary_address" class="formlabel form-label"></label>
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input type="month" class="forminput form-control max_month" id="primary_from">
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <div class="f-outline">
-                                <input type="month" class="forminput form-control max_month" id="primary_to">
-                            </div>
-                        </td>
-                        <td class="pb-3 pt-3">
-                            <button type="button" id="primaryAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_from" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input type="month" class="forminput form-control required_field max_month" id="primary_school_inclusive_years_to" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <hr class="hr-design">
+        <br>
 
-            <table id="primary_table" class="table table-bordered table-hover table-striped align-middle primary_table" style="margin-top: -17px;">
-                <thead style="display:none;">
-                    <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <table id="primary_table_orig" class="table table-bordered table-hover table-striped align-middle primary_table_orig" style="display: none; margin-top:-36px;">
-                <thead>
-                    <tr>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border: none;"></th>
-                        <th style="border-left: none;"></th>
-                    </tr>
-                </thead>
-                <tbody id="primary_table_orig_tbody">
-                </tbody>
-            </table>
-            <hr class="hr-design">
-            <br>
-{{--  --}}
         <h5 class="table-title">TRAININGS</h5>
         <table class="table table-striped table-bordered table-hover align-middle ">
                 <thead class="thead-design">
@@ -283,7 +223,7 @@
         </table>
         <hr class="hr-design">
         <br>
-{{--  --}}
+    {{-- Vocational Table --}}
         <h5 class="table-title">VOCATIONAL</h5>
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-design">

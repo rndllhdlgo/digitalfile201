@@ -17,7 +17,7 @@
 
 @if(Request::is('employees'))
     <script src="/js/employees/employees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-    <script src="/js/employees/btnAddColumn.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+    <script src="/js/employees/btnAddRows.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/btnUpdateEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/btnViewEmployees.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/btnDelete.js?version={{\Illuminate\Support\Str::random(50)}}"></script>

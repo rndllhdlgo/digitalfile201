@@ -49,54 +49,53 @@ function deleteRow(tblName, tblRowId, tblChange, tblButton){
             $(tblButton).parent().parent().remove();
             if(tblChange == 'children_change'){
                 children_change = 'CHANGED';
-                tblChildren = 'tblChildren';
-                tblChange = 'CHANGED_ROW';
+                tblChildren     = 'tblChildren';
             }
             else if(tblChange == 'college_change'){
                 college_change = 'CHANGED';
-                tblCollege = 'tblCollege';
-                tblChange = 'CHANGED_ROW';
+                tblCollege     = 'tblCollege';
+            }
+            else if(tblChange == 'secondary_change'){
+                secondary_change = 'CHANGED';
+                tblSecondary     = 'tblSecondary';
+            }
+            else if(tblChange == 'primary_change'){
+                primary_change = 'CHANGED';
+                tblPrimary     = 'tblPrimary';
             }
             else if(tblChange == 'training_change'){
                 training_change = 'CHANGED';
-                tblTraining = 'tblTraining';
-                tblChange = 'CHANGED_ROW';
+                tblTraining     = 'tblTraining';
             }
             else if(tblChange == 'vocational_change'){
                 vocational_change = 'CHANGED';
-                tblVocational = 'tblVocational';
-                tblChange = 'CHANGED_ROW';
+                tblVocational     = 'tblVocational';
             }
             else if(tblChange == 'job_history_change'){
                 job_history_change = 'CHANGED';
-                tblJob = 'tblJob';
-                tblChange = 'CHANGED_ROW';
+                tblJob             = 'tblJob';
             }
             else if(tblChange == 'memo_change'){
                 memo_change = 'CHANGED';
-                tblMemo = 'tblMemo';
-                tblChange = 'CHANGED_ROW';
+                tblMemo     = 'tblMemo';
             }
             else if(tblChange == 'evaluation_change'){
                 evaluation_change = 'CHANGED';
-                tblEvaluation = 'tblEvaluation';
-                tblChange = 'CHANGED_ROW';
+                tblEvaluation     = 'tblEvaluation';
             }
             else if(tblChange == 'contracts_change'){
                 contracts_change = 'CHANGED';
-                tblContracts = 'tblContracts';
-                tblChange = 'CHANGED_ROW';
+                tblContracts     = 'tblContracts';
             }
             else if(tblChange == 'resignation_change'){
                 resignation_change = 'CHANGED';
-                tblResignation = 'tblResignation';
-                tblChange = 'CHANGED_ROW';
+                tblResignation     = 'tblResignation';
             }
             else if(tblChange == 'termination_change'){
                 termination_change = 'CHANGED';
-                tblTermination = 'tblTermination';
-                tblChange = 'CHANGED_ROW';
+                tblTermination     = 'tblTermination';
             }
+            tblChange = 'CHANGED_ROW';
         }
     });
 }

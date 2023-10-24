@@ -43,7 +43,6 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Requests;
-
 use App\Models\EmployeeStatus;
 use DataTables;
 use Str;

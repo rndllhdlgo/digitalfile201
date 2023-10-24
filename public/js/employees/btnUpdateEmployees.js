@@ -191,35 +191,35 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        var secondary_school_name = $('#secondary_school_name').val();
-                        var secondary_school_address = $('#secondary_school_address').val();
-                        var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
-                        var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
-                        var primary_school_name = $('#primary_school_name').val();
-                        var primary_school_address = $('#primary_school_address').val();
-                        var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
-                        var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
+                        // var secondary_school_name = $('#secondary_school_name').val();
+                        // var secondary_school_address = $('#secondary_school_address').val();
+                        // var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
+                        // var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
+                        // var primary_school_name = $('#primary_school_name').val();
+                        // var primary_school_address = $('#primary_school_address').val();
+                        // var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
+                        // var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
 
-                        $.ajax({
-                            url:"/employees/updateEducationalAttainment",
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                employee_number:$('#employee_number').val(),
-                                secondary_school_name:secondary_school_name,
-                                secondary_school_address:secondary_school_address,
-                                secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
-                                secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
-                                primary_school_name:primary_school_name,
-                                primary_school_address:primary_school_address,
-                                primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                                primary_school_inclusive_years_to:primary_school_inclusive_years_to
-                            }
-                        });
+                        // $.ajax({
+                        //     url:"/employees/updateEducationalAttainment",
+                        //     type:"POST",
+                        //     headers:{
+                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                        //     },
+                        //     data:{
+                        //         id:id,
+                        //         employee_id:data.id,
+                        //         employee_number:$('#employee_number').val(),
+                        //         secondary_school_name:secondary_school_name,
+                        //         secondary_school_address:secondary_school_address,
+                        //         secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
+                        //         secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
+                        //         primary_school_name:primary_school_name,
+                        //         primary_school_address:primary_school_address,
+                        //         primary_school_inclusive_years_from:primary_school_inclusive_years_from,
+                        //         primary_school_inclusive_years_to:primary_school_inclusive_years_to
+                        //     }
+                        // });
 
                         var past_medical_condition = $('#past_medical_condition').val();
                         var allergies = $('#allergies').val();
@@ -297,6 +297,46 @@ $('#btnUpdate').on('click',function(){
                                 }
                             });
                             college_change = '';
+                        });
+
+                        $('.secondary_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveSecondary',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    secondary_name : $(this).children('.td_1').html(),
+                                    secondary_address : $(this).children('.td_2').html(),
+                                    secondary_from: $(this).children('.td_3').html(),
+                                    secondary_to: $(this).children('.td_4').html(),
+                                    secondary_change:secondary_change
+                                }
+                            });
+                            secondary_change = '';
+                        });
+
+                        $('.primary_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/savePrimary',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    primary_name    : $(this).children('.td_1').html(),
+                                    primary_address : $(this).children('.td_2').html(),
+                                    primary_from    : $(this).children('.td_3').html(),
+                                    primary_to      : $(this).children('.td_4').html(),
+                                    primary_change  : primary_change
+                                }
+                            });
+                            primary_change = '';
                         });
 
                         $('.training_tr').each(function(){
@@ -392,6 +432,38 @@ $('#btnUpdate').on('click',function(){
                                 }
                             });
                             college_id = [];
+                        }
+
+                        if(secondary_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/secondary_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id               : secondary_id.toString(),
+                                    employee_id      : data.id,
+                                    secondary_change : secondary_change
+                                }
+                            });
+                            secondary_id = [];
+                        }
+
+                        if(primary_id.length > 0){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/primary_delete',
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id             : primary_id.toString(),
+                                    employee_id    : data.id,
+                                    primary_change : primary_change
+                                }
+                            });
+                            primary_id = [];
                         }
 
                         if(training_id.length > 0){
@@ -697,6 +769,124 @@ $('#btnUpdate').on('click',function(){
                                 });
                                 $('.btn_college').parent().parent().remove();
                                 tblCollege = '';
+                            }
+
+                            if(tblSecondary == 'tblSecondary'){
+                                $('.secondary_table_orig').dataTable().fnDestroy();
+                                $('.secondary_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                return '<button type="button" class="btn btn-danger btn_delete_secondary center" id="' + meta.row + '" onclick="deleteRow(\'.secondary_table_orig\', secondary_id, \'secondary_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    info: false,
+                                    ordering:false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "NO DATA AVAILABLE",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/secondary_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'secondary_name',width: '30%'},
+                                        { data: 'secondary_address', width: '30%'},
+                                        {
+                                            data: 'secondary_from',
+                                            "render":function(data,type,row){
+                                                return "FROM: "+moment(row.secondary_from).format('MMMM YYYY');
+                                            },
+                                            width: '15%'},
+                                        {
+                                            data: 'secondary_to',
+                                            "render":function(data,type,row){
+                                                return "TO: "+moment(row.secondary_to).format('MMMM YYYY');
+                                            },
+                                            width: '15%'}
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.secondary_table_orig').DataTable().data().any()){
+                                            $('#secondary_table_orig').hide();
+                                        }
+                                        else{
+                                            $('#secondary_table_orig').show();
+                                        }
+                                    }
+                                });
+                                $('.btn_secondary').parent().parent().remove();
+                                tblSecondary = '';
+                            }
+
+                            if(tblPrimary == 'tblPrimary'){
+                                $('.primary_table_orig').dataTable().fnDestroy();
+                                $('.primary_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                return '<button type="button" class="btn btn-danger btn_delete_primary center" id="' + meta.row + '" onclick="deleteRow(\'.primary_table_orig\', primary_id, \'primary_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [4],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    info: false,
+                                    ordering:false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "NO DATA AVAILABLE",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/primary_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'primary_name',width: '30%'},
+                                        { data: 'primary_address', width: '30%'},
+                                        {
+                                            data: 'primary_from',
+                                            "render":function(data,type,row){
+                                                return "FROM: "+moment(row.primary_from).format('MMMM YYYY');
+                                            },
+                                            width: '15%'},
+                                        {
+                                            data: 'primary_to',
+                                            "render":function(data,type,row){
+                                                return "TO: "+moment(row.primary_to).format('MMMM YYYY');
+                                            },
+                                            width: '15%'}
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.primary_table_orig').DataTable().data().any()){
+                                            $('#primary_table_orig').hide();
+                                        }
+                                        else{
+                                            $('#primary_table_orig').show();
+                                        }
+                                    }
+                                });
+                                $('.btn_primary').parent().parent().remove();
+                                tblPrimary = '';
                             }
 
                             if(tblTraining == 'tblTraining'){

@@ -50,6 +50,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/insertImage','SaveController@insertImage');
     Route::any('/employees/saveChildren','SaveController@saveChildren');
     Route::any('/employees/saveCollege','SaveController@saveCollege');
+    Route::any('/employees/saveSecondary','SaveController@saveSecondary');
+    Route::any('/employees/savePrimary','SaveController@savePrimary');
     Route::any('/employees/saveTraining','SaveController@saveTraining');
     Route::any('/employees/saveVocational','SaveController@saveVocational');
     Route::any('/employees/saveJobHistory','SaveController@saveJobHistory');
@@ -80,6 +82,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
 
     // Delete Controller
     Route::any('/employees/college_delete','DeleteController@college_delete');
+    Route::any('/employees/secondary_delete','DeleteController@secondary_delete');
+    Route::any('/employees/primary_delete','DeleteController@primary_delete');
     Route::any('/employees/children_delete','DeleteController@children_delete');
     Route::any('/employees/training_delete','DeleteController@training_delete');
     Route::any('/employees/vocational_delete','DeleteController@vocational_delete');
@@ -92,6 +96,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
 
     // Data Controller
     Route::any('/employees/college_data','DataController@college_data');
+    Route::any('/employees/secondary_data','DataController@secondary_data');
+    Route::any('/employees/primary_data','DataController@primary_data');
     Route::any('/employees/children_data','DataController@children_data');
     Route::any('/employees/training_data','DataController@training_data');
     Route::any('/employees/vocational_data','DataController@vocational_data');
@@ -107,6 +113,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/vocational_summary/data','DataController@vocational_summary_data');
     Route::any('/employees/history_data','DataController@history_data');
     Route::any('/employees/logs_data','DataController@logs_data');
+    Route::any('/employees/leave_data','DataController@leave_data');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');

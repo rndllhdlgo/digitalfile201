@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
+use App\Http\Controllers\traits\Logs;
+
 use App\Models\UserLogs;
 use App\Models\Children;
 use App\Models\College;
@@ -27,6 +29,8 @@ use App\Models\MedicalHistory;
 use App\Models\Document;
 use App\Models\EmployeeLogs;
 use App\Models\WorkLogs;
+use App\Models\Secondary;
+use App\Models\Primary;
 // Maintenance
 use App\Models\Shift;
 use App\Models\Company;
@@ -41,6 +45,8 @@ use Str;
 
 class SaveController extends Controller
 {
+    use Logs;
+
     public function insertImage(Request $request){
         $imageData = $request->input('image_data');
         $extension = explode('/', mime_content_type($imageData))[1];
@@ -70,18 +76,8 @@ class SaveController extends Controller
         }
 
         if($children_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update";
-            $userlogs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update";
-            $userlogs->save();
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS $children_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S CHILDREN DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $children_update");
         }
     }
 
@@ -105,18 +101,58 @@ class SaveController extends Controller
         }
 
         if($college_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update";
-            $userlogs->save();
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS $college_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update");
+        }
+    }
 
-            $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
-            $userlogs->save();
+    public function saveSecondary(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $employee = new Secondary;
+        $employee->employee_id = $request->employee_id;
+        $employee->secondary_name = strtoupper($request->secondary_name);
+        $employee->secondary_address = strtoupper($request->secondary_address);
+        $employee->secondary_from = $request->secondary_from;
+        $employee->secondary_to = $request->secondary_to;
+        $employee->save();
+
+        if($request->secondary_change == 'CHANGED'){
+            $secondary_update = "[SECONDARY SCHOOL: LIST OF SECONDARY SCHOOL DETAILS HAVE BEEN CHANGED]";
+        }
+        else{
+            $secondary_update = NULL;
+        }
+
+        if($secondary_update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S SECONDARY SCHOOL DETAILS $secondary_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S SECONDARY SCHOOL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_update");
+        }
+    }
+
+    public function savePrimary(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $employee = new Primary;
+        $employee->employee_id     = $request->employee_id;
+        $employee->primary_name    = strtoupper($request->primary_name);
+        $employee->primary_address = strtoupper($request->primary_address);
+        $employee->primary_from    = $request->primary_from;
+        $employee->primary_to      = $request->primary_to;
+        $employee->save();
+
+        if($request->primary_change == 'CHANGED'){
+            $primary_update = "[PRIMARY SCHOOL: LIST OF PRIMARY SCHOOL DETAILS HAVE BEEN CHANGED]";
+        }
+        else{
+            $primary_update = NULL;
+        }
+
+        if($primary_update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S PRIMARY SCHOOL DETAILS $primary_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S PRIMARY SCHOOL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $primary_update");
         }
     }
 
@@ -140,18 +176,8 @@ class SaveController extends Controller
         }
 
         if($training_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update";
-            $userlogs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update";
-            $userlogs->save();
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS $training_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S TRAINING DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $training_update");
         }
     }
 
@@ -175,18 +201,8 @@ class SaveController extends Controller
         }
 
         if($vocational_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update";
-            $userlogs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update";
-            $userlogs->save();
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS $vocational_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S VOCATIONAL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $vocational_update");
         }
     }
 
@@ -212,18 +228,8 @@ class SaveController extends Controller
         }
 
         if($job_history_update){
-            $userlogs = new EmployeeLogs;
-            $userlogs->employee_id = $request->employee_id;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update";
-            $userlogs->save();
-
-            $userlogs = new UserLogs;
-            $userlogs->username = auth()->user()->name;
-            $userlogs->role = auth()->user()->user_level;
-            $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update";
-            $userlogs->save();
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS $job_history_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S JOB HISTORY DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $job_history_update");
         }
     }
 }

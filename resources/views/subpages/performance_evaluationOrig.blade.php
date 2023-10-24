@@ -44,7 +44,7 @@
                         <input type="file" class="form-control form_file" name="memo_file[]" id="memo_file" onchange="fileValidation('memo_file')" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddMemoRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddMemoRow" onclick="addMemoRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -100,7 +100,7 @@
                         <input type="file" class="form-control form_file" name="evaluation_file[]" id="evaluation_file" onchange="fileValidation('evaluation_file')" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddEvaluationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddEvaluationRow" onclick="addEvaluationRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -149,7 +149,7 @@
                         <input type="file" class="form-control form_file" name="contracts_file[]" id="contracts_file" onchange="fileValidation('contracts_file')" accept=".pdf">
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddContractRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
+                        <button type="button" class="btn btn-success center btnActionDisabled" id="btnAddContractRow" onclick="addContractsRow();" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>
             </tbody>

@@ -3,21 +3,26 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\traits\Logs;
 use App\Models\Children;
 use App\Models\College;
 use App\Models\Contract;
 use App\Models\Evaluation;
-use App\Models\EmployeeLogs;
 use App\Models\JobHistory;
 use App\Models\Memo;
 use App\Models\PersonalInformationTable;
 use App\Models\Resignation;
 use App\Models\Training;
+use App\Models\EmployeeLogs;
 use App\Models\UserLogs;
 use App\Models\Vocational;
 use App\Models\WorkInformationTable;
+use App\Models\Secondary;
+use App\Models\Primary;
 
-class DeleteController extends Controller{
+class DeleteController extends Controller
+{
+    use Logs;
 
     public function children_delete(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
@@ -84,6 +89,54 @@ class DeleteController extends Controller{
             $userlogs->role = auth()->user()->user_level;
             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S COLLEGE ATTAINMENT DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $college_update";
             $userlogs->save();
+        }
+    }
+
+    public function secondary_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $secondary_id = explode(",", $request->id);
+        if($secondary_id){
+            foreach($secondary_id as $id){
+                Secondary::where('id', $id)->delete();
+            }
+        }
+
+        if($request->secondary_change == 'CHANGED'){
+            $secondary_update = "[SECONDARY SCHOOL: LIST OF SECONDARY SCHOOL DETAILS HAVE BEEN CHANGED]";
+        }
+        else{
+            $secondary_update = NULL;
+        }
+
+        if($secondary_update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S SECONDARY SCHOOL DETAILS $secondary_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S SECONDARY SCHOOL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_update");
+        }
+    }
+
+    public function primary_delete(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $primary_id = explode(",", $request->id);
+        if($primary_id){
+            foreach($primary_id as $id){
+                Primary::where('id', $id)->delete();
+            }
+        }
+
+        if($request->primary_change == 'CHANGED'){
+            $primary_update = "[PRIMARY SCHOOL: LIST OF PRIMARY SCHOOL DETAILS HAVE BEEN CHANGED]";
+        }
+        else{
+            $primary_update = NULL;
+        }
+
+        if($primary_update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S PRIMARY SCHOOL DETAILS $primary_update");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S PRIMARY SCHOOL DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $primary_update");
         }
     }
 

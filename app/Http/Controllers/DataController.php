@@ -16,6 +16,10 @@ use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\WorkLogs;
 
+use App\Models\Secondary;
+use App\Models\Primary;
+use App\Models\LeaveCredits;
+
 use DataTables;
 
 class DataController extends Controller
@@ -26,6 +30,19 @@ class DataController extends Controller
 
     public function college_data(Request $request){
         return DataTables::of(College::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function leave_data(Request $request){
+        $data = LeaveCredits::select('empno', 'lv_code', 'lv_balance', 'no_days')->where('empno', $request->empno)->get();
+        return DataTables::of($data)->make(true);
+    }
+
+    public function secondary_data(Request $request){
+        return DataTables::of(Secondary::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function primary_data(Request $request){
+        return DataTables::of(Primary::where('employee_id',$request->id)->get())->make(true);
     }
 
     public function training_data(Request $request){
