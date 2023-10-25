@@ -6,7 +6,6 @@ var current_email = $('#current_email').val();
 var app_timeout = $('#APP_TIMEOUT').val();
 var data_update, standby = true;
 
-// Add page title
 $(document).ready(function() {
     var headerText = $('.my-header').text();
     if(!headerText){

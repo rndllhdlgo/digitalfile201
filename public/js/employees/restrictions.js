@@ -93,7 +93,7 @@ function updateCheck(inputElementId){
     var element = $(`#${inputElementId}`);
 
     if(!element.length){
-        return; // Exit if the element doesn't exist
+        return;
     }
 
     var value;
@@ -122,7 +122,7 @@ function updateCheck(inputElementId){
         }
 
         if(originalValue === null || currentValue === null){
-            return false; // Skip comparison if any value is null
+            return false;
         }
 
         return originalValue.toUpperCase().trim() !== currentValue.toUpperCase().trim();
@@ -132,10 +132,7 @@ function updateCheck(inputElementId){
 }
 
 setInterval(() => {
-    if(tblChange == 'CHANGED_ROW'
-    || employee_image_change == 'CHANGED'
-    || document_change == 'CHANGED'
-    ){
+    if(tblChange == 'CHANGED_ROW' || employee_image_change == 'CHANGED' || document_change == 'CHANGED'){
         $('#btnUpdate').prop('disabled', false);
     }
 }, 0);

@@ -1,4 +1,16 @@
-var children_id, college_id, secondary_id, primary_id, training_id, job_history_id, memo_id, evaluation_id, contracts_id, resignation_id, termination_id = [];
+var children_id,
+    college_id,
+    secondary_id,
+    primary_id,
+    training_id,
+    vocational_id,
+    job_history_id,
+    memo_id,
+    evaluation_id,
+    contracts_id,
+    resignation_id,
+    termination_id = [];
+
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
 
@@ -1120,10 +1132,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 }, 1000);
 
-                var children_change, college_change, secondary_change, training_change, vocational_change, job_history_change = '';
-                var memo_change, evaluation_change, contracts_change, resignation_change, termination_change = '';
-                var tblChildren, tblCollege, tblSecondary, tblTraining, tblVocational, tblJob = '';
-                var tblMemo, tblEvaluation, tblContracts, tblResignation, tblTermination = '';
+                // Variables of changes
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
@@ -1287,7 +1296,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
-                $('#btnUpdate').prop('disabled',true);
+                $('#btnUpdate').prop('disabled', true);
                 $('#loading').hide();
                 $('#employee_information').show();
                 $('#employees_list').hide();

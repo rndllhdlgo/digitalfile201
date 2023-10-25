@@ -25,7 +25,7 @@ function replaceFile(fileSpan, fileDiv, fileButton, fileView, fileInput, fileNam
     });
 }
 
-function deleteRow(tblName, tblRowId, tblChange, tblButton){
+function deleteRow(tblName, tblRowId, tblDesc, tblButton){
     var id = $(tblButton).attr("id");
     var data = $(tblName).DataTable().row(id).data();
     tblRowId.push(data.id);
@@ -47,51 +47,51 @@ function deleteRow(tblName, tblRowId, tblChange, tblButton){
     }).then((save) => {
         if(save.isConfirmed){
             $(tblButton).parent().parent().remove();
-            if(tblChange == 'children_change'){
+            if(tblDesc == 'children_change'){
                 children_change = 'CHANGED';
                 tblChildren     = 'tblChildren';
             }
-            else if(tblChange == 'college_change'){
+            else if(tblDesc == 'college_change'){
                 college_change = 'CHANGED';
                 tblCollege     = 'tblCollege';
             }
-            else if(tblChange == 'secondary_change'){
+            else if(tblDesc == 'secondary_change'){
                 secondary_change = 'CHANGED';
                 tblSecondary     = 'tblSecondary';
             }
-            else if(tblChange == 'primary_change'){
+            else if(tblDesc == 'primary_change'){
                 primary_change = 'CHANGED';
                 tblPrimary     = 'tblPrimary';
             }
-            else if(tblChange == 'training_change'){
+            else if(tblDesc == 'training_change'){
                 training_change = 'CHANGED';
                 tblTraining     = 'tblTraining';
             }
-            else if(tblChange == 'vocational_change'){
+            else if(tblDesc == 'vocational_change'){
                 vocational_change = 'CHANGED';
                 tblVocational     = 'tblVocational';
             }
-            else if(tblChange == 'job_history_change'){
+            else if(tblDesc == 'job_history_change'){
                 job_history_change = 'CHANGED';
                 tblJob             = 'tblJob';
             }
-            else if(tblChange == 'memo_change'){
+            else if(tblDesc == 'memo_change'){
                 memo_change = 'CHANGED';
                 tblMemo     = 'tblMemo';
             }
-            else if(tblChange == 'evaluation_change'){
+            else if(tblDesc == 'evaluation_change'){
                 evaluation_change = 'CHANGED';
                 tblEvaluation     = 'tblEvaluation';
             }
-            else if(tblChange == 'contracts_change'){
+            else if(tblDesc == 'contracts_change'){
                 contracts_change = 'CHANGED';
                 tblContracts     = 'tblContracts';
             }
-            else if(tblChange == 'resignation_change'){
+            else if(tblDesc == 'resignation_change'){
                 resignation_change = 'CHANGED';
                 tblResignation     = 'tblResignation';
             }
-            else if(tblChange == 'termination_change'){
+            else if(tblDesc == 'termination_change'){
                 termination_change = 'CHANGED';
                 tblTermination     = 'tblTermination';
             }
