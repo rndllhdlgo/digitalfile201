@@ -109,6 +109,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/termination_data','DataController@termination_data');
     Route::any('/job_history_summary/data','DataController@job_history_summary_data');
     Route::any('/college_summary/data','DataController@college_summary_data');
+    Route::any('/secondary_summary/data','DataController@secondary_summary_data');
+    Route::any('/primary_summary/data','DataController@primary_summary_data');
     Route::any('/training_summary/data','DataController@training_summary_data');
     Route::any('/vocational_summary/data','DataController@vocational_summary_data');
     Route::any('/employees/history_data','DataController@history_data');

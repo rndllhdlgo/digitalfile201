@@ -35,7 +35,31 @@ class DataController extends Controller
 
     public function leave_data(Request $request){
         $data = Http::get('http://tms.ideaserv.com.ph:8080/employees/leave_data?empno='.$request->empno);
-        return DataTables::of($data->json())->make(true);
+        $jsonData = json_decode($data->body(), true);
+        $BL = false;
+        foreach($jsonData as $key => $value){
+            foreach($value as $a => $b){
+                if($a == 'lv_code'){
+                    if($b == 'BL'){
+                        $BL = true;
+                        break;
+                    }
+                }
+            }
+            if($BL){
+                break;
+            }
+        }
+        if(!$BL){
+            $newData = [
+                "empno" => $request->empno,
+                "lv_code" => "BL",
+                "lv_balance" => "0.00",
+                "no_days" => "1.00"
+            ];
+            $jsonData[] = $newData;
+        }
+        return DataTables::of($jsonData)->make(true);
     }
 
     public function secondary_data(Request $request){
@@ -80,6 +104,14 @@ class DataController extends Controller
 
     public function college_summary_data(Request $request){
         return College::where('employee_id',$request->id)->get();
+    }
+
+    public function secondary_summary_data(Request $request){
+        return Secondary::where('employee_id',$request->id)->get();
+    }
+
+    public function primary_summary_data(Request $request){
+        return Primary::where('employee_id',$request->id)->get();
     }
 
     public function training_summary_data(Request $request){

@@ -263,6 +263,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             empno: value.empno
                         },
                     },
+                    order:[0,'asc'],
                     columns: [
                         {
                             data: 'lv_code', defaultContent:'',

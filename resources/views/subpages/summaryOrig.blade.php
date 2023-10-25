@@ -295,7 +295,7 @@
                         </div>
 
                         <div class="row mb-3 college_div" style="display:none;">
-                            <h6><b>COLLEGE SCHOOL</b></h6><br>
+                            <h6><b>COLLEGE</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="college_school_name"></span>
@@ -322,7 +322,8 @@
                             </div>
                             <div class="col text-center">
                                 <b>INCLUSIVE YEARS:</b><br>
-                                <span class="secondary_years"></span>
+                                <span class="secondary_from"></span>
+                                <span class="secondary_to"></span>
                             </div>
                         </div>
 
@@ -338,7 +339,8 @@
                             </div>
                             <div class="col text-center">
                                 <b>INCLUSIVE YEARS:</b><br>
-                                <span class="primary_years"></span>
+                                <span class="primary_from"></span>
+                                <span class="primary_to"></span>
                             </div>
                         </div>
                         <hr>
@@ -383,7 +385,7 @@
                         <hr>
                     </div>
                     <div class="column_nine" style="padding:5px;display:none;">
-                        <div class="row">
+                        <div class="row ">
                             <h5 class="summary_title">JOB HISTORY</h5>
                         </div>
 
