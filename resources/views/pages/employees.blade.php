@@ -154,7 +154,7 @@
                         <a class="nav-link pill" id="tab7" data-bs-toggle="tab" href="#evaluation"> EVALUATION</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">BENEFITS</a>
+                        <a class="nav-link pill" id="tab8" data-bs-toggle="tab" href="#compensation_benefits">BENEFITS/LEAVE CREDITS</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link pill" id="tab9" data-bs-toggle="tab" href="#logs"> LOGS</a>
@@ -181,4 +181,5 @@
 
     @include('subpages.summary')
     @include('modals.summaryModal')
+    @include('modals.editHmo')
 @endsection

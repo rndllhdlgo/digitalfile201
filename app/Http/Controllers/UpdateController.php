@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Carbon\Carbon;
 
+use App\Http\Controllers\traits\Logs;
 use App\Models\UserLogs;
 use App\Models\Children;
 use App\Models\College;
@@ -42,12 +43,95 @@ use App\Models\Branch;
 use App\Models\Department;
 use App\Models\Position;
 use App\Models\Requests;
+use App\Models\Hmo;
 
 use App\Models\EmployeeStatus;
 use DataTables;
 use Str;
 
 class UpdateController extends Controller{
+
+    use Logs;
+
+    public function updateHmo(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $hmo_orig         = Hmo::where('id', $request->id)->first()->hmo;
+        $coverage_orig    = Hmo::where('id', $request->id)->first()->coverage;
+        $particulars_orig = Hmo::where('id', $request->id)->first()->particulars;
+        $room_orig        = Hmo::where('id', $request->id)->first()->room;
+        $status_orig      = Hmo::where('id', $request->id)->first()->status;
+
+        $changes = 0;
+        if($request->hmo != $hmo_orig){
+            $hmo_new = $request->hmo;
+            $hmo_change = "[HMO: FROM '$hmo_orig' TO '$hmo_new']";
+            $changes++;
+
+        }
+        else{
+            $hmo_change = NULL;
+        }
+
+        if($request->coverage != $coverage_orig){
+            $coverage_new = $request->coverage;
+            $coverage_change = "[COVERAGE: FROM '$coverage_orig' TO '$coverage_new']";
+            $changes++;
+        }
+        else{
+            $coverage_change = NULL;
+        }
+
+        if($request->particulars != $particulars_orig){
+            $particulars_new = $request->particulars;
+            $particulars_change = "[PARTICULARS: FROM '$particulars_orig' TO '$particulars_new']";
+            $changes++;
+        }
+        else{
+            $particulars_change = NULL;
+        }
+
+        if($request->room != $room_orig){
+            $room_new = $request->room;
+            $room_change = "[ROOM: FROM '$room_orig' TO '$room_new']";
+            $changes++;
+        }
+        else{
+            $room_change = NULL;
+        }
+
+        if($request->status != $status_orig){
+            $status_new = $request->status;
+            $status_change = "[STATUS: FROM '$status_orig' TO '$status_new']";+
+            $changes++;
+        }
+        else{
+            $status_change = NULL;
+        }
+
+        if($changes == 0){
+            return 'no changes';
+        }
+
+        $update = Hmo::find($request->id)
+        ->update([
+            'hmo'         => strtoupper($request->hmo),
+            'coverage'    => strtoupper($request->coverage),
+            'particulars' => strtoupper($request->particulars),
+            'room'        => strtoupper($request->room),
+            'status'      => strtoupper($request->status)
+        ]);
+
+        if($update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S HMO DETAILS: $hmo_change $coverage_change $particulars_change $room_change $status_change");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S HMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $hmo_change $coverage_change $particulars_change $room_change $status_change");
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
 
     public function updatePersonalInformation(Request $request){
         if($request->filename_delete){
@@ -1150,76 +1234,76 @@ class UpdateController extends Controller{
         }
     }
 
-    public function updateBenefits(Request $request){
-        if(!$employee = Benefits::where('employee_id',$request->employee_id)->first()){
-            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+    // public function updateBenefits(Request $request){
+    //     if(!$employee = Benefits::where('employee_id',$request->employee_id)->first()){
+    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
 
-            if($request->employee_insurance){
-                $employee_insurance_orig = Benefits::where('employee_id', $request->employee_id)->first();
+    //         if($request->employee_insurance){
+    //             $employee_insurance_orig = Benefits::where('employee_id', $request->employee_id)->first();
 
-                if($request->employee_insurance != $employee_insurance_orig){
-                    $employee_insurance_new = $request->employee_insurance;
-                    $employee_insurance_orig = $employee_insurance_orig ? $employee_insurance_orig :'N/A';
-                    $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
-                }
-                else{
-                    $employee_insurance_change = NULL;
-                }
+    //             if($request->employee_insurance != $employee_insurance_orig){
+    //                 $employee_insurance_new = $request->employee_insurance;
+    //                 $employee_insurance_orig = $employee_insurance_orig ? $employee_insurance_orig :'N/A';
+    //                 $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
+    //             }
+    //             else{
+    //                 $employee_insurance_change = NULL;
+    //             }
 
-                $save = Benefits::create([
-                    'employee_id' => $request->employee_id,
-                    'employee_insurance' => strtoupper($request->employee_insurance)
-                ]);
+    //             $save = Benefits::create([
+    //                 'employee_id' => $request->employee_id,
+    //                 'employee_insurance' => strtoupper($request->employee_insurance)
+    //             ]);
 
-                if($save){
-                    $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $employee_insurance_change";
-                    $userlogs->save();
+    //             if($save){
+    //                 $userlogs = new UserLogs;
+    //                 $userlogs->username = auth()->user()->name;
+    //                 $userlogs->role = auth()->user()->user_level;
+    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $employee_insurance_change";
+    //                 $userlogs->save();
 
-                    $userlogs = new EmployeeLogs;
-                    $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
-                    $userlogs->save();
-                }
-            }
-        }
-        else{
-            $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-            $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-            $employee_insurance_orig = Benefits::where('employee_id',$request->id)->first()->employee_insurance;
+    //                 $userlogs = new EmployeeLogs;
+    //                 $userlogs->employee_id = $request->id;
+    //                 $userlogs->username = auth()->user()->name;
+    //                 $userlogs->role = auth()->user()->user_level;
+    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
+    //                 $userlogs->save();
+    //             }
+    //         }
+    //     }
+    //     else{
+    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
+    //         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+    //         $employee_insurance_orig = Benefits::where('employee_id',$request->id)->first()->employee_insurance;
 
-            if($request->employee_insurance != $employee_insurance_orig){
-                $employee_insurance_new = $request->employee_insurance;
-                $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
-            }
-            else{
-                $employee_insurance_change = NULL;
-            }
+    //         if($request->employee_insurance != $employee_insurance_orig){
+    //             $employee_insurance_new = $request->employee_insurance;
+    //             $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
+    //         }
+    //         else{
+    //             $employee_insurance_change = NULL;
+    //         }
 
-            $update = Benefits::where('employee_id',$request->employee_id)->update(['employee_insurance' => strtoupper($request->employee_insurance)]);
+    //         $update = Benefits::where('employee_id',$request->employee_id)->update(['employee_insurance' => strtoupper($request->employee_insurance)]);
 
-            if($update){
-                if($request->employee_insurance != $employee_insurance_orig){
-                    $userlogs = new EmployeeLogs;
-                    $userlogs->employee_id = $request->id;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
-                    $userlogs->save();
+    //         if($update){
+    //             if($request->employee_insurance != $employee_insurance_orig){
+    //                 $userlogs = new EmployeeLogs;
+    //                 $userlogs->employee_id = $request->id;
+    //                 $userlogs->username = auth()->user()->name;
+    //                 $userlogs->role = auth()->user()->user_level;
+    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
+    //                 $userlogs->save();
 
-                    $userlogs = new UserLogs;
-                    $userlogs->username = auth()->user()->name;
-                    $userlogs->role = auth()->user()->user_level;
-                    $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
-                    $userlogs->save();
-                }
-            }
-        }
-    }
+    //                 $userlogs = new UserLogs;
+    //                 $userlogs->username = auth()->user()->name;
+    //                 $userlogs->role = auth()->user()->user_level;
+    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
+    //                 $userlogs->save();
+    //             }
+    //         }
+    //     }
+    // }
 
     public function updateDocuments(Request $request){
         $date = Carbon::now();

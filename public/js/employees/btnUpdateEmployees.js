@@ -1,4 +1,5 @@
 var employee_image;
+
 function employee_image_save(){
     var file = $('#employee_image')[0].files[0];
     var extension = file.name.split('.').pop().toLowerCase();
@@ -191,36 +192,6 @@ $('#btnUpdate').on('click',function(){
                             }
                         });
 
-                        // var secondary_school_name = $('#secondary_school_name').val();
-                        // var secondary_school_address = $('#secondary_school_address').val();
-                        // var secondary_school_inclusive_years_from = $('#secondary_school_inclusive_years_from').val();
-                        // var secondary_school_inclusive_years_to = $('#secondary_school_inclusive_years_to').val();
-                        // var primary_school_name = $('#primary_school_name').val();
-                        // var primary_school_address = $('#primary_school_address').val();
-                        // var primary_school_inclusive_years_from = $('#primary_school_inclusive_years_from').val();
-                        // var primary_school_inclusive_years_to = $('#primary_school_inclusive_years_to').val();
-
-                        // $.ajax({
-                        //     url:"/employees/updateEducationalAttainment",
-                        //     type:"POST",
-                        //     headers:{
-                        //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //     },
-                        //     data:{
-                        //         id:id,
-                        //         employee_id:data.id,
-                        //         employee_number:$('#employee_number').val(),
-                        //         secondary_school_name:secondary_school_name,
-                        //         secondary_school_address:secondary_school_address,
-                        //         secondary_school_inclusive_years_from:secondary_school_inclusive_years_from,
-                        //         secondary_school_inclusive_years_to:secondary_school_inclusive_years_to,
-                        //         primary_school_name:primary_school_name,
-                        //         primary_school_address:primary_school_address,
-                        //         primary_school_inclusive_years_from:primary_school_inclusive_years_from,
-                        //         primary_school_inclusive_years_to:primary_school_inclusive_years_to
-                        //     }
-                        // });
-
                         var past_medical_condition = $('#past_medical_condition').val();
                         var allergies = $('#allergies').val();
                         var medication = $('#medication').val();
@@ -240,22 +211,6 @@ $('#btnUpdate').on('click',function(){
                                 allergies:allergies,
                                 medication:medication,
                                 psychological_history:psychological_history,
-                            }
-                        });
-
-                        var employee_insurance = $('#employee_insurance').val()
-
-                        $.ajax({
-                            url:"/employees/updateBenefits",
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                employee_number:$('#employee_number').val(),
-                                employee_insurance:employee_insurance
                             }
                         });
 
@@ -337,6 +292,26 @@ $('#btnUpdate').on('click',function(){
                                 }
                             });
                             primary_change = '';
+                        });
+
+                        $('.hmo_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveHmo',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id : data.id,
+                                    hmo         : $(this).children('.td_1').html(),
+                                    coverage    : $(this).children('.td_2').html(),
+                                    particulars : $(this).children('.td_3').html(),
+                                    room        : $(this).children('.td_4').html(),
+                                    hmo_change  : hmo_change
+                                }
+                            });
+                            hmo_change = '';
                         });
 
                         $('.training_tr').each(function(){
@@ -1080,6 +1055,56 @@ $('#btnUpdate').on('click',function(){
                                 tblJob = '';
                             }
 
+                            if(tblHmo == 'tblHmo'){
+                                $('.hmo_table_orig').dataTable().fnDestroy();
+                                $('.hmo_table_orig').DataTable({
+                                    columnDefs: [
+                                        {
+                                            "render": function(data, type, row, meta){
+                                                return `<button type="button" class="btn btn-primary center btnEditHmo" hmo_id=${row.id} hmo_name=${row.hmo} hmo_coverage=${row.coverage} hmo_particulars=${row.particulars} hmo_room=${row.room} hmo_status=${row.status}><i class="fa-solid fa-pen-to-square"></i> </button>`;
+                                            },
+                                            "defaultContent": '',
+                                            "data": null,
+                                            "targets": [5],
+                                        }
+                                    ],
+                                    searching: false,
+                                    paging: false,
+                                    info: false,
+                                    ordering:false,
+                                    autoWidth: false,
+                                    language:{
+                                        emptyTable: "NO DATA AVAILABLE",
+                                        processing: "Loading...",
+                                    },
+                                    serverSide: true,
+                                    ajax: {
+                                        url: '/employees/hmo_data',
+                                        async: false,
+                                        data:{
+                                            id: data.id,
+                                        }
+                                    },
+                                    columns: [
+                                        { data: 'hmo', width: '20%'},
+                                        { data: 'coverage', width: '20%'},
+                                        { data: 'particulars', width: '20%'},
+                                        { data: 'room', width: '20%'},
+                                        { data: 'status', width: '10%', className: 'center-text'},
+                                    ],
+                                    initComplete: function(){
+                                        if(!$('.hmo_table_orig').DataTable().data().any()){
+                                            $('#hmo_table_orig').hide();
+                                        }
+                                        else{
+                                            $('#hmo_table_orig').show();
+                                        }
+                                    }
+                                });
+                                $('.btn_hmo').parent().parent().remove();
+                                tblHmo = '';
+                            }
+
                             if(tblMemo == 'tblMemo'){
                                 $('.memo_table_data').dataTable().fnDestroy();
                                 $('.memo_table_data').DataTable({
@@ -1433,6 +1458,57 @@ $('#btnUpdate').on('click',function(){
         }
         else if(update.isDenied){
             Swal.fire('UPDATE CANCELLED','','info');
+        }
+    });
+});
+
+$(document).on('click','#btnEditHmo',function(){
+    Swal.fire({
+        title: 'Do you want to Update?',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((update) => {
+        if(update.isConfirmed){
+            $('#loading').show();
+            $.ajax({
+                url:"/employees/updateHmo",
+                type:"POST",
+                headers:{
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                data: {
+                    id          : $('#hmoId').val(),
+                    employee_id : $('#hidden_id').val(),
+                    hmo         : $('#hmoName').val(),
+                    coverage    : $('#hmoCoverage').val(),
+                    particulars : $('#hmoParticulars').val(),
+                    room        : $('#hmoRoom').val(),
+                    status      : $('#hmoStatus').val()
+                },
+                success:function(response){
+                    $('#loading').hide();
+                    if(response == 'true'){
+                        Swal.fire('UPDATE SUCCESS','','success');
+                        tblChange = 'CHANGED_ROW';
+                        $('#editHmoModal').modal('hide');
+                    }
+                    else if(response == 'no changes'){
+                        Swal.fire('NO CHANGES FOUND', '', 'error');
+                    }
+                    else{
+                        Swal.fire('UPDATE FAILED', '', 'error');
+                        Swal.fire('UPDATE FAILED', '', 'error');
+                    }
+                }
+            });
         }
     });
 });

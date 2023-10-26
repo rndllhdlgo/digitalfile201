@@ -55,6 +55,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/saveTraining','SaveController@saveTraining');
     Route::any('/employees/saveVocational','SaveController@saveVocational');
     Route::any('/employees/saveJobHistory','SaveController@saveJobHistory');
+    Route::any('/employees/saveHmo','SaveController@saveHmo');
 
     // Users Controller
     Route::any('/users/listOfUsers','UsersController@listOfUsers');
@@ -70,15 +71,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/maintenance/positionSave','MaintenanceController@positionSave');
     Route::any('/maintenance/positionUpdate','MaintenanceController@positionUpdate');
     Route::any('/position/checkDuplicate','MaintenanceController@checkDuplicate');
-
-    // Update Controller2
-    Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
-    Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
-    Route::any('/employees/updateBenefits','UpdateController@updateBenefits');
-    Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
-    Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
-    Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');
-    Route::any('/employees/updateDocuments','UpdateController@updateDocuments');
 
     // Delete Controller
     Route::any('/employees/college_delete','DeleteController@college_delete');
@@ -116,6 +108,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/history_data','DataController@history_data');
     Route::any('/employees/logs_data','DataController@logs_data');
     Route::any('/employees/leave_data','DataController@leave_data');
+    Route::any('/employees/hmo_data','DataController@hmo_data');
 
     // Updates Controller1
     Route::get('/update_list', 'UpdatesController@update_list');
@@ -132,6 +125,16 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/update_vocational', 'UpdatesController@update_vocational');
     Route::any('/update_job_history', 'UpdatesController@update_job_history');
     Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
+
+    // Update Controller2
+    Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
+    Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
+    Route::any('/employees/updateBenefits','UpdateController@updateBenefits');
+    Route::any('/employees/updateEducationalAttainment','UpdateController@updateEducationalAttainment');
+    Route::any('/employees/updateJobHistory','UpdateController@updateJobHistory');
+    Route::any('/employees/updateMedicalHistory','UpdateController@updateMedicalHistory');
+    Route::any('/employees/updateDocuments','UpdateController@updateDocuments');
+    Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
     Route::any('/chart_blade','TryController@chart_blade');

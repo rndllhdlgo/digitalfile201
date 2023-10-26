@@ -15,6 +15,7 @@ use App\Models\Memo;
 use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\WorkLogs;
+use App\Models\Hmo;
 
 use App\Models\Secondary;
 use App\Models\Primary;
@@ -31,6 +32,10 @@ class DataController extends Controller
 
     public function college_data(Request $request){
         return DataTables::of(College::where('employee_id',$request->id)->get())->make(true);
+    }
+
+    public function hmo_data(Request $request){
+        return DataTables::of(Hmo::where('employee_id',$request->id)->get())->make(true);
     }
 
     public function leave_data(Request $request){

@@ -45,10 +45,10 @@
             <table id="college_table" class="table table-bordered table-hover table-striped align-middle college_table" style="margin-top: -17px;">
                 <thead style="display:none;">
                     <tr>
-                        <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
-                        <th style="width: 30%;">DEGREE</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;" colspan="2"></th>
+                        <th style="width: 10%;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -115,10 +115,10 @@
             <table id="secondary_table" class="table table-bordered table-hover table-striped align-middle secondary_table" style="margin-top: -17px;">
                 <thead style="display:none;">
                     <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;" colspan="2" class="text-center"></th>
+                        <th style="width: 10%;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -185,10 +185,10 @@
             <table id="primary_table" class="table table-bordered table-hover table-striped align-middle primary_table" style="margin-top: -17px;">
                 <thead style="display:none;">
                     <tr>
-                        <th style="width: 30%;">NAME OF SCHOOL</th>
-                        <th style="width: 30%;">SCHOOL ADDRESS</th>
-                        <th style="width: 30%;" colspan="2" class="text-center">INCLUSIVE YEARS</th>
-                        <th style="width: 10%;">ACTION</th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;"></th>
+                        <th style="width: 30%;" colspan="2"></th>
+                        <th style="width: 10%;"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -258,12 +258,10 @@
         <table id="training_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
             <thead style="display: none;">
                 <tr>
-                    <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
-                    <th style="width: 30%;"> TRAINING TITLE</th>
-                    <th style="width: 30%;" colspan="2" class="text-center"> INCLUSIVE YEARS</th>
-                    <th style="width: 10%;"> ACTION</th>
-                </tr>
-            </thead>
+                    <th style="width: 30%;"></th>
+                    <th style="width: 30%;"></th>
+                    <th style="width: 30%;" colspan="2"></th>
+                    <th style="width: 10%;"></thead>
             <tbody>
             </tbody>
         </table>
@@ -331,10 +329,10 @@
         <table id="vocational_table" class="table table-bordered table-hover table-striped align-middle" style="margin-top: -17px;">
             <thead style="display: none;">
                 <tr>
-                    <th style="width:30%;"><i class="fas fa-school"></i> NAME OF VOCATIONAL SCHOOL</th>
-                    <th style="width:30%;"><i class="fas fa-certificate"></i> COURSE</th>
-                    <th style="width:30%;"><i class="fas fa-calendar-week"></i> INCLUSIVE YEARS</th>
-                    <th style="width:10%;"><i class="fas fa-user-cog"></i> ACTION</th>
+                    <th style="width:30%;"></th>
+                    <th style="width:30%;"></th>
+                    <th style="width:30%;"></th>
+                    <th style="width:10%;"></th>
                 </tr>
             </thead>
             <tbody>

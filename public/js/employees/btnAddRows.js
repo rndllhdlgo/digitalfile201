@@ -5,7 +5,8 @@ var children_change,
     primary_change,
     training_change,
     vocational_change,
-    job_history_change;
+    job_history_change,
+    hmo_change;
 var memo_change,
     evaluation_change,
     contracts_change,
@@ -17,7 +18,8 @@ var tblChildren,
     tblPrimary,
     tblTraining,
     tblVocational,
-    tblJob;
+    tblJob,
+    tblHmo;
 var tblMemo,
     tblEvaluation,
     tblContracts,
@@ -51,10 +53,6 @@ $('#childrenAdd').click(function(){
     $('#child_gender').val("");
 });
 
-$(document).on('click','.btn_children', function(){
-    removeRow('.btn_children');
-});
-
 $('#collegeAdd').click(function(){
     var college_name = $('#college_name').val();
     var college_degree = $('#college_degree').val();
@@ -81,10 +79,80 @@ $('#collegeAdd').click(function(){
     $('#college_degree').val("");
     $('#college_inclusive_years_from').val("");
     $('#college_inclusive_years_to').val("");
+
+    $('.btn_college').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
-$(document).on('click','.btn_college', function(){
-    removeRow('.btn_college');
+
+$('#hmoAdd').click(function(){
+    var hmo         = $('#hmo').val();
+    var coverage    = $('#coverage').val();
+    var particulars = $('#particulars').val();
+    var room        = $('#room').val();
+
+    var hmo_table = `<tr class='hmo_tr'>
+                        <td style="width:20%;" class='td_1 text-uppercase'>${hmo}</td>
+                        <td style="width:20%;" class='td_2 text-uppercase'>${coverage}</td>
+                        <td style="width:20%;" class='td_3 text-uppercase'>${particulars}</td>
+                        <td style="width:20%;" class='td_4 text-uppercase'>${room}</td>
+                        <td style="width:10%;" class='text-center'>ACTIVE</td>
+                        <td style="width:10%;"> <button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                    <tr>`;
+
+    $('.dataTables_empty').closest('tr').remove();
+    $('#hmo_table_orig_tbody').append(hmo_table);
+    $('#hmo_table_orig').show();
+    $('#hmo_table_orig tr:last').remove();
+    hmo_change = 'CHANGED';
+    tblHmo = 'tblHmo';
+    tblChange = 'CHANGED_ROW';
+
+    $('#hmo').val('');
+    $('#coverage').val('');
+    $('#particulars').val('');
+    $('#room').val('');
+
+    $('.btn_hmo').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $('#secondaryAdd').click(function(){
@@ -113,10 +181,28 @@ $('#secondaryAdd').click(function(){
     $('#secondary_address').val("");
     $('#secondary_from').val("");
     $('#secondary_to').val("");
-});
 
-$(document).on('click','.btn_secondary', function(){
-    removeRow('.btn_secondary');
+    $('.btn_secondary').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $('#primaryAdd').click(function(){
@@ -145,10 +231,28 @@ $('#primaryAdd').click(function(){
     $('#primary_address').val("");
     $('#primary_from').val("");
     $('#primary_to').val("");
-});
 
-$(document).on('click','.btn_primary', function(){
-    removeRow('.btn_primary');
+    $('.btn_primary').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $('#trainingAdd').click(function(){
@@ -175,10 +279,28 @@ $('#trainingAdd').click(function(){
     $('#training_title').val("");
     $('#training_inclusive_years_from').val("");
     $('#training_inclusive_years_to').val("");
-});
 
-$(document).on('click','.btn_training', function(){
-    removeRow('.btn_training');
+    $('.btn_training').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $('#vocationalAdd').click(function(){
@@ -205,10 +327,28 @@ $('#vocationalAdd').click(function(){
     $('#vocational_course').val("");
     $('#vocational_inclusive_years_from').val("");
     $('#vocational_inclusive_years_to').val("");
-});
 
-$(document).on('click','.btn_vocational', function(){
-    removeRow('.btn_vocational');
+    $('.btn_vocational').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $('#jobHistoryAdd').click(function(){
@@ -241,10 +381,28 @@ $('#jobHistoryAdd').click(function(){
     $('#job_contact_number').val("");
     $('#job_inclusive_years_from').val("");
     $('#job_inclusive_years_to').val("");
-});
 
-$(document).on('click','.btn_job', function(){
-    removeRow('.btn_job');
+    $('.btn_job').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $(document).on('click','#btnAddMemoRow', function(){
@@ -290,10 +448,28 @@ $(document).on('click','#btnAddMemoRow', function(){
                 </td>
             </tr>`);
     $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-});
 
-$(document).on('click','.btn_memo', function(){
-    removeRow('.btn_memo');
+    $(".btn_memo").click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $(document).on('click','#btnAddEvaluationRow', function(){
@@ -332,10 +508,28 @@ $(document).on('click','#btnAddEvaluationRow', function(){
                     </td>
                 </tr>`);
     $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-});
 
-$(document).on('click','.btn_evaluation', function(){
-    removeRow('.btn_evaluation');
+    $(".btn_evaluation").click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $(document).on('click','#btnAddContractRow', function(){
@@ -367,10 +561,28 @@ $(document).on('click','#btnAddContractRow', function(){
                         </td>
                     </tr>`);
     $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-});
 
-$(document).on('click','.btn_contracts', function(){
-    removeRow('.btn_contracts');
+    $(".btn_contracts").click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $(document).on('click','#addResignationRow', function(){
@@ -402,10 +614,28 @@ $(document).on('click','#addResignationRow', function(){
                         </td>
                     </tr>`);
     $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-});
 
-$(document).on('click','.btn_resignation',function(){
-    removeRow('.btn_resignation');
+    $(".btn_resignation").click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
 });
 
 $(document).on('click','.btnAddTerminationRow',function(){
@@ -437,30 +667,26 @@ $(document).on('click','.btnAddTerminationRow',function(){
                         </td>
                     </tr>`);
     $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
-});
 
-$(document).on('click','.btn_termination', function(){
-    removeRow('.btn_termination');
-});
-
-function removeRow(btn){
-    Swal.fire({
-        title: 'Do you want to delete this row?',
-        text: "You won't be able to revert this!",
-        icon: 'warning',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showDenyButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No',
-        customClass: {
-        actions: 'my-actions',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
-        }
-    }).then((agree) => {
-        if(agree.isConfirmed){
-            $(btn).parent().parent().remove();
-        }
+    $(".btn_termination").click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
     });
-}
+});
