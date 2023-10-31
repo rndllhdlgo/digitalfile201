@@ -251,12 +251,12 @@ input[type=search]:focus{
     margin: auto;
 }
 
-.column_one{
+.row_personal{
     float: left;
     width: 75%;
     padding: 5px;
 }
-.column_two{
+.row_image{
     float: left;
     width: 25%;
     padding: 5px;
@@ -559,6 +559,12 @@ label{
     padding:5px !important;
     width: auto !important;
 }
+
+/* .summary_sub_title{
+    background-color: rgb(190, 189, 189) !important;
+    padding:5px !important;
+    width: auto !important;
+} */
 
 .dtfc-fixed-left{
     background-color: white !important;

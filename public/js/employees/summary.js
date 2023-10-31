@@ -4,199 +4,35 @@ $('#btnSummary').on('click',function(){
 
 $('#viewSummary').on('click', function(){
     $('.job_desc_div, .job_req_div').empty();
-    $('.college_school_name, .college_school_degree, .college_years').empty();
-    $('.secondary_school_name, .secondary_school_address, .secondary_years').empty();
-    $('.primary_school_name, .primary_school_address, .primary_years').empty();
-    $('.training_school_name, .training_title, .training_years').empty();
-    $('.vocational_school_name, .vocational_course, .vocational_years').empty();
-    $('.job_history_summary_div').empty();
 
-        $.ajax({
-            type: 'GET',
-            url: '/setJobDescription',
-            data:{
-                id: $('#employee_position').val()
-            },
-            success: function(data){
-                if(data.length > 0){
-                    var job_description = data[0].job_description;
-                    var job_description_details = job_description.split('•');
-                    for(var i=0; i < job_description_details.length; i++){
-                        if(job_description_details[i]){
-                            $('.job_desc_div').append('<p>' + job_description_details[i] + '</p>');
-                        }
+    $.ajax({
+        type: 'GET',
+        url: '/setJobDescription',
+        data:{
+            id: $('#employee_position').val()
+        },
+        success: function(data){
+            if(data.length > 0){
+                var job_description = data[0].job_description;
+                var job_description_details = job_description.split('•');
+                for(var i=0; i < job_description_details.length; i++){
+                    if(job_description_details[i]){
+                        $('.job_desc_div').append('<p>' + job_description_details[i] + '</p>');
                     }
-                    $('.job_desc_div p:not(:first-child)').hide();
-
-                    var job_requirements = data[0].job_requirements;
-                    var job_requirements_details = job_requirements.split('•');
-                    for(var j=0; j < job_requirements_details.length; j++){
-                        if(job_requirements_details[j]){
-                            $('.job_req_div').append('<p>' + job_requirements_details[j] + '</p>');
-                        }
-                    }
-                    $('.job_req_div p:not(:first-child)').hide();
                 }
+                $('.job_desc_div p:not(:first-child)').hide();
+
+                var job_requirements = data[0].job_requirements;
+                var job_requirements_details = job_requirements.split('•');
+                for(var j=0; j < job_requirements_details.length; j++){
+                    if(job_requirements_details[j]){
+                        $('.job_req_div').append('<p>' + job_requirements_details[j] + '</p>');
+                    }
+                }
+                $('.job_req_div p:not(:first-child)').hide();
             }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/college_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data) {
-                if(data.length > 0){
-                    for(var college_content = 0; college_content < data.length; college_content++){
-                        var college_name   = data[college_content].college_name;
-                        var college_degree = data[college_content].college_degree;
-                        var college_from   = data[college_content].college_inclusive_years_from;
-                        var college_to     = data[college_content].college_inclusive_years_to;
-
-                        $('.college_school_name').append(college_name + "<br>");
-                        $('.college_school_degree').append(college_degree + "<br>");
-                        $('.college_years').append(moment(college_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(college_to).format('MMMM YYYY') + "<br>");
-                    }
-                    $('.college_div').show();
-                }
-                else{
-                    $('.college_div').hide();
-                }
-            }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/secondary_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data) {
-                if(data.length > 0){
-                    for(var secondary_content = 0; secondary_content < data.length; secondary_content++){
-                        var secondary_name    = data[secondary_content].secondary_name;
-                        var secondary_address = data[secondary_content].secondary_address;
-                        var secondary_from    = data[secondary_content].secondary_from;
-                        var secondary_to      = data[secondary_content].secondary_to;
-
-                        $('.secondary_school_name').append(secondary_name + "<br>");
-                        $('.secondary_school_address').append(secondary_address + "<br>");
-                        $('.secondary_years').append(moment(secondary_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(secondary_to).format('MMMM YYYY') + "<br>");
-                    }
-                    $('.secondary_div').show();
-                }
-                else{
-                    $('.secondary_div').hide();
-                }
-            }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/primary_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data) {
-                if(data.length > 0){
-                    for(var primary_content = 0; primary_content < data.length; primary_content++){
-                        var primary_name    = data[primary_content].primary_name;
-                        var primary_address = data[primary_content].primary_address;
-                        var primary_from    = data[primary_content].primary_from;
-                        var primary_to      = data[primary_content].primary_to;
-
-                        $('.primary_school_name').append(primary_name + "<br>");
-                        $('.primary_school_address').append(primary_address + "<br>");
-                        $('.primary_years').append(moment(primary_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(primary_to).format('MMMM YYYY') + "<br>");
-                    }
-                    $('.primary_div').show();
-                }
-                else{
-                    $('.primary_div').hide();
-                }
-            }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/training_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data){
-                if(data.length > 0){
-                    for(var training_content = 0; training_content < data.length; training_content++){
-                        var training_name  = data[training_content].training_name;
-                        var training_title = data[training_content].training_title;
-                        var training_from  = data[training_content].training_inclusive_years_from;
-                        var training_to    = data[training_content].training_inclusive_years_to;
-
-                        $('.training_school_name').append(training_name + "<br>");
-                        $('.training_title').append(training_title + "<br>");
-                        $('.training_years').append(moment(training_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(training_to).format('MMMM YYYY') + "<br>");
-                    }
-                    $('.training_div').show();
-                }
-                else{
-                    $('.training_div').hide();
-                }
-            }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/vocational_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data) {
-                if(data.length > 0){
-                    for(var vocational_content = 0; vocational_content < data.length; vocational_content++){
-                        var vocational_name = data[vocational_content].vocational_name;
-                        var vocational_course= data[vocational_content].vocational_course;
-                        var vocational_from = data[vocational_content].vocational_inclusive_years_from;
-                        var vocational_to = data[vocational_content].vocational_inclusive_years_to;
-
-                        $('.vocational_school_name').append(vocational_name + "<br>");
-                        $('.vocational_course').append(vocational_course + "<br>");
-                        $('.vocational_years').append(moment(vocational_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(vocational_to).format('MMMM YYYY') + "<br>");
-                    }
-                    $('.vocational_div').show();
-                }
-                else{
-                    $('.vocational_div').hide();
-                }
-            }
-        });
-
-        $.ajax({
-            method: 'GET',
-            url: '/job_history_summary/data',
-            data: {
-                id: $('#hidden_id').val(),
-            },
-            success: function (data) {
-                if(data.length > 0){
-                    for(var job_content = 0; job_content < data.length; job_content++){
-                        var job_company_name = data[job_content].job_company_name;
-                        var job_description = data[job_content].job_description;
-                        var job_position = data[job_content].job_position;
-                        var job_contact_number = data[job_content].job_contact_number;
-                        var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
-                        var job_inclusive_years_to = data[job_content].job_inclusive_years_to;
-
-                        var job_years = $('<div class="col-3">').append($('<b><span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " -> </b>")));
-                        var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
-                        $('#job_history_summary_div').append(job_years,job_details);
-                    }
-                    $('.column_nine').show();
-                }
-                else{
-                    $('.column_nine').hide();
-                }
-            }
-        });
+        }
+    });
 
     $('.first_name').html($('#first_name').val());
     $('.middle_name').html($('#middle_name').val());
@@ -262,34 +98,220 @@ $('#viewSummary').on('click', function(){
 $(document).ready(function(){
     $("#checkbox4").change(function(){
         if($("#checkbox4").is(":checked")){
-            $(".column_seven").show();
+            $('.college_school_name, .college_school_degree, .college_years').empty();
+            $('.secondary_school_name, .secondary_school_address, .secondary_years').empty();
+            $('.primary_school_name, .primary_school_address, .primary_years').empty();
+
+            $(".row_educational").show();
+            if($('.college_table_orig').DataTable().data().any()){
+                $('.college_div').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/college_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function(data){
+                            if(data.length > 0){
+                                for(var college_content = 0; college_content < data.length; college_content++){
+                                    var college_name   = data[college_content].college_name;
+                                    var college_degree = data[college_content].college_degree;
+                                    var college_from   = data[college_content].college_inclusive_years_from;
+                                    var college_to     = data[college_content].college_inclusive_years_to;
+
+                                    $('.college_school_name').append(college_name + "<br>");
+                                    $('.college_school_degree').append(college_degree + "<br>");
+                                    $('.college_years').append(moment(college_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(college_to).format('MMMM YYYY') + "<br>");
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.college_div').hide();
+            }
+
+            if($('.secondary_table_orig').DataTable().data().any()){
+                $('.secondary_div').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/secondary_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function(data){
+                            if(data.length > 0){
+                                for(var secondary_content = 0; secondary_content < data.length; secondary_content++){
+                                    var secondary_name    = data[secondary_content].secondary_name;
+                                    var secondary_address = data[secondary_content].secondary_address;
+                                    var secondary_from    = data[secondary_content].secondary_from;
+                                    var secondary_to      = data[secondary_content].secondary_to;
+
+                                    $('.secondary_school_name').append(secondary_name + "<br>");
+                                    $('.secondary_school_address').append(secondary_address + "<br>");
+                                    $('.secondary_years').append(moment(secondary_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(secondary_to).format('MMMM YYYY') + "<br>");
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.secondary_div').hide();
+            }
+
+            if($('.primary_table_orig').DataTable().data().any()){
+                $('.primary_div').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/primary_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function(data){
+                            if(data.length > 0){
+                                for(var primary_content = 0; primary_content < data.length; primary_content++){
+                                    var primary_name    = data[primary_content].primary_name;
+                                    var primary_address = data[primary_content].primary_address;
+                                    var primary_from    = data[primary_content].primary_from;
+                                    var primary_to      = data[primary_content].primary_to;
+
+                                    $('.primary_school_name').append(primary_name + "<br>");
+                                    $('.primary_school_address').append(primary_address + "<br>");
+                                    $('.primary_years').append(moment(primary_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(primary_to).format('MMMM YYYY') + "<br>");
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.primary_div').hide();
+            }
         }
         else{
-            $(".column_seven").hide();
+            $(".row_educational").hide();
         }
     });
+
     $("#checkbox5").change(function(){
         if($("#checkbox5").is(":checked")){
-            $(".column_eight").show();
+            $('.training_school_name, .training_title, .training_years').empty();
+            $('.vocational_school_name, .vocational_course, .vocational_years').empty();
+
+            $('.row_trainings').show();
+            if($('.training_table_orig').DataTable().data().any()){
+                $('.training_div').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/training_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function (data){
+                            if(data.length > 0){
+                                for(var training_content = 0; training_content < data.length; training_content++){
+                                    var training_name  = data[training_content].training_name;
+                                    var training_title = data[training_content].training_title;
+                                    var training_from  = data[training_content].training_inclusive_years_from;
+                                    var training_to    = data[training_content].training_inclusive_years_to;
+
+                                    $('.training_school_name').append(training_name + "<br>");
+                                    $('.training_title').append(training_title + "<br>");
+                                    $('.training_years').append(moment(training_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(training_to).format('MMMM YYYY') + "<br>");
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.training_div').hide();
+            }
+
+            if($('.vocational_table_orig').DataTable().data().any()){
+                $('.vocational_div').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/vocational_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function(data){
+                            if(data.length > 0){
+                                for(var vocational_content = 0; vocational_content < data.length; vocational_content++){
+                                    var vocational_name   = data[vocational_content].vocational_name;
+                                    var vocational_course = data[vocational_content].vocational_course;
+                                    var vocational_from   = data[vocational_content].vocational_inclusive_years_from;
+                                    var vocational_to     = data[vocational_content].vocational_inclusive_years_to;
+
+                                    $('.vocational_school_name').append(vocational_name + "<br>");
+                                    $('.vocational_course').append(vocational_course + "<br>");
+                                    $('.vocational_years').append(moment(vocational_from).format('MMMM YYYY') + " <b><i class='fa-solid fa-arrow-right'></i></b> " + moment(vocational_to).format('MMMM YYYY') + "<br>");
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.vocational_div').hide();
+            }
         }
         else{
-            $(".column_eight").hide();
+            $('.row_trainings').show();
         }
     });
+
     $("#checkbox6").change(function(){
         if($("#checkbox6").is(":checked")){
-            $(".column_nine").show();
-        }
-        else{
-            $(".column_nine").hide();
+            $('#job_history_summary_div').empty();
+            if($('.job_history_table_orig').DataTable().data().any()){
+                $('.row_job').show();
+                setTimeout(() => {
+                    $.ajax({
+                        method: 'GET',
+                        url: '/job_history_summary/data',
+                        data: {
+                            id: $('#hidden_id').val(),
+                        },
+                        success: function (data) {
+                            if(data.length > 0){
+                                for(var job_content = 0; job_content < data.length; job_content++){
+                                    var job_company_name         = data[job_content].job_company_name;
+                                    var job_description          = data[job_content].job_description;
+                                    var job_position             = data[job_content].job_position;
+                                    var job_contact_number       = data[job_content].job_contact_number;
+                                    var job_inclusive_years_from = data[job_content].job_inclusive_years_from;
+                                    var job_inclusive_years_to   = data[job_content].job_inclusive_years_to;
+
+                                    var job_years = $('<div class="col-3">').append($('<b><span>').html(moment(job_inclusive_years_from).format('MMM. YYYY') + " - ").append($('<span>').html(moment(job_inclusive_years_to).format('MMM. YYYY') + " <i style='zoom:90%;' class='fa-solid fa-arrow-right'></i> </b>")));
+                                    var job_details = $('<div class="col-3 mb-2">').html("<b>" + job_company_name + "</b><br><i>" + job_position + "</i><br>" + job_contact_number + "<br> - " + job_description);
+                                    $('#job_history_summary_div').append(job_years,job_details);
+                                }
+                            }
+                        }
+                    });
+                }, 200);
+            }
+            else{
+                $('.row_job').hide();
+            }
         }
     });
+
     $("#checkbox7").change(function(){
         if($("#checkbox7").is(":checked")){
-            $(".column_ten").show();
+            $('.row_medical').show();
         }
         else{
-            $(".column_ten").hide();
+            $('.row_medical').hide();
         }
     });
 });

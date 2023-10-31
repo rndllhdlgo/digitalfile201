@@ -14,7 +14,7 @@
             <div id="print_file">
                 <div class="summary_container">
                     <div class="clear_float">
-                        <div class="column_one">
+                        <div class="row_personal">
                             <div class="row">
                                 <h5 class="summary_title">PERSONAL INFORMATION</h5>
                             </div>
@@ -77,13 +77,13 @@
                             </div>
                         </div>
 
-                        <div class="column_two mt-4">
+                        <div class="row_image mt-4">
                             <img id="image_preview_summary">
                         </div>
                     </div>
                     <hr>
 
-                    <div class="column_three" style="padding:5px;">
+                    <div class="row_address" style="padding:5px;">
                         <div class="row">
                             <h5 class="summary_title">HOME ADDRESS</h5>
                         </div>
@@ -107,7 +107,7 @@
                         <hr>
                     </div>
 
-                    <div class="column_four" style="padding:5px;">
+                    <div class="row_contact" style="padding:5px;">
                         <div class="row ">
                             <h5 class="summary_title">CONTACT DETAILS</h5>
                         </div>
@@ -189,7 +189,7 @@
                         <hr>
                     </div>
 
-                    <div class="column_five" style="padding:5px;">
+                    <div class="row_work" style="padding:5px;">
                         <div class="row ">
                             <h5 class="summary_title">WORK INFORMATION</h5>
                         </div>
@@ -263,7 +263,7 @@
                         </div>
                         <hr>
                     </div>
-                    <div class="column_six" style="padding:5px;">
+                    <div class="row_government" style="padding:5px;">
                         <div class="row ">
                             <h5 class="summary_title">GOVERNMENT MANDATORY BENEFITS</h5>
                         </div>
@@ -289,13 +289,13 @@
                         <hr>
                     </div>
 
-                    <div class="column_seven" style="padding:5px;display:none;">
-                        <div class="row ">
+                    <div class="row_educational" style="padding:5px; display:none;">
+                        <div class="row">
                             <h5 class="summary_title">EDUCATIONAL ATTAINMENT</h5>
                         </div>
 
-                        <div class="row mb-3 college_div" style="display:none;">
-                            <h6><b>COLLEGE SCHOOL</b></h6><br>
+                        <div class="row mb-3 college_div" style="display:none">
+                            <h6 class="summary_sub_title"><b>COLLEGE SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="college_school_name"></span>
@@ -310,8 +310,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3 secondary_div" style="display:none;">
-                            <h6><b>SECONDARY SCHOOL</b></h6><br>
+                        <div class="row mb-3 secondary_div" style="display:none">
+                            <h6 class="summary_sub_title"><b>SECONDARY SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="secondary_school_name"></span>
@@ -326,8 +326,8 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3 primary_div" style="display:none;">
-                            <h6><b>PRIMARY SCHOOL</b></h6><br>
+                        <div class="row mb-3 primary_div" style="display:none">
+                            <h6 class="summary_sub_title"><b>PRIMARY SCHOOL</b></h6><br>
                             <div class="col">
                                 <b>SCHOOL NAME:</b><br>
                                 <span class="primary_school_name"></span>
@@ -344,7 +344,7 @@
                         <hr>
                     </div>
 
-                    <div class="column_eight" style="padding:5px;display:none;">
+                    <div class="row_trainings" style="padding:5px;display:none;">
                         <div class="row">
                             <h5 class="summary_title">TRAININGS/VOCATIONALS ATTENDED</h5>
                         </div>
@@ -382,7 +382,7 @@
                         </div>
                         <hr>
                     </div>
-                    <div class="column_nine" style="padding:5px;display:none;">
+                    <div class="row_job" style="padding:5px; display:none;">
                         <div class="row">
                             <h5 class="summary_title">JOB HISTORY</h5>
                         </div>
@@ -390,8 +390,8 @@
                         <div id="job_history_summary_div" class="row"></div>
                         <hr>
                     </div>
-                    <div class="column_ten" style="padding:5px;display:none;">
-                        <div class="row ">
+                    <div class="row_medical" style="padding:5px; display:none;">
+                        <div class="row">
                             <h5 class="summary_title">MEDICAL HISTORY</h5>
                         </div>
 

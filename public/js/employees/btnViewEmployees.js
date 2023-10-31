@@ -14,16 +14,16 @@ var children_id,
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
 
-    children_id = [];
-    college_id = [];
-    secondary_id = [];
-    primary_id = [];
-    training_id = [];
-    vocational_id = [];
+    children_id    = [];
+    college_id     = [];
+    secondary_id   = [];
+    primary_id     = [];
+    training_id    = [];
+    vocational_id  = [];
     job_history_id = [];
-    memo_id = [];
-    evaluation_id = [];
-    contracts_id = [];
+    memo_id        = [];
+    evaluation_id  = [];
+    contracts_id   = [];
     resignation_id = [];
     termination_id = [];
 
@@ -183,38 +183,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#tin_number').val(value.tin_number);
                 $('#account_number').val(value.account_number);
 
-                //Education
-                // if(value.secondary_school_name){
-                //     $('.secondary_div').show();
-                //     $('#secondary_school_name').val(value.secondary_school_name);
-                //     $('#secondary_school_address').val(value.secondary_school_address);
-                //     $('#secondary_school_inclusive_years_from').val(value.secondary_school_inclusive_years_from);
-                //     $('#secondary_school_inclusive_years_to').val(value.secondary_school_inclusive_years_to);
-                // }
-                // else{
-                //     $('.secondary_div').hide();
-                // }
-
-                // if(value.primary_school_name){
-                //     $('.primary_div').show();
-                //     $('#primary_school_name').val(value.primary_school_name);
-                //     $('#primary_school_address').val(value.primary_school_address);
-                //     $('#primary_school_inclusive_years_from').val(value.primary_school_inclusive_years_from);
-                //     $('#primary_school_inclusive_years_to').val(value.primary_school_inclusive_years_to);
-                // }
-                // else{
-                //     $('.primary_div').hide();
-                // }
-
-                // if(!value.secondary_school_name && !value.primary_school_name){
-                //     $('#checkbox4').prop('disabled',true);
-                //     $('.checkbox4').addClass('btnDisabled').attr('disabled',true);
-                // }
-                // else{
-                //     $('#checkbox4').prop('disabled',false);
-                //     $('.checkbox4').removeClass('btnDisabled').attr('disabled',false);
-                // }
-
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);
                     $('.past_med_div').show();
@@ -245,14 +213,57 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }
 
                 if(!value.past_medical_condition && !value.allergies && !value.medication && !value.psychological_history){
-                    $('#checkbox7').prop('disabled',true);
-                    $('.checkbox7').addClass('btnDisabled').attr('disabled',true);
+                    $('#checkbox7').prop('disabled', true).addClass('btnDisabled');
                 }
                 else{
-                    $('#checkbox7').prop('disabled',false);
-                    $('.checkbox7').removeClass('btnDisabled').attr('disabled',false);
+                    $('#checkbox7').prop('disabled', false).removeClass('btnDisabled');
                 }
-                $('#employee_insurance').val(value.employee_insurance);
+
+                $('.hmo_table_orig').dataTable().fnDestroy();
+                $('.hmo_table_orig').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                return `<button type="button" class="btn btn-primary center btnEditHmo" hmo_id=${row.id} hmo_name=${row.hmo} hmo_coverage=${row.coverage} hmo_particulars=${row.particulars} hmo_room=${row.room} hmo_status=${row.status}><i class="fa-solid fa-pen-to-square"></i> </button>`;
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [5],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        emptyTable: "NO DATA AVAILABLE",
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/hmo_data',
+                        async: false,
+                        data:{
+                            id: value.id,
+                        }
+                    },
+                    columns: [
+                        { data: 'hmo', width: '20%'},
+                        { data: 'coverage', width: '20%'},
+                        { data: 'particulars', width: '20%'},
+                        { data: 'room', width: '20%'},
+                        { data: 'status', width: '10%', className: 'center-text'},
+                    ],
+                    initComplete: function(){
+                        if(!$('.hmo_table_orig').DataTable().data().any()){
+                            $('#hmo_table_orig').hide();
+                        }
+                        else{
+                            $('#hmo_table_orig').show();
+                        }
+                    }
+                });
 
                 $('#leave_credits').dataTable().fnDestroy();
                 $('#leave_credits').DataTable({
@@ -351,12 +362,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
 
+                // Education
                 $('.college_table_orig').dataTable().fnDestroy();
                 $('.college_table_orig').DataTable({
                     columnDefs: [
                         {
                             "render": function(data, type, row, meta){
-                                return '<button type="button" class="btn btn-danger btn_delete_college center" id="' + meta.row + '" onclick="deleteRow(\'.college_table_orig\', college_id, \'college_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
+                                return `<button type="button" class="btn btn-danger btn_delete_college center" id="${meta.row}" onclick="deleteRow('.college_table_orig', college_id, 'college_change', this)"><i class="fa-solid fa-trash-can"></i> </button>`;
                             },
                             "defaultContent": '',
                             "data": null,
@@ -516,6 +528,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     }
                 });
 
+                if(!$('.college_table_orig').DataTable().data().any()
+                && !$('.secondary_table_orig').DataTable().data().any()
+                && !$('.primary_table_orig').DataTable().data().any()){
+                    $('#checkbox4').prop('disabled', true).addClass('btnDisabled');
+                }
+                else{
+                    $('#checkbox4').prop('disabled', false).removeClass('btnDisabled');
+                }
+
                 $('.training_table_orig').dataTable().fnDestroy();
                 $('.training_table_orig').DataTable({
                     columnDefs: [
@@ -564,11 +585,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.training_table_orig').DataTable().data().any()){
                             $('#training_table_orig').hide();
-                            $('.checkbox5').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#training_table_orig').show();
-                            $('.checkbox5').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
                 });
@@ -623,22 +642,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.vocational_table_orig').DataTable().data().any()){
                             $('#vocational_table_orig').hide();
-                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
                         }
                         else{
                             $('#vocational_table_orig').show();
-                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
                         }
                     }
                 });
 
-                if(!$('.training_table_orig').DataTable().data().any() && !$('.vocational_table_orig').DataTable().data().any()){
-                    $('.training_div').hide();
-                    $('.vocational_div').hide();
-                    $('#checkbox5').prop('disabled',true);
+                if(!$('.training_table_orig').DataTable().data().any()
+                && !$('.vocational_table_orig').DataTable().data().any()){
+                    $('#checkbox5').prop('disabled', true).addClass('btnDisabled');
                 }
                 else{
-                    $('#checkbox5').prop('disabled',false);
+                    $('#checkbox5').prop('disabled', false).removeClass('btnDisabled');
                 }
 
                 $('.job_history_table_orig').dataTable().fnDestroy();
@@ -693,13 +709,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     initComplete: function(){
                         if(!$('.job_history_table_orig').DataTable().data().any()){
                             $('#job_history_table_orig').hide();
-                            $('#checkbox6').prop('disabled',true);
-                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
+                            $('#checkbox6').prop('disabled', true).addClass('btnDisabled');
                         }
                         else{
                             $('#job_history_table_orig').show();
-                            $('#checkbox6').prop('disabled',false);
-                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
+                            $('#checkbox6').prop('disabled', false).removeClass('btnDisabled');
                         }
                     }
                 });
@@ -1050,19 +1064,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     employee_history_table.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/employee_history_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.employee_history_table').DataTable().ajax.reload(null, false);
-                                }
-                            }
-                        });
-                    }
-                }, 1000);
+                // setInterval(function(){
+                //     if($('#loading').is(':hidden') && standby == false){
+                //         $.ajax({
+                //             url: "/employee_history_reload",
+                //             success: function(data){
+                //                 if(data != data_update){
+                //                     data_update = data;
+                //                     $('.employee_history_table').DataTable().ajax.reload(null, false);
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }, 1000);
 
                 var logs_table_data;
                 $('.logs_table_data').dataTable().fnDestroy();
@@ -1119,21 +1133,20 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     logs_table_data.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/logs_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.logs_table_data').DataTable().ajax.reload(null, false);
-                                }
-                            }
-                        });
-                    }
-                }, 1000);
+                // setInterval(function(){
+                //     if($('#loading').is(':hidden') && standby == false){
+                //         $.ajax({
+                //             url: "/logs_reload",
+                //             success: function(data){
+                //                 if(data != data_update){
+                //                     data_update = data;
+                //                     $('.logs_table_data').DataTable().ajax.reload(null, false);
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }, 1000);
 
-                // Variables of changes
                 $('th').removeClass("sorting_asc");
 
                 if(value.barangay_clearance_file){
@@ -1305,4 +1318,15 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             });
         }
     });
+});
+
+$(document).on('click', '.btnEditHmo',function(){
+    $('#hmoId').val($(this).attr('hmo_id'));
+    $('#hmoName').val($(this).attr('hmo_name'));
+    $('#hmoCoverage').val($(this).attr('hmo_coverage'));
+    $('#hmoParticulars').val($(this).attr('hmo_particulars'));
+    $('#hmoRoom').val($(this).attr('hmo_room'));
+    $('#hmoStatus').val($(this).attr('hmo_status'));
+
+    $('#editHmoModal').modal('show');
 });
