@@ -108,7 +108,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/college_summary/data',
+                        url: '/employees/college_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
@@ -138,7 +138,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/secondary_summary/data',
+                        url: '/employees/secondary_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
@@ -168,7 +168,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/primary_summary/data',
+                        url: '/employees/primary_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
@@ -209,7 +209,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/training_summary/data',
+                        url: '/employees/training_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
@@ -239,7 +239,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/vocational_summary/data',
+                        url: '/employees/vocational_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
@@ -277,7 +277,7 @@ $(document).ready(function(){
                 setTimeout(() => {
                     $.ajax({
                         method: 'GET',
-                        url: '/job_history_summary/data',
+                        url: '/employees/job_history_summary_data',
                         data: {
                             id: $('#hidden_id').val(),
                         },
