@@ -303,12 +303,14 @@ $('#btnUpdate').on('click',function(){
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
-                                    employee_id : data.id,
-                                    hmo         : $(this).children('.td_1').html(),
-                                    coverage    : $(this).children('.td_2').html(),
-                                    particulars : $(this).children('.td_3').html(),
-                                    room        : $(this).children('.td_4').html(),
-                                    hmo_change  : hmo_change
+                                    employee_id      : data.id,
+                                    hmo              : $(this).children('.td_1').html(),
+                                    coverage         : $(this).children('.td_2').html(),
+                                    particulars      : $(this).children('.td_3').html(),
+                                    room             : $(this).children('.td_4').html(),
+                                    effectivity_date : $(this).children('.td_5').html(),
+                                    expiration_date  : $(this).children('.td_6').html(),
+                                    hmo_change       : hmo_change
                                 }
                             });
                             hmo_change = '';
@@ -1061,11 +1063,11 @@ $('#btnUpdate').on('click',function(){
                                     columnDefs: [
                                         {
                                             "render": function(data, type, row, meta){
-                                                return `<button type="button" class="btn btn-primary center btnEditHmo" hmo_id=${row.id} hmo_name=${row.hmo} hmo_coverage=${row.coverage} hmo_particulars=${row.particulars} hmo_room=${row.room} hmo_status=${row.status}><i class="fa-solid fa-pen-to-square"></i> </button>`;
+                                                return `<button type="button" class="btn btn-primary center btnEditHmo" hmo_id=${row.id} hmo_name=${row.hmo} hmo_coverage=${row.coverage} hmo_particulars=${row.particulars} hmo_room=${row.room} hmo_effectivity_date=${row.effectivity_date} hmo_expiration_date=${row.expiration_date} hmo_status=${row.status}><i class="fa-solid fa-pen-to-square"></i> </button>`;
                                             },
                                             "defaultContent": '',
                                             "data": null,
-                                            "targets": [5],
+                                            "targets": [7],
                                         }
                                     ],
                                     searching: false,
@@ -1086,11 +1088,23 @@ $('#btnUpdate').on('click',function(){
                                         }
                                     },
                                     columns: [
-                                        { data: 'hmo', width: '20%'},
-                                        { data: 'coverage', width: '20%'},
-                                        { data: 'particulars', width: '20%'},
-                                        { data: 'room', width: '20%'},
-                                        { data: 'status', width: '10%', className: 'center-text'},
+                                        { data: 'hmo',         width: '15%'},
+                                        { data: 'coverage',    width: '15%'},
+                                        { data: 'particulars', width: '15%'},
+                                        { data: 'room',        width: '15%'},
+                                        {
+                                            data: 'effectivity_date', width: '15%',
+                                            "render":function(data,type,row){
+                                                return moment(data).format('MMMM D, YYYY');
+                                            }
+                                        },
+                                        {
+                                            data: 'expiration_date', width: '15%',
+                                            "render":function(data,type,row){
+                                                return moment(data).format('MMMM D, YYYY');
+                                            }
+                                        },
+                                        { data: 'status', width: '5%'}
                                     ],
                                     initComplete: function(){
                                         if(!$('.hmo_table_orig').DataTable().data().any()){
@@ -1485,26 +1499,28 @@ $(document).on('click','#btnEditHmo',function(){
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: {
-                    id          : $('#hmoId').val(),
-                    employee_id : $('#hidden_id').val(),
-                    hmo         : $('#hmoName').val(),
-                    coverage    : $('#hmoCoverage').val(),
-                    particulars : $('#hmoParticulars').val(),
-                    room        : $('#hmoRoom').val(),
-                    status      : $('#hmoStatus').val()
+                    id               : $('#hmoId').val(),
+                    employee_id      : $('#hidden_id').val(),
+                    hmo              : $('#hmoName').val(),
+                    coverage         : $('#hmoCoverage').val(),
+                    particulars      : $('#hmoParticulars').val(),
+                    room             : $('#hmoRoom').val(),
+                    effectivity_date : $('#hmoEffecitivityDate').val(),
+                    expiration_date  : $('#hmoExpirationDate').val(),
+                    status           : $('#hmoStatus').val()
                 },
                 success:function(response){
                     $('#loading').hide();
                     if(response == 'true'){
                         Swal.fire('UPDATE SUCCESS','','success');
                         tblChange = 'CHANGED_ROW';
+                        $('.hmo_table_orig').DataTable().ajax.reload(null, false);
                         $('#editHmoModal').modal('hide');
                     }
                     else if(response == 'no changes'){
                         Swal.fire('NO CHANGES FOUND', '', 'error');
                     }
                     else{
-                        Swal.fire('UPDATE FAILED', '', 'error');
                         Swal.fire('UPDATE FAILED', '', 'error');
                     }
                 }

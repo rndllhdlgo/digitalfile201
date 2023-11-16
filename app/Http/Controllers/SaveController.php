@@ -111,11 +111,13 @@ class SaveController extends Controller
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
         $employee = new Hmo;
-        $employee->employee_id = $request->employee_id;
-        $employee->hmo = strtoupper($request->hmo);
-        $employee->coverage = strtoupper($request->coverage);
-        $employee->particulars = strtoupper($request->particulars);
-        $employee->room = strtoupper($request->room);
+        $employee->employee_id      = $request->employee_id;
+        $employee->hmo              = strtoupper($request->hmo);
+        $employee->coverage         = strtoupper($request->coverage);
+        $employee->particulars      = strtoupper($request->particulars);
+        $employee->room             = strtoupper($request->room);
+        $employee->effectivity_date = date("Y-m-d", strtotime($request->effectivity_date));
+        $employee->expiration_date  = date("Y-m-d", strtotime($request->expiration_date));
         $employee->save();
 
         if($request->hmo_change == 'CHANGED'){

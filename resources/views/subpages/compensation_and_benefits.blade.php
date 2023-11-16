@@ -1,15 +1,18 @@
 <div id="compensation_benefits" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <h5 class="table-title" style="width:400px !important;">HEALTHCARE MAINTENANCE ORGANIZATION</h5>
+    <div style="zoom:85%;">
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-design">
                 <tr>
-                    <th style="width:20%;">HMO</th>
-                    <th style="width:20%;">COVERAGE</th>
-                    <th style="width:20%;">PARTICULARS</th>
-                    <th style="width:20%;">ROOM</th>
-                    <th style="width:10%;">STATUS</th>
-                    <th style="width:10%;">ACTION</th>
+                    <th style="width:15%;">HMO</th>
+                    <th style="width:15%;">COVERAGE</th>
+                    <th style="width:15%;">PARTICULARS</th>
+                    <th style="width:15%;">ROOM</th>
+                    <th style="width:15%;">EFFECTIVITY DATE</th>
+                    <th style="width:15%;">EXPIRATION DATE</th>
+                    <th style="width:5%;">STATUS</th> 
+                    <th style="width:5%;">ACTION</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,10 +42,18 @@
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
-                        <div class="f-outline text-center">
-                            <span>ACTIVE</span>
+                        <div class="f-outline">
+                            <input class="forminput form-control" type="date" id="effectivity_date" placeholder=" " style="background-color:white;">
+                            <label for="effectivity_date" class="formlabel form-label">
                         </div>
                     </td>
+                    <td class="pb-3 pt-3">
+                        <div class="f-outline">
+                            <input class="forminput form-control" type="date" id="expiration_date" placeholder=" " style="background-color:white;">
+                            <label for="expiration_date" class="formlabel form-label">
+                        </div>
+                    </td>
+                    <td class="pb-3 pt-3"></td>
                     <td class="pb-3 pt-3">
                         <button type="button" id="hmoAdd" class="btn btn-success center btnActionDisabled" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
@@ -53,12 +64,14 @@
         <table id="hmo_table" class="table table-bordered table-hover table-striped align-middle hmo_table" style="margin-top: -17px;">
             <thead style="display:none;">
                 <tr>
-                    <th style="width:20%;"></th>
-                    <th style="width:20%;"></th>
-                    <th style="width:20%;"></th>
-                    <th style="width:20%;"></th>
-                    <th style="width:10%;"></th>
-                    <th style="width:10%;"></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
@@ -68,20 +81,25 @@
         <table id="hmo_table_orig" class="table table-bordered table-hover table-striped align-middle hmo_table_orig" style="display: none; margin-top:-36px;">
             <thead>
                 <tr>
-                    <th style="border: none;"></th>
-                    <th style="border: none;"></th>
-                    <th style="border: none;"></th>
-                    <th style="border: none;"></th>
-                    <th style="border: none;"></th>
-                    <th style="border-left: none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th>
+                    <th style="border:none;"></th> 
+                    <th style="border:none;"></th>
                 </tr>
             </thead>
             <tbody id="hmo_table_orig_tbody">
             </tbody>
         </table>
+    </div>
+    
         <hr class="hr-design">
         <br>
 {{--  --}}
+
     <hr class="hr-design">
     <h5 class="table-title">LEAVE CREDITS</h5>
     <table class="table table-bordered table-striped table-hover align-middle w-100" id="leave_credits">

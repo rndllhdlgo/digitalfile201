@@ -105,18 +105,22 @@ $('#collegeAdd').click(function(){
 
 
 $('#hmoAdd').click(function(){
-    var hmo         = $('#hmo').val();
-    var coverage    = $('#coverage').val();
-    var particulars = $('#particulars').val();
-    var room        = $('#room').val();
+    var hmo              = $('#hmo').val();
+    var coverage         = $('#coverage').val();
+    var particulars      = $('#particulars').val();
+    var room             = $('#room').val();
+    var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
+    var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
 
     var hmo_table = `<tr class='hmo_tr'>
-                        <td style="width:20%;" class='td_1 text-uppercase'>${hmo}</td>
-                        <td style="width:20%;" class='td_2 text-uppercase'>${coverage}</td>
-                        <td style="width:20%;" class='td_3 text-uppercase'>${particulars}</td>
-                        <td style="width:20%;" class='td_4 text-uppercase'>${room}</td>
-                        <td style="width:10%;" class='text-center'>ACTIVE</td>
-                        <td style="width:10%;"> <button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                        <td class='td_1 text-uppercase'>${hmo}</td>
+                        <td class='td_2 text-uppercase'>${coverage}</td>
+                        <td class='td_3 text-uppercase'>${particulars}</td>
+                        <td class='td_4 text-uppercase'>${room}</td>
+                        <td class='td_5'>${effectivity_date}</td>
+                        <td class='td_6'>${expiration_date}</td>
+                        <td class='text-center'>ACTIVE</td>
+                        <td><button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
                     <tr>`;
 
     $('.dataTables_empty').closest('tr').remove();
@@ -131,6 +135,8 @@ $('#hmoAdd').click(function(){
     $('#coverage').val('');
     $('#particulars').val('');
     $('#room').val('');
+    $('#effectivity_date').val('');
+    $('#expiration_date').val('');
 
     $('.btn_hmo').click(function(){
         Swal.fire({

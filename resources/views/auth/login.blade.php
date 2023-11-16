@@ -45,7 +45,7 @@
                         <div class="row mb-0">
                             <div class="col-md-12">
                                 <button id="btnLogin" type="submit" class="btn btn-primary btnLogin bp">
-                                    {{ __('LOGIN') }}<i class="fa fa-sign-in ml-2" aria-hidden="true"></i>
+                                    {{ __('LOGIN') }} <i class="fa fa-sign-in ml-2" aria-hidden="true"></i>
                                 </button>
                                 @if (Route::has('password.request'))
                                     <span id="btnForgotPassword" class="btn btn-link ml-2" style="font-size:15px;font-weight: bold; cursor: pointer;">

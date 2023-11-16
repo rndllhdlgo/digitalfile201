@@ -31,6 +31,8 @@ class CheckIpAddress
             ]);
         }
 
+        return $next($request);
+
         $allowedIps = Config::get('ip_whitelist.allowed_ips');
         if(in_array($userIp, $allowedIps)){
             return $next($request);

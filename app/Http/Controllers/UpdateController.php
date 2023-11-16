@@ -57,11 +57,13 @@ class UpdateController extends Controller{
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
 
-        $hmo_orig         = Hmo::where('id', $request->id)->first()->hmo;
-        $coverage_orig    = Hmo::where('id', $request->id)->first()->coverage;
-        $particulars_orig = Hmo::where('id', $request->id)->first()->particulars;
-        $room_orig        = Hmo::where('id', $request->id)->first()->room;
-        $status_orig      = Hmo::where('id', $request->id)->first()->status;
+        $hmo_orig              = Hmo::where('id', $request->id)->first()->hmo;
+        $coverage_orig         = Hmo::where('id', $request->id)->first()->coverage;
+        $particulars_orig      = Hmo::where('id', $request->id)->first()->particulars;
+        $room_orig             = Hmo::where('id', $request->id)->first()->room;
+        $effectivity_date_orig = Hmo::where('id', $request->id)->first()->effectivity_date;
+        $expiration_date_orig  = Hmo::where('id', $request->id)->first()->expiration_date;
+        $status_orig           = Hmo::where('id', $request->id)->first()->status;
 
         $changes = 0;
         if($request->hmo != $hmo_orig){
@@ -101,6 +103,24 @@ class UpdateController extends Controller{
             $room_change = NULL;
         }
 
+        if($request->effectivity_date != $effectivity_date_orig){
+            $effectivity_date_new = $request->effectivity_date;
+            $effectivity_date_change = "[EFFECTIVITY DATE: FROM '$effectivity_date_orig' TO '$effectivity_date_new']";
+            $changes++;
+        }
+        else{
+            $effectivity_date_change = NULL;
+        }
+
+        if($request->expiration_date != $expiration_date_orig){
+            $expiration_date_new = $request->expiration_date;
+            $expiration_date_change = "[EXPIRATION DATE: FROM '$expiration_date_orig' TO '$expiration_date_new']";
+            $changes++;
+        }
+        else{
+            $expiration_date_change = NULL;
+        }
+
         if($request->status != $status_orig){
             $status_new = $request->status;
             $status_change = "[STATUS: FROM '$status_orig' TO '$status_new']";+
@@ -116,11 +136,13 @@ class UpdateController extends Controller{
 
         $update = Hmo::find($request->id)
         ->update([
-            'hmo'         => strtoupper($request->hmo),
-            'coverage'    => strtoupper($request->coverage),
-            'particulars' => strtoupper($request->particulars),
-            'room'        => strtoupper($request->room),
-            'status'      => strtoupper($request->status)
+            'hmo'              => strtoupper($request->hmo),
+            'coverage'         => strtoupper($request->coverage),
+            'particulars'      => strtoupper($request->particulars),
+            'room'             => strtoupper($request->room),
+            'effectivity_date' => $request->effectivity_date,
+            'expiration_date'  => $request->expiration_date,
+            'status'           => strtoupper($request->status)
         ]);
 
         if($update){

@@ -33,6 +33,18 @@
                     </div>
                     <div class="row mb-4">
                         <div class="f-outline">
+                            <input class="forminput form-control" type="date" id="hmoEffecitivityDate" placeholder=" " style="background-color:white;">
+                            <label for="hmoEffecitivityDate" class="formlabel form-label">EFFECTIVITY DATE</label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="f-outline">
+                            <input class="forminput form-control" type="date" id="hmoExpirationDate" placeholder=" " style="background-color:white;">
+                            <label for="hmoExpirationDate" class="formlabel form-label">EXPIRATION DATE</label>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="f-outline">
                             <select class="form-select forminput form-control" id="hmoStatus" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <option value="ACTIVE">ACTIVE</option>
                                 <option value="INACTIVE">INACTIVE</option>

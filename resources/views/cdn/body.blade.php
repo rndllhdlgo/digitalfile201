@@ -24,6 +24,7 @@
     <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+    <script src="/js/employees/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 @endif
 
 @if(Request::is('users'))
