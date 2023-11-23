@@ -1,105 +1,3 @@
-function hmo_table(value_id){
-    $('.hmo_table_orig').dataTable().fnDestroy();
-    $('.hmo_table_orig').DataTable({
-        columnDefs: [
-            {
-                "render": function(data, type, row, meta){
-                    return `<button type="button" class="btn btn-primary center btnEditHmo"
-                                hmo_id=${row.id}
-                                hmo_name=${row.hmo}
-                                hmo_coverage=${row.coverage}
-                                hmo_particulars=${row.particulars}
-                                hmo_room=${row.room}
-                                hmo_effectivity_date=${row.effectivity_date}
-                                hmo_expiration_date=${row.expiration_date}
-                                hmo_status=${row.status}>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>`;
-                },
-                "defaultContent": '',
-                "data": null,
-                "targets": [7],
-            }
-        ],
-        searching: false,
-        paging: false,
-        info: false,
-        ordering:false,
-        autoWidth: false,
-        language:{
-            emptyTable: "NO DATA AVAILABLE",
-            processing: "Loading...",
-        },
-        serverSide: true,
-        ajax: {
-            url: '/employees/hmo_data',
-            async: false,
-            data:{
-                id: value_id,
-            }
-        },
-        columns: [
-            { data: 'hmo',         width: '15%'},
-            { data: 'coverage',    width: '15%'},
-            { data: 'particulars', width: '15%'},
-            { data: 'room',        width: '15%'},
-            {
-                data: 'effectivity_date', width: '15%',
-                "render":function(data,type,row){
-                    return moment(data).format('MMMM D, YYYY');
-                }
-            },
-            {
-                data: 'expiration_date', width: '15%',
-                "render":function(data,type,row){
-                    return moment(data).format('MMMM D, YYYY');
-                }
-            },
-            { data: 'status', width: '5%'},
-        ],
-        initComplete: function(){
-            if(!$('.hmo_table_orig').DataTable().data().any()){
-                $('#hmo_table_orig').hide();
-            }
-            else{
-                $('#hmo_table_orig').show();
-            }
-        }
-    });
-}
-
-function leave_table(value_empno){
-    $('#leave_credits').dataTable().fnDestroy();
-    $('#leave_credits').DataTable({
-        dom: 't',
-        ajax: {
-            url: '/employees/leave_data',
-            data:{
-                empno: value_empno
-            },
-        },
-        order:[0,'asc'],
-        columns: [
-            {
-                data: 'lv_code', defaultContent:'',
-                "render": function(data, type, row){
-                    if(data == 'SL'){
-                        return 'SICK LEAVE';
-                    }
-                    else if(data == 'VL'){
-                        return 'VACATION LEAVE';
-                    }
-                    else if(data == 'BL'){
-                        return 'BIRTHDAY LEAVE';
-                    }
-                }
-            },
-            { data: 'lv_balance'},
-            { data: 'no_days'}
-        ],
-    });
-}
-
 function children_table(value_id){
     $('.children_table_orig').dataTable().fnDestroy();
     $('.children_table_orig').DataTable({
@@ -182,10 +80,6 @@ function college_table(value_id){
                 "targets": [4],
             }
         ],
-        searching: false,
-        paging: false,
-        info: false,
-        ordering:false,
         autoWidth: false,
         language:{
             emptyTable: "NO DATA AVAILABLE",
@@ -205,13 +99,13 @@ function college_table(value_id){
             {
                 data: 'college_inclusive_years_from',
                 "render":function(data,type,row){
-                    return "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
+                    return "FROM: "+moment(row.college_inclusive_years_from).format('MMMM YYYY');
                 },
                 width: '15%'},
             {
                 data: 'college_inclusive_years_to',
                 "render":function(data,type,row){
-                    return "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
+                    return "TO: "+moment(row.college_inclusive_years_to).format('MMMM YYYY');
                 },
                 width: '15%'}
         ],
@@ -376,13 +270,13 @@ function training_table(value_id){
             {
                 data: 'training_inclusive_years_from',
                 "render":function(data,type,row){
-                    return "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
+                    return "FROM: "+moment(row.training_inclusive_years_from).format('MMMM YYYY');
                 },
                 width: '15%'},
             {
                 data: 'training_inclusive_years_to',
                 "render":function(data,type,row){
-                    return "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
+                    return "TO: "+moment(row.training_inclusive_years_to).format('MMMM YYYY');
                 },
                 width: '15%'}
         ],
@@ -433,14 +327,14 @@ function vocational_table(value_id){
             {
                 data: 'vocational_inclusive_years_from',
                 "render":function(data,type,row){
-                    return "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
+                    return "FROM: "+moment(row.vocational_inclusive_years_from).format('MMMM YYYY');
                 },
                 width: '15%'
             },
             {
                 data: 'vocational_inclusive_years_to',
                 "render":function(data,type,row){
-                    return "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
+                    return "TO: "+moment(row.vocational_inclusive_years_to).format('MMMM YYYY');
                 },
                 width: '15%'
             }
@@ -494,14 +388,14 @@ function job_history_table(value_id){
             {
                 data: 'job_inclusive_years_from',
                 "render":function(data,type,row){
-                    return "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
+                    return "FROM: "+moment(row.job_inclusive_years_from).format('MMMM YYYY');
                 },
                 width : '15%'
             },
             {
                 data: 'job_inclusive_years_to',
                 "render":function(data,type,row){
-                    return "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
+                    return "TO: "+moment(row.job_inclusive_years_to).format('MMMM YYYY');
                 },
                 width : '15%'
             }
@@ -817,5 +711,115 @@ function termination_table(value_id, value_employee_number, value_last_name, val
                 $('#termination_table_data').show();
             }
         }
+    });
+}
+
+function hmo_table(value_id){
+    $('.hmo_table_orig').dataTable().fnDestroy();
+    $('.hmo_table_orig').DataTable({
+        columnDefs: [
+            {
+                "render": function(data, type, row, meta){
+                    return `<button type="button" class="btn btn-primary center btnEditHmo"
+                                hmo_id=${row.id}
+                                hmo_name=${row.hmo}
+                                hmo_coverage=${row.coverage}
+                                hmo_particulars=${row.particulars}
+                                hmo_room=${row.room}
+                                hmo_effectivity_date=${row.effectivity_date}
+                                hmo_expiration_date=${row.expiration_date}
+                                hmo_status=${row.status}>
+                                <i class="fa-solid fa-pen-to-square"></i>
+                            </button>`;
+                },
+                "defaultContent": '',
+                "data": null,
+                "targets": [7],
+            }
+        ],
+        searching: false,
+        paging: false,
+        info: false,
+        ordering:false,
+        autoWidth: false,
+        language:{
+            emptyTable: "NO DATA AVAILABLE",
+            processing: "Loading...",
+        },
+        serverSide: true,
+        ajax: {
+            url: '/employees/hmo_data',
+            async: false,
+            data:{
+                id: value_id,
+            }
+        },
+        columns: [
+            { data: 'hmo',         width: '15%'},
+            { data: 'coverage',    width: '15%'},
+            { data: 'particulars', width: '15%'},
+            { data: 'room',        width: '15%'},
+            {
+                data: 'effectivity_date', width: '15%',
+                "render":function(data,type,row){
+                    return moment(data).format('MMMM D, YYYY');
+                }
+            },
+            {
+                data: 'expiration_date', width: '15%',
+                "render":function(data,type,row){
+                    return moment(data).format('MMMM D, YYYY');
+                }
+            },
+            {
+                data: 'status', width: '5%',
+                "render":function(data,type,row){
+                    if(data == 'ACTIVE'){
+                        return `<span class="text-center text-success" style="zoom:90%;"><b>ACTIVE</b></span>`;
+                    }
+                    return `<span class="text-center text-danger" style="zoom:90%;"><b>INACTIVE</b></span>`;
+                }
+            }
+        ],
+        initComplete: function(){
+            if(!$('.hmo_table_orig').DataTable().data().any()){
+                $('#hmo_table_orig').hide();
+            }
+            else{
+                $('#hmo_table_orig').show();
+            }
+        }
+    });
+}
+
+function leave_table(value_empno){
+    $('#leave_credits').dataTable().fnDestroy();
+    $('#leave_credits').DataTable({
+        dom: 't',
+        ajax: {
+            url: '/employees/leave_data',
+            data:{
+                empno: value_empno
+            },
+        },
+        order:[0,'asc'],
+        columns: [
+            {
+                data: 'lv_code', defaultContent:'',
+                "render": function(data, type, row){
+                    if(data == 'SL'){
+                        return 'SICK LEAVE';
+                    }
+                    else if(data == 'VL'){
+                        return 'VACATION LEAVE';
+                    }
+                    else if(data == 'BL'){
+                        return 'BIRTHDAY LEAVE';
+                    }
+                }
+            },
+            { data: 'lv_balance'},
+            { data: 'no_days'}
+        ],
     });
 }

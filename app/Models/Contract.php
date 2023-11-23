@@ -7,5 +7,5 @@ use Illuminate\Database\Eloquent\Model;
 class Contract extends Model
 {
     protected $guarded = [];
-    protected $table = 'contract';
+    protected $table = 'contracts';
 }

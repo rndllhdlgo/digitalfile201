@@ -27,18 +27,20 @@ var tblMemo,
     tblTermination;
 var tblChange;
 
+// increment++ when have
+
 $('#childrenAdd').click(function(){
-    var child_name = $('#child_name').val().trim();
-    var child_birthday = $('#child_birthday').val();
-    var child_age = $('#child_age').val();
-    var child_gender = $('#child_gender').val();
+    var child_name     = $('#child_name').val().trim();
+    var child_birthday = moment($('#child_birthday').val()).format('MMMM D, YYYY');;
+    var child_age      = $('#child_age').val();
+    var child_gender   = $('#child_gender').val();
 
     var children_table =`<tr class='children_tr'>
-                            <td class='td_1 text-uppercase' style='width:22.5%;'>${child_name}</td>
-                            <td class='td_2' style='width:22.5%;'>${child_birthday}</td>
-                            <td class='td_3' style='width:22.5%;'>${child_age}</td>
-                            <td class='td_4' style='width:22.5%;'>${child_gender}</td>
-                            <td style='width:10%;'> <button type="button" class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                            <td class='td_1 text-uppercase'>${child_name}</td>
+                            <td class='td_2'>${child_birthday}</td>
+                            <td class='td_3'>${child_age}</td>
+                            <td class='td_4'>${child_gender}</td>
+                            <td> <button type="button" class='btn btn-danger btn_children center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                         <tr>`;
     $('.dataTables_empty').closest('tr').remove();
     $('#children_table_orig_tbody').append(children_table);
@@ -54,17 +56,17 @@ $('#childrenAdd').click(function(){
 });
 
 $('#collegeAdd').click(function(){
-    var college_name = $('#college_name').val();
-    var college_degree = $('#college_degree').val();
-    var college_inclusive_years_from = $('#college_inclusive_years_from').val();
-    var college_inclusive_years_to = $('#college_inclusive_years_to').val();
+    var college_name                 = $('#college_name').val();
+    var college_degree               = $('#college_degree').val();
+    var college_inclusive_years_from = moment($('#college_inclusive_years_from').val()).format('MMMM YYYY');
+    var college_inclusive_years_to   = moment($('#college_inclusive_years_to').val()).format('MMMM YYYY');
 
     var college_table = `<tr class='college_tr'>
-                            <td class='td_1 text-uppercase' style='width: 30%;'>${college_name}</td>
-                            <td class='td_2 text-uppercase' style='width: 30%;'>${college_degree}</td>
-                            <td class='td_3' style='width: 15%;'>${college_inclusive_years_from}</td>
-                            <td class='td_4' style='width: 15%;'>${college_inclusive_years_to}</td>
-                            <td style='width: 10%;'> <button type="button" class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                            <td class='td_1 text-uppercase'>${college_name}</td>
+                            <td class='td_2 text-uppercase'>${college_degree}</td>
+                            <td class='td_3'>FROM: ${college_inclusive_years_from}</td>
+                            <td class='td_4'>TO: ${college_inclusive_years_to}</td>
+                            <td><button type="button" class='btn btn-danger btn_college center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                         <tr>`;
 
     $('.dataTables_empty').closest('tr').remove();
@@ -103,75 +105,18 @@ $('#collegeAdd').click(function(){
     });
 });
 
-
-$('#hmoAdd').click(function(){
-    var hmo              = $('#hmo').val();
-    var coverage         = $('#coverage').val();
-    var particulars      = $('#particulars').val();
-    var room             = $('#room').val();
-    var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
-    var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
-
-    var hmo_table = `<tr class='hmo_tr'>
-                        <td class='td_1 text-uppercase'>${hmo}</td>
-                        <td class='td_2 text-uppercase'>${coverage}</td>
-                        <td class='td_3 text-uppercase'>${particulars}</td>
-                        <td class='td_4 text-uppercase'>${room}</td>
-                        <td class='td_5'>${effectivity_date}</td>
-                        <td class='td_6'>${expiration_date}</td>
-                        <td class='text-center'>ACTIVE</td>
-                        <td><button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
-                    <tr>`;
-
-    $('.dataTables_empty').closest('tr').remove();
-    $('#hmo_table_orig_tbody').append(hmo_table);
-    $('#hmo_table_orig').show();
-    $('#hmo_table_orig tr:last').remove();
-    hmo_change = 'CHANGED';
-    tblHmo = 'tblHmo';
-    tblChange = 'CHANGED_ROW';
-
-    $('#hmo').val('');
-    $('#coverage').val('');
-    $('#particulars').val('');
-    $('#room').val('');
-    $('#effectivity_date').val('');
-    $('#expiration_date').val('');
-
-    $('.btn_hmo').click(function(){
-        Swal.fire({
-            title: 'Do you want to delete this row?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            allowOutsideClick: false,
-            allowEscapeKey: false,
-            showDenyButton: true,
-            confirmButtonText: 'Yes',
-            denyButtonText: 'No',
-            customClass: {
-            actions: 'my-actions',
-            confirmButton: 'order-2',
-            denyButton: 'order-3',
-            }
-        }).then((save) => {
-            if(save.isConfirmed){
-                $(this).parent().parent().remove();
-            }
-        });
-    });
-});
-
 $('#secondaryAdd').click(function(){
     var secondary_name = $('#secondary_name').val();
     var secondary_address = $('#secondary_address').val();
-    var secondary_from = $('#secondary_from').val();
-    var secondary_to = $('#secondary_to').val();
+
+    var secondary_from = moment($('#secondary_from').val()).format('MMMM YYYY');
+    var secondary_to   = moment($('#secondary_to').val()).format('MMMM YYYY');
 
     var secondary_table = `<tr class='secondary_tr'>
-                            <td class='td_1 text-uppercase' style='width: 30%;'>${secondary_name}</td>
-                            <td class='td_2 text-uppercase' style='width: 30%;'>${secondary_address}</td>
-                            <td class='td_3' style='width: 15%;'>${secondary_from}</td>
-                            <td class='td_4' style='width: 15%;'>${secondary_to}</td>
+                            <td class='td_1 text-uppercase'>${secondary_name}</td>
+                            <td class='td_2 text-uppercase'>${secondary_address}</td>
+                            <td class='td_3'>FROM: ${secondary_from}</td>
+                            <td class='td_4'>TO: ${secondary_to}</td>
                             <td style='width: 10%;'> <button type="button" class='btn btn-danger btn_secondary center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
                         <tr>`;
 
@@ -214,15 +159,15 @@ $('#secondaryAdd').click(function(){
 $('#primaryAdd').click(function(){
     var primary_name    = $('#primary_name').val();
     var primary_address = $('#primary_address').val();
-    var primary_from    = $('#primary_from').val();
-    var primary_to      = $('#primary_to').val();
+    var primary_from    = moment($('#primary_from').val()).format('MMMM YYYY');
+    var primary_to      = moment($('#primary_to').val()).format('MMMM YYYY');
 
     var primary_table = `<tr class='primary_tr'>
-                            <td class='td_1 text-uppercase' style='width: 30%;'>${primary_name}</td>
-                            <td class='td_2 text-uppercase' style='width: 30%;'>${primary_address}</td>
-                            <td class='td_3' style='width: 15%;'>${primary_from}</td>
-                            <td class='td_4' style='width: 15%;'>${primary_to}</td>
-                            <td style='width: 10%;'> <button type="button" class='btn btn-danger btn_primary center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
+                            <td class='td_1 text-uppercase'>${primary_name}</td>
+                            <td class='td_2 text-uppercase'>${primary_address}</td>
+                            <td class='td_3'>FROM: ${primary_from}</td>
+                            <td class='td_4'>TO: ${primary_to}</td>
+                            <td><button type="button" class='btn btn-danger btn_primary center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
                         <tr>`;
 
     $('.dataTables_empty').closest('tr').remove();
@@ -262,17 +207,17 @@ $('#primaryAdd').click(function(){
 });
 
 $('#trainingAdd').click(function(){
-    var training_name = $('#training_name').val();
-    var training_title = $('#training_title').val();
-    var training_inclusive_years_from = $('#training_inclusive_years_from').val();
-    var training_inclusive_years_to = $('#training_inclusive_years_to').val();
+    var training_name                 = $('#training_name').val();
+    var training_title                = $('#training_title').val();
+    var training_inclusive_years_from = moment($('#training_inclusive_years_from').val()).format('MMMM YYYY');
+    var training_inclusive_years_to   = moment($('#training_inclusive_years_to').val()).format('MMMMM YYYY');
 
     var training_table = `<tr class='training_tr'>
-                                <td class='td_1 text-uppercase' style='width:30%;'>${training_name}</td>
-                                <td class='td_2 text-uppercase' style='width:30%;'>${training_title}</td>
-                                <td class='td_3' style='width:15%;'>${training_inclusive_years_from}</td>
-                                <td class='td_4' style='width:15%;'>${training_inclusive_years_to}</td>
-                                <td style='width:10%;'> <button type="button" class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                <td class='td_1 text-uppercase'>${training_name}</td>
+                                <td class='td_2 text-uppercase'>${training_title}</td>
+                                <td class='td_3'>FROM: ${training_inclusive_years_from}</td>
+                                <td class='td_4'>TO: ${training_inclusive_years_to}</td>
+                                <td><button type="button" class='btn btn-danger btn_training center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                             </tr>`;
     $('.dataTables_empty').closest('tr').remove();
     $('#training_table_orig_tbody').append(training_table);
@@ -310,17 +255,17 @@ $('#trainingAdd').click(function(){
 });
 
 $('#vocationalAdd').click(function(){
-    var vocational_name = $('#vocational_name').val();
-    var vocational_course = $('#vocational_course').val();
-    var vocational_inclusive_years_from = $('#vocational_inclusive_years_from').val();
-    var vocational_inclusive_years_to = $('#vocational_inclusive_years_to').val();
+    var vocational_name                 = $('#vocational_name').val();
+    var vocational_course               = $('#vocational_course').val();
+    var vocational_inclusive_years_from = moment($('#vocational_inclusive_years_from').val()).format('MMMM YYYY');
+    var vocational_inclusive_years_to   = moment($('#vocational_inclusive_years_to').val()).format('MMMM YYYY');
 
     var vocational_table = `<tr class='vocational_tr'>
-                                <td class='td_1 text-uppercase' style='width:30%'>${vocational_name}</td>
-                                <td class='td_2 text-uppercase' style='width:30%'>${vocational_course}</td>
-                                <td class='td_3' style='width:15%'>${vocational_inclusive_years_from}</td>
-                                <td class='td_4' style='width:15%'>${vocational_inclusive_years_to}</td>
-                                <td style='width:10%'> <button type="button" class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                <td class='td_1 text-uppercase'>${vocational_name}</td>
+                                <td class='td_2 text-uppercase'>${vocational_course}</td>
+                                <td class='td_3'>${vocational_inclusive_years_from}</td>
+                                <td class='td_4'>${vocational_inclusive_years_to}</td>
+                                <td><button type="button" class='btn btn-danger btn_vocational center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                             </tr>`;
     $('.dataTables_empty').closest('tr').remove();
     $('#vocational_table_orig_tbody').append(vocational_table);
@@ -358,21 +303,21 @@ $('#vocationalAdd').click(function(){
 });
 
 $('#jobHistoryAdd').click(function(){
-    var job_company_name = $('#job_company_name').val().trim();
-    var job_description = $('#job_description').val().trim();
-    var job_position = $('#job_position').val().trim();
-    var job_contact_number = $('#job_contact_number').val().trim();
-    var job_inclusive_years_from = $('#job_inclusive_years_from').val().trim();
-    var job_inclusive_years_to = $('#job_inclusive_years_to').val().trim();
+    var job_company_name         = $('#job_company_name').val();
+    var job_description          = $('#job_description').val();
+    var job_position             = $('#job_position').val();
+    var job_contact_number       = $('#job_contact_number').val();
+    var job_inclusive_years_from = moment($('#job_inclusive_years_from').val()).format('MMMM YYYY');
+    var job_inclusive_years_to   = moment($('#job_inclusive_years_to').val()).format('MMMM YYYY');
 
     var job_history_table = `<tr class='job_history_tr'>
-                                <td class='td_1 text-uppercase' style='width:15%;'>${job_company_name}</td>
-                                <td class='td_2 text-uppercase' style='width:15%'>${job_description}</td>
-                                <td class='td_3 text-uppercase' style='width:15%'>${job_position}</td>
-                                <td class='td_4' style='width:15%'>${job_contact_number}</td>
-                                <td class='td_5' style='width:15%'>${job_inclusive_years_from}</td>
-                                <td class='td_6' style='width:15%'>${job_inclusive_years_to}</td>
-                                <td style='width:10%'> <button type="button" class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
+                                <td class='td_1 text-uppercase'>${job_company_name}</td>
+                                <td class='td_2 text-uppercase'>${job_description}</td>
+                                <td class='td_3 text-uppercase'>${job_position}</td>
+                                <td class='td_4'>${job_contact_number}</td>
+                                <td class='td_5'>${job_inclusive_years_from}</td>
+                                <td class='td_6'>${job_inclusive_years_to}</td>
+                                <td><button type="button" class='btn btn-danger btn_job center' title='DELETE'> <i class='fas fa-trash-alt'></i> </button> </td>
                             </tr>`;
     $('.dataTables_empty').closest('tr').remove();
     $('#job_history_table_tbody').append(job_history_table);
@@ -389,6 +334,63 @@ $('#jobHistoryAdd').click(function(){
     $('#job_inclusive_years_to').val("");
 
     $('.btn_job').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+            }
+        });
+    });
+});
+
+$('#hmoAdd').click(function(){
+    var hmo              = $('#hmo').val();
+    var coverage         = $('#coverage').val();
+    var particulars      = $('#particulars').val();
+    var room             = $('#room').val();
+    var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
+    var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
+
+    var hmo_table = `<tr class='hmo_tr'>
+                        <td class='td_1 text-uppercase'>${hmo}</td>
+                        <td class='td_2 text-uppercase'>${coverage}</td>
+                        <td class='td_3 text-uppercase'>${particulars}</td>
+                        <td class='td_4 text-uppercase'>${room}</td>
+                        <td class='td_5'>${effectivity_date}</td>
+                        <td class='td_6'>${expiration_date}</td>
+                        <td class='text-center'>ACTIVE</td>
+                        <td><button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
+                    <tr>`;
+
+    $('.dataTables_empty').closest('tr').remove();
+    $('#hmo_table_orig_tbody').append(hmo_table);
+    $('#hmo_table_orig').show();
+    $('#hmo_table_orig tr:last').remove();
+    hmo_change = 'CHANGED';
+    tblHmo = 'tblHmo';
+    tblChange = 'CHANGED_ROW';
+
+    $('#hmo').val('');
+    $('#coverage').val('');
+    $('#particulars').val('');
+    $('#room').val('');
+    $('#effectivity_date').val('');
+    $('#expiration_date').val('');
+
+    $('.btn_hmo').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",

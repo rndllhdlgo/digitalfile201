@@ -243,12 +243,12 @@ $('#btnUpdate').on('click',function(){
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
-                                    employee_id : data.id,
-                                    college_name : $(this).children('.td_1').html(),
-                                    college_degree : $(this).children('.td_2').html(),
-                                    college_inclusive_years_from: $(this).children('.td_3').html(),
-                                    college_inclusive_years_to: $(this).children('.td_4').html(),
-                                    college_change:college_change
+                                    employee_id                  : data.id,
+                                    college_name                 : $(this).children('.td_1').html(),
+                                    college_degree               : $(this).children('.td_2').html(),
+                                    college_inclusive_years_from : $(this).children('.td_3').html().substring(5),
+                                    college_inclusive_years_to   : $(this).children('.td_4').html().substring(3),
+                                    college_change               : college_change
                                 }
                             });
                             college_change = '';
@@ -263,12 +263,12 @@ $('#btnUpdate').on('click',function(){
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
-                                    employee_id : data.id,
-                                    secondary_name : $(this).children('.td_1').html(),
+                                    employee_id       : data.id,
+                                    secondary_name    : $(this).children('.td_1').html(),
                                     secondary_address : $(this).children('.td_2').html(),
-                                    secondary_from: $(this).children('.td_3').html(),
-                                    secondary_to: $(this).children('.td_4').html(),
-                                    secondary_change:secondary_change
+                                    secondary_from    : $(this).children('.td_3').html().substring(5),
+                                    secondary_to      : $(this).children('.td_4').html().substring(3),
+                                    secondary_change  : secondary_change
                                 }
                             });
                             secondary_change = '';
@@ -286,12 +286,74 @@ $('#btnUpdate').on('click',function(){
                                     employee_id : data.id,
                                     primary_name    : $(this).children('.td_1').html(),
                                     primary_address : $(this).children('.td_2').html(),
-                                    primary_from    : $(this).children('.td_3').html(),
-                                    primary_to      : $(this).children('.td_4').html(),
+                                    primary_from    : $(this).children('.td_3').html().substring(5),
+                                    primary_to      : $(this).children('.td_4').html().substring(3),
                                     primary_change  : primary_change
                                 }
                             });
                             primary_change = '';
+                        });
+
+                        $('.training_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveTraining',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id                   : data.id,
+                                    training_name                 : $(this).children('.td_1').html(),
+                                    training_title                : $(this).children('.td_2').html(),
+                                    training_inclusive_years_from : $(this).children('.td_3').html().substring(5),
+                                    training_inclusive_years_to   : $(this).children('.td_4').html().substring(3),
+                                    training_change               : training_change
+                                }
+                            });
+                            training_change = '';
+                        });
+
+                        $('.vocational_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveVocational',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id                     : data.id,
+                                    vocational_name                 : $(this).children('.td_1').html(),
+                                    vocational_course               : $(this).children('.td_2').html(),
+                                    vocational_inclusive_years_from : $(this).children('.td_3').html().substring(5),
+                                    vocational_inclusive_years_to   : $(this).children('.td_4').html().substring(3),
+                                    vocational_change               : vocational_change,
+                                }
+                            });
+                            vocational_change = '';
+                        });
+
+                        $('.job_history_tr').each(function(){
+                            $.ajax({
+                                type: 'POST',
+                                url: '/employees/saveJobHistory',
+                                async: false,
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    employee_id              : data.id,
+                                    job_company_name         : $(this).children('.td_1').html(),
+                                    job_description          : $(this).children('.td_2').html(),
+                                    job_position             : $(this).children('.td_3').html(),
+                                    job_contact_number       : $(this).children('.td_4').html(),
+                                    job_inclusive_years_from : $(this).children('.td_5').html().substring(5),
+                                    job_inclusive_years_to   : $(this).children('.td_6').html().substring(3),
+                                    job_history_change       : job_history_change
+                                }
+                            });
+                            job_history_change = '';
                         });
 
                         $('.hmo_tr').each(function(){
@@ -314,68 +376,6 @@ $('#btnUpdate').on('click',function(){
                                 }
                             });
                             hmo_change = '';
-                        });
-
-                        $('.training_tr').each(function(){
-                            $.ajax({
-                                type: 'POST',
-                                url: '/employees/saveTraining',
-                                async: false,
-                                headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data:{
-                                    employee_id : data.id,
-                                    training_name : $(this).children('.td_1').html(),
-                                    training_title :  $(this).children('.td_2').html(),
-                                    training_inclusive_years_from : $(this).children('.td_3').html(),
-                                    training_inclusive_years_to : $(this).children('.td_4').html(),
-                                    training_change:training_change
-                                }
-                            });
-                            training_change = '';
-                        });
-
-                        $('.vocational_tr').each(function(){
-                            $.ajax({
-                                type: 'POST',
-                                url: '/employees/saveVocational',
-                                async: false,
-                                headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data:{
-                                    employee_id : data.id,
-                                    vocational_name : $(this).children('.td_1').html(),
-                                    vocational_course : $(this).children('.td_2').html(),
-                                    vocational_inclusive_years_from: $(this).children('.td_3').html(),
-                                    vocational_inclusive_years_to: $(this).children('.td_4').html(),
-                                    vocational_change:vocational_change,
-                                }
-                            });
-                            vocational_change = '';
-                        });
-
-                        $('.job_history_tr').each(function(){
-                            $.ajax({
-                                type: 'POST',
-                                url: '/employees/saveJobHistory',
-                                async: false,
-                                headers:{
-                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                                },
-                                data:{
-                                    employee_id : data.id,
-                                    job_company_name : $(this).children('.td_1').html(),
-                                    job_description : $(this).children('.td_2').html(),
-                                    job_position : $(this).children('.td_3').html(),
-                                    job_contact_number : $(this).children('.td_4').html(),
-                                    job_inclusive_years_from : $(this).children('.td_5').html(),
-                                    job_inclusive_years_to : $(this).children('.td_6').html(),
-                                    job_history_change:job_history_change
-                                }
-                            });
-                            job_history_change = '';
                         });
 
                         // Delete Multiple
@@ -622,562 +622,55 @@ $('#btnUpdate').on('click',function(){
 
                         setTimeout(() => {
                             if(tblChildren == 'tblChildren'){
-                                $('.children_table_orig').dataTable().fnDestroy();
-                                $('.children_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_children center" id="' + meta.row + '" onclick="deleteRow(\'.children_table_orig\', children_id, \'children_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        },
-                                        {
-                                            data: null,
-                                            render: function(data, type, row, meta) {
-                                                var today = new Date();
-                                                var birthDate = new Date(row.child_birthday);
-                                                var age = today.getFullYear() - birthDate.getFullYear();
-                                                var m = today.getMonth() - birthDate.getMonth();
-                                                if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-                                                    age--;
-                                                }
-                                                return age;
-                                            },
-                                            targets: [2] // index of new column
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    ordering: false,
-                                    info: false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/children_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'child_name', width: '22.5%'},
-                                        {
-                                            data: 'child_birthday', width: '22.5%',
-                                            "render":function(data,type,row){
-                                                return formatDate(row.child_birthday);
-                                            }
-                                        },
-                                        { data:  null, defaultContent : "", width: '22.5%'},
-                                        { data: 'child_gender', width: '22.5%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.children_table_orig').DataTable().data().any()){
-                                            $('#children_table_orig').hide();
-                                        }
-                                        else{
-                                            $('#children_table_orig').show();
-                                        }
-                                    }
-                                });
+                                children_table(data.id);
                                 $('.btn_children').parent().parent().remove();
                                 tblChildren = '';
                             }
 
                             if(tblCollege == 'tblCollege'){
-                                $('.college_table_orig').dataTable().fnDestroy();
-                                $('.college_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_college center" id="' + meta.row + '" onclick="deleteRow(\'.college_table_orig\', college_id, \'college_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/college_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'college_name',width: '30%'},
-                                        { data: 'college_degree', width: '30%'},
-                                        {
-                                            data: 'college_inclusive_years_from',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.college_inclusive_years_from+"</span>"+ "FROM: "+moment(row.college_inclusive_years_from).format('MMM. YYYY');
-                                            },
-                                            width: '15%'},
-                                        {
-                                            data: 'college_inclusive_years_to',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.college_inclusive_years_to+"</span>"+ "TO: "+moment(row.college_inclusive_years_to).format('MMM. YYYY');
-                                            },
-                                            width: '15%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.college_table_orig').DataTable().data().any()){
-                                            $('#college_table_orig').hide();
-                                        }
-                                        else{
-                                            $('#college_table_orig').show();
-                                        }
-                                    }
-                                });
+                                college_table(data.id);
                                 $('.btn_college').parent().parent().remove();
                                 tblCollege = '';
                             }
 
                             if(tblSecondary == 'tblSecondary'){
-                                $('.secondary_table_orig').dataTable().fnDestroy();
-                                $('.secondary_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_secondary center" id="' + meta.row + '" onclick="deleteRow(\'.secondary_table_orig\', secondary_id, \'secondary_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/secondary_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'secondary_name',width: '30%'},
-                                        { data: 'secondary_address', width: '30%'},
-                                        {
-                                            data: 'secondary_from',
-                                            "render":function(data,type,row){
-                                                return "FROM: "+moment(row.secondary_from).format('MMMM YYYY');
-                                            },
-                                            width: '15%'},
-                                        {
-                                            data: 'secondary_to',
-                                            "render":function(data,type,row){
-                                                return "TO: "+moment(row.secondary_to).format('MMMM YYYY');
-                                            },
-                                            width: '15%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.secondary_table_orig').DataTable().data().any()){
-                                            $('#secondary_table_orig').hide();
-                                        }
-                                        else{
-                                            $('#secondary_table_orig').show();
-                                        }
-                                    }
-                                });
+                                secondary_table(data.id);
                                 $('.btn_secondary').parent().parent().remove();
                                 tblSecondary = '';
                             }
 
                             if(tblPrimary == 'tblPrimary'){
-                                $('.primary_table_orig').dataTable().fnDestroy();
-                                $('.primary_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_primary center" id="' + meta.row + '" onclick="deleteRow(\'.primary_table_orig\', primary_id, \'primary_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/primary_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'primary_name',width: '30%'},
-                                        { data: 'primary_address', width: '30%'},
-                                        {
-                                            data: 'primary_from',
-                                            "render":function(data,type,row){
-                                                return "FROM: "+moment(row.primary_from).format('MMMM YYYY');
-                                            },
-                                            width: '15%'},
-                                        {
-                                            data: 'primary_to',
-                                            "render":function(data,type,row){
-                                                return "TO: "+moment(row.primary_to).format('MMMM YYYY');
-                                            },
-                                            width: '15%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.primary_table_orig').DataTable().data().any()){
-                                            $('#primary_table_orig').hide();
-                                        }
-                                        else{
-                                            $('#primary_table_orig').show();
-                                        }
-                                    }
-                                });
+                                primary_table(data.id);
                                 $('.btn_primary').parent().parent().remove();
                                 tblPrimary = '';
                             }
 
                             if(tblTraining == 'tblTraining'){
-                                $('.training_table_orig').dataTable().fnDestroy();
-                                $('.training_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_training center" id="' + meta.row + '" onclick="deleteRow(\'.training_table_orig\', training_id, \'training_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    ordering: false,
-                                    info: false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/training_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'training_name',width: '30%'},
-                                        { data: 'training_title', width: '30%'},
-                                        {
-                                            data: 'training_inclusive_years_from',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.training_inclusive_years_from+"</span>"+ "FROM: "+moment(row.training_inclusive_years_from).format('MMM. YYYY');
-                                            },
-                                            width: '15%'},
-                                        {
-                                            data: 'training_inclusive_years_to',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.training_inclusive_years_to+"</span>"+ "TO: "+moment(row.training_inclusive_years_to).format('MMM. YYYY');
-                                            },
-                                            width: '15%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.training_table_orig').DataTable().data().any()){
-                                            $('#training_table_orig').hide();
-                                            $('.checkbox5').addClass('btnDisabled').attr('disabled',true);
-                                        }
-                                        else{
-                                            $('#training_table_orig').show();
-                                            $('.checkbox5').removeClass('btnDisabled').attr('disabled',false);
-                                        }
-                                    }
-                                });
+                                training_table(data.id);
                                 $('.btn_training').parent().parent().remove();
                                 tblTraining = '';
                             }
 
                             if(tblVocational == 'tblVocational'){
-                                $('.vocational_table_orig').dataTable().fnDestroy();
-                                $('.vocational_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_vocational center" id="' + meta.row + '" onclick="deleteRow(\'.vocational_table_orig\', vocational_id, \'vocational_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    ordering: false,
-                                    info: false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/vocational_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'vocational_name', width: '30%'},
-                                        { data: 'vocational_course', width: '30%'},
-                                        {
-                                            data: 'vocational_inclusive_years_from',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.vocational_inclusive_years_from+"</span>"+ "FROM: "+moment(row.vocational_inclusive_years_from).format('MMM. YYYY');
-                                            },
-                                            width: '15%'
-                                        },
-                                        {
-                                            data: 'vocational_inclusive_years_to',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.vocational_inclusive_years_to+"</span>"+ "TO: "+moment(row.vocational_inclusive_years_to).format('MMM. YYYY');
-                                            },
-                                            width: '15%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.vocational_table_orig').DataTable().data().any()){
-                                            $('#vocational_table_orig').hide();
-                                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
-                                        }
-                                        else{
-                                            $('#vocational_table_orig').show();
-                                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
-                                        }
-                                    }
-                                });
+                                vocational_table(data.id);
                                 $('.btn_vocational').parent().parent().remove();
                                 tblVocational = '';
                             }
 
                             if(tblJob == 'tblJob'){
-                                $('.job_history_table_orig').dataTable().fnDestroy();
-                                $('.job_history_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_job center" id="' + meta.row + '" onclick="deleteRow(\'.job_history_table_orig\', job_history_id, \'job_history_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [6],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    ordering: false,
-                                    info: false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/job_history_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'job_company_name',width : '15%'},
-                                        { data: 'job_description',width : '15%'},
-                                        { data: 'job_position', width: '15%'},
-                                        { data: 'job_contact_number', width : '15%'},
-                                        {
-                                            data: 'job_inclusive_years_from',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.job_inclusive_years_from+"</span>"+ "FROM: "+moment(row.job_inclusive_years_from).format('MMM. YYYY');
-                                            },
-                                            width : '15%'
-                                        },
-                                        {
-                                            data: 'job_inclusive_years_to',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.job_inclusive_years_to+"</span>"+ "TO: "+moment(row.job_inclusive_years_to).format('MMM. YYYY');
-                                            },
-                                            width : '15%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.job_history_table_orig').DataTable().data().any()){
-                                            $('#job_history_table_orig').hide();
-                                            $('#checkbox6').prop('disabled',true);
-                                            $('.checkbox6').addClass('btnDisabled').attr('disabled',true);
-                                        }
-                                        else{
-                                            $('#job_history_table_orig').show();
-                                            $('#checkbox6').prop('disabled',false);
-                                            $('.checkbox6').removeClass('btnDisabled').attr('disabled',false);
-                                        }
-                                    }
-                                });
+                                job_history_table(data.id);
                                 $('.btn_job').parent().parent().remove();
                                 tblJob = '';
                             }
 
                             if(tblHmo == 'tblHmo'){
-                                $('.hmo_table_orig').dataTable().fnDestroy();
-                                $('.hmo_table_orig').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return `<button type="button" class="btn btn-primary center btnEditHmo" hmo_id=${row.id} hmo_name=${row.hmo} hmo_coverage=${row.coverage} hmo_particulars=${row.particulars} hmo_room=${row.room} hmo_effectivity_date=${row.effectivity_date} hmo_expiration_date=${row.expiration_date} hmo_status=${row.status}><i class="fa-solid fa-pen-to-square"></i> </button>`;
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [7],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/hmo_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'hmo',         width: '15%'},
-                                        { data: 'coverage',    width: '15%'},
-                                        { data: 'particulars', width: '15%'},
-                                        { data: 'room',        width: '15%'},
-                                        {
-                                            data: 'effectivity_date', width: '15%',
-                                            "render":function(data,type,row){
-                                                return moment(data).format('MMMM D, YYYY');
-                                            }
-                                        },
-                                        {
-                                            data: 'expiration_date', width: '15%',
-                                            "render":function(data,type,row){
-                                                return moment(data).format('MMMM D, YYYY');
-                                            }
-                                        },
-                                        { data: 'status', width: '5%'}
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.hmo_table_orig').DataTable().data().any()){
-                                            $('#hmo_table_orig').hide();
-                                        }
-                                        else{
-                                            $('#hmo_table_orig').show();
-                                        }
-                                    }
-                                });
+                                hmo_table(data.id);
                                 $('.btn_hmo').parent().parent().remove();
                                 tblHmo = '';
                             }
 
                             if(tblMemo == 'tblMemo'){
-                                $('.memo_table_data').dataTable().fnDestroy();
-                                $('.memo_table_data').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_memo center" id="' + meta.row + '" onclick="deleteRow(\'.memo_table_data\', memo_id, \'memo_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/memo_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'memo_subject',width: '22.5%'},
-                                        {
-                                            data: 'memo_date',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.memo_date+"</span>"+moment(row.memo_date).format('LL');
-                                            },
-                                            width: '22.5%'},
-                                        { data: 'memo_penalty', width: '22.5%'},
-                                        {
-                                            data: 'memo_file',
-                                            "render": function(data, type, row){
-                                                    if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                        return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file}</a>`;
-                                                    }
-                                                    return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.memo_file}" title="DOWNLOAD FILE" download>${row.memo_file}</a>`;
-                                            },
-                                            width: '22.5%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.memo_table_data').DataTable().data().any()){
-                                            $('#memo_table_data').hide();
-                                        }
-                                        else{
-                                            $('#memo_table_data').show();
-                                        }
-                                    }
-                                });
+                                memo_table(data.id, employee_number, last_name, first_name);
                                 $('.btn_memo').parent().parent().remove();
                                 $('#memo_subject').attr('name','memo_subject[]');
                                 $('#memo_date').attr('name','memo_date[]');
@@ -1187,64 +680,7 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(tblEvaluation == 'tblEvaluation'){
-                                $('.evaluation_table_data').dataTable().fnDestroy();
-                                $('.evaluation_table_data').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_evaluation center" id="' + meta.row + '" onclick="deleteRow(\'.evaluation_table_data\', evaluation_id, \'evaluation_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [4],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/evaluation_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'evaluation_reason',width: '22.5%'},
-                                        {
-                                            data: 'evaluation_date',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.evaluation_date+"</span>"+moment(row.evaluation_date).format('LL');
-                                            },
-                                            width: '22.5%'},
-                                        { data: 'evaluation_evaluated_by', width: '22.5%'},
-                                        {
-                                            data: 'evaluation_file',
-                                            "render": function(data, type, row){
-                                                if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file}</a>`;
-                                                }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.evaluation_file}" title="DOWNLOAD FILE" download>${row.evaluation_file}</a>`;
-                                            },
-                                            width: '22.5%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.evaluation_table_data').DataTable().data().any()){
-                                            $('#evaluation_table_data').hide();
-                                        }
-                                        else{
-                                            $('#evaluation_table_data').show();
-                                        }
-                                    }
-                                });
+                                evaluation_table(data.id, employee_number, last_name, first_name);
                                 $('.btn_evaluation').parent().parent().remove();
                                 $('#evaluation_reason').attr('name','evaluation_reason[]');
                                 $('#evaluation_date').attr('name','evaluation_date[]');
@@ -1254,64 +690,7 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(tblContracts == 'tblContracts'){
-                                $('.contracts_table_data').dataTable().fnDestroy();
-                                $('.contracts_table_data').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_contracts center" id="' + meta.row + '" onclick="deleteRow(\'.contracts_table_data\', contracts_id, \'contracts_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [3],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/contracts_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'contracts_type',width: '20%'},
-                                        {
-                                            data: 'contracts_date',
-                                            "render":function(data,type,row){
-                                                return "<span class='d-none'>"+row.contracts_date+"</span>"+moment(row.contracts_date).format('LL');
-                                            },
-                                            width: '33.4%'
-                                        },
-                                        {
-                                            data: 'contracts_file',
-                                            "render": function(data, type, row){
-                                                if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file}</a>`;
-                                                }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.contracts_file}" title="DOWNLOAD FILE" download>${row.contracts_file}</a>`;
-                                            },
-                                            width: '35.5%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.contracts_table_data').DataTable().data().any()){
-                                            $('#contracts_table_data').hide();
-                                        }
-                                        else{
-                                            $('#contracts_table_data').show();
-                                        }
-                                    }
-                                });
+                                contracts_table(data.id, employee_number, last_name, first_name);
                                 $('.btn_contracts').parent().parent().remove();
                                 $('#contracts_type').attr('name','contracts_type[]');
                                 $('#contracts_date').attr('name','contracts_date[]');
@@ -1320,58 +699,7 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(tblResignation == 'tblResignation'){
-                                $('.resignation_table_data').dataTable().fnDestroy();
-                                $('.resignation_table_data').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_resignation center" id="' + meta.row + '" onclick="deleteRow(\'.resignation_table_data\', resignation_id, \'resignation_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [3],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/resignation_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'resignation_reason',width: '20%'},
-                                        { data: 'resignation_date', width: '33.4%'},
-                                        {
-                                            data: 'resignation_file',
-                                            "render": function(data, type, row){
-                                                if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file}</a>`;
-                                                }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.resignation_file}" title="DOWNLOAD FILE" download>${row.resignation_file}</a>`;
-                                            },
-                                            width: '35.5%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.resignation_table_data').DataTable().data().any()){
-                                            $('#resignation_table_data').hide();
-                                        }
-                                        else{
-                                            $('#resignation_table_data').show();
-                                        }
-                                    }
-                                });
+                                resignation_table(data.id, employee_number, last_name, first_name);
                                 $('.btn_resignation').parent().parent().remove();
                                 $('#resignation_reason').attr('name','resignation_reason[]');
                                 $('#resignation_date').attr('name','resignation_date[]');
@@ -1380,58 +708,7 @@ $('#btnUpdate').on('click',function(){
                             }
 
                             if(tblTermination == 'tblTermination'){
-                                $('.termination_table_data').dataTable().fnDestroy();
-                                $('.termination_table_data').DataTable({
-                                    columnDefs: [
-                                        {
-                                            "render": function(data, type, row, meta){
-                                                return '<button type="button" class="btn btn-danger btn_delete_termination center" id="' + meta.row + '" onclick="deleteRow(\'.termination_table_data\', termination_id, \'termination_change\', this)"><i class="fa-solid fa-trash-can"></i> </button>';
-                                            },
-                                            "defaultContent": '',
-                                            "data": null,
-                                            "targets": [3],
-                                        }
-                                    ],
-                                    searching: false,
-                                    paging: false,
-                                    info: false,
-                                    ordering:false,
-                                    autoWidth: false,
-                                    language:{
-                                        emptyTable: "NO DATA AVAILABLE",
-                                        processing: "Loading...",
-                                    },
-                                    serverSide: true,
-                                    ajax: {
-                                        url: '/employees/termination_data',
-                                        async: false,
-                                        data:{
-                                            id: data.id,
-                                        }
-                                    },
-                                    columns: [
-                                        { data: 'termination_reason',width: '20%'},
-                                        { data: 'termination_date', width: '33.4%'},
-                                        {
-                                            data: 'termination_file',
-                                            "render": function(data, type, row){
-                                                if(employee_number.includes('ID') || employee_number.includes('AP') || employee_number.includes('PL') || employee_number.includes('MJ') || employee_number.includes('NU')){
-                                                    return `<a href="/storage/evaluation/${employee_number.substring(2)}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file}</a>`;
-                                                }
-                                                return `<a href="/storage/evaluation/${employee_number}_${last_name}_${first_name}/${row.termination_file}" title="DOWNLOAD FILE" download>${row.termination_file}</a>`;
-                                            },
-                                            width: '35.5%'
-                                        }
-                                    ],
-                                    initComplete: function(){
-                                        if(!$('.termination_table_data').DataTable().data().any()){
-                                            $('#termination_table_data').hide();
-                                        }
-                                        else{
-                                            $('#termination_table_data').show();
-                                        }
-                                    }
-                                });
+                                termination_table(data.id, employee_number, last_name, first_name);
                                 $('.btn_termination').parent().parent().remove();
                                 $('#termination_reason').attr('name','termination_reason[]');
                                 $('#termination_date').attr('name','termination_date[]');
