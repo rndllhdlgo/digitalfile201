@@ -1,9 +1,11 @@
 
 <div id="education_trainings" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-        <h5 class="table-title">COLLEGE EDUCATION</h5>
             <table class="table table-striped table-bordered table-hover align-middle">
                 <thead class="thead-design">
+                    <tr>
+                        <th colspan="5">COLLEGE EDUCATION</th>
+                    </tr>
                     <tr>
                         <th style="width: 30%;">NAME OF UNIVERSITY/COLLEGE</th>
                         <th style="width: 30%;">DEGREE</th>
@@ -71,9 +73,11 @@
             <hr class="hr-design">
             <br>
 {{--  --}}
-        <h5 class="table-title">SECONDARY EDUCATION</h5>
             <table class="table table-striped table-bordered table-hover align-middle">
                 <thead class="thead-design">
+                    <tr>
+                        <th colspan="5">SECONDARY EDUCATION</th>
+                    </tr>
                     <tr>
                         <th style="width: 30%;">NAME OF SCHOOL</th>
                         <th style="width: 30%;">SCHOOL ADDRESS</th>
@@ -141,9 +145,11 @@
             <hr class="hr-design">
             <br>
 {{--  --}}
-        <h5 class="table-title">PRIMARY EDUCATION</h5>
             <table class="table table-striped table-bordered table-hover align-middle">
                 <thead class="thead-design">
+                    <tr>
+                        <th colspan="5">PRIMARY EDUCATION</th>
+                    </tr>
                     <tr>
                         <th style="width: 30%;">NAME OF SCHOOL</th>
                         <th style="width: 30%;">SCHOOL ADDRESS</th>
@@ -211,9 +217,11 @@
             <hr class="hr-design">
             <br>
 {{--  --}}
-        <h5 class="table-title">TRAININGS</h5>
         <table class="table table-striped table-bordered table-hover align-middle ">
                 <thead class="thead-design">
+                    <tr>
+                        <th colspan="5">TRAININGS ATTENDED</th>
+                    </tr>
                     <tr>
                         <th style="width: 30%;"> NAME OF TRAINING SCHOOL</th>
                         <th style="width: 30%;"> TRAINING TITLE</th>
@@ -282,9 +290,11 @@
         <hr class="hr-design">
         <br>
 {{--  --}}
-        <h5 class="table-title">VOCATIONAL</h5>
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-design">
+                <tr>
+                    <th colspan="5">VOCATIONALS ATTENDED</th>
+                </tr>
                 <tr>
                     <th style="width:30%;"> NAME OF VOCATIONAL SCHOOL</th>
                     <th style="width:30%;"> COURSE</th>

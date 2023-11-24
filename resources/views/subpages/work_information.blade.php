@@ -10,7 +10,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control required_field future_date" type="date" id="date_hired" placeholder=" " style="background-color:white;" onclick="updateCheck(this.id);" onchange="updateCheck(this.id);">
+                <input class="forminput form-control required_field future_date" type="date" id="date_hired" placeholder=" " style="background-color:white;" onclick="checkChange(this);" onchange="checkChange(this);">
                 <label for="date_hired" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true" ></i> DATE HIRED</label>
             </div>
         </div>
@@ -26,7 +26,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
+                <select class="form-select forminput form-control required_field"  id="employee_company" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
                     <option value="" disabled selected>SELECT COMPANY</option>
                     @foreach($companies as $company)
                         <option value="{{$company->entity}}">{{$company->company_name}}</option>
@@ -38,7 +38,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
+                <select class="form-select forminput form-control required_field"  id="employee_branch" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
                     <option value="" disabled selected>SELECT BRANCH</option>
                     @foreach($branches as $branch)
                         <option value="{{$branch->entity03}}">{{$branch->entity03_desc}}</option>
@@ -50,7 +50,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
+                <select class="form-select forminput form-control required_field"  id="employee_department" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
                     <option value="" disabled selected>SELECT DEPARTMENT</option>
                     @foreach($departments as $department)
                         <option value="{{$department->deptcode}}">{{$department->deptdesc}}</option>
@@ -64,7 +64,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id)">
+                <select class="form-select forminput form-control required_field"  id="employee_position" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
                     <option value="" disabled selected>SELECT POSITION </option>
                     @foreach($jobPositions as $jobPosition)
                         <option value="{{$jobPosition->id}}">{{$jobPosition->job_position_name}}</option>
@@ -80,7 +80,7 @@
 
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id); changeEmploymentStatus();">
+                <select class="form-select forminput form-control required_field"  id="employment_status" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); changeEmploymentStatus();">
                     <option value="" disabled selected>SELECT EMPLOYMENT STATUS </option>
                     <option class="" value="INTERN" rank="1">INTERN</option>
                     <option class="" value="PART TIME" rank="1">PART TIME</option>
@@ -99,7 +99,7 @@
     <div class="row mb-3">
         <div class="col">
             <div class="f-outline">
-                <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id)" onchange="updateCheck(this.id);">
+                <select class="form-select forminput form-control required_field"  id="employment_origin" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
                     <option value="" disabled selected>SELECT EMPLOYMENT ORIGIN </option>
                     <option value="DIRECT HIRED">DIRECT HIRED</option>
                     <option value="REHIRED">REHIRED</option>
@@ -110,14 +110,14 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id); duplicateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id); emailCheck(this.id);">
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this); duplicateCheck(this.id);" onkeyup="checkChange(this); duplicateCheck(this.id); emailCheck(this.id);">
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field numberSlice" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                <input class="forminput form-control optional_field numberSlice" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                 <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.(Optional)</label>
             </div>
         </div>
@@ -127,19 +127,19 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)</label>
                 </div>
             </div>
@@ -148,21 +148,21 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="updateCheck(this.id);" onkeyup="updateCheck(this.id); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)</label>
                 </div>
             </div>
@@ -188,13 +188,13 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field text-uppercase letterNumber" name="resignation_reason[]" type="search" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="resignation_reason" class="formlabel form-label"></label>
+                                <input class="forminput form-control multiple_field text-uppercase" type="search" name="resignation_reason[]" id="resignation_reason" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="resignation_reason" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field future_date" name="resignation_date[]" type="date" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <input class="forminput form-control multiple_field" type="date" name="resignation_date[]" id="resignation_date" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="resignation_date" class="formlabel form-label"></label>
                             </div>
                         </td>
@@ -207,7 +207,7 @@
                     </tr>
                 </tbody>
             </table>
-
+    
             <table class="table table-bordered table-striped table-hover resignation_table_data" id="resignation_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>
@@ -221,7 +221,7 @@
                 </tbody>
             </table>
             <hr class="hr-design hr-resignation" style="display: none;">
-        </div>
+    </div>
 
     <div id="termination_div" style="display: none;">
         <!-- Termination -->
@@ -241,13 +241,13 @@
                     <tr>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field text-uppercase letterNumber" name="termination_reason[]" type="search" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off">
-                                <label for="termination_reason" class="formlabel form-label"></label>
+                                <input class="forminput form-control multiple_field text-uppercase" type="search" name="termination_reason[]" id="termination_reason" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <label for="termination_reason" class="formlabel form-label">(Optional)</label>
                             </div>
                         </td>
                         <td class="pb-3 pt-3">
                             <div class="f-outline">
-                                <input class="forminput form-control multiple_field future_date" name="termination_date[]" type="date" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
+                                <input class="forminput form-control multiple_field" type="date" name="termination_date[]" id="termination_date" placeholder=" " style="background-color:white;" autocomplete="off">
                                 <label for="termination_date" class="formlabel form-label"></label>
                             </div>
                         </td>
@@ -260,7 +260,7 @@
                     </tr>
                 </tbody>
             </table>
-
+    
             <table class="table table-bordered table-striped table-hover termination_table_data" id="termination_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>

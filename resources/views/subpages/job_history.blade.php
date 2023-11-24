@@ -1,28 +1,30 @@
 <div id="job_history" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-   <h5 class="table-title">JOB HISTORY</h5>
         <table class="table table-striped table-bordered align-middle">
             <thead class="thead-design">
                 <tr>
-                    <th style="width:15%; "> COMPANY NAME</th>
-                    <th style="width:15%; "> JOB DESCRIPTION</th>
-                    <th style="width:15%; "> JOB POSITION</th>
-                    <th style="width:15%; "> CONTACT NUMBER</th>
-                    <th style="width:30%; " class="text-center" colspan="2"> INCLUSIVE YEARS</th>
-                    <th style="width:10%; " class="text-center"> ACTION</th>
+                    <th colspan="7">JOB HISTORY</th>
+                </tr>
+                <tr>
+                    <th style="width:15%;"> COMPANY NAME</th>
+                    <th style="width:15%;"> JOB DESCRIPTION</th>
+                    <th style="width:15%;"> JOB POSITION</th>
+                    <th style="width:15%;"> CONTACT NUMBER</th>
+                    <th style="width:30%;" class="text-center" colspan="2"> INCLUSIVE YEARS</th>
+                    <th style="width:10%;" class="text-center"> ACTION</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="alphaNumeric(this)">
+                            <input class="forminput form-control text-uppercase" type="search" id="job_company_name" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="job_company_name" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="alphaNumeric(this)">
+                            <input class="forminput form-control text-uppercase" type="search" id="job_description" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="job_description" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>
@@ -34,7 +36,7 @@
                     </td>
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
-                            <input class="forminput form-control" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onkeyup="duplicateCheck('job_contact_number');">
+                            <input class="forminput form-control" type="search" id="job_contact_number" placeholder=" " style="background-color:white;" autocomplete="off">
                             <label for="job_contact_number" class="formlabel form-label">(Optional)</label>
                         </div>
                     </td>

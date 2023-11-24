@@ -80,6 +80,10 @@ function college_table(value_id){
                 "targets": [4],
             }
         ],
+        searching: false,
+        paging: false,
+        info: false,
+        ordering:false,
         autoWidth: false,
         language:{
             emptyTable: "NO DATA AVAILABLE",

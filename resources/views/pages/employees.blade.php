@@ -126,7 +126,7 @@
                 <div class="btn-group float-end" role="group">
                     <button type="button" id="btnSummary" class="btn btn-primary btnDisabled" title="VIEW" style="border-top-left-radius: 10px !important; border-bottom-left-radius:10px !important;"><i class="fas fa-eye"></i> VIEW SUMMARY</button>
                     <button type="button" id="btnUpdate" class="btn btn-success btnDisabled" title="UPDATE"><i class="fas fa-save"></i> UPDATE</button>
-                    <button type="button" class="btn btn-danger" id="btnCancel" title="BACK"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
+                    <button type="button" id="btnCancel" class="btn btn-danger"title="BACK"><i class="fa-solid fa-arrow-left-long"></i> BACK</button>
                 </div>
             <br>
             <br>

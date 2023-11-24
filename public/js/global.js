@@ -5,8 +5,16 @@ var current_employee_number = $('#current_employee_number').val();
 var current_email = $('#current_email').val();
 var app_timeout = $('#APP_TIMEOUT').val();
 var data_update, standby = true;
+// var prevent_value;
 
-$(document).ready(function() {
+// function prevent_reload(prevent_value){
+//     console.log(prevent_value);
+//     $(window).on('beforeunload', function(){
+//         return null;
+//     });
+// }
+
+$(document).ready(function(){
     var headerText = $('.my-header').text();
     if(!headerText){
         $('title').text('201 FILING SYSTEM');

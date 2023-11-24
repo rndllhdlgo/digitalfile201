@@ -1,9 +1,11 @@
 <div id="evaluation" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
     <!-- Memo -->
-        <h5 class="table-title">MEMO</h5>
         <table id="memoTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-design">
+                <tr>
+                    <th colspan="5">MEMO</th>
+                </tr>
                 <tr>
                     <th style="width:22.5%"> MEMO SUBJECT</th>
                     <th style="width:22.5%"> MEMO DATE</th>
@@ -65,9 +67,11 @@
         </table>
     <br>
     <!-- Evaluation -->
-        <h5 class="table-title">EVALUATION</h5>
         <table id="evaluationTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-design">
+                <tr>
+                    <th colspan="5">EVALUATION</th>
+                </tr>
                 <tr>
                     <th style="width:22.5%"> EVALUATION REASON</th>
                     <th style="width:22.5%"> EVALUATION DATE</th>
@@ -121,9 +125,11 @@
         </table>
     <br>
     <!-- Contracts -->
-        <h5 class="table-title">CONTRACT</h5>
         <table id="contractsTable" class="table table-bordered table-hover table-striped align-middle">
             <thead class="thead-design">
+                <tr>
+                    <th colspan="4">CONTRACT</th>
+                </tr>
                 <tr>
                     <th style="width:18%"> CONTRACT TYPE</th>
                     <th style="width:30%"> CONTRACT DATE</th>

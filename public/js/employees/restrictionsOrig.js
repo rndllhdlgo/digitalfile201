@@ -65,41 +65,6 @@ function duplicateCheck(inputId) {
     }
 }
 
-// function duplicateCheck(inputId, inputColumn, inputTable, inputStatus){
-//     var orig_value = $(`#${inputId}`).attr('orig_value');
-//     var inputValue = $(`#${inputId}`).val();
-//     var validationId = `validation_${inputId}`;
-
-//     if(orig_value.toUpperCase().trim() == inputValue.toUpperCase().trim()){
-//         return false;
-//     }
-//     else{
-//         $.ajax({
-//             url: "/checkDuplicate",
-//             data: {
-//                 inputColumn: inputColumn,
-//                 inputValue: inputValue,
-//                 inputTable: inputTable,
-//                 inputStatus: inputStatus
-//             },
-//             success: function(response){
-//                 var validationElement = $(`#${validationId}`);
-//                 if(response === 'true'){
-//                     if(validationElement.length === 0){
-//                         $(`#${inputId}`).addClass('redBorder');
-//                         $(`#${inputId}`).after(`<p class="validation" id="${validationId}"><i class="fas fa-exclamation-triangle mx-2"></i>ALREADY EXIST!</p>`);
-//                         $(`#${validationId}`).show();
-//                     }
-//                 }
-//                 else{
-//                     $(`#${inputId}`).removeClass('redBorder');
-//                     validationElement.remove();
-//                 }
-//             }
-//         });
-//     }
-// }
-
 function emailCheck(emailId) {
     var emailValue = $(`#${emailId}`).val();
     var emailValidation = `format_${emailId}`;
@@ -122,25 +87,52 @@ function emailCheck(emailId) {
     }
 }
 
-var origContainer = {};
+var orig_values = {};
 
-function checkChange(element){
-    if(!(element.id in origContainer)){
-        origContainer[element.id] = element.value;
+function updateCheck(inputElementId){
+    var element = $(`#${inputElementId}`);
+
+    if(!element.length){
+        return;
     }
 
-    var enableUpdateButton = Object.keys(origContainer).some(function(id){
-        return origContainer[id] !== document.getElementById(id).value;
+    var value;
+
+    if(element.is('input, textarea')){
+        value = element.val();
+    }
+    else if(element.is('select')){
+        value = element.find('option:selected').val();
+    }
+
+    if(!(inputElementId in orig_values)){
+        orig_values[inputElementId] = value;
+    }
+
+    var isAnyValueChanged = Object.keys(orig_values).some(function(id){
+        var originalValue = orig_values[id];
+        var currentValue;
+        var currentElement = $(`#${id}`);
+
+        if(currentElement.is('input, textarea')){
+            currentValue = currentElement.val();
+        }
+        else if(currentElement.is('select')){
+            currentValue = currentElement.find('option:selected').val();
+        }
+
+        if(originalValue === null || currentValue === null){
+            return false;
+        }
+
+        return originalValue.toUpperCase().trim() !== currentValue.toUpperCase().trim();
     });
 
-    disableUpdate(enableUpdateButton, 0);
+    $('#btnUpdate').prop('disabled', !isAnyValueChanged);
 }
 
-function disableUpdate(fieldCheck, changeCounter){
-    if(fieldCheck == true || changeCounter != 0){
+setInterval(() => {
+    if(tblChange == 'CHANGED_ROW' || employee_image_change == 'CHANGED' || document_change == 'CHANGED'){
         $('#btnUpdate').prop('disabled', false);
     }
-    else{
-        $('#btnUpdate').prop('disabled', true);
-    }
-}
+}, 0);

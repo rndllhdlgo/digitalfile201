@@ -718,7 +718,7 @@ class UpdateController extends Controller{
                 $userlogs->employee_id = $request->id;
                 $userlogs->username = auth()->user()->name;
                 $userlogs->role = auth()->user()->user_level;
-                $userlogs->logs = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change ";
+                $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change ";
                 $userlogs->save();
 
                 $userlogs = new WorkLogs;

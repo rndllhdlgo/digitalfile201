@@ -1,9 +1,11 @@
 <div id="compensation_benefits" class="tab-pane fade" style="border-radius:0px;">
     <hr class="hr-design">
-    <h5 class="table-title" style="width:400px !important;">HEALTHCARE MAINTENANCE ORGANIZATION</h5>
     <div style="zoom:85%;">
         <table class="table table-striped table-bordered table-hover align-middle">
             <thead class="thead-design">
+                <tr>
+                    <th colspan="8" style="zoom:120% !important;">HEALTHCARE MAINTENANCE ORGANIZATION</th>
+                </tr>
                 <tr>
                     <th style="width:15%;">HMO</th>
                     <th style="width:15%;">COVERAGE</th>
@@ -101,9 +103,11 @@
 {{--  --}}
 
     <hr class="hr-design">
-    <h5 class="table-title">LEAVE CREDITS</h5>
     <table class="table table-bordered table-striped table-hover align-middle w-100" id="leave_credits">
         <thead class="thead-design">
+            <tr>
+                <th colspan="3">LEAVE CREDITS</th>
+            </tr>
             <tr>
                 <th>LEAVE TYPE</th>
                 <th>BALANCE</th>

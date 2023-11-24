@@ -32,6 +32,11 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     var id = data.id;
 
     $('#loading').show();
+    // if(current_location.includes('/employees')){
+    //     prevent_value = true;
+    //     prevent_reload(prevent_value);
+    // }
+
     $.ajax({
         url: '/employees/fetch',
         headers:{
@@ -76,7 +81,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#birthday').val(value.birthday);
                 setTimeout(() => {
                     $('#birthday').change();
-                }, app_timeout);
+                }, 500);
 
                 $('#gender').val(value.gender);
                 $('#address').val(value.address);
@@ -102,9 +107,9 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         });
                         setTimeout(() => {
                             $('#city').change();
-                        }, app_timeout);
-                    }, app_timeout);
-                }, app_timeout);
+                        }, 500);
+                    }, 500);
+                }, 500);
 
                 $('#region').val(value.region);
                 $('#region_summary').val(value.region);
@@ -117,7 +122,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#civil_status').val(value.civil_status);
                 setTimeout(() => {
                     $('#civil_status').change();
-                }, app_timeout);
+                }, 500);
 
                 if(value.civil_status == 'MARRIED'){
                     $('#spouse_div').show();
@@ -171,7 +176,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 setTimeout(() => {
                     $('#employment_status').change();
-                }, app_timeout);
+                }, 500);
 
                 $('#employment_origin').val(value.employment_origin);
                 $('#company_email_address').val(value.company_email_address);
@@ -281,7 +286,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                         },
                     ],
                     columns: [
-                        { data: 'datetime'},
+                        { data: 'datetime' },
                         {
                             data: 'date',
                             width: '15%',
@@ -290,13 +295,13 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                             }
                         },
                         { data: 'username', width: '15%'},
-                        { data: 'user_level', width: '15%'},
+                        { data: 'role', width: '15%'},
                         {
-                            data: 'history',
+                            data: 'activity',
                             width: '55%',
                             "render":function(data,type,row){
-                                return history = row.history.replaceAll(" [","<br>[");
-                            },
+                                return activity = row.activity.replaceAll(" [", "<br>[");
+                            }
                         }
                     ]
                 });

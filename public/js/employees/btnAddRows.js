@@ -25,15 +25,22 @@ var tblMemo,
     tblContracts,
     tblResignation,
     tblTermination;
-var tblChange;
 
-// increment++ when have
+var changeCounter = 0;
 
 $('#childrenAdd').click(function(){
     var child_name     = $('#child_name').val().trim();
     var child_birthday = moment($('#child_birthday').val()).format('MMMM D, YYYY');;
     var child_age      = $('#child_age').val();
     var child_gender   = $('#child_gender').val();
+
+    if(!child_name && !child_gender && (child_birthday == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var children_table =`<tr class='children_tr'>
                             <td class='td_1 text-uppercase'>${child_name}</td>
@@ -47,12 +54,37 @@ $('#childrenAdd').click(function(){
     $('#children_table_orig').show();
     children_change = 'CHANGED';
     tblChildren = 'tblChildren';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#child_name').val("");
     $('#child_birthday').val("");
     $('#child_age').val("");
     $('#child_gender').val("");
+
+    $('.btn_children').click(function(){
+        Swal.fire({
+            title: 'Do you want to delete this row?',
+            text: "You won't be able to revert this!",
+            icon: 'error',
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+            showDenyButton: true,
+            confirmButtonText: 'Yes',
+            denyButtonText: 'No',
+            customClass: {
+            actions: 'my-actions',
+            confirmButton: 'order-2',
+            denyButton: 'order-3',
+            }
+        }).then((save) => {
+            if(save.isConfirmed){
+                $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
+            }
+        });
+    });
 });
 
 $('#collegeAdd').click(function(){
@@ -60,6 +92,14 @@ $('#collegeAdd').click(function(){
     var college_degree               = $('#college_degree').val();
     var college_inclusive_years_from = moment($('#college_inclusive_years_from').val()).format('MMMM YYYY');
     var college_inclusive_years_to   = moment($('#college_inclusive_years_to').val()).format('MMMM YYYY');
+
+    if(!college_name || !college_degree || (college_inclusive_years_from == 'Invalid date') || (college_inclusive_years_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var college_table = `<tr class='college_tr'>
                             <td class='td_1 text-uppercase'>${college_name}</td>
@@ -75,7 +115,8 @@ $('#collegeAdd').click(function(){
     $('#college_table_orig tr:last').remove();
     college_change = 'CHANGED';
     tblCollege = 'tblCollege';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#college_name').val("");
     $('#college_degree').val("");
@@ -86,7 +127,7 @@ $('#collegeAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -100,6 +141,8 @@ $('#collegeAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -108,9 +151,16 @@ $('#collegeAdd').click(function(){
 $('#secondaryAdd').click(function(){
     var secondary_name = $('#secondary_name').val();
     var secondary_address = $('#secondary_address').val();
-
     var secondary_from = moment($('#secondary_from').val()).format('MMMM YYYY');
     var secondary_to   = moment($('#secondary_to').val()).format('MMMM YYYY');
+
+    if(!secondary_name || !secondary_address || (secondary_from == 'Invalid date') || (secondary_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var secondary_table = `<tr class='secondary_tr'>
                             <td class='td_1 text-uppercase'>${secondary_name}</td>
@@ -126,7 +176,8 @@ $('#secondaryAdd').click(function(){
     $('#secondary_table_orig tr:last').remove();
     secondary_change = 'CHANGED';
     tblSecondary = 'tblSecondary';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#secondary_name').val("");
     $('#secondary_address').val("");
@@ -137,7 +188,7 @@ $('#secondaryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -151,6 +202,8 @@ $('#secondaryAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -161,6 +214,14 @@ $('#primaryAdd').click(function(){
     var primary_address = $('#primary_address').val();
     var primary_from    = moment($('#primary_from').val()).format('MMMM YYYY');
     var primary_to      = moment($('#primary_to').val()).format('MMMM YYYY');
+
+    if(!primary_name || !primary_address || (primary_from == 'Invalid date') || (primary_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var primary_table = `<tr class='primary_tr'>
                             <td class='td_1 text-uppercase'>${primary_name}</td>
@@ -176,7 +237,8 @@ $('#primaryAdd').click(function(){
     $('#primary_table_orig tr:last').remove();
     primary_change = 'CHANGED';
     tblPrimary = 'tblPrimary';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#primary_name').val("");
     $('#primary_address').val("");
@@ -187,7 +249,7 @@ $('#primaryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -201,6 +263,8 @@ $('#primaryAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -211,6 +275,14 @@ $('#trainingAdd').click(function(){
     var training_title                = $('#training_title').val();
     var training_inclusive_years_from = moment($('#training_inclusive_years_from').val()).format('MMMM YYYY');
     var training_inclusive_years_to   = moment($('#training_inclusive_years_to').val()).format('MMMMM YYYY');
+
+    if(!training_name || !training_title || (training_inclusive_years_from == 'Invalid date') || (training_inclusive_years_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var training_table = `<tr class='training_tr'>
                                 <td class='td_1 text-uppercase'>${training_name}</td>
@@ -224,7 +296,8 @@ $('#trainingAdd').click(function(){
     $('#training_table_orig').show();
     training_change = 'CHANGED';
     tblTraining = 'tblTraining';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#training_name').val("");
     $('#training_title').val("");
@@ -235,7 +308,7 @@ $('#trainingAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -249,6 +322,8 @@ $('#trainingAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -259,6 +334,14 @@ $('#vocationalAdd').click(function(){
     var vocational_course               = $('#vocational_course').val();
     var vocational_inclusive_years_from = moment($('#vocational_inclusive_years_from').val()).format('MMMM YYYY');
     var vocational_inclusive_years_to   = moment($('#vocational_inclusive_years_to').val()).format('MMMM YYYY');
+
+    if(!vocational_name || !vocational_course || (vocational_inclusive_years_from == 'Invalid date') || (vocational_inclusive_years_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var vocational_table = `<tr class='vocational_tr'>
                                 <td class='td_1 text-uppercase'>${vocational_name}</td>
@@ -272,7 +355,8 @@ $('#vocationalAdd').click(function(){
     $('#vocational_table_orig').show();
     vocational_change = 'CHANGED';
     tblVocational = 'tblVocational';
-    tblChange = 'CHANGED_ROW';
+    changeCounter--;
+    disableUpdate('', changeCounter);
 
     $('#vocational_name').val("");
     $('#vocational_course').val("");
@@ -283,7 +367,7 @@ $('#vocationalAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -297,6 +381,8 @@ $('#vocationalAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -309,6 +395,14 @@ $('#jobHistoryAdd').click(function(){
     var job_contact_number       = $('#job_contact_number').val();
     var job_inclusive_years_from = moment($('#job_inclusive_years_from').val()).format('MMMM YYYY');
     var job_inclusive_years_to   = moment($('#job_inclusive_years_to').val()).format('MMMM YYYY');
+
+    if(!job_company_name || !job_description || !job_position || !job_contact_number || (job_inclusive_years_from == 'Invalid date') || (job_inclusive_years_to == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var job_history_table = `<tr class='job_history_tr'>
                                 <td class='td_1 text-uppercase'>${job_company_name}</td>
@@ -324,7 +418,8 @@ $('#jobHistoryAdd').click(function(){
     $('#job_history_table_orig').show();
     job_history_change = 'CHANGED';
     tblJob = 'tblJob';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#job_company_name').val("");
     $('#job_description').val("");
@@ -337,7 +432,7 @@ $('#jobHistoryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -351,6 +446,8 @@ $('#jobHistoryAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
@@ -363,6 +460,14 @@ $('#hmoAdd').click(function(){
     var room             = $('#room').val();
     var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
     var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
+
+    if(!hmo || !coverage || !particulars || !room || (effectivity_date == 'Invalid date') || (expiration_date == 'Invalid date')){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
 
     var hmo_table = `<tr class='hmo_tr'>
                         <td class='td_1 text-uppercase'>${hmo}</td>
@@ -381,7 +486,8 @@ $('#hmoAdd').click(function(){
     $('#hmo_table_orig tr:last').remove();
     hmo_change = 'CHANGED';
     tblHmo = 'tblHmo';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#hmo').val('');
     $('#coverage').val('');
@@ -394,7 +500,7 @@ $('#hmoAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -408,15 +514,31 @@ $('#hmoAdd').click(function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
 });
 
 $(document).on('click','#btnAddMemoRow', function(){
+    var memo_subject = $('#memo_subject').val();
+    var memo_date    = $('#memo_date').val();
+    var memo_penalty = $('#memo_penalty').val();
+    var memo_file    = $('#memo_file')[0];
+
+    if(!memo_subject || !memo_date || !memo_penalty || (memo_file.files.length === 0)){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
+
     memo_change = 'CHANGED';
     tblMemo = 'tblMemo';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#memo_subject').attr('id','');
     $('#memo_date').attr('id','');
@@ -461,7 +583,7 @@ $(document).on('click','#btnAddMemoRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -475,15 +597,31 @@ $(document).on('click','#btnAddMemoRow', function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
 });
 
 $(document).on('click','#btnAddEvaluationRow', function(){
+    var evaluation_reason       = $('#evaluation_reason').val();
+    var evaluation_date         = $('#evaluation_date').val();
+    var evaluation_evaluated_by = $('#evaluation_evaluated_by').val();
+    var evaluation_file         = $('#evaluation_file')[0];
+
+    if(!evaluation_reason || !evaluation_date || !evaluation_evaluated_by || (evaluation_file.files.length === 0)){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
+
     evaluation_change = 'CHANGED';
     tblEvaluation = 'tblEvaluation';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#evaluation_reason').attr('id','');
     $('#evaluation_date').attr('id','');
@@ -521,7 +659,7 @@ $(document).on('click','#btnAddEvaluationRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -535,15 +673,30 @@ $(document).on('click','#btnAddEvaluationRow', function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
 });
 
 $(document).on('click','#btnAddContractRow', function(){
+    var contracts_type = $('#contracts_type').val();
+    var contracts_date = $('#contracts_date').val();
+    var contracts_file = $('#contracts_file')[0];
+
+    if(!contracts_type || !contracts_date || (contracts_file.files.length === 0)){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
+
     contracts_change = 'CHANGED';
     tblContracts = 'tblContracts';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#contracts_type').attr('id','');
     $('#contracts_date').attr('id','');
@@ -574,7 +727,7 @@ $(document).on('click','#btnAddContractRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -588,15 +741,30 @@ $(document).on('click','#btnAddContractRow', function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
 });
 
-$(document).on('click','#addResignationRow', function(){
+$(document).on('click','#btnAddResignationRow', function(){
+    var resignation_reason = $('#resignation_reason').val();
+    var resignation_date   = $('#resignation_date').val();
+    var resignation_file   = $('#resignation_file')[0];
+
+    if(!resignation_reason || !resignation_date || (resignation_file.files.length === 0)){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
+
     resignation_change = 'CHANGED';
     tblResignation = 'tblResignation';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#resignation_reason').attr('id','');
     $('#resignation_date').attr('id','');
@@ -627,7 +795,7 @@ $(document).on('click','#addResignationRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -641,15 +809,30 @@ $(document).on('click','#addResignationRow', function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
 });
 
-$(document).on('click','.btnAddTerminationRow',function(){
+$(document).on('click','#btnAddTerminationRow',function(){
+    var termination_reason = $('#termination_reason').val();
+    var termination_date   = $('#termination_date').val();
+    var termination_file   = $('#termination_file')[0];
+
+    if(!termination_reason || !termination_date || (termination_file.files.length === 0)){
+        Swal.fire({
+            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            icon: "error"
+        });
+        return false;
+    }
+
     termination_change = 'CHANGED';
     tblTermination = 'tblTermination';
-    tblChange = 'CHANGED_ROW';
+    changeCounter++;
+    disableUpdate('', changeCounter);
 
     $('#termination_reason').attr('id','');
     $('#termination_date').attr('id','');
@@ -680,7 +863,7 @@ $(document).on('click','.btnAddTerminationRow',function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'warning',
+            icon: 'error',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -694,6 +877,8 @@ $(document).on('click','.btnAddTerminationRow',function(){
         }).then((save) => {
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
+                changeCounter--;
+                disableUpdate('', changeCounter);
             }
         });
     });
