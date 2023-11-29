@@ -94,7 +94,7 @@ class SaveController extends Controller
         $employee->save();
 
         if($request->college_change == 'CHANGED'){
-            $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT HAVE BEEN CHANGED]";
+            $college_update = "[COLLEGE ATTAINMENT: LIST OF COLLEGE ATTAINMENT DETAILS HAVE BEEN CHANGED]";
         }
         else{
             $college_update = NULL;
@@ -169,7 +169,7 @@ class SaveController extends Controller
         $employee->save();
 
         if($request->training_change == 'CHANGED'){
-            $training_update = "[TRAINING: LIST OF TRAINING HAVE BEEN CHANGED]";
+            $training_update = "[TRAINING: LIST OF TRAINING DETAILS HAVE BEEN CHANGED]";
         }
         else{
             $training_update = NULL;
@@ -194,7 +194,7 @@ class SaveController extends Controller
         $employee->save();
 
         if($request->vocational_change == 'CHANGED'){
-            $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL HAVE BEEN CHANGED]";
+            $vocational_update = "[VOCATIONAL: LIST OF VOCATIONAL DETAILS HAVE BEEN CHANGED]";
         }
         else{
             $vocational_update = NULL;
@@ -221,7 +221,7 @@ class SaveController extends Controller
         $employee->save();
 
         if($request->job_history_change == 'CHANGED'){
-            $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY HAVE BEEN CHANGED]";
+            $job_history_update = "[JOB HISTORY: LIST OF JOB HISTORY DETAILS HAVE BEEN CHANGED]";
         }
         else{
             $job_history_update = NULL;
@@ -248,7 +248,7 @@ class SaveController extends Controller
         $employee->save();
 
         if($request->hmo_change == 'CHANGED'){
-            $hmo_update = "[HMO: LIST OF HMO HAVE BEEN CHANGED]";
+            $hmo_update = "[HMO: LIST OF HMO DETAILS HAVE BEEN CHANGED]";
         }
         else{
             $hmo_update = NULL;

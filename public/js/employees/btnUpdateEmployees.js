@@ -790,7 +790,6 @@ $(document).on('click','#btnEditHmo',function(){
                     $('#loading').hide();
                     if(response == 'true'){
                         Swal.fire('UPDATE SUCCESS','','success');
-                        tblChange = 'CHANGED_ROW';
                         $('.hmo_table_orig').DataTable().ajax.reload(null, false);
                         $('#editHmoModal').modal('hide');
                     }

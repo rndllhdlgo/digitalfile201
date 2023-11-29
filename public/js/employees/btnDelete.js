@@ -95,7 +95,6 @@ function deleteRow(tblName, tblRowId, tblDesc, tblButton){
                 termination_change = 'CHANGED';
                 tblTermination     = 'tblTermination';
             }
-            tblChange = 'CHANGED_ROW';
         }
     });
 }
