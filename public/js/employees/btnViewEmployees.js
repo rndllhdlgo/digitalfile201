@@ -32,10 +32,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
     var id = data.id;
 
     $('#loading').show();
-    // if(current_location.includes('/employees')){
-    //     prevent_value = true;
-    //     prevent_reload(prevent_value);
-    // }
 
     $.ajax({
         url: '/employees/fetch',

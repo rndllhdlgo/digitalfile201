@@ -53,108 +53,6 @@ class UpdateController extends Controller{
 
     use Logs;
 
-    public function updateHmo(Request $request){
-        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
-        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-
-        $hmo_orig              = Hmo::where('id', $request->id)->first()->hmo;
-        $coverage_orig         = Hmo::where('id', $request->id)->first()->coverage;
-        $particulars_orig      = Hmo::where('id', $request->id)->first()->particulars;
-        $room_orig             = Hmo::where('id', $request->id)->first()->room;
-        $effectivity_date_orig = Hmo::where('id', $request->id)->first()->effectivity_date;
-        $expiration_date_orig  = Hmo::where('id', $request->id)->first()->expiration_date;
-        $status_orig           = Hmo::where('id', $request->id)->first()->status;
-
-        $changes = 0;
-        if($request->hmo != $hmo_orig){
-            $hmo_new = $request->hmo;
-            $hmo_change = "[HMO: FROM '$hmo_orig' TO '$hmo_new']";
-            $changes++;
-
-        }
-        else{
-            $hmo_change = NULL;
-        }
-
-        if($request->coverage != $coverage_orig){
-            $coverage_new = $request->coverage;
-            $coverage_change = "[COVERAGE: FROM '$coverage_orig' TO '$coverage_new']";
-            $changes++;
-        }
-        else{
-            $coverage_change = NULL;
-        }
-
-        if($request->particulars != $particulars_orig){
-            $particulars_new = $request->particulars;
-            $particulars_change = "[PARTICULARS: FROM '$particulars_orig' TO '$particulars_new']";
-            $changes++;
-        }
-        else{
-            $particulars_change = NULL;
-        }
-
-        if($request->room != $room_orig){
-            $room_new = $request->room;
-            $room_change = "[ROOM: FROM '$room_orig' TO '$room_new']";
-            $changes++;
-        }
-        else{
-            $room_change = NULL;
-        }
-
-        if($request->effectivity_date != $effectivity_date_orig){
-            $effectivity_date_new = $request->effectivity_date;
-            $effectivity_date_change = "[EFFECTIVITY DATE: FROM '$effectivity_date_orig' TO '$effectivity_date_new']";
-            $changes++;
-        }
-        else{
-            $effectivity_date_change = NULL;
-        }
-
-        if($request->expiration_date != $expiration_date_orig){
-            $expiration_date_new = $request->expiration_date;
-            $expiration_date_change = "[EXPIRATION DATE: FROM '$expiration_date_orig' TO '$expiration_date_new']";
-            $changes++;
-        }
-        else{
-            $expiration_date_change = NULL;
-        }
-
-        if($request->status != $status_orig){
-            $status_new = $request->status;
-            $status_change = "[STATUS: FROM '$status_orig' TO '$status_new']";+
-            $changes++;
-        }
-        else{
-            $status_change = NULL;
-        }
-
-        if($changes == 0){
-            return 'no changes';
-        }
-
-        $update = Hmo::find($request->id)
-        ->update([
-            'hmo'              => strtoupper($request->hmo),
-            'coverage'         => strtoupper($request->coverage),
-            'particulars'      => strtoupper($request->particulars),
-            'room'             => strtoupper($request->room),
-            'effectivity_date' => $request->effectivity_date,
-            'expiration_date'  => $request->expiration_date,
-            'status'           => strtoupper($request->status)
-        ]);
-
-        if($update){
-            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S HMO DETAILS: $hmo_change $coverage_change $particulars_change $room_change $status_change");
-            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S HMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $hmo_change $coverage_change $particulars_change $room_change $status_change");
-            return 'true';
-        }
-        else{
-            return 'false';
-        }
-    }
-
     public function updatePersonalInformation(Request $request){
         if($request->filename_delete){
             if(file_exists('storage/employee_images/'.$request->filename_delete)){
@@ -905,223 +803,6 @@ class UpdateController extends Controller{
         }
     }
 
-    // public function updateEducationalAttainment(Request $request){
-    //     if(!$employee = EducationalAttainment::where('employee_id',$request->employee_id)->first()){
-    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-
-    //         if($request->secondary_school_name || $request->secondary_school_address || $request->secondary_school_inclusive_years_from || $request->secondary_school_inclusive_years_to || $request->primary_school_name || $request->primary_school_address || $request->primary_school_inclusive_years_from || $request->primary_school_inclusive_years_to){
-    //             $secondary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $secondary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $secondary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $secondary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $secondary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $primary_school_name_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $primary_school_address_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $primary_school_inclusive_years_from_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-    //             $primary_school_inclusive_years_to_orig = EducationalAttainment::where('employee_id', $request->id)->first();
-
-    //             $employee = new EducationalAttainment;
-    //             $employee->employee_id = $request->employee_id;
-    //             $employee->secondary_school_name = strtoupper($request->secondary_school_name);
-    //             $employee->secondary_school_address = strtoupper($request->secondary_school_address);
-    //             $employee->secondary_school_inclusive_years_from = $request->secondary_school_inclusive_years_from;
-    //             $employee->secondary_school_inclusive_years_to = $request->secondary_school_inclusive_years_to;
-    //             $employee->primary_school_name = strtoupper($request->primary_school_name);
-    //             $employee->primary_school_address = strtoupper($request->primary_school_address);
-    //             $employee->primary_school_inclusive_years_from = $request->primary_school_inclusive_years_from;
-    //             $employee->primary_school_inclusive_years_to = $request->primary_school_inclusive_years_to;
-    //             $employee->save();
-
-    //             if($request->secondary_school_name != $secondary_school_name_orig){
-    //                 $secondary_school_name_new = strtoupper($request->secondary_school_name);
-    //                 $secondary_school_name_orig = $secondary_school_name_orig ? $secondary_school_name_orig :'N/A';
-    //                 $secondary_school_name_change = "[SECONDARY SCHOOL NAME: FROM '$secondary_school_name_orig' TO '$secondary_school_name_new']";
-    //             }
-    //             else{
-    //                 $secondary_school_name_change = NULL;
-    //             }
-
-    //             if($request->secondary_school_address != $secondary_school_address_orig){
-    //                 $secondary_school_address_new = strtoupper($request->secondary_school_address);
-    //                 $secondary_school_address_orig = $secondary_school_address_orig ? $secondary_school_address_orig :'N/A';
-    //                 $secondary_school_address_change = "[SECONDARY SCHOOL ADDRESS: FROM '$secondary_school_address_orig' TO '$secondary_school_address_new']";
-    //             }
-    //             else{
-    //                 $secondary_school_address_change = NULL;
-    //             }
-
-    //             if($request->secondary_school_inclusive_years_from != $secondary_school_inclusive_years_from_orig){
-    //                 $secondary_school_inclusive_years_from_1 = ($secondary_school_inclusive_years_from_orig !== null) ? Carbon::parse($secondary_school_inclusive_years_from_orig)->format('F Y') : 'N/A';
-    //                 $secondary_school_inclusive_years_from_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-    //                 $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_1' TO '$secondary_school_inclusive_years_from_2']";
-    //             }
-    //             else{
-    //                 $secondary_school_inclusive_years_from_change = NULL;
-    //             }
-
-    //             if($request->secondary_school_inclusive_years_to != $secondary_school_inclusive_years_to_orig){
-    //                 $secondary_school_inclusive_years_to_1 = ($secondary_school_inclusive_years_from_orig !== null) ? Carbon::parse($secondary_school_inclusive_years_to_orig)->format('F Y') : 'N/A';
-    //                 $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-    //                 $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_1' TO '$secondary_school_inclusive_years_to_2']";
-    //             }
-    //             else{
-    //                 $secondary_school_inclusive_years_to_change = NULL;
-    //             }
-
-    //             if($request->primary_school_name != $primary_school_name_orig){
-    //                 $primary_school_name_new = strtoupper($request->primary_school_name);
-    //                 $primary_school_name_orig = $primary_school_name_orig ? $primary_school_name_orig :'N/A';
-    //                 $primary_school_name_change = "[PRIMARY SCHOOL NAME: FROM '$primary_school_name_orig' TO '$primary_school_name_new']";
-    //             }
-    //             else{
-    //                 $primary_school_name_change = NULL;
-    //             }
-
-    //             if($request->primary_school_address != $primary_school_address_orig){
-    //                 $primary_school_address_new = strtoupper($request->primary_school_address);
-    //                 $primary_school_address_orig = $primary_school_address_orig ? $primary_school_address_orig :'N/A';
-    //                 $primary_school_address_change = "[PRIMARY SCHOOL ADDRESS: FROM '$primary_school_address_orig' TO '$primary_school_address_new']";
-    //             }
-    //             else{
-    //                 $primary_school_address_change = NULL;
-    //             }
-
-    //             if($request->primary_school_inclusive_years_from != $primary_school_inclusive_years_from_orig){
-    //                 $primary_school_inclusive_years_from_1 = ($primary_school_inclusive_years_from_orig !== null) ? Carbon::parse($primary_school_inclusive_years_from_orig)->format('F Y') : 'N/A';
-    //                 $primary_school_inclusive_years_from_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-    //                 $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_1' TO '$primary_school_inclusive_years_from_2']";
-    //             }
-    //             else{
-    //                 $primary_school_inclusive_years_from_change = NULL;
-    //             }
-
-    //             if($request->primary_school_inclusive_years_to != $primary_school_inclusive_years_to_orig){
-    //                 $primary_school_inclusive_years_to_1 = ($primary_school_inclusive_years_from_orig !== null) ? Carbon::parse($primary_school_inclusive_years_to_orig)->format('F Y') : 'N/A';
-    //                 $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-    //                 $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_1' TO '$primary_school_inclusive_years_to_2']";
-    //             }
-    //             else{
-    //                 $primary_school_inclusive_years_to_change = NULL;
-    //             }
-
-    //             $userlogs = new UserLogs;
-    //             $userlogs->username = auth()->user()->name;
-    //             $userlogs->role = auth()->user()->user_level;
-    //             $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
-    //             $userlogs->save();
-
-    //             $userlogs = new EmployeeLogs;
-    //             $userlogs->employee_id = $request->id;
-    //             $userlogs->username = auth()->user()->name;
-    //             $userlogs->role = auth()->user()->user_level;
-    //             $userlogs->activity = "USER UPDATES THIS EMPLOYEE'S EDUCATION DETAILS: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change ";
-    //             $userlogs->save();
-    //         }
-    //     }
-    //     else{
-    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-    //         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-    //         $data = EducationalAttainment::where('employee_id', $request->id)->select('secondary_school_name','secondary_school_address','secondary_school_inclusive_years_from','secondary_school_inclusive_years_to','primary_school_name','primary_school_address','primary_school_inclusive_years_from','primary_school_inclusive_years_to')->first();
-
-    //         if($request->secondary_school_name != $data->secondary_school_name){
-    //             $secondary_school_name_new = strtoupper($request->secondary_school_name);
-    //             $secondary_school_name_change = "[SECONDARY SCHOOL NAME: FROM '$data->secondary_school_name' TO '$secondary_school_name_new']";
-    //         }
-    //         else{
-    //             $secondary_school_name_change = NULL;
-    //         }
-
-    //         if($request->secondary_school_address != $data->secondary_school_address){
-    //             $secondary_school_address_new = strtoupper($request->secondary_school_address);
-    //             $secondary_school_address_change = "[SECONDARY SCHOOL ADDRESS: FROM '$data->secondary_school_address' TO '$secondary_school_address_new']";
-    //         }
-    //         else{
-    //             $secondary_school_address_change = NULL;
-    //         }
-
-    //         if($request->secondary_school_inclusive_years_from != $data->secondary_school_inclusive_years_from){
-    //             $secondary_school_inclusive_years_from_1 = Carbon::parse($data->secondary_school_inclusive_years_from)->format('F Y');
-    //             $secondary_school_inclusive_years_from_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-    //             $secondary_school_inclusive_years_from_change = "[SECONDARY SCHOOL START YEAR/MONTH: FROM '$secondary_school_inclusive_years_from_1' TO '$secondary_school_inclusive_years_from_2']";
-    //         }
-    //         else{
-    //             $secondary_school_inclusive_years_from_change = NULL;
-    //         }
-
-    //         if($request->secondary_school_inclusive_years_to != $data->secondary_school_inclusive_years_to){
-    //             $secondary_school_inclusive_years_to_1 = Carbon::parse($data->secondary_school_inclusive_years_to)->format('F Y');
-    //             $secondary_school_inclusive_years_to_2 = Carbon::parse($request->secondary_school_inclusive_years_from)->format('F Y');
-    //             $secondary_school_inclusive_years_to_change = "[SECONDARY SCHOOL END YEAR/MONTH: FROM '$secondary_school_inclusive_years_to_1' TO '$secondary_school_inclusive_years_to_2']";
-    //         }
-    //         else{
-    //             $secondary_school_inclusive_years_to_change = NULL;
-    //         }
-
-    //         if($request->primary_school_name != $data->primary_school_name){
-    //             $primary_school_name_new = strtoupper($request->primary_school_name);
-    //             $primary_school_name_change = "[PRIMARY SCHOOL NAME: FROM '$data->primary_school_name' TO '$primary_school_name_new']";
-    //         }
-    //         else{
-    //             $primary_school_name_change = NULL;
-    //         }
-
-    //         if($request->primary_school_address != $data->primary_school_address){
-    //             $primary_school_address_new = strtoupper($request->primary_school_address);
-    //             $primary_school_address_change = "[PRIMARY SCHOOL ADDRESS: FROM '$data->primary_school_address' TO '$primary_school_address_new']";
-    //         }
-    //         else{
-    //             $primary_school_address_change = NULL;
-    //         }
-
-    //         if($request->primary_school_inclusive_years_from != $data->primary_school_inclusive_years_from){
-    //             $primary_school_inclusive_years_from_1 = Carbon::parse($data->primary_school_inclusive_years_from)->format('F Y');
-    //             $primary_school_inclusive_years_from_2 = Carbon::parse($request->primary_school_inclusive_years_from)->format('F Y');
-    //             $primary_school_inclusive_years_from_change = "[PRIMARY SCHOOL START YEAR/MONTH: FROM '$primary_school_inclusive_years_from_1' TO '$primary_school_inclusive_years_from_2']";
-    //         }
-    //         else{
-    //             $primary_school_inclusive_years_from_change = NULL;
-    //         }
-
-    //         if($request->primary_school_inclusive_years_to != $data->primary_school_inclusive_years_to){
-    //             $primary_school_inclusive_years_to_1 = Carbon::parse($data->primary_school_inclusive_years_to)->format('F Y');
-    //             $primary_school_inclusive_years_to_2 = Carbon::parse($request->primary_school_inclusive_years_to)->format('F Y');
-    //             $primary_school_inclusive_years_to_change = "[PRIMARY SCHOOL END YEAR/MONTH: FROM '$primary_school_inclusive_years_to_1' TO '$primary_school_inclusive_years_to_2']";
-    //         }
-    //         else{
-    //             $primary_school_inclusive_years_to_change = NULL;
-    //         }
-
-    //         $update = EducationalAttainment::where('employee_id',$request->employee_id)
-    //         ->update([
-    //             'secondary_school_name' => strtoupper($request->secondary_school_name),
-    //             'secondary_school_address' => strtoupper($request->secondary_school_address),
-    //             'secondary_school_inclusive_years_from' => $request->secondary_school_inclusive_years_from,
-    //             'secondary_school_inclusive_years_to' => $request->secondary_school_inclusive_years_to,
-    //             'primary_school_name' => strtoupper($request->primary_school_name),
-    //             'primary_school_address' => strtoupper($request->primary_school_address),
-    //             'primary_school_inclusive_years_from' => $request->primary_school_inclusive_years_from,
-    //             'primary_school_inclusive_years_to' => $request->primary_school_inclusive_years_to,
-    //         ]);
-
-    //         if($update){
-    //             if($secondary_school_name_change || $secondary_school_address_change || $secondary_school_inclusive_years_from_change || $secondary_school_inclusive_years_to_change || $primary_school_name_change || $primary_school_address_change || $primary_school_inclusive_years_from_change || $primary_school_inclusive_years_to_change){
-    //                 $userlogs = new EmployeeLogs;
-    //                 $userlogs->employee_id = $request->id;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATES DETAILS OF THIS EMPLOYEE: $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
-    //                 $userlogs->save();
-
-    //                 $userlogs = new UserLogs;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S EDUCATION DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $secondary_school_name_change $secondary_school_address_change $secondary_school_inclusive_years_from_change $secondary_school_inclusive_years_to_change $primary_school_name_change $primary_school_address_change $primary_school_inclusive_years_from_change $primary_school_inclusive_years_to_change";
-    //                 $userlogs->save();
-    //             }
-    //         }
-    //     }
-    // }
-
     public function updateMedicalHistory(Request $request){
         if(!$employee = MedicalHistory::where('employee_id',$request->employee_id)->first()){
             $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
@@ -1255,77 +936,6 @@ class UpdateController extends Controller{
             }
         }
     }
-
-    // public function updateBenefits(Request $request){
-    //     if(!$employee = Benefits::where('employee_id',$request->employee_id)->first()){
-    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-
-    //         if($request->employee_insurance){
-    //             $employee_insurance_orig = Benefits::where('employee_id', $request->employee_id)->first();
-
-    //             if($request->employee_insurance != $employee_insurance_orig){
-    //                 $employee_insurance_new = $request->employee_insurance;
-    //                 $employee_insurance_orig = $employee_insurance_orig ? $employee_insurance_orig :'N/A';
-    //                 $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
-    //             }
-    //             else{
-    //                 $employee_insurance_change = NULL;
-    //             }
-
-    //             $save = Benefits::create([
-    //                 'employee_id' => $request->employee_id,
-    //                 'employee_insurance' => strtoupper($request->employee_insurance)
-    //             ]);
-
-    //             if($save){
-    //                 $userlogs = new UserLogs;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No. $request->employee_number) $employee_insurance_change";
-    //                 $userlogs->save();
-
-    //                 $userlogs = new EmployeeLogs;
-    //                 $userlogs->employee_id = $request->id;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
-    //                 $userlogs->save();
-    //             }
-    //         }
-    //     }
-    //     else{
-    //         $employee_details = PersonalInformationTable::where('id', $request->id)->first();
-    //         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-    //         $employee_insurance_orig = Benefits::where('employee_id',$request->id)->first()->employee_insurance;
-
-    //         if($request->employee_insurance != $employee_insurance_orig){
-    //             $employee_insurance_new = $request->employee_insurance;
-    //             $employee_insurance_change = "[HEALTHCARE / BENEFITS: FROM '$employee_insurance_orig' TO '$employee_insurance_new']";
-    //         }
-    //         else{
-    //             $employee_insurance_change = NULL;
-    //         }
-
-    //         $update = Benefits::where('employee_id',$request->employee_id)->update(['employee_insurance' => strtoupper($request->employee_insurance)]);
-
-    //         if($update){
-    //             if($request->employee_insurance != $employee_insurance_orig){
-    //                 $userlogs = new EmployeeLogs;
-    //                 $userlogs->employee_id = $request->id;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS: $employee_insurance_change";
-    //                 $userlogs->save();
-
-    //                 $userlogs = new UserLogs;
-    //                 $userlogs->username = auth()->user()->name;
-    //                 $userlogs->role = auth()->user()->user_level;
-    //                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S BENEFITS DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $employee_insurance_change";
-    //                 $userlogs->save();
-    //             }
-    //         }
-    //     }
-    // }
 
     public function updateDocuments(Request $request){
         $date = Carbon::now();
@@ -1903,6 +1513,108 @@ class UpdateController extends Controller{
                 $userlogs->activity = "USER UPDATED THIS EMPLOYEE'S DOCUMENTS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $barangay_clearance_update $birthcertificate_update $diploma_update $medical_certificate_update $nbi_clearance_update $pag_ibig_update $philhealth_update $police_clearance_update $resume_update $sss_update $tor_update";
                 $userlogs->save();
             }
+        }
+    }
+
+    public function updateHmo(Request $request){
+        $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+        $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+        $hmo_orig              = Hmo::where('id', $request->id)->first()->hmo;
+        $coverage_orig         = Hmo::where('id', $request->id)->first()->coverage;
+        $particulars_orig      = Hmo::where('id', $request->id)->first()->particulars;
+        $room_orig             = Hmo::where('id', $request->id)->first()->room;
+        $effectivity_date_orig = Hmo::where('id', $request->id)->first()->effectivity_date;
+        $expiration_date_orig  = Hmo::where('id', $request->id)->first()->expiration_date;
+        $status_orig           = Hmo::where('id', $request->id)->first()->status;
+
+        $changes = 0;
+        if($request->hmo != $hmo_orig){
+            $hmo_new = $request->hmo;
+            $hmo_change = "[HMO: FROM '$hmo_orig' TO '$hmo_new']";
+            $changes++;
+
+        }
+        else{
+            $hmo_change = NULL;
+        }
+
+        if($request->coverage != $coverage_orig){
+            $coverage_new = $request->coverage;
+            $coverage_change = "[COVERAGE: FROM '$coverage_orig' TO '$coverage_new']";
+            $changes++;
+        }
+        else{
+            $coverage_change = NULL;
+        }
+
+        if($request->particulars != $particulars_orig){
+            $particulars_new = $request->particulars;
+            $particulars_change = "[PARTICULARS: FROM '$particulars_orig' TO '$particulars_new']";
+            $changes++;
+        }
+        else{
+            $particulars_change = NULL;
+        }
+
+        if($request->room != $room_orig){
+            $room_new = $request->room;
+            $room_change = "[ROOM: FROM '$room_orig' TO '$room_new']";
+            $changes++;
+        }
+        else{
+            $room_change = NULL;
+        }
+
+        if($request->effectivity_date != $effectivity_date_orig){
+            $effectivity_date_new = $request->effectivity_date;
+            $effectivity_date_change = "[EFFECTIVITY DATE: FROM '$effectivity_date_orig' TO '$effectivity_date_new']";
+            $changes++;
+        }
+        else{
+            $effectivity_date_change = NULL;
+        }
+
+        if($request->expiration_date != $expiration_date_orig){
+            $expiration_date_new = $request->expiration_date;
+            $expiration_date_change = "[EXPIRATION DATE: FROM '$expiration_date_orig' TO '$expiration_date_new']";
+            $changes++;
+        }
+        else{
+            $expiration_date_change = NULL;
+        }
+
+        if($request->status != $status_orig){
+            $status_new = $request->status;
+            $status_change = "[STATUS: FROM '$status_orig' TO '$status_new']";+
+            $changes++;
+        }
+        else{
+            $status_change = NULL;
+        }
+
+        if($changes == 0){
+            return 'no changes';
+        }
+
+        $update = Hmo::find($request->id)
+        ->update([
+            'hmo'              => strtoupper($request->hmo),
+            'coverage'         => strtoupper($request->coverage),
+            'particulars'      => strtoupper($request->particulars),
+            'room'             => strtoupper($request->room),
+            'effectivity_date' => $request->effectivity_date,
+            'expiration_date'  => $request->expiration_date,
+            'status'           => strtoupper($request->status)
+        ]);
+
+        if($update){
+            $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S HMO DETAILS: $hmo_change $coverage_change $particulars_change $room_change $status_change");
+            $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S HMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $hmo_change $coverage_change $particulars_change $room_change $status_change");
+            return 'true';
+        }
+        else{
+            return 'false';
         }
     }
 }

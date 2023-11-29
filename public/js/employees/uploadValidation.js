@@ -12,9 +12,11 @@ $(document).on('click','#image_crop',function(){
     $('.top-container').hide();
     employee_image_change = 'CHANGED';
     cropper.destroy();
+    changeCounter++;
+    disableUpdate('', changeCounter);
 });
 
-function ImageValidation(employee_image) {
+function ImageValidation(employee_image){
     var imageData = document.getElementById('employee_image');
     var imageUploadPath = imageData.value;
     var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
@@ -49,7 +51,7 @@ function ImageValidation(employee_image) {
         });
     }
     else {
-        if(imageData.files && imageData.files[0]) {
+        if(imageData.files && imageData.files[0]){
             var imageReader = new FileReader();
                 imageReader.onload = function(e) {
                     $('#image_preview').attr('src', e.target.result);

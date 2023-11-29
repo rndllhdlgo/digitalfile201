@@ -5,14 +5,6 @@ var current_employee_number = $('#current_employee_number').val();
 var current_email = $('#current_email').val();
 var app_timeout = $('#APP_TIMEOUT').val();
 var data_update, standby = true;
-// var prevent_value;
-
-// function prevent_reload(prevent_value){
-//     console.log(prevent_value);
-//     $(window).on('beforeunload', function(){
-//         return null;
-//     });
-// }
 
 $(document).ready(function(){
     var headerText = $('.my-header').text();
@@ -258,7 +250,6 @@ $('#pass3').on('keyup',function(){
     }
 });
 
-// Check required fields on change password
 var checkRequired = true, checkChanges = true, checkInvalid = true, checkDuplicate = true;
 setInterval(() => {
     if($('#loading').is(':hidden')){
@@ -311,7 +302,6 @@ setInterval(() => {
     }
 }, 0);
 
-// Check required fields
 setInterval(() => {
     if($(".required_field:visible").length > 0){
         $('.required_field').each(function(){
@@ -340,16 +330,15 @@ $('body').on('cut paste', function(){
     }, app_timeout);
 });
 
-// Disable keyboard on input date
-$("input[type='date']").keydown(function (event) { event.preventDefault(); });
+$("input[type='date']").keydown(function(e){
+    e.preventDefault();
+});
 
-// Disable future months in input type month
 $(document).ready(function() {
     var currentDate = new Date();
     $('.max_month').attr('max', currentDate.toISOString().substring(0, 7));
 });
 
-// Add title on filter-input
 $(document).ready(function(){
     $('.filter-input').attr('title', 'SEARCH');
 });
@@ -371,7 +360,6 @@ function formatDate(dateString){
     return monthNames[monthIndex] + ' ' + ('0' + day).slice(-2) + ', ' + year;
 }
 
-// 18 Years old above
 $(function(){
     var dtTodays = new Date();
     var months = dtTodays.getMonth() + 1;
@@ -386,7 +374,6 @@ $(function(){
     $('#birthday').attr('max', maxDates);
 });
 
-// Disable Future Dates
 function getCurrentDate(){
     const today = new Date();
     const year = today.getFullYear();
@@ -396,7 +383,6 @@ function getCurrentDate(){
 }
 $('.future_date').attr('max', getCurrentDate());
 
-// Add bullet on textarea
 $("textarea").keypress(function(){
     if($(this).val() === ''){
         $(this).val('• ');
