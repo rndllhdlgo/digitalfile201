@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateContractTable extends Migration
+class CreateMonthlySalesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,11 @@ class CreateContractTable extends Migration
      */
     public function up()
     {
-        Schema::create('contract', function (Blueprint $table) {
+        Schema::create('monthly_sales', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('employee_id');
-            $table->string('contracts_type')->nullable();
-            $table->string('contracts_date')->nullable();
-            $table->string('contracts_file')->nullable();
+            $table->string('month');
+            $table->string('year');
+            $table->string('profit');
             $table->timestamps();
         });
     }
@@ -30,6 +29,6 @@ class CreateContractTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('contract');
+        Schema::dropIfExists('monthly_sales');
     }
 }

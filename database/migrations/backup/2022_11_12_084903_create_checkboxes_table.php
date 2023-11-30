@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateResignationTable extends Migration
+class CreateCheckboxesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateResignationTable extends Migration
      */
     public function up()
     {
-        Schema::create('resignation', function (Blueprint $table) {
+        Schema::create('checkboxes', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('employee_id');
-            $table->string('resignation_reason')->nullable();
-            $table->string('resignation_date')->nullable();
-            $table->string('resignation_file')->nullable();
+            $table->string('fruits');
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateResignationTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('resignation');
+        Schema::dropIfExists('checkboxes');
     }
 }

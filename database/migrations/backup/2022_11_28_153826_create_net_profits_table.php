@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateChildrensTable extends Migration
+class CreateNetProfitsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateChildrensTable extends Migration
      */
     public function up()
     {
-        Schema::create('childrens', function (Blueprint $table) {
+        Schema::create('net_profits', function (Blueprint $table) {
             $table->id();
-            $table->string('child_name');
-            $table->string('child_birthday');
-            $table->string('child_gender');
+            $table->string('month');
+            $table->string('year');
+            $table->string('profit');
             $table->timestamps();
         });
     }
@@ -29,6 +29,6 @@ class CreateChildrensTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('childrens');
+        Schema::dropIfExists('net_profits');
     }
 }

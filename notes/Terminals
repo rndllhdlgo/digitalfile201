@@ -45,3 +45,6 @@ to delete specific files by extension: rm /var/www/html/digital201/public/storag
 to delete speficif files by filename: rm /var/www/html/digital201/public/storage/documents/file*
 to delete specific files by filename and extension: rm /var/www/html/digital201/public/storage/documents/file*.txt
 to delete specific folder along with files inside: rm -rv /var/www/html/digital201/public/storage/evaluation/YourFolderName
+
+to change password: passwd
+to open location: code ../digital201/
