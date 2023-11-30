@@ -7,18 +7,18 @@ use App\Http\Controllers\traits\Logs;
 use App\Models\Children;
 use App\Models\College;
 use App\Models\Contract;
+use App\Models\EmployeeLogs;
 use App\Models\Evaluation;
 use App\Models\JobHistory;
 use App\Models\Memo;
 use App\Models\PersonalInformationTable;
+use App\Models\Primary;
 use App\Models\Resignation;
+use App\Models\Secondary;
 use App\Models\Training;
-use App\Models\EmployeeLogs;
 use App\Models\UserLogs;
 use App\Models\Vocational;
 use App\Models\WorkInformationTable;
-use App\Models\Secondary;
-use App\Models\Primary;
 
 class DeleteController extends Controller
 {

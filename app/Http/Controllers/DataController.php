@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 use App\Models\Children;
 use App\Models\College;
 use App\Models\Contract;
@@ -16,12 +17,9 @@ use App\Models\Resignation;
 use App\Models\Termination;
 use App\Models\WorkLogs;
 use App\Models\Hmo;
-
 use App\Models\Secondary;
 use App\Models\Primary;
 use App\Models\LeaveCredits;
-use Illuminate\Support\Facades\Http;
-
 use DataTables;
 
 class DataController extends Controller
