@@ -83,6 +83,7 @@ class BackUpController extends Controller
     // }
 
     public function backup(){
+        return 'Maintenance';
         $companies = Company::all();
         if(!$companies->isEmpty()){
             $sql_companies = '';
