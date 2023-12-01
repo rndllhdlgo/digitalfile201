@@ -11,79 +11,14 @@ use App\Models\{
     Branch,
     Company,
     Children,
-    College
+    College,
+    Contract,
+    Department
 };
 
 class BackUpController extends Controller
 {
-    // public function backup(){
-    //     $companies = Company::all();
-    //     if(!$companies->isEmpty()){
-    //         $sql_companies = '';
-    //         foreach($companies as $company){
-    //             $sql_companies .= "REPLACE INTO `companies`
-    //             (
-    //                 `id`,
-    //                 `company_name`,
-    //                 `entity`,
-    //                 `created_at`,
-    //                 `updated_at`
-    //             )
-    //             VALUES
-    //             (
-    //                 '$company->id',
-    //                 '$company->company_name',
-    //                 '$company->entity',
-    //                 '$company->created_at',
-    //                 '$company->updated_at'
-    //             );\n";
-    //         }
-
-    //         $companiesBackUpPath = storage_path('app/public/backupsql/companies.sql');
-    //         file_put_contents($companiesBackUpPath, $sql_companies);
-
-    //         Mail::to('hidalgorendell5@gmail.com')->send(new BackUpSQL($companiesBackUpPath));
-
-    //         return 'Backup completed and email sent';
-    //     }
-    //     else{
-    //         return 'no data';
-    //     }
-
-    //     $branches = Branches::all();
-    //     if(!$branches->isEmpty()){
-    //         $sql_branches = '';
-    //         foreach($branches as $branch){
-    //             $sql_branches .= "REPLACE INTO `branches`
-    //             (
-    //                 `id`,
-    //                 `branch_name`,
-    //                 `created_at`,
-    //                 `updated_at`
-    //             )
-    //             VALUES
-    //             (
-    //                 '$branch->id',
-    //                 '$branch->branch_name',
-    //                 '$branch->created_at',
-    //                 '$branch->updated_at'
-    //             );\n";
-    //         }
-
-    //         $branchesBackUpPath = storage_path('app/public/backupsql/branches.sql');
-    //         file_put_contents($branchesBackUpPath, $sql_branches);
-
-    //         Mail::to('hidalgorendell5@gmail.com')->send(new BackUpSQL($branchesBackUpPath));
-
-    //         return 'Backup completed and email sent';
-    //     }
-    //     else{
-    //         return 'no data';
-    //     }
-    // }
-
     public function backup(){
-        return 'Maintenance';
         $companies = Company::all();
         if(!$companies->isEmpty()){
             $sql_companies = '';
@@ -117,19 +52,31 @@ class BackUpController extends Controller
         if(!$branches->isEmpty()){
             $sql_branches = '';
             foreach($branches as $branch){
-                $sql_branches .= "REPLACE INTO `branches`
+                $sql_branches .= "REPLACE INTO `entity03`
                 (
-                    `id`,
-                    `branch_name`,
-                    `created_at`,
-                    `updated_at`
+                    `entity01`,
+                    `entity02`,
+                    `entity03`,
+                    `entity03_desc`,
+                    `addr1`,
+                    `addr2`,
+                    `contact`,
+                    `email`,
+                    `telnum1`,
+                    `telnum2`
                 )
                 VALUES
                 (
-                    '$branch->id',
-                    '$branch->branch_name',
-                    '$branch->created_at',
-                    '$branch->updated_at'
+                    '$branch->entity01',
+                    '$branch->entity02',
+                    '$branch->entity03',
+                    '$branch->entity03_desc'
+                    '$branch->addr1',
+                    '$branch->addr2',
+                    '$branch->contact',
+                    '$branch->email',
+                    '$branch->telnum1',
+                    '$branch->telnum2'
                 );\n";
             }
 
@@ -208,6 +155,64 @@ class BackUpController extends Controller
             $collegeBackUpPath = null;
         }
 
+        $contracts = Contract::all();
+        if(!$contracts->isEmpty()){
+            $sql_contracts = '';
+            foreach($contracts as $contract){
+                $sql_contracts .= "REPLACE INTO `contracts`
+                (
+                    `id`,
+                    `employee_id`,
+                    `contracts_type`,
+                    `contracts_date`,
+                    `contracts_file`,
+                    `created_at`,
+                    `updated_at`
+                )
+                VALUES
+                (
+                    '$contract->id',
+                    '$contract->employee_id',
+                    '$contract->contracts_type',
+                    '$contract->contracts_date',
+                    '$contract->contracts_file',
+                    '$contract->created_at',
+                    '$contract->updated_at'
+                );\n";
+            }
+
+            $contractBackUpPath = storage_path('app/public/backupsql/contracts.sql');
+            file_put_contents($contractBackUpPath, $sql_contracts);
+        }
+        else{
+            $contractBackUpPath = null;
+        }
+
+        $departments = Department::all();
+        if(!$departments->isEmpty()){
+            $sql_departments = '';
+            foreach($departments as $department){
+                $sql_departments .= "REPLACE INTO `department`
+                (
+                    `entity01`,
+                    `deptcode`,
+                    `deptdesc`
+                )
+                VALUES
+                (
+                    '$department->entity01',
+                    '$department->deptcode',
+                    '$department->deptdesc'
+                );\n";
+            }
+
+            $departmentBackUpPath = storage_path('app/public/backupsql/departments.sql');
+            file_put_contents($departmentBackUpPath, $sql_departments);
+        }
+        else{
+            $departmentBackUpPath = null;
+        }
+
         $filePaths = [];
         if($companiesBackUpPath !== null){
             $filePaths[] = $companiesBackUpPath;
@@ -220,6 +225,12 @@ class BackUpController extends Controller
         }
         if($collegeBackUpPath !== null){
             $filePaths[] = $collegeBackUpPath;
+        }
+        if($contractBackUpPath !== null){
+            $filePaths[] = $contractBackUpPath;
+        }
+        if($departmentBackUpPath !== null){
+            $filePaths[] = $departmentBackUpPath;
         }
 
         if(!empty($filePaths)){
