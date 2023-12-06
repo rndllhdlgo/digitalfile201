@@ -19,29 +19,25 @@ use App\Http\Controllers\QrController;
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
 Route::middleware(['session','check_device','checkIpAddress'])->group(function(){
     Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
-    Route::get('/logout',[LoginController::class,'logout']);
+    Route::get('/logout',[LoginController::class, 'logout']);
     Route::get('/', 'HomeController@index');
-    Route::get('/org', 'HomeController@org');
     Route::get('/index/data','HomeController@index_data');
-    Route::get('/index_reload_data','HomeController@index_reload_data');
+    Route::get('/index_reload_data','HomeController@index_reload_data')->name('index_reload_data');
 
     // Pages Controller
     Route::any('/employees', 'PagesController@employees');
     Route::any('/users', 'PagesController@users');
     Route::any('/maintenance', 'PagesController@maintenance');
-    Route::any('/updates', 'PagesController@updates');
-
-    Route::get('/getCities','PagesController@getCities');
-    Route::get('/getRegion','PagesController@getRegion');
-    Route::any('/setJobPosition','PagesController@setJobPosition');
-    Route::any('/setJobDescription','PagesController@setJobDescription');
-    Route::any('/setJobRequirements','PagesController@setJobRequirements');
+    Route::any('/getCities', 'PagesController@getCities');
+    Route::any('/getRegion', 'PagesController@getRegion');
+    Route::any('/setJobPosition', 'PagesController@setJobPosition');
+    Route::any('/setJobDescription', 'PagesController@setJobDescription');
+    Route::any('/setJobRequirements', 'PagesController@setJobRequirements');
 
     // Employees Controller
-    Route::any('/employees/logs_data','EmployeesController@logs_data');
-    Route::any('/employees/employee_logs','EmployeesController@employee_logs');
     Route::any('/employees/data','EmployeesController@employees_data');
-    Route::any('/employees/status','EmployeesController@employee_status');
+    Route::any('/logs_reload', 'EmployeesController@logs_reload')->name('logs_reload');
+    Route::any('/employee_history_reload', 'EmployeesController@employee_history_reload')->name('employee_history_reload');
     Route::any('/employees/fetch','EmployeesController@employee_fetch');
     Route::any('/upload_picture','EmployeesController@upload_picture');
     Route::any('/checkDuplicate','EmployeesController@checkDuplicate');
@@ -161,8 +157,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::get('/change/validate','UsersController@change_validate');
     Route::any('/change/password','UsersController@change_password');
     Route::any('/users/status', 'UsersController@users_status');
-    Route::get('/logs_reload', 'EmployeesController@logs_reload');
-    Route::get('/employee_history_reload', 'EmployeesController@employee_history_reload');
     Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
     Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
     Route::any('/pdf/image', 'TryController@pdf_blade');

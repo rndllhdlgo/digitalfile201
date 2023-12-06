@@ -3,10 +3,9 @@ $(document).ready(function(){
     user_activity_table = $('table.user_activity_table').DataTable({
         dom:'ltrip',
         language:{
-            info: "\"Showing _START_ to _END_ of _TOTAL_ User Activities\"",
-            lengthMenu:"Show _MENU_ User Activities",
-            emptyTable:"No User Activities Data Found!",
-            loadingRecords: "Loading User Activities Records...",
+            info: "\"SHOWING _START_ TO _END_ OF _TOTAL_ USER ACTIVITIES\"",
+            lengthMenu:"SHOW _MENU_ USER ACTIVITIES",
+            emptyTable:"NO DATA FOUND!"
         },
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         processing:true,

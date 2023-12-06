@@ -61,19 +61,6 @@ $(document).ready(function(){
             url: '/employees/data',
             data:{
                 filter:filter
-            },
-            error: function(xhr, error, thrown){
-                Swal.fire({
-                    title: "DATA ERROR",
-                    html: "<h3><b>Please reload the page.</b></h3>",
-                    confirmButtonText: "RELOAD",
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        window.location.reload();
-                    }
-                });
             }
         },
         order:[],
