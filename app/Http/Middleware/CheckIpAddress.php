@@ -16,6 +16,9 @@ class CheckIpAddress
      * @return mixed
      */
     public function handle($request, Closure $next){
+        if(env('APP_MAINTENANCE') == 'true'){
+            abort(403, 'THIS SITE IS UNDER MAINTENANCE');
+        }
         $userIp = $request->ip();
         $checkIp = Ipaddress::where('ipaddress', $userIp)->first();
         if(!$checkIp){
@@ -37,12 +40,6 @@ class CheckIpAddress
         if(in_array($userIp, $allowedIps)){
             return $next($request);
         }
-
-        if(env('APP_MAINTENANCE') == 'true'){
-            abort(403, 'THIS SITE IS UNDER MAINTENANCE');
-        }
-        else{
-            abort(403, 'Unauthorized IP address');
-        }
+        abort(403, 'Unauthorized IP address');
     }
 }
