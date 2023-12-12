@@ -40,6 +40,26 @@ function children_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -95,6 +115,26 @@ function college_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -152,6 +192,26 @@ function secondary_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -209,6 +269,26 @@ function primary_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -266,6 +346,26 @@ function training_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -323,6 +423,26 @@ function vocational_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -382,6 +502,26 @@ function job_history_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -445,6 +585,26 @@ function memo_table(value_id, value_employee_number, value_last_name, value_firs
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -506,6 +666,26 @@ function evaluation_table(value_id, value_employee_number, value_last_name, valu
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -567,6 +747,26 @@ function contracts_table(value_id, value_employee_number, value_last_name, value
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -628,6 +828,26 @@ function resignation_table(value_id, value_employee_number, value_last_name, val
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -687,6 +907,26 @@ function termination_table(value_id, value_employee_number, value_last_name, val
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [
@@ -756,6 +996,26 @@ function hmo_table(value_id){
             async: false,
             data:{
                 id: value_id,
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         columns: [

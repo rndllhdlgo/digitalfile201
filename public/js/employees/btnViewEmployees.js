@@ -11,6 +11,8 @@ var children_id,
     resignation_id,
     termination_id = [];
 
+var data_error = 0;
+
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
 
@@ -307,19 +309,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     employee_history_table.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/employee_history_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.employee_history_table').DataTable().ajax.reload(null, false);
-                                }
-                            }
-                        });
-                    }
-                }, 1000);
+                // setInterval(function(){
+                //     if($('#loading').is(':hidden') && standby == false){
+                //         $.ajax({
+                //             url: "/employee_history_reload",
+                //             success: function(data){
+                //                 if(data != data_update){
+                //                     data_update = data;
+                //                     $('.employee_history_table').DataTable().ajax.reload(null, false);
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }, 1000);
 
                 var logs_table_data;
                 $('.logs_table_data').dataTable().fnDestroy();
@@ -376,19 +378,19 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     logs_table_data.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                setInterval(function(){
-                    if($('#loading').is(':hidden') && standby == false){
-                        $.ajax({
-                            url: "/logs_reload",
-                            success: function(data){
-                                if(data != data_update){
-                                    data_update = data;
-                                    $('.logs_table_data').DataTable().ajax.reload(null, false);
-                                }
-                            }
-                        });
-                    }
-                }, 1000);
+                // setInterval(function(){
+                //     if($('#loading').is(':hidden') && standby == false){
+                //         $.ajax({
+                //             url: "/logs_reload",
+                //             success: function(data){
+                //                 if(data != data_update){
+                //                     data_update = data;
+                //                     $('.logs_table_data').DataTable().ajax.reload(null, false);
+                //                 }
+                //             }
+                //         });
+                //     }
+                // }, 1000);
 
                 $('th').removeClass("sorting_asc");
 
@@ -555,9 +557,14 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }
                 $('#btnUpdate').prop('disabled', true);
                 $('#loading').hide();
-                $('#employee_information').show();
-                $('#employees_list').hide();
-                $('#tab1').click();
+                if(data_error == 0){
+                    $('#employee_information').show();
+                    $('#employees_list').hide();
+                    $('#tab1').click();
+                }
+                else{
+                    $('#employee_information').hide();
+                }
             });
         }
     });

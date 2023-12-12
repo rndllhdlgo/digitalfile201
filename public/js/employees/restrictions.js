@@ -137,7 +137,6 @@ function checkChange(element){
 }
 
 function disableUpdate(fieldCheck, changeCounter){
-    console.log(changeCounter);
     if(fieldCheck == true || changeCounter != 0){
         $('#btnUpdate').prop('disabled', false);
     }

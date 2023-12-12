@@ -61,6 +61,26 @@ $(document).ready(function(){
             url: '/employees/data',
             data:{
                 filter:filter
+            },
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    data_error++;
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
             }
         },
         order:[],

@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\QueryException;
 use Carbon\Carbon;
 use App\Models\Benefits;
 use App\Models\Branch;
@@ -58,479 +59,484 @@ class EmployeesController extends Controller
     }
 
     public function employees_data(Request $request){
-        if($request->filter == 'regular'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->whereHas('work_information', function ($query) {
-                    $query->where('employment_status','Regular');
-                })
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
+        try{
+            if($request->filter == 'regular'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->whereHas('work_information', function ($query) {
+                        $query->where('employment_status','Regular');
+                    })
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'probationary'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->whereHas('work_information', function ($query) {
+                        $query->where('employment_status','Probationary');
+                    })
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'agency'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->whereHas('work_information', function ($query) {
+                        $query->where('employment_status','Agency');
+                    })
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'male'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->where('personal_information_tables.gender','Male')
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'female'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->where('personal_information_tables.gender','Female')
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'active'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->whereHas('work_information', function ($query) {
+                        $query->whereNotIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
+                    })
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else if($request->filter == 'inactive'){
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired'
+                            )
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->whereHas('work_information', function ($query) {
+                        $query->whereIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
+                    })
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            else{
+                $employees = PersonalInformationTable::select(
+                    'personal_information_tables.id',
+                    'empno',
+                    'first_name',
+                    'middle_name',
+                    'last_name',
+                    'email_address',
+                    'cellphone_number',
+                    'telephone_number',
+                    'gender',
+                    'civil_status',
+                    'birthday',
+                    'religion',
+                    'province',
+                    'city',
+                    'region',
+                    'blood_type',
+                    'stat'
+                    )
+                    ->with([
+                        'work_information' => function ($query){
+                            $query->select('employee_id',
+                                'employee_number',
+                                'employee_position',
+                                'employee_branch',
+                                'employment_status',
+                                'employee_company',
+                                'employee_department',
+                                'date_hired')
+                            ->with([
+                                'position' => function ($query){
+                                    $query->select('id','job_position_name');
+                                }
+                            ])
+                            ->with([
+                                'branch' => function ($query){
+                                    $query->select('entity03','entity03_desc');
+                                }
+                            ])
+                            ->with([
+                                'department' => function ($query){
+                                    $query->select('deptcode','deptdesc');
+                                }
+                            ])
+                            ->with([
+                                'company' => function ($query){
+                                    $query->select('entity','company_name');
+                                }
+                            ]);
+                        }
+                    ])
+                    ->orderBy('stat','DESC')
+                    ->orderBy('last_name','ASC')
+                    ->get();
+            }
+            return DataTables::of($employees)->make(true);
         }
-        else if($request->filter == 'probationary'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->whereHas('work_information', function ($query) {
-                    $query->where('employment_status','Probationary');
-                })
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table employees not found'], 500);
         }
-        else if($request->filter == 'agency'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->whereHas('work_information', function ($query) {
-                    $query->where('employment_status','Agency');
-                })
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        else if($request->filter == 'male'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->where('personal_information_tables.gender','Male')
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        else if($request->filter == 'female'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->where('personal_information_tables.gender','Female')
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        else if($request->filter == 'active'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->whereHas('work_information', function ($query) {
-                    $query->whereNotIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
-                })
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        else if($request->filter == 'inactive'){
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired'
-                        )
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ]);
-                    }
-                ])
-                ->whereHas('work_information', function ($query) {
-                    $query->whereIn('employment_status', ['RESIGNED', 'TERMINATED', 'RETIRED']);
-                })
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        else{
-            $employees = PersonalInformationTable::select(
-                'personal_information_tables.id',
-                'empno',
-                'first_name',
-                'middle_name',
-                'last_name',
-                'email_address',
-                'cellphone_number',
-                'telephone_number',
-                'gender',
-                'civil_status',
-                'birthday',
-                'religion',
-                'province',
-                'city',
-                'region',
-                'blood_type',
-                'stat'
-                )
-                ->with([
-                    'work_information' => function ($query){
-                        $query->select('employee_id',
-                            'employee_number',
-                            'employee_position',
-                            'employee_branch',
-                            'employment_status',
-                            'employee_company',
-                            'employee_department',
-                            'date_hired')
-                        ->with([
-                            'position' => function ($query){
-                                $query->select('id','job_position_name');
-                            }
-                        ])
-                        ->with([
-                            'branch' => function ($query){
-                                $query->select('entity03','entity03_desc');
-                            }
-                        ])
-                        ->with([
-                            'department' => function ($query){
-                                $query->select('deptcode','deptdesc');
-                            }
-                        ])
-                        ->with([
-                            'company' => function ($query){
-                                $query->select('entity','company_name');
-                            }
-                        ]);
-                    }
-                ])
-                ->orderBy('stat','DESC')
-                ->orderBy('last_name','ASC')
-                ->get();
-        }
-        return DataTables::of($employees)->make(true);
     }
 
     public function employee_fetch(Request $request){
