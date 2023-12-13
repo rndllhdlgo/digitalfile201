@@ -619,7 +619,7 @@ class EmployeesController extends Controller
                     'documents.sss_file',
                     'documents.transcript_of_records_file',
                     'benefits.employee_insurance')
-        ->where('personal_information_tables.id',$request->id)
+        ->where('personal_information_tables.id', $request->id)
         ->leftJoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
         ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
         ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')
@@ -650,6 +650,124 @@ class EmployeesController extends Controller
             }
         })
         ->toJson();
+    }
+
+    public function employee_fetch1(Request $request){
+        try{
+            $employees = PersonalInformationTable::select(
+                'personal_information_tables.id',
+                'personal_information_tables.empno',
+                'desc',
+                'employee_image',
+                'first_name',
+                'middle_name',
+                'last_name',
+                'suffix',
+                'nickname',
+                'birthday',
+                'gender',
+                'civil_status',
+                'address',
+                'ownership',
+                'province',
+                'city',
+                'region',
+                'blood_type',
+                'height',
+                'weight',
+                'religion',
+                'email_address',
+                'telephone_number',
+                'cellphone_number',
+                'spouse_name',
+                'spouse_contact_number',
+                'spouse_profession',
+                'father_name',
+                'father_contact_number',
+                'father_profession',
+                'mother_name',
+                'mother_contact_number',
+                'mother_profession',
+                'emergency_contact_name',
+                'emergency_contact_relationship',
+                'emergency_contact_number',
+                'work_information_tables.employee_number',
+                'entity',
+                'work_information_tables.date_hired',
+                'work_information_tables.employee_shift',
+                'work_information_tables.employee_company',
+                'work_information_tables.employee_branch',
+                'work_information_tables.employee_department',
+                'work_information_tables.employee_position',
+                'work_information_tables.employment_status',
+                'work_information_tables.employment_origin',
+                'work_information_tables.hmo_number',
+                'work_information_tables.sss_number',
+                'work_information_tables.pag_ibig_number',
+                'work_information_tables.philhealth_number',
+                'work_information_tables.tin_number',
+                'work_information_tables.account_number',
+                'work_information_tables.company_email_address',
+                'work_information_tables.company_contact_number',
+                'educational_attainments.secondary_school_name',
+                'educational_attainments.secondary_school_address',
+                'educational_attainments.secondary_school_inclusive_years_from',
+                'educational_attainments.secondary_school_inclusive_years_to',
+                'educational_attainments.primary_school_name',
+                'educational_attainments.primary_school_address',
+                'educational_attainments.primary_school_inclusive_years_from',
+                'educational_attainments.primary_school_inclusive_years_to',
+                'medical_histories.past_medical_condition',
+                'medical_histories.allergies',
+                'medical_histories.medication',
+                'medical_histories.psychological_history',
+                'documents.barangay_clearance_file',
+                'documents.birthcertificate_file',
+                'documents.diploma_file',
+                'documents.medical_certificate_file',
+                'documents.nbi_clearance_file',
+                'documents.pag_ibig_file',
+                'documents.philhealth_file',
+                'documents.police_clearance_file',
+                'documents.resume_file',
+                'documents.sss_file',
+                'documents.transcript_of_records_file',
+                'benefits.employee_insurance')
+            ->where('personal_information_tables.id', $request->id)
+            ->leftJoin('work_information_tables','work_information_tables.employee_id','personal_information_tables.id')
+            ->leftJoin('educational_attainments','educational_attainments.employee_id','personal_information_tables.id')
+            ->leftJoin('medical_histories','medical_histories.employee_id','personal_information_tables.id')
+            ->leftJoin('documents','documents.employee_id','personal_information_tables.id')
+            ->leftJoin('benefits','benefits.employee_id','personal_information_tables.id')
+            ->leftJoin('shift','shift.shift','personal_information_tables.shift')
+            ->leftjoin('companies','companies.entity','work_information_tables.employee_company')
+            ->get();
+            return DataTables::of($employees)
+            ->addColumn('employee_number', function (PersonalInformationTable $employee){
+                if($employee->entity == 001){
+                    return 'ID'.$employee->employee_number;
+                }
+                else if($employee->entity == 002){
+                    return 'PL'.$employee->employee_number;
+                }
+                else if($employee->entity == 003){
+                    return 'AP'.$employee->employee_number;
+                }
+                else if($employee->entity == 004){
+                    return 'MJ'.$employee->employee_number;
+                }
+                else if($employee->entity == 005){
+                    return 'NU'.$employee->employee_number;
+                }
+                else{
+                    return $employee->empno;
+                }
+            })
+            ->toJson();
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Fetch Error'], 500);
+        }
     }
 
     public function upload_picture(Request $request){

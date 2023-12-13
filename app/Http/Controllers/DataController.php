@@ -44,32 +44,37 @@ class DataController extends Controller
     }
 
     public function leave_data(Request $request){
-        $data = Http::get('http://tms.ideaserv.com.ph:8080/employees/leave_data?empno='.$request->empno);
-        $jsonData = json_decode($data->body(), true);
-        $BL = false;
-        foreach($jsonData as $key => $value){
-            foreach($value as $a => $b){
-                if($a == 'lv_code'){
-                    if($b == 'BL'){
-                        $BL = true;
-                        break;
+        try{
+            $data = Http::get('http://tms.ideaserv.com.ph:8080/employees/leave_data?empno='.$request->empno);
+            $jsonData = json_decode($data->body(), true);
+            $BL = false;
+            foreach($jsonData as $key => $value){
+                foreach($value as $a => $b){
+                    if($a == 'lv_code'){
+                        if($b == 'BL'){
+                            $BL = true;
+                            break;
+                        }
                     }
                 }
+                if($BL){
+                    break;
+                }
             }
-            if($BL){
-                break;
+            if(!$BL){
+                $newData = [
+                    "empno" => $request->empno,
+                    "lv_code" => "BL",
+                    "lv_balance" => "0.00",
+                    "no_days" => "1.00"
+                ];
+                $jsonData[] = $newData;
             }
+            return DataTables::of($jsonData)->make(true);
         }
-        if(!$BL){
-            $newData = [
-                "empno" => $request->empno,
-                "lv_code" => "BL",
-                "lv_balance" => "0.00",
-                "no_days" => "1.00"
-            ];
-            $jsonData[] = $newData;
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table leave not found'], 500);
         }
-        return DataTables::of($jsonData)->make(true);
     }
 
     public function secondary_data(Request $request){
