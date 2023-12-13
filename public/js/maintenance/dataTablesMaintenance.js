@@ -10,6 +10,25 @@ var companyTable = $('#companyTable').DataTable({
     serverSide:false,
     ajax: {
         url: '/maintenance/companyData',
+        "dataType": "json",
+        "error": function(xhr, error, thrown){
+            if(xhr.status == 500){
+                $('#loading').hide();
+                Swal.fire({
+                    title: 'DATA PROBLEM!',
+                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                    confirmButtonText: "REFRESH",
+                    icon: 'error',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    width: 700
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.location.reload();
+                    }
+                });
+            }
+        }
     },
     order: [],
     columns: [
@@ -34,6 +53,25 @@ var departmentTable = $('#departmentTable').DataTable({
     serverSide:false,
     ajax: {
         url: '/maintenance/departmentData',
+        "dataType": "json",
+        "error": function(xhr, error, thrown){
+            if(xhr.status == 500){
+                $('#loading').hide();
+                Swal.fire({
+                    title: 'DATA PROBLEM!',
+                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                    confirmButtonText: "REFRESH",
+                    icon: 'error',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    width: 700
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.location.reload();
+                    }
+                });
+            }
+        }
     },
     order: [],
     columns: [
@@ -63,6 +101,25 @@ var branchTable = $('#branchTable').DataTable({
     serverSide:false,
     ajax: {
         url: '/maintenance/branchData',
+        "dataType": "json",
+        "error": function(xhr, error, thrown){
+            if(xhr.status == 500){
+                $('#loading').hide();
+                Swal.fire({
+                    title: 'DATA PROBLEM!',
+                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                    confirmButtonText: "REFRESH",
+                    icon: 'error',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    width: 700
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.location.reload();
+                    }
+                });
+            }
+        }
     },
     order: [],
     columns: [
@@ -91,6 +148,25 @@ var shiftTable = $('table.shiftTable').DataTable({
         serverSide:false,
         ajax: {
             url: '/maintenance/shiftData',
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
+                if(xhr.status == 500){
+                    $('#loading').hide();
+                    Swal.fire({
+                        title: 'DATA PROBLEM!',
+                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                        confirmButtonText: "REFRESH",
+                        icon: 'error',
+                        allowEscapeKey: false,
+                        allowOutsideClick: false,
+                        width: 700
+                    }).then((result) => {
+                        if(result.isConfirmed){
+                            window.location.reload();
+                        }
+                    });
+                }
+            }
         },
         order: [0,'asc'],
         columns: [
@@ -140,6 +216,25 @@ var positionTable = $('table.positionTable').DataTable({
     serverSide:false,
     ajax: {
         url: '/maintenance/positionData',
+        "dataType": "json",
+        "error": function(xhr, error, thrown){
+            if(xhr.status == 500){
+                $('#loading').hide();
+                Swal.fire({
+                    title: 'DATA PROBLEM!',
+                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+                    confirmButtonText: "REFRESH",
+                    icon: 'error',
+                    allowEscapeKey: false,
+                    allowOutsideClick: false,
+                    width: 700
+                }).then((result) => {
+                    if(result.isConfirmed){
+                        window.location.reload();
+                    }
+                });
+            }
+        }
     },
     order: [],
     columns: [

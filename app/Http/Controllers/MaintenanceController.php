@@ -10,33 +10,55 @@ use App\Models\Position;
 use App\Models\Department;
 
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use DataTables;
 
 class MaintenanceController extends Controller
 {
     public function companyData(){
-        $company = Company::all();
-        return DataTables::of($company)->make(true);
+        try{
+            return DataTables::of(Company::all())->make(true);
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table company not found'], 500);
+        }
     }
 
     public function departmentData(){
-        $department = Department::all();
-        return DataTables::of($department)->make(true);
+        try{
+            return DataTables::of(Department::all())->make(true);
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table department not found'], 500);
+        }
     }
 
     public function branchData(){
-        $branch = Branch::all();
-        return DataTables::of($branch)->make(true);
+        try{
+            return DataTables::of(Branch::all())->make(true);
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table branch not found'], 500);
+        }
     }
 
     public function shiftData(){
-        $shift = Shift::select('shift','break','desc','in','out','break_out','break_in')->get();
-        return DataTables::of($shift)->make(true);
+        try{
+            $shift = Shift::select('shift','break','desc','in','out','break_out','break_in')->get();
+            return DataTables::of($shift)->make(true);
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table shift not found'], 500);
+        }
     }
 
     public function positionData(){
-        $position = Position::all();
-        return DataTables::of($position)->make(true);
+        try{
+            return DataTables::of(Position::all())->make(true);
+        }
+        catch(QueryException $e){
+            return response()->json(['error' => 'Table position not found'], 500);
+        }
     }
 
     public function positionSave(Request $request){
