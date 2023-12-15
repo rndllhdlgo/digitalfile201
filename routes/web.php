@@ -14,6 +14,7 @@ use App\Http\Controllers\UpdateController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\QrController;
+use App\Http\Controllers\TryController;
 
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
@@ -146,6 +147,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/spatie','TryController@spatie_blade');
     Route::any('/export','TryController@export_blade');
     Route::any('/export_data','TryController@export_data');
+    Route::any('/cropperImage','TryController@cropperImage');
     Route::any('/cropImage','TryController@cropImage_blade');
     Route::any('/cropImageSave','TryController@cropImage_save');
     Route::any('/reports','TryController@reports');

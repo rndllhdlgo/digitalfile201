@@ -38,6 +38,10 @@ class TryController extends Controller
         $this->middleware('auth');
     }
 
+    public function cropperImage(){
+        return view('try.cropperImage');
+    }
+
     public function evaluation_blade(){
         $tries = Tr::select('id','sample_name')->get();
         return view('try.evaluation', compact('tries'));
