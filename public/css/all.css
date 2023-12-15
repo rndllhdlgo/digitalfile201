@@ -534,6 +534,7 @@ th{
     border-radius: 0 !important;
     width:42px !important;
     box-shadow: none !important;
+    margin-top: 10px !important;
 }
 
 label{

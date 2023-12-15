@@ -257,7 +257,6 @@ $('.filter-input').on('keyup search', function(){
 $('#haveChildren').on('change', function() {
     if($(this).is(':checked')){
         $('.children_information').show();
-
         setTimeout(() => {
             var targetPosition = $(".children_information").offset().top;
             $('html, body').animate({
@@ -355,41 +354,6 @@ $('#child_birthday').on('change',function(){
             age--;
         }
     return $('#child_age').val(age);
-});
-
-$(document).on('click','#image_close, #image_close_trash',function(){
-    Swal.fire({
-        title: 'Do you want to remove image?',
-        allowOutsideClick: false,
-        allowEscapeKey: false,
-        showDenyButton: true,
-        confirmButtonText: 'Yes',
-        denyButtonText: 'No',
-        customClass: {
-        actions: 'my-actions',
-        confirmButton: 'order-2',
-        denyButton: 'order-3',
-        }
-    }).then((save) => {
-        if(save.isConfirmed){
-            var img_delete = $('#filename').val();
-            $.ajax({
-                url:"/upload_picture",
-                type:"get",
-                async: false,
-                success:function(image_upload_div){
-                    $('.column1').html(image_upload_div);
-                }
-            });
-
-            $('#filename_delete').val(img_delete);
-            $('#filename').val('');
-
-            employee_image_change = 'CHANGED';
-            changeCounter--;
-            disableUpdate('', changeCounter);
-        }
-    });
 });
 
 $(document).on('change', '#province', function(){

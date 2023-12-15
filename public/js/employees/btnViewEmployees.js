@@ -12,6 +12,7 @@ var children_id,
     termination_id = [];
 
 var data_error = 0;
+var viewCounter = 0;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
     $('#loading').hide();
@@ -73,6 +74,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('#hidden_id').val(value.id);
                 // Personal Info
                 if(value.employee_image){
+                    viewCounter++;
                     $('#filename').val(value.employee_image);
                     $('#image_preview').prop('src',window.location.origin+'/storage/employee_images/'+value.employee_image);
                     $('#image_preview').show();
@@ -82,8 +84,10 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#image_button').hide();
                     $('#image_instruction').hide();
                     $('#employee_image').removeClass('required_field');
+                    $('.bottom-container').show();
                 }
                 else{
+                    $('.bottom-container').hide();
                     $('#image_preview_summary').prop('src',window.location.origin+'/storage/employee_images/no_image.png');
                     $('#filename').val('');
                 }

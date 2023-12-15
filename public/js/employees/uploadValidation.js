@@ -2,24 +2,11 @@ $(document).on('click','#image_button',function(){
     $('#employee_image').click();
 });
 
-$(document).on('click','#image_crop',function(){
-    var cropper = $('#image_crop').data('cropper');
-    var canvas = cropper.getCroppedCanvas();
-    var croppedImageDataURL = canvas.toDataURL("image/jpeg");
-    $('#image_preview').attr('src', croppedImageDataURL);
-    $('#image_close').show();
-    $('.top-container').hide();
-    employee_image_change = 'CHANGED';
-    cropper.destroy();
-    changeCounter++;
-    disableUpdate('', changeCounter);
-});
-
 function ImageValidation(employee_image){
-    var imageData = document.getElementById('employee_image');
+    var imageData       = document.getElementById('employee_image');
     var imageUploadPath = imageData.value;
-    var imageExtension = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var imageFileSize = $("#employee_image").get(0).files[0].size;
+    var imageExtension  = imageUploadPath.substring(imageUploadPath.lastIndexOf('.') + 1).toLowerCase();
+    var imageFileSize   = $("#employee_image").get(0).files[0].size;
 
     if ((imageExtension != "jpg" && imageExtension != "jpeg" && imageExtension != "png") && imageFileSize > 5242880 * 2) {
         Swal.fire({
@@ -54,31 +41,7 @@ function ImageValidation(employee_image){
             var imageReader = new FileReader();
                 imageReader.onload = function(e) {
                     $('#image_preview').attr('src', e.target.result);
-                    var cropper = new Cropper($('#image_preview')[0], {
-                        aspectRatio: 1,
-                        viewMode: 3,
-                        dragMode: 'move',
-                        guides:false,
-                        zoomable: true,
-                        zoomOnWheel: true,
-                        zoomOnTouch: true,
-                        zoomRatio: 0.1,
-                        autoCropArea: 0.8
-                    });
-                    $('#image_crop').data('cropper', cropper);
-
-                    $('#image_zoom_in').on('click', function() {
-                        cropper.zoom(0.1);
-                    });
-
-                    $('#image_zoom_out').on('click', function() {
-                        cropper.zoom(-0.1);
-                    });
-
-                    $('#image_crop_reset').on('click',function(){
-                        cropper.reset();
-                        cropper.reset(true);
-                    });
+                    initializeCropper();
                 }
                 imageReader.readAsDataURL(imageData.files[0]);
                 $('#image_user').hide();

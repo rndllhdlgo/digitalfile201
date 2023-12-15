@@ -6,8 +6,6 @@
             <input type="hidden" id="filename">
             <input type="hidden" id="filename_delete">
 
-            <i class="fas fa-times float-end" id="image_close" style="zoom:150%; cursor:pointer; display:none; margin-top:3px; margin-bottom:3px; " title="REPLACE IMAGE"></i>
-
             <div class="text-center mt-4">
                 <i class="fa fa-user-circle fa-5x" id="image_user" aria-hidden="true"></i>
             </div>
@@ -24,7 +22,7 @@
 
             <div>
                 <center>
-                    <img src="" id="image_preview" alt="">
+                    <img src="" id="image_preview">
                 </center>
             </div>
 
@@ -34,6 +32,11 @@
                 <button type="button" class="btn btn-primary" id="image_zoom_in" title="ZOOM IN"><i class="fas fa-search-plus"></i></button>
                 <button type="button" class="btn btn-primary" id="image_zoom_out" title="ZOOM OUT"><i class="fas fa-search-minus"></i></button>
                 <button type="button" class="btn btn-success" id="image_crop" title="CROP IMAGE"><i class="fas fa-crop"></i></button>
+            </div>
+
+            <div class="bottom-container center_div" style="display:none; margin-top:1px !important;">
+                <button type="button" class="btn btn-success" id="image_recrop" title="RECROP IMAGE"><i class="fa-solid fa-crop"></i></button>
+                <button type="button" class="btn btn-danger" id="image_close" title="REMOVE IMAGE"><i class="fas fa-trash"></i></button>
             </div>
         </div>
 
