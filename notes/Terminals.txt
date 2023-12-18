@@ -1,5 +1,5 @@
 chown www-data:www-data public/storage/name_of_your_folder/ - Change Owner
-chmod 777 -R storage/ - File Permission Denied
+chmod 777 -R storage/ - File Permission Denied (logging included)
 update-alternatives --config php - Update PHP version
 php artisan storage:link - To link storage to public folder
 php artisan make:controller ControllerName --resource
@@ -26,8 +26,6 @@ php artisan make:migration add_column_to_table --table=your_table_name
 php artisan make:migration add_cover_image_to_employees --table=your_table_name
 !$A$2:$A$999 - Excel Formula
 
-Count Employee: 656
-
 cd /var/www/html/digital201/vendor/geekcom/phpjasper/bin/jasperstarter/bin#
 ./jasperstarter --locale en process "/var/www/html/digital201/public/reports/jrxml/Employees_A4.jrxml" -o "/var/www/html/digital201/public/reports/pdf/dr" -f pdf -t mysql -u dell -p nuserv-demo -H db.apsoft.com.ph -n hrms --db-port 3306
 
@@ -48,3 +46,14 @@ to delete specific folder along with files inside: rm -rv /var/www/html/digital2
 
 to change password: passwd
 to open location: code ../digital201/
+
+// if(arr.includes('🥉')){
+//     lastElement = arr[arr.length - 1];
+// }
+// if(lastElement == '🥉'){
+//     if(arr.includes('A')){
+//         arr = jQuery.grep(arr, function(value){
+//             return ![2,3,4,5,6].includes(parseInt(value));
+//         });
+//     }
+// }

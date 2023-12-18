@@ -1,0 +1,30 @@
+to change owner                                = chown www-data:www-data public/storage/name_of_your_folder/
+to file permission denied                      = chmod 777 -R storage/
+to update php version                          = update-alternatives --config php
+to link storage to public folder               = php artisan storage:link
+to create controller                           = php artisan make:controller ControllerName
+to directory must be present and writable      = php artisan cache:clear && php artisan config:clear
+to create model with migration file            = php artisan make:model ModelName -m
+to migrate files                               = php artisan migrate
+to create middleware                           = php artisan make:middleware MiddlewareName
+to create migration file with table            = php artisan make:migration create_table_name --create=table_name
+to migrate specific file                       = php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_table.php
+to add column                                  = php artisan make:migration add_column_to_table --table=your_table_name
+to create migration files from database        = composer require --dev kitloong/laravel-migrations-generator
+to create migration file from database (1by1)  = php artisan migrate:generate
+to create migration file from database (1file) = php artisan migrate:generate --squash
+to create a new table with a specific name     = php artisan make:migration create_table_name --create=table_name
+to migrate specific file based on file path    = php artisan migrate --path=database/migrations/2023_06_01_123456_create_users_table.php
+to add a column in existing table              = php artisan make:migration add_column_to_table --table=your_table_name
+add -v to view details
+
+to dlt all files                            = rm -r /var/www/html/digital201/public/storage/documents/*
+to dlt specific fil                         = rm /var/www/html/digital201/public/storage/documents/example.txt
+to dlt specific files by extension          = rm /var/www/html/digital201/public/storage/documents/*.txt
+to dlt speficif files by filename           = rm /var/www/html/digital201/public/storage/documents/file*
+to dlt specific files by filename and extension          = rm /var/www/html/digital201/public/storage/documents/file*.txt
+to dlt specific folder along with files inside           = rm -rv /var/www/html/digital201/public/storage/evaluation/YourFolderName
+to change password: passwd
+to open location: code ../digital201/
+
+source .bash_aliases

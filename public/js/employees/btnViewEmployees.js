@@ -11,7 +11,7 @@ var children_id,
     resignation_id,
     termination_id = [];
 
-var data_error = 0;
+var data_error  = 0;
 var viewCounter = 0;
 
 $(document).on('click','table.employeesTable tbody tr',function(){
@@ -72,6 +72,25 @@ $(document).on('click','table.employeesTable tbody tr',function(){
             });
             employee_data.forEach(value => {
                 $('#hidden_id').val(value.id);
+
+                // update_stat('view', value.id);
+
+                // if(value.update_stat == '1'){
+                //     $('#loading').hide();
+                //     Swal.fire({
+                //         html: '<h4>This Employee is currently being updated by another user.</h4>',
+                //         confirmButtonText: "CLOSE",
+                //         icon: 'info',
+                //         allowEscapeKey: false,
+                //         allowOutsideClick: false
+                //     }).then((result) => {
+                //         if(result.isConfirmed){
+                //             window.location.reload();
+                //         }
+                //     });
+                //     data_error++;
+                // }
+
                 // Personal Info
                 if(value.employee_image){
                     viewCounter++;

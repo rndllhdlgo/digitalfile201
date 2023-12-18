@@ -619,7 +619,7 @@ $('#btnUpdate').on('click',function(){
 
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
-
+                        // update_stat('update', data.id);
                         setTimeout(() => {
                             if(tblChildren == 'tblChildren'){
                                 children_table(data.id);

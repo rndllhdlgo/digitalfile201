@@ -42,6 +42,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/fetch','EmployeesController@employee_fetch');
     Route::any('/upload_picture','EmployeesController@upload_picture');
     Route::any('/checkDuplicate','EmployeesController@checkDuplicate');
+    // Route::any('/update_stat','EmployeesController@update_stat');
 
     // Save Controller
     Route::any('/employees/insertImage','SaveController@insertImage');

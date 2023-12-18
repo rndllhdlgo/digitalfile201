@@ -1,10 +1,32 @@
-var current_location = $(location).attr('pathname')+window.location.search;
-var current_user = $('#current_user').val();
-var current_user_level = $('#current_user_level').val();
+var current_location        = $(location).attr('pathname')+window.location.search;
+var current_user            = $('#current_user').val();
+var current_user_level      = $('#current_user_level').val();
 var current_employee_number = $('#current_employee_number').val();
-var current_email = $('#current_email').val();
-var app_timeout = $('#APP_TIMEOUT').val();
-var data_update, standby = true;
+var current_email           = $('#current_email').val();
+var app_timeout             = $('#APP_TIMEOUT').val();
+var data_update, standby    = true;
+// var changesMade = false;
+
+// function prevent_load(){
+//     $(window).on('beforeunload', function(){
+//         if(changesMade){
+//             return "";
+//         }
+//         else{
+//             console.log('not execute');
+//         }
+//     });
+// }
+
+// function update_stat(action, id){
+//     $.ajax({
+//         url: "/update_stat",
+//         data:{
+//             id: id,
+//             action: action
+//         }
+//     });
+// }
 
 $(document).ready(function(){
     var headerText = $('.my-header').text();
