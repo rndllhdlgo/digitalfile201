@@ -32,15 +32,15 @@ $(document).on('click','#image_crop',function(){
     disableUpdate('', changeCounter);
 });
 
-$('#image_zoom_in').on('click', function(){
+$(document).on('click', '#image_zoom_in', function(){
     cropper.zoom(0.1);
 });
 
-$('#image_zoom_out').on('click', function(){
+$(document).on('click', '#image_zoom_out', function(){
     cropper.zoom(-0.1);
 });
 
-$('#image_crop_reset').on('click',function(){
+$(document).on('click', '#image_crop_reset', function(){
     cropper.reset();
     cropper.reset(true);
 });
@@ -56,8 +56,8 @@ $(document).on('click', '#image_recrop', function(){
             $('#image_close').hide();
             $('#image_recrop').hide();
             $('.top-container').show();
-            // changeCounter--;
-            // disableUpdate('', changeCounter);
+            changeCounter--;
+            disableUpdate('', changeCounter);
         }
     });
 });

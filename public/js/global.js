@@ -36,9 +36,32 @@ $(document).ready(function(){
     else{
         $('title').text('201 FILING SYSTEM | ' + headerText);
     }
-});
 
-$(document).ready(function(){
+    $('#show_password_eye').click(function(){
+        $('#show_password').click();
+        if($('#show_password').is(':checked')){
+            $('#show_password_text').text('HIDE PASSWORD');
+            $('#show_password_eye').removeClass('fa-eye').addClass('fa-eye-slash');
+            $('#pass1').attr('type', 'text');
+            $('#pass2').attr('type', 'text');
+            $('#pass3').attr('type', 'text');
+        }
+        else{
+            $('#show_password_text').text('SHOW PASSWORD');
+            $('#show_password_eye').addClass('fa-eye').removeClass('fa-eye-slash');
+            $('#pass1').attr('type', 'password');
+            $('#pass2').attr('type', 'password');
+            $('#pass3').attr('type', 'password');
+        }
+    });
+
+    $('#show_password_text').click(function(){
+        $('#show_password_eye').click();
+    });
+
+    $('.filter-input').attr('title', 'SEARCH');
+
+    // Display date and time
     setInterval(() => {
         if($('#current_datetime').is(":visible")){
             var today_Date = new Date();
@@ -55,6 +78,24 @@ $(document).ready(function(){
             current_datetime.textContent = today_DateFormat + ', ' + today_Time;
         }
     }, 0);
+
+    // 18 Years old
+    var dtTodays = new Date();
+    var months = dtTodays.getMonth() + 1;
+    var days = dtTodays.getDate();
+    var years = dtTodays.getFullYear() - 18;
+    if(months < 10)
+        months = '0' + months.toString();
+    if(days < 10)
+        days = '0' + days.toString();
+    var minDates = years + '-' + months + '-' + days;
+    var maxDates = years + '-' + months + '-' + days;
+    $('#birthday').attr('max', maxDates);
+
+    // Disable future dates
+    var currentDate = new Date();
+    $('.max_month').attr('max', currentDate.toISOString().substring(0, 7));
+
 });
 
 function idleLogout(){
@@ -97,30 +138,6 @@ idleStandby();
 
 $('#changePasswordSpan').on('click',function(){
     $('#changePasswordModal').modal('show');
-});
-
-// For change password
-$(document).ready(function(){
-    $('#show_password_eye').click(function(){
-        $('#show_password').click();
-        if($('#show_password').is(':checked')){
-            $('#show_password_text').text('HIDE PASSWORD');
-            $('#show_password_eye').removeClass('fa-eye').addClass('fa-eye-slash');
-            $('#pass1').attr('type','text');
-            $('#pass2').attr('type', 'text');
-            $('#pass3').attr('type', 'text');
-        }
-        else{
-            $('#show_password_text').text('SHOW PASSWORD');
-            $('#show_password_eye').addClass('fa-eye').removeClass('fa-eye-slash');
-            $('#pass1').attr('type','password');
-            $('#pass2').attr('type', 'password');
-            $('#pass3').attr('type', 'password');
-        }
-    });
-    $('#show_password_text').click(function(){
-        $('#show_password_eye').click();
-    });
 });
 
 setInterval(() => {
@@ -356,15 +373,6 @@ $("input[type='date']").keydown(function(e){
     e.preventDefault();
 });
 
-$(document).ready(function() {
-    var currentDate = new Date();
-    $('.max_month').attr('max', currentDate.toISOString().substring(0, 7));
-});
-
-$(document).ready(function(){
-    $('.filter-input').attr('title', 'SEARCH');
-});
-
 function decodeHtml(str){
     var map = {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#039;': "'"};
     return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m){return map[m];});
@@ -382,25 +390,11 @@ function formatDate(dateString){
     return monthNames[monthIndex] + ' ' + ('0' + day).slice(-2) + ', ' + year;
 }
 
-$(function(){
-    var dtTodays = new Date();
-    var months = dtTodays.getMonth() + 1;
-    var days = dtTodays.getDate();
-    var years = dtTodays.getFullYear() - 18;
-    if(months < 10)
-        months = '0' + months.toString();
-    if(days < 10)
-        days = '0' + days.toString();
-    var minDates = years + '-' + months + '-' + days;
-    var maxDates = years + '-' + months + '-' + days;
-    $('#birthday').attr('max', maxDates);
-});
-
 function getCurrentDate(){
     const today = new Date();
-    const year = today.getFullYear();
+    const year  = today.getFullYear();
     const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
+    const day   = String(today.getDate()).padStart(2, '0');
     return `${year}-${month}-${day}`;
 }
 $('.future_date').attr('max', getCurrentDate());
