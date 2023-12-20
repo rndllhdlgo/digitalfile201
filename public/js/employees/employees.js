@@ -488,7 +488,7 @@ $('#btnCancel').on('click', function() {
     }).then((cancel) => {
         if(cancel.isConfirmed){
             $('#loading').show();
-            // update_stat('back', $('#hidden_id').val());
+            update_stat('back', $('#hidden_id').val());
             setTimeout(function(){
                 location.href = "/employees";
             }, 1000);

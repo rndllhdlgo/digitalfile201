@@ -5,28 +5,23 @@ var current_employee_number = $('#current_employee_number').val();
 var current_email           = $('#current_email').val();
 var app_timeout             = $('#APP_TIMEOUT').val();
 var data_update, standby    = true;
-// var changesMade = false;
 
-// function prevent_load(){
-//     $(window).on('beforeunload', function(){
-//         if(changesMade){
-//             return "";
-//         }
-//         else{
-//             console.log('not execute');
-//         }
-//     });
-// }
+function prevent_reload(id){
+    $(window).on('beforeunload', function(){
+        update_stat('back', id);
+        return "";
+    });
+}
 
-// function update_stat(action, id){
-//     $.ajax({
-//         url: "/update_stat",
-//         data:{
-//             id: id,
-//             action: action
-//         }
-//     });
-// }
+function update_stat(action, id){
+    $.ajax({
+        url: "/update_stat",
+        data:{
+            id: id,
+            action: action
+        }
+    });
+}
 
 $(document).ready(function(){
     var headerText = $('.my-header').text();
