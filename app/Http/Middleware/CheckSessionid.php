@@ -20,12 +20,10 @@ class CheckSessionid
      */
 
     public function handle(Request $request, Closure $next){
-        if(Route::current()->getName() !== 'index_reload_data'){
-            if (Auth::check()) {
-                if(auth()->user()->session_id !== Session::getId()){
-                    Auth::logout();
-                    return redirect('/login?user=session');
-                }
+        if(Auth::check()){
+            if(auth()->user()->session_id !== Session::getId()){
+                Auth::logout();
+                return redirect('/login?user=session');
             }
         }
         return $next($request);

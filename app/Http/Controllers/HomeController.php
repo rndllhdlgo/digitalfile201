@@ -54,23 +54,6 @@ class HomeController extends Controller
         return view('pages.index', compact('active','inactive','regular','probationary','part_time','agency','intern','user_level','male','female'));
     }
 
-    public function org()
-    {
-        $employees = PersonalInformationTable::selectraw('empno, CONCAT(first_name, " ", last_name) as fname, employee_supervisor')
-                    ->join('work_information_tables', 'employee_id', 'personal_information_tables.id')
-                    ->where('employee_supervisor', '!=', '')
-                    ->get();
-        return view('pages.org', compact('employees'));
-    }
-
-    public function index_reload_data(){
-        if(UserLogs::count() == 0){
-            return 'NULL';
-        }
-        $data_update = UserLogs::latest('updated_at')->first()->updated_at;
-        return $data_update;
-    }
-
     public function index_data(Request $request){
         $data = UserLogs::query()
             ->selectRaw('username, role, activity, user_logs.created_at AS date, DATE_FORMAT(user_logs.created_at, "%b. %d, %Y, %h:%i %p") AS datetime')

@@ -42,22 +42,6 @@ class EmployeesController extends Controller
         $this->middleware('auth');
     }
 
-    public function logs_reload(){
-        if(EmployeeLogs::count() == 0){
-            return 'NULL';
-        }
-        $data_update = EmployeeLogs::latest('updated_at')->first()->updated_at;
-        return $data_update;
-    }
-
-    public function employee_history_reload(){
-        if(WorkLogs::count() == 0){
-            return 'NULL';
-        }
-        $data_update = WorkLogs::latest('updated_at')->first()->updated_at;
-        return $data_update;
-    }
-
     public function employees_data(Request $request){
         try{
             if($request->filter == 'regular'){
@@ -658,30 +642,5 @@ class EmployeesController extends Controller
 
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
-    }
-
-    public function checkDuplicate(Request $request){
-        $columnName = $request->inputColumn;
-        $inputValue = $request->inputValue;
-
-        if(Schema::hasColumn('work_information_tables', $columnName)){
-            if(WorkInformationTable::where($columnName, $inputValue)->count() > 0){
-                return 'true';
-            }
-            else{
-                return 'false';
-            }
-        }
-        else if(Schema::hasColumn('personal_information_tables', $columnName)){
-            if(PersonalInformationTable::where($columnName, $inputValue)->count() > 0){
-                return 'true';
-            }
-            else{
-                return 'false';
-            }
-        }
-        else{
-            return 'column_not_found';
-        }
     }
 }

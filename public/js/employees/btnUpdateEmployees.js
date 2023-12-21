@@ -737,6 +737,10 @@ $('#btnUpdate').on('click',function(){
                                         window.location.reload();
                                     }, 2000);
                                 }
+                                else if(edit.isDenied){
+                                    console.log('cancel');
+                                    disableUpdate('', 0);
+                                }
                             });
                         }, 2000);
                     }

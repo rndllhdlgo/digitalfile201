@@ -34,7 +34,9 @@ $('.numberDash').on('keyup', function(){
 
 var orig_value = {};
 
-function duplicateCheck(inputId) {
+function duplicateCheck(inputId){
+    console.log('a');
+    return false;
     var inputValue = $(`#${inputId}`).val();
     var validationId = `validation_${inputId}`;
 

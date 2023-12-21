@@ -23,7 +23,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::get('/logout',[LoginController::class, 'logout']);
     Route::get('/', 'HomeController@index');
     Route::get('/index/data','HomeController@index_data');
-    Route::get('/index_reload_data','HomeController@index_reload_data')->name('index_reload_data');
 
     // Pages Controller
     Route::any('/employees', 'PagesController@employees');
@@ -37,8 +36,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
 
     // Employees Controller
     Route::any('/employees/data','EmployeesController@employees_data');
-    Route::any('/logs_reload', 'EmployeesController@logs_reload')->name('logs_reload');
-    Route::any('/employee_history_reload', 'EmployeesController@employee_history_reload')->name('employee_history_reload');
     Route::any('/employees/fetch','EmployeesController@employee_fetch');
     Route::any('/upload_picture','EmployeesController@upload_picture');
     Route::any('/checkDuplicate','EmployeesController@checkDuplicate');
@@ -182,6 +179,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     // Route::any('/backup', 'BackUpController@backup');
     Route::any('/sqlbackup', 'SQLController@sqlbackup');
     Route::any('/notFound', 'SQLController@notFound');
+    Route::any('/EmailButton', 'EmailButtonController@EmailButton');
 });
 
 Route::get('/generateJaspher', function (Request $request){

@@ -6,23 +6,6 @@ var current_email           = $('#current_email').val();
 var app_timeout             = $('#APP_TIMEOUT').val();
 var data_update, standby    = true;
 
-function prevent_reload(id){
-    $(window).on('beforeunload', function(){
-        update_stat('back', id);
-        return "";
-    });
-}
-
-function update_stat(action, id){
-    $.ajax({
-        url: "/update_stat",
-        data:{
-            id: id,
-            action: action
-        }
-    });
-}
-
 $(document).ready(function(){
     var headerText = $('.my-header').text();
     if(!headerText){
@@ -92,6 +75,23 @@ $(document).ready(function(){
     $('.max_month').attr('max', currentDate.toISOString().substring(0, 7));
 
 });
+
+function prevent_reload(id){
+    $(window).on('beforeunload', function(){
+        update_stat('back', id);
+        return "";
+    });
+}
+
+function update_stat(action, id){
+    $.ajax({
+        url: "/update_stat",
+        data:{
+            id: id,
+            action: action
+        }
+    });
+}
 
 function idleLogout(){
     var timer;
