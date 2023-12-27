@@ -16,7 +16,6 @@ use App\Models\Company;
 use App\Models\Contract;
 use App\Models\Department;
 use App\Models\Document;
-use App\Models\EducationalAttainment;
 use App\Models\EmployeeLogs;
 use App\Models\Evaluation;
 use App\Models\JobHistory;

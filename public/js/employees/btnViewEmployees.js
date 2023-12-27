@@ -46,8 +46,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
         data:{
             id: id,
         },
-        "dataType": "json",
-        "error": function(xhr, error, thrown){
+        error: function(xhr, error, thrown){
             if(xhr.status == 500){
                 data_error++;
                 $('#loading').hide();
@@ -349,20 +348,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     employee_history_table.column($(this).data('column')).search($(this).val()).draw();
                 });
 
-                // setInterval(function(){
-                //     if($('#loading').is(':hidden') && standby == false){
-                //         $.ajax({
-                //             url: "/employee_history_reload",
-                //             success: function(data){
-                //                 if(data != data_update){
-                //                     data_update = data;
-                //                     $('.employee_history_table').DataTable().ajax.reload(null, false);
-                //                 }
-                //             }
-                //         });
-                //     }
-                // }, 1000);
-
                 var logs_table_data;
                 $('.logs_table_data').dataTable().fnDestroy();
                 logs_table_data = $('.logs_table_data').DataTable({
@@ -417,20 +402,6 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 $('.filter-input').on('keyup search', function(){
                     logs_table_data.column($(this).data('column')).search($(this).val()).draw();
                 });
-
-                // setInterval(function(){
-                //     if($('#loading').is(':hidden') && standby == false){
-                //         $.ajax({
-                //             url: "/logs_reload",
-                //             success: function(data){
-                //                 if(data != data_update){
-                //                     data_update = data;
-                //                     $('.logs_table_data').DataTable().ajax.reload(null, false);
-                //                 }
-                //             }
-                //         });
-                //     }
-                // }, 1000);
 
                 $('th').removeClass("sorting_asc");
 
