@@ -13,7 +13,7 @@
                     <th style="width:15%;">ROOM</th>
                     <th style="width:15%;">EFFECTIVITY DATE</th>
                     <th style="width:15%;">EXPIRATION DATE</th>
-                    <th style="width:5%;">STATUS</th> 
+                    <th style="width:5%;">STATUS</th>
                     <th style="width:5%;">ACTION</th>
                 </tr>
             </thead>
@@ -89,7 +89,7 @@
                     <th style="border:none;"></th>
                     <th style="border:none;"></th>
                     <th style="border:none;"></th>
-                    <th style="border:none;"></th> 
+                    <th style="border:none;"></th>
                     <th style="border:none;"></th>
                 </tr>
             </thead>
@@ -97,7 +97,7 @@
             </tbody>
         </table>
     </div>
-    
+
         <hr class="hr-design">
         <br>
 {{--  --}}

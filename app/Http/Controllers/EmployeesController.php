@@ -523,15 +523,6 @@ class EmployeesController extends Controller
         }
     }
 
-    public function update_stat(Request $request){
-        if($request->action == 'view'){
-            PersonalInformationTable::where('id', $request->id)->update(['update_stat' => '1']);
-        }
-        else if($request->action == 'update' || $request->action == 'back'){
-            PersonalInformationTable::where('id', $request->id)->update(['update_stat' => '0']);
-        }
-    }
-
     public function employee_fetch(Request $request){
         try{
             $employees = PersonalInformationTable::select(
@@ -637,6 +628,15 @@ class EmployeesController extends Controller
         }
         catch(QueryException $e){
             return response()->json(['error' => 'Fetch Error'], 500);
+        }
+    }
+
+    public function update_stat(Request $request){
+        if($request->action == 'view'){
+            PersonalInformationTable::where('id', $request->id)->update(['update_stat' => '1']);
+        }
+        else if($request->action == 'update' || $request->action == 'back'){
+            PersonalInformationTable::where('id', $request->id)->update(['update_stat' => '0']);
         }
     }
 
