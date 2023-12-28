@@ -38,7 +38,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/data','EmployeesController@employees_data');
     Route::any('/employees/fetch','EmployeesController@employee_fetch');
     Route::any('/upload_picture','EmployeesController@upload_picture');
-    Route::any('/checkDuplicate','EmployeesController@checkDuplicate');
     Route::any('/update_stat','EmployeesController@update_stat');
 
     // Save Controller
@@ -65,7 +64,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/maintenance/positionData','MaintenanceController@positionData');
     Route::any('/maintenance/positionSave','MaintenanceController@positionSave');
     Route::any('/maintenance/positionUpdate','MaintenanceController@positionUpdate');
-    Route::any('/position/checkDuplicate','MaintenanceController@checkDuplicate');
 
     // Delete Controller
     Route::any('/employees/college_delete','DeleteController@college_delete');
@@ -105,23 +103,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/leave_data','DataController@leave_data');
     Route::any('/employees/hmo_data','DataController@hmo_data');
 
-    // Updates Controller1
-    Route::get('/update_list', 'UpdatesController@update_list');
-    Route::get('/update_fetch', 'UpdatesController@update_fetch');
-    Route::get('/updates/college_data', 'UpdatesController@college_data');
-    Route::get('/updates/vocational_data', 'UpdatesController@vocational_data');
-    Route::get('/updates/training_data', 'UpdatesController@training_data');
-    Route::get('/updates/job_history_data', 'UpdatesController@job_history_data');
-    Route::any('/update_personal_information', 'UpdatesController@update_personal_information');
-    Route::any('/update_educational_attainment', 'UpdatesController@update_educational_attainment');
-    Route::any('/update_medical_history', 'UpdatesController@update_medical_history');
-    Route::any('/update_college', 'UpdatesController@update_college');
-    Route::any('/update_training', 'UpdatesController@update_training');
-    Route::any('/update_vocational', 'UpdatesController@update_vocational');
-    Route::any('/update_job_history', 'UpdatesController@update_job_history');
-    Route::any('/updates/request_data', 'UpdatesController@updates_request_data');
-
-    // Update Controller2
+    // Update Controller
     Route::any('/employees/updatePersonalInformation','UpdateController@updatePersonalInformation');
     Route::any('/employees/updateWorkInformation','UpdateController@updateWorkInformation');
     Route::any('/employees/updateBenefits','UpdateController@updateBenefits');
