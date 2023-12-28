@@ -41,16 +41,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $active = WorkInformationTable::whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
-        $inactive = WorkInformationTable::whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
-        $regular = WorkInformationTable::where('employment_status','Regular')->count();
+        $active       = WorkInformationTable::whereNotIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
+        $inactive     = WorkInformationTable::whereIn('employment_status',['RESIGNED','TERMINATED','RETIRED'])->count();
+        $regular      = WorkInformationTable::where('employment_status','Regular')->count();
         $probationary = WorkInformationTable::where('employment_status','Probationary')->count();
-        $part_time = WorkInformationTable::where('employment_status','Part Time')->count();
-        $agency = WorkInformationTable::where('employment_status','Agency')->count();
-        $male = PersonalInformationTable::where('gender','Male')->count();
-        $female = PersonalInformationTable::where('gender','Female')->count();
-        $intern = WorkInformationTable::where('employment_status','Intern')->count();
-        $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
+        $part_time    = WorkInformationTable::where('employment_status','Part Time')->count();
+        $agency       = WorkInformationTable::where('employment_status','Agency')->count();
+        $male         = PersonalInformationTable::where('gender','Male')->count();
+        $female       = PersonalInformationTable::where('gender','Female')->count();
+        $intern       = WorkInformationTable::where('employment_status','Intern')->count();
+        $user_level   = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
         return view('pages.index', compact('active','inactive','regular','probationary','part_time','agency','intern','user_level','male','female'));
     }
 

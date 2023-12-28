@@ -180,6 +180,7 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/sqlbackup', 'SQLController@sqlbackup');
     Route::any('/notFound', 'SQLController@notFound');
     Route::any('/EmailButton', 'EmailButtonController@EmailButton');
+    Route::any('/query', 'QueryController@query');
 });
 
 Route::get('/generateJaspher', function (Request $request){

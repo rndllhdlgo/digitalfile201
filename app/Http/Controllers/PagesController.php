@@ -9,7 +9,6 @@ use App\Models\City;
 use App\Models\Province;
 use App\Models\Company;
 use App\Models\Branch;
-use App\Models\Supervisor;
 use App\Models\Shift;
 use App\Models\JobPosition;
 use App\Models\JobDescription;
@@ -19,34 +18,29 @@ use App\User;
 use Illuminate\Http\Request;
 use DataTables;
 
-class PagesController extends Controller
-{
+class PagesController extends Controller{
 
     public function employees(){
         if(!auth()->user()){
             return redirect('/login');
         }
 
-        $companies = Company::select('entity','company_name')->get();
-        $branches = Branch::select('entity03','entity03_desc')->get();
-        $supervisors = Supervisor::select('id','supervisor_name')->get();
-        $jobPositions = Position::select('id','job_position_name')->get();
+        $companies       = Company::select('entity','company_name')->get();
+        $branches        = Branch::select('entity03','entity03_desc')->get();
+        $jobPositions    = Position::select('id','job_position_name')->get();
         $jobDescriptions = Position::select('id','job_description')->get();
         $jobRequirements = Position::select('id','job_requirements')->get();
-        $departments = Department::select('deptcode','deptdesc')->get();
-        $provinces = Province::orderBy('provDesc', 'asc')->get();
-        return view('pages.employees', compact('provinces','companies','branches','supervisors','jobPositions','jobDescriptions','jobRequirements','departments'));
+        $departments     = Department::select('deptcode','deptdesc')->get();
+        $provinces       = Province::orderBy('provDesc', 'asc')->get();
+        return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
     }
 
-
-    public function getCities(Request $request)
-    {
+    public function getCities(Request $request){
         $cities = City::query()->where('provCode', $request->provCode)->orderBy('citymunDesc', 'asc')->get();
         return response()->json($cities);
     }
 
-    public function getRegion(Request $request)
-    {
+    public function getRegion(Request $request){
         $cities = City::query()->where('citymunCode', $request->citymunCode)->first();
         $region = Region::query()->where('regCode', $cities->regCode)->get();
         return response()->json($region);
@@ -77,6 +71,7 @@ class PagesController extends Controller
         $user_level = User::query()->select('user_level')->distinct()->get()->sortBy('user_level');
         return view('pages.users', compact('user_level'));
     }
+
     public function maintenance(){
         if(!auth()->user()){
             return redirect('/login');

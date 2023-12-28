@@ -11,7 +11,7 @@ class EmailButtonController extends Controller
 {
     public function EmailButton(){
         $ips = IpAddress::whereNotNull('hrms')->take(5)->get();
-        return view('emails.emailButton', compact('ips'));
+        // return view('emails.emailButton', compact('ips'));
         try{
             Mail::to('rendellhidalgo11@gmail.com')->send(new EmailButton($ips));
             return 'email sent';
