@@ -169,24 +169,31 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 }
 
                 $('#email_address').val(value.email_address);
+                $('#email_address').attr('orig_value', value.email_address);
                 $('#telephone_number').val(value.telephone_number);
+                $('#telephone_number').attr('orig_value', value.telephone_number);
                 $('#cellphone_number').val(value.cellphone_number);
+                $('#cellphone_number').attr('orig_value', value.cellphone_number);
 
                 $('#spouse_name').val(value.spouse_name);
                 $('#spouse_contact_number').val(value.spouse_contact_number);
+                $('#spouse_contact_number').attr('orig_value', value.spouse_contact_number);
                 $('#spouse_profession').val(value.spouse_profession);
 
                 $('#father_name').val(value.father_name);
                 $('#father_contact_number').val(value.father_contact_number);
+                $('#father_contact_number').attr('orig_value', value.father_contact_number);
                 $('#father_profession').val(value.father_profession);
 
                 $('#mother_name').val(value.mother_name);
                 $('#mother_contact_number').val(value.mother_contact_number);
+                $('#mother_contact_number').attr('orig_value', value.mother_contact_number);
                 $('#mother_profession').val(value.mother_profession);
 
                 $('#emergency_contact_name').val(value.emergency_contact_name);
                 $('#emergency_contact_relationship').val(value.emergency_contact_relationship);
                 $('#emergency_contact_number').val(value.emergency_contact_number);
+                $('#emergency_contact_number').attr('orig_value', value.emergency_contact_number);
 
                 // Work Info
                 if(value.employee_number){
@@ -217,13 +224,21 @@ $(document).on('click','table.employeesTable tbody tr',function(){
 
                 $('#employment_origin').val(value.employment_origin);
                 $('#company_email_address').val(value.company_email_address);
+                $('#company_email_address').attr('orig_value', value.company_email_address);
                 $('#company_contact_number').val(value.company_contact_number);
+                $('#company_contact_number').attr('orig_value', value.company_contact_number);
                 $('#hmo_number').val(value.hmo_number);
+                $('#hmo_number').attr('orig_value', value.hmo_number);
                 $('#sss_number').val(value.sss_number);
+                $('#sss_number').attr('orig_value', value.sss_number);
                 $('#pag_ibig_number').val(value.pag_ibig_number);
+                $('#pag_ibig_number').attr('orig_value', value.pag_ibig_number);
                 $('#philhealth_number').val(value.philhealth_number);
+                $('#philhealth_number').attr('orig_value', value.philhealth_number);
                 $('#tin_number').val(value.tin_number);
+                $('#tin_number').attr('orig_value', value.tin_number);
                 $('#account_number').val(value.account_number);
+                $('#account_number').attr('orig_value', value.account_number);
 
                 if(value.past_medical_condition){
                     $('#past_medical_condition').val(value.past_medical_condition);

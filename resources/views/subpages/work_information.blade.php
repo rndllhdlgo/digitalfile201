@@ -110,14 +110,14 @@
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this); duplicateCheck(this.id);" onkeyup="checkChange(this); duplicateCheck(this.id); emailCheck(this.id);">
+                <input class="forminput form-control optional_field preventSpace" type="search" id="company_email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'company_email_address', this.id); emailCheck(this.id);">
                 <label for="company_email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> WORK EMAIL (Optional)</label>
             </div>
         </div>
 
         <div class="col">
             <div class="f-outline">
-                <input class="forminput form-control optional_field numberSlice" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                <input class="forminput form-control optional_field numberSlice" type="search" id="company_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'company_contact_number', this.id); cellphoneFormat(this.id);">
                 <label for="company_contact_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> WORK CONTACT NO.(Optional)</label>
             </div>
         </div>
@@ -127,19 +127,19 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="hmo_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'hmo_number', this.id);">
                     <label for="hmo_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> HMO NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="sss_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'sss_number', this.id);">
                     <label for="sss_number" class="formlabel form-label"><i class="fas fa-hashtag" aria-hidden="true"></i> SSS NO. (Optional)</label>
                 </div>
             </div>
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="pag_ibig_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'pag_ibig_number', this.id);">
                     <label for="pag_ibig_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PAG-IBIG NO. (Optional)</label>
                 </div>
             </div>
@@ -148,21 +148,21 @@
         <div class="row mb-3">
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="philhealth_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'philhealth_number', this.id);">
                     <label for="philhealth_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> PHILHEALTH NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="tin_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'tin_number', this.id);">
                     <label for="tin_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> TIN NO. (Optional)</label>
                 </div>
             </div>
 
             <div class="col">
                 <div class="f-outline">
-                    <input class="forminput form-control optional_field numberDash" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); duplicateCheck(this.id)">
+                    <input class="forminput form-control optional_field numberDash" type="search" id="account_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('work_information_tables', 'account_number', this.id);">
                     <label for="account_number" class="formlabel form-label"><i class="fas fa-hashtag"></i> ACCOUNT NO. (Optional)</label>
                 </div>
             </div>
@@ -207,7 +207,7 @@
                     </tr>
                 </tbody>
             </table>
-    
+
             <table class="table table-bordered table-striped table-hover resignation_table_data" id="resignation_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>
@@ -260,7 +260,7 @@
                     </tr>
                 </tbody>
             </table>
-    
+
             <table class="table table-bordered table-striped table-hover termination_table_data" id="termination_table_data" style="display: none; margin-top:-36px;">
                 <thead>
                     <tr>

@@ -32,77 +32,7 @@ $('.numberDash').on('keyup', function(){
     $(this).val(numberDashValue);
 });
 
-var orig_value = {};
-
-function duplicateCheck(inputId){
-    console.log('a');
-    return false;
-    var inputValue = $(`#${inputId}`).val();
-    var validationId = `validation_${inputId}`;
-
-    if(!(inputId in orig_value)){
-        orig_value[inputId] = inputValue;
-    }
-
-    if(orig_value[inputId].toUpperCase() !== inputValue.toUpperCase()){
-        $.ajax({
-            url: "/checkDuplicate",
-            data: {
-                inputColumn: inputId,
-                inputValue: inputValue,
-            },
-            success: function (response) {
-                var validationElement = $(`#${validationId}`);
-                if(response === 'true'){
-                    if(validationElement.length === 0){
-                        $(`#${inputId}`).after(`<p class="validation" id="${validationId}"><i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>`);
-                        $(`#${validationId}`).show();
-                    }
-                }
-                else{
-                    validationElement.remove();
-                }
-            }
-        });
-    }
-}
-
-// function duplicateCheck(inputId, inputColumn, inputTable, inputStatus){
-//     var orig_value = $(`#${inputId}`).attr('orig_value');
-//     var inputValue = $(`#${inputId}`).val();
-//     var validationId = `validation_${inputId}`;
-
-//     if(orig_value.toUpperCase().trim() == inputValue.toUpperCase().trim()){
-//         return false;
-//     }
-//     else{
-//         $.ajax({
-//             url: "/checkDuplicate",
-//             data: {
-//                 inputColumn: inputColumn,
-//                 inputValue: inputValue,
-//                 inputTable: inputTable,
-//                 inputStatus: inputStatus
-//             },
-//             success: function(response){
-//                 var validationElement = $(`#${validationId}`);
-//                 if(response === 'true'){
-//                     if(validationElement.length === 0){
-//                         $(`#${inputId}`).addClass('redBorder');
-//                         $(`#${inputId}`).after(`<p class="validation" id="${validationId}"><i class="fas fa-exclamation-triangle mx-2"></i>ALREADY EXIST!</p>`);
-//                         $(`#${validationId}`).show();
-//                     }
-//                 }
-//                 else{
-//                     $(`#${inputId}`).removeClass('redBorder');
-//                     validationElement.remove();
-//                 }
-//             }
-//         });
-//     }
-// }
-
-function emailCheck(emailId) {
+function emailCheck(emailId){
     var emailValue = $(`#${emailId}`).val();
     var emailValidation = `format_${emailId}`;
     var emailValidationElement = $(`#${emailValidation}`);
@@ -145,4 +75,38 @@ function disableUpdate(fieldCheck, changeCounter){
     else{
         $('#btnUpdate').prop('disabled', true);
     }
+}
+
+function duplicateCheck(table_name, column_name, id){
+    var orig_value    = $(`#${id}`).attr('orig_value') ? $(`#${id}`).attr('orig_value').toLowerCase().trim() : '';
+    var current_value = $(`#${id}`).val().toLowerCase().trim();
+
+    if(orig_value === current_value || !$(`#${id}`).val().trim()){
+        return false;
+    }
+
+    $.ajax({
+        url: '/duplicateCheck',
+        data:{
+            table_name  : table_name,
+            column_name : column_name,
+            value       : $(`#${id}`).val()
+        },
+        success:function(response){
+            if(response == 'true'){
+                if(!$(`#${id}_validation`).length){
+                    $(`#${id}_validation`).show();
+                    $(`#${id}`).after(`<p class="validation" id="${id}_validation"> <i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>`);
+                    $(`#${id}_validation`).show();
+                }
+            }
+            else{
+                $(`#${id}_validation`).remove();
+            }
+        }
+    });
+}
+
+function cellphoneFormat(id){
+    $(`#${id}`).val($(`#${id}`).val().replace(/[^0-9]/g, '').replace(/(\d{4})/, '$1-'));
 }

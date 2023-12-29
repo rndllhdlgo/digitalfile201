@@ -642,4 +642,16 @@ class EmployeesController extends Controller
     public function upload_picture(Request $request){
         return view('subpages.upload_picture')->render();
     }
+
+    public function duplicateCheck(Request $request){
+        $table_name  = $request->table_name;
+        $column_name = $request->column_name;
+        $value       = $request->value;
+
+        $results = DB::table($table_name)
+                    ->select($column_name)
+                    ->where($column_name, $value)
+                    ->count();
+        return $results > 0 ? 'true' : 'false';
+    }
 }

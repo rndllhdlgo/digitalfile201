@@ -14,3 +14,11 @@ php artisan vendor:publish --provider="Yajra\DataTables\DataTablesServiceProvide
 composer require jenssegers/agent - Check Device
 Folder config/app = Jenssegers\Agent\AgentServiceProvider::class,
 to alias = 'Agent' => Jenssegers\Agent\Facades\Agent::class,
+
+connect to git
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin 'Your repository URL'
+git push -u origin master
+j 320

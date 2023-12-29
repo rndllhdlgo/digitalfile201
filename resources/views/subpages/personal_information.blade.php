@@ -211,19 +211,19 @@
             <div class="row mb-3 mt-3">
                 <div class="col-6">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this); duplicateCheck(this.id);" onkeyup="checkChange(this); duplicateCheck(this.id); emailCheck(this.id);">
+                        <input class="forminput form-control required_field preventSpace" type="search" id="email_address" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'email_address', this.id); emailCheck(this.id);">
                         <label for="email_address" class="formlabel form-label"><i class="fas fa-envelope"></i> EMAIL ADDRESS</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck(this.id)">
+                        <input class="forminput form-control optional_field" type="search" id="telephone_number" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'telephone_number', this.id);">
                         <label for="telephone_number" class="formlabel form-label"><i class="fa fa-phone-square" aria-hidden="true" ></i> TELEPHONE NO. (Optional)</label>
                     </div>
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="cellphone_number" maxlength="12" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this); duplicateCheck(this.id);" onkeyup="checkChange(this); duplicateCheck(this.id)">
+                        <input class="forminput form-control required_field" type="search" id="cellphone_number" maxlength="12" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'cellphone_number', this.id); cellphoneFormat(this.id);">
                         <label for="cellphone_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CELLPHONE NO.</label>
                     </div>
                 </div>
@@ -240,7 +240,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="spouse_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" orig_value="" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'spouse_contact_number', this.id); cellphoneFormat(this.id);">
                         <label for="spouse_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> SPOUSE CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -261,7 +261,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="father_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'father_contact_number', this.id); cellphoneFormat(this.id);">
                         <label for="father_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> FATHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -282,7 +282,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck(this.id);">
+                        <input class="forminput form-control" type="search" id="mother_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'mother_contact_number', this.id); cellphoneFormat(this.id);">
                         <label for="mother_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> MOTHER'S CONTACT NO. (OPTIONAL)</label>
                     </div>
                 </div>
@@ -309,7 +309,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck(this.id);">
+                        <input class="forminput form-control required_field" type="search" id="emergency_contact_number" placeholder=" " style="background-color:white;" autocomplete="off" orig_value="" onclick="checkChange(this);" onkeyup="checkChange(this); duplicateCheck('personal_information_tables', 'emergency_contact_number', this.id); cellphoneFormat(this.id);">
                         <label for="emergency_contact_number" class="formlabel form-label"><i class="fas fa-phone-square" aria-hidden="true" ></i> CONTACT NO.</label>
                     </div>
                 </div>

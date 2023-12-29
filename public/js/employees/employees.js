@@ -62,8 +62,8 @@ $(document).ready(function(){
             data:{
                 filter:filter
             },
-            "dataType": "json",
-            "error": function(xhr, error, thrown){
+            dataType: "json",
+            error: function(xhr, error, thrown){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
@@ -231,9 +231,6 @@ $(document).ready(function(){
                 }
             }
         }
-        $('th input').on('click', function(e){
-            e.stopPropagation();
-        });
     }, 0);
 
     $('#filter').popover({
@@ -247,6 +244,10 @@ $(document).ready(function(){
                 $('#filter').popover('hide');
             }
         });
+    });
+
+    $('th input').on('click', function(e){
+        e.stopPropagation();
     });
 });
 
@@ -270,31 +271,27 @@ $('#haveChildren').on('change', function() {
 });
 
 function changeCivilStatus(){
-    if($('#civil_status').val() == 'MARRIED'
-    || $('#civil_status').val() == 'WIDOWED'
-    || $('#civil_status').val() == 'SEPARATED'
-    ){
+    if(['MARRIED', 'WIDOWED', 'SEPARATED'].includes($('#civil_status').val())){
+        $('#spouse').show();
         $('.haveChildren').show();
         $('#haveChildren').prop('checked', false).prop('disabled', false);
         $('#haveChildren').change();
     }
     else if($('#civil_status').val() == 'SOLO PARENT'){
+        $('#spouse').hide();
         $('.haveChildren').show();
         $('#haveChildren').prop('checked', true).prop('disabled',true);
         $('#haveChildren').change();
     }
     else{
+        $('#spouse').hide();
         $('.haveChildren').hide();
         $('.children_information').hide();
     }
 }
 
 function changeEmploymentStatus(){
-    if($('#employment_status').val() == "REGULAR"
-    || $('#employment_status').val() == 'PROBATIONARY'
-    || $('#employment_status').val() == 'PART TIME'
-    || $('#employment_status').val() == 'RETIRED'
-    ){
+    if(["REGULAR", "PROBATIONARY", "PART TIME", "RETIRED"].includes($('#employment_status').val())){
         $('#benefits').show();
         $('#benefits_summary').show();
         $('#resignation_div').hide();
@@ -306,7 +303,6 @@ function changeEmploymentStatus(){
             $('#termination_div').hide();
             $('#benefits').hide();
             $('#benefits_summary').hide();
-
     }
     else if($('#employment_status').val() == 'TERMINATED'){
             $('#termination_div').show();
