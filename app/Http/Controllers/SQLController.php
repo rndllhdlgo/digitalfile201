@@ -5,18 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Database\QueryException;
+use Carbon\Carbon;
 
 use App\Models\{
     PersonalInformationTable,
     WorkInformationTable,
-    Secondary
+    Branch,
+    Children
 };
+
 use App\User;
 use DataTables;
+use Str;
 
 class SQLController extends Controller
 {
     public function sqlbackup(){
+        // \"$last_name\",
+        $random          = Str::random(4);
         $empty_files     = array();
         $completed_files = array();
         $personals = PersonalInformationTable::all();
@@ -193,6 +199,85 @@ class SQLController extends Controller
         }
         else{
             array_push($empty_files, "WORK");
+        }
+
+        $branches = Branch::all();
+        if(!$branches->isEmpty()){
+            $sql_branches = '';
+            foreach($branches as $branch){
+                $entity03_desc = str_replace('"', "'", $branch->entity03_desc);
+                $addr1         = str_replace('"', "'", $branch->addr1);
+                $addr2         = str_replace('"', "'", $branch->addr2);
+                $contact       = str_replace('"', "'", $branch->contact);
+                $sql_branches .= "REPLACE INTO `entity03_copy`
+                (
+                    `entity01`,
+                    `entity02`,
+                    `entity03`,
+                    `entity03_desc`,
+                    `addr1`,
+                    `addr2`,
+                    `contact`,
+                    `email`,
+                    `telnum1`,
+                    `telnum2`,
+                )
+                VALUES
+                (
+                    '$branch->entity01',
+                    '$branch->entity02',
+                    '$branch->entity03',
+                    \"$entity03_desc\",
+                    \"$addr1\",
+                    \"$addr2\",
+                    \"$contact\",
+                    '$branch->email',
+                    '$branch->telnum1',
+                    '$branch->telnum2'
+                );\n";
+            }
+
+            $branchesPath = storage_path('app/public/backupsql/branches.sql');
+            file_put_contents($branchesPath, $sql_branches);
+            array_push($completed_files, "BRANCHES");
+        }
+        else{
+            array_push($empty_files, "BRANCHES");
+        }
+
+        $children = Children::all();
+        if(!$children->isEmpty()){
+            $sql_children = '';
+            foreach($children as $child){
+                $child_name = str_replace('"', "'", $child->child_name);
+                $sql_children .= "REPLACE INTO `children_copy`
+                (
+                    `id`,
+                    `employee_id`,
+                    `child_name`,
+                    `child_birthday`,
+                    `child_gender`,
+                    `created_at`,
+                    `updated_at`
+                )
+                VALUES
+                (
+                    '$child->id',
+                    '$child->employee_id',
+                    \"$child_name\",
+                    '$child->child_birthday',
+                    '$child->child_gender',
+                    '$child->created_at',
+                    '$child->updated_at'
+                );\n";
+            }
+
+            $childrenPath = storage_path('app/public/backupsql/children.sql');
+            file_put_contents($childrenPath, $sql_children);
+            array_push($completed_files, "CHILDREN");
+        }
+        else{
+            array_push($empty_files, "CHILDREN");
         }
 
         echo nl2br("Completed Files: " . implode(', ', $completed_files) . "\n Empty Files: " . implode(', ', $empty_files));
