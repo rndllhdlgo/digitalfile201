@@ -65,11 +65,11 @@ function checkChange(element){
         return origContainer[id] !== document.getElementById(id).value;
     });
 
-    disableUpdate(enableUpdateButton, 0);
+    disableUpdate(enableUpdateButton, 0, true);
 }
 
-function disableUpdate(fieldCheck, changeCounter){
-    if(fieldCheck == true || changeCounter != 0){
+function disableUpdate(fieldCheck, changeCounter, classValidation){
+    if(fieldCheck || changeCounter != 0 || !classValidation){
         $('#btnUpdate').prop('disabled', false);
     }
     else{
@@ -95,12 +95,13 @@ function duplicateCheck(table_name, column_name, id){
         success:function(response){
             if(response == 'true'){
                 if(!$(`#${id}_validation`).length){
-                    $(`#${id}_validation`).show();
                     $(`#${id}`).after(`<p class="validation" id="${id}_validation"> <i class="fas fa-exclamation-triangle"></i> ALREADY EXIST! </p>`);
                     $(`#${id}_validation`).show();
+                    disableUpdate('', '', true);
                 }
             }
             else{
+                disableUpdate('', '', false);
                 $(`#${id}_validation`).remove();
             }
         }

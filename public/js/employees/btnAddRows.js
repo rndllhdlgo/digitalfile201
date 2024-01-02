@@ -55,7 +55,7 @@ $('#childrenAdd').click(function(){
     children_change = 'CHANGED';
     tblChildren = 'tblChildren';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#child_name').val("");
     $('#child_birthday').val("");
@@ -81,7 +81,7 @@ $('#childrenAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -116,7 +116,7 @@ $('#collegeAdd').click(function(){
     college_change = 'CHANGED';
     tblCollege = 'tblCollege';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#college_name').val("");
     $('#college_degree').val("");
@@ -142,7 +142,7 @@ $('#collegeAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -177,7 +177,7 @@ $('#secondaryAdd').click(function(){
     secondary_change = 'CHANGED';
     tblSecondary = 'tblSecondary';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#secondary_name').val("");
     $('#secondary_address').val("");
@@ -203,7 +203,7 @@ $('#secondaryAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -238,7 +238,7 @@ $('#primaryAdd').click(function(){
     primary_change = 'CHANGED';
     tblPrimary = 'tblPrimary';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#primary_name').val("");
     $('#primary_address').val("");
@@ -264,7 +264,7 @@ $('#primaryAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -297,7 +297,7 @@ $('#trainingAdd').click(function(){
     training_change = 'CHANGED';
     tblTraining = 'tblTraining';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#training_name').val("");
     $('#training_title').val("");
@@ -323,7 +323,7 @@ $('#trainingAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -355,8 +355,8 @@ $('#vocationalAdd').click(function(){
     $('#vocational_table_orig').show();
     vocational_change = 'CHANGED';
     tblVocational = 'tblVocational';
-    changeCounter--;
-    disableUpdate('', changeCounter);
+    changeCounter++;
+    disableUpdate('', changeCounter, true);
 
     $('#vocational_name').val("");
     $('#vocational_course').val("");
@@ -382,7 +382,7 @@ $('#vocationalAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -419,7 +419,7 @@ $('#jobHistoryAdd').click(function(){
     job_history_change = 'CHANGED';
     tblJob = 'tblJob';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#job_company_name').val("");
     $('#job_description').val("");
@@ -447,7 +447,7 @@ $('#jobHistoryAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -487,7 +487,7 @@ $('#hmoAdd').click(function(){
     hmo_change = 'CHANGED';
     tblHmo = 'tblHmo';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#hmo').val('');
     $('#coverage').val('');
@@ -515,7 +515,7 @@ $('#hmoAdd').click(function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -538,7 +538,7 @@ $(document).on('click','#btnAddMemoRow', function(){
     memo_change = 'CHANGED';
     tblMemo = 'tblMemo';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#memo_subject').attr('id','');
     $('#memo_date').attr('id','');
@@ -577,7 +577,7 @@ $(document).on('click','#btnAddMemoRow', function(){
                     <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddMemoRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
                 </td>
             </tr>`);
-    $('#memoTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+    $('#memoTable').find('tr').eq(3).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_memo center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
     $(".btn_memo").click(function(){
         Swal.fire({
@@ -598,7 +598,7 @@ $(document).on('click','#btnAddMemoRow', function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -621,7 +621,7 @@ $(document).on('click','#btnAddEvaluationRow', function(){
     evaluation_change = 'CHANGED';
     tblEvaluation = 'tblEvaluation';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#evaluation_reason').attr('id','');
     $('#evaluation_date').attr('id','');
@@ -653,7 +653,7 @@ $(document).on('click','#btnAddEvaluationRow', function(){
                         <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddEvaluationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
                     </td>
                 </tr>`);
-    $('#evaluationTable').find('tr').eq(2).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+    $('#evaluationTable').find('tr').eq(3).find('td').eq(4).html('<button type="button" class="btn btn-danger btn_evaluation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
     $(".btn_evaluation").click(function(){
         Swal.fire({
@@ -674,7 +674,7 @@ $(document).on('click','#btnAddEvaluationRow', function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -696,7 +696,7 @@ $(document).on('click','#btnAddContractRow', function(){
     contracts_change = 'CHANGED';
     tblContracts = 'tblContracts';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#contracts_type').attr('id','');
     $('#contracts_date').attr('id','');
@@ -721,7 +721,7 @@ $(document).on('click','#btnAddContractRow', function(){
                             <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddContractRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>`);
-    $('#contractsTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+    $('#contractsTable').find('tr').eq(3).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_contracts center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
     $(".btn_contracts").click(function(){
         Swal.fire({
@@ -742,7 +742,7 @@ $(document).on('click','#btnAddContractRow', function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -764,7 +764,7 @@ $(document).on('click','#btnAddResignationRow', function(){
     resignation_change = 'CHANGED';
     tblResignation = 'tblResignation';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#resignation_reason').attr('id','');
     $('#resignation_date').attr('id','');
@@ -789,7 +789,7 @@ $(document).on('click','#btnAddResignationRow', function(){
                             <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddResignationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>`);
-    $('#resignationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+    $('#resignationTable').find('tr').eq(3).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_resignation center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
     $(".btn_resignation").click(function(){
         Swal.fire({
@@ -810,7 +810,7 @@ $(document).on('click','#btnAddResignationRow', function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
@@ -832,7 +832,7 @@ $(document).on('click','#btnAddTerminationRow',function(){
     termination_change = 'CHANGED';
     tblTermination = 'tblTermination';
     changeCounter++;
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 
     $('#termination_reason').attr('id','');
     $('#termination_date').attr('id','');
@@ -857,7 +857,7 @@ $(document).on('click','#btnAddTerminationRow',function(){
                             <button type="button" class="btn btn-success center  btnActionDisabled" id="btnAddTerminationRow" title="ADD ROW"><i class="fas fa-plus"></i></button>
                         </td>
                     </tr>`);
-    $('#terminationTable').find('tr').eq(2).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
+    $('#terminationTable').find('tr').eq(3).find('td').eq(3).html('<button type="button" class="btn btn-danger btn_termination center " title="DELETE ROW"> <i class="fas fa-trash-alt"></i> </button>');
 
     $(".btn_termination").click(function(){
         Swal.fire({
@@ -878,7 +878,7 @@ $(document).on('click','#btnAddTerminationRow',function(){
             if(save.isConfirmed){
                 $(this).parent().parent().remove();
                 changeCounter--;
-                disableUpdate('', changeCounter);
+                disableUpdate('', changeCounter, true);
             }
         });
     });
