@@ -54,10 +54,13 @@ function ImageValidation(employee_image){
 }
 
 function fileValidation(fileInputId, previewId, viewId){
-    var fileData = $("#" + fileInputId)[0];
-    var uploadPath = fileData.value;
+    var fileData      = $("#" + fileInputId)[0];
+    if(fileData.files.length === 0){
+        return false;
+    }
+    var uploadPath    = fileData.value;
     var fileExtension = uploadPath.substring(uploadPath.lastIndexOf('.') + 1).toLowerCase();
-    var fileSize = $("#" + fileInputId).get(0).files[0].size;
+    var fileSize      = $("#" + fileInputId).get(0).files[0].size;
 
     if(fileExtension != "pdf" && fileSize > 5242880 * 2){
         Swal.fire({
@@ -110,7 +113,7 @@ function fileValidation(fileInputId, previewId, viewId){
             }
         }
         changeCounter++;
-        disableUpdate('', changeCounter);
+        disableUpdate('', changeCounter, true);
     }
 }
 

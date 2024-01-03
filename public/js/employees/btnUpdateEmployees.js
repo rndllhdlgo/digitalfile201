@@ -40,7 +40,6 @@ $('#btnUpdate').on('click',function(){
     }
 
     var id = $('#hidden_id').val();
-    var current_employee_number = $('#current_employee_number').val();
     var first_name = $('#first_name').val();
     var middle_name = $('#middle_name').val();
     var last_name = $('#last_name').val();
@@ -108,7 +107,6 @@ $('#btnUpdate').on('click',function(){
                 data:{
                     id:id,
                     completed:completed,
-                    current_employee_number:current_employee_number,
                     employee_image:employee_image,
                     filename_delete:$('#filename_delete').val(),
                     employee_image_change:employee_image_change,
@@ -738,8 +736,7 @@ $('#btnUpdate').on('click',function(){
                                     }, 2000);
                                 }
                                 else if(edit.isDenied){
-                                    console.log('cancel');
-                                    disableUpdate('', 0);
+                                    disableUpdate('', 0, true);
                                 }
                             });
                         }, 2000);

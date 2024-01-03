@@ -8,6 +8,6 @@
 <link rel="stylesheet" href="/css/inc/sweetalert2.min.css">
 <link href="/css/inc/chosen.css" rel="stylesheet" type="text/css"/>
 <link href="/cropper/cropper.min.css" rel="stylesheet">
-<link rel="stylesheet" href="/css/all.css?version={{\Illuminate\Support\Str::random(50)}}">
+<link rel="stylesheet" href="/css/all.css">
 <script src="/js/inc/chosen.jquery.min.js"></script>
 <script src="/cropper/cropper.min.js"></script>

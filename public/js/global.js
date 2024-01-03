@@ -1,7 +1,6 @@
 var current_location        = $(location).attr('pathname')+window.location.search;
 var current_user            = $('#current_user').val();
 var current_user_level      = $('#current_user_level').val();
-var current_employee_number = $('#current_employee_number').val();
 var current_email           = $('#current_email').val();
 var app_timeout             = $('#APP_TIMEOUT').val();
 var data_update, standby    = true;
@@ -362,10 +361,6 @@ $('body').on('cut paste', function(){
     setTimeout(function(){
         $(':focus').keyup();
     }, app_timeout);
-});
-
-$("input[type='date']").keydown(function(e){
-    e.preventDefault();
 });
 
 function decodeHtml(str){

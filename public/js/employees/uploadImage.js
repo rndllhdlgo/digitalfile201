@@ -29,7 +29,7 @@ $(document).on('click','#image_crop',function(){
     else{
         changeCounter++;
     }
-    disableUpdate('', changeCounter);
+    disableUpdate('', changeCounter, true);
 });
 
 $(document).on('click', '#image_zoom_in', function(){
@@ -57,7 +57,7 @@ $(document).on('click', '#image_recrop', function(){
             $('#image_recrop').hide();
             $('.top-container').show();
             changeCounter--;
-            disableUpdate('', changeCounter);
+            disableUpdate('', changeCounter, true);
         }
     });
 });
@@ -84,7 +84,7 @@ $(document).on('click','#image_close', function(){
 
             employee_image_change = 'CHANGED';
             changeCounter--;
-            disableUpdate('', changeCounter);
+            disableUpdate('', changeCounter, true);
         }
     });
 });

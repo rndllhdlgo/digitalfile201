@@ -30,7 +30,7 @@ var changeCounter = 0;
 
 $('#childrenAdd').click(function(){
     var child_name     = $('#child_name').val().trim();
-    var child_birthday = moment($('#child_birthday').val()).format('MMMM D, YYYY');;
+    var child_birthday = moment($('#child_birthday').val()).format('MMMM D, YYYY');
     var child_age      = $('#child_age').val();
     var child_gender   = $('#child_gender').val();
 
