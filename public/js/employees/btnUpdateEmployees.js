@@ -39,6 +39,43 @@ $('#btnUpdate').on('click',function(){
         var completed = '';
     }
 
+    var variables = ['date_hired', 'employee_company', 'employee_branch', 'employee_department', 'employee_position', 'employment_status'];
+    var emptyFields = [];
+
+    variables.forEach(function(elementId){
+        if(!$('#' + elementId).val()){
+            emptyFields.push(elementId);
+        }
+    });
+
+    if(emptyFields.length > 0){
+        var resultString = emptyFields.map(function(field){
+            return field.replace(/_/g, ' ').replace(/\b\w/g, function(firstLetter){
+                return firstLetter.toUpperCase();
+            });
+        }).join('</li><li>');
+
+        Swal.fire({
+            title: '',
+            html: `<span class="text-center fs-3 fw-bolder">Please fill out the fields!</span><br>
+                        <span class="text-center fs-4 fw-bold">(Work Info)</span><br><br>
+                            <ul style="text-align: left !important; font-weight: 600 !important;">
+                                <li>${resultString}</li>
+                            </ul>`,
+            icon: 'error',
+            confirmButtonText: "OK"
+        })
+        .then((result) => {
+            if(result.isConfirmed){
+                setTimeout(() => {
+                    $('#tab2').click();
+                    $('#work_info').addClass('active show');
+                }, 100);
+            }
+        });
+        return false;
+    }
+
     var id = $('#hidden_id').val();
     var first_name = $('#first_name').val();
     var middle_name = $('#middle_name').val();

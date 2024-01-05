@@ -76,7 +76,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                 if(value.update_stat == '1'){
                     $('#loading').hide();
                     Swal.fire({
-                        html: '<h4>This Employee is currently being updated by another user.</h4>',
+                        html: `<h4>${value.last_name}, ${value.first_name} ${value.middle_name} is currently being updated by another user.</h4>`,
                         icon: 'info',
                         allowEscapeKey: false,
                         allowOutsideClick: false

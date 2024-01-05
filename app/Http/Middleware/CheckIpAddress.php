@@ -19,6 +19,7 @@ class CheckIpAddress
         if(env('APP_MAINTENANCE') == 'true'){
             abort(403, 'THIS SITE IS UNDER MAINTENANCE');
         }
+
         $userIp = $request->ip();
         $checkIp = Ipaddress::where('ipaddress', $userIp)->first();
         if(!$checkIp){

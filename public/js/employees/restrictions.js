@@ -79,8 +79,8 @@ function checkChange(element){
 }
 
 // to disable/enable update button
-function disableUpdate(fieldCheck, changeCounter, classValidation){
-    if(fieldCheck || changeCounter != 0 || !classValidation){
+function disableUpdate(fieldCheck, changeCounter, duplicate){
+    if(fieldCheck || changeCounter != 0 || !duplicate){
         $('#btnUpdate').prop('disabled', false);
     }
     else{

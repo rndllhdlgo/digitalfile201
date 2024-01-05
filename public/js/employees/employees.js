@@ -62,8 +62,8 @@ $(document).ready(function(){
             data:{
                 filter:filter
             },
-            dataType: "json",
-            error: function(xhr, error, thrown){
+            "dataType": "json",
+            "error": function(xhr, error, thrown){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();

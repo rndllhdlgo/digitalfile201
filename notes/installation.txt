@@ -21,4 +21,4 @@ git add .
 git commit -m "Initial commit"
 git remote add origin 'Your repository URL'
 git push -u origin master
-j 340
+Sir Jerome - 380
