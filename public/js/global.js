@@ -363,16 +363,23 @@ $('body').on('cut paste', function(){
     }, app_timeout);
 });
 
-function decodeHtml(str){
-    var map = {'&amp;': '&', '&lt;': '<', '&gt;': '>', '&quot;': '"', '&#039;': "'"};
-    return str.replace(/&amp;|&lt;|&gt;|&quot;|&#039;/g, function(m){return map[m];});
-}
-
 function formatDate(dateString){
     var date = new Date(dateString);
     var monthNames = [
-      "Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug.", "Sep.", "Oct.", "Nov.", "Dec."
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
     ];
+
     var monthIndex = date.getMonth();
     var day = date.getDate();
     var year = date.getFullYear();
@@ -407,3 +414,25 @@ $("textarea").keyup(function(event){
         $(this).val(textarea_val.substring(0, textarea_val.length - 1));
     }
 });
+
+function calculateAge(birthdayType, birthdayId, birthdayAge){
+    var today = new Date();
+    if(birthdayType == 'personal'){
+        var birthDate = new Date($(`#${birthdayId}`).val());
+    }
+    else if(birthdayType == 'summary'){
+        var birthDate = new Date($('.birthday').val());
+    }
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m   = today.getMonth() - birthDate.getMonth();
+        if(m < 0 || (m === 0 && today.getDate() < birthDate.getDate())){
+            age--;
+        }
+
+    if(birthdayType == 'personal'){
+        return $(`#${birthdayAge}`).val(age);
+    }
+    else if(birthdayType == 'summary'){
+        return $(`.${birthdayAge}`).html(age);
+    }
+}

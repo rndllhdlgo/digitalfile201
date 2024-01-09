@@ -29,14 +29,30 @@ var tblMemo,
 var changeCounter = 0;
 
 $('#childrenAdd').click(function(){
-    var child_name     = $('#child_name').val().trim();
+    var emptyFields    = [];
+    var child_name     = $('#child_name').val();
     var child_birthday = moment($('#child_birthday').val()).format('MMMM D, YYYY');
     var child_age      = $('#child_age').val();
     var child_gender   = $('#child_gender').val();
 
-    if(!child_name && !child_gender && (child_birthday == 'Invalid date')){
+    if(!child_name){
+        emptyFields.push('Child Name');
+    }
+
+    if(!child_gender){
+        emptyFields.push('Child Gender');
+    }
+
+    if(child_birthday === 'Invalid date'){
+        emptyFields.push('Child Birthday');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -88,14 +104,34 @@ $('#childrenAdd').click(function(){
 });
 
 $('#collegeAdd').click(function(){
+    var emptyFields                  = [];
     var college_name                 = $('#college_name').val();
     var college_degree               = $('#college_degree').val();
     var college_inclusive_years_from = moment($('#college_inclusive_years_from').val()).format('MMMM YYYY');
     var college_inclusive_years_to   = moment($('#college_inclusive_years_to').val()).format('MMMM YYYY');
 
-    if(!college_name || !college_degree || (college_inclusive_years_from == 'Invalid date') || (college_inclusive_years_to == 'Invalid date')){
+    if(!college_name){
+        emptyFields.push('College Name');
+    }
+
+    if(!college_degree){
+        emptyFields.push('College Degree');
+    }
+
+    if(college_inclusive_years_from == 'Invalid date'){
+        emptyFields.push('College Inclusive Years From');
+    }
+
+    if(college_inclusive_years_to == 'Invalid date'){
+        emptyFields.push('College Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -149,14 +185,34 @@ $('#collegeAdd').click(function(){
 });
 
 $('#secondaryAdd').click(function(){
-    var secondary_name = $('#secondary_name').val();
+    var emptyFields       = [];
+    var secondary_name    = $('#secondary_name').val();
     var secondary_address = $('#secondary_address').val();
-    var secondary_from = moment($('#secondary_from').val()).format('MMMM YYYY');
-    var secondary_to   = moment($('#secondary_to').val()).format('MMMM YYYY');
+    var secondary_from    = moment($('#secondary_from').val()).format('MMMM YYYY');
+    var secondary_to      = moment($('#secondary_to').val()).format('MMMM YYYY');
 
-    if(!secondary_name || !secondary_address || (secondary_from == 'Invalid date') || (secondary_to == 'Invalid date')){
+    if(!secondary_name){
+        emptyFields.push('Secondary School Name');
+    }
+
+    if(!secondary_address){
+        emptyFields.push('Secondary School Address');
+    }
+
+    if(secondary_from == 'Invalid date'){
+        emptyFields.push('Secondary School Inclusive Years From');
+    }
+
+    if(secondary_to == 'Invalid date'){
+        emptyFields.push('Secondary School Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -210,14 +266,34 @@ $('#secondaryAdd').click(function(){
 });
 
 $('#primaryAdd').click(function(){
+    var emptyFields     = [];
     var primary_name    = $('#primary_name').val();
     var primary_address = $('#primary_address').val();
     var primary_from    = moment($('#primary_from').val()).format('MMMM YYYY');
     var primary_to      = moment($('#primary_to').val()).format('MMMM YYYY');
 
-    if(!primary_name || !primary_address || (primary_from == 'Invalid date') || (primary_to == 'Invalid date')){
+    if(!primary_name){
+        emptyFields.push('Primary School Name');
+    }
+
+    if(!primary_address){
+        emptyFields.push('Primary School Address');
+    }
+
+    if(primary_from == 'Invalid date'){
+        emptyFields.push('Primary School Inclusive Years From');
+    }
+
+    if(primary_to == 'Invalid date'){
+        emptyFields.push('Primary School Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -271,14 +347,34 @@ $('#primaryAdd').click(function(){
 });
 
 $('#trainingAdd').click(function(){
+    var emptyFields                   = [];
     var training_name                 = $('#training_name').val();
     var training_title                = $('#training_title').val();
     var training_inclusive_years_from = moment($('#training_inclusive_years_from').val()).format('MMMM YYYY');
     var training_inclusive_years_to   = moment($('#training_inclusive_years_to').val()).format('MMMMM YYYY');
 
-    if(!training_name || !training_title || (training_inclusive_years_from == 'Invalid date') || (training_inclusive_years_to == 'Invalid date')){
+    if(!training_name){
+        emptyFields.push('Training School Name');
+    }
+
+    if(!training_title){
+        emptyFields.push('Training Title');
+    }
+
+    if(training_inclusive_years_from == 'Invalid date'){
+        emptyFields.push('Training Inclusive Years From');
+    }
+
+    if(training_inclusive_years_to == 'Invalid date'){
+        emptyFields.push('Training Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -330,14 +426,34 @@ $('#trainingAdd').click(function(){
 });
 
 $('#vocationalAdd').click(function(){
+    var emptyFields                     = [];
     var vocational_name                 = $('#vocational_name').val();
     var vocational_course               = $('#vocational_course').val();
     var vocational_inclusive_years_from = moment($('#vocational_inclusive_years_from').val()).format('MMMM YYYY');
     var vocational_inclusive_years_to   = moment($('#vocational_inclusive_years_to').val()).format('MMMM YYYY');
 
-    if(!vocational_name || !vocational_course || (vocational_inclusive_years_from == 'Invalid date') || (vocational_inclusive_years_to == 'Invalid date')){
+    if(!vocational_name){
+        emptyFields.push('Vocational School Name');
+    }
+
+    if(!vocational_course){
+        emptyFields.push('Vocational Course');
+    }
+
+    if(vocational_inclusive_years_from == 'Invalid date'){
+        emptyFields.push('Vocational Inclusive Years From');
+    }
+
+    if(vocational_inclusive_years_to == 'Invalid date'){
+        emptyFields.push('Vocational Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -389,6 +505,7 @@ $('#vocationalAdd').click(function(){
 });
 
 $('#jobHistoryAdd').click(function(){
+    var emptyFields              = [];
     var job_company_name         = $('#job_company_name').val();
     var job_description          = $('#job_description').val();
     var job_position             = $('#job_position').val();
@@ -396,9 +513,36 @@ $('#jobHistoryAdd').click(function(){
     var job_inclusive_years_from = moment($('#job_inclusive_years_from').val()).format('MMMM YYYY');
     var job_inclusive_years_to   = moment($('#job_inclusive_years_to').val()).format('MMMM YYYY');
 
-    if(!job_company_name || !job_description || !job_position || !job_contact_number || (job_inclusive_years_from == 'Invalid date') || (job_inclusive_years_to == 'Invalid date')){
+    if(!job_company_name){
+        emptyFields.push('Company Name');
+    }
+
+    if(!job_description){
+        emptyFields.push('Job Desciprtion');
+    }
+
+    if(!job_position){
+        emptyFields.push('Job Position');
+    }
+
+    if(!job_contact_number){
+        emptyFields.push('Contact Number');
+    }
+
+    if(job_inclusive_years_from == 'Invalid date'){
+        emptyFields.push('Job Inclusive Years From');
+    }
+
+    if(job_inclusive_years_to == 'Invalid date'){
+        emptyFields.push('Job Inclusive Years To');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -454,6 +598,7 @@ $('#jobHistoryAdd').click(function(){
 });
 
 $('#hmoAdd').click(function(){
+    var emptyFields      = [];
     var hmo              = $('#hmo').val();
     var coverage         = $('#coverage').val();
     var particulars      = $('#particulars').val();
@@ -461,9 +606,36 @@ $('#hmoAdd').click(function(){
     var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
     var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
 
-    if(!hmo || !coverage || !particulars || !room || (effectivity_date == 'Invalid date') || (expiration_date == 'Invalid date')){
+    if(!hmo){
+        emptyFields.push('HMO');
+    }
+
+    if(!coverage){
+        emptyFields.push('Coverage');
+    }
+
+    if(!particulars){
+        emptyFields.push('Particulars');
+    }
+
+    if(!room){
+        emptyFields.push('Room');
+    }
+
+    if(effectivity_date == 'Invalid date'){
+        emptyFields.push('Effectivity Date');
+    }
+
+    if(expiration_date == 'Invalid date'){
+        emptyFields.push('Expiration Date');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -522,14 +694,34 @@ $('#hmoAdd').click(function(){
 });
 
 $(document).on('click','#btnAddMemoRow', function(){
+    var emptyFields  = [];
     var memo_subject = $('#memo_subject').val();
     var memo_date    = $('#memo_date').val();
     var memo_penalty = $('#memo_penalty').val();
     var memo_file    = $('#memo_file')[0];
 
-    if(!memo_subject || !memo_date || !memo_penalty || (memo_file.files.length === 0)){
+    if(!memo_subject){
+        emptyFields.push('Memo Subject');
+    }
+
+    if(!memo_date){
+        emptyFields.push('Memo Date');
+    }
+
+    if(!memo_penalty){
+        emptyFields.push('Memo Penalty');
+    }
+
+    if(memo_file.files.length === 0){
+        emptyFields.push('Memo File');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -605,14 +797,34 @@ $(document).on('click','#btnAddMemoRow', function(){
 });
 
 $(document).on('click','#btnAddEvaluationRow', function(){
+    var emptyFields             = [];
     var evaluation_reason       = $('#evaluation_reason').val();
     var evaluation_date         = $('#evaluation_date').val();
     var evaluation_evaluated_by = $('#evaluation_evaluated_by').val();
     var evaluation_file         = $('#evaluation_file')[0];
 
-    if(!evaluation_reason || !evaluation_date || !evaluation_evaluated_by || (evaluation_file.files.length === 0)){
+    if(!evaluation_reason){
+        emptyFields.push('Evaluation Reason');
+    }
+
+    if(!evaluation_date){
+        emptyFields.push('Evaluation Date');
+    }
+
+    if(!evaluation_evaluated_by){
+        emptyFields.push('Evaluation Evaluated By');
+    }
+
+    if(evaluation_file.files.length === 0){
+        emptyFields.push('Evaluation File');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -681,13 +893,29 @@ $(document).on('click','#btnAddEvaluationRow', function(){
 });
 
 $(document).on('click','#btnAddContractRow', function(){
+    var emptyFields    = [];
     var contracts_type = $('#contracts_type').val();
     var contracts_date = $('#contracts_date').val();
     var contracts_file = $('#contracts_file')[0];
 
-    if(!contracts_type || !contracts_date || (contracts_file.files.length === 0)){
+    if(!contracts_type){
+        emptyFields.push('Contract Type');
+    }
+
+    if(!contracts_date){
+        emptyFields.push('Contract Date');
+    }
+
+    if(contracts_file.files.length === 0){
+        emptyFields.push('Contract File');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -749,13 +977,29 @@ $(document).on('click','#btnAddContractRow', function(){
 });
 
 $(document).on('click','#btnAddResignationRow', function(){
+    var emptyFields        = [];
     var resignation_reason = $('#resignation_reason').val();
     var resignation_date   = $('#resignation_date').val();
     var resignation_file   = $('#resignation_file')[0];
 
-    if(!resignation_reason || !resignation_date || (resignation_file.files.length === 0)){
+    if(!resignation_reason){
+        emptyFields.push('Resignation Reason');
+    }
+
+    if(!resignation_date){
+        emptyFields.push('Resignation Date');
+    }
+
+    if(resignation_file.files.length === 0){
+        emptyFields.push('Resignation File');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;
@@ -817,13 +1061,29 @@ $(document).on('click','#btnAddResignationRow', function(){
 });
 
 $(document).on('click','#btnAddTerminationRow',function(){
+    var emptyFields        = [];
     var termination_reason = $('#termination_reason').val();
     var termination_date   = $('#termination_date').val();
     var termination_file   = $('#termination_file')[0];
 
-    if(!termination_reason || !termination_date || (termination_file.files.length === 0)){
+    if(!termination_reason){
+        emptyFields.push('Termination Reason');
+    }
+
+    if(!termination_date){
+        emptyFields.push('Termination Date');
+    }
+
+    if(termination_file.files.length === 0){
+        emptyFields.push('Termination File');
+    }
+
+    if(emptyFields.length > 0){
         Swal.fire({
-            html: "<h4><b>Please fill up all the fields.</b></h4>",
+            title: 'Please fill up the following fields:',
+            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+                    </ul>`,
             icon: "error"
         });
         return false;

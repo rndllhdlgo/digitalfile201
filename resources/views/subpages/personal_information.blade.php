@@ -80,7 +80,7 @@
                 </div>
                 <div class="col">
                     <div class="f-outline">
-                        <input class="forminput form-control required_field" type="date" id="birthday" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this);">
+                        <input class="forminput form-control required_field" type="date" id="birthday" placeholder=" " style="background-color:white;" autocomplete="off" onclick="checkChange(this);" onchange="checkChange(this); calculateAge('personal', 'birthday', 'age');">
                         <label for="birthday" class="formlabel form-label"><i class="fas fa-calendar" aria-hidden="true"></i> BIRTHDAY </label>
                     </div>
                 </div>
@@ -319,81 +319,83 @@
 
             <div class="row children_information" style="display: none;">
                 <div class="col">
-                    <h5 class="table-title">CHILDREN INFORMATION</h5>
-                        <table class="table table-bordered table-hover table-striped">
-                            <thead class="thead-design">
-                                <tr>
-                                    <th style="width:22.5%">NAME</th>
-                                    <th style="width:22.5%">BIRTHDAY</th>
-                                    <th style="width:22.5%">AGE</th>
-                                    <th style="width:22.5%">GENDER</th>
-                                    <th style="width:10%;">ACTION</th>
-                                </tr>
-                                <tbody>
-                                    <tr>
-                                        <td class="pb-3 pt-3">
-                                            <div class="f-outline">
-                                                <input type="search" class="forminput form-control optional_field text-uppercase name_validation letterNumber" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
-                                                <label for="child_name" class="formlabel form-label">(Optional)</label>
-                                            </div>
-                                        </td>
-                                        <td class="pb-3 pt-3">
-                                            <input class="forminput form-control optional_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" >
-                                            <label for="child_birthday" class="formlabel form-label">(Optional)</label>
-                                        </td>
-                                        <td class="pb-3 pt-3">
-                                            <div class="f-outline">
-                                                <input class="forminput form-control optional_field" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
-                                                <label for="child_age" class="formlabel form-label"></label>
-                                            </div>
-                                        </td>
-                                        <td class="pb-3 pt-3">
-                                            <div class="f-outline">
-                                                <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
-                                                    <option value="" disabled selected>SELECT GENDER </option>
-                                                    <option value="MALE">MALE</option>
-                                                    <option value="FEMALE">FEMALE</option>
-                                                </select>
-                                                <label for="child_gender" class="formlabel form-label">(Optional)</label>
-                                            </div>
-                                        </td>
-                                        <td class="pb-3 pt-3">
-                                            <button type="button" id="childrenAdd" class="btn btn-success center btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </thead>
-                        </table>
-
-                        <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
-                            <thead style="display: none;">
-                                <tr>
-                                    <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
-                                    <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
-                                    <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
-                                    <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
-                                </tr>
-                            </thead>
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead class="thead-design">
+                            <tr>
+                                <th colspan="5">CHILDREN INFORMATION</th>
+                            </tr>
+                            <tr>
+                                <th style="width:22.5%">NAME</th>
+                                <th style="width:22.5%">BIRTHDAY</th>
+                                <th style="width:22.5%">AGE</th>
+                                <th style="width:22.5%">GENDER</th>
+                                <th style="width:10%;">ACTION</th>
+                            </tr>
                             <tbody>
-                            </tbody>
-                        </table>
-
-                        <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-36px;">
-                            <thead>
                                 <tr>
-                                    <th style="border:none;"></th>
-                                    <th style="border:none;"></th>
-                                    <th style="border:none;"></th>
-                                    <th style="border:none;"></th>
-                                    <th style="border-left: none;"></th>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <input type="search" class="forminput form-control optional_field text-uppercase name_validation letterNumber" id="child_name" placeholder=" " style="background-color:white;" autocomplete="off">
+                                            <label for="child_name" class="formlabel form-label">(Optional)</label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <input class="forminput form-control optional_field" type="date" id="child_birthday" placeholder=" " style="background-color:white;" autocomplete="off" onchange="calculateAge('personal', 'child_birthday', 'child_age');">
+                                        <label for="child_birthday" class="formlabel form-label">(Optional)</label>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <input class="forminput form-control optional_field" type="search" id="child_age" placeholder=" " disabled style="background-color:white;" autocomplete="off">
+                                            <label for="child_age" class="formlabel form-label"></label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <div class="f-outline">
+                                            <select class="form-select forminput form-control optional_field"  id="child_gender" placeholder=" " style="background-color:white;" autocomplete="off">
+                                                <option value="" disabled selected>SELECT GENDER </option>
+                                                <option value="MALE">MALE</option>
+                                                <option value="FEMALE">FEMALE</option>
+                                            </select>
+                                            <label for="child_gender" class="formlabel form-label">(Optional)</label>
+                                        </div>
+                                    </td>
+                                    <td class="pb-3 pt-3">
+                                        <button type="button" id="childrenAdd" class="btn btn-success center btnActionDisabled" title="ADD"><i class="fas fa-plus"></i></button>
+                                    </td>
                                 </tr>
-                            </thead>
-                            <tbody id="children_table_orig_tbody">
                             </tbody>
-                        </table>
-                        <br>
-                        <hr class="hr-design">
+                        </thead>
+                    </table>
+
+                    <table id="children_table" class="table table-bordered table-striped table-hover align-middle" style="margin-top: -17px;">
+                        <thead style="display: none;">
+                            <tr>
+                                <th style="width:22.5%"><i class="fas fa-id-card"></i> NAME</th>
+                                <th style="width:22.5%"><i class="fas fa-calendar"></i> BIRTHDAY</th>
+                                <th style="width:22.5%"><i class="fas fa-calendar"></i> AGE</th>
+                                <th style="width:22.5%"><i class="fas fa-venus-mars"></i> GENDER</th>
+                                <th style="width:10%;"><i class="fas fa-id-card"></i> ACTION</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                    <table id="children_table_orig" class="table table-bordered table-striped table-hover align-middle children_table_orig" style="display: none; margin-top:-36px;">
+                        <thead>
+                            <tr>
+                                <th style="border:none;"></th>
+                                <th style="border:none;"></th>
+                                <th style="border:none;"></th>
+                                <th style="border:none;"></th>
+                                <th style="border-left: none;"></th>
+                            </tr>
+                        </thead>
+                        <tbody id="children_table_orig_tbody">
+                        </tbody>
+                    </table>
+                    <br>
+                    <hr class="hr-design">
                 </div>
             </div>
 </div>{{-- End of Personal Information Nav --}}

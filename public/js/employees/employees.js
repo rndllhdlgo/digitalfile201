@@ -212,6 +212,7 @@ $(document).ready(function(){
         }
     });
 
+
     $('body').on('click', '.checkboxFilter', function(){
         var column = employeesTable.column($(this).attr('data-column'));
         var colnum = $(this).attr('data-column');
@@ -318,39 +319,6 @@ function changeEmploymentStatus(){
         $('#benefits_summary').hide();
     }
 }
-
-$('#birthday').on('change',function(){
-    var today = new Date();
-    var birthDate = new Date($('#birthday').val());
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-    return $('#age').val(age);
-});
-
-$('.birthday').on('change',function(){
-    var today = new Date();
-    var birthDate = new Date($('.birthday').val());
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-    return $('.age').html(age);
-});
-
-$('#child_birthday').on('change',function(){
-    var today = new Date();
-    var birthDate = new Date($('#child_birthday').val());
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-            age--;
-        }
-    return $('#child_age').val(age);
-});
 
 $(document).on('change', '#province', function(){
     if($(this).val()){

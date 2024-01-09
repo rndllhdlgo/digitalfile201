@@ -39,10 +39,10 @@ $('#btnUpdate').on('click',function(){
         var completed = '';
     }
 
-    var variables = ['date_hired', 'employee_company', 'employee_branch', 'employee_department', 'employee_position', 'employment_status'];
+    var fields = ['date_hired', 'employee_company', 'employee_branch', 'employee_department', 'employee_position', 'employment_status'];
     var emptyFields = [];
 
-    variables.forEach(function(elementId){
+    fields.forEach(function(elementId){
         if(!$('#' + elementId).val()){
             emptyFields.push(elementId);
         }

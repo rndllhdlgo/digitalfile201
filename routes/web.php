@@ -15,6 +15,7 @@ use App\Http\Controllers\PdfController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\TryController;
+use App\Http\Controllers\ArtisanController;
 
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
@@ -162,8 +163,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     // Route::any('/backup', 'BackUpController@backup');
     Route::any('/sqlbackup', 'SQLController@sqlbackup');
     Route::any('/notFound', 'SQLController@notFound');
-    Route::any('/EmailButton', 'EmailButtonController@EmailButton');
     Route::any('/query', 'QueryController@query');
+    Route::any('/artisan', 'ArtisanController@artisan');
 });
 
 Route::get('/generateJaspher', function (Request $request){

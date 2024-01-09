@@ -16,23 +16,41 @@ use App\Models\Position;
 use App\Models\Department;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Database\QueryException;
 use DataTables;
 
 class PagesController extends Controller{
 
-    public function employees(){
-        if(!auth()->user()){
-            return redirect('/login');
-        }
+    public function __construct(){
+        $this->middleware('auth');
+    }
 
-        $companies       = Company::select('entity','company_name')->get();
-        $branches        = Branch::select('entity03','entity03_desc')->get();
-        $jobPositions    = Position::select('id','job_position_name')->get();
-        $jobDescriptions = Position::select('id','job_description')->get();
-        $jobRequirements = Position::select('id','job_requirements')->get();
-        $departments     = Department::select('deptcode','deptdesc')->get();
-        $provinces       = Province::orderBy('provDesc', 'asc')->get();
-        return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
+    public function employees(){
+        try{
+            $companies       = Company::select('entity','company_name')->get();
+            $branches        = Branch::select('entity03','entity03_desc')->get();
+            $jobPositions    = Position::select('id','job_position_name')->get();
+            $jobDescriptions = Position::select('id','job_description')->get();
+            $jobRequirements = Position::select('id','job_requirements')->get();
+            $departments     = Department::select('deptcode','deptdesc')->get();
+            $provinces       = Province::orderBy('provDesc', 'asc')->get();
+            return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
+        }
+        catch(QueryException $th){
+            if(strpos($th->getMessage(), 'department') !== false){
+                return 'Please refresh the page...';
+            }
+        }
+        finally{
+            $companies       = Company::select('entity','company_name')->get();
+            $branches        = Branch::select('entity03','entity03_desc')->get();
+            $jobPositions    = Position::select('id','job_position_name')->get();
+            $jobDescriptions = Position::select('id','job_description')->get();
+            $jobRequirements = Position::select('id','job_requirements')->get();
+            $departments     = Department::select('deptcode','deptdesc')->get();
+            $provinces       = Province::orderBy('provDesc', 'asc')->get();
+            return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
+        }
     }
 
     public function getCities(Request $request){
@@ -62,9 +80,6 @@ class PagesController extends Controller{
     }
 
     public function users(){
-        if(!auth()->user()){
-            return redirect('/login');
-        }
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
         }
@@ -73,9 +88,6 @@ class PagesController extends Controller{
     }
 
     public function maintenance(){
-        if(!auth()->user()){
-            return redirect('/login');
-        }
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
         }
@@ -83,9 +95,6 @@ class PagesController extends Controller{
     }
 
     public function updates(){
-        if(!auth()->user()){
-            return redirect('/login');
-        }
         if(Auth::user()->user_level != 'ADMIN'){
             return redirect('/');
         }

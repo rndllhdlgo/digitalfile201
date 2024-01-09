@@ -49,7 +49,7 @@
                                 </div>
                                 <div class="col-3">
                                     <b>BIRTHDAY:</b><br>
-                                    <input type="date" class="birthday font_weight d-none" style="border:none; width:106px;" disabled> <span id="birthday_summary"> </span>
+                                    <input type="date" class="birthday font_weight d-none" style="border:none; width:106px;" disabled onchange="calculateAge('summary', 'birthday', 'age');"> <span id="birthday_summary"> </span>
                                 </div>
                                 <div class="col-3">
                                     <b>AGE:</b><br>

@@ -42,7 +42,9 @@ $('#viewSummary').on('click', function(){
     $('.gender').html($('#gender').val());
     $('.birthday').val($('#birthday').val());
     $('#birthday_summary').html(moment($('#birthday').val()).format('MMM. DD, YYYY'));
-    setTimeout(() => {$('.birthday').change();}, app_timeout);
+    setTimeout(() => {
+        $('.birthday').change();
+    }, app_timeout);
     $('.height').html($('#height').val());
     $('.weight').html($('#weight').val());
     $('#civil_status_content').html($('#civil_status').val());
