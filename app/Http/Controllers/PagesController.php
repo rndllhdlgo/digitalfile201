@@ -38,18 +38,9 @@ class PagesController extends Controller{
         }
         catch(QueryException $th){
             if(strpos($th->getMessage(), 'department') !== false){
-                return 'Please refresh the page...';
+                $errorMessage = $th->getMessage();
+                return view('errors.500', compact('errorMessage'));
             }
-        }
-        finally{
-            $companies       = Company::select('entity','company_name')->get();
-            $branches        = Branch::select('entity03','entity03_desc')->get();
-            $jobPositions    = Position::select('id','job_position_name')->get();
-            $jobDescriptions = Position::select('id','job_description')->get();
-            $jobRequirements = Position::select('id','job_requirements')->get();
-            $departments     = Department::select('deptcode','deptdesc')->get();
-            $provinces       = Province::orderBy('provDesc', 'asc')->get();
-            return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
         }
     }
 
