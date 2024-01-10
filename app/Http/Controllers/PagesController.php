@@ -16,7 +16,6 @@ use App\Models\Position;
 use App\Models\Department;
 use App\User;
 use Illuminate\Http\Request;
-use Illuminate\Database\QueryException;
 use DataTables;
 
 class PagesController extends Controller{
@@ -36,11 +35,9 @@ class PagesController extends Controller{
             $provinces       = Province::orderBy('provDesc', 'asc')->get();
             return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
         }
-        catch(QueryException $th){
-            if(strpos($th->getMessage(), 'department') !== false){
-                $errorMessage = $th->getMessage();
-                return view('errors.500', compact('errorMessage'));
-            }
+        catch(Exception $th){
+            $errorMessage = $th->getMessage();
+            return view('errors.500', compact('errorMessage'));
         }
     }
 
