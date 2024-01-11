@@ -48,13 +48,20 @@ class UpdateController extends Controller{
         }
         $employee = PersonalInformationTable::find($request->id);
         $employee->employee_image = $request->employee_image == '' ? '' : $request->employee_image;
-        $data = PersonalInformationTable::where('id', $request->id)->select('empno', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname', 'birthday', 'gender', 'address', 'ownership', 'province', 'city', 'region', 'blood_type', 'height', 'weight', 'religion', 'civil_status', 'email_address', 'telephone_number', 'cellphone_number', 'spouse_name', 'spouse_contact_number', 'spouse_profession', 'father_name', 'father_contact_number', 'father_profession', 'mother_name', 'mother_contact_number', 'mother_profession', 'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number')->first();
+        $data = PersonalInformationTable::where('id', $request->id)->select('empno', 'first_name', 'middle_name', 'last_name', 'suffix', 'nickname', 'birthday', 'gender', 'address', 'ownership', 'province', 'city', 'region', 'blood_type', 'height', 'weight', 'religion', 'civil_status', 'email_address', 'telephone_number', 'cellphone_number', 'spouse_name', 'spouse_contact_number', 'spouse_profession', 'father_name', 'father_contact_number', 'father_profession', 'mother_name', 'mother_contact_number', 'mother_profession', 'emergency_contact_name', 'emergency_contact_relationship', 'emergency_contact_number', 'employee_image')->first();
 
         $changes = 0;
+        if($request->employee_image != $data->employee_image){
+            $changes++;
+            $employee_image_update = '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]';
+        }
+        else{
+            $employee_image_update = NULL;
+        }
+
         if($request->first_name != $data->first_name){
             $changes++;
-            $first_name_new = strtoupper($request->first_name);
-            $first_name_change = "[FIRST NAME: FROM '$data->first_name' TO '$first_name_new']";
+            $first_name_change = "[FIRST NAME: FROM '$data->first_name' TO '".strtoupper($request->first_name)."']";
         }
         else{
             $first_name_change = NULL;
@@ -62,8 +69,7 @@ class UpdateController extends Controller{
 
         if($request->middle_name != $data->middle_name){
             $changes++;
-            $middle_name_new = strtoupper($request->middle_name);
-            $middle_name_change = "[MIDDLE NAME: FROM '$data->middle_name' TO '$middle_name_new']";
+            $middle_name_change = "[MIDDLE NAME: FROM '$data->middle_name' TO '".strtoupper($request->middle_name)."']";
         }
         else{
             $middle_name_change = NULL;
@@ -71,8 +77,7 @@ class UpdateController extends Controller{
 
         if($request->last_name != $data->last_name){
             $changes++;
-            $last_name_new = strtoupper($request->last_name);
-            $last_name_change = "[LAST NAME: FROM '$data->last_name' TO '$last_name_new']";
+            $last_name_change = "[LAST NAME: FROM '$data->last_name' TO '".strtoupper($request->last_name)."']";
         }
         else{
             $last_name_change = NULL;
@@ -80,8 +85,7 @@ class UpdateController extends Controller{
 
         if($request->suffix != $data->suffix){
             $changes++;
-            $suffix_new = strtoupper($request->suffix);
-            $suffix_change = "[SUFFIX: FROM '$data->suffix' TO '$suffix_new']";
+            $suffix_change = "[SUFFIX: FROM '$data->suffix' TO '".strtoupper($request->suffix)."']";
         }
         else{
             $suffix_change = NULL;
@@ -89,8 +93,7 @@ class UpdateController extends Controller{
 
         if($request->nickname != $data->nickname){
             $changes++;
-            $nickname_new = strtoupper($request->nickname);
-            $nickname_change = "[NICKNAME: FROM '$data->nickname' TO '$nickname_new']";
+            $nickname_change = "[NICKNAME: FROM '$data->nickname' TO '".strtoupper($request->nickname)."']";
         }
         else{
             $nickname_change = NULL;
@@ -98,9 +101,7 @@ class UpdateController extends Controller{
 
         if($request->birthday != $data->birthday){
             $changes++;
-            $birthday1 = Carbon::parse($data->birthday)->format('F d, Y');
-            $birthday2 = Carbon::parse($request->birthday)->format('F d, Y');
-            $birthday_change = "[BIRTHDAY: FROM '$birthday1' TO '$birthday2']";
+            $birthday_change = "[BIRTHDAY: FROM '".Carbon::parse($data->birthday)->format('F d, Y')."' TO '".Carbon::parse($request->birthday)->format('F d, Y')."']";
         }
         else{
             $birthday_change = NULL;
@@ -108,9 +109,8 @@ class UpdateController extends Controller{
 
         if($request->gender != $data->gender){
             $changes++;
-            $gender_new = $request->gender;
             $data->gender = $data->gender ? $data->gender : 'N/A';
-            $gender_change = "[GENDER: FROM '$data->gender' TO '$gender_new']";
+            $gender_change = "[GENDER: FROM '$data->gender' TO '$request->gender']";
         }
         else{
             $gender_change = NULL;
@@ -118,9 +118,8 @@ class UpdateController extends Controller{
 
         if($request->address != $data->address){
             $changes++;
-            $address_new = $request->address;
             $data->address = $data->address ? $data->address : 'N/A';
-            $address_change = "[ADDRESS: FROM '$data->address' TO '$address_new']";
+            $address_change = "[ADDRESS: FROM '$data->address' TO '$request->address']";
         }
         else{
             $address_change = NULL;
@@ -128,9 +127,8 @@ class UpdateController extends Controller{
 
         if($request->ownership != $data->ownership){
             $changes++;
-            $ownership_new = $request->ownership;
             $data->ownership = $data->ownership ? $data->ownership : 'N/A';
-            $ownership_change = "[OWNERSHIP: FROM '$data->ownership' TO '$ownership_new']";
+            $ownership_change = "[OWNERSHIP: FROM '$data->ownership' TO '$request->ownership']";
         }
         else{
             $ownership_change = NULL;
@@ -138,9 +136,8 @@ class UpdateController extends Controller{
 
         if($request->province != $data->province){
             $changes++;
-            $province_new = $request->province;
             $data->province = $data->province ? $data->province : 'N/A';
-            $province_change = "[PROVINCE: FROM '$data->province' TO '$province_new']";
+            $province_change = "[PROVINCE: FROM '$data->province' TO '$request->province']";
         }
         else{
             $province_change = NULL;
@@ -148,9 +145,8 @@ class UpdateController extends Controller{
 
         if($request->city != $data->city){
             $changes++;
-            $city_new = $request->city;
             $data->city = $data->city ? $data->city : 'N/A';
-            $city_change = "[CITY: FROM '$data->city' TO '$city_new']";
+            $city_change = "[CITY: FROM '$data->city' TO '$request->city']";
         }
         else{
             $city_change = NULL;
@@ -158,9 +154,8 @@ class UpdateController extends Controller{
 
         if($request->region != $data->region){
             $changes++;
-            $region_new = $request->region;
             $data->region = $data->region ? $data->region : 'N/A';
-            $region_change = "[REGION: FROM '$data->region' TO '$region_new']";
+            $region_change = "[REGION: FROM '$data->region' TO '$request->region']";
         }
         else{
             $region_change = NULL;
@@ -168,8 +163,7 @@ class UpdateController extends Controller{
 
         if($request->blood_type != $data->blood_type){
             $changes++;
-            $blood_type_new = $request->blood_type;
-            $blood_type_change = "[BLOOD TYPE: FROM '$data->blood_type' TO '$blood_type_new']";
+            $blood_type_change = "[BLOOD TYPE: FROM '$data->blood_type' TO '$request->blood_type']";
         }
         else{
             $blood_type_change = NULL;
@@ -177,9 +171,8 @@ class UpdateController extends Controller{
 
         if($request->height != $data->height){
             $changes++;
-            $height_new = $request->height;
             $data->height = $data->height ? $data->height : 'N/A';
-            $height_change = "[HEIGHT: FROM '$data->height' TO '$height_new']";
+            $height_change = "[HEIGHT: FROM '$data->height' TO '$request->height']";
         }
         else{
             $height_change = NULL;
@@ -187,9 +180,8 @@ class UpdateController extends Controller{
 
         if($request->weight != $data->weight){
             $changes++;
-            $weight_new = $request->weight;
             $data->weight = $data->weight ? $data->weight : 'N/A';
-            $weight_change = "[WEIGHT: FROM '$data->weight' TO '$weight_new']";
+            $weight_change = "[WEIGHT: FROM '$data->weight' TO '$request->weight']";
         }
         else{
             $weight_change = NULL;
@@ -197,9 +189,8 @@ class UpdateController extends Controller{
 
         if($request->religion != $data->religion){
             $changes++;
-            $religion_new = strtoupper($request->religion);
             $data->religion = $data->religion ? $data->religion : 'N/A';
-            $religion_change = "[RELIGION: FROM '$data->religion' TO '$religion_new']";
+            $religion_change = "[RELIGION: FROM '$data->religion' TO '$request->religion']";
         }
         else{
             $religion_change = NULL;
@@ -207,9 +198,8 @@ class UpdateController extends Controller{
 
         if($request->civil_status != $data->civil_status){
             $changes++;
-            $civil_status_new = $request->civil_status;
             $data->civil_status = $data->civil_status ? $data->civil_status : 'N/A';
-            $civil_status_change = "[CIVIL STATUS: FROM '$data->civil_status' TO '$civil_status_new']";
+            $civil_status_change = "[CIVIL STATUS: FROM '$data->civil_status' TO '$request->civil_status']";
         }
         else{
             $civil_status_change = NULL;
@@ -217,9 +207,8 @@ class UpdateController extends Controller{
 
         if($request->email_address != $data->email_address){
             $changes++;
-            $email_address_new = $request->email_address;
             $data->email_address = $data->email_address ? $data->email_address : 'N/A';
-            $email_address_change = "[EMAIL ADDRESS: FROM '$data->email_address' TO '$email_address_new']";
+            $email_address_change = "[EMAIL ADDRESS: FROM '$data->email_address' TO '$request->email_address']";
         }
         else{
             $email_address_change = NULL;
@@ -227,9 +216,8 @@ class UpdateController extends Controller{
 
         if($request->telephone_number != $data->telephone_number){
             $changes++;
-            $telephone_number_new = $request->telephone_number;
             $data->telephone_number = $data->telephone_number ? $data->telephone_number : 'N/A';
-            $telephone_number_change = "[TELEPHONE NUMBER: FROM '$data->telephone_number' TO '$telephone_number_new']";
+            $telephone_number_change = "[TELEPHONE NUMBER: FROM '$data->telephone_number' TO '$request->telephone_number']";
         }
         else{
             $telephone_number_change = NULL;
@@ -237,9 +225,8 @@ class UpdateController extends Controller{
 
         if($request->cellphone_number != $data->cellphone_number){
             $changes++;
-            $cellphone_number_new = $request->cellphone_number;
             $data->cellphone_number = $data->cellphone_number ? $data->cellphone_number : 'N/A';
-            $cellphone_number_change = "[CELLPHONE NUMBER: FROM '$data->cellphone_number' TO '$cellphone_number_new']";
+            $cellphone_number_change = "[CELLPHONE NUMBER: FROM '$data->cellphone_number' TO '$request->cellphone_number']";
         }
         else{
             $cellphone_number_change = NULL;
@@ -247,9 +234,8 @@ class UpdateController extends Controller{
 
         if($request->spouse_name != $data->spouse_name){
             $changes++;
-            $spouse_name_new = strtoupper($request->spouse_name);
             $data->spouse_name = $data->spouse_name ? $data->spouse_name : 'N/A';
-            $spouse_name_change = "[SPOUSE NAME: FROM '$data->spouse_name' TO '$spouse_name_new']";
+            $spouse_name_change = "[SPOUSE NAME: FROM '$data->spouse_name' TO '".strtoupper($request->spouse_name)."']";
         }
         else{
             $spouse_name_change = NULL;
@@ -257,9 +243,8 @@ class UpdateController extends Controller{
 
         if($request->spouse_contact_number != $data->spouse_contact_number){
             $changes++;
-            $spouse_contact_number_new = $request->spouse_contact_number;
             $data->spouse_contact_number = $data->spouse_contact_number ? $data->spouse_contact_number : 'N/A';
-            $spouse_contact_number_change = "[SPOUSE CONTACT NUMBER: FROM '$data->spouse_contact_number' TO '$spouse_contact_number_new']";
+            $spouse_contact_number_change = "[SPOUSE CONTACT NUMBER: FROM '$data->spouse_contact_number' TO '$request->spouse_contact_number']";
         }
         else{
             $spouse_contact_number_change = NULL;
@@ -267,9 +252,8 @@ class UpdateController extends Controller{
 
         if($request->spouse_profession != $data->spouse_profession){
             $changes++;
-            $spouse_profession_new = strtoupper($request->spouse_profession);
             $data->spouse_profession = $data->spouse_profession ? $data->spouse_profession : 'N/A';
-            $spouse_profession_change = "[SPOUSE PROFESSION: FROM '$data->spouse_profession' TO '$spouse_profession_new']";
+            $spouse_profession_change = "[SPOUSE PROFESSION: FROM '$data->spouse_profession' TO '$request->spouse_profession']";
         }
         else{
             $spouse_profession_change = NULL;
@@ -277,9 +261,8 @@ class UpdateController extends Controller{
 
         if($request->father_name != $data->father_name){
             $changes++;
-            $father_name_new = strtoupper($request->father_name);
             $data->father_name = $data->father_name ? $data->father_name : 'N/A';
-            $father_name_change = "[FATHER'S NAME: FROM '$data->father_name' TO '$father_name_new']";
+            $father_name_change = "[FATHER'S NAME: FROM '$data->father_name' TO '".strtoupper($request->father_name)."']";
         }
         else{
             $father_name_change = NULL;
@@ -287,9 +270,8 @@ class UpdateController extends Controller{
 
         if($request->father_contact_number != $data->father_contact_number){
             $changes++;
-            $father_contact_number_new = $request->father_contact_number;
             $data->father_contact_number = $data->father_contact_number ? $data->father_contact_number : 'N/A';
-            $father_contact_number_change = "[FATHER'S CONTACT NUMBER: FROM '$data->father_contact_number' TO '$father_contact_number_new']";
+            $father_contact_number_change = "[FATHER'S CONTACT NUMBER: FROM '$data->father_contact_number' TO '$request->father_contact_number']";
         }
         else{
             $father_contact_number_change = NULL;
@@ -297,9 +279,8 @@ class UpdateController extends Controller{
 
         if($request->father_profession != $data->father_profession){
             $changes++;
-            $father_profession_new = strtoupper($request->father_profession);
             $data->father_profession = $data->father_profession ? $data->father_profession : 'N/A';
-            $father_profession_change = "[FATHER'S PROFESSION: FROM '$data->father_profession' TO '$father_profession_new']";
+            $father_profession_change = "[FATHER'S PROFESSION: FROM '$data->father_profession' TO '$request->father_profession']";
         }
         else{
             $father_profession_change = NULL;
@@ -307,9 +288,8 @@ class UpdateController extends Controller{
 
         if($request->mother_name != $data->mother_name){
             $changes++;
-            $mother_name_new = strtoupper($request->mother_name);
             $data->mother_name = $data->mother_name ? $data->mother_name : 'N/A';
-            $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$data->mother_name' TO '$mother_name_new']";
+            $mother_name_change = "[MOTHER'S MAIDEN NAME: FROM '$data->mother_name' TO '".strtoupper($request->mother_name)."']";
         }
         else{
             $mother_name_change = NULL;
@@ -317,9 +297,8 @@ class UpdateController extends Controller{
 
         if($request->mother_contact_number != $data->mother_contact_number){
             $changes++;
-            $mother_contact_number_new = $request->mother_contact_number;
             $data->mother_contact_number = $data->mother_contact_number ? $data->mother_contact_number : 'N/A';
-            $mother_contact_number_change = "[MOTHER'S CONTACT NUMBER: FROM '$data->mother_contact_number' TO '$mother_contact_number_new']";
+            $mother_contact_number_change = "[MOTHER'S CONTACT NUMBER: FROM '$data->mother_contact_number' TO '$request->mother_contact_number']";
         }
         else{
             $mother_contact_number_change = NULL;
@@ -327,9 +306,8 @@ class UpdateController extends Controller{
 
         if($request->mother_profession != $data->mother_profession){
             $changes++;
-            $mother_profession_new = strtoupper($request->mother_profession);
             $data->mother_profession = $data->mother_profession ? $data->mother_profession : 'N/A';
-            $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$data->mother_profession' TO '$mother_profession_new']";
+            $mother_profession_change = "[MOTHER'S PROFESSION: FROM '$data->mother_profession' TO '$request->mother_profession']";
         }
         else{
             $mother_profession_change = NULL;
@@ -337,9 +315,8 @@ class UpdateController extends Controller{
 
         if($request->emergency_contact_name != $data->emergency_contact_name){
             $changes++;
-            $emergency_contact_name_new = strtoupper($request->emergency_contact_name);
             $data->emergency_contact_name = $data->emergency_contact_name ? $data->emergency_contact_name : 'N/A';
-            $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$data->emergency_contact_name' TO '$emergency_contact_name_new']";
+            $emergency_contact_name_change = "[EMERGENCY CONTACT NAME: FROM '$data->emergency_contact_name' TO '".strtoupper($request->emergency_contact_name)."']";
         }
         else{
             $emergency_contact_name_change = NULL;
@@ -347,9 +324,8 @@ class UpdateController extends Controller{
 
         if($request->emergency_contact_relationship != $data->emergency_contact_relationship){
             $changes++;
-            $emergency_contact_relationship_new = strtoupper($request->emergency_contact_relationship);
             $data->emergency_contact_relationship = $data->emergency_contact_relationship ? $data->emergency_contact_relationship : 'N/A';
-            $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$data->emergency_contact_relationship' TO '$emergency_contact_relationship_new']";
+            $emergency_contact_relationship_change = "[EMERGENCY CONTACT RELATIONSHIP: FROM '$data->emergency_contact_relationship' TO '$request->emergency_contact_relationship']";
         }
         else{
             $emergency_contact_relationship_change = NULL;
@@ -357,23 +333,14 @@ class UpdateController extends Controller{
 
         if($request->emergency_contact_number != $data->emergency_contact_number){
             $changes++;
-            $emergency_contact_number_new = $request->emergency_contact_number;
             $data->emergency_contact_number = $data->emergency_contact_number ? $data->emergency_contact_number : 'N/A';
-            $emergency_contact_number_change = "[EMERGENCY CONTACT NUMBER: FROM '$data->emergency_contact_number' TO '$emergency_contact_number_new']";
+            $emergency_contact_number_change = "[EMERGENCY CONTACT NUMBER: FROM '$data->emergency_contact_number' TO '$request->emergency_contact_number']";
         }
         else{
             $emergency_contact_number_change = NULL;
         }
 
-        if($request->employee_image_change == 'CHANGED'){
-            $changes++;
-            $employee_image_update = '[IMAGE CHANGE: USER MODIFY IMAGE OF THIS EMPLOYEE]';
-        }
-        else{
-            $employee_image_update = null;
-        }
-
-        $sql = PersonalInformationTable::find($request->id)
+        $update = PersonalInformationTable::find($request->id)
         ->update([
             'employee_image'                 => $request->employee_image,
             'first_name'                     => strtoupper($request->first_name),
@@ -408,7 +375,7 @@ class UpdateController extends Controller{
             'stat'                           => $request->completed
         ]);
 
-        if($sql){
+        if($update){
             $result = 'true';
             $id = $employee->id;
 
@@ -448,9 +415,7 @@ class UpdateController extends Controller{
             $changes = 0;
             if($request->date_hired != $date_hired_orig){
                 $changes++;
-                $date_hired1 = ($date_hired_orig !== null) ? Carbon::parse($date_hired_orig)->format('F d, Y') : 'N/A';
-                $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
-                $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
+                $date_hired_change = "[DATE HIRED: FROM 'N/A' TO '".Carbon::parse($request->date_hired)->format('F d, Y')."']";
             }
             else{
                 $date_hired_change = null;
@@ -458,9 +423,7 @@ class UpdateController extends Controller{
 
             if($request->employee_company != $employee_company_orig){
                 $changes++;
-                $employee_company_orig = ($employee_company_orig !== null) ? Company::where('entity', $employee_company_orig)->first()->company_name : 'N/A';
-                $employee_company_new = Company::where('entity', $request->employee_company)->first()->company_name;
-                $employee_company_change = "[COMPANY: FROM '$employee_company_orig' TO '$employee_company_new']";
+                $employee_company_change = "[COMPANY: FROM 'N/A' TO '".Company::where('entity', $request->employee_company)->first()->company_name."']";
             }
             else{
                 $employee_company_change = null;
@@ -468,9 +431,7 @@ class UpdateController extends Controller{
 
             if($request->employee_branch != $employee_branch_orig){
                 $changes++;
-                $employee_branch_orig = ($employee_branch_orig !== null) ? Branch::where('entity03', $employee_branch_orig)->first()->entity03_desc : 'N/A';
-                $employee_branch_new = Branch::where('entity03', $request->employee_branch)->first()->entity03_desc;
-                $employee_branch_change = "[BRANCH: FROM '$employee_branch_orig' TO '$employee_branch_new']";
+                $employee_branch_change = "[BRANCH: FROM 'N/A' TO '".Branch::where('entity03', $request->employee_branch)->first()->entity03_desc."']";
             }
             else{
                 $employee_branch_change = NULL;
@@ -478,9 +439,7 @@ class UpdateController extends Controller{
 
             if($request->employee_department != $employee_department_orig){
                 $changes++;
-                $employee_department_orig = ($employee_department_orig !== null) ? Department::where('deptcode', $employee_department_orig)->first()->deptdesc : 'N/A';
-                $employee_department_new = Department::where('deptcode', $request->employee_department)->first()->deptdesc;
-                $employee_department_change = "[DEPARTMENT: FROM '$employee_department_orig' TO '$employee_department_new']";
+                $employee_department_change = "[DEPARTMENT: FROM 'N/A' TO '".Department::where('deptcode', $request->employee_department)->first()->deptdesc."']";
             }
             else{
                 $employee_department_change = null;
@@ -488,9 +447,7 @@ class UpdateController extends Controller{
 
             if($request->employee_position != $employee_position_orig){
                 $changes++;
-                $employee_position_orig = ($employee_position_orig !== null) ? Position::where('id', $employee_position_orig)->first()->job_position_name : 'N/A';
-                $employee_position_new = Position::where('id', $request->employee_position)->first()->job_position_name;
-                $employee_position_change = "[POSITION: FROM '$employee_position_orig' TO '$employee_position_new']";
+                $employee_position_change = "[POSITION: FROM 'N/A' TO '".Position::where('id', $request->employee_position)->first()->job_position_name."']";
             }
             else{
                 $employee_position_change = null;
@@ -498,11 +455,7 @@ class UpdateController extends Controller{
 
             if($request->employment_status != $employment_status_orig){
                 $changes++;
-                $employment_status_new = $request->employment_status;
-                if($employment_status_orig === null){
-                    $employment_status_orig = 'N/A';
-                }
-                    $employment_status_change = "[EMPLOYMENT STATUS: FROM '$employment_status_orig' TO '$employment_status_new']";
+                $employment_status_change = "[EMPLOYMENT STATUS: FROM 'N/A' TO '$request->employment_status']";
             }
             else{
                 $employment_status_change = null;
@@ -510,11 +463,7 @@ class UpdateController extends Controller{
 
             if($request->employment_origin != $employment_origin_orig){
                 $changes++;
-                $employment_origin_new = $request->employment_origin;
-                if($employment_origin_orig === null){
-                    $employment_origin_orig = 'N/A';
-                }
-                    $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM '$employment_origin_orig' TO '$employment_origin_new']";
+                $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM 'N/A' TO '$request->employment_origin']";
             }
             else{
                 $employment_origin_change = null;
@@ -522,11 +471,7 @@ class UpdateController extends Controller{
 
             if($request->company_email_address != $company_email_address_orig){
                 $changes++;
-                $company_email_address_new = $request->company_email_address;
-                if($company_email_address_orig === null){
-                    $company_email_address_orig = 'N/A';
-                }
-                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$company_email_address_orig' TO '$company_email_address_new']";
+                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM 'N/A' TO '$request->company_email_address']";
             }
             else{
                 $company_email_address_change = null;
@@ -534,11 +479,7 @@ class UpdateController extends Controller{
 
             if($request->company_contact_number != $company_contact_number_orig){
                 $changes++;
-                $company_contact_number_new = $request->company_contact_number;
-                if($company_contact_number_orig === null){
-                    $company_contact_number_orig = 'N/A';
-                }
-                $company_contact_number_change = "[WORK CONTACT NO.: FROM '$company_contact_number_orig' TO '$company_contact_number_new']";
+                $company_contact_number_change = "[WORK CONTACT NO.: FROM 'N/A' TO '$request->company_contact_number']";
             }
             else{
                 $company_contact_number_change = null;
@@ -546,11 +487,7 @@ class UpdateController extends Controller{
 
             if($request->hmo_number != $hmo_number_orig){
                 $changes++;
-                $hmo_number_new = $request->hmo_number;
-                if($hmo_number_orig === null){
-                    $hmo_number_orig = 'N/A';
-                }
-                $hmo_number_change = "[HMO NO.: FROM '$hmo_number_orig' TO '$hmo_number_new']";
+                $hmo_number_change = "[HMO NO.: FROM 'N/A' TO '$request->hmo_number']";
             }
             else{
                 $hmo_number_change = NULL;
@@ -558,11 +495,7 @@ class UpdateController extends Controller{
 
             if($request->sss_number != $sss_number_orig){
                 $changes++;
-                $sss_number_new = $request->sss_number;
-                if($sss_number_orig === null){
-                    $sss_number_orig = 'N/A';
-                }
-                $sss_number_change = "[SSS NO.: FROM '$sss_number_orig' TO '$sss_number_new']";
+                $sss_number_change = "[SSS NO.: FROM 'N/A' TO '$request->sss_number']";
             }
             else{
                 $sss_number_change = NULL;
@@ -570,11 +503,7 @@ class UpdateController extends Controller{
 
             if($request->pag_ibig_number != $pag_ibig_number_orig){
                 $changes++;
-                $pag_ibig_number_new = $request->pag_ibig_number;
-                if($pag_ibig_number_orig === null){
-                    $pag_ibig_number_orig = 'N/A';
-                }
-                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$pag_ibig_number_orig' TO '$pag_ibig_number_new']";
+                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM 'N/A' TO '$request->pag_ibig_number']";
             }
             else{
                 $pag_ibig_number_change = NULL;
@@ -582,11 +511,7 @@ class UpdateController extends Controller{
 
             if($request->philhealth_number !== $philhealth_number_orig){
                 $changes++;
-                $philhealth_number_new = $request->philhealth_number;
-                if($philhealth_number_orig === null){
-                    $philhealth_number_orig = 'N/A';
-                }
-                $philhealth_number_change = "[PHILHEALTH NO.: FROM '$philhealth_number_orig' TO '$philhealth_number_new']";
+                $philhealth_number_change = "[PHILHEALTH NO.: FROM 'N/A' TO ' $request->philhealth_number']";
             }
             else{
                 $philhealth_number_change = NULL;
@@ -594,11 +519,7 @@ class UpdateController extends Controller{
 
             if($request->tin_number !== $tin_number_orig){
                 $changes++;
-                $tin_number_new = $request->tin_number;
-                if($tin_number_orig === null){
-                    $tin_number_orig = 'N/A';
-                }
-                $tin_number_change = "[TIN NO.: FROM '$tin_number_orig' TO '$tin_number_new']";
+                $tin_number_change = "[TIN NO.: FROM 'N/A' TO '$request->tin_number']";
             }
             else{
                 $tin_number_change = NULL;
@@ -606,17 +527,13 @@ class UpdateController extends Controller{
 
             if($request->account_number !== $account_number_orig){
                 $changes++;
-                $account_number_new = $request->account_number;
-                if($account_number_orig === null){
-                    $account_number_orig = 'N/A';
-                }
-                $account_number_change = "[ACCOUNT NO.: FROM '$account_number_orig' TO '$account_number_new']";
+                $account_number_change = "[ACCOUNT NO.: FROM 'N/A' TO '$request->account_number']";
             }
             else{
                 $account_number_change = NULL;
             }
 
-            $save = WorkInformationTable::create([
+            $create = WorkInformationTable::create([
                 'employee_id'            => $request->employee_id,
                 'employee_number'        => $request->employee_number,
                 'employee_company'       => $request->employee_company,
@@ -636,7 +553,7 @@ class UpdateController extends Controller{
                 'account_number'         => $request->account_number
             ]);
 
-            if($save){
+            if($create){
                 if($changes > 0){
                     $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S WORK DETAILS: ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$request->employee_number) $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change");
                     $this->save_work_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S WORK DETAILS $date_hired_change $employee_company_change $employee_branch_change $employee_department_change $employee_position_change $employment_status_change $employment_origin_change $company_email_address_change $company_contact_number_change $hmo_number_change $sss_number_change $pag_ibig_number_change $philhealth_number_change $tin_number_change $account_number_change");
@@ -645,16 +562,13 @@ class UpdateController extends Controller{
             }
         }
         else{
-            $employee         = WorkInformationTable::where('employee_id',$request->employee_id)->first();
             $employee_details = PersonalInformationTable::select('first_name','middle_name','last_name')->where('id', $request->id)->first();
             $data             = WorkInformationTable::where('employee_id', $request->id)->select('employee_number','employee_company','employee_department','employee_branch','employment_status','employment_origin','employee_position','date_hired','company_email_address','company_contact_number','hmo_number','sss_number','pag_ibig_number','philhealth_number','tin_number','account_number')->first();
 
             $changes = 0;
             if($request->date_hired != $data->date_hired){
                 $changes++;
-                $date_hired1 = Carbon::parse($data->date_hired)->format('F d, Y');
-                $date_hired2 = Carbon::parse($request->date_hired)->format('F d, Y');
-                $date_hired_change = "[DATE HIRED: FROM '$date_hired1' TO '$date_hired2']";
+                $date_hired_change = "[DATE HIRED: FROM '".Carbon::parse($data->date_hired)->format('F d, Y')."' TO '".Carbon::parse($request->date_hired)->format('F d, Y')."']";
             }
             else{
                 $date_hired_change = NULL;
@@ -662,9 +576,7 @@ class UpdateController extends Controller{
 
             if($request->employee_company != $data->employee_company){
                 $changes++;
-                $data->employee_company = Company::where('entity', $data->employee_company)->first()->company_name;
-                $employee_company_new = Company::where('entity', $request->employee_company)->first()->company_name;
-                $employee_company_change = "[COMPANY: FROM '$data->employee_company' TO '$employee_company_new']";
+                $employee_company_change = "[COMPANY: FROM '".Company::where('entity', $data->employee_company)->first()->company_name."' TO '".Company::where('entity', $request->employee_company)->first()->company_name."']";
             }
             else{
                 $employee_company_change = NULL;
@@ -672,9 +584,7 @@ class UpdateController extends Controller{
 
             if($request->employee_branch != $data->employee_branch){
                 $changes++;
-                $data->employee_branch = Branch::where('entity03', $data->employee_branch)->first()->entity03_desc;
-                $employee_branch_new = Branch::where('entity03', $request->employee_branch)->first()->entity03_desc;
-                $employee_branch_change = "[BRANCH: FROM '$data->employee_branch' TO '$employee_branch_new']";
+                $employee_branch_change = "[BRANCH: FROM '".Branch::where('entity03', $data->employee_branch)->first()->entity03_desc."' TO '".Branch::where('entity03', $request->employee_branch)->first()->entity03_desc."']";
             }
             else{
                 $employee_branch_change = NULL;
@@ -682,9 +592,7 @@ class UpdateController extends Controller{
 
             if($request->employee_department != $data->employee_department){
                 $changes++;
-                $data->employee_department = Department::where('deptcode', $data->employee_department)->first()->deptdesc;
-                $employee_department_new = Department::where('deptcode', $request->employee_department)->first()->deptdesc;
-                $employee_department_change = "[DEPARTMENT: FROM '$data->employee_department' TO '$employee_department_new']";
+                $employee_department_change = "[DEPARTMENT: FROM '".Department::where('deptcode', $data->employee_department)->first()->deptdesc."' TO '".Department::where('deptcode', $request->employee_department)->first()->deptdesc."']";
             }
             else{
                 $employee_department_change = NULL;
@@ -692,9 +600,7 @@ class UpdateController extends Controller{
 
             if($request->employee_position != $data->employee_position){
                 $changes++;
-                $data->employee_position = Position::where('id', $data->employee_position)->first()->job_position_name;
-                $employee_position_new = Position::where('id', $request->employee_position)->first()->job_position_name;
-                $employee_position_change = "[POSITION: FROM '$data->employee_position' TO '$employee_position_new']";
+                $employee_position_change = "[POSITION: FROM '".Position::where('id', $data->employee_position)->first()->job_position_name."' TO '".Position::where('id', $request->employee_position)->first()->job_position_name."']";
             }
             else{
                 $employee_position_change = NULL;
@@ -702,8 +608,7 @@ class UpdateController extends Controller{
 
             if($request->employment_status != $data->employment_status){
                 $changes++;
-                $employment_status_new = $request->employment_status;
-                $employment_status_change = "[EMPLOYMENT STATUS: FROM '$data->employment_status' TO '$employment_status_new']";
+                $employment_status_change = "[EMPLOYMENT STATUS: FROM '$data->employment_status' TO '$request->employment_status']";
             }
             else{
                 $employment_status_change = NULL;
@@ -711,8 +616,7 @@ class UpdateController extends Controller{
 
             if($request->employment_origin != $data->employment_origin){
                 $changes++;
-                $employment_origin_new = $request->employment_origin;
-                $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM '$data->employment_origin' TO '$employment_origin_new']";
+                $employment_origin_change = "[EMPLOYMENT ORIGIN: FROM '$data->employment_origin' TO '$request->employment_origin']";
             }
             else{
                 $employment_origin_change = NULL;
@@ -720,8 +624,7 @@ class UpdateController extends Controller{
 
             if($request->company_email_address != $data->company_email_address){
                 $changes++;
-                $company_email_address_new = $request->company_email_address;
-                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$data->company_email_address' TO '$company_email_address_new']";
+                $company_email_address_change = "[WORK EMAIL ADDRESS: FROM '$data->company_email_address' TO '$request->company_email_address']";
             }
             else{
                 $company_email_address_change = NULL;
@@ -729,8 +632,7 @@ class UpdateController extends Controller{
 
             if($request->company_contact_number != $data->company_contact_number){
                 $changes++;
-                $company_contact_number_new = $request->company_contact_number;
-                $company_contact_number_change = "[WORK CONTACT NO.: FROM '$data->company_contact_number' TO '$company_contact_number_new']";
+                $company_contact_number_change = "[WORK CONTACT NO.: FROM '$data->company_contact_number' TO '$request->company_contact_number']";
             }
             else{
                 $company_contact_number_change = NULL;
@@ -738,8 +640,7 @@ class UpdateController extends Controller{
 
             if($request->hmo_number != $data->hmo_number){
                 $changes++;
-                $hmo_number_new = $request->hmo_number;
-                $hmo_number_change = "[HMO NO.: FROM '$data->hmo_number' TO '$hmo_number_new']";
+                $hmo_number_change = "[HMO NO.: FROM '$data->hmo_number' TO '$request->hmo_number']";
             }
             else{
                 $hmo_number_change = NULL;
@@ -747,8 +648,7 @@ class UpdateController extends Controller{
 
             if($request->sss_number != $data->sss_number){
                 $changes++;
-                $sss_number_new = $request->sss_number;
-                $sss_number_change = "[SSS NO.: FROM '$data->sss_number' TO '$sss_number_new']";
+                $sss_number_change = "[SSS NO.: FROM '$data->sss_number' TO '$request->sss_number']";
             }
             else{
                 $sss_number_change = NULL;
@@ -756,8 +656,7 @@ class UpdateController extends Controller{
 
             if($request->pag_ibig_number != $data->pag_ibig_number){
                 $changes++;
-                $pag_ibig_number_new = $request->pag_ibig_number;
-                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$data->pag_ibig_number' TO '$pag_ibig_number_new']";
+                $pag_ibig_number_change = "[PAG-IBIG NO.: FROM '$data->pag_ibig_number' TO '$request->pag_ibig_number']";
             }
             else{
                 $pag_ibig_number_change = NULL;
@@ -765,8 +664,7 @@ class UpdateController extends Controller{
 
             if($request->philhealth_number != $data->philhealth_number){
                 $changes++;
-                $philhealth_number_new = $request->philhealth_number;
-                $philhealth_number_change = "[PHILHEALTH NO.: FROM '$data->philhealth_number' TO '$philhealth_number_new']";
+                $philhealth_number_change = "[PHILHEALTH NO.: FROM '$data->philhealth_number' TO '$request->philhealth_number']";
             }
             else{
                 $philhealth_number_change = NULL;
@@ -774,8 +672,7 @@ class UpdateController extends Controller{
 
             if($request->tin_number != $data->tin_number){
                 $changes++;
-                $tin_number_new = $request->tin_number;
-                $tin_number_change = "[TIN NO.: FROM '$data->tin_number' TO '$tin_number_new']";
+                $tin_number_change = "[TIN NO.: FROM '$data->tin_number' TO '$request->tin_number']";
             }
             else{
                 $tin_number_change = NULL;
@@ -783,8 +680,7 @@ class UpdateController extends Controller{
 
             if($request->account_number != $data->account_number){
                 $changes++;
-                $account_number_new = $request->account_number;
-                $account_number_change = "[ACCOUNT NO.: FROM '$data->account_number' TO '$account_number_new']";
+                $account_number_change = "[ACCOUNT NO.: FROM '$data->account_number' TO '$request->account_number']";
             }
             else{
                 $account_number_change = NULL;
@@ -832,9 +728,7 @@ class UpdateController extends Controller{
             $changes = 0;
             if($request->past_medical_condition != $past_medical_condition_orig){
                 $changes++;
-                $past_medical_condition_new = strtoupper($request->past_medical_condition);
-                $past_medical_condition_orig = $past_medical_condition_orig ? $past_medical_condition_orig : 'N/A';
-                $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$past_medical_condition_orig' TO '$past_medical_condition_new']";
+                $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM 'N/A' TO '$request->past_medical_condition']";
             }
             else{
                 $past_medical_condition_change = NULL;
@@ -842,9 +736,7 @@ class UpdateController extends Controller{
 
             if($request->allergies != $allergies_orig){
                 $changes++;
-                $allergies_new = strtoupper($request->allergies);
-                $allergies_orig = $allergies_orig ? $allergies_orig : 'N/A';
-                $allergies_change = "[ALLERGIES: FROM '$allergies_orig' TO '$allergies_new']";
+                $allergies_change = "[ALLERGIES: FROM 'N/A' TO '$request->allergies']";
             }
             else{
                 $allergies_change = NULL;
@@ -852,9 +744,7 @@ class UpdateController extends Controller{
 
             if($request->medication != $medication_orig){
                 $changes++;
-                $medication_new = strtoupper($request->medication);
-                $medication_orig = $medication_orig ? $medication_orig : 'N/A';
-                $medication_change = "[MEDICATION: FROM '$medication_orig' TO '$medication_new']";
+                $medication_change = "[MEDICATION: FROM 'N/A' TO '$request->medication']";
             }
             else{
                 $medication_change = NULL;
@@ -862,20 +752,18 @@ class UpdateController extends Controller{
 
             if($request->psychological_history != $psychological_history_orig){
                 $changes++;
-                $psychological_history_new = strtoupper($request->psychological_history);
-                $psychological_history_orig = $psychological_history_orig ? $psychological_history_orig : 'N/A';
-                $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$psychological_history_orig' TO '$psychological_history_new']";
+                $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM 'N/A' TO '$request->psychological_history']";
             }
             else{
                 $psychological_history_change = NULL;
             }
 
             $save = MedicalHistory::create([
-                'employee_id' => $request->employee_id,
+                'employee_id'            => $request->employee_id,
                 'past_medical_condition' => strtoupper($request->past_medical_condition),
-                'allergies' => strtoupper($request->allergies),
-                'medication' => strtoupper($request->medication),
-                'psychological_history' => strtoupper($request->psychological_history)
+                'allergies'              => strtoupper($request->allergies),
+                'medication'             => strtoupper($request->medication),
+                'psychological_history'  => strtoupper($request->psychological_history)
             ]);
 
             if($save){
@@ -893,8 +781,7 @@ class UpdateController extends Controller{
             $changes = 0;
             if($request->past_medical_condition != $data->past_medical_condition){
                 $changes++;
-                $past_medical_condition_new = $request->past_medical_condition;
-                $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$data->past_medical_condition' TO '$past_medical_condition_new']";
+                $past_medical_condition_change = "[PAST MEDICAL CONDITION: FROM '$data->past_medical_condition' TO '$request->past_medical_condition']";
             }
             else{
                 $past_medical_condition_change = NULL;
@@ -902,8 +789,7 @@ class UpdateController extends Controller{
 
             if($request->allergies != $data->allergies){
                 $changes++;
-                $allergies_new = $request->allergies;
-                $allergies_change = "[ALLERGIES: FROM '$data->allergies' TO '$allergies_new']";
+                $allergies_change = "[ALLERGIES: FROM '$data->allergies' TO '$request->allergies']";
             }
             else{
                 $allergies_change = NULL;
@@ -911,8 +797,7 @@ class UpdateController extends Controller{
 
             if($request->medication != $data->medication){
                 $changes++;
-                $medication_new = $request->medication;
-                $medication_change = "[MEDICATION: FROM '$data->medication' TO '$medication_new']";
+                $medication_change = "[MEDICATION: FROM '$data->medication' TO '$request->medication']";
             }
             else{
                 $medication_change = NULL;
@@ -920,14 +805,14 @@ class UpdateController extends Controller{
 
             if($request->psychological_history != $data->psychological_history){
                 $changes++;
-                $psychological_history_new = $request->psychological_history;
-                $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$data->psychological_history' TO '$psychological_history_new']";
+                $psychological_history_change = "[PSYCHOLOGICAL HISTORY: FROM '$data->psychological_history' TO '$request->psychological_history']";
             }
             else{
                 $psychological_history_change = NULL;
             }
 
-            $update = MedicalHistory::where('employee_id',$request->employee_id)->update([
+            $update = MedicalHistory::where('employee_id',$request->employee_id)
+                    ->update([
                         'past_medical_condition' => strtoupper($request->past_medical_condition),
                         'allergies'              => strtoupper($request->allergies),
                         'medication'             => strtoupper($request->medication),
@@ -947,6 +832,7 @@ class UpdateController extends Controller{
         $date             = Carbon::now();
         $timestamp        = date("ymdHis", strtotime($date));
         $count            = Str::random(2);
+        sleep(2);
         $employee_number  = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         $employee_details = PersonalInformationTable::select('empno', 'first_name', 'middle_name', 'last_name')->where('id', $request->employee_id)->first();
         $employee         = Document::where('employee_id', $request->employee_id)->first();
