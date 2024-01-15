@@ -60,4 +60,9 @@ class TemplateController extends Controller
     public function export_data(){
         return DataTables::of(Tr::all())->make(true);
     }
+
+    // crop image with recrop
+    public function image_crop_blade(){
+        return view('templates.image_crop');
+    }
 }

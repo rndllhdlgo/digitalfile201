@@ -120,7 +120,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::any('/cropperImage','TryController@cropperImage');
     Route::any('/cropImage','TryController@cropImage_blade');
     Route::any('/cropImageSave','TryController@cropImage_save');
     Route::any('/reports','TryController@reports');
@@ -201,3 +200,4 @@ Route::any('/import_blade', 'TemplateController@import_blade');
 Route::any('/import_save', 'TemplateController@import_save');
 Route::any('/export_blade', 'TemplateController@export_blade');
 Route::any('/export_data', 'TemplateController@export_data');
+Route::any('/image_crop_blade','TemplateController@image_crop_blade');
