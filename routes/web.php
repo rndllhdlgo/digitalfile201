@@ -120,12 +120,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::any('/evaluation','TryController@evaluation_blade');
-    Route::any('/evaluationSave','TryController@evaluation_save');
-    Route::any('/chosen','TryController@chosen_blade');
-    Route::any('/saveChosen','TryController@chosen_save');
-    Route::any('/import','TryController@import_blade');
-    Route::any('/test/import','TryController@test_import');
+    Route::any('/import_blade','TryController@import_blade');
+    Route::any('/import_save','TryController@import_save');
     Route::any('/passwordValidation','TryController@passwordValidation_blade');
     Route::any('/tabPane_blade','TryController@tabPane_blade');
     Route::any('/spatie','TryController@spatie_blade');

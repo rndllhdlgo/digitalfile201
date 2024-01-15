@@ -30,7 +30,6 @@
         </div>
     </div>
 
-    {{-- Import Modal --}}
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -39,7 +38,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="formUpload" action="/test/import" method="post" enctype="multipart/form-data">
+                    <form id="formUpload" action="/import_save" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="row">
                             <div class="col">
@@ -60,10 +59,10 @@
         $('#loading').hide();
 
         $('#btnUpload').on('click',function(){
-            if ($('#xlsx')[0].files.length === 0) {
+            if($('#xlsx')[0].files.length === 0){
                 $('#btnSubmit').click();
-            } 
-            else {
+            }
+            else{
                 Swal.fire({
                 title: 'Do you want to import?',
                 allowOutsideClick: false,
@@ -77,7 +76,7 @@
                 denyButton: 'order-3',
                 }
                 }).then((save) => {
-                if (save.isConfirmed) {
+                    if(save.isConfirmed){
                         $('#btnSubmit').click();
                     }
                 });
@@ -85,12 +84,13 @@
         });
 
         $(document).ready(function(){
-            if(current_location == '/import?import=success'){
+            if(current_location == '/import_blade?import=success'){
                 Swal.fire("IMPORT SUCCESS", "Import Sucessful.", "success");
             }
-            else if(current_location == '/import?import=failed'){
+            else if(current_location == '/import_blade?import=failed'){
                 Swal.fire("IMPORT FAILED", "Import Failed.", "error");
             }
         });
+
     </script>
 @endsection
