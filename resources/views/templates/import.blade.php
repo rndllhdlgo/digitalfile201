@@ -9,26 +9,6 @@
         </div>
     </div>
     <hr class="hr-design">
-    <div class="row">
-        <div class="col">
-            <div class="f-outline">
-                <input class="forminput form-control text-uppercase" type="text" id="test_fname" placeholder=" " style="background-color:white;" autocomplete="off">
-                <label for="fname" class="formlabel form-label"><i class="fas fa-address-card"></i> FIRST NAME</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="f-outline">
-                <input class="forminput form-control text-uppercase" type="text" id="test_mname" placeholder=" " style="background-color:white;" autocomplete="off">
-                <label for="mname" class="formlabel form-label"><i class="fas fa-address-card"></i> MIDDLE NAME</label>
-            </div>
-        </div>
-        <div class="col">
-            <div class="f-outline">
-                <input class="forminput form-control text-uppercase" type="text" id="test_lname" placeholder=" " style="background-color:white;" autocomplete="off">
-                <label for="lname" class="formlabel form-label"><i class="fas fa-address-card"></i> LAST NAME</label>
-            </div>
-        </div>
-    </div>
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -47,7 +27,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <a href="/templates/test_import.xlsx" class="btn btn-primary">DOWNLOAD TEMPLATE</a>
+                            <a href="/excel_templates/test_import.xlsx" class="btn btn-primary">DOWNLOAD TEMPLATE</a>
                             <button type="button" id="btnUpload"  class="btn btn-primary">UPLOAD</button>
                             <input type="submit" id="btnSubmit" class="d-none">
                         </div>

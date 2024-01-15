@@ -44,6 +44,7 @@ class TemplateController extends Controller
             $employee->first_name  = $row[0];
             $employee->last_name   = $row[1];
             $employee->middle_name = $row[2];
+            $employee->gender      = $row[3];
             $employee->save();
         }
         return redirect()->to('/import_blade?import=success');

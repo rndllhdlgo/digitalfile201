@@ -120,11 +120,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::any('/import_blade','TryController@import_blade');
-    Route::any('/import_save','TryController@import_save');
-    Route::any('/passwordValidation','TryController@passwordValidation_blade');
-    Route::any('/tabPane_blade','TryController@tabPane_blade');
-    Route::any('/spatie','TryController@spatie_blade');
     Route::any('/export','TryController@export_blade');
     Route::any('/export_data','TryController@export_data');
     Route::any('/cropperImage','TryController@cropperImage');
@@ -204,3 +199,5 @@ Route::get('/generateJaspher', function (Request $request){
 // TemplateController
 Route::any('/google_chart', 'TemplateController@google_chart');
 Route::any('/google_chart_data', 'TemplateController@google_chart_data');
+Route::any('/import_blade', 'TemplateController@import_blade');
+Route::any('/import_save', 'TemplateController@import_save');
