@@ -16,6 +16,7 @@ use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\QrController;
 use App\Http\Controllers\TryController;
 use App\Http\Controllers\ArtisanController;
+use App\Http\Controllers\TemplateController;
 
 //Home Controller
 Auth::routes(['register' => false, 'verify' => false, 'confirm' => false]);
@@ -57,6 +58,9 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/users/listOfUsers','UsersController@listOfUsers');
     Route::any('/users/saveUser','UsersController@saveUser');
     Route::any('/users/updateUser','UsersController@updateUser');
+    Route::any('/change/validate','UsersController@change_validate');
+    Route::any('/change/password','UsersController@change_password');
+    Route::any('/users/status', 'UsersController@users_status');
 
     // Maintenance Controller
     Route::any('/maintenance/companyData','MaintenanceController@companyData');
@@ -116,8 +120,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::any('/chart_blade','TryController@chart_blade');
-    Route::any('/chart_data','TryController@getDataForChart');
     Route::any('/evaluation','TryController@evaluation_blade');
     Route::any('/evaluationSave','TryController@evaluation_save');
     Route::any('/chosen','TryController@chosen_blade');
@@ -138,9 +140,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/status_data','TryController@status_data');
     Route::any('/users_page','PagesController@users_page');
     Route::any('/saveUser','UsersController@saveUser');
-    Route::get('/change/validate','UsersController@change_validate');
-    Route::any('/change/password','UsersController@change_password');
-    Route::any('/users/status', 'UsersController@users_status');
     Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
     Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
     Route::any('/pdf/image', 'TryController@pdf_blade');
@@ -205,3 +204,7 @@ Route::get('/generateJaspher', function (Request $request){
     // return $numPages;
     return response()->file($pdfFilePath , ['Content-Type' => 'application/pdf']);
 });
+
+// TemplateController
+Route::any('/google_chart', 'TemplateController@google_chart');
+Route::any('/google_chart_data', 'TemplateController@google_chart_data');
