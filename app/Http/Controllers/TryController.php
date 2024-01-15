@@ -28,8 +28,6 @@ use Imagick;
 use DataTables;
 use Str;
 use Illuminate\Support\Facades\Mail;
-use Swift_Attachment;
-use Swift_Message;
 use PHPJasper\PHPJasper;
 
 class TryController extends Controller
@@ -38,143 +36,12 @@ class TryController extends Controller
         $this->middleware('auth');
     }
 
-    public function cropperImage(){
-        return view('try.cropperImage');
-    }
-
-    public function evaluation_blade(){
-        $tries = Tr::select('id','sample_name')->get();
-        return view('try.evaluation', compact('tries'));
-    }
-
-    public function evaluation_save(Request $request){
-        if($request->memo_subject && $request->memo_date && $request->memo_penalty && $request->hasFile('memo_file')){
-            foreach($request->file('memo_file') as $key => $value){
-                $memoFileName = time().rand(1,100).'_Memo_File.'.$request->memo_file[$key]->extension();
-                $request->memo_file[$key]->storeAs('public/multiple_files',$memoFileName);
-
-                $memo = new MultipleSave;
-
-                $memo->memo_subject = $request->memo_subject[$key];
-                $memo->memo_date = $request->memo_date[$key];
-                $memo->memo_penalty = $request->memo_penalty[$key];
-                $memo->memo_file = $memoFileName;
-                $memo->save();
-            }
-        }
-    }
-
-    public function chosen_blade(){
-        $companies = Company::select('id','company_name')->get();
-
-        return view('try.chosen' ,compact('companies'));
-    }
-
-    public function chosen_save(Request $request){
-        $sample_company = new Tr;
-        $sample_company->sample_company = implode(",",$request->sample_company);
-        $sample_company->save();
-        return 'true';
-    }
-
-    public function import_blade(){
-        return view('try.import');
-    }
-
-    public function test_import(Request $request){
-        $file = $request->file('xlsx');
-        $import = new Import;
-        $data = Excel::toArray($import, $file);
-        if(count($data[0]) == 0){
-            return redirect()->to('/import?import=failed');
-        }
-
-        foreach ($data[0] as $row) {
-            if($row[0] != 'FIRST_NAME' && $row[1] != 'MIDDLE_NAME' && $row[2] != 'LAST_NAME'){
-                $employee = new Import;
-                $employee->test_fname = $row[0];
-                $employee->test_mname = $row[1];
-                $employee->test_lname = $row[2];
-                $employee->save();
-            }
-        }
-        return redirect()->to('/import?import=success');
-    }
-
-    public function passwordValidation_blade(){
-        return view('try.passwordValidation');
-    }
-
-    public function tabPane_blade(){
-        return view('try.tabPane');
-    }
-
-    public function spatie_blade(){
-        return view('try.spatie');
-    }
-
-    public function export_blade(){
-        return view('try.export');
-    }
-
-    public function export_data()
-    {
-        return DataTables::of(Export::all())->make(true);
-    }
-
-    public function cropImage_blade(){
-        return view('try.cropImage');
-    }
-
-    public function cropImage_save(Request $request){
-        $imageData = $request->input('employee_image');
-        $imageData = str_replace('data:image/jpeg;base64,', '', $imageData);
-        $imageData = str_replace(' ', '+', $imageData);
-        $imageName = 'cropped_image_' . time() . '.jpeg';
-
-        Storage::disk('public')->put($imageName, base64_decode($imageData));
-
-        return response()->json($imageName);
-    }
-
-    public function reports(){
-        return view('try.reports');
-    }
-
-    public function reports_data(Request $request){
-        $selectedMonth = $request->selectedMonth;
-        $selectedYear = $request->selectedYear;
-        $selectedDate = Carbon::createFromDate($selectedYear, $selectedMonth)->format('Y-m');
-        $data = Report::where('date', 'like', $selectedDate.'%')->get();
-        return DataTables::of($data)->make(true);
-    }
-
     public function status(){
         return view('try.status');
     }
 
     public function status_data(Request $request){
         return DataTables::of(Status::all())->make(true);
-    }
-
-    public function chart_blade(){
-        return view('try.chart');
-    }
-
-    public function getDataForChart(){
-        $data = Tr::select('gender')
-            ->groupBy('gender')
-            ->selectRaw('gender, COUNT(*) as count')
-            ->get()
-            ->toArray();
-
-        $formattedData = [['Gender', 'Count']];
-
-        foreach ($data as $item) {
-            $formattedData[] = [$item['gender'], $item['count']];
-        }
-
-        return response()->json($formattedData);
     }
 
     public function pdf_blade(){
