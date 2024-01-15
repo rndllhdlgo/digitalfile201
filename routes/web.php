@@ -120,17 +120,8 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::any('/cropImage','TryController@cropImage_blade');
-    Route::any('/cropImageSave','TryController@cropImage_save');
-    Route::any('/reports','TryController@reports');
-    Route::any('/reports_data','TryController@reports_data');
-    Route::any('/status','TryController@status');
-    Route::any('/status_data','TryController@status_data');
-    Route::any('/users_page','PagesController@users_page');
-    Route::any('/saveUser','UsersController@saveUser');
     Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
     Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
-    Route::any('/pdf/image', 'TryController@pdf_blade');
     Route::any('/save_pdf', 'TryController@save_pdf');
     Route::any('/receipt', 'TryController@receipt');
     Route::any('/splitPdf', 'TryController@splitPdf');
@@ -194,10 +185,12 @@ Route::get('/generateJaspher', function (Request $request){
 });
 
 // TemplateController
-Route::any('/google_chart', 'TemplateController@google_chart');
+Route::any('/google_chart_blade', 'TemplateController@google_chart_blade');
 Route::any('/google_chart_data', 'TemplateController@google_chart_data');
 Route::any('/import_blade', 'TemplateController@import_blade');
 Route::any('/import_save', 'TemplateController@import_save');
 Route::any('/export_blade', 'TemplateController@export_blade');
 Route::any('/export_data', 'TemplateController@export_data');
 Route::any('/image_crop_blade','TemplateController@image_crop_blade');
+Route::any('/pdf_count_blade','TemplateController@pdf_count_blade');
+Route::any('/pdf_count_save','TemplateController@pdf_count_save');

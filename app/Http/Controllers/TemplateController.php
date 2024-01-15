@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use App\Models\Tr;
 use Maatwebsite\Excel\Facades\Excel;
 use DataTables;
+use Imagick;
 
 class TemplateController extends Controller
 {
     // Google Chart
-    public function google_chart(){
+    public function google_chart_blade(){
         return view('templates.google_chart');
     }
 
@@ -64,5 +65,24 @@ class TemplateController extends Controller
     // crop image with recrop
     public function image_crop_blade(){
         return view('templates.image_crop');
+    }
+
+    // count pdf uploaded files
+    public function pdf_count_blade(){
+        return view('templates.pdf_count');
+    }
+
+    public function pdf_count_save(Request $request){
+        $pdf_file = $request->file('pdf_file');
+        if($pdf_file && $pdf_file->getClientOriginalExtension() === 'pdf'){
+            $imagick = new Imagick();
+            $imagick->readImage($pdf_file->getPathname());
+            $numPages = $imagick->getNumberImages();
+            return $numPages;
+            $imagick->destroy();
+        }
+        else{
+            return 'Invalid File Format';
+        }
     }
 }
