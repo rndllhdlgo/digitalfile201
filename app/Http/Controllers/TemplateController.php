@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tr;
+use Maatwebsite\Excel\Facades\Excel;
+use DataTables;
 
 class TemplateController extends Controller
 {
@@ -22,7 +24,7 @@ class TemplateController extends Controller
         foreach($data as $item){
             $formattedData[] = [$item['gender'], $item['count']];
         }
-        return response()->json($formattedData);
+        return $formattedData;
     }
 
     // Import Excel File
@@ -42,11 +44,20 @@ class TemplateController extends Controller
         foreach($rows as $row){
             $employee = new Tr;
             $employee->first_name  = $row[0];
-            $employee->last_name   = $row[1];
-            $employee->middle_name = $row[2];
+            $employee->middle_name = !empty($row[1]) ? $row[1] : '';
+            $employee->last_name   = $row[2];
             $employee->gender      = $row[3];
             $employee->save();
         }
         return redirect()->to('/import_blade?import=success');
+    }
+
+    // Export to Excel
+    public function export_blade(){
+        return view('templates.export');
+    }
+
+    public function export_data(){
+        return DataTables::of(Tr::all())->make(true);
     }
 }
