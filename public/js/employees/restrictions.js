@@ -1,4 +1,3 @@
-// minimum of 2 characters
 $('.name_validation').keyup(function(){
     var inputValue        = $(this).val();
     var validationId      = `validation_${$(this).attr('id')}`;
@@ -15,19 +14,16 @@ $('.name_validation').keyup(function(){
     }
 });
 
-// prevent input space
 $('.preventSpace').keypress(function(e){
     if(e.which == 32){
         return false;
     }
 });
 
-// accept only letters and numbers
 $('.letterNumber').keyup(function(){
     $(this).val($(this).val().replace(/[^a-zA-Z0-9\s]/g, ''));
 });
 
-// accept number and - only
 $('.numberDash').keyup(function(){
     $(this).val($(this).val().replace(/[^0-9-]/g, ''));
 });
@@ -36,12 +32,10 @@ $("input[type='date']").keydown(function(e){
     e.preventDefault();
 });
 
-// insert - after 4th entry
 function cellphoneFormat(id){
     $(`#${id}`).val($(`#${id}`).val().replace(/[^0-9]/g, '').replace(/(\d{4})/, '$1-'));
 }
 
-// check email format
 function emailCheck(emailId){
     var emailValue             = $(`#${emailId}`).val();
     var emailValidation        = `format_${emailId}`;
@@ -64,7 +58,6 @@ function emailCheck(emailId){
     }
 }
 
-// check if value/s change
 var origContainer = {};
 function checkChange(element){
     if(!(element.id in origContainer)){
@@ -78,7 +71,6 @@ function checkChange(element){
     disableUpdate(enableUpdateButton, 0, true);
 }
 
-// to disable/enable update button
 function disableUpdate(fieldCheck, changeCounter, duplicate){
     if(fieldCheck || changeCounter != 0 || !duplicate){
         $('#btnUpdate').prop('disabled', false);
@@ -88,7 +80,6 @@ function disableUpdate(fieldCheck, changeCounter, duplicate){
     }
 }
 
-// to check duplicate entries
 function duplicateCheck(table_name, column_name, id){
     var orig_value    = $(`#${id}`).attr('orig_value') ? $(`#${id}`).attr('orig_value').toLowerCase().trim() : '';
     var current_value = $(`#${id}`).val().toLowerCase().trim();

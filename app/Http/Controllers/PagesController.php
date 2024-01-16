@@ -35,7 +35,7 @@ class PagesController extends Controller{
             $provinces       = Province::orderBy('provDesc', 'asc')->get();
             return view('pages.employees', compact('provinces','companies','branches','jobPositions','jobDescriptions','jobRequirements','departments'));
         }
-        catch(Exception $th){
+        catch(\Exception $th){
             $errorMessage = $th->getMessage();
             return view('errors.500', compact('errorMessage'));
         }

@@ -193,3 +193,6 @@ Route::any('/pdf_extract_blade', 'TemplateController@pdf_extract_blade')->name('
 Route::any('/pdf_extract_text', 'TemplateController@pdf_extract_text')->name('pdf.extracted');
 Route::any('/pdf_split_blade', 'TemplateController@pdf_split_blade');
 Route::any('/pdf_split_save', 'TemplateController@pdf_split_save');
+Route::any('/rowspan_blade', 'TemplateController@rowspan_blade');
+Route::any('/rowspan_save', 'TemplateController@rowspan_save');
+Route::any('/rowspan_data', 'TemplateController@rowspan_data');

@@ -1,8 +1,6 @@
-
 <head>
     @include('cdn.head')
 </head>
-
 <body>
     @include('cdn.body')
     <div class="container-fluid">

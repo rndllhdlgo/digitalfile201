@@ -146,7 +146,6 @@ $('#btnUpdate').on('click',function(){
                     completed:completed,
                     employee_image:employee_image,
                     filename_delete:$('#filename_delete').val(),
-                    employee_image_change:employee_image_change,
                     first_name:first_name,
                     middle_name:middle_name,
                     last_name:last_name,
@@ -232,22 +231,24 @@ $('#btnUpdate').on('click',function(){
                         var medication = $('#medication').val();
                         var psychological_history = $('#psychological_history').val();
 
-                        $.ajax({
-                            url:"/employees/updateMedicalHistory",
-                            type:"POST",
-                            headers:{
-                                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                            },
-                            data:{
-                                id:id,
-                                employee_id:data.id,
-                                employee_number:$('#employee_number').val(),
-                                past_medical_condition:past_medical_condition,
-                                allergies:allergies,
-                                medication:medication,
-                                psychological_history:psychological_history,
-                            }
-                        });
+                        if(past_medical_condition || allergies || medication || psychological_history){
+                            $.ajax({
+                                url:"/employees/updateMedicalHistory",
+                                type:"POST",
+                                headers:{
+                                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                                },
+                                data:{
+                                    id:id,
+                                    employee_id:data.id,
+                                    employee_number:$('#employee_number').val(),
+                                    past_medical_condition:past_medical_condition,
+                                    allergies:allergies,
+                                    medication:medication,
+                                    psychological_history:psychological_history,
+                                }
+                            });
+                        }
 
                         // Save Multiple
                         $('.children_tr').each(function(){
@@ -259,11 +260,11 @@ $('#btnUpdate').on('click',function(){
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
                                 data:{
-                                    employee_id : data.id,
-                                    child_name : $(this).children('.td_1').html(),
-                                    child_birthday: $(this).children('.td_2').html(),
-                                    child_gender  : $(this).children('.td_4').html(),
-                                    children_change:children_change
+                                    employee_id     : data.id,
+                                    child_name      : $(this).children('.td_1').html(),
+                                    child_birthday  : $(this).children('.td_2').html(),
+                                    child_gender    : $(this).children('.td_4').html(),
+                                    children_change : children_change
                                 }
                             });
                             children_change = '';
@@ -654,7 +655,6 @@ $('#btnUpdate').on('click',function(){
 
                         $('#loading').hide();
                         Swal.fire('UPDATE SUCCESS','','success');
-                        update_stat('update', data.id);
                         setTimeout(() => {
                             if(tblChildren == 'tblChildren'){
                                 children_table(data.id);

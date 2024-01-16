@@ -22,7 +22,6 @@ $(document).on('click','#image_crop',function(){
     $('#image_recrop').show();
     $('.top-container').hide();
     $('.bottom-container').show();
-    employee_image_change = 'CHANGED';
     if(viewCounter != 0){
         changeCounter+2;
     }
@@ -82,7 +81,6 @@ $(document).on('click','#image_close', function(){
             $('#filename_delete').val(img_delete);
             $('#filename').val('');
 
-            employee_image_change = 'CHANGED';
             changeCounter--;
             disableUpdate('', changeCounter, true);
         }

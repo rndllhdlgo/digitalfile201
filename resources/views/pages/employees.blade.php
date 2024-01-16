@@ -164,7 +164,7 @@
                 <form method="POST" enctype="multipart/form-data" id="documents_form">
                     @csrf
                         <div class="tab-content">
-                            <input type="hidden" name="employee_id" id="employee_id">
+                            <input type="hidden" id="employee_id">
                                 @include('subpages.personal_information')
                                 @include('subpages.work_information')
                                 @include('subpages.compensation_and_benefits')

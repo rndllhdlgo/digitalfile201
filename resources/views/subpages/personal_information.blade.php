@@ -125,7 +125,7 @@
             <div class="row mb-3">
                 <div class="col-3">
                     <div class="f-outline">
-                        <select class="form-select forminput form-control required_field" name="province" id="province" onclick="checkChange(this);" onchange="checkChange(this);">
+                        <select class="form-select forminput form-control required_field" id="province" onclick="checkChange(this);" onchange="checkChange(this);">
                             <option value="" selected disabled>SELECT PROVINCE</option>
                             @foreach ($provinces as $province)
                                 <option class="province" value="{{ $province->provCode }}">{{($province->provDesc) }}</option>
@@ -136,7 +136,7 @@
                 </div>
                 <div class="col-3">
                     <div class="f-outline">
-                        <select class="form-select forminput form-control required_field" name="city" id="city" onclick="checkChange(this);" onchange="checkChange(this);">
+                        <select class="form-select forminput form-control required_field" id="city" onclick="checkChange(this);" onchange="checkChange(this);">
                             <option value="" selected disabled>SELECT CITY</option>
                         </select>
                         <label for="city" class="formlabel form-label"><i class="fas fa-map-marker-alt"></i> CITY</label>
