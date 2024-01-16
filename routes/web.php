@@ -120,10 +120,6 @@ Route::middleware(['session','check_device','checkIpAddress'])->group(function()
     Route::any('/employees/updateHmo','UpdateController@updateHmo');
 
     // Try Controllers
-    Route::get('/pdf', 'PdfController@index')->name('pdf.upload');
-    Route::post('/pdf/extract', 'PdfController@extractText')->name('pdf.extracted');
-    Route::any('/save_pdf', 'TryController@save_pdf');
-    Route::any('/receipt', 'TryController@receipt');
     Route::any('/splitPdf', 'TryController@splitPdf');
     Route::any('/save_receipt', 'TryController@save_receipt');
     Route::any('/sendEmail', 'SendMailController@sendEmail');
@@ -194,3 +190,5 @@ Route::any('/export_data', 'TemplateController@export_data');
 Route::any('/image_crop_blade','TemplateController@image_crop_blade');
 Route::any('/pdf_count_blade','TemplateController@pdf_count_blade');
 Route::any('/pdf_count_save','TemplateController@pdf_count_save');
+Route::any('/pdf_extract_blade', 'TemplateController@pdf_extract_blade')->name('pdf.upload');
+Route::any('/pdf_extract_text', 'TemplateController@pdf_extract_text')->name('pdf.extracted');

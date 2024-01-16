@@ -4,9 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Tr;
+use App\Models\UserLogs;
 use Maatwebsite\Excel\Facades\Excel;
 use DataTables;
 use Imagick;
+use Spatie\PdfToText\Pdf;
+use thiagoalessio\TesseractOCR\TesseractOCR;
 
 class TemplateController extends Controller
 {
@@ -84,5 +87,27 @@ class TemplateController extends Controller
         else{
             return 'Invalid File Format';
         }
+    }
+
+    // Pdf text extractor
+    public function pdf_extract_blade(){
+        return view('templates.pdf');
+    }
+
+    public function pdf_extract_text(Request $request){
+        $file = $request->file('pdf_file');
+        if($file->getClientOriginalExtension() === 'pdf'){
+            $pdfPath = $file->getPathname();
+            $text = Pdf::getText($pdfPath);
+        }
+        else{
+            return redirect()->back()->with('error', 'Invalid file format. Please upload a PDF or an image.');
+        }
+
+        if(stripos($text, 'grace') !== false){
+            return 'meron';
+        }
+
+        return view('templates.extracted', compact('text'));
     }
 }
