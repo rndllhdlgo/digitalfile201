@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Tr;
 use App\Models\UserLogs;
+use App\Models\Hmo;
 use Maatwebsite\Excel\Facades\Excel;
 use DataTables;
 use Imagick;
@@ -140,5 +141,34 @@ class TemplateController extends Controller
         $imagick->destroy();
 
         return 'PDF pages split and saved as images.';
+    }
+
+    // rowspan
+    public function rowspan_blade(){
+        return view('templates.rowspan');
+    }
+
+    public function rowspan_save(Request $request){
+        $employee = new Hmo;
+        $employee->employee_id      = $request->employee_id;
+        $employee->hmo              = $request->hmo;
+        $employee->coverage         = $request->coverage;
+        $employee->particulars      = $request->particulars;
+        $employee->room             = $request->room;
+        $employee->effectivity_date = $request->effectivity_date;
+        $employee->expiration_date  = $request->expiration_date;
+        $save = $employee->save();
+
+        if($save){
+            return 'true';
+        }
+        else{
+            return 'false';
+        }
+    }
+
+    public function rowspan_data(Request $request){
+        return DataTables::of(Hmo::where('employee_id', $request->id)->get())->make(true);
+        // return DataTables::of(Hmo::select('*')->where('id', '>=', 5)->get()->makeHidden(['created_at', 'updated_at']))->make(true);
     }
 }
