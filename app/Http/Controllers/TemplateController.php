@@ -10,6 +10,7 @@ use DataTables;
 use Imagick;
 use Spatie\PdfToText\Pdf;
 use thiagoalessio\TesseractOCR\TesseractOCR;
+use Spatie\PdfToImage\Pdf as Jpg;
 
 class TemplateController extends Controller
 {
@@ -109,5 +110,35 @@ class TemplateController extends Controller
         }
 
         return view('templates.extracted', compact('text'));
+    }
+
+    // Split multiple pages PDF
+    public function pdf_split_blade(){
+        return view('templates.pdf_split');
+    }
+
+    public function pdf_split_save(Request $request){
+        $pdfFile = $request->file('pdf_file');
+        $filename = uniqid('pdf_') . '.' . $pdfFile->getClientOriginalExtension();
+        $pdfFile->storeAs('public', $filename);
+        $pdfPath = storage_path('app/public/' . $filename);
+        $outputPath = storage_path('app/public/split_pages/');
+
+        if(!file_exists($outputPath)){
+            mkdir($outputPath, 0777, true);
+        }
+
+        $imagick = new Imagick();
+        $imagick->readImage($pdfPath);
+
+        foreach($imagick as $key => $pdfPage){
+            $pdfPage->setImageFormat('png');
+            $pdfPage->writeImage($outputPath . 'page_' . ($key + 1) . '.png');
+        }
+
+        $imagick->clear();
+        $imagick->destroy();
+
+        return 'PDF pages split and saved as images.';
     }
 }
