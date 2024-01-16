@@ -1,3 +1,19 @@
+function tableError(){
+    Swal.fire({
+        title: 'DATA PROBLEM!',
+        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
+        confirmButtonText: "REFRESH",
+        icon: 'error',
+        allowEscapeKey: false,
+        allowOutsideClick: false,
+        width: 700
+    }).then((result) => {
+        if(result.isConfirmed){
+            window.location.reload();
+        }
+    });
+}
+
 function children_table(value_id){
     $('.children_table_orig').dataTable().fnDestroy();
     $('.children_table_orig').DataTable({
@@ -46,19 +62,7 @@ function children_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -121,19 +125,7 @@ function college_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -198,19 +190,7 @@ function secondary_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -275,19 +255,7 @@ function primary_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -352,19 +320,7 @@ function training_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -429,19 +385,7 @@ function vocational_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -508,19 +452,7 @@ function job_history_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -591,19 +523,7 @@ function memo_table(value_id, value_employee_number, value_last_name, value_firs
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -672,19 +592,7 @@ function evaluation_table(value_id, value_employee_number, value_last_name, valu
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -753,19 +661,7 @@ function contracts_table(value_id, value_employee_number, value_last_name, value
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -834,19 +730,7 @@ function resignation_table(value_id, value_employee_number, value_last_name, val
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -913,19 +797,7 @@ function termination_table(value_id, value_employee_number, value_last_name, val
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -1002,19 +874,7 @@ function hmo_table(value_id){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -1070,19 +930,7 @@ function leave_table(value_empno){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },

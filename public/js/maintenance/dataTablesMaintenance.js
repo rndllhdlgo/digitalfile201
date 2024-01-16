@@ -14,19 +14,7 @@ var companyTable = $('#companyTable').DataTable({
         "error": function(xhr, error, thrown){
             if(xhr.status == 500){
                 $('#loading').hide();
-                Swal.fire({
-                    title: 'DATA PROBLEM!',
-                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                    confirmButtonText: "REFRESH",
-                    icon: 'error',
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    width: 700
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        window.location.reload();
-                    }
-                });
+                tableError();
             }
         }
     },
@@ -57,19 +45,7 @@ var departmentTable = $('#departmentTable').DataTable({
         "error": function(xhr, error, thrown){
             if(xhr.status == 500){
                 $('#loading').hide();
-                Swal.fire({
-                    title: 'DATA PROBLEM!',
-                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                    confirmButtonText: "REFRESH",
-                    icon: 'error',
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    width: 700
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        window.location.reload();
-                    }
-                });
+                tableError();
             }
         }
     },
@@ -105,19 +81,7 @@ var branchTable = $('#branchTable').DataTable({
         "error": function(xhr, error, thrown){
             if(xhr.status == 500){
                 $('#loading').hide();
-                Swal.fire({
-                    title: 'DATA PROBLEM!',
-                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                    confirmButtonText: "REFRESH",
-                    icon: 'error',
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    width: 700
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        window.location.reload();
-                    }
-                });
+                tableError();
             }
         }
     },
@@ -152,19 +116,7 @@ var shiftTable = $('table.shiftTable').DataTable({
             "error": function(xhr, error, thrown){
                 if(xhr.status == 500){
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
@@ -220,19 +172,7 @@ var positionTable = $('table.positionTable').DataTable({
         "error": function(xhr, error, thrown){
             if(xhr.status == 500){
                 $('#loading').hide();
-                Swal.fire({
-                    title: 'DATA PROBLEM!',
-                    html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                    confirmButtonText: "REFRESH",
-                    icon: 'error',
-                    allowEscapeKey: false,
-                    allowOutsideClick: false,
-                    width: 700
-                }).then((result) => {
-                    if(result.isConfirmed){
-                        window.location.reload();
-                    }
-                });
+                tableError();
             }
         }
     },
