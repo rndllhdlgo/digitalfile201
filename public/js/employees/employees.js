@@ -1,4 +1,4 @@
-var employeesTable,employee_image_change;
+var employeesTable;
 $(document).ready(function(){
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
@@ -67,19 +67,7 @@ $(document).ready(function(){
                 if(xhr.status == 500){
                     data_error++;
                     $('#loading').hide();
-                    Swal.fire({
-                        title: 'DATA PROBLEM!',
-                        html: '<h4>Data does not load properly.<br>Please refresh the page, or if it keeps happening, contact the <b>ADMINISTRATOR</b>.</h4>',
-                        confirmButtonText: "REFRESH",
-                        icon: 'error',
-                        allowEscapeKey: false,
-                        allowOutsideClick: false,
-                        width: 700
-                    }).then((result) => {
-                        if(result.isConfirmed){
-                            window.location.reload();
-                        }
-                    });
+                    tableError();
                 }
             }
         },
