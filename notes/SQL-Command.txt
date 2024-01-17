@@ -1,0 +1,71 @@
+UPDATE hrms.work_information_tables
+SET employee_branch = (SELECT entity03 FROM emp_master
+WHERE emp_master.empno = hrms.work_information_tables.employee_number);
+
+DELETE FROM `hrms`.`users`
+WHERE  `user_level`='EMPLOYEE';
+
+INSERT INTO `mg`.`transaction_type` (`transaction_type`, `created_at`, `updated_at`)
+VALUES ('DINE-IN', '2023-04-11 16:20:22', '2023-04-11 16:20:23'),
+
+UPDATE hrms.`status`
+JOIN hrms.try
+ON hrms.`status`.id = hrms.try.id
+SET hrms.`status`.stat = ''
+WHERE hrms.try.employment_status = 'RESIGNED';
+
+SELECT hrms.work_information_tables.id, hrms.work_information_tables.employee_number, hrms.personal_information_tables.id, hrms.personal_information_tables.empno
+FROM hrms.work_information_tables
+JOIN hrms.personal_information_tables ON hrms.work_information_tables.employee_number = hrms.personal_information_tables.empno
+WHERE hrms.work_information_tables.employee_number = '30369';
+
+SELECT DISTINCT `discname` FROM `hdr`;
+
+UPDATE hrms.`first`
+SET first_name = (SELECT first_name FROM hrms.`second`
+WHERE hrms.`second`.empno = hrms.`first`.empno);
+
+UPDATE hrms.contract_tables
+SET contracts_date = DATE_FORMAT(contracts_date, '%m/%d/%Y');
+
+UPDATE personal_information_tables
+SET shift = (SELECT shift FROM emp_master
+WHERE emp_master.empno = personal_information_tables.empno);
+
+DD-MG
+SELECT SUM(gross) FROM dd.hdr
+WHERE storecode = 'G510'
+AND tdate LIKE '03/14/2023'
+AND void = 0
+AND cancelled = 0
+AND refund = 0;
+
+SELECT SUM(unitprice * qty) FROM dd.dtl
+WHERE storecode = 'G510'
+AND tdate LIKE '03/14/2023'
+AND void = 0
+AND cancelled = 0
+AND refund = 0;
+
+SELECT SUM(netsales) FROM mg.hdr
+WHERE storecode = 'KMG031'
+AND tdate LIKE '03/__/2023'
+AND void = 0
+AND cancelled = 0
+AND refund = 0;
+
+TRUNCATE TABLE hrms.benefits;
+TRUNCATE TABLE hrms.children;
+TRUNCATE TABLE hrms.college;
+TRUNCATE TABLE hrms.contract;
+TRUNCATE TABLE hrms.documents;
+TRUNCATE TABLE hrms.educational_attainments;
+TRUNCATE TABLE hrms.employee_logs;
+TRUNCATE TABLE hrms.evaluation;
+TRUNCATE TABLE hrms.job_history;
+TRUNCATE TABLE hrms.medical_histories;
+TRUNCATE TABLE hrms.memo;
+TRUNCATE TABLE hrms.resignation;
+TRUNCATE TABLE hrms.termination;
+TRUNCATE TABLE hrms.trainings;
+TRUNCATE TABLE hrms.vocationals;

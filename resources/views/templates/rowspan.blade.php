@@ -79,8 +79,7 @@
             </tbody>
         </table>
 
-        <hr>
-        <table id="hmo_data_table">
+        <table class="table table-bordered table-striped" id="hmo_data_table" style="display:none;">
             <thead>
                 <tr>
                     <th>HMO</th>
@@ -108,24 +107,6 @@
         $('#room').val('SEMI PRIVATE');
         $('#effectivity_date').val('2024-01-01');
         $('#expiration_date').val('2024-01-01');
-
-        var table = $('#hmo_data_table').DataTable({
-            ajax: {
-                url: '/rowspan_data',
-                data:{
-                    id: 550
-                }
-            },
-            columns: [
-                { data: 'hmo'},
-                { data: 'coverage'},
-                { data: 'particulars'},
-                { data: 'room'},
-                { data: 'effectivity_date'},
-                { data: 'expiration_date'},
-                { data: 'status'}
-            ],
-        });
     });
 
     $('#hmoAdd').on('click', function(){
@@ -139,7 +120,7 @@
         $('#hmoTable tbody tr:first').after(
                         `<tr class="tr_hmo">
                             <td class="text-center">
-                                ${hmo}
+                                <input name="hmo" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off" value="${hmo}" readonly>
                             </td>
                             <td>
                                 <input name="coverage" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off" value="${coverage}" readonly>
@@ -172,14 +153,15 @@
     });
 
     $(document).on('click', '.addRow', function(){
-        var rowspan = parseInt($(this).closest('tr').find('td:first').attr('rowspan')) || 1;
-        rowspan++;
-        $(this).closest('tr').find('td:first').attr('rowspan', rowspan);
-        $(this).closest('tr').find('td:last-child, td:nth-last-child(2)').each(function(){
-            var currentRowspan = parseInt($(this).attr('rowspan')) || 1;
-            currentRowspan++;
-            $(this).attr('rowspan', currentRowspan);
-        });
+        var first_rowspan = parseInt($(this).closest('tr').find('td:first').attr('rowspan')) || 1;
+        first_rowspan++;
+        $(this).closest('tr').find('td:first').attr('rowspan', first_rowspan);
+        var second_rowspan = parseInt($(this).closest('tr').find('td:last-child').attr('rowspan')) || 1;
+        second_rowspan++;
+        $(this).closest('tr').find('td:last-child').attr('rowspan', second_rowspan);
+        var third_rowspan = parseInt($(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan')) || 1;
+        third_rowspan++;
+        $(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan', third_rowspan);
 
         var newRow = `
                 <tr class="tr_hmo">
@@ -203,10 +185,8 @@
     });
 
     $('#btnSaveHmo').on('click', function(){
-        var defaultHmo = $('.tr_hmo:first').find('td:first').text();
         $('.tr_hmo').each(function(){
             var row = $(this);
-            console.log(defaultHmo);
             $.ajax({
                 type: 'POST',
                 url: '/rowspan_save',
@@ -215,7 +195,7 @@
                 },
                 data: {
                     employee_id      : 550,
-                    hmo              : defaultHmo,
+                    hmo              : row.find('input[name="hmo"]').val(),
                     coverage         : row.find('input[name="coverage"]').val(),
                     particulars      : row.find('input[name="particulars"]').val(),
                     room             : row.find('input[name="room"]').val(),
@@ -223,7 +203,6 @@
                     expiration_date  : row.find('input[name="expiration_date"]').val()
                 },
                 success:function(response){
-                    console.log(response);
                 }
             });
         });
