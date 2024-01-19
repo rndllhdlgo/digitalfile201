@@ -1,3 +1,17 @@
+{{-- localStorage.clear();
+var storedUsername = localStorage.getItem('username');
+console.log(storedUsername);
+if (storedUsername) {
+    // If there's a stored value, set it as the hidden input value
+    $('#username').val(storedUsername);
+}
+else{
+    // If no stored value, set the default value 'Rendell' and store it
+    var defaultValue = 'Rendell';
+    $('#username').val(defaultValue);
+    localStorage.setItem('username', defaultValue);
+} --}}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,7 +31,8 @@
 <body>
     <div>
         <button type="button" class="btn btn-primary" id="btnSaveHmo">SAVE</button>
-        <table class="table table-striped table-bordered table-hover align-middle w-100" id="hmoTable">
+        <button type="button" class="btn btn-primary" id="btnTable">DATATABLE</button>
+        <table class="table table-bordered table-hover align-middle w-100" id="hmoTable">
             <thead class="thead-design">
                 <tr>
                     <th colspan="8" style="zoom:120% !important;">HEALTHCARE MAINTENANCE ORGANIZATION</th>
@@ -33,7 +48,7 @@
                     <th style="width:5%;">ACTION</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="hmo_tbody">
                 <tr class="tr_hmo">
                     <td class="pb-3 pt-3">
                         <div class="f-outline">
@@ -73,83 +88,22 @@
             </tbody>
         </table>
     </div>
+
+    @include('templates.editHmo')
+
 <script src="/js/inc/bootstrap.bundle.min.js"></script>
 <script src="/js/inc/moment.js"></script>
 <script src="/DataTables/datatables.min.js"></script>
 
 <script>
-    $(document).ready(function(){
-        $('#hmo').val('INTELLICARE');
-        $('#coverage').val('75,000');
-        $('#particulars').val('PER DISEASE/HOSPITALIZATION');
-        $('#room').val('SEMI PRIVATE');
-        $('#effectivity_date').val('2024-01-01');
-        $('#expiration_date').val('2024-01-01');
-
-        // var table = $('#hmoTable').DataTable({
-        //     scrollY:        "484px",
-        //     scrollX:        true,
-        //     scrollCollapse: true,
-        //     fixedColumns:{
-        //         left: 2,
-        //     },
-        //     dom: 't',
-        //     ajax: {
-        //         url: '/rowspan_data',
-        //         data:{
-        //             id: 550
-        //         }
-        //     },
-        //     columnDefs: [
-        //         {
-        //             "render": function(data, type, row, meta){
-        //                 return `
-        //                         <button type="button" class="btn btn-primary center btnEditHmo"
-        //                             hmo_id=${row.id}
-        //                             hmo_name=${row.hmo}
-        //                             hmo_coverage=${row.coverage}
-        //                             hmo_particulars=${row.particulars}
-        //                             hmo_room=${row.room}
-        //                             hmo_effectivity_date=${row.effectivity_date}
-        //                             hmo_expiration_date=${row.expiration_date}
-        //                             hmo_status=${row.status}>
-        //                             <i class="fa-solid fa-pen-to-square"></i>
-        //                         </button>
-        //                         `;
-        //             },
-        //             "defaultContent": '',
-        //             "data": null,
-        //             "targets": [7],
-        //         }
-        //     ],
-        //     columns: [
-        //         { data: 'hmo'},
-        //         { data: 'coverage'},
-        //         {
-        //         data: 'particulars',
-        //             "render":function(data,type,row){
-        //                 return(`<div style="white-space: normal; width: 15vw;"><span>${data}</span></div>`);
-        //             }
-        //         },
-        //         { data: 'room'},
-        //         { data: 'effectivity_date'},
-        //         { data: 'expiration_date'},
-        //         { data: 'status'}
-        //     ]
-        // });
-    });
-
+    var rowspan = 1;
     $('#hmoAdd').on('click', function(){
-        var first_rowspan = parseInt($(this).closest('tr').find('td:first').attr('rowspan')) || 1;
-        first_rowspan++;
-        $(this).closest('tr').find('td:first').attr('rowspan', first_rowspan);
-        var second_rowspan = parseInt($(this).closest('tr').find('td:last-child').attr('rowspan')) || 1;
-        second_rowspan++;
-        $(this).closest('tr').find('td:last-child').attr('rowspan', second_rowspan);
-        var third_rowspan = parseInt($(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan')) || 1;
-        third_rowspan++;
-        $(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan', third_rowspan);
+        rowspan++
+        $(this).closest('tr').find('td:first').attr('rowspan', rowspan);
+        $(this).closest('tr').find('td:last-child').attr('rowspan', rowspan);
+        $(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan', rowspan);
         $(this).closest('tr').find('td:nth-last-child(2)').text('ACTIVE');
+
         var newRow = `
                 <tr class="tr_hmo">
                     <input name="hmo" type="hidden" value="${$('#hmo').val()}">
@@ -160,7 +114,7 @@
                         <input name="particulars" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
                     </td>
                     <td>
-                        <input name="room" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;">
+                        <input name="room" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
                     </td>
                     <td>
                         <input name="effectivity_date" class="forminput form-control" type="date" placeholder=" " style="background-color:white;">
@@ -169,7 +123,12 @@
                         <input name="expiration_date" class="forminput form-control" type="date" placeholder=" " style="background-color:white;">
                     </td>
                 </tr>`;
-        $(this).closest('tr').after(newRow);
+        if(rowspan == 2){
+            $(this).closest('tr').after(newRow);
+        }
+        else{
+            $('.tr_hmo:last').after(newRow);
+        }
     });
 
     $('#btnSaveHmo').on('click', function(){
@@ -188,11 +147,122 @@
                     room             : $(this).find('input[name="room"]').val(),
                     effectivity_date : $(this).find('input[name="effectivity_date"]').val(),
                     expiration_date  : $(this).find('input[name="expiration_date"]').val()
-                },
-                success:function(response){
                 }
             });
         });
+    });
+
+    $('#btnTable').on('click', function(){
+        $('#hmoTable').dataTable().fnDestroy();
+        var table = $('#hmoTable').DataTable({
+            scrollY:        "484px",
+            scrollX:        true,
+            scrollCollapse: true,
+            fixedColumns:{
+                left: 2,
+            },
+            dom: 't',
+            ajax: {
+                url: '/rowspan_data',
+                data:{
+                    id: 550
+                }
+            },
+            order: [],
+            columnDefs: [
+                {
+                    "render": function(data, type, row, meta){
+                        return `
+                                <button type="button" class="btn btn-primary center btnEditHmo"
+                                    hmo_id=${row.id}
+                                    hmo_name=${row.hmo}
+                                    hmo_coverage=${row.coverage}
+                                    hmo_particulars=${row.particulars}
+                                    hmo_room=${row.room}
+                                    hmo_effectivity_date=${row.effectivity_date}
+                                    hmo_expiration_date=${row.expiration_date}
+                                    hmo_status=${row.status}>
+                                    <i class="fa-solid fa-pen-to-square"></i>
+                                </button>
+                                `;
+                    },
+                    "defaultContent": '',
+                    "data": null,
+                    "targets": [7],
+                }
+            ],
+            columns: [
+                { data: 'hmo'},
+                { data: 'coverage'},
+                {
+                    data: 'particulars',
+                    "render":function(data,type,row){
+                        return(`<div style="white-space: normal; width: 15vw;"><span>${data}</span></div>`);
+                    }
+                },
+                { data: 'room'},
+                { data: 'effectivity_date'},
+                { data: 'expiration_date'},
+                { data: 'status'}
+            ],
+            initComplete:function(){
+                $('#hmo_tbody').append(`
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <button type="button" class="btn btn-success center addHmo">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </td>
+                        </tr>`);
+            }
+        });
+    });
+
+    $(document).on('click','.addHmo', function(){
+        var addNewRow = `
+                <tr class="tr_hmo">
+                    <td>
+                        <input name="hmo" class="forminput form-control text-uppercase" type="search" id="hmo" placeholder=" " style="background-color:white;" autocomplete="off">
+                    </td>
+                    <td>
+                        <input name="coverage" class="forminput form-control text-uppercase" type="search" id="coverage" placeholder=" " style="background-color:white;" autocomplete="off">
+                    </td>
+                    <td>
+                        <input name="particulars" class="forminput form-control text-uppercase" type="search" id="particulars" placeholder=" " style="background-color:white;" autocomplete="off">
+                    </td>
+                    <td>
+                        <input name="room" class="forminput form-control text-uppercase" type="search" id="room" placeholder=" " style="background-color:white;" autocomplete="off">
+                    </td>
+                    <td>
+                        <input name="effectivity_date" class="forminput form-control" type="date" id="effectivity_date" placeholder=" " style="background-color:white;">
+                    </td>
+                    <td>
+                        <input name="expiration_date" class="forminput form-control" type="date" id="expiration_date" placeholder=" " style="background-color:white;">
+                    </td>
+                    <td></td>
+                    <td></td>
+                </tr>`;
+        $('tr:last').before(addNewRow);
+    });
+
+    $(document).on('click','.btnEditHmo', function(){
+        $('#hmoId').val($(this).attr('hmo_id'));
+        $('#hmoName').val($(this).attr('hmo_name'));
+        $('#hmoCoverage').val($(this).attr('hmo_coverage'));
+        $('#hmoParticulars').val($(this).attr('hmo_particulars'));
+        $('#hmoRoom').val($(this).attr('hmo_room'));
+        $('#hmoEffectivity_date').val($(this).attr('hmo_effectivity_date'));
+        $('#hmoExpiration_date').val($(this).attr('hmo_expiration_date'));
+        $('#hmoStatus').val($(this).attr('hmo_status'));
+
+        $('#editHmoModal').modal('show');
     });
 </script>
 </body>
