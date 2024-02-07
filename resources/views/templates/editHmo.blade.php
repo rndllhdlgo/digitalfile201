@@ -33,8 +33,8 @@
                     </div>
                     <div class="row mb-4">
                         <div class="f-outline">
-                            <input class="forminput form-control" type="date" id="hmoEffecitivityDate" placeholder=" " style="background-color:white;">
-                            <label for="hmoEffecitivityDate" class="formlabel form-label">EFFECTIVITY DATE</label>
+                            <input class="forminput form-control" type="date" id="hmoEffectivityDate" placeholder=" " style="background-color:white;">
+                            <label for="hmoEffectivityDate" class="formlabel form-label">EFFECTIVITY DATE</label>
                         </div>
                     </div>
                     <div class="row mb-4">
@@ -54,7 +54,7 @@
                     </div>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="btnUpdateHmo">UPDATE</button>
+                <button type="button" class="btn btn-success" id="btnEditHmo">SAVE CHANGES</button>
             </div>
         </div>
     </div>

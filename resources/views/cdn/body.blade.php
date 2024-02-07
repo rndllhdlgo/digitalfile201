@@ -1,5 +1,6 @@
 <script src="/js/inc/mdb.min.js"></script>
 <script src="/js/inc/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
 <script src="/DataTables/datatables.min.js"></script>
 <script src="/js/inc/sweetalert2.all.min.js"></script>
 <script src="/js/inc/chosen.jquery.js"></script>
@@ -25,7 +26,7 @@
     <script src="/js/employees/uploadValidation.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/restrictions.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
     <script src="/js/employees/summary.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
-    <script src="/js/employees/dataTables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
+    <script src="/js/employees/tables.js?version={{\Illuminate\Support\Str::random(50)}}"></script>
 @endif
 
 @if(Request::is('users'))

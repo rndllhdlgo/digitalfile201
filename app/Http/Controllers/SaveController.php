@@ -233,6 +233,33 @@ class SaveController extends Controller
         }
     }
 
+    // public function saveHmo(Request $request){
+    //     $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
+    //     $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
+
+    //     $employee = new Hmo;
+    //     $employee->employee_id      = $request->employee_id;
+    //     $employee->hmo              = strtoupper($request->hmo);
+    //     $employee->coverage         = strtoupper($request->coverage);
+    //     $employee->particulars      = strtoupper($request->particulars);
+    //     $employee->room             = strtoupper($request->room);
+    //     $employee->effectivity_date = date("Y-m-d", strtotime($request->effectivity_date));
+    //     $employee->expiration_date  = date("Y-m-d", strtotime($request->expiration_date));
+    //     $employee->save();
+
+    //     if($request->hmo_change == 'CHANGED'){
+    //         $hmo_update = "[HMO: LIST OF HMO DETAILS HAVE BEEN CHANGED]";
+    //     }
+    //     else{
+    //         $hmo_update = NULL;
+    //     }
+
+    //     if($hmo_update){
+    //         $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S HMO DETAILS $hmo_update");
+    //         $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S HMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $hmo_update");
+    //     }
+    // }
+
     public function saveHmo(Request $request){
         $employee_details = PersonalInformationTable::where('id', $request->employee_id)->first();
         $employee_number = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
@@ -243,8 +270,8 @@ class SaveController extends Controller
         $employee->coverage         = strtoupper($request->coverage);
         $employee->particulars      = strtoupper($request->particulars);
         $employee->room             = strtoupper($request->room);
-        $employee->effectivity_date = date("Y-m-d", strtotime($request->effectivity_date));
-        $employee->expiration_date  = date("Y-m-d", strtotime($request->expiration_date));
+        $employee->effectivity_date = $request->effectivity_date;
+        $employee->expiration_date  = $request->expiration_date;
         $employee->save();
 
         if($request->hmo_change == 'CHANGED'){

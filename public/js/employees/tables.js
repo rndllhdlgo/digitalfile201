@@ -1,3 +1,4 @@
+var hmo_val;
 function children_table(value_id){
     $('.children_table_orig').dataTable().fnDestroy();
     $('.children_table_orig').DataTable({
@@ -814,91 +815,297 @@ function termination_table(value_id, value_employee_number, value_last_name, val
     });
 }
 
+// function hmo_table(value_id){
+//     $('.hmo_table_orig').dataTable().fnDestroy();
+//     $('.hmo_table_orig').DataTable({
+//         columnDefs: [
+//             {
+//                 "render": function(data, type, row, meta){
+//                     return `<button type="button" class="btn btn-primary center btnEditHmo"
+//                                 hmo_id=${row.id}
+//                                 hmo_name=${row.hmo}
+//                                 hmo_coverage=${row.coverage}
+//                                 hmo_particulars=${row.particulars}
+//                                 hmo_room=${row.room}
+//                                 hmo_effectivity_date=${row.effectivity_date}
+//                                 hmo_expiration_date=${row.expiration_date}
+//                                 hmo_status=${row.status}>
+//                                 <i class="fa-solid fa-pen-to-square"></i>
+//                             </button>`;
+//                 },
+//                 "defaultContent": '',
+//                 "data": null,
+//                 "targets": [7],
+//             }
+//         ],
+//         searching: false,
+//         paging: false,
+//         info: false,
+//         ordering:false,
+//         autoWidth: false,
+//         language:{
+//             emptyTable: "NO DATA AVAILABLE",
+//             processing: "Loading...",
+//         },
+//         serverSide: true,
+//         ajax: {
+//             url: '/employees/hmo_data',
+//             async: false,
+//             data:{
+//                 id: value_id,
+//             },
+//             "dataType": "json",
+//             "error": function(xhr, error, thrown){
+//                 if(xhr.status == 500){
+//                     data_error++;
+//                     $('#loading').hide();
+//                     tableError();
+//                 }
+//             }
+//         },
+//         columns: [
+//             { data: 'hmo',         width: '15%'},
+//             { data: 'coverage',    width: '15%'},
+//             { data: 'particulars', width: '15%'},
+//             { data: 'room',        width: '15%'},
+//             {
+//                 data: 'effectivity_date', width: '15%',
+//                 "render":function(data,type,row){
+//                     return moment(data).format('MMMM D, YYYY');
+//                 }
+//             },
+//             {
+//                 data: 'expiration_date', width: '15%',
+//                 "render":function(data,type,row){
+//                     return moment(data).format('MMMM D, YYYY');
+//                 }
+//             },
+//             {
+//                 data: 'status', width: '5%',
+//                 "render":function(data,type,row){
+//                     if(data == 'ACTIVE'){
+//                         return `<span class="text-center text-success" style="zoom:90%;"><b>ACTIVE</b></span>`;
+//                     }
+//                     return `<span class="text-center text-danger" style="zoom:90%;"><b>INACTIVE</b></span>`;
+//                 }
+//             }
+//         ],
+//         initComplete: function(){
+//             if(!$('.hmo_table_orig').DataTable().data().any()){
+//                 $('#hmo_table_orig').hide();
+//             }
+//             else{
+//                 $('#hmo_table_orig').show();
+//             }
+//         }
+//     });
+// }
+
 function hmo_table(value_id){
-    $('.hmo_table_orig').dataTable().fnDestroy();
-    $('.hmo_table_orig').DataTable({
-        columnDefs: [
-            {
-                "render": function(data, type, row, meta){
-                    return `<button type="button" class="btn btn-primary center btnEditHmo"
-                                hmo_id=${row.id}
-                                hmo_name=${row.hmo}
-                                hmo_coverage=${row.coverage}
-                                hmo_particulars=${row.particulars}
-                                hmo_room=${row.room}
-                                hmo_effectivity_date=${row.effectivity_date}
-                                hmo_expiration_date=${row.expiration_date}
-                                hmo_status=${row.status}>
-                                <i class="fa-solid fa-pen-to-square"></i>
-                            </button>`;
-                },
-                "defaultContent": '',
-                "data": null,
-                "targets": [7],
-            }
-        ],
-        searching: false,
-        paging: false,
-        info: false,
-        ordering:false,
-        autoWidth: false,
-        language:{
-            emptyTable: "NO DATA AVAILABLE",
-            processing: "Loading...",
+    $.ajax({
+        url: "/employees/hmo_data",
+        data: {
+            id: value_id
         },
-        serverSide: true,
-        ajax: {
-            url: '/employees/hmo_data',
-            async: false,
-            data:{
-                id: value_id,
-            },
-            "dataType": "json",
-            "error": function(xhr, error, thrown){
-                if(xhr.status == 500){
-                    data_error++;
-                    $('#loading').hide();
-                    tableError();
-                }
-            }
-        },
-        columns: [
-            { data: 'hmo',         width: '15%'},
-            { data: 'coverage',    width: '15%'},
-            { data: 'particulars', width: '15%'},
-            { data: 'room',        width: '15%'},
-            {
-                data: 'effectivity_date', width: '15%',
-                "render":function(data,type,row){
-                    return moment(data).format('MMMM D, YYYY');
-                }
-            },
-            {
-                data: 'expiration_date', width: '15%',
-                "render":function(data,type,row){
-                    return moment(data).format('MMMM D, YYYY');
-                }
-            },
-            {
-                data: 'status', width: '5%',
-                "render":function(data,type,row){
-                    if(data == 'ACTIVE'){
-                        return `<span class="text-center text-success" style="zoom:90%;"><b>ACTIVE</b></span>`;
+        success: function (response){
+            console.log(response);
+            if(response != 'empty'){
+                $('#hmoTable').dataTable().fnDestroy();
+                $('#hmoTable').DataTable({
+                    columnDefs: [
+                        {
+                            "render": function(data, type, row, meta){
+                                return `
+                                        <button type="button" class="btn btn-primary center btnEditHmo"
+                                            hmo_id=${row.id}
+                                            hmo_name=${row.hmo}
+                                            hmo_coverage=${row.coverage}
+                                            hmo_particulars=${row.particulars}
+                                            hmo_room=${row.room}
+                                            hmo_effectivity_date=${row.effectivity_date}
+                                            hmo_expiration_date=${row.expiration_date}
+                                            hmo_status=${row.status}>
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </button>
+                                        `;
+                            },
+                            "defaultContent": '',
+                            "data": null,
+                            "targets": [7],
+                        }
+                    ],
+                    searching: false,
+                    paging: false,
+                    info: false,
+                    ordering:false,
+                    autoWidth: false,
+                    language:{
+                        processing: "Loading...",
+                    },
+                    serverSide: true,
+                    ajax: {
+                        url: '/employees/hmo_data',
+                        async: false,
+                        data:{
+                            id: value_id,
+                        },
+                        "dataType": "json",
+                        "error": function(xhr, error, thrown){
+                            if(xhr.status == 500){
+                                data_error++;
+                                $('#loading').hide();
+                                tableError();
+                            }
+                        }
+                    },
+                    order: [],
+                    columns: [
+                        {
+                            data: 'hmo',
+                            "render": function (data, type, row, meta) {
+                                if(meta.row === 0){
+                                    hmo_val = data;
+                                    return data;
+                                }
+                                else{
+                                    return '';
+                                }
+                            }
+                        },
+                        { data: 'coverage'},
+                        {
+                            data: 'particulars',
+                            "render":function(data,type,row){
+                                return(`<div style="white-space: normal; width: 15vw;"><span>${data}</span></div>`);
+                            }
+                        },
+                        { data: 'room'},
+                        {
+                            data: 'effectivity_date',
+                            "render": function (data, type, row, meta) {
+                                return moment(data).format("MMMM D, YYYY");
+                            }
+                        },
+                        {
+                            data: 'expiration_date',
+                            "render": function (data, type, row, meta) {
+                                return moment(data).format("MMMM D, YYYY");
+                            }
+                        },
+                        {
+                            data: 'status',
+                            "render":function(data,type,row){
+                                console.log(data);
+                                if(data == 'ACTIVE'){
+                                    return `<b class="text-success">${data}</b>`;
+                                }
+                                else{
+                                    return `<b class="text-danger">${data}</b>`;
+                                }
+                            }
+                        }
+                    ],
+                    drawCallback: function(settings) {
+                        $('#hmo_tbody').append(`
+                                                <tr>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td></td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-success center addHmo">
+                                                            <i class="fas fa-plus"></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>`);
                     }
-                    return `<span class="text-center text-danger" style="zoom:90%;"><b>INACTIVE</b></span>`;
-                }
-            }
-        ],
-        initComplete: function(){
-            if(!$('.hmo_table_orig').DataTable().data().any()){
-                $('#hmo_table_orig').hide();
-            }
-            else{
-                $('#hmo_table_orig').show();
+                    // initComplete:function(){
+                    //     $('#hmo_tbody').append(`
+                    //                     <tr>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td></td>
+                    //                         <td>
+                    //                             <button type="button" class="btn btn-success center addHmo">
+                    //                                 <i class="fas fa-plus"></i>
+                    //                             </button>
+                    //                         </td>
+                    //                     </tr>`);
+                    // }
+                });
             }
         }
     });
 }
+
+$(document).on('click','.addHmo', function(){
+    var addNewRow = `
+            <tr class="tr_hmo">
+                <td>
+                    <input name="hmo" type="hidden" value="${hmo_val}">
+                </td>
+                <td>
+                    <input name="coverage" class="forminput form-control text-uppercase" type="search" id="coverage" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="particulars" class="forminput form-control text-uppercase" type="search" id="particulars" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="room" class="forminput form-control text-uppercase" type="search" id="room" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="effectivity_date" class="forminput form-control" type="date" id="effectivity_date" placeholder=" " style="background-color:white;">
+                </td>
+                <td>
+                    <input name="expiration_date" class="forminput form-control" type="date" id="expiration_date" placeholder=" " style="background-color:white;">
+                </td>
+                <td>
+                    <b class="text-success">ACTIVE</b>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-danger center deleteHmo">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                </td>
+            </tr>`;
+    $('#hmo_tbody tr:last').before(addNewRow);
+
+    hmo_change = 'CHANGED';
+    tblHmo = 'tblHmo';
+    changeCounter++;
+    disableUpdate('', changeCounter, true);
+});
+
+$(document).on('click','.deleteHmo', function(){
+    Swal.fire({
+        title: 'Do you want to delete this row?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        allowOutsideClick: false,
+        allowEscapeKey: false,
+        showDenyButton: true,
+        confirmButtonText: 'Yes',
+        denyButtonText: 'No',
+        customClass: {
+        actions: 'my-actions',
+        confirmButton: 'order-2',
+        denyButton: 'order-3',
+        }
+    }).then((save) => {
+        if(save.isConfirmed){
+            $(this).parent().parent().remove();
+            changeCounter--;
+            disableUpdate('', changeCounter, true);
+        }
+    });
+});
 
 function leave_table(value_empno){
     $('#leave_credits').dataTable().fnDestroy();

@@ -12,20 +12,20 @@
             <table class="mt-2 w-100" style="color: #0d1a80; font-size: 12px; line-height: 20px;">
                 <thead>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important; border:none !important;">
                             <span id="current_datetime" style="margin-left: 220px; font-size:13px;">{{ Carbon\Carbon::now()->isoformat('dddd, MMMM DD, YYYY, h:mm:ss A') }}</span>
                         </td>
-                        <td  class="m-0 p-0" rowspan="3">
+                        <td  class="m-0 p-0" rowspan="3" style="border:none !important;">
                             <i class="fa fa-user-circle fa-4x float-end" style="margin-right: -10px;" aria-hidden="true" role="button" onclick="$('#lblChangePassword').click()"></i>
                         </td>
                     </tr>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important;position:static;font-size:13px;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom: 3px !important;position:static;font-size:13px; border:none !important;">
                             {{ Auth::user()->name }}  [{{ Auth::user()->user_level }}]
                         </td>
                     </tr>
                     <tr>
-                        <td class="m-0 p-0 float-end" style="margin-bottom:3x !important;">
+                        <td class="m-0 p-0 float-end" style="margin-bottom:3x !important; border:none !important;">
                             <span id="lblChangePassword" style="text-decoration:underline; cursor:pointer;font-size:13px;">Change Password</span>
                         </td>
                     </tr>

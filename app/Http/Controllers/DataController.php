@@ -167,11 +167,21 @@ class DataController extends Controller
         }
     }
 
+    // public function hmo_data(Request $request){
+    //     try{
+    //         return DataTables::of(Hmo::where('employee_id', $request->id)->get())->make(true);
+    //     }
+    //     catch(QueryException $e){
+    //         return response()->json(['error' => 'Table hmo not found'], 500);
+    //     }
+    // }
+
     public function hmo_data(Request $request){
         try{
-            return DataTables::of(Hmo::where('employee_id', $request->id)->get())->make(true);
+            $hmos = Hmo::where('employee_id', $request->id)->get();
+            return $hmos->isEmpty() ? 'empty' : DataTables::of($hmos)->make(true);
         }
-        catch(QueryException $e){
+        catch(\QueryException $th){
             return response()->json(['error' => 'Table hmo not found'], 500);
         }
     }

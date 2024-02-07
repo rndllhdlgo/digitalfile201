@@ -80,7 +80,7 @@ else{
                             <input name="expiration_date" class="forminput form-control" type="date" id="expiration_date" placeholder=" " style="background-color:white;">
                         </div>
                     </td>
-                    <td class="pb-3 pt-3"></td>
+                    <td class="pb-3 pt-3" id="active_stat"></td>
                     <td class="pb-3 pt-3">
                         <button type="button" id="hmoAdd" class="btn btn-success center" title="ADD SECTION"><i class="fas fa-plus"></i></button>
                     </td>
@@ -96,17 +96,13 @@ else{
 <script src="/DataTables/datatables.min.js"></script>
 
 <script>
-    var rowspan = 1;
     $('#hmoAdd').on('click', function(){
-        rowspan++
-        $(this).closest('tr').find('td:first').attr('rowspan', rowspan);
-        $(this).closest('tr').find('td:last-child').attr('rowspan', rowspan);
-        $(this).closest('tr').find('td:nth-last-child(2)').attr('rowspan', rowspan);
-        $(this).closest('tr').find('td:nth-last-child(2)').text('ACTIVE');
-
+        $('#active_stat').text('ACTIVE');
         var newRow = `
                 <tr class="tr_hmo">
-                    <input name="hmo" type="hidden" value="${$('#hmo').val()}">
+                    <td style="border-top: 1px solid white;">
+                        <input name="hmo" type="hidden" value="${$('#hmo').val()}">
+                    </td>
                     <td>
                         <input name="coverage" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
                     </td>
@@ -122,13 +118,13 @@ else{
                     <td>
                         <input name="expiration_date" class="forminput form-control" type="date" placeholder=" " style="background-color:white;">
                     </td>
+                    <td style="border-top: 1px solid white;">
+                        ACTIVE
+                    </td>
+                    <td style="border-top: 1px solid white;">
+                    </td>
                 </tr>`;
-        if(rowspan == 2){
-            $(this).closest('tr').after(newRow);
-        }
-        else{
-            $('.tr_hmo:last').after(newRow);
-        }
+        $('.tr_hmo:last').after(newRow);
     });
 
     $('#btnSaveHmo').on('click', function(){
@@ -136,6 +132,7 @@ else{
             $.ajax({
                 type: 'POST',
                 url: '/rowspan_save',
+                async: false,
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
@@ -164,6 +161,7 @@ else{
             dom: 't',
             ajax: {
                 url: '/rowspan_data',
+                async: false,
                 data:{
                     id: 550
                 }
@@ -192,7 +190,12 @@ else{
                 }
             ],
             columns: [
-                { data: 'hmo'},
+                {
+                    data: 'hmo',
+                    "render":function(data,type,row){
+                        return data;
+                    }
+                },
                 { data: 'coverage'},
                 {
                     data: 'particulars',
@@ -229,7 +232,7 @@ else{
         var addNewRow = `
                 <tr class="tr_hmo">
                     <td>
-                        <input name="hmo" class="forminput form-control text-uppercase" type="search" id="hmo" placeholder=" " style="background-color:white;" autocomplete="off">
+                        <input type="hidden">
                     </td>
                     <td>
                         <input name="coverage" class="forminput form-control text-uppercase" type="search" id="coverage" placeholder=" " style="background-color:white;" autocomplete="off">
@@ -246,7 +249,7 @@ else{
                     <td>
                         <input name="expiration_date" class="forminput form-control" type="date" id="expiration_date" placeholder=" " style="background-color:white;">
                     </td>
-                    <td></td>
+                    <td>ACTIVE</td>
                     <td></td>
                 </tr>`;
         $('tr:last').before(addNewRow);
@@ -258,8 +261,8 @@ else{
         $('#hmoCoverage').val($(this).attr('hmo_coverage'));
         $('#hmoParticulars').val($(this).attr('hmo_particulars'));
         $('#hmoRoom').val($(this).attr('hmo_room'));
-        $('#hmoEffectivity_date').val($(this).attr('hmo_effectivity_date'));
-        $('#hmoExpiration_date').val($(this).attr('hmo_expiration_date'));
+        $('#hmoEffectivityDate').val($(this).attr('hmo_effectivity_date'));
+        $('#hmoExpirationDate').val($(this).attr('hmo_expiration_date'));
         $('#hmoStatus').val($(this).attr('hmo_status'));
 
         $('#editHmoModal').modal('show');

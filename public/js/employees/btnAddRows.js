@@ -82,7 +82,7 @@ $('#childrenAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -163,7 +163,7 @@ $('#collegeAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -244,7 +244,7 @@ $('#secondaryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -325,7 +325,7 @@ $('#primaryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -404,7 +404,7 @@ $('#trainingAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -483,7 +483,7 @@ $('#vocationalAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -576,7 +576,7 @@ $('#jobHistoryAdd').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -597,82 +597,143 @@ $('#jobHistoryAdd').click(function(){
     });
 });
 
-$('#hmoAdd').click(function(){
-    var emptyFields      = [];
-    var hmo              = $('#hmo').val();
-    var coverage         = $('#coverage').val();
-    var particulars      = $('#particulars').val();
-    var room             = $('#room').val();
-    var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
-    var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
+// $('#hmoAdd').click(function(){
+//     var emptyFields      = [];
+//     var hmo              = $('#hmo').val();
+//     var coverage         = $('#coverage').val();
+//     var particulars      = $('#particulars').val();
+//     var room             = $('#room').val();
+//     var effectivity_date = moment($('#effectivity_date').val()).format('MMMM D, YYYY');
+//     var expiration_date  = moment($('#expiration_date').val()).format('MMMM D, YYYY');
 
-    if(!hmo){
-        emptyFields.push('HMO');
-    }
+//     if(!hmo){
+//         emptyFields.push('HMO');
+//     }
 
-    if(!coverage){
-        emptyFields.push('Coverage');
-    }
+//     if(!coverage){
+//         emptyFields.push('Coverage');
+//     }
 
-    if(!particulars){
-        emptyFields.push('Particulars');
-    }
+//     if(!particulars){
+//         emptyFields.push('Particulars');
+//     }
 
-    if(!room){
-        emptyFields.push('Room');
-    }
+//     if(!room){
+//         emptyFields.push('Room');
+//     }
 
-    if(effectivity_date == 'Invalid date'){
-        emptyFields.push('Effectivity Date');
-    }
+//     if(effectivity_date == 'Invalid date'){
+//         emptyFields.push('Effectivity Date');
+//     }
 
-    if(expiration_date == 'Invalid date'){
-        emptyFields.push('Expiration Date');
-    }
+//     if(expiration_date == 'Invalid date'){
+//         emptyFields.push('Expiration Date');
+//     }
 
-    if(emptyFields.length > 0){
-        Swal.fire({
-            title: 'Please fill up the following fields:',
-            html: `<ul style="text-align: left !important; font-weight: 600 !important;">
-                        ${emptyFields.map(field => `<li>${field}</li>`).join('')}
-                    </ul>`,
-            icon: "error"
-        });
-        return false;
-    }
+//     if(emptyFields.length > 0){
+//         Swal.fire({
+//             title: 'Please fill up the following fields:',
+//             html: `<ul style="text-align: left !important; font-weight: 600 !important;">
+//                         ${emptyFields.map(field => `<li>${field}</li>`).join('')}
+//                     </ul>`,
+//             icon: "error"
+//         });
+//         return false;
+//     }
 
-    var hmo_table = `<tr class='hmo_tr'>
-                        <td class='td_1 text-uppercase'>${hmo}</td>
-                        <td class='td_2 text-uppercase'>${coverage}</td>
-                        <td class='td_3 text-uppercase'>${particulars}</td>
-                        <td class='td_4 text-uppercase'>${room}</td>
-                        <td class='td_5'>${effectivity_date}</td>
-                        <td class='td_6'>${expiration_date}</td>
-                        <td class='text-center'>ACTIVE</td>
-                        <td><button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
-                    <tr>`;
+//     var hmo_table = `<tr class='hmo_tr'>
+//                         <td class='td_1 text-uppercase'>${hmo}</td>
+//                         <td class='td_2 text-uppercase'>${coverage}</td>
+//                         <td class='td_3 text-uppercase'>${particulars}</td>
+//                         <td class='td_4 text-uppercase'>${room}</td>
+//                         <td class='td_5'>${effectivity_date}</td>
+//                         <td class='td_6'>${expiration_date}</td>
+//                         <td class='text-center'>ACTIVE</td>
+//                         <td><button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button></td>
+//                     <tr>`;
 
-    $('.dataTables_empty').closest('tr').remove();
-    $('#hmo_table_orig_tbody').append(hmo_table);
-    $('#hmo_table_orig').show();
-    $('#hmo_table_orig tr:last').remove();
+//     $('.dataTables_empty').closest('tr').remove();
+//     $('#hmo_table_orig_tbody').append(hmo_table);
+//     $('#hmo_table_orig').show();
+//     $('#hmo_table_orig tr:last').remove();
+//     hmo_change = 'CHANGED';
+//     tblHmo = 'tblHmo';
+//     changeCounter++;
+//     disableUpdate('', changeCounter, true);
+
+//     $('#hmo').val('');
+//     $('#coverage').val('');
+//     $('#particulars').val('');
+//     $('#room').val('');
+//     $('#effectivity_date').val('');
+//     $('#expiration_date').val('');
+
+//     $('.btn_hmo').click(function(){
+//         Swal.fire({
+//             title: 'Do you want to delete this row?',
+//             text: "You won't be able to revert this!",
+//             icon: 'warning',
+//             allowOutsideClick: false,
+//             allowEscapeKey: false,
+//             showDenyButton: true,
+//             confirmButtonText: 'Yes',
+//             denyButtonText: 'No',
+//             customClass: {
+//             actions: 'my-actions',
+//             confirmButton: 'order-2',
+//             denyButton: 'order-3',
+//             }
+//         }).then((save) => {
+//             if(save.isConfirmed){
+//                 $(this).parent().parent().remove();
+//                 changeCounter--;
+//                 disableUpdate('', changeCounter, true);
+//             }
+//         });
+//     });
+// });
+
+$('#hmoAdd').on('click', function(){
+    $('#active_stat').text('ACTIVE');
+    var newRow = `
+            <tr class="tr_hmo">
+                <td style="border-top: 1px solid white;">
+                    <input name="hmo" type="hidden" value="${$('#hmo').val()}">
+                </td>
+                <td>
+                    <input name="coverage" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="particulars" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="room" class="forminput form-control text-uppercase" type="search" placeholder=" " style="background-color:white;" autocomplete="off">
+                </td>
+                <td>
+                    <input name="effectivity_date" class="forminput form-control" type="date" placeholder=" " style="background-color:white;">
+                </td>
+                <td>
+                    <input name="expiration_date" class="forminput form-control" type="date" placeholder=" " style="background-color:white;">
+                </td>
+                <td style="border-top: 1px solid white;">
+                    <b class="text-success">ACTIVE</b>
+                </td>
+                <td style="border-top: 1px solid white;">
+                    <button type="button" class='btn btn-danger btn_hmo center' title='DELETE'> <i class='fas fa-trash-alt'></i></button>
+                </td>
+            </tr>`;
+    $('.tr_hmo:last').after(newRow);
+
     hmo_change = 'CHANGED';
     tblHmo = 'tblHmo';
     changeCounter++;
     disableUpdate('', changeCounter, true);
 
-    $('#hmo').val('');
-    $('#coverage').val('');
-    $('#particulars').val('');
-    $('#room').val('');
-    $('#effectivity_date').val('');
-    $('#expiration_date').val('');
-
     $('.btn_hmo').click(function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -775,7 +836,7 @@ $(document).on('click','#btnAddMemoRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -871,7 +932,7 @@ $(document).on('click','#btnAddEvaluationRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -955,7 +1016,7 @@ $(document).on('click','#btnAddContractRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -1039,7 +1100,7 @@ $(document).on('click','#btnAddResignationRow', function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,
@@ -1123,7 +1184,7 @@ $(document).on('click','#btnAddTerminationRow',function(){
         Swal.fire({
             title: 'Do you want to delete this row?',
             text: "You won't be able to revert this!",
-            icon: 'error',
+            icon: 'warning',
             allowOutsideClick: false,
             allowEscapeKey: false,
             showDenyButton: true,

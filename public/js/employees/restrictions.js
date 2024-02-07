@@ -72,6 +72,7 @@ function checkChange(element){
 }
 
 function disableUpdate(fieldCheck, changeCounter, duplicate){
+    return false;
     if(fieldCheck || changeCounter != 0 || !duplicate){
         $('#btnUpdate').prop('disabled', false);
     }

@@ -392,44 +392,22 @@ $('#btnUpdate').on('click',function(){
                             job_history_change = '';
                         });
 
-                        // $('.hmo_tr').each(function(){
-                        //     $.ajax({
-                        //         type: 'POST',
-                        //         url: '/employees/saveHmo',
-                        //         async: false,
-                        //         headers:{
-                        //             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                        //         },
-                        //         data:{
-                        //             employee_id      : data.id,
-                        //             hmo              : $(this).children('.td_1').html(),
-                        //             coverage         : $(this).children('.td_2').html(),
-                        //             particulars      : $(this).children('.td_3').html(),
-                        //             room             : $(this).children('.td_4').html(),
-                        //             effectivity_date : $(this).children('.td_5').html(),
-                        //             expiration_date  : $(this).children('.td_6').html(),
-                        //             hmo_change       : hmo_change
-                        //         }
-                        //     });
-                        //     hmo_change = '';
-                        // });
-
-                        $('.tr_hmo').each(function(){
+                        $('.hmo_tr').each(function(){
                             $.ajax({
                                 type: 'POST',
                                 url: '/employees/saveHmo',
                                 async: false,
-                                headers: {
+                                headers:{
                                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                                 },
-                                data: {
+                                data:{
                                     employee_id      : data.id,
-                                    hmo              : $(this).find('input[name="hmo"]').val(),
-                                    coverage         : $(this).find('input[name="coverage"]').val(),
-                                    particulars      : $(this).find('input[name="particulars"]').val(),
-                                    room             : $(this).find('input[name="room"]').val(),
-                                    effectivity_date : $(this).find('input[name="effectivity_date"]').val(),
-                                    expiration_date  : $(this).find('input[name="expiration_date"]').val(),
+                                    hmo              : $(this).children('.td_1').html(),
+                                    coverage         : $(this).children('.td_2').html(),
+                                    particulars      : $(this).children('.td_3').html(),
+                                    room             : $(this).children('.td_4').html(),
+                                    effectivity_date : $(this).children('.td_5').html(),
+                                    expiration_date  : $(this).children('.td_6').html(),
                                     hmo_change       : hmo_change
                                 }
                             });
@@ -813,7 +791,7 @@ $('#btnUpdate').on('click',function(){
     });
 });
 
-$(document).on('click','#btnUpdateHmo',function(){
+$(document).on('click','#btnEditHmo',function(){
     Swal.fire({
         title: 'Do you want to Update?',
         allowOutsideClick: false,
@@ -850,11 +828,7 @@ $(document).on('click','#btnUpdateHmo',function(){
                     $('#loading').hide();
                     if(response == 'true'){
                         Swal.fire('UPDATE SUCCESS','','success');
-                        changeCounter++;
-                        disableUpdate('', changeCounter, true);
-                        setTimeout(() => {
-                            $('#hmoTable').DataTable().ajax.reload();
-                        }, 1000);
+                        $('.hmo_table_orig').DataTable().ajax.reload(null, false);
                         $('#editHmoModal').modal('hide');
                     }
                     else if(response == 'no changes'){

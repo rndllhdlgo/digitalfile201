@@ -54,7 +54,7 @@
                     </div>
                 </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-success" id="btnUpdateHmo">UPDATE</button>
+                <button type="button" class="btn btn-success" id="btnEditHmo">SAVE CHANGES</button>
             </div>
         </div>
     </div>

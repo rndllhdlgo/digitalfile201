@@ -432,6 +432,7 @@ $('#btnCancel').on('click', function() {
         showDenyButton: true,
         confirmButtonText: 'Yes',
         denyButtonText: 'No',
+        icon: 'question',
         customClass: {
         actions: 'my-actions',
         confirmButton: 'order-2',

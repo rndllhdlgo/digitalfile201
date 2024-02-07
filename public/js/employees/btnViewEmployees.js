@@ -569,7 +569,7 @@ $(document).on('click','table.employeesTable tbody tr',function(){
                     $('#tor_view').hide();
                     $('#tor_delete_button').show();
                 }
-                $('#btnUpdate').prop('disabled', true);
+                // $('#btnUpdate').prop('disabled', true);
                 $('#loading').hide();
                 if(data_error == 0){
                     $('#employee_information').show();
