@@ -832,7 +832,7 @@ class UpdateController extends Controller{
         $date             = Carbon::now();
         $timestamp        = date("ymdHis", strtotime($date));
         $count            = Str::random(2);
-        sleep(2);
+
         $employee_number  = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
         $employee_details = PersonalInformationTable::select('empno', 'first_name', 'middle_name', 'last_name')->where('id', $request->employee_id)->first();
         $employee         = Document::where('employee_id', $request->employee_id)->first();
@@ -1442,108 +1442,6 @@ class UpdateController extends Controller{
             }
         }
     }
-
-    // public function updateHmo(Request $request){
-    //     $employee_details = PersonalInformationTable::select('first_name', 'middle_name', 'last_name')->where('id', $request->employee_id)->first();
-    //     $employee_number  = WorkInformationTable::where('employee_id', $request->employee_id)->first()->employee_number;
-
-    //     $hmo_orig              = Hmo::where('id', $request->id)->first()->hmo;
-    //     $coverage_orig         = Hmo::where('id', $request->id)->first()->coverage;
-    //     $particulars_orig      = Hmo::where('id', $request->id)->first()->particulars;
-    //     $room_orig             = Hmo::where('id', $request->id)->first()->room;
-    //     $effectivity_date_orig = Hmo::where('id', $request->id)->first()->effectivity_date;
-    //     $expiration_date_orig  = Hmo::where('id', $request->id)->first()->expiration_date;
-    //     $status_orig           = Hmo::where('id', $request->id)->first()->status;
-
-    //     $changes = 0;
-    //     if($request->hmo != $hmo_orig){
-    //         $hmo_new = $request->hmo;
-    //         $hmo_change = "[HMO: FROM '$hmo_orig' TO '$hmo_new']";
-    //         $changes++;
-
-    //     }
-    //     else{
-    //         $hmo_change = NULL;
-    //     }
-
-    //     if($request->coverage != $coverage_orig){
-    //         $coverage_new = $request->coverage;
-    //         $coverage_change = "[COVERAGE: FROM '$coverage_orig' TO '$coverage_new']";
-    //         $changes++;
-    //     }
-    //     else{
-    //         $coverage_change = NULL;
-    //     }
-
-    //     if($request->particulars != $particulars_orig){
-    //         $particulars_new = $request->particulars;
-    //         $particulars_change = "[PARTICULARS: FROM '$particulars_orig' TO '$particulars_new']";
-    //         $changes++;
-    //     }
-    //     else{
-    //         $particulars_change = NULL;
-    //     }
-
-    //     if($request->room != $room_orig){
-    //         $room_new = $request->room;
-    //         $room_change = "[ROOM: FROM '$room_orig' TO '$room_new']";
-    //         $changes++;
-    //     }
-    //     else{
-    //         $room_change = NULL;
-    //     }
-
-    //     if($request->effectivity_date != $effectivity_date_orig){
-    //         $effectivity_date_new = $request->effectivity_date;
-    //         $effectivity_date_change = "[EFFECTIVITY DATE: FROM '$effectivity_date_orig' TO '$effectivity_date_new']";
-    //         $changes++;
-    //     }
-    //     else{
-    //         $effectivity_date_change = NULL;
-    //     }
-
-    //     if($request->expiration_date != $expiration_date_orig){
-    //         $expiration_date_new = $request->expiration_date;
-    //         $expiration_date_change = "[EXPIRATION DATE: FROM '$expiration_date_orig' TO '$expiration_date_new']";
-    //         $changes++;
-    //     }
-    //     else{
-    //         $expiration_date_change = NULL;
-    //     }
-
-    //     if($request->status != $status_orig){
-    //         $status_new = $request->status;
-    //         $status_change = "[STATUS: FROM '$status_orig' TO '$status_new']";+
-    //         $changes++;
-    //     }
-    //     else{
-    //         $status_change = NULL;
-    //     }
-
-    //     if($changes == 0){
-    //         return 'no changes';
-    //     }
-
-    //     $update = Hmo::find($request->id)
-    //     ->update([
-    //         'hmo'              => strtoupper($request->hmo),
-    //         'coverage'         => strtoupper($request->coverage),
-    //         'particulars'      => strtoupper($request->particulars),
-    //         'room'             => strtoupper($request->room),
-    //         'effectivity_date' => $request->effectivity_date,
-    //         'expiration_date'  => $request->expiration_date,
-    //         'status'           => strtoupper($request->status)
-    //     ]);
-
-    //     if($update){
-    //         $this->save_employee_logs($request->employee_id, "USER UPDATED THIS EMPLOYEE'S HMO DETAILS: $hmo_change $coverage_change $particulars_change $room_change $status_change");
-    //         $this->save_user_logs("USER UPDATED THIS EMPLOYEE'S HMO DETAILS ($employee_details->first_name $employee_details->middle_name $employee_details->last_name with Employee No.$employee_number) $hmo_change $coverage_change $particulars_change $room_change $status_change");
-    //         return 'true';
-    //     }
-    //     else{
-    //         return 'false';
-    //     }
-    // }
 
     public function updateHmo(Request $request){
         $employee_details = PersonalInformationTable::select('first_name', 'middle_name', 'last_name')->where('id', $request->employee_id)->first();
