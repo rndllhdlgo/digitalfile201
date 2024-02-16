@@ -648,6 +648,7 @@ $('#btnUpdate').on('click',function(){
                         $('#termination_file').attr('name','');
 
                         var formData = new FormData($('#documents_form').get(0));
+                        formData.append('employee_id', data.id);
                         if(memo_change){
                             formData.append('memo_change', memo_change);
                         }

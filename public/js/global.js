@@ -452,3 +452,14 @@ function tableError(){
         }
     });
 }
+
+function exportDateTime(){
+    var currentDate = new Date();
+    var year        = currentDate.getFullYear();
+    var month       = currentDate.getMonth() + 1;
+    var day         = currentDate.getDate();
+    var hours       = currentDate.getHours();
+    var minutes     = currentDate.getMinutes();
+    var seconds     = currentDate.getSeconds();
+    return `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+}

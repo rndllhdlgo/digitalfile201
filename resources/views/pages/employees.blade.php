@@ -10,6 +10,7 @@
                 </div>
             </div>
 
+
             <hr class="hr-design">
 
             <div class="row">
@@ -19,6 +20,9 @@
                         <i class="fas fa-filter fa-lg" aria-hidden="true"></i>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </a>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-primary float-end" id="exportBtn" title="EXPORT" style="font-weight: bold;">EXPORT</button>
                 </div>
             </div>
 

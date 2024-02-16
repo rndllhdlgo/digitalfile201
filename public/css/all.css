@@ -602,3 +602,7 @@ label{
         page-break-before: always;
     }
 }
+
+.dt-buttons{
+    display: none !important;
+}

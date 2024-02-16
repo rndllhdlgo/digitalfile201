@@ -1,42 +1,45 @@
 var employeesTable;
+var targets = [];
+var filter;
 $(document).ready(function(){
+    targets = [];
     if(current_location == '/employees?employment_status=probationary'){
         $('#head_title').html('- PROBATIONARY');
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-        var filter = 'probationary';
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        filter = 'probationary';
     }
     else if(current_location == '/employees?employment_status=regular'){
         $('#head_title').html('- REGULAR');
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-        var filter = 'regular';
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        filter = 'regular';
     }
     else if(current_location == '/employees?employment_status=agency'){
         $('#head_title').html('- AGENCY');
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-        var filter = 'agency';
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        filter = 'agency';
     }
     else if(current_location == '/employees?status=active'){
         $('#head_title').html('- ACTIVE EMPLOYEES');
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-        var filter = 'active';
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        filter = 'active';
     }
     else if(current_location == '/employees?status=inactive'){
         $('#head_title').html('- INACTIVE EMPLOYEES');
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
-        var filter = 'inactive';
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        filter = 'inactive';
     }
     else if(current_location == '/employees?employment_status=male'){
         $('#head_title').html('- MALE');
-        var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18,19];
-        var filter = 'male';
+        targets = [5,6,7,8,9,10,12,13,14,15,16,17,18,19];
+        filter = 'male';
     }
     else if(current_location == '/employees?employment_status=female'){
         $('#head_title').html('- FEMALE');
-        var targets = [5,6,7,8,9,10,12,13,14,15,16,17,18,19];
-        var filter = 'female';
+        targets = [5,6,7,8,9,10,12,13,14,15,16,17,18,19];
+        filter = 'female';
     }
     else{
-        var targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
+        targets = [5,6,7,8,9,10,11,12,13,14,15,16,17,18,19];
     }
 
     employeesTable = $('table.employeesTable').DataTable({
@@ -46,12 +49,24 @@ $(document).ready(function(){
         fixedColumns:{
             left: 2,
         },
-        dom: 'lftrip',
+        dom: 'Blftrip',
+        buttons: [{
+            extend: 'excelHtml5',
+            title: function () {
+                return `Employee List (${exportDateTime()})`;
+            },
+            exportOptions: {
+                modifier : {
+                    order : 'index',
+                    page : 'all',
+                    search : 'none'
+                },
+            }
+        }],
         language:{
             info: "\"Showing _START_ to _END_ of _TOTAL_ Employees\"",
             lengthMenu:"Show _MENU_ Employees",
-            emptyTable:"No Employees Data Found!",
-            loadingRecords: "Loading Employee Records...",
+            emptyTable:"NO DATA AVAILABLE",
         },
         aLengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
         processing:true,
@@ -94,26 +109,26 @@ $(document).ready(function(){
         columns:[
             {
                 data: 'work_information.employee_number',
-                render: function(data, type, row, meta){
+                render: function(data, type, row){
                     if(data){
                         if(row.work_information.company.entity == '001'){
-                            return 'ID'+row.work_information.employee_number.toUpperCase();
+                            return `ID${row.work_information.employee_number.toUpperCase()}`;
                         }
                         else if(row.work_information.company.entity == '002'){
-                            return 'PL'+row.work_information.employee_number.toUpperCase();
+                            return `PL${row.work_information.employee_number.toUpperCase()}`;
                         }
                         else if(row.work_information.company.entity == '003'){
-                            return 'AP'+row.work_information.employee_number.toUpperCase();
+                            return `AP${row.work_information.employee_number.toUpperCase()}`;
                         }
                         else if(row.work_information.company.entity == '004'){
-                            return 'MJ'+row.work_information.employee_number.toUpperCase();
+                            return `MJ${row.work_information.employee_number.toUpperCase()}`;
                         }
                         else if(row.work_information.company.entity == '005'){
-                            return 'NU'+row.work_information.employee_number.toUpperCase();
+                            return `NU${row.work_information.employee_number.toUpperCase()}`;
                         }
                     }
                     else{
-                        return row.empno;
+                        return `${row.empno.toUpperCase()}`;
                     }
                 }
             },
@@ -131,10 +146,10 @@ $(document).ready(function(){
             {
                 data: 'work_information.date_hired',
                 "render":function(data,type,row){
-                    if(row.date_hired){
-                        return formatDate(row.date_hired);
+                    if(data){
+                        return formatDate(data);
                     }
-                    return '';
+                    return ''
                 }
             },
             {
@@ -432,7 +447,7 @@ $('#btnCancel').on('click', function() {
         showDenyButton: true,
         confirmButtonText: 'Yes',
         denyButtonText: 'No',
-        icon: 'question',
+        icon: 'warning',
         customClass: {
         actions: 'my-actions',
         confirmButton: 'order-2',
@@ -447,4 +462,8 @@ $('#btnCancel').on('click', function() {
             }, 1000);
         }
     });
+});
+
+$('#exportBtn').on('click', function(){
+    $('.buttons-excel').click();
 });
